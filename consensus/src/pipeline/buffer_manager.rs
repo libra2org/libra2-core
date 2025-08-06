@@ -23,19 +23,19 @@ use crate::{
         signing_phase::{SigningRequest, SigningResponse},
     },
 };
-use aptos_bounded_executor::BoundedExecutor;
-use aptos_config::config::ConsensusObserverConfig;
+use libra2_bounded_executor::BoundedExecutor;
+use libra2_config::config::ConsensusObserverConfig;
 use aptos_consensus_types::{
     common::{Author, Round},
     pipeline::commit_vote::CommitVote,
     pipelined_block::PipelinedBlock,
 };
-use aptos_crypto::HashValue;
+use libra2_crypto::HashValue;
 use aptos_executor_types::ExecutorResult;
 use aptos_logger::prelude::*;
 use aptos_network::protocols::{rpc::error::RpcError, wire::handshake::v1::ProtocolId};
 use aptos_reliable_broadcast::{DropGuard, ReliableBroadcast};
-use aptos_time_service::TimeService;
+use libra2_time_service::TimeService;
 use libra2_types::{
     account_address::AccountAddress, epoch_state::EpochState, ledger_info::LedgerInfoWithSignatures,
 };
@@ -125,7 +125,7 @@ pub struct BufferManager {
 
     // message received from the network
     commit_msg_rx: Option<
-        aptos_channels::aptos_channel::Receiver<
+        libra2_channels::libra2_channel::Receiver<
             AccountAddress,
             (AccountAddress, IncomingCommitRequest),
         >,
@@ -184,7 +184,7 @@ impl BufferManager {
         signing_phase_tx: Sender<CountedRequest<SigningRequest>>,
         signing_phase_rx: Receiver<SigningResponse>,
         commit_msg_tx: Arc<NetworkSender>,
-        commit_msg_rx: aptos_channels::aptos_channel::Receiver<
+        commit_msg_rx: libra2_channels::libra2_channel::Receiver<
             AccountAddress,
             (AccountAddress, IncomingCommitRequest),
         >,
@@ -679,7 +679,7 @@ impl BufferManager {
             CommitMessage::Vote(CommitVote::new_with_signature(
                 commit_vote.author(),
                 commit_vote.ledger_info().clone(),
-                aptos_crypto::bls12381::Signature::dummy_signature(),
+                libra2_crypto::bls12381::Signature::dummy_signature(),
             ))
         });
         CommitMessage::Vote(commit_vote)

@@ -11,7 +11,7 @@ use aptos_indexer_processor_sdk::{
     aptos_indexer_transaction_stream::TransactionStreamConfig,
     postgres::utils::database::run_pending_migrations, server_framework::RunnableConfig,
 };
-use aptos_localnet::{health_checker::HealthChecker, processors::get_processor_config};
+use libra2_localnet::{health_checker::HealthChecker, processors::get_processor_config};
 use diesel::Connection;
 use diesel_async::{async_connection_wrapper::AsyncConnectionWrapper, pg::AsyncPgConnection};
 use futures::{future::try_join_all, stream::FuturesUnordered, StreamExt, TryFutureExt};

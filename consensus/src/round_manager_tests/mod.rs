@@ -31,8 +31,8 @@ use crate::{
     },
     util::time_service::{ClockTimeService, TimeService},
 };
-use aptos_channels::{self, aptos_channel, message_queues::QueueStyle};
-use aptos_config::{
+use libra2_channels::{self, libra2_channel, message_queues::QueueStyle};
+use libra2_config::{
     config::{BlockTransactionFilterConfig, ConsensusConfig},
     network_id::{NetworkId, PeerNetworkId},
 };
@@ -50,9 +50,9 @@ use aptos_consensus_types::{
     vote_msg::VoteMsg,
     wrapped_ledger_info::WrappedLedgerInfo,
 };
-use aptos_crypto::HashValue;
+use libra2_crypto::HashValue;
 use aptos_executor_types::ExecutorResult;
-use aptos_infallible::Mutex;
+use libra2_infallible::Mutex;
 use aptos_logger::prelude::info;
 use aptos_network::{
     application::interface::NetworkClient,
@@ -195,7 +195,7 @@ pub struct NodeSetup {
     opt_proposal_queue: VecDeque<OptProposalMsg>,
     round_timeout_queue: VecDeque<RoundTimeoutMsg>,
     commit_decision_queue: VecDeque<CommitDecision>,
-    processed_opt_proposal_rx: aptos_channels::UnboundedReceiver<OptBlockData>,
+    processed_opt_proposal_rx: libra2_channels::UnboundedReceiver<OptBlockData>,
     use_quorum_store_payloads: bool,
 }
 
@@ -203,7 +203,7 @@ impl NodeSetup {
     fn create_round_state(time_service: Arc<dyn TimeService>) -> RoundState {
         let base_timeout = Duration::new(60, 0);
         let time_interval = Box::new(ExponentialTimeInterval::fixed(base_timeout));
-        let (round_timeout_sender, _) = aptos_channels::new_test(1_024);
+        let (round_timeout_sender, _) = libra2_channels::new_test(1_024);
         RoundState::new(time_interval, time_service, round_timeout_sender)
     }
 
@@ -351,10 +351,10 @@ impl NodeSetup {
         let _entered_runtime = executor.enter();
         let epoch_state = Arc::new(EpochState::new(1, storage.get_validator_set().into()));
         let validators = epoch_state.verifier.clone();
-        let (network_reqs_tx, network_reqs_rx) = aptos_channel::new(QueueStyle::FIFO, 8, None);
-        let (connection_reqs_tx, _) = aptos_channel::new(QueueStyle::FIFO, 8, None);
-        let (consensus_tx, consensus_rx) = aptos_channel::new(QueueStyle::FIFO, 8, None);
-        let (_conn_mgr_reqs_tx, conn_mgr_reqs_rx) = aptos_channels::new_test(8);
+        let (network_reqs_tx, network_reqs_rx) = libra2_channel::new(QueueStyle::FIFO, 8, None);
+        let (connection_reqs_tx, _) = libra2_channel::new(QueueStyle::FIFO, 8, None);
+        let (consensus_tx, consensus_rx) = libra2_channel::new(QueueStyle::FIFO, 8, None);
+        let (_conn_mgr_reqs_tx, conn_mgr_reqs_rx) = libra2_channels::new_test(8);
         let network_sender = network::NetworkSender::new(
             PeerManagerRequestSender::new(network_reqs_tx),
             ConnectionRequestSender::new(connection_reqs_tx),
@@ -373,7 +373,7 @@ impl NodeSetup {
 
         playground.add_node(twin_id, consensus_tx, network_reqs_rx, conn_mgr_reqs_rx);
 
-        let (self_sender, self_receiver) = aptos_channels::new_unbounded_test();
+        let (self_sender, self_receiver) = libra2_channels::new_unbounded_test();
         let network = Arc::new(NetworkSender::new(
             author,
             consensus_network_client,
@@ -454,9 +454,9 @@ impl NodeSetup {
             MetricsSafetyRules::new(safety_rules_manager.client(), storage.clone());
         safety_rules.perform_initialize().unwrap();
 
-        let (round_manager_tx, _) = aptos_channel::new(QueueStyle::LIFO, 1, None);
+        let (round_manager_tx, _) = libra2_channel::new(QueueStyle::LIFO, 1, None);
 
-        let (opt_proposal_loopback_tx, opt_proposal_loopback_rx) = aptos_channels::new_unbounded(
+        let (opt_proposal_loopback_tx, opt_proposal_loopback_rx) = libra2_channels::new_unbounded(
             &counters::OP_COUNTERS.gauge("opt_proposal_loopback_queue"),
         );
 

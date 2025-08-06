@@ -6,8 +6,8 @@ use crate::{
     counters::DISCOVERY_COUNTS, file::FileStream, rest::RestStream,
     validator_set::ValidatorSetStream,
 };
-use aptos_config::{config::PeerSet, network_id::NetworkContext};
-use aptos_crypto::x25519;
+use libra2_config::{config::PeerSet, network_id::NetworkContext};
+use libra2_crypto::x25519;
 use aptos_event_notifications::ReconfigNotificationListener;
 use aptos_logger::prelude::*;
 use aptos_network::{
@@ -15,7 +15,7 @@ use aptos_network::{
     counters::inc_by_with_context,
     logging::NetworkSchema,
 };
-use aptos_time_service::TimeService;
+use libra2_time_service::TimeService;
 use libra2_types::on_chain_config::OnChainConfigProvider;
 use futures::{Stream, StreamExt};
 use std::{
@@ -35,14 +35,14 @@ mod validator_set;
 pub enum DiscoveryError {
     IO(std::io::Error),
     Parsing(String),
-    Rest(aptos_rest_client::error::RestError),
+    Rest(libra2_rest_client::error::RestError),
 }
 
 /// A union type for all implementations of `DiscoveryChangeListenerTrait`
 pub struct DiscoveryChangeListener<P: OnChainConfigProvider> {
     discovery_source: DiscoverySource,
     network_context: NetworkContext,
-    update_channel: aptos_channels::Sender<ConnectivityRequest>,
+    update_channel: libra2_channels::Sender<ConnectivityRequest>,
     source_stream: DiscoveryChangeStream<P>,
 }
 
@@ -67,7 +67,7 @@ impl<P: OnChainConfigProvider> Stream for DiscoveryChangeStream<P> {
 impl<P: OnChainConfigProvider> DiscoveryChangeListener<P> {
     pub fn validator_set(
         network_context: NetworkContext,
-        update_channel: aptos_channels::Sender<ConnectivityRequest>,
+        update_channel: libra2_channels::Sender<ConnectivityRequest>,
         expected_pubkey: x25519::PublicKey,
         reconfig_events: ReconfigNotificationListener<P>,
     ) -> Self {
@@ -86,7 +86,7 @@ impl<P: OnChainConfigProvider> DiscoveryChangeListener<P> {
 
     pub fn file(
         network_context: NetworkContext,
-        update_channel: aptos_channels::Sender<ConnectivityRequest>,
+        update_channel: libra2_channels::Sender<ConnectivityRequest>,
         file_path: &Path,
         interval_duration: Duration,
         time_service: TimeService,
@@ -106,7 +106,7 @@ impl<P: OnChainConfigProvider> DiscoveryChangeListener<P> {
 
     pub fn rest(
         network_context: NetworkContext,
-        update_channel: aptos_channels::Sender<ConnectivityRequest>,
+        update_channel: libra2_channels::Sender<ConnectivityRequest>,
         rest_url: url::Url,
         interval_duration: Duration,
         time_service: TimeService,

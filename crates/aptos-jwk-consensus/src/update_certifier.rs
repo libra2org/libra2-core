@@ -6,7 +6,7 @@ use crate::{
     types::JWKConsensusMsg,
 };
 use anyhow::Context;
-use aptos_channels::aptos_channel;
+use libra2_channels::libra2_channel;
 use aptos_logger::error;
 use aptos_reliable_broadcast::ReliableBroadcast;
 use libra2_types::{
@@ -26,7 +26,7 @@ pub trait TUpdateCertifier<ConsensusMode: TConsensusMode>: Send + Sync {
         &self,
         epoch_state: Arc<EpochState>,
         payload: ProviderJWKs,
-        qc_update_tx: aptos_channel::Sender<
+        qc_update_tx: libra2_channel::Sender<
             ConsensusMode::ConsensusSessionKey,
             QuorumCertifiedUpdate,
         >,
@@ -50,7 +50,7 @@ impl<ConsensusMode: TConsensusMode> TUpdateCertifier<ConsensusMode> for UpdateCe
         &self,
         epoch_state: Arc<EpochState>,
         payload: ProviderJWKs,
-        qc_update_tx: aptos_channel::Sender<
+        qc_update_tx: libra2_channel::Sender<
             ConsensusMode::ConsensusSessionKey,
             QuorumCertifiedUpdate,
         >,

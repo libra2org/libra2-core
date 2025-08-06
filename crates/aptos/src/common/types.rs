@@ -21,8 +21,8 @@ use crate::{
     move_tool::{ArgWithType, FunctionArgType, MemberId},
 };
 use anyhow::{bail, Context};
-use aptos_api_types::ViewFunction;
-use aptos_crypto::{
+use libra2_api_types::ViewFunction;
+use libra2_crypto::{
     ed25519::{Ed25519PrivateKey, Ed25519PublicKey, Ed25519Signature},
     encoding_type::{EncodingError, EncodingType},
     x25519, PrivateKey, ValidCryptoMaterialStringExt,
@@ -31,11 +31,11 @@ use aptos_framework::chunked_publish::{
     default_large_packages_module_address, CHUNK_SIZE_IN_BYTES,
 };
 use aptos_global_constants::adjust_gas_headroom;
-use aptos_keygen::KeyGen;
+use libra2_keygen::KeyGen;
 use aptos_logger::Level;
 use aptos_move_debugger::aptos_debugger::AptosDebugger;
-use aptos_rest_client::{
-    aptos_api_types::{EntryFunctionId, HashValue, MoveType, ViewRequest},
+use libra2_rest_client::{
+    libra2_api_types::{EntryFunctionId, HashValue, MoveType, ViewRequest},
     error::RestError,
     AptosBaseUrl, Client, Transaction,
 };
@@ -180,8 +180,8 @@ impl From<RestError> for CliError {
     }
 }
 
-impl From<aptos_config::config::Error> for CliError {
-    fn from(e: aptos_config::config::Error) -> Self {
+impl From<libra2_config::config::Error> for CliError {
+    fn from(e: libra2_config::config::Error) -> Self {
         CliError::UnexpectedError(e.to_string())
     }
 }
@@ -210,8 +210,8 @@ impl From<std::string::FromUtf8Error> for CliError {
     }
 }
 
-impl From<aptos_crypto::CryptoMaterialError> for CliError {
-    fn from(e: aptos_crypto::CryptoMaterialError) -> Self {
+impl From<libra2_crypto::CryptoMaterialError> for CliError {
+    fn from(e: libra2_crypto::CryptoMaterialError) -> Self {
         CliError::UnexpectedError(e.to_string())
     }
 }
@@ -234,8 +234,8 @@ impl From<bcs::Error> for CliError {
     }
 }
 
-impl From<aptos_ledger::AptosLedgerError> for CliError {
-    fn from(e: aptos_ledger::AptosLedgerError) -> Self {
+impl From<libra2_ledger::AptosLedgerError> for CliError {
+    fn from(e: libra2_ledger::AptosLedgerError) -> Self {
         CliError::UnexpectedError(e.to_string())
     }
 }
@@ -1145,7 +1145,7 @@ impl RestOptions {
     pub fn client(&self, profile: &ProfileOptions) -> CliTypedResult<Client> {
         let mut client = Client::builder(AptosBaseUrl::Custom(self.url(profile)?))
             .timeout(Duration::from_secs(self.connection_timeout_secs))
-            .header(aptos_api_types::X_APTOS_CLIENT, X_APTOS_CLIENT_VALUE)?;
+            .header(libra2_api_types::X_APTOS_CLIENT, X_APTOS_CLIENT_VALUE)?;
         if let Some(node_api_key) = &self.node_api_key {
             client = client.api_key(node_api_key)?;
         }
@@ -2081,7 +2081,7 @@ impl TransactionOptions {
             &AptosDebugger,
             u64,
             SignedTransaction,
-            aptos_crypto::HashValue,
+            libra2_crypto::HashValue,
         ) -> CliTypedResult<(VMStatus, VMOutput)>,
     {
         let client = self.rest_client()?;

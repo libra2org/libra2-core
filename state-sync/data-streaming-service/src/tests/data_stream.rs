@@ -30,18 +30,18 @@ use crate::{
         MIN_ADVERTISED_TRANSACTION, MIN_ADVERTISED_TRANSACTION_OUTPUT,
     },
 };
-use aptos_channels::{aptos_channel, message_queues::QueueStyle};
-use aptos_config::config::{
+use libra2_channels::{libra2_channel, message_queues::QueueStyle};
+use libra2_config::config::{
     AptosDataClientConfig, DataStreamingServiceConfig, DynamicPrefetchingConfig,
 };
 use aptos_data_client::{
     global_summary::{AdvertisedData, GlobalDataSummary, OptimalChunkSizes},
     interface::{Response, ResponseContext, ResponsePayload},
 };
-use aptos_id_generator::U64IdGenerator;
-use aptos_infallible::Mutex;
+use libra2_id_generator::U64IdGenerator;
+use libra2_infallible::Mutex;
 use aptos_storage_service_types::responses::CompleteDataRange;
-use aptos_time_service::{TimeService, TimeServiceTrait};
+use libra2_time_service::{TimeService, TimeServiceTrait};
 use libra2_types::{
     ledger_info::LedgerInfoWithSignatures,
     proof::SparseMerkleRangeProof,
@@ -3550,8 +3550,8 @@ fn create_optimal_chunk_sizes(chunk_sizes: u64) -> OptimalChunkSizes {
 }
 
 /// Creates a returns a new stream update notifier (dropping the listener)
-fn create_stream_update_notifier() -> aptos_channel::Sender<(), StreamUpdateNotification> {
-    let (stream_update_notifier, _) = aptos_channel::new(QueueStyle::LIFO, 1, None);
+fn create_stream_update_notifier() -> libra2_channel::Sender<(), StreamUpdateNotification> {
+    let (stream_update_notifier, _) = libra2_channel::new(QueueStyle::LIFO, 1, None);
     stream_update_notifier
 }
 

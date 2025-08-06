@@ -3,7 +3,7 @@
 
 use crate::smoke_test_environment::SwarmBuilder;
 use aptos_cached_packages::aptos_stdlib;
-use aptos_crypto::SigningKey;
+use libra2_crypto::SigningKey;
 use aptos_forge::Swarm;
 use aptos_sdk::types::{AccountKey, LocalAccount};
 use libra2_types::function_info::FunctionInfo;

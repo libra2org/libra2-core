@@ -9,11 +9,11 @@ use crate::{
     transaction_shuffler::TransactionShuffler, txn_notifier::TxnNotifier,
 };
 use anyhow::Result;
-use aptos_config::config::BlockTransactionFilterConfig;
+use libra2_config::config::BlockTransactionFilterConfig;
 use aptos_consensus_notifications::ConsensusNotificationSender;
 use aptos_consensus_types::common::Round;
 use aptos_executor_types::BlockExecutorTrait;
-use aptos_infallible::RwLock;
+use libra2_infallible::RwLock;
 use aptos_logger::prelude::*;
 use libra2_types::{
     account_address::AccountAddress, block_executor::config::BlockExecutorConfigFromOnchain,

@@ -4,18 +4,18 @@
 #![forbid(unsafe_code)]
 
 use crate::logging::{LogEntry, LogEvent, LogSchema};
-use aptos_config::{
+use libra2_config::{
     config::{NodeConfig, PeerMonitoringServiceConfig},
     network_id::PeerNetworkId,
 };
-use aptos_id_generator::U64IdGenerator;
-use aptos_infallible::RwLock;
+use libra2_id_generator::U64IdGenerator;
+use libra2_infallible::RwLock;
 use aptos_logger::{info, warn};
 use aptos_network::application::{
     interface::NetworkClient, metadata::PeerMetadata, storage::PeersAndMetadata,
 };
 use aptos_peer_monitoring_service_types::{PeerMonitoringMetadata, PeerMonitoringServiceMessage};
-use aptos_time_service::{TimeService, TimeServiceTrait};
+use libra2_time_service::{TimeService, TimeServiceTrait};
 use error::Error;
 use futures::StreamExt;
 use network::PeerMonitoringServiceClient;

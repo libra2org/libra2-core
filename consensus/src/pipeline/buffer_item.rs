@@ -9,7 +9,7 @@ use aptos_consensus_types::{
     pipeline::commit_vote::CommitVote,
     pipelined_block::PipelinedBlock,
 };
-use aptos_crypto::{bls12381, HashValue};
+use libra2_crypto::{bls12381, HashValue};
 use aptos_executor_types::ExecutorResult;
 use aptos_logger::prelude::*;
 use aptos_reliable_broadcast::DropGuard;
@@ -458,7 +458,7 @@ impl BufferItem {
 mod test {
     use super::*;
     use aptos_consensus_types::{block::Block, block_data::BlockData};
-    use aptos_crypto::HashValue;
+    use libra2_crypto::HashValue;
     use aptos_executor_types::state_compute_result::StateComputeResult;
     use libra2_types::{
         aggregate_signature::AggregateSignature,

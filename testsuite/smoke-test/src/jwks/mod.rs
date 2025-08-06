@@ -14,7 +14,7 @@ use aptos::{
 };
 use aptos_forge::{NodeExt, Swarm, SwarmExt};
 use aptos_logger::{debug, info};
-use aptos_rest_client::Client;
+use libra2_rest_client::Client;
 use libra2_types::{
     jwks::{
         jwk::{JWKMoveStruct, JWK},

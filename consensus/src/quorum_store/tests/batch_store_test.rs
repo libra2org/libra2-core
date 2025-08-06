@@ -7,8 +7,8 @@ use crate::quorum_store::{
     types::{PersistedValue, StorageMode},
 };
 use aptos_consensus_types::proof_of_store::BatchInfo;
-use aptos_crypto::HashValue;
-use aptos_temppath::TempPath;
+use libra2_crypto::HashValue;
+use libra2_temppath::TempPath;
 use libra2_types::{
     account_address::AccountAddress, quorum_store::BatchId, transaction::SignedTransaction,
     validator_verifier::random_validator_verifier,

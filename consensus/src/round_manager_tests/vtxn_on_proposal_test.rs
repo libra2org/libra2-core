@@ -7,7 +7,7 @@ use crate::{
     round_manager::round_manager_tests::NodeSetup,
     test_utils::{consensus_runtime, create_vec_signed_transactions, timed_block_on},
 };
-use aptos_config::config::ConsensusConfig;
+use libra2_config::config::ConsensusConfig;
 use aptos_consensus_types::{
     block::{block_test_utils::certificate_for_genesis, Block},
     common::Payload,

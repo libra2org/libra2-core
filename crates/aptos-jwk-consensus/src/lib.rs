@@ -7,8 +7,8 @@ use crate::{
     network_interface::JWKConsensusNetworkClient,
     types::JWKConsensusMsg,
 };
-use aptos_channels::aptos_channel;
-use aptos_config::config::SafetyRulesConfig;
+use libra2_channels::libra2_channel;
+use libra2_config::config::SafetyRulesConfig;
 use aptos_event_notifications::{
     DbBackedOnChainConfig, EventNotificationListener, ReconfigNotificationListener,
 };
@@ -32,7 +32,7 @@ pub fn start_jwk_consensus_runtime(
     vtxn_pool_writer: VTxnPoolState,
 ) -> Runtime {
     let runtime = aptos_runtimes::spawn_named_runtime("jwk".into(), Some(4));
-    let (self_sender, self_receiver) = aptos_channels::new(1_024, &counters::PENDING_SELF_MESSAGES);
+    let (self_sender, self_receiver) = libra2_channels::new(1_024, &counters::PENDING_SELF_MESSAGES);
     let jwk_consensus_network_client = JWKConsensusNetworkClient::new(network_client);
     let epoch_manager = EpochManager::new(
         my_addr,
@@ -67,8 +67,8 @@ trait TConsensusManager: Send + Sync {
         self: Box<Self>,
         oidc_providers: Option<SupportedOIDCProviders>,
         observed_jwks: Option<ObservedJWKs>,
-        mut jwk_updated_rx: aptos_channel::Receiver<(), ObservedJWKsUpdated>,
-        mut rpc_req_rx: aptos_channel::Receiver<
+        mut jwk_updated_rx: libra2_channel::Receiver<(), ObservedJWKsUpdated>,
+        mut rpc_req_rx: libra2_channel::Receiver<
             AccountAddress,
             (AccountAddress, IncomingRpcRequest),
         >,

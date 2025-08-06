@@ -29,11 +29,11 @@ rand = { workspace = true }
 
 [dev-dependencies]
 aptos-cached-packages = { workspace = true }
-aptos-crypto = { workspace = true }
+libra2-crypto = { workspace = true }
 aptos-db = { workspace = true }
 aptos-executor-test-helpers = { workspace = true }
 aptos-gas-schedule = { workspace = true, features = ["testing"] } 
-aptos-temppath = { workspace = true }
+libra2-temppath = { workspace = true }
 libra2-types = { workspace = true, features = ["testing"] }
 aptos-vm-genesis = { workspace = true }
 move-vm-types = { workspace = true, features = ["testing"] }
@@ -42,4 +42,4 @@ rand = { workspace = true }
 [features]
 default = []
 failpoints = ["fail/failpoints"]
-fuzzing = ["libra2-types/fuzzing", "aptos-crypto/fuzzing", "aptos-db/fuzzing"]
+fuzzing = ["libra2-types/fuzzing", "libra2-crypto/fuzzing", "aptos-db/fuzzing"]

@@ -12,7 +12,7 @@ use aptos_language_e2e_tests::{
     account::{Account, TransactionBuilder},
     executor::FakeExecutor,
 };
-use aptos_rest_client::AptosBaseUrl;
+use libra2_rest_client::AptosBaseUrl;
 use aptos_transaction_simulation::SimulationStateStore;
 use libra2_types::{
     account_address::AccountAddress,

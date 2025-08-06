@@ -6,15 +6,15 @@ use crate::{
     peer_states::{key_value::StateValueInterface, request_tracker::RequestTracker},
     Error, LogEntry, LogEvent, LogSchema,
 };
-use aptos_config::{config::LatencyMonitoringConfig, network_id::PeerNetworkId};
-use aptos_infallible::RwLock;
+use libra2_config::{config::LatencyMonitoringConfig, network_id::PeerNetworkId};
+use libra2_infallible::RwLock;
 use aptos_logger::{error, warn};
 use aptos_network::application::metadata::PeerMetadata;
 use aptos_peer_monitoring_service_types::{
     request::{LatencyPingRequest, PeerMonitoringServiceRequest},
     response::PeerMonitoringServiceResponse,
 };
-use aptos_time_service::TimeService;
+use libra2_time_service::TimeService;
 use std::{
     collections::BTreeMap,
     fmt,
@@ -235,7 +235,7 @@ impl Display for LatencyInfoState {
 #[cfg(test)]
 mod test {
     use crate::peer_states::{key_value::StateValueInterface, latency_info::LatencyInfoState};
-    use aptos_config::{
+    use libra2_config::{
         config::{LatencyMonitoringConfig, PeerRole},
         network_id::{NetworkId, PeerNetworkId},
     };
@@ -249,7 +249,7 @@ mod test {
         request::{LatencyPingRequest, PeerMonitoringServiceRequest},
         response::{LatencyPingResponse, PeerMonitoringServiceResponse},
     };
-    use aptos_time_service::TimeService;
+    use libra2_time_service::TimeService;
     use libra2_types::{network_address::NetworkAddress, PeerId};
     use rand::{rngs::OsRng, Rng};
     use std::{cmp::min, str::FromStr};

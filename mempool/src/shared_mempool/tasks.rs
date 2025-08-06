@@ -20,13 +20,13 @@ use crate::{
     QuorumStoreRequest, QuorumStoreResponse, SubmissionStatus,
 };
 use anyhow::Result;
-use aptos_config::{config::TransactionFilterConfig, network_id::PeerNetworkId};
+use libra2_config::{config::TransactionFilterConfig, network_id::PeerNetworkId};
 use aptos_consensus_types::common::RejectedTransactionSummary;
-use aptos_crypto::HashValue;
-use aptos_infallible::{Mutex, RwLock};
+use libra2_crypto::HashValue;
+use libra2_infallible::{Mutex, RwLock};
 use aptos_logger::prelude::*;
 use aptos_mempool_notifications::CommittedTransaction;
-use aptos_metrics_core::HistogramTimer;
+use libra2_metrics_core::HistogramTimer;
 use aptos_network::application::interface::NetworkClientInterface;
 use aptos_storage_interface::state_store::state_view::db_state_view::LatestDbStateCheckpointView;
 use libra2_types::{
@@ -648,7 +648,7 @@ pub(crate) fn process_quorum_store_request<NetworkClient, TransactionValidator>(
                     );
                     // gc before pulling block as extra protection against txns that may expire in consensus
                     // Note: this gc operation relies on the fact that consensus uses the system time to determine block timestamp
-                    let curr_time = aptos_infallible::duration_since_epoch();
+                    let curr_time = libra2_infallible::duration_since_epoch();
                     mempool.gc_by_expiration_time(curr_time);
                 }
 
@@ -783,7 +783,7 @@ pub(crate) async fn process_config_update<V, P>(
 #[cfg(test)]
 mod test {
     use super::*;
-    use aptos_crypto::{ed25519::Ed25519PrivateKey, PrivateKey, SigningKey, Uniform};
+    use libra2_crypto::{ed25519::Ed25519PrivateKey, PrivateKey, SigningKey, Uniform};
     use aptos_transaction_filters::transaction_filter::TransactionFilter;
     use libra2_types::{
         chain_id::ChainId,

@@ -37,8 +37,8 @@ use aptos_consensus_types::{
     sync_info::SyncInfo,
     wrapped_ledger_info::WrappedLedgerInfo,
 };
-use aptos_crypto::HashValue;
-use aptos_infallible::Mutex;
+use libra2_crypto::HashValue;
+use libra2_infallible::Mutex;
 use aptos_logger::prelude::*;
 use libra2_types::{
     account_address::AccountAddress, epoch_change::EpochChangeProof,

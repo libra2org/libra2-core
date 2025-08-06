@@ -16,7 +16,7 @@ use aptos_consensus_types::{
     timeout_2chain::TwoChainTimeoutCertificate,
     wrapped_ledger_info::WrappedLedgerInfo,
 };
-use aptos_crypto::HashValue;
+use libra2_crypto::HashValue;
 use aptos_logger::prelude::*;
 use libra2_types::{
     block_info::{BlockInfo, Round},

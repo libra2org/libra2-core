@@ -9,7 +9,7 @@ use crate::consensus_observer::{
     network::observer_message::{CommitDecision, OrderedBlock},
     observer::execution_pool::ObservedOrderedBlock,
 };
-use aptos_config::config::ConsensusObserverConfig;
+use libra2_config::config::ConsensusObserverConfig;
 use aptos_consensus_types::{common::Round, pipelined_block::PipelinedBlock};
 use aptos_logger::{debug, warn};
 use libra2_types::ledger_info::LedgerInfoWithSignatures;
@@ -224,7 +224,7 @@ mod test {
         pipelined_block::{OrderedBlockWindow, PipelinedBlock},
         quorum_cert::QuorumCert,
     };
-    use aptos_crypto::HashValue;
+    use libra2_crypto::HashValue;
     use libra2_types::{
         aggregate_signature::AggregateSignature, block_info::BlockInfo, ledger_info::LedgerInfo,
         transaction::Version,

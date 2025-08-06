@@ -17,14 +17,14 @@ anyhow = { workspace = true }
 aptos-admin-service = { workspace = true }
 aptos-api = { workspace = true }
 aptos-backup-service = { workspace = true }
-aptos-build-info = { workspace = true }
+libra2-build-info = { workspace = true }
 aptos-cached-packages = { workspace = true }
-aptos-channels = { workspace = true }
-aptos-config = { workspace = true }
+libra2-channels = { workspace = true }
+libra2-config = { workspace = true }
 aptos-consensus = { workspace = true }
 aptos-consensus-notifications = { workspace = true }
-aptos-crash-handler = { workspace = true }
-aptos-crypto = { workspace = true }
+libra2-crash-handler = { workspace = true }
+libra2-crypto = { workspace = true }
 aptos-data-client = { workspace = true }
 aptos-data-streaming-service = { workspace = true }
 aptos-db = { workspace = true }
@@ -37,7 +37,7 @@ aptos-genesis = { workspace = true }
 aptos-indexer = { workspace = true, optional = true }
 aptos-indexer-grpc-fullnode = { workspace = true }
 aptos-indexer-grpc-table-info = { workspace = true }
-aptos-infallible = { workspace = true }
+libra2-infallible = { workspace = true }
 aptos-inspection-service = { workspace = true }
 aptos-jwk-consensus = { workspace = true }
 aptos-logger = { workspace = true, features = ["node-identity"] }
@@ -46,7 +46,7 @@ aptos-mempool-notifications = { workspace = true }
 aptos-network = { workspace = true }
 aptos-network-benchmark = { workspace = true }
 aptos-network-builder = { workspace = true }
-aptos-node-identity = { workspace = true }
+libra2-node-identity = { workspace = true }
 aptos-peer-monitoring-service-client = { workspace = true }
 aptos-peer-monitoring-service-server = { workspace = true }
 aptos-peer-monitoring-service-types = { workspace = true }
@@ -58,8 +58,8 @@ aptos-storage-service-notifications = { workspace = true }
 aptos-storage-service-server = { workspace = true }
 aptos-storage-service-types = { workspace = true }
 aptos-telemetry = { workspace = true }
-aptos-temppath = { workspace = true }
-aptos-time-service = { workspace = true }
+libra2-temppath = { workspace = true }
+libra2-time-service = { workspace = true }
 # libra2-types = { workspace = true }
 libra2-types = { workspace = true }
 aptos-validator-transaction-pool = { workspace = true }
@@ -92,14 +92,14 @@ jemallocator = { version = "0.5.0", features = [
 rstack-self = { workspace = true }
 
 [features]
-assert-private-keys-not-cloneable = ["aptos-crypto/assert-private-keys-not-cloneable"]
+assert-private-keys-not-cloneable = ["libra2-crypto/assert-private-keys-not-cloneable"]
 check-vm-features = []
 consensus-only-perf-test = ["aptos-executor/consensus-only-perf-test", "aptos-mempool/consensus-only-perf-test", "aptos-db/consensus-only-perf-test"]
 default = []
-failpoints = ["fail/failpoints", "aptos-consensus/failpoints", "aptos-executor/failpoints", "aptos-mempool/failpoints", "aptos-api/failpoints", "aptos-config/failpoints"]
+failpoints = ["fail/failpoints", "aptos-consensus/failpoints", "aptos-executor/failpoints", "aptos-mempool/failpoints", "aptos-api/failpoints", "libra2-config/failpoints"]
 indexer = ["aptos-indexer"]
-tokio-console = ["aptos-logger/tokio-console", "aptos-config/tokio-console"]
+tokio-console = ["aptos-logger/tokio-console", "libra2-config/tokio-console"]
 smoke-test = ["aptos-jwk-consensus/smoke-test", "aptos-dkg-runtime/smoke-test"]
 
 [package.metadata.cargo-machete]
-ignored = ["aptos-crypto"]
+ignored = ["libra2-crypto"]

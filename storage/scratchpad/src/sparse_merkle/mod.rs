@@ -87,9 +87,9 @@ use crate::sparse_merkle::{
     updater::SubTreeUpdater,
     utils::get_state_shard_id,
 };
-use aptos_crypto::{hash::SPARSE_MERKLE_PLACEHOLDER_HASH, HashValue};
-use aptos_infallible::Mutex;
-use aptos_metrics_core::IntGaugeHelper;
+use libra2_crypto::{hash::SPARSE_MERKLE_PLACEHOLDER_HASH, HashValue};
+use libra2_infallible::Mutex;
+use libra2_metrics_core::IntGaugeHelper;
 use libra2_types::{
     nibble::{nibble_path::NibblePath, Nibble},
     proof::SparseMerkleProofExt,

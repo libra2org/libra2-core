@@ -9,8 +9,8 @@ use crate::{
     network::PeerMonitoringServiceNetworkEvents,
     storage::StorageReaderInterface,
 };
-use aptos_bounded_executor::BoundedExecutor;
-use aptos_config::{
+use libra2_bounded_executor::BoundedExecutor;
+use libra2_config::{
     config::{BaseConfig, NodeConfig},
     network_id::NetworkId,
 };
@@ -24,7 +24,7 @@ use aptos_peer_monitoring_service_types::{
     },
     PeerMonitoringServiceError, Result, MAX_DISTANCE_FROM_VALIDATORS,
 };
-use aptos_time_service::{TimeService, TimeServiceTrait};
+use libra2_time_service::{TimeService, TimeServiceTrait};
 use error::Error;
 use futures::stream::StreamExt;
 use std::{cmp::min, sync::Arc, time::Instant};
@@ -258,7 +258,7 @@ impl<T: StorageReaderInterface> Handler<T> {
 
     fn get_node_information(&self) -> Result<PeerMonitoringServiceResponse, Error> {
         // Get the node information
-        let build_information = aptos_build_info::get_build_information();
+        let build_information = libra2_build_info::get_build_information();
         let current_time: Instant = self.time_service.now();
         let uptime = current_time.duration_since(self.start_time);
         let (highest_synced_epoch, highest_synced_version) =

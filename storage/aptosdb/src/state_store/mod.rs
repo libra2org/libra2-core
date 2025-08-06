@@ -31,7 +31,7 @@ use crate::{
         ShardedStateKvSchemaBatch,
     },
 };
-use aptos_crypto::{
+use libra2_crypto::{
     hash::{CryptoHash, CORRUPTION_SENTINEL, SPARSE_MERKLE_PLACEHOLDER_HASH},
     HashValue,
 };
@@ -40,10 +40,10 @@ use aptos_db_indexer_schemas::{
     metadata::{MetadataKey, MetadataValue, StateSnapshotProgress},
     schema::indexer_metadata::InternalIndexerMetadataSchema,
 };
-use aptos_infallible::Mutex;
+use libra2_infallible::Mutex;
 use aptos_jellyfish_merkle::iterator::JellyfishMerkleIterator;
 use aptos_logger::info;
-use aptos_metrics_core::TimerHelper;
+use libra2_metrics_core::TimerHelper;
 use aptos_schemadb::batch::{NativeBatch, SchemaBatch, WriteBatch};
 use aptos_scratchpad::SparseMerkleTree;
 use aptos_storage_interface::{
@@ -464,7 +464,7 @@ impl StateStore {
         state_merkle_db: Arc<StateMerkleDb>,
         state_kv_db: Arc<StateKvDb>,
     ) -> Result<Option<Version>> {
-        use aptos_config::config::NO_OP_STORAGE_PRUNER_CONFIG;
+        use libra2_config::config::NO_OP_STORAGE_PRUNER_CONFIG;
 
         let state_merkle_pruner = StateMerklePrunerManager::new(
             Arc::clone(&state_merkle_db),
@@ -1266,7 +1266,7 @@ impl StateValueWriter<StateKey, StateValue> for StateStore {
 #[cfg(test)]
 mod test_only {
     use crate::state_store::StateStore;
-    use aptos_crypto::HashValue;
+    use libra2_crypto::HashValue;
     use aptos_schemadb::batch::SchemaBatch;
     use aptos_storage_interface::state_store::{
         state_summary::ProvableStateSummary, state_update_refs::StateUpdateRefs,

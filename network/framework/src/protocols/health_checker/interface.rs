@@ -13,8 +13,8 @@ use crate::{
         network::Event,
     },
 };
-use aptos_config::network_id::PeerNetworkId;
-use aptos_infallible::RwLock;
+use libra2_config::network_id::PeerNetworkId;
+use libra2_infallible::RwLock;
 use libra2_types::PeerId;
 use futures::{stream::FusedStream, Stream};
 use std::{

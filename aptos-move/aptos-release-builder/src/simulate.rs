@@ -25,12 +25,12 @@ use anyhow::{anyhow, bail, Context, Result};
 use aptos::{
     common::types::PromptOptions, governance::compile_in_temp_dir, move_tool::FrameworkPackageArgs,
 };
-use aptos_crypto::HashValue;
+use libra2_crypto::HashValue;
 use aptos_gas_profiling::GasProfiler;
 use aptos_gas_schedule::{AptosGasParameters, FromOnChainGasSchedule};
 use aptos_language_e2e_tests::account::AccountData;
 use aptos_move_debugger::aptos_debugger::AptosDebugger;
-use aptos_rest_client::{AptosBaseUrl, Client};
+use libra2_rest_client::{AptosBaseUrl, Client};
 use aptos_transaction_simulation::{DeltaStateStore, SimulationStateStore};
 use libra2_types::{
     account_address::AccountAddress,
@@ -413,7 +413,7 @@ pub async fn simulate_multistep_proposal(
     // Create and fund a sender account that is used to send the governance scripts.
     print!("Creating and funding sender account.. ");
     std::io::stdout().flush()?;
-    let mut rng = aptos_keygen::KeyGen::from_seed([0; 32]);
+    let mut rng = libra2_keygen::KeyGen::from_seed([0; 32]);
     let balance = 100 * 1_0000_0000; // 100 APT
     let account = AccountData::new_from_seed(&mut rng, balance, 0);
     state_view.apply_write_set(&account.to_writeset())?;

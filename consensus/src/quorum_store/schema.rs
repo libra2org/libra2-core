@@ -3,7 +3,7 @@
 
 use crate::quorum_store::types::PersistedValue;
 use anyhow::Result;
-use aptos_crypto::HashValue;
+use libra2_crypto::HashValue;
 use aptos_schemadb::{
     schema::{KeyCodec, Schema, ValueCodec},
     ColumnFamilyName,

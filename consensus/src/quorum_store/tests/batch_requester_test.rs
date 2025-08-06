@@ -13,8 +13,8 @@ use aptos_consensus_types::{
     common::Author,
     proof_of_store::{ProofOfStore, SignedBatchInfo},
 };
-use aptos_crypto::HashValue;
-use aptos_infallible::Mutex;
+use libra2_crypto::HashValue;
+use libra2_infallible::Mutex;
 use libra2_types::{
     aggregate_signature::PartialSignatures,
     block_info::BlockInfo,

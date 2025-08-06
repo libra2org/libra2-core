@@ -9,9 +9,9 @@ use crate::{
         types::{BatchRequest, BatchResponse, PersistedValue},
     },
 };
-use aptos_crypto::HashValue;
+use libra2_crypto::HashValue;
 use aptos_executor_types::*;
-use aptos_infallible::Mutex;
+use libra2_infallible::Mutex;
 use aptos_logger::prelude::*;
 use libra2_types::{transaction::SignedTransaction, validator_verifier::ValidatorVerifier, PeerId};
 use futures::{stream::FuturesUnordered, StreamExt};

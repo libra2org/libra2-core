@@ -4,8 +4,8 @@
 
 use crate::tests::{new_test_context, new_test_context_with_config};
 use aptos_api_test_context::{assert_json, current_function_name, pretty, TestContext};
-use aptos_config::config::{GasEstimationStaticOverride, NodeConfig, TransactionFilterConfig};
-use aptos_crypto::{
+use libra2_config::config::{GasEstimationStaticOverride, NodeConfig, TransactionFilterConfig};
+use libra2_crypto::{
     ed25519::{Ed25519PrivateKey, Ed25519Signature},
     multi_ed25519::{MultiEd25519PrivateKey, MultiEd25519PublicKey},
     PrivateKey, SigningKey, Uniform,
@@ -37,7 +37,7 @@ async fn test_deserialize_genesis_transaction() {
     let resp = context.get("/transactions/by_version/0").await;
     // TODO: serde_json::from_value doesn't work here, either make it work
     // or remove the ability to do that.
-    aptos_api_types::Transaction::parse_from_json(Some(resp)).unwrap();
+    libra2_api_types::Transaction::parse_from_json(Some(resp)).unwrap();
 }
 
 // Unstable due to framework changes

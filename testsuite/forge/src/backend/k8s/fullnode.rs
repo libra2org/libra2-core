@@ -8,7 +8,7 @@ use crate::{
     VALIDATOR_0_STATEFUL_SET_NAME,
 };
 use anyhow::Context;
-use aptos_config::{
+use libra2_config::{
     config::{
         ApiConfig, BaseConfig, DiscoveryMethod, ExecutionConfig, NetworkConfig, NodeConfig,
         OverrideNodeConfig, RoleType, WaypointConfig,
@@ -52,8 +52,8 @@ const GENESIS_CONFIG_VOLUME_PATH: &str = "/opt/aptos/genesis";
 const GENESIS_CONFIG_WRITABLE_VOLUME_NAME: &str = "writable-genesis";
 
 // the path where the config file is mounted in the fullnode
-const APTOS_CONFIG_VOLUME_NAME: &str = "aptos-config";
-const APTOS_CONFIG_VOLUME_PATH: &str = "/opt/aptos/etc";
+const libra2_config_VOLUME_NAME: &str = "libra2-config";
+const libra2_config_VOLUME_PATH: &str = "/opt/aptos/etc";
 
 // the path where the data volume is mounted in the fullnode
 const APTOS_DATA_VOLUME_NAME: &str = "aptos-data";
@@ -176,8 +176,8 @@ fn create_fullnode_container(
         ]),
         volume_mounts: Some(vec![
             VolumeMount {
-                mount_path: APTOS_CONFIG_VOLUME_PATH.to_string(),
-                name: APTOS_CONFIG_VOLUME_NAME.to_string(),
+                mount_path: libra2_config_VOLUME_PATH.to_string(),
+                name: libra2_config_VOLUME_NAME.to_string(),
                 ..VolumeMount::default()
             },
             VolumeMount {
@@ -211,7 +211,7 @@ fn create_fullnode_volumes(
             ..Volume::default()
         },
         Volume {
-            name: APTOS_CONFIG_VOLUME_NAME.to_string(),
+            name: libra2_config_VOLUME_NAME.to_string(),
             config_map: Some(ConfigMapVolumeSource {
                 name: Some(fullnode_node_config_config_map_name),
                 ..ConfigMapVolumeSource::default()
@@ -514,7 +514,7 @@ pub async fn install_public_fullnode<'a>(
 mod tests {
     use super::*;
     use crate::MockK8sResourceApi;
-    use aptos_config::config::Identity;
+    use libra2_config::config::Identity;
     use aptos_sdk::crypto::{x25519::PrivateKey, Uniform};
     use k8s_openapi::apimachinery::pkg::api::resource::Quantity;
 
@@ -590,8 +590,8 @@ mod tests {
                             ]),
                             volume_mounts: Some(vec![
                                 VolumeMount {
-                                    mount_path: APTOS_CONFIG_VOLUME_PATH.to_string(),
-                                    name: APTOS_CONFIG_VOLUME_NAME.to_string(),
+                                    mount_path: libra2_config_VOLUME_PATH.to_string(),
+                                    name: libra2_config_VOLUME_NAME.to_string(),
                                     ..VolumeMount::default()
                                 },
                                 VolumeMount {

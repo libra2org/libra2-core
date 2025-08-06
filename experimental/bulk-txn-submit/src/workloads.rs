@@ -5,7 +5,7 @@ use crate::event_lookup::get_deposit_dst;
 use anyhow::{anyhow, Result};
 use aptos_sdk::{
     move_types::account_address::AccountAddress,
-    rest_client::aptos_api_types::TransactionOnChainData,
+    rest_client::libra2_api_types::TransactionOnChainData,
     transaction_builder::{aptos_stdlib, TransactionFactory},
     types::{
         serde_helper::bcs_utils::bcs_size_of_byte_array,

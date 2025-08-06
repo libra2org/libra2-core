@@ -3,9 +3,9 @@
 
 use crate::metrics::OTHER_TIMERS_SECONDS;
 use anyhow::anyhow;
-use aptos_crypto::{hash::CryptoHash, HashValue};
+use libra2_crypto::{hash::CryptoHash, HashValue};
 use aptos_db_indexer_schemas::metadata::StateSnapshotProgress;
-use aptos_infallible::Mutex;
+use libra2_infallible::Mutex;
 use aptos_jellyfish_merkle::{restore::JellyfishMerkleRestore, Key, TreeReader, TreeWriter, Value};
 use aptos_storage_interface::{Result, StateSnapshotReceiver};
 use libra2_types::{

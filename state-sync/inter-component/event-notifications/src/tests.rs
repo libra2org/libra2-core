@@ -10,7 +10,7 @@ use crate::{
 };
 use aptos_db::AptosDB;
 use aptos_executor_test_helpers::bootstrap_genesis;
-use aptos_infallible::RwLock;
+use libra2_infallible::RwLock;
 use aptos_storage_interface::DbReaderWriter;
 use libra2_types::{
     account_address::AccountAddress,
@@ -558,7 +558,7 @@ fn create_database() -> Arc<RwLock<DbReaderWriter>> {
     let (genesis, _) = aptos_vm_genesis::test_genesis_change_set_and_validators(Some(1));
 
     // Create test aptos database
-    let db_path = aptos_temppath::TempPath::new();
+    let db_path = libra2_temppath::TempPath::new();
     assert_ok!(db_path.create_as_dir());
     let (_, db_rw) = DbReaderWriter::wrap(AptosDB::new_for_test(db_path.path()));
 

@@ -4,7 +4,7 @@
 use anyhow::Result;
 use aptos_block_executor::txn_provider::default::DefaultTxnProvider;
 use aptos_transaction_simulation::{AccountData, InMemoryStateStore, SimulationStateStore};
-use aptos_types::{
+use libra2_types::{
     transaction::{signature_verified_transaction::SignatureVerifiedTransaction, Transaction},
     write_set::WriteSet,
 };

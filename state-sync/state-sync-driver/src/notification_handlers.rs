@@ -12,11 +12,11 @@ use aptos_consensus_notifications::{
 };
 use aptos_data_streaming_service::data_notification::NotificationId;
 use aptos_event_notifications::{EventNotificationSender, EventSubscriptionService};
-use aptos_infallible::Mutex;
+use libra2_infallible::Mutex;
 use aptos_logger::prelude::*;
 use aptos_mempool_notifications::MempoolNotificationSender;
 use aptos_storage_service_notifications::StorageServiceNotificationSender;
-use aptos_time_service::{TimeService, TimeServiceTrait};
+use libra2_time_service::{TimeService, TimeServiceTrait};
 use libra2_types::{
     contract_event::ContractEvent,
     ledger_info::LedgerInfoWithSignatures,

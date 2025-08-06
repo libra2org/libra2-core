@@ -5,12 +5,12 @@
 use crate::aptos_cli::validator::generate_blob;
 use aptos::test::CliTestFramework;
 use aptos_cached_packages::aptos_stdlib;
-use aptos_config::{
+use libra2_config::{
     config::{NodeConfig, Peer, PeerRole, HANDSHAKE_VERSION},
     network_id::NetworkId,
 };
 use aptos_forge::{reconfig, LocalSwarm, NodeExt, Swarm, SwarmExt};
-use aptos_rest_client::{Client as RestClient, Client};
+use libra2_rest_client::{Client as RestClient, Client};
 use aptos_sdk::{
     transaction_builder::TransactionFactory,
     types::{transaction::SignedTransaction, LocalAccount},
@@ -316,7 +316,7 @@ pub async fn update_consensus_config(
 
 #[cfg(test)]
 pub mod swarm_utils {
-    use aptos_config::config::{NodeConfig, SecureBackend, WaypointConfig};
+    use libra2_config::config::{NodeConfig, SecureBackend, WaypointConfig};
     use aptos_secure_storage::{KVStorage, Storage};
     use libra2_types::waypoint::Waypoint;
 

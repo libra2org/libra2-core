@@ -14,7 +14,7 @@ rust-version = { workspace = true }
 
 [dependencies]
 anyhow = { workspace = true }
-aptos-metrics-core = { workspace = true }
+libra2-metrics-core = { workspace = true }
 async-trait = { workspace = true }
 backtrace = { workspace = true }
 clap = { workspace = true }
@@ -29,4 +29,4 @@ tracing-subscriber = { workspace = true }
 warp = { workspace = true }
 
 [target.'cfg(target_os = "linux")'.dependencies]
-aptos-system-utils = { workspace = true }
+libra2-system-utils = { workspace = true }

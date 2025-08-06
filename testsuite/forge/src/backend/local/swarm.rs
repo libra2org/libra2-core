@@ -7,7 +7,7 @@ use crate::{
     SwarmExt, Validator, Version,
 };
 use anyhow::{anyhow, bail, Result};
-use aptos_config::{
+use libra2_config::{
     config::{NetworkConfig, NodeConfig, OverrideNodeConfig, PersistableConfig},
     keys::ConfigKey,
     network_id::NetworkId,
@@ -16,7 +16,7 @@ use aptos_framework::ReleaseBundle;
 use aptos_genesis::builder::{
     FullnodeNodeConfig, InitConfigFn, InitGenesisConfigFn, InitGenesisStakeFn,
 };
-use aptos_infallible::Mutex;
+use libra2_infallible::Mutex;
 use aptos_logger::{info, warn};
 use aptos_sdk::{
     crypto::{ed25519::Ed25519PrivateKey, encoding_type::EncodingType},

@@ -19,12 +19,12 @@ use crate::{
     priority::PeerPriority,
     utils,
 };
-use aptos_config::{
+use libra2_config::{
     config::{AptosDataClientConfig, BaseConfig},
     network_id::PeerNetworkId,
 };
-use aptos_id_generator::{IdGenerator, U64IdGenerator};
-use aptos_infallible::Mutex;
+use libra2_id_generator::{IdGenerator, U64IdGenerator};
+use libra2_infallible::Mutex;
 use aptos_logger::{info, sample, sample::SampleRate, trace, warn};
 use aptos_network::{
     application::{interface::NetworkClient, storage::PeersAndMetadata},
@@ -45,7 +45,7 @@ use aptos_storage_service_types::{
     responses::{StorageServerSummary, StorageServiceResponse, TransactionOrOutputListWithProofV2},
     Epoch, StorageServiceMessage,
 };
-use aptos_time_service::TimeService;
+use libra2_time_service::TimeService;
 use libra2_types::{
     epoch_change::EpochChangeProof,
     ledger_info::LedgerInfoWithSignatures,

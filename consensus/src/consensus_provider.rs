@@ -23,9 +23,9 @@ use crate::{
     txn_notifier::MempoolNotifier,
     util::time_service::ClockTimeService,
 };
-use aptos_bounded_executor::BoundedExecutor;
-use aptos_channels::aptos_channel::Receiver;
-use aptos_config::config::NodeConfig;
+use libra2_bounded_executor::BoundedExecutor;
+use libra2_channels::libra2_channel::Receiver;
+use libra2_config::config::NodeConfig;
 use aptos_consensus_notifications::ConsensusNotificationSender;
 use aptos_event_notifications::{DbBackedOnChainConfig, ReconfigNotificationListener};
 use aptos_executor::block_executor::BlockExecutor;
@@ -33,7 +33,7 @@ use aptos_logger::prelude::*;
 use aptos_mempool::QuorumStoreRequest;
 use aptos_network::application::interface::{NetworkClient, NetworkServiceEvents};
 use aptos_storage_interface::DbReaderWriter;
-use aptos_time_service::TimeService;
+use libra2_time_service::TimeService;
 use aptos_validator_transaction_pool::VTxnPoolState;
 use aptos_vm::aptos_vm::AptosVMBlockExecutor;
 use futures::channel::mpsc;
@@ -74,9 +74,9 @@ pub fn start_consensus(
     let time_service = Arc::new(ClockTimeService::new(runtime.handle().clone()));
 
     let (timeout_sender, timeout_receiver) =
-        aptos_channels::new(1_024, &counters::PENDING_ROUND_TIMEOUTS);
+        libra2_channels::new(1_024, &counters::PENDING_ROUND_TIMEOUTS);
     let (self_sender, self_receiver) =
-        aptos_channels::new_unbounded(&counters::PENDING_SELF_MESSAGES);
+        libra2_channels::new_unbounded(&counters::PENDING_SELF_MESSAGES);
     let consensus_network_client = ConsensusNetworkClient::new(network_client);
     let bounded_executor = BoundedExecutor::new(
         node_config.consensus.num_bounded_executor_tasks as usize,
@@ -108,7 +108,7 @@ pub fn start_consensus(
         quorum_store_db.clone(),
         reconfig_events,
         bounded_executor,
-        aptos_time_service::TimeService::real(),
+        libra2_time_service::TimeService::real(),
         vtxn_pool,
         rand_storage,
         consensus_publisher,
@@ -139,7 +139,7 @@ pub fn start_consensus_observer(
 ) {
     // Create the (dummy) consensus network client
     let (self_sender, _self_receiver) =
-        aptos_channels::new_unbounded(&counters::PENDING_SELF_MESSAGES);
+        libra2_channels::new_unbounded(&counters::PENDING_SELF_MESSAGES);
     let consensus_network_client = ConsensusNetworkClient::new(NetworkClient::new(
         vec![],
         vec![],

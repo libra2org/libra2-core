@@ -14,12 +14,12 @@ rust-version = { workspace = true }
 
 [dependencies]
 anyhow = { workspace = true }
-aptos-bounded-executor = { workspace = true }
+libra2-bounded-executor = { workspace = true }
 aptos-consensus-types = { workspace = true }
 aptos-enum-conversion-derive = { workspace = true }
-aptos-infallible = { workspace = true }
+libra2-infallible = { workspace = true }
 aptos-logger = { workspace = true }
-aptos-time-service = { workspace = true }
+libra2-time-service = { workspace = true }
 libra2-types = { workspace = true }
 async-trait = { workspace = true }
 bytes = { workspace = true }
@@ -31,7 +31,7 @@ tokio-retry = { workspace = true }
 
 [dev-dependencies]
 aptos-consensus-types = { workspace = true, features = ["fuzzing"] }
-aptos-time-service = { workspace = true, features = ["testing"] }
+libra2-time-service = { workspace = true, features = ["testing"] }
 
 [features]
 default = []

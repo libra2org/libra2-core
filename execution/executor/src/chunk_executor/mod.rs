@@ -20,9 +20,9 @@ use aptos_executor_types::{
     ChunkCommitNotification, ChunkExecutorTrait, TransactionReplayer, VerifyExecutionMode,
 };
 use aptos_experimental_runtimes::thread_manager::THREAD_MANAGER;
-use aptos_infallible::{Mutex, RwLock};
+use libra2_infallible::{Mutex, RwLock};
 use aptos_logger::prelude::*;
-use aptos_metrics_core::{IntGaugeHelper, TimerHelper};
+use libra2_metrics_core::{IntGaugeHelper, TimerHelper};
 use aptos_storage_interface::{
     state_store::{
         state::State, state_summary::ProvableStateSummary,

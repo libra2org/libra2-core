@@ -11,10 +11,10 @@ use crate::{
     thread::ThreadService,
     SafetyRules, TSafetyRules,
 };
-use aptos_config::config::{InitialSafetyRulesConfig, SafetyRulesConfig, SafetyRulesService};
-use aptos_crypto::bls12381::PublicKey;
+use libra2_config::config::{InitialSafetyRulesConfig, SafetyRulesConfig, SafetyRulesService};
+use libra2_crypto::bls12381::PublicKey;
 use aptos_global_constants::CONSENSUS_KEY;
-use aptos_infallible::RwLock;
+use libra2_infallible::RwLock;
 use aptos_logger::{info, warn};
 use aptos_secure_storage::{KVStorage, Storage};
 use std::{net::SocketAddr, sync::Arc, time::Instant};

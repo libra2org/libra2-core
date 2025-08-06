@@ -25,4 +25,4 @@ url = { workspace = true }
 move-core-types = { workspace = true }
 
 aptos-framework = { workspace = true }
-aptos-rest-client = { workspace = true }
+libra2-rest-client = { workspace = true }

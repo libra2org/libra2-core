@@ -3,10 +3,10 @@
 
 use crate::AptosDB;
 use anyhow::anyhow;
-use aptos_config::config::{NodeConfig, StorageDirPaths};
-use aptos_crypto::HashValue;
+use libra2_config::config::{NodeConfig, StorageDirPaths};
+use libra2_crypto::HashValue;
 use aptos_db_indexer::db_indexer::InternalIndexerDB;
-use aptos_infallible::RwLock;
+use libra2_infallible::RwLock;
 use aptos_storage_interface::{
     chunk_to_commit::ChunkToCommit, DbReader, DbWriter, Result, StateSnapshotReceiver,
 };

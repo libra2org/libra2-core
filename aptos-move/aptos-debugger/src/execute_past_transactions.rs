@@ -3,7 +3,7 @@
 
 use crate::{aptos_debugger::AptosDebugger, common::Opts};
 use anyhow::Result;
-use aptos_rest_client::Client;
+use libra2_rest_client::Client;
 use clap::Parser;
 use url::Url;
 

@@ -10,7 +10,7 @@ use crate::{
     },
     transaction_store::TransactionStore,
 };
-use aptos_crypto::hash::CryptoHash;
+use libra2_crypto::hash::CryptoHash;
 use aptos_db_indexer::db_indexer::InternalIndexerDB;
 use aptos_db_indexer_schemas::{
     metadata::{MetadataKey as IndexerMetadataKey, MetadataValue as IndexerMetadataValue},

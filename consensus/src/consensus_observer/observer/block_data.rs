@@ -18,13 +18,13 @@ use crate::{
     pipeline::pipeline_builder::PipelineBuilder,
     state_replication::StateComputerCommitCallBackType,
 };
-use aptos_config::config::ConsensusObserverConfig;
+use libra2_config::config::ConsensusObserverConfig;
 use aptos_consensus_types::{
     pipelined_block::{PipelineFutures, PipelinedBlock},
     wrapped_ledger_info::WrappedLedgerInfo,
 };
 use aptos_executor_types::state_compute_result::StateComputeResult;
-use aptos_infallible::Mutex;
+use libra2_infallible::Mutex;
 use aptos_logger::{info, warn};
 use aptos_storage_interface::DbReader;
 use libra2_types::{
@@ -361,14 +361,14 @@ mod test {
         network::observer_message::{BlockPayload, BlockTransactionPayload, OrderedBlock},
         observer::execution_pool::ObservedOrderedBlock,
     };
-    use aptos_config::network_id::PeerNetworkId;
+    use libra2_config::network_id::PeerNetworkId;
     use aptos_consensus_types::{
         block::Block,
         block_data::{BlockData, BlockType},
         pipelined_block::{OrderedBlockWindow, PipelinedBlock},
         quorum_cert::QuorumCert,
     };
-    use aptos_crypto::HashValue;
+    use libra2_crypto::HashValue;
     use libra2_types::{
         aggregate_signature::AggregateSignature, block_info::BlockInfo, ledger_info::LedgerInfo,
         transaction::Version, validator_verifier::ValidatorVerifier,

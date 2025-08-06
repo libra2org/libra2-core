@@ -7,12 +7,12 @@ use crate::{
     workloads::SignedTransactionBuilder,
 };
 use anyhow::{bail, Result};
-use aptos_config::config::DEFAULT_MAX_SUBMIT_TRANSACTION_BATCH_SIZE;
+use libra2_config::config::DEFAULT_MAX_SUBMIT_TRANSACTION_BATCH_SIZE;
 use aptos_logger::{error, info, sample, sample::SampleRate, warn};
 use aptos_sdk::{
     move_types::account_address::AccountAddress,
     rest_client::{
-        aptos_api_types::{AptosError, AptosErrorCode, TransactionOnChainData},
+        libra2_api_types::{AptosError, AptosErrorCode, TransactionOnChainData},
         error::{AptosErrorResponse, RestError},
         Client,
     },

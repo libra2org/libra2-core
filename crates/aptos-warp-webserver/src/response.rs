@@ -3,10 +3,10 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use anyhow::Result;
-use aptos_api_types::{
+use libra2_api_types::{
     mime_types::{BCS, JSON},
     LedgerInfo, X_APTOS_BLOCK_HEIGHT, X_APTOS_CHAIN_ID, X_APTOS_EPOCH,
-    X_APTOS_LEDGER_OLDEST_VERSION, X_APTOS_LEDGER_TIMESTAMP, X_APTOS_LEDGER_VERSION,
+    X_LIBRA2_LEDGER_OLDEST_VERSION, X_LIBRA2_LEDGER_TIMESTAMP, X_LIBRA2_LEDGER_VERSION,
     X_APTOS_OLDEST_BLOCK_HEIGHT,
 };
 use hyper::{header::CONTENT_TYPE, http::HeaderValue};
@@ -48,15 +48,15 @@ impl warp::Reply for Response {
         }
         headers.insert(X_APTOS_CHAIN_ID, (self.ledger_info.chain_id as u16).into());
         headers.insert(
-            X_APTOS_LEDGER_VERSION,
+            X_LIBRA2_LEDGER_VERSION,
             self.ledger_info.ledger_version.0.into(),
         );
         headers.insert(
-            X_APTOS_LEDGER_OLDEST_VERSION,
+            X_LIBRA2_LEDGER_OLDEST_VERSION,
             self.ledger_info.oldest_ledger_version.0.into(),
         );
         headers.insert(
-            X_APTOS_LEDGER_TIMESTAMP,
+            X_LIBRA2_LEDGER_TIMESTAMP,
             self.ledger_info.ledger_timestamp.0.into(),
         );
         headers.insert(X_APTOS_EPOCH, self.ledger_info.epoch.0.into());

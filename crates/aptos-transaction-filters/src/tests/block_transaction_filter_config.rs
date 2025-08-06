@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{block_transaction_filter::BlockTransactionFilter, tests::utils};
-use aptos_crypto::HashValue;
+use libra2_crypto::HashValue;
 use move_core_types::account_address::AccountAddress;
 
 #[test]

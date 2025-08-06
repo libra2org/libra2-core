@@ -4,7 +4,7 @@
 
 use crate::block::Block;
 use anyhow::ensure;
-use aptos_crypto::hash::HashValue;
+use libra2_crypto::hash::HashValue;
 use aptos_short_hex_str::AsShortHexStr;
 use libra2_types::validator_verifier::ValidatorVerifier;
 use serde::{Deserialize, Serialize};

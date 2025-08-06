@@ -28,7 +28,7 @@
 
 use crate::{assert_success, tests::common, MoveHarness};
 use aptos_framework::BuildOptions;
-use aptos_rest_client::AptosBaseUrl;
+use libra2_rest_client::AptosBaseUrl;
 use libra2_types::account_address::AccountAddress;
 use move_core_types::{language_storage::TypeTag, value::MoveValue};
 use std::str::FromStr;

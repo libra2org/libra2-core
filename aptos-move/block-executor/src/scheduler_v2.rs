@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{counters, scheduler::ArmedLock, scheduler_status::ExecutionStatuses};
-use aptos_infallible::Mutex;
+use libra2_infallible::Mutex;
 use aptos_mvhashmap::types::{Incarnation, TxnIndex};
 use libra2_types::error::{code_invariant_error, PanicError};
 use aptos_vm_logging::clear_speculative_txn_logs;

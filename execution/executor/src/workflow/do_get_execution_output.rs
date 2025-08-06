@@ -9,7 +9,7 @@ use anyhow::{anyhow, ensure, Result};
 use aptos_block_executor::txn_provider::default::DefaultTxnProvider;
 #[cfg(feature = "consensus-only-perf-test")]
 use aptos_block_executor::txn_provider::TxnProvider;
-use aptos_crypto::HashValue;
+use libra2_crypto::HashValue;
 use aptos_executor_service::{
     local_executor_helper::SHARDED_BLOCK_EXECUTOR,
     remote_executor_client::{get_remote_addresses, REMOTE_SHARDED_BLOCK_EXECUTOR},
@@ -22,7 +22,7 @@ use aptos_executor_types::{
 };
 use aptos_experimental_runtimes::thread_manager::THREAD_MANAGER;
 use aptos_logger::prelude::*;
-use aptos_metrics_core::TimerHelper;
+use libra2_metrics_core::TimerHelper;
 use aptos_storage_interface::state_store::{
     state::LedgerState, state_view::cached_state_view::CachedStateView,
 };

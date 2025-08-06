@@ -7,7 +7,7 @@ use crate::types::{
 };
 use anyhow::Result;
 use aptos_aggregator::delta_change_set::DeltaOp;
-use aptos_infallible::Mutex;
+use libra2_infallible::Mutex;
 use libra2_types::{
     error::{code_invariant_error, PanicError},
     write_set::TransactionWrite,

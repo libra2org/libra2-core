@@ -11,7 +11,7 @@ use crate::{
 };
 use anyhow::anyhow;
 use aptos_aggregator::types::ReadPosition;
-use aptos_infallible::Mutex;
+use libra2_infallible::Mutex;
 use libra2_types::{
     error::{code_invariant_error, PanicError},
     write_set::{TransactionWrite, WriteOpKind},

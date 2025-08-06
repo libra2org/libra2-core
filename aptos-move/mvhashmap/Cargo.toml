@@ -15,7 +15,7 @@ rust-version = { workspace = true }
 [dependencies]
 anyhow = { workspace = true }
 aptos-aggregator = { workspace = true }
-aptos-infallible = { workspace = true }
+libra2-infallible = { workspace = true }
 libra2-types = { workspace = true }
 aptos-vm-types = { workspace = true }
 bytes = { workspace = true }

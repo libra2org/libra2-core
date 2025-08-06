@@ -7,7 +7,7 @@ use crate::{
     db_bootstrapper::{generate_waypoint, maybe_bootstrap},
     workflow::{do_get_execution_output::DoGetExecutionOutput, ApplyExecutionOutput},
 };
-use aptos_crypto::{ed25519::Ed25519PrivateKey, HashValue, PrivateKey, SigningKey, Uniform};
+use libra2_crypto::{ed25519::Ed25519PrivateKey, HashValue, PrivateKey, SigningKey, Uniform};
 use aptos_db::AptosDB;
 use aptos_executor_types::{
     BlockExecutorTrait, ChunkExecutorTrait, TransactionReplayer, VerifyExecutionMode,
@@ -77,14 +77,14 @@ fn execute_and_commit_block(
 }
 
 struct TestExecutor {
-    _path: aptos_temppath::TempPath,
+    _path: libra2_temppath::TempPath,
     db: DbReaderWriter,
     executor: BlockExecutor<MockVM>,
 }
 
 impl TestExecutor {
     fn new() -> TestExecutor {
-        let path = aptos_temppath::TempPath::new();
+        let path = libra2_temppath::TempPath::new();
         path.create_as_dir().unwrap();
         let db = DbReaderWriter::new(AptosDB::new_for_test(path.path()));
         let genesis = aptos_vm_genesis::test_genesis_transaction();

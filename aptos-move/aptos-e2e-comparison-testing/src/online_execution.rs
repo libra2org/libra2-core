@@ -7,7 +7,7 @@ use crate::{
 };
 use anyhow::Result;
 use aptos_framework::natives::code::PackageMetadata;
-use aptos_rest_client::Client;
+use libra2_rest_client::Client;
 use aptos_transaction_simulation::InMemoryStateStore;
 use libra2_types::transaction::Version;
 use aptos_validator_interface::{AptosValidatorInterface, FilterCondition, RestDebuggerInterface};

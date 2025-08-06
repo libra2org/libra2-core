@@ -25,10 +25,10 @@ use aptos_consensus_types::{
     quorum_cert::QuorumCert,
     wrapped_ledger_info::WrappedLedgerInfo,
 };
-use aptos_crypto::HashValue;
+use libra2_crypto::HashValue;
 use aptos_executor_types::{state_compute_result::StateComputeResult, BlockExecutorTrait};
 use aptos_experimental_runtimes::thread_manager::optimal_min_len;
-use aptos_infallible::Mutex;
+use libra2_infallible::Mutex;
 use aptos_logger::{debug, error, info, warn};
 use libra2_types::{
     block_executor::config::BlockExecutorConfigFromOnchain,

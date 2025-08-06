@@ -6,11 +6,11 @@ use crate::{
     peer_states::{key_value::StateValueInterface, request_tracker::RequestTracker},
     Error, LogEntry, LogEvent, LogSchema,
 };
-use aptos_config::{
+use libra2_config::{
     config::{BaseConfig, NetworkMonitoringConfig, NodeConfig, RoleType},
     network_id::PeerNetworkId,
 };
-use aptos_infallible::RwLock;
+use libra2_infallible::RwLock;
 use aptos_logger::warn;
 use aptos_network::application::metadata::PeerMetadata;
 use aptos_peer_monitoring_service_types::{
@@ -18,7 +18,7 @@ use aptos_peer_monitoring_service_types::{
     response::{NetworkInformationResponse, PeerMonitoringServiceResponse},
     MAX_DISTANCE_FROM_VALIDATORS,
 };
-use aptos_time_service::TimeService;
+use libra2_time_service::TimeService;
 use std::{
     fmt,
     fmt::{Display, Formatter},
@@ -207,7 +207,7 @@ impl Display for NetworkInfoState {
 #[cfg(test)]
 mod test {
     use crate::peer_states::{key_value::StateValueInterface, network_info::NetworkInfoState};
-    use aptos_config::{
+    use libra2_config::{
         config::{BaseConfig, NodeConfig, PeerRole, RoleType},
         network_id::{NetworkId, PeerNetworkId},
     };
@@ -221,7 +221,7 @@ mod test {
         request::PeerMonitoringServiceRequest,
         response::{NetworkInformationResponse, PeerMonitoringServiceResponse},
     };
-    use aptos_time_service::TimeService;
+    use libra2_time_service::TimeService;
     use libra2_types::{network_address::NetworkAddress, PeerId};
     use std::str::FromStr;
 

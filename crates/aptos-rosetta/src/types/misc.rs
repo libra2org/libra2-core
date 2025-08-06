@@ -8,7 +8,7 @@ use crate::{
     types::{AccountIdentifier, Amount, STAKING_CONTRACT_MODULE},
     AccountAddress, ApiResult,
 };
-use aptos_rest_client::aptos_api_types::{EntryFunctionId, ViewRequest};
+use libra2_rest_client::libra2_api_types::{EntryFunctionId, ViewRequest};
 use libra2_types::stake_pool::StakePool;
 use move_core_types::ident_str;
 use once_cell::sync::Lazy;
@@ -286,7 +286,7 @@ impl Display for OperationStatusType {
 
 /// Retrieves stake balances for an owner with the associated pool
 pub async fn get_stake_balances(
-    rest_client: &aptos_rest_client::Client,
+    rest_client: &libra2_rest_client::Client,
     owner_account: &AccountIdentifier,
     pool_address: AccountAddress,
     version: u64,
@@ -382,7 +382,7 @@ pub async fn get_stake_balances(
 
 /// Retrieve delegation stake balances for a given owner, pool, and version
 pub async fn get_delegation_stake_balances(
-    rest_client: &aptos_rest_client::Client,
+    rest_client: &libra2_rest_client::Client,
     account_identifier: &AccountIdentifier,
     owner_address: AccountAddress,
     pool_address: AccountAddress,

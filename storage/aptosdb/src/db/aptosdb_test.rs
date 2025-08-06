@@ -10,14 +10,14 @@ use crate::{
     pruner::{LedgerPrunerManager, PrunerManager, StateMerklePrunerManager},
     schema::stale_node_index::StaleNodeIndexSchema,
 };
-use aptos_config::config::{
+use libra2_config::config::{
     EpochSnapshotPrunerConfig, LedgerPrunerConfig, PrunerConfig, RocksdbConfigs,
     StateMerklePrunerConfig, StorageDirPaths, BUFFERED_STATE_TARGET_ITEMS_FOR_TEST,
     DEFAULT_MAX_NUM_NODES_PER_LRU_CACHE_SHARD,
 };
-use aptos_crypto::{hash::CryptoHash, HashValue};
+use libra2_crypto::{hash::CryptoHash, HashValue};
 use aptos_storage_interface::{DbReader, Order};
-use aptos_temppath::TempPath;
+use libra2_temppath::TempPath;
 use libra2_types::{
     ledger_info::LedgerInfoWithSignatures,
     proof::SparseMerkleLeafNode,

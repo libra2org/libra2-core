@@ -3,8 +3,8 @@
 
 use crate::{db::test_helper::arb_key_universe, state_store::persisted_state::PersistedState};
 use aptos_block_executor::hot_state_op_accumulator::BlockHotStateOpAccumulator;
-use aptos_crypto::{hash::CryptoHash, HashValue};
-use aptos_infallible::Mutex;
+use libra2_crypto::{hash::CryptoHash, HashValue};
+use libra2_infallible::Mutex;
 use aptos_scratchpad::test_utils::naive_smt::NaiveSmt;
 use aptos_storage_interface::{
     state_store::{

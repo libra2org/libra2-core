@@ -8,12 +8,12 @@ use crate::{
     PeerMonitoringServiceNetworkEvents, PeerMonitoringServiceServer, MAX_DISTANCE_FROM_VALIDATORS,
     PEER_MONITORING_SERVER_VERSION,
 };
-use aptos_channels::{aptos_channel, message_queues::QueueStyle};
-use aptos_config::{
+use libra2_channels::{libra2_channel, message_queues::QueueStyle};
+use libra2_config::{
     config::{BaseConfig, NodeConfig, PeerMonitoringServiceConfig, PeerRole, RoleType},
     network_id::{NetworkId, PeerNetworkId},
 };
-use aptos_crypto::HashValue;
+use libra2_crypto::HashValue;
 use aptos_logger::Level;
 use aptos_netcore::transport::ConnectionOrigin;
 use aptos_network::{
@@ -38,7 +38,7 @@ use aptos_peer_monitoring_service_types::{
     PeerMonitoringMetadata, PeerMonitoringServiceError, PeerMonitoringServiceMessage,
 };
 use aptos_storage_interface::{DbReader, LedgerSummary, Order};
-use aptos_time_service::{MockTimeService, TimeService};
+use libra2_time_service::{MockTimeService, TimeService};
 use libra2_types::{
     account_address::AccountAddress,
     aggregate_signature::AggregateSignature,
@@ -455,7 +455,7 @@ async fn verify_node_information(
     // Verify the response is correct
     let expected_response =
         PeerMonitoringServiceResponse::NodeInformation(NodeInformationResponse {
-            build_information: aptos_build_info::get_build_information(),
+            build_information: libra2_build_info::get_build_information(),
             highest_synced_epoch,
             highest_synced_version,
             ledger_timestamp_usecs,
@@ -469,7 +469,7 @@ async fn verify_node_information(
 /// mock client requests to a peer monitoring service server.
 struct MockClient {
     peer_manager_notifiers:
-        HashMap<NetworkId, aptos_channel::Sender<(PeerId, ProtocolId), ReceivedMessage>>,
+        HashMap<NetworkId, libra2_channel::Sender<(PeerId, ProtocolId), ReceivedMessage>>,
 }
 
 impl MockClient {
@@ -500,7 +500,7 @@ impl MockClient {
         let mut network_and_events = HashMap::new();
         let mut peer_manager_notifiers = HashMap::new();
         for network_id in network_ids {
-            let queue_cfg = aptos_channel::Config::new(
+            let queue_cfg = libra2_channel::Config::new(
                 peer_monitoring_config.max_network_channel_size as usize,
             )
             .queue_style(QueueStyle::FIFO)

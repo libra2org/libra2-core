@@ -49,7 +49,7 @@ mod tests {
         },
         ProtocolId,
     };
-    use aptos_config::network_id::NetworkId;
+    use libra2_config::network_id::NetworkId;
     use aptos_memsocket::MemorySocket;
     use libra2_types::chain_id::ChainId;
     use futures::{executor::block_on, future::join};

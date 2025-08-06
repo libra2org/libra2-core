@@ -8,11 +8,11 @@ use crate::{
     types::DKGTranscriptRequest,
     DKGMessage,
 };
-use aptos_crypto::{
+use libra2_crypto::{
     bls12381::{PrivateKey, PublicKey},
     Uniform,
 };
-use aptos_infallible::RwLock;
+use libra2_infallible::RwLock;
 use libra2_types::{
     dkg::{
         dummy_dkg::DummyDKG, DKGSessionMetadata, DKGStartEvent, DKGTrait, DKGTranscript,

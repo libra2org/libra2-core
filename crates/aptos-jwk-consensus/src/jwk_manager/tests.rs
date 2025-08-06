@@ -11,13 +11,13 @@ use crate::{
     update_certifier::TUpdateCertifier,
 };
 use aptos_bitvec::BitVec;
-use aptos_channels::aptos_channel;
-use aptos_crypto::{
+use libra2_channels::libra2_channel;
+use libra2_crypto::{
     bls12381::{PrivateKey, PublicKey, Signature},
     hash::CryptoHash,
     SigningKey, Uniform,
 };
-use aptos_infallible::{Mutex, RwLock};
+use libra2_infallible::{Mutex, RwLock};
 use libra2_types::{
     account_address::AccountAddress,
     aggregate_signature::AggregateSignature,
@@ -480,7 +480,7 @@ impl<ConsensusMode: TConsensusMode> TUpdateCertifier<ConsensusMode> for DummyUpd
         &self,
         epoch_state: Arc<EpochState>,
         payload: ProviderJWKs,
-        _agg_node_tx: aptos_channel::Sender<
+        _agg_node_tx: libra2_channel::Sender<
             ConsensusMode::ConsensusSessionKey,
             QuorumCertifiedUpdate,
         >,

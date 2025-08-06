@@ -13,9 +13,9 @@ use crate::{
 };
 use anyhow::bail;
 use aptos_consensus_types::proof_of_store::{BatchInfo, SignedBatchInfo};
-use aptos_crypto::{CryptoMaterialError, HashValue};
+use libra2_crypto::{CryptoMaterialError, HashValue};
 use aptos_executor_types::{ExecutorError, ExecutorResult};
-use aptos_infallible::Mutex;
+use libra2_infallible::Mutex;
 use aptos_logger::prelude::*;
 use libra2_types::{transaction::SignedTransaction, validator_signer::ValidatorSigner, PeerId};
 use dashmap::{
@@ -386,7 +386,7 @@ impl BatchStore {
             Ok(SignedBatchInfo::new_with_signature(
                 batch_info.clone(),
                 self.validator_signer.author(),
-                aptos_crypto::bls12381::Signature::dummy_signature(),
+                libra2_crypto::bls12381::Signature::dummy_signature(),
             ))
         });
         SignedBatchInfo::new(batch_info, &self.validator_signer)

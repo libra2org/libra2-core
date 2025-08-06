@@ -15,14 +15,14 @@ rust-version = { workspace = true }
 [dependencies]
 anyhow = { workspace = true }
 aptos-cached-packages = { workspace = true }
-aptos-crypto = { workspace = true }
+libra2-crypto = { workspace = true }
 aptos-framework = { workspace = true }
 aptos-gas-algebra = { workspace = true }
 aptos-gas-profiling = { workspace = true }
 aptos-gas-schedule = { workspace = true, features = ["testing"] }
 aptos-language-e2e-tests = { workspace = true }
-aptos-package-builder = { workspace = true }
-aptos-rest-client = { workspace = true }
+libra2-package-builder = { workspace = true }
+libra2-rest-client = { workspace = true }
 aptos-transaction-generator-lib = { workspace = true }
 aptos-transaction-simulation = { workspace = true }
 aptos-transaction-workloads-lib = { workspace = true }

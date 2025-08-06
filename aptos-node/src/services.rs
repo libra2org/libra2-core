@@ -3,8 +3,8 @@
 
 use crate::{bootstrap_api, indexer, mpsc::Receiver, network::ApplicationNetworkInterfaces};
 use aptos_admin_service::AdminService;
-use aptos_build_info::build_information;
-use aptos_config::config::NodeConfig;
+use libra2_build_info::build_information;
+use libra2_config::config::NodeConfig;
 use aptos_consensus::{
     consensus_observer::publisher::consensus_publisher::ConsensusPublisher,
     network_interface::ConsensusMsg, persistent_liveness_storage::StorageWriteProxy,
@@ -31,7 +31,7 @@ use aptos_peer_monitoring_service_server::{
 };
 use aptos_peer_monitoring_service_types::PeerMonitoringServiceMessage;
 use aptos_storage_interface::{DbReader, DbReaderWriter};
-use aptos_time_service::TimeService;
+use libra2_time_service::TimeService;
 use libra2_types::{
     chain_id::ChainId, indexer::indexer_db_reader::IndexerReader, transaction::Version,
 };

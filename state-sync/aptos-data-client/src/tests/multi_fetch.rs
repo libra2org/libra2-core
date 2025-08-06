@@ -6,14 +6,14 @@ use crate::{
     priority::PeerPriority,
     tests::{mock::MockNetwork, utils, utils::NUM_SELECTION_ITERATIONS},
 };
-use aptos_config::{
+use libra2_config::{
     config::{AptosDataClientConfig, AptosDataMultiFetchConfig},
     network_id::NetworkId,
 };
 use aptos_storage_service_types::requests::{
     DataRequest, StorageServiceRequest, TransactionOutputsWithProofRequest,
 };
-use aptos_time_service::TimeServiceTrait;
+use libra2_time_service::TimeServiceTrait;
 use maplit::hashset;
 use std::collections::{HashMap, HashSet};
 

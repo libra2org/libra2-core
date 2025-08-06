@@ -12,7 +12,7 @@ use crate::{
 use anyhow::{anyhow, ensure, Result};
 use aptos_jellyfish_merkle::node_type::NodeKey;
 use aptos_logger::{info, trace};
-use aptos_metrics_core::TimerHelper;
+use libra2_metrics_core::TimerHelper;
 use aptos_schemadb::batch::RawBatch;
 use aptos_storage_interface::state_store::{state::State, state_with_summary::StateWithSummary};
 use std::sync::{mpsc::Receiver, Arc};

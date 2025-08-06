@@ -3,9 +3,9 @@
 
 use crate::{aptos_debugger::AptosDebugger, common::Opts};
 use anyhow::Result;
-use aptos_crypto::HashValue;
+use libra2_crypto::HashValue;
 use aptos_logger::info;
-use aptos_rest_client::Client;
+use libra2_rest_client::Client;
 use clap::Parser;
 use std::path::PathBuf;
 use url::Url;

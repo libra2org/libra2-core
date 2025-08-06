@@ -10,7 +10,7 @@ use crate::{
     shared_mempool::types::{MultiBucketTimelineIndexIds, TimelineIndexIdentifier},
 };
 use aptos_consensus_types::common::TransactionSummary;
-use aptos_crypto::HashValue;
+use libra2_crypto::HashValue;
 use aptos_logger::error;
 use libra2_types::{account_address::AccountAddress, transaction::ReplayProtector};
 use rand::seq::SliceRandom;

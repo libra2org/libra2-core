@@ -7,7 +7,7 @@ pub mod telemetry;
 pub mod common {
 
     use crate::types::auth::Claims;
-    use aptos_config::config::PeerSet;
+    use libra2_config::config::PeerSet;
     use libra2_types::{chain_id::ChainId, PeerId};
     use serde::{Deserialize, Serialize};
     use std::{collections::HashMap, fmt};
@@ -77,7 +77,7 @@ pub mod common {
 
 pub mod response {
     use crate::errors::ServiceError;
-    use aptos_crypto::x25519;
+    use libra2_crypto::x25519;
     use reqwest::StatusCode;
     use serde::{Deserialize, Serialize};
 

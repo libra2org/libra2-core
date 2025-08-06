@@ -3,11 +3,11 @@
 
 use crate::utils;
 use anyhow::{anyhow, ensure, Result};
-use aptos_crypto::{compat::Sha3_256, Uniform};
+use libra2_crypto::{compat::Sha3_256, Uniform};
 use aptos_dkg::weighted_vuf::traits::WeightedVUF;
 use aptos_forge::LocalSwarm;
 use aptos_logger::info;
-use aptos_rest_client::Client;
+use libra2_rest_client::Client;
 use libra2_types::{
     dkg::{DKGSessionState, DKGState, DKGTrait, DefaultDKG},
     on_chain_config::{OnChainConfig, OnChainConsensusConfig},

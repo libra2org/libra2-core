@@ -7,7 +7,7 @@ use aptos_framework::{
     BuiltPackage,
 };
 use aptos_language_e2e_tests::executor::FakeExecutor;
-use aptos_package_builder::PackageBuilder;
+use libra2_package_builder::PackageBuilder;
 use libra2_types::{
     account_address::{create_resource_address, AccountAddress},
     move_utils::MemberId,

@@ -10,7 +10,7 @@ use crate::config::{
     node_config_loader::NodeType, Error, NodeConfig, QuorumStoreConfig, ReliableBroadcastConfig,
     SafetyRulesConfig, BATCH_PADDING_BYTES,
 };
-use aptos_crypto::_once_cell::sync::Lazy;
+use libra2_crypto::_once_cell::sync::Lazy;
 use libra2_types::chain_id::ChainId;
 use cfg_if::cfg_if;
 use serde::{Deserialize, Serialize};

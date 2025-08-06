@@ -25,13 +25,13 @@ use aptos_backup_cli::{
     utils::GlobalRestoreOpt,
 };
 use aptos_cached_packages::aptos_stdlib;
-use aptos_crypto::{bls12381, bls12381::PublicKey, x25519, ValidCryptoMaterialStringExt};
+use libra2_crypto::{bls12381, bls12381::PublicKey, x25519, ValidCryptoMaterialStringExt};
 use aptos_genesis::config::{HostAndPort, OperatorConfiguration};
 use aptos_logger::Level;
 use aptos_network_checker::args::{
     validate_address, CheckEndpointArgs, HandshakeArgs, NodeAddressArgs,
 };
-use aptos_rest_client::{aptos_api_types::VersionedEvent, Client, State};
+use libra2_rest_client::{libra2_api_types::VersionedEvent, Client, State};
 use libra2_types::{
     account_address::AccountAddress,
     account_config::{BlockResource, CORE_CODE_ADDRESS},

@@ -6,12 +6,12 @@ use crate::{
     priority::PeerPriority,
     tests::{mock::MockNetwork, utils, utils::NUM_SELECTION_ITERATIONS},
 };
-use aptos_config::{
+use libra2_config::{
     config::{AptosDataClientConfig, AptosDataMultiFetchConfig, AptosLatencyFilteringConfig},
     network_id::{NetworkId, PeerNetworkId},
 };
 use aptos_storage_service_types::requests::{DataRequest, StorageServiceRequest};
-use aptos_time_service::TimeServiceTrait;
+use libra2_time_service::TimeServiceTrait;
 use maplit::hashset;
 use ordered_float::OrderedFloat;
 use rand::Rng;

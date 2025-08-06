@@ -7,9 +7,9 @@ use crate::{
     metrics::{VALIDATOR_SET_UPDATE_FAILED_COUNT, VALIDATOR_SET_UPDATE_SUCCESS_COUNT},
     types::common::{ChainCommonName, EpochedPeerStore},
 };
-use aptos_config::config::{Peer, PeerRole, PeerSet};
-use aptos_infallible::RwLock;
-use aptos_rest_client::Response;
+use libra2_config::config::{Peer, PeerRole, PeerSet};
+use libra2_infallible::RwLock;
+use libra2_rest_client::Response;
 use libra2_types::{
     account_config::CORE_CODE_ADDRESS, chain_id::ChainId, on_chain_config::ValidatorSet, PeerId,
 };
@@ -81,7 +81,7 @@ impl PeerSetCacheUpdater {
         chain_name: &ChainCommonName,
         url: &str,
     ) -> Result<(), ValidatorCacheUpdateError> {
-        let client = aptos_rest_client::Client::new(Url::parse(url).map_err(|e| {
+        let client = libra2_rest_client::Client::new(Url::parse(url).map_err(|e| {
             error!("invalid url for chain_id {}: {}", chain_name, e);
             ValidatorCacheUpdateError::InvalidUrl
         })?);
@@ -177,13 +177,13 @@ impl PeerSetCacheUpdater {
 #[cfg(test)]
 mod tests {
     use super::PeerSetCacheUpdater;
-    use aptos_crypto::{
+    use libra2_crypto::{
         bls12381::{PrivateKey, PublicKey},
         test_utils::KeyPair,
         Uniform,
     };
-    use aptos_infallible::RwLock;
-    use aptos_rest_client::aptos_api_types::*;
+    use libra2_infallible::RwLock;
+    use libra2_rest_client::libra2_api_types::*;
     use libra2_types::{
         chain_id::ChainId, network_address::NetworkAddress, on_chain_config::ValidatorSet,
         validator_config::ValidatorConfig, validator_info::ValidatorInfo, PeerId,
@@ -211,11 +211,11 @@ mod tests {
                 .body(bcs::to_bytes(&validator_set).unwrap())
                 .header(X_APTOS_CHAIN_ID, "25")
                 .header(X_APTOS_EPOCH, "10")
-                .header(X_APTOS_LEDGER_VERSION, "10")
-                .header(X_APTOS_LEDGER_OLDEST_VERSION, "2")
+                .header(X_LIBRA2_LEDGER_VERSION, "10")
+                .header(X_LIBRA2_LEDGER_OLDEST_VERSION, "2")
                 .header(X_APTOS_BLOCK_HEIGHT, "25")
                 .header(X_APTOS_OLDEST_BLOCK_HEIGHT, "10")
-                .header(X_APTOS_LEDGER_TIMESTAMP, "10");
+                .header(X_LIBRA2_LEDGER_TIMESTAMP, "10");
         });
 
         let mut fullnodes = HashMap::new();
@@ -259,11 +259,11 @@ mod tests {
             .body(bcs::to_bytes(&validator_set).unwrap())
             .header(X_APTOS_CHAIN_ID, "25")
             .header(X_APTOS_EPOCH, "10")
-            .header(X_APTOS_LEDGER_VERSION, "10")
-            .header(X_APTOS_LEDGER_OLDEST_VERSION, "2")
+            .header(X_LIBRA2_LEDGER_VERSION, "10")
+            .header(X_LIBRA2_LEDGER_OLDEST_VERSION, "2")
             .header(X_APTOS_BLOCK_HEIGHT, "25")
             .header(X_APTOS_OLDEST_BLOCK_HEIGHT, "10")
-            .header(X_APTOS_LEDGER_TIMESTAMP, "10");
+            .header(X_LIBRA2_LEDGER_TIMESTAMP, "10");
         });
 
         let mut fullnodes = HashMap::new();

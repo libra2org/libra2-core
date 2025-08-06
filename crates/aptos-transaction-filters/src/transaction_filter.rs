@@ -1,7 +1,7 @@
 // Copyright © Aptos Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-use aptos_crypto::{ed25519::Ed25519PublicKey, HashValue};
+use libra2_crypto::{ed25519::Ed25519PublicKey, HashValue};
 use libra2_types::transaction::{
     authenticator::{AccountAuthenticator, AnyPublicKey, TransactionAuthenticator},
     EntryFunction, MultisigTransactionPayload, Script, SignedTransaction, TransactionExecutableRef,
@@ -516,7 +516,7 @@ fn matches_transaction_authenticator_public_key(
 #[cfg(test)]
 mod test {
     use super::*;
-    use aptos_crypto::{
+    use libra2_crypto::{
         ed25519::Ed25519PrivateKey,
         multi_ed25519::{MultiEd25519PublicKey, MultiEd25519Signature},
         secp256k1_ecdsa, secp256r1_ecdsa, PrivateKey, SigningKey, Uniform,

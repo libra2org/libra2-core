@@ -2,7 +2,7 @@
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
-use aptos_log_derive::Schema;
+use libra2_log_derive::Schema;
 
 #[test]
 fn simple() {

@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::response::BadRequestError;
-use aptos_api_types::{AptosErrorCode, LedgerInfo};
+use libra2_api_types::{AptosErrorCode, LedgerInfo};
 use serde::Deserialize;
 
 const DEFAULT_PAGE_SIZE: u16 = 25;

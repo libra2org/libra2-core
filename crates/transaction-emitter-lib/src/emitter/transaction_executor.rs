@@ -4,7 +4,7 @@
 use super::FETCH_ACCOUNT_RETRY_POLICY;
 use anyhow::{Context, Result};
 use aptos_logger::{sample, sample::SampleRate};
-use aptos_rest_client::{aptos_api_types::AptosErrorCode, error::RestError, Client as RestClient};
+use libra2_rest_client::{libra2_api_types::AptosErrorCode, error::RestError, Client as RestClient};
 use aptos_sdk::{
     move_types::account_address::AccountAddress, types::transaction::SignedTransaction,
 };
@@ -75,7 +75,7 @@ impl RestApiReliableTransactionSubmitter {
                 txn.sender().to_vec(),
             ]
             .concat();
-            let mut seeded_rng = StdRng::from_seed(*aptos_crypto::HashValue::sha3_256_of(&seed));
+            let mut seeded_rng = StdRng::from_seed(*libra2_crypto::HashValue::sha3_256_of(&seed));
             let rest_client = self.random_rest_client_from_rng(&mut seeded_rng);
             let mut failed_submit = false;
             let mut failed_wait = false;

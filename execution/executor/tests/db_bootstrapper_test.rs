@@ -5,7 +5,7 @@
 #![forbid(unsafe_code)]
 
 use aptos_cached_packages::aptos_stdlib;
-use aptos_crypto::{ed25519::Ed25519PrivateKey, HashValue, PrivateKey, Uniform};
+use libra2_crypto::{ed25519::Ed25519PrivateKey, HashValue, PrivateKey, Uniform};
 use aptos_db::AptosDB;
 use aptos_executor::{
     block_executor::BlockExecutor,
@@ -18,7 +18,7 @@ use aptos_executor_types::BlockExecutorTrait;
 use aptos_storage_interface::{
     state_store::state_view::db_state_view::LatestDbStateCheckpointView, DbReaderWriter,
 };
-use aptos_temppath::TempPath;
+use libra2_temppath::TempPath;
 use libra2_types::{
     account_address::AccountAddress,
     account_config::{

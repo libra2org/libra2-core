@@ -11,9 +11,9 @@ use crate::{
     TConsensusManager,
 };
 use anyhow::{anyhow, Result};
-use aptos_bounded_executor::BoundedExecutor;
-use aptos_channels::{aptos_channel, message_queues::QueueStyle};
-use aptos_config::config::SafetyRulesConfig;
+use libra2_bounded_executor::BoundedExecutor;
+use libra2_channels::{libra2_channel, message_queues::QueueStyle};
+use libra2_config::config::SafetyRulesConfig;
 use aptos_consensus_types::common::Author;
 use aptos_event_notifications::{
     EventNotification, EventNotificationListener, ReconfigNotification,
@@ -52,13 +52,13 @@ pub struct EpochManager<P: OnChainConfigProvider> {
     jwk_updated_events: EventNotificationListener,
 
     // message channels to JWK manager
-    jwk_updated_event_txs: Option<aptos_channel::Sender<(), ObservedJWKsUpdated>>,
+    jwk_updated_event_txs: Option<libra2_channel::Sender<(), ObservedJWKsUpdated>>,
     jwk_rpc_msg_tx:
-        Option<aptos_channel::Sender<AccountAddress, (AccountAddress, IncomingRpcRequest)>>,
+        Option<libra2_channel::Sender<AccountAddress, (AccountAddress, IncomingRpcRequest)>>,
     jwk_manager_close_tx: Option<oneshot::Sender<oneshot::Sender<()>>>,
 
     // network utils
-    self_sender: aptos_channels::Sender<Event<JWKConsensusMsg>>,
+    self_sender: libra2_channels::Sender<Event<JWKConsensusMsg>>,
     network_sender: JWKConsensusNetworkClient<NetworkClient<JWKConsensusMsg>>,
 
     // vtxn pool handle
@@ -71,7 +71,7 @@ impl<P: OnChainConfigProvider> EpochManager<P> {
         safety_rules_config: &SafetyRulesConfig,
         reconfig_events: ReconfigNotificationListener<P>,
         jwk_updated_events: EventNotificationListener,
-        self_sender: aptos_channels::Sender<Event<JWKConsensusMsg>>,
+        self_sender: libra2_channels::Sender<Event<JWKConsensusMsg>>,
         network_sender: JWKConsensusNetworkClient<NetworkClient<JWKConsensusMsg>>,
         vtxn_pool: VTxnPoolState,
     ) -> Self {
@@ -206,7 +206,7 @@ impl<P: OnChainConfigProvider> EpochManager<P> {
                 epoch_state.verifier.get_ordered_account_addresses(),
                 Arc::new(network_sender),
                 ExponentialBackoff::from_millis(5),
-                aptos_time_service::TimeService::real(),
+                libra2_time_service::TimeService::real(),
                 Duration::from_millis(1000),
                 BoundedExecutor::new(8, tokio::runtime::Handle::current()),
             );
@@ -217,9 +217,9 @@ impl<P: OnChainConfigProvider> EpochManager<P> {
             let my_sk = self.key_storage.consensus_sk_by_pk(my_pk).map_err(|e| {
                 anyhow!("jwk-consensus new epoch handling failed with consensus sk lookup err: {e}")
             })?;
-            let (jwk_event_tx, jwk_event_rx) = aptos_channel::new(QueueStyle::KLAST, 1, None);
+            let (jwk_event_tx, jwk_event_rx) = libra2_channel::new(QueueStyle::KLAST, 1, None);
             self.jwk_updated_event_txs = Some(jwk_event_tx);
-            let (jwk_rpc_msg_tx, jwk_rpc_msg_rx) = aptos_channel::new(QueueStyle::FIFO, 100, None);
+            let (jwk_rpc_msg_tx, jwk_rpc_msg_rx) = libra2_channel::new(QueueStyle::FIFO, 100, None);
 
             let (jwk_manager_close_tx, jwk_manager_close_rx) = oneshot::channel();
             self.jwk_rpc_msg_tx = Some(jwk_rpc_msg_tx);

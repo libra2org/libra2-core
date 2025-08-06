@@ -4,7 +4,7 @@
 use crate::{assert_success, assert_vm_status, MoveHarness};
 use aptos_cached_packages::aptos_stdlib;
 use aptos_framework::{BuildOptions, BuiltPackage};
-use aptos_package_builder::PackageBuilder;
+use libra2_package_builder::PackageBuilder;
 use libra2_types::{
     chain_id::ChainId,
     on_chain_config::OnChainConfig,

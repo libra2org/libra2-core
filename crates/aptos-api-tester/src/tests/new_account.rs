@@ -11,9 +11,9 @@ use crate::{
     time_fn,
     utils::{check_balance, create_account, emit_step_metrics, NetworkName, TestFailure, TestName},
 };
-use aptos_api_types::U64;
+use libra2_api_types::U64;
 use aptos_logger::error;
-use aptos_rest_client::{Account, Client, FaucetClient};
+use libra2_rest_client::{Account, Client, FaucetClient};
 use aptos_sdk::types::LocalAccount;
 use libra2_types::account_address::AccountAddress;
 

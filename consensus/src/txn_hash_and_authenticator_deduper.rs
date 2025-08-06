@@ -107,8 +107,8 @@ mod tests {
         transaction_deduper::TransactionDeduper,
         txn_hash_and_authenticator_deduper::TxnHashAndAuthenticatorDeduper,
     };
-    use aptos_crypto::ed25519::{Ed25519PrivateKey, Ed25519PublicKey};
-    use aptos_keygen::KeyGen;
+    use libra2_crypto::ed25519::{Ed25519PrivateKey, Ed25519PublicKey};
+    use libra2_keygen::KeyGen;
     use libra2_types::{
         chain_id::ChainId,
         transaction::{

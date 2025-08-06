@@ -14,7 +14,7 @@ use aptos_sdk::{
     types::{AccountKey, LocalAccount},
 };
 use aptos_storage_interface::DbReader;
-use aptos_temppath::TempPath;
+use libra2_temppath::TempPath;
 use libra2_types::{
     account_address::AccountAddress,
     account_config::aptos_test_root_address,
@@ -37,7 +37,7 @@ const B: u64 = 1_000_000_000;
 #[cfg(test)]
 pub fn create_test_db() -> (Arc<AptosDB>, LocalAccount) {
     // create test db
-    let path = aptos_temppath::TempPath::new();
+    let path = libra2_temppath::TempPath::new();
     let (genesis, validators) = aptos_vm_genesis::test_genesis_change_set_and_validators(Some(1));
     let genesis_txn = Transaction::GenesisTransaction(WriteSetPayload::Direct(genesis));
     let core_resources_account: LocalAccount = LocalAccount::new(
@@ -140,7 +140,7 @@ fn test_db_indexer_data() {
     let total_version = aptos_db.expect_synced_version();
     assert_eq!(total_version, 11);
     let temp_path = TempPath::new();
-    let mut node_config = aptos_config::config::NodeConfig::default();
+    let mut node_config = libra2_config::config::NodeConfig::default();
     node_config.storage.dir = temp_path.path().to_path_buf();
     node_config.indexer_db_config.enable_event = true;
     node_config.indexer_db_config.enable_transaction = true;

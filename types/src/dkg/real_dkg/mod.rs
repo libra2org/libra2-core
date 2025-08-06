@@ -11,8 +11,8 @@ use crate::{
 };
 use anyhow::{anyhow, bail, ensure, Context};
 #[cfg(any(test, feature = "testing"))]
-use aptos_crypto::Uniform;
-use aptos_crypto::{bls12381, bls12381::PrivateKey};
+use libra2_crypto::Uniform;
+use libra2_crypto::{bls12381, bls12381::PrivateKey};
 use aptos_dkg::{
     pvss,
     pvss::{

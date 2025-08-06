@@ -13,7 +13,7 @@ repository = { workspace = true }
 rust-version = { workspace = true }
 
 [dependencies]
-aptos-crypto = { workspace = true }
+libra2-crypto = { workspace = true }
 libra2-types = { workspace = true }
 move-core-types = { workspace = true }
 rand = { workspace = true }
@@ -21,7 +21,7 @@ serde = { workspace = true }
 serde_yaml = { workspace = true }
 
 [dev-dependencies]
-aptos-crypto = { workspace = true, features = ["fuzzing", "testing"] }
+libra2-crypto = { workspace = true, features = ["fuzzing", "testing"] }
 
 [features]
 fuzzing = []

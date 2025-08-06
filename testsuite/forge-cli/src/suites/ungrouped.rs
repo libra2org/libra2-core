@@ -14,7 +14,7 @@ use super::{
 };
 use anyhow::Result;
 use aptos_cached_packages::aptos_stdlib;
-use aptos_config::config::{ConsensusConfig, MempoolConfig, NodeConfig};
+use libra2_config::config::{ConsensusConfig, MempoolConfig, NodeConfig};
 use aptos_forge::{
     args::TransactionTypeArg,
     emitter::NumAccountsMode,
@@ -27,7 +27,7 @@ use aptos_forge::{
     WorkflowProgress,
 };
 use aptos_logger::info;
-use aptos_rest_client::Client as RestClient;
+use libra2_rest_client::Client as RestClient;
 use aptos_sdk::{
     move_types::account_address::AccountAddress,
     types::on_chain_config::{OnChainConsensusConfig, OnChainExecutionConfig},

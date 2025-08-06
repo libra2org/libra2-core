@@ -4,7 +4,7 @@
 
 use super::new_test_context;
 use aptos_api_test_context::{current_function_name, find_value, TestContext};
-use aptos_api_types::{MoveModuleBytecode, MoveResource, MoveStructTag, StateKeyWrapper};
+use libra2_api_types::{MoveModuleBytecode, MoveResource, MoveStructTag, StateKeyWrapper};
 use aptos_cached_packages::aptos_stdlib;
 use aptos_sdk::types::APTOS_COIN_TYPE_STR;
 use libra2_types::{
@@ -100,7 +100,7 @@ async fn test_get_module_with_entry_functions() {
 // Unstable due to framework changes
 #[ignore]
 #[tokio::test(flavor = "multi_thread", worker_threads = 2)]
-async fn test_get_module_aptos_config() {
+async fn test_get_module_libra2_config() {
     let mut context = new_test_context(current_function_name!());
     let address = "0x1";
 

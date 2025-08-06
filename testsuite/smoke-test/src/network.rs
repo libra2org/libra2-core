@@ -8,18 +8,18 @@ use crate::{
     utils::{MAX_CONNECTIVITY_WAIT_SECS, MAX_HEALTHY_WAIT_SECS},
 };
 use aptos::test::CliTestFramework;
-use aptos_config::{
+use libra2_config::{
     config::{
         DiscoveryMethod, FileDiscovery, Identity, NetworkConfig, NodeConfig, OverrideNodeConfig,
         Peer, PeerSet, RestDiscovery,
     },
     network_id::NetworkId,
 };
-use aptos_crypto::{encoding_type::EncodingType, x25519, x25519::PrivateKey};
+use libra2_crypto::{encoding_type::EncodingType, x25519, x25519::PrivateKey};
 use aptos_forge::{FullNode, Node, NodeExt, Swarm};
 use aptos_genesis::config::HostAndPort;
 use aptos_sdk::move_types::account_address::AccountAddress;
-use aptos_temppath::TempPath;
+use libra2_temppath::TempPath;
 use std::{
     collections::HashMap,
     path::Path,

@@ -3,7 +3,7 @@
 
 use crate::aptos_debugger::AptosDebugger;
 use anyhow::Result;
-use aptos_rest_client::Client;
+use libra2_rest_client::Client;
 use libra2_types::transaction::SignedTransaction;
 use clap::Parser;
 use regex::Regex;

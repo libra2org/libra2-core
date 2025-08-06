@@ -9,8 +9,8 @@ use crate::consensus_observer::{
     network::observer_message::OrderedBlock,
     observer::{execution_pool::ObservedOrderedBlock, payload_store::BlockPayloadStore},
 };
-use aptos_config::{config::ConsensusObserverConfig, network_id::PeerNetworkId};
-use aptos_crypto::HashValue;
+use libra2_config::{config::ConsensusObserverConfig, network_id::PeerNetworkId};
+use libra2_crypto::HashValue;
 use aptos_logger::{error, info, warn};
 use libra2_types::block_info::Round;
 use std::{
@@ -324,8 +324,8 @@ mod test {
         pipelined_block::{OrderedBlockWindow, PipelinedBlock},
         quorum_cert::QuorumCert,
     };
-    use aptos_crypto::HashValue;
-    use aptos_infallible::Mutex;
+    use libra2_crypto::HashValue;
+    use libra2_infallible::Mutex;
     use libra2_types::{
         aggregate_signature::AggregateSignature,
         block_info::BlockInfo,

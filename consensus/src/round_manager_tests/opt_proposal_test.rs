@@ -14,7 +14,7 @@ use crate::{
     },
     test_utils::{consensus_runtime, timed_block_on},
 };
-use aptos_config::config::ConsensusConfig;
+use libra2_config::config::ConsensusConfig;
 use aptos_consensus_types::{
     common::Payload, opt_block_data::OptBlockData, opt_proposal_msg::OptProposalMsg,
 };

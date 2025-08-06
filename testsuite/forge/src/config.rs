@@ -6,7 +6,7 @@ use crate::{
     success_criteria::{MetricsThreshold, SuccessCriteria, SystemMetricsThreshold},
     *,
 };
-use aptos_config::config::{
+use libra2_config::config::{
     ExecutionBackpressureGasLimitConfig, ExecutionBackpressureTxnLimitConfig, NodeConfig,
     OverrideNodeConfig,
 };

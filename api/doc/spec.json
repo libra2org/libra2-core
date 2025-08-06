@@ -113,7 +113,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -122,7 +122,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -131,7 +131,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "required": true,
                 "deprecated": false,
@@ -202,7 +202,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -210,7 +210,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -218,7 +218,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -278,7 +278,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -286,7 +286,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -294,7 +294,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -354,7 +354,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -362,7 +362,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -370,7 +370,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -430,7 +430,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -438,7 +438,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -446,7 +446,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -506,7 +506,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -514,7 +514,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -522,7 +522,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -582,7 +582,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -590,7 +590,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -598,7 +598,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -730,7 +730,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -739,7 +739,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -748,7 +748,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "required": true,
                 "deprecated": false,
@@ -819,7 +819,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -827,7 +827,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -835,7 +835,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -895,7 +895,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -903,7 +903,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -911,7 +911,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -971,7 +971,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -979,7 +979,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -987,7 +987,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -1047,7 +1047,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -1055,7 +1055,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -1063,7 +1063,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -1123,7 +1123,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -1131,7 +1131,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -1139,7 +1139,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -1199,7 +1199,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -1207,7 +1207,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -1215,7 +1215,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -1332,7 +1332,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -1341,7 +1341,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -1350,7 +1350,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "required": true,
                 "deprecated": false,
@@ -1421,7 +1421,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -1429,7 +1429,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -1437,7 +1437,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -1497,7 +1497,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -1505,7 +1505,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -1513,7 +1513,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -1573,7 +1573,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -1581,7 +1581,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -1589,7 +1589,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -1649,7 +1649,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -1657,7 +1657,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -1665,7 +1665,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -1725,7 +1725,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -1733,7 +1733,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -1741,7 +1741,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -1801,7 +1801,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -1809,7 +1809,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -1817,7 +1817,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -1949,7 +1949,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -1958,7 +1958,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -1967,7 +1967,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "required": true,
                 "deprecated": false,
@@ -2038,7 +2038,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -2046,7 +2046,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -2054,7 +2054,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -2114,7 +2114,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -2122,7 +2122,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -2130,7 +2130,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -2190,7 +2190,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -2198,7 +2198,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -2206,7 +2206,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -2266,7 +2266,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -2274,7 +2274,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -2282,7 +2282,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -2342,7 +2342,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -2350,7 +2350,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -2358,7 +2358,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -2418,7 +2418,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -2426,7 +2426,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -2434,7 +2434,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -2574,7 +2574,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -2583,7 +2583,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -2592,7 +2592,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "required": true,
                 "deprecated": false,
@@ -2663,7 +2663,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -2671,7 +2671,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -2679,7 +2679,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -2739,7 +2739,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -2747,7 +2747,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -2755,7 +2755,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -2862,7 +2862,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -2871,7 +2871,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -2880,7 +2880,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "required": true,
                 "deprecated": false,
@@ -2951,7 +2951,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -2959,7 +2959,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -2967,7 +2967,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -3027,7 +3027,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -3035,7 +3035,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -3043,7 +3043,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -3103,7 +3103,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -3111,7 +3111,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -3119,7 +3119,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -3179,7 +3179,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -3187,7 +3187,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -3195,7 +3195,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -3255,7 +3255,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -3263,7 +3263,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -3271,7 +3271,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -3331,7 +3331,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -3339,7 +3339,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -3347,7 +3347,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -3454,7 +3454,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -3463,7 +3463,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -3472,7 +3472,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "required": true,
                 "deprecated": false,
@@ -3543,7 +3543,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -3551,7 +3551,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -3559,7 +3559,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -3619,7 +3619,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -3627,7 +3627,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -3635,7 +3635,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -3695,7 +3695,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -3703,7 +3703,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -3711,7 +3711,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -3771,7 +3771,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -3779,7 +3779,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -3787,7 +3787,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -3847,7 +3847,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -3855,7 +3855,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -3863,7 +3863,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -3923,7 +3923,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -3931,7 +3931,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -3939,7 +3939,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -4071,7 +4071,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -4080,7 +4080,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -4089,7 +4089,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "required": true,
                 "deprecated": false,
@@ -4160,7 +4160,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -4168,7 +4168,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -4176,7 +4176,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -4236,7 +4236,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -4244,7 +4244,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -4252,7 +4252,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -4312,7 +4312,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -4320,7 +4320,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -4328,7 +4328,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -4388,7 +4388,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -4396,7 +4396,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -4404,7 +4404,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -4464,7 +4464,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -4472,7 +4472,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -4480,7 +4480,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -4540,7 +4540,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -4548,7 +4548,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -4556,7 +4556,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -4699,7 +4699,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -4708,7 +4708,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -4717,7 +4717,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "required": true,
                 "deprecated": false,
@@ -4788,7 +4788,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -4796,7 +4796,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -4804,7 +4804,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -4864,7 +4864,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -4872,7 +4872,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -4880,7 +4880,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -4940,7 +4940,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -4948,7 +4948,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -4956,7 +4956,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -5016,7 +5016,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -5024,7 +5024,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -5032,7 +5032,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -5092,7 +5092,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -5100,7 +5100,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -5108,7 +5108,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -5168,7 +5168,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -5176,7 +5176,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -5184,7 +5184,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -5266,7 +5266,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -5275,7 +5275,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -5284,7 +5284,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "required": true,
                 "deprecated": false,
@@ -5355,7 +5355,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -5363,7 +5363,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -5371,7 +5371,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -5431,7 +5431,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -5439,7 +5439,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -5447,7 +5447,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -5507,7 +5507,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -5515,7 +5515,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -5523,7 +5523,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -5583,7 +5583,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -5591,7 +5591,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -5599,7 +5599,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -5716,7 +5716,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -5725,7 +5725,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -5734,7 +5734,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "required": true,
                 "deprecated": false,
@@ -5805,7 +5805,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -5813,7 +5813,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -5821,7 +5821,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -5881,7 +5881,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -5889,7 +5889,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -5897,7 +5897,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -5957,7 +5957,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -5965,7 +5965,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -5973,7 +5973,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -6033,7 +6033,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -6041,7 +6041,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -6049,7 +6049,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -6109,7 +6109,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -6117,7 +6117,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -6125,7 +6125,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -6185,7 +6185,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -6193,7 +6193,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -6201,7 +6201,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -6318,7 +6318,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -6327,7 +6327,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -6336,7 +6336,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "required": true,
                 "deprecated": false,
@@ -6407,7 +6407,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -6415,7 +6415,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -6423,7 +6423,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -6483,7 +6483,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -6491,7 +6491,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -6499,7 +6499,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -6559,7 +6559,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -6567,7 +6567,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -6575,7 +6575,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -6635,7 +6635,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -6643,7 +6643,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -6651,7 +6651,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -6711,7 +6711,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -6719,7 +6719,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -6727,7 +6727,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -6787,7 +6787,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -6795,7 +6795,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -6803,7 +6803,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -6919,7 +6919,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -6928,7 +6928,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -6937,7 +6937,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "required": true,
                 "deprecated": false,
@@ -7008,7 +7008,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -7016,7 +7016,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -7024,7 +7024,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -7084,7 +7084,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -7092,7 +7092,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -7100,7 +7100,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -7160,7 +7160,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -7168,7 +7168,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -7176,7 +7176,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -7236,7 +7236,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -7244,7 +7244,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -7252,7 +7252,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -7312,7 +7312,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -7320,7 +7320,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -7328,7 +7328,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -7388,7 +7388,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -7396,7 +7396,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -7404,7 +7404,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -7520,7 +7520,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -7529,7 +7529,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -7538,7 +7538,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "required": true,
                 "deprecated": false,
@@ -7609,7 +7609,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -7617,7 +7617,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -7625,7 +7625,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -7685,7 +7685,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -7693,7 +7693,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -7701,7 +7701,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -7761,7 +7761,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -7769,7 +7769,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -7777,7 +7777,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -7837,7 +7837,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -7845,7 +7845,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -7853,7 +7853,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -7913,7 +7913,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -7921,7 +7921,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -7929,7 +7929,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -7989,7 +7989,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -7997,7 +7997,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -8005,7 +8005,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -8115,7 +8115,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -8124,7 +8124,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -8133,7 +8133,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "required": true,
                 "deprecated": false,
@@ -8204,7 +8204,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -8212,7 +8212,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -8220,7 +8220,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -8280,7 +8280,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -8288,7 +8288,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -8296,7 +8296,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -8356,7 +8356,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -8364,7 +8364,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -8372,7 +8372,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -8432,7 +8432,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -8440,7 +8440,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -8448,7 +8448,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -8508,7 +8508,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -8516,7 +8516,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -8524,7 +8524,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -8584,7 +8584,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -8592,7 +8592,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -8600,7 +8600,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -8699,7 +8699,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -8708,7 +8708,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -8717,7 +8717,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "required": true,
                 "deprecated": false,
@@ -8788,7 +8788,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -8796,7 +8796,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -8804,7 +8804,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -8864,7 +8864,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -8872,7 +8872,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -8880,7 +8880,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -8940,7 +8940,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -8948,7 +8948,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -8956,7 +8956,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -9016,7 +9016,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -9024,7 +9024,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -9032,7 +9032,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -9092,7 +9092,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -9100,7 +9100,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -9108,7 +9108,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -9168,7 +9168,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -9176,7 +9176,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -9184,7 +9184,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -9244,7 +9244,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -9252,7 +9252,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -9260,7 +9260,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -9355,7 +9355,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -9364,7 +9364,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -9373,7 +9373,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "required": true,
                 "deprecated": false,
@@ -9444,7 +9444,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -9452,7 +9452,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -9460,7 +9460,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -9520,7 +9520,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -9528,7 +9528,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -9536,7 +9536,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -9596,7 +9596,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -9604,7 +9604,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -9612,7 +9612,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -9672,7 +9672,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -9680,7 +9680,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -9688,7 +9688,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -9748,7 +9748,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -9756,7 +9756,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -9764,7 +9764,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -9824,7 +9824,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -9832,7 +9832,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -9840,7 +9840,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -9935,7 +9935,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -9944,7 +9944,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -9953,7 +9953,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "required": true,
                 "deprecated": false,
@@ -10024,7 +10024,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -10032,7 +10032,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -10040,7 +10040,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -10100,7 +10100,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -10108,7 +10108,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -10116,7 +10116,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -10176,7 +10176,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -10184,7 +10184,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -10192,7 +10192,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -10252,7 +10252,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -10260,7 +10260,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -10268,7 +10268,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -10328,7 +10328,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -10336,7 +10336,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -10344,7 +10344,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -10404,7 +10404,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -10412,7 +10412,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -10420,7 +10420,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -10515,7 +10515,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -10524,7 +10524,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -10533,7 +10533,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "required": true,
                 "deprecated": false,
@@ -10604,7 +10604,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -10612,7 +10612,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -10620,7 +10620,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -10680,7 +10680,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -10688,7 +10688,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -10696,7 +10696,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -10756,7 +10756,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -10764,7 +10764,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -10772,7 +10772,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -10832,7 +10832,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -10840,7 +10840,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -10848,7 +10848,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -10908,7 +10908,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -10916,7 +10916,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -10924,7 +10924,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -10984,7 +10984,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -10992,7 +10992,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -11000,7 +11000,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -11121,7 +11121,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -11130,7 +11130,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -11139,7 +11139,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "required": true,
                 "deprecated": false,
@@ -11210,7 +11210,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -11218,7 +11218,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -11226,7 +11226,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -11286,7 +11286,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -11294,7 +11294,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -11302,7 +11302,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -11362,7 +11362,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -11370,7 +11370,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -11378,7 +11378,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -11438,7 +11438,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -11446,7 +11446,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -11454,7 +11454,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -11514,7 +11514,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -11522,7 +11522,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -11530,7 +11530,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -11590,7 +11590,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -11598,7 +11598,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -11606,7 +11606,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -11738,7 +11738,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -11747,7 +11747,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -11756,7 +11756,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "required": true,
                 "deprecated": false,
@@ -11827,7 +11827,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -11835,7 +11835,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -11843,7 +11843,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -11903,7 +11903,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -11911,7 +11911,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -11919,7 +11919,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -11979,7 +11979,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -11987,7 +11987,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -11995,7 +11995,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -12055,7 +12055,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -12063,7 +12063,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -12071,7 +12071,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -12131,7 +12131,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -12139,7 +12139,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -12147,7 +12147,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -12207,7 +12207,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -12215,7 +12215,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -12223,7 +12223,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -12327,7 +12327,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -12336,7 +12336,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -12345,7 +12345,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "required": true,
                 "deprecated": false,
@@ -12426,7 +12426,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -12435,7 +12435,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -12444,7 +12444,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "required": true,
                 "deprecated": false,
@@ -12515,7 +12515,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -12523,7 +12523,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -12531,7 +12531,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -12591,7 +12591,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -12599,7 +12599,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -12607,7 +12607,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -12667,7 +12667,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -12675,7 +12675,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -12683,7 +12683,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -12743,7 +12743,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -12751,7 +12751,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -12759,7 +12759,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -12819,7 +12819,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -12827,7 +12827,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -12835,7 +12835,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -12895,7 +12895,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -12903,7 +12903,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -12911,7 +12911,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -12971,7 +12971,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -12979,7 +12979,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -12987,7 +12987,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -13126,7 +13126,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -13135,7 +13135,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -13144,7 +13144,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "required": true,
                 "deprecated": false,
@@ -13215,7 +13215,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -13223,7 +13223,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -13231,7 +13231,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -13291,7 +13291,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -13299,7 +13299,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -13307,7 +13307,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -13367,7 +13367,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -13375,7 +13375,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -13383,7 +13383,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -13443,7 +13443,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -13451,7 +13451,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -13459,7 +13459,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -13519,7 +13519,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -13527,7 +13527,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -13535,7 +13535,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -13595,7 +13595,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -13603,7 +13603,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -13611,7 +13611,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -13671,7 +13671,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -13679,7 +13679,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -13687,7 +13687,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -13779,7 +13779,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -13788,7 +13788,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -13797,7 +13797,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "required": true,
                 "deprecated": false,
@@ -13868,7 +13868,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -13876,7 +13876,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -13884,7 +13884,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -13944,7 +13944,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -13952,7 +13952,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -13960,7 +13960,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -14020,7 +14020,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -14028,7 +14028,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -14036,7 +14036,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -14096,7 +14096,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -14104,7 +14104,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -14112,7 +14112,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -14194,7 +14194,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -14203,7 +14203,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -14212,7 +14212,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "required": true,
                 "deprecated": false,
@@ -14283,7 +14283,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -14291,7 +14291,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -14299,7 +14299,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -14359,7 +14359,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -14367,7 +14367,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -14375,7 +14375,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -14435,7 +14435,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -14443,7 +14443,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -14451,7 +14451,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -14511,7 +14511,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -14519,7 +14519,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -14527,7 +14527,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -14644,7 +14644,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -14653,7 +14653,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "required": true,
                 "deprecated": false,
@@ -14662,7 +14662,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "required": true,
                 "deprecated": false,
@@ -14733,7 +14733,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -14741,7 +14741,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -14749,7 +14749,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -14809,7 +14809,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -14817,7 +14817,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -14825,7 +14825,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -14885,7 +14885,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -14893,7 +14893,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -14901,7 +14901,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -14961,7 +14961,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -14969,7 +14969,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -14977,7 +14977,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -15037,7 +15037,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -15045,7 +15045,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -15053,7 +15053,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {
@@ -15113,7 +15113,7 @@
                   "format": "uint8"
                 }
               },
-              "X-APTOS-LEDGER-VERSION": {
+              "X-libra2-ledger-VERSION": {
                 "description": "Current ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -15121,7 +15121,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-OLDEST-VERSION": {
+              "X-libra2-ledger-OLDEST-VERSION": {
                 "description": "Oldest non-pruned ledger version of the chain",
                 "deprecated": false,
                 "schema": {
@@ -15129,7 +15129,7 @@
                   "format": "uint64"
                 }
               },
-              "X-APTOS-LEDGER-TIMESTAMPUSEC": {
+              "X-libra2-ledger-TIMESTAMPUSEC": {
                 "description": "Current timestamp of the chain",
                 "deprecated": false,
                 "schema": {

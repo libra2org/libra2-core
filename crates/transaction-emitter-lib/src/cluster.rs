@@ -3,11 +3,11 @@
 
 use crate::{emitter::load_specific_account, instance::Instance, ClusterArgs};
 use anyhow::{anyhow, bail, format_err, Result};
-use aptos_crypto::{
+use libra2_crypto::{
     ed25519::{Ed25519PrivateKey, Ed25519PublicKey},
     test_utils::KeyPair,
 };
-use aptos_rest_client::{Client as RestClient, State};
+use libra2_rest_client::{Client as RestClient, State};
 use aptos_sdk::types::{chain_id::ChainId, AccountKey, LocalAccount};
 use futures::{stream::FuturesUnordered, StreamExt};
 use log::{info, warn};
@@ -42,7 +42,7 @@ impl Cluster {
 
         let mut instance_states = Vec::new();
         let mut errors = Vec::new();
-        let fetch_timestamp = aptos_infallible::duration_since_epoch().as_secs();
+        let fetch_timestamp = libra2_infallible::duration_since_epoch().as_secs();
         let futures = FuturesUnordered::new();
         for url in &peers {
             let instance = Instance::new(

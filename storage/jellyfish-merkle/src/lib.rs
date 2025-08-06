@@ -84,9 +84,9 @@ pub mod restore;
 pub mod test_helper;
 
 use crate::metrics::{APTOS_JELLYFISH_LEAF_COUNT, APTOS_JELLYFISH_LEAF_DELETION_COUNT, COUNTER};
-use aptos_crypto::{hash::CryptoHash, HashValue};
+use libra2_crypto::{hash::CryptoHash, HashValue};
 use aptos_experimental_runtimes::thread_manager::THREAD_MANAGER;
-use aptos_metrics_core::IntCounterHelper;
+use libra2_metrics_core::IntCounterHelper;
 use aptos_storage_interface::{db_ensure as ensure, db_other_bail, AptosDbError, Result};
 use libra2_types::{
     nibble::{nibble_path::NibblePath, Nibble, ROOT_NIBBLE_HEIGHT},
@@ -1075,7 +1075,7 @@ impl NibbleExt for HashValue {
 #[cfg(test)]
 mod test {
     use super::NibbleExt;
-    use aptos_crypto::hash::{HashValue, TestOnlyHash};
+    use libra2_crypto::hash::{HashValue, TestOnlyHash};
     use libra2_types::nibble::Nibble;
 
     #[test]

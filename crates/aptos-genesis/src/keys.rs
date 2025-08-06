@@ -1,13 +1,13 @@
 // Copyright © Aptos Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-use aptos_config::{config::IdentityBlob, keys::ConfigKey};
-use aptos_crypto::{
+use libra2_config::{config::IdentityBlob, keys::ConfigKey};
+use libra2_crypto::{
     bls12381,
     ed25519::{Ed25519PrivateKey, Ed25519PublicKey},
     x25519, PrivateKey,
 };
-use aptos_keygen::KeyGen;
+use libra2_keygen::KeyGen;
 use libra2_types::{account_address::AccountAddress, transaction::authenticator::AuthenticationKey};
 use serde::{Deserialize, Serialize};
 

@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{db_debugger::ShardingConfig, AptosDB};
-use aptos_config::config::{RocksdbConfigs, StorageDirPaths};
+use libra2_config::config::{RocksdbConfigs, StorageDirPaths};
 use aptos_storage_interface::Result;
 use clap::Parser;
 use std::path::PathBuf;

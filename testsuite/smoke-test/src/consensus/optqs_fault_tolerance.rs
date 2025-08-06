@@ -5,7 +5,7 @@ use crate::{
     consensus::helpers::generate_traffic_and_assert_committed, smoke_test_environment::SwarmBuilder,
 };
 use aptos_forge::{wait_for_all_nodes_to_catchup, NodeExt, SwarmExt};
-use aptos_rest_client::Client;
+use libra2_rest_client::Client;
 use std::{sync::Arc, time::Duration};
 
 const MAX_WAIT_SECS: u64 = 60;

@@ -21,7 +21,7 @@ use crate::{
     ApiTags,
 };
 use anyhow::Context as AnyhowContext;
-use aptos_api_types::{
+use libra2_api_types::{
     transaction::TransactionSummary, verify_function_identifier, verify_module_identifier, Address,
     AptosError, AptosErrorCode, AsConverter, EncodeSubmissionRequest, GasEstimation,
     GasEstimationBcs, HashValue, HexEncodedBytes, LedgerInfo, MoveType, PendingTransaction,
@@ -29,7 +29,7 @@ use aptos_api_types::{
     TransactionsBatchSingleSubmissionFailure, TransactionsBatchSubmissionResult, UserTransaction,
     VerifyInput, VerifyInputWithRecursion, U64,
 };
-use aptos_crypto::{hash::CryptoHash, signing_message};
+use libra2_crypto::{hash::CryptoHash, signing_message};
 use aptos_logger::error;
 use libra2_types::{
     account_address::AccountAddress,
@@ -1047,7 +1047,7 @@ impl TransactionsApi {
     /// it means the transaction is still pending.
     async fn get_by_hash(
         &self,
-        hash: aptos_crypto::HashValue,
+        hash: libra2_crypto::HashValue,
         storage_ledger_version: u64,
         internal_ledger_version: Option<u64>,
     ) -> anyhow::Result<Option<TransactionData>> {
@@ -1367,7 +1367,7 @@ impl TransactionsApi {
             .await
             .context("Mempool failed to initially evaluate submitted transaction")
             .map_err(|err| {
-                aptos_api_types::AptosError::new_with_error_code(err, AptosErrorCode::InternalError)
+                libra2_api_types::AptosError::new_with_error_code(err, AptosErrorCode::InternalError)
             })?;
         match mempool_status.code {
             MempoolStatusCode::Accepted => Ok(()),
@@ -1611,7 +1611,7 @@ impl TransactionsApi {
         // Build up a transaction from the outputs
         // All state hashes are invalid, and will be filled with 0s
         let txn = libra2_types::transaction::Transaction::UserTransaction(txn);
-        let zero_hash = aptos_crypto::HashValue::zero();
+        let zero_hash = libra2_crypto::HashValue::zero();
         let info = libra2_types::transaction::TransactionInfo::new(
             txn.hash(),
             zero_hash,

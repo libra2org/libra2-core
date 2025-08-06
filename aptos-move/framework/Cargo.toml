@@ -15,7 +15,7 @@ rust-version = { workspace = true }
 [dependencies]
 anyhow = { workspace = true }
 aptos-aggregator = { workspace = true }
-aptos-crypto = { workspace = true }
+libra2-crypto = { workspace = true }
 aptos-gas-algebra = { workspace = true }
 aptos-gas-schedule = { workspace = true }
 aptos-move-stdlib = { workspace = true }
@@ -81,7 +81,7 @@ toml = { workspace = true }
 
 [dev-dependencies]
 aptos-aggregator = { workspace = true, features = ["testing"] }
-aptos-crypto = { workspace = true, features = ["fuzzing"] }
+libra2-crypto = { workspace = true, features = ["fuzzing"] }
 aptos-gas-meter = { workspace = true }
 aptos-vm = { workspace = true, features = ["testing"] }
 claims = { workspace = true }
@@ -93,7 +93,7 @@ move-vm-types = { workspace = true, features = ["testing"] }
 [features]
 default = []
 fuzzing = ["libra2-types/fuzzing"]
-testing = ["aptos-move-stdlib/testing", "aptos-crypto/fuzzing"]
+testing = ["aptos-move-stdlib/testing", "libra2-crypto/fuzzing"]
 
 [lib]
 doctest = false

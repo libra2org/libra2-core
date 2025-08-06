@@ -5,7 +5,7 @@
 use aptos_framework::{extended_checks, path_in_crate, BuildOptions};
 use aptos_gas_schedule::{MiscGasParameters, NativeGasParameters, LATEST_GAS_FEATURE_VERSION};
 use libra2_types::on_chain_config::{
-    aptos_test_feature_flags_genesis, Features, TimedFeaturesBuilder,
+    libra2_test_feature_flags_genesis, Features, TimedFeaturesBuilder,
 };
 use aptos_vm::natives;
 use move_cli::base::test::{run_move_unit_tests, UnitTestResult};
@@ -44,7 +44,7 @@ fn run_tests_for_pkg(path_to_pkg: impl Into<String>, use_latest_language: bool) 
         // TODO(Gas): double check if this is correct
         utc,
         aptos_test_natives(),
-        aptos_test_feature_flags_genesis(),
+        libra2_test_feature_flags_genesis(),
         /* gas limit */ Some(100_000),
         /* cost_table */ None,
         /* compute_coverage */ false,

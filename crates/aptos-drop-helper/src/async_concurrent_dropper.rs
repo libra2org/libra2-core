@@ -5,8 +5,8 @@ use crate::{
     metrics::{GAUGE, TIMER},
     IN_ANY_DROP_POOL,
 };
-use aptos_infallible::Mutex;
-use aptos_metrics_core::{IntGaugeHelper, TimerHelper};
+use libra2_infallible::Mutex;
+use libra2_metrics_core::{IntGaugeHelper, TimerHelper};
 use std::sync::{
     mpsc::{channel, Receiver, Sender},
     Arc, Condvar,

@@ -20,7 +20,7 @@ pub mod grpc_network_service;
 pub mod network_controller;
 
 use aptos_logger::{info, trace, warn, Schema};
-use aptos_metrics_core::{register_int_counter_vec, IntCounterVec};
+use libra2_metrics_core::{register_int_counter_vec, IntCounterVec};
 use once_cell::sync::Lazy;
 use serde::Serialize;
 use std::{
@@ -516,7 +516,7 @@ impl NetworkStream {
 #[cfg(test)]
 mod test {
     use super::*;
-    use aptos_config::utils;
+    use libra2_config::utils;
     use std::net::{IpAddr, Ipv4Addr, SocketAddr};
 
     /// Read, Write, Connect timeout in milliseconds.

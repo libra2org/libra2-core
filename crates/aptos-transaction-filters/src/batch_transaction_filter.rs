@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::transaction_filter::TransactionMatcher;
-use aptos_crypto::HashValue;
+use libra2_crypto::HashValue;
 use libra2_types::{quorum_store::BatchId, transaction::SignedTransaction, PeerId};
 #[cfg(any(test, feature = "fuzzing"))]
 use move_core_types::account_address::AccountAddress;

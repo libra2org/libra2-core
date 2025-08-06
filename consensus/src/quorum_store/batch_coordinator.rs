@@ -14,7 +14,7 @@ use crate::{
     },
 };
 use anyhow::ensure;
-use aptos_config::config::BatchTransactionFilterConfig;
+use libra2_config::config::BatchTransactionFilterConfig;
 use aptos_consensus_types::payload::TDataInfo;
 use aptos_logger::prelude::*;
 use aptos_short_hex_str::AsShortHexStr;

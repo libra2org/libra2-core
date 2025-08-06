@@ -9,13 +9,13 @@ use crate::{
     vuf_keys::VUF_SK,
     ProcessingFailure::{BadRequest, InternalError},
 };
-use aptos_crypto::{
+use libra2_crypto::{
     asymmetric_encryption::{
         elgamal_curve25519_aes256_gcm::ElGamalCurve25519Aes256Gcm, AsymmetricEncryption,
     },
     ed25519::Ed25519PublicKey,
 };
-use aptos_infallible::duration_since_epoch;
+use libra2_infallible::duration_since_epoch;
 use aptos_keyless_pepper_common::{
     account_recovery_db::AccountRecoveryDbEntry,
     jwt::Claims,
@@ -197,7 +197,7 @@ impl HandlerTrait<VerifyRequest, VerifyResponse> for V0VerifyHandler {
             let training_wheels_pk = match &config.training_wheels_pubkey {
                 None => None,
                 // This takes ~4.4 microseconds, so we are not too concerned about speed here.
-                // (Run `cargo bench -- ed25519/pk_deserialize` in `crates/aptos-crypto`.)
+                // (Run `cargo bench -- ed25519/pk_deserialize` in `crates/libra2-crypto`.)
                 Some(bytes) => Some(EphemeralPublicKey::ed25519(
                     Ed25519PublicKey::try_from(bytes.as_slice()).map_err(|_| {
                         // println!("[aptos-vm][groth16] On chain TW PK is invalid");

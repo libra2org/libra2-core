@@ -47,22 +47,22 @@ use crate::{
     },
     CliCommand,
 };
-use aptos_config::config::Peer;
-use aptos_crypto::{
+use libra2_config::config::Peer;
+use libra2_crypto::{
     bls12381,
     ed25519::{Ed25519PrivateKey, Ed25519PublicKey},
     x25519, PrivateKey,
 };
 use aptos_framework::chunked_publish::CHUNK_SIZE_IN_BYTES;
 use aptos_genesis::config::HostAndPort;
-use aptos_keygen::KeyGen;
+use libra2_keygen::KeyGen;
 use aptos_logger::warn;
-use aptos_rest_client::{
-    aptos_api_types::{MoveStructTag, MoveType},
+use libra2_rest_client::{
+    libra2_api_types::{MoveStructTag, MoveType},
     Transaction,
 };
 use aptos_sdk::move_types::{account_address::AccountAddress, language_storage::ModuleId};
-use aptos_temppath::TempPath;
+use libra2_temppath::TempPath;
 use libra2_types::on_chain_config::ValidatorSet;
 use move_core_types::ident_str;
 use reqwest::Url;
@@ -690,7 +690,7 @@ impl CliTestFramework {
     }
 
     async fn last_n_transactions_details(&self, count: u16) -> String {
-        let result = aptos_rest_client::Client::new(self.endpoint.clone())
+        let result = libra2_rest_client::Client::new(self.endpoint.clone())
             .get_transactions(None, Some(count))
             .await;
         if let Err(e) = result {

@@ -10,7 +10,7 @@ use aptos_executor::metrics::{
     PROCESSED_TXNS_OUTPUT_SIZE, UPDATE_LEDGER,
 };
 use aptos_logger::info;
-use aptos_metrics_core::Histogram;
+use libra2_metrics_core::Histogram;
 use move_core_types::language_storage::StructTag;
 use std::{
     collections::{BTreeMap, HashMap},

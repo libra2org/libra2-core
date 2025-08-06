@@ -3,10 +3,10 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::DiscoveryError;
-use aptos_config::config::PeerSet;
+use libra2_config::config::PeerSet;
 #[cfg(test)]
 use aptos_logger::spawn_named;
-use aptos_time_service::{Interval, TimeService, TimeServiceTrait};
+use libra2_time_service::{Interval, TimeService, TimeServiceTrait};
 use futures::Stream;
 use std::{
     path::{Path, PathBuf},
@@ -57,14 +57,14 @@ fn load_file(path: &Path) -> Result<PeerSet, DiscoveryError> {
 mod tests {
     use super::*;
     use crate::DiscoveryChangeListener;
-    use aptos_channels::Receiver;
-    use aptos_config::{
+    use libra2_channels::Receiver;
+    use libra2_config::{
         config::{Peer, PeerRole},
         network_id::NetworkContext,
     };
     use aptos_event_notifications::DbBackedOnChainConfig;
     use aptos_network::connectivity_manager::{ConnectivityRequest, DiscoverySource};
-    use aptos_temppath::TempPath;
+    use libra2_temppath::TempPath;
     use libra2_types::{network_address::NetworkAddress, PeerId};
     use futures::StreamExt;
     use std::{collections::HashSet, str::FromStr, sync::Arc};
@@ -74,7 +74,7 @@ mod tests {
         let check_interval = Duration::from_millis(5);
         // TODO: Figure out why mock time doesn't work right
         let time_service = TimeService::real();
-        let (conn_mgr_reqs_tx, conn_mgr_reqs_rx) = aptos_channels::new(
+        let (conn_mgr_reqs_tx, conn_mgr_reqs_rx) = libra2_channels::new(
             1,
             &aptos_network::counters::PENDING_CONNECTIVITY_MANAGER_REQUESTS,
         );

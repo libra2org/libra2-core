@@ -13,8 +13,8 @@ repository = { workspace = true }
 rust-version = { workspace = true }
 
 [dependencies]
-aptos-crypto = { workspace = true }
-aptos-infallible = { workspace = true }
+libra2-crypto = { workspace = true }
+libra2-infallible = { workspace = true }
 aptos-keyless-pepper-common = { workspace = true }
 libra2-types = { workspace = true }
 ark-bls12-381 = { workspace = true }

@@ -10,12 +10,12 @@ use crate::{
     priority::PeerPriority,
     tests::{mock::MockNetwork, utils},
 };
-use aptos_config::{config::AptosDataClientConfig, network_id::PeerNetworkId};
+use libra2_config::{config::AptosDataClientConfig, network_id::PeerNetworkId};
 use aptos_storage_service_types::{
     requests::{DataRequest, TransactionsWithProofRequest},
     responses::{CompleteDataRange, DataResponse, StorageServerSummary, StorageServiceResponse},
 };
-use aptos_time_service::MockTimeService;
+use libra2_time_service::MockTimeService;
 use libra2_types::transaction::{TransactionListWithProofV2, Version};
 use claims::assert_matches;
 use std::time::Duration;

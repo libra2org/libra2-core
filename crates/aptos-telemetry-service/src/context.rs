@@ -7,8 +7,8 @@ use crate::{
     types::common::EpochedPeerStore,
     LogIngestConfig, MetricsEndpointsConfig,
 };
-use aptos_crypto::{noise, x25519};
-use aptos_infallible::RwLock;
+use libra2_crypto::{noise, x25519};
+use libra2_infallible::RwLock;
 use libra2_types::{chain_id::ChainId, PeerId};
 use jsonwebtoken::{Algorithm, DecodingKey, EncodingKey, TokenData, Validation};
 use serde::{de::DeserializeOwned, Serialize};

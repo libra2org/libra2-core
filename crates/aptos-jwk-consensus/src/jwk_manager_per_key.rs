@@ -13,8 +13,8 @@ use crate::{
     TConsensusManager,
 };
 use anyhow::{anyhow, bail, Context, Result};
-use aptos_channels::{aptos_channel, message_queues::QueueStyle};
-use aptos_crypto::{bls12381::PrivateKey, SigningKey};
+use libra2_channels::{libra2_channel, message_queues::QueueStyle};
+use libra2_crypto::{bls12381::PrivateKey, SigningKey};
 use aptos_logger::{debug, error, info, warn};
 use aptos_reliable_broadcast::ReliableBroadcast;
 use libra2_types::{
@@ -61,8 +61,8 @@ pub struct KeyLevelConsensusManager {
     /// Whether a CLOSE command has been received.
     stopped: bool,
 
-    qc_update_tx: aptos_channel::Sender<(Issuer, KID), QuorumCertifiedUpdate>,
-    qc_update_rx: aptos_channel::Receiver<(Issuer, KID), QuorumCertifiedUpdate>,
+    qc_update_tx: libra2_channel::Sender<(Issuer, KID), QuorumCertifiedUpdate>,
+    qc_update_rx: libra2_channel::Receiver<(Issuer, KID), QuorumCertifiedUpdate>,
     jwk_observers: Vec<JWKObserver>,
 }
 
@@ -76,7 +76,7 @@ impl KeyLevelConsensusManager {
     ) -> Self {
         let update_certifier = Arc::new(UpdateCertifier::new(rb));
 
-        let (qc_update_tx, qc_update_rx) = aptos_channel::new(QueueStyle::KLAST, 1, None);
+        let (qc_update_tx, qc_update_rx) = libra2_channel::new(QueueStyle::KLAST, 1, None);
         Self {
             consensus_key,
             my_addr,
@@ -368,8 +368,8 @@ impl TConsensusManager for KeyLevelConsensusManager {
         self: Box<Self>,
         oidc_providers: Option<SupportedOIDCProviders>,
         observed_jwks: Option<ObservedJWKs>,
-        mut jwk_updated_rx: aptos_channel::Receiver<(), ObservedJWKsUpdated>,
-        mut rpc_req_rx: aptos_channel::Receiver<
+        mut jwk_updated_rx: libra2_channel::Receiver<(), ObservedJWKsUpdated>,
+        mut rpc_req_rx: libra2_channel::Receiver<
             AccountAddress,
             (AccountAddress, IncomingRpcRequest),
         >,
@@ -380,7 +380,7 @@ impl TConsensusManager for KeyLevelConsensusManager {
             .unwrap();
 
         let (local_observation_tx, mut local_observation_rx) =
-            aptos_channel::new(QueueStyle::KLAST, 100, None);
+            libra2_channel::new(QueueStyle::KLAST, 100, None);
 
         this.jwk_observers = oidc_providers
             .unwrap_or_default()

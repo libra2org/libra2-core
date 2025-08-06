@@ -14,16 +14,16 @@ rust-version = { workspace = true }
 
 [dependencies]
 anyhow = { workspace = true }
-aptos-api-types = { workspace = true }
+libra2-api-types = { workspace = true }
 aptos-bcs-utils = { workspace = true }
-aptos-build-info = { workspace = true }
-aptos-config = { workspace = true }
-aptos-crypto = { workspace = true }
+libra2-build-info = { workspace = true }
+libra2-config = { workspace = true }
+libra2-crypto = { workspace = true }
 aptos-gas-schedule = { workspace = true }
 aptos-global-constants = { workspace = true }
 aptos-logger = { workspace = true }
 aptos-mempool = { workspace = true }
-aptos-metrics-core = { workspace = true }
+libra2-metrics-core = { workspace = true }
 aptos-runtimes = { workspace = true }
 aptos-sdk = { workspace = true }
 aptos-storage-interface = { workspace = true }
@@ -55,7 +55,7 @@ aptos-framework = { workspace = true }
 aptos-gas-meter = { workspace = true }
 aptos-gas-schedule = { workspace = true, features = ["testing"] }
 aptos-move-stdlib = { workspace = true }
-aptos-proptest-helpers = { workspace = true }
+libra2-proptest-helpers = { workspace = true }
 aptos-transaction-filters = { workspace = true, features = ["fuzzing"] }
 move-package = { workspace = true }
 passkey-types = { workspace = true }

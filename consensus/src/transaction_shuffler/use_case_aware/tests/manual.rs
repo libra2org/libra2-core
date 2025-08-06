@@ -7,7 +7,7 @@ use crate::transaction_shuffler::use_case_aware::{
     tests::{Account, Contract},
     Config,
 };
-use aptos_crypto::{ed25519::Ed25519PrivateKey, PrivateKey, SigningKey, Uniform};
+use libra2_crypto::{ed25519::Ed25519PrivateKey, PrivateKey, SigningKey, Uniform};
 use libra2_types::{
     account_address::AccountAddress,
     chain_id::ChainId,

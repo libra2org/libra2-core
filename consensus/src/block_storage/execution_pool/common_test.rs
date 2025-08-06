@@ -11,7 +11,7 @@ use aptos_consensus_types::{
     quorum_cert::QuorumCert,
     vote_data::VoteData,
 };
-use aptos_crypto::{hash::CryptoHash, HashValue};
+use libra2_crypto::{hash::CryptoHash, HashValue};
 use libra2_types::{
     aggregate_signature::PartialSignatures,
     block_info::{BlockInfo, Round},

@@ -6,7 +6,7 @@
 
 use crate::{assert_success, assert_vm_status, tests::common, MoveHarness};
 use aptos_framework::BuildOptions;
-use aptos_package_builder::PackageBuilder;
+use libra2_package_builder::PackageBuilder;
 use aptos_transaction_simulation::Account;
 use libra2_types::transaction::TransactionStatus;
 use move_core_types::{account_address::AccountAddress, vm_status::StatusCode};

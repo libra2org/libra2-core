@@ -7,9 +7,9 @@ use crate::{
     transaction_deduper::TransactionDeduper,
     transaction_shuffler::TransactionShuffler,
 };
-use aptos_config::config::BlockTransactionFilterConfig;
+use libra2_config::config::BlockTransactionFilterConfig;
 use aptos_consensus_types::{block::Block, quorum_cert::QuorumCert};
-use aptos_crypto::HashValue;
+use libra2_crypto::HashValue;
 use aptos_executor_types::ExecutorResult;
 use libra2_types::transaction::SignedTransaction;
 use fail::fail_point;

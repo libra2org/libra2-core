@@ -422,7 +422,7 @@ pub struct BlockIdentifier {
 
 impl BlockIdentifier {
     pub fn from_block(
-        block: &aptos_rest_client::aptos_api_types::BcsBlock,
+        block: &libra2_rest_client::libra2_api_types::BcsBlock,
         chain_id: ChainId,
     ) -> BlockIdentifier {
         BlockIdentifier {
@@ -532,8 +532,8 @@ impl From<&TransactionInfo> for TransactionIdentifier {
     }
 }
 
-impl From<aptos_crypto::HashValue> for TransactionIdentifier {
-    fn from(hash: aptos_crypto::HashValue) -> Self {
+impl From<libra2_crypto::HashValue> for TransactionIdentifier {
+    fn from(hash: libra2_crypto::HashValue) -> Self {
         TransactionIdentifier {
             hash: to_hex_lower(&hash),
         }

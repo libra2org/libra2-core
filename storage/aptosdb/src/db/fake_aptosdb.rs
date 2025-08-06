@@ -8,11 +8,11 @@ use crate::{
 };
 use anyhow::format_err;
 use aptos_accumulator::{HashReader, MerkleAccumulator};
-use aptos_crypto::{
+use libra2_crypto::{
     hash::{CryptoHash, TransactionAccumulatorHasher, SPARSE_MERKLE_PLACEHOLDER_HASH},
     HashValue,
 };
-use aptos_infallible::Mutex;
+use libra2_infallible::Mutex;
 use aptos_logger::debug;
 use aptos_scratchpad::SparseMerkleTree;
 use aptos_storage_interface::{
@@ -994,11 +994,11 @@ mod tests {
         AptosDB,
     };
     use anyhow::{anyhow, ensure, Result};
-    use aptos_crypto::{hash::CryptoHash, HashValue};
+    use libra2_crypto::{hash::CryptoHash, HashValue};
     use aptos_storage_interface::{
         state_store::state_view::cached_state_view::ShardedStateCache, DbReader, DbWriter,
     };
-    use aptos_temppath::TempPath;
+    use libra2_temppath::TempPath;
     use libra2_types::{
         account_address::AccountAddress,
         ledger_info::LedgerInfoWithSignatures,

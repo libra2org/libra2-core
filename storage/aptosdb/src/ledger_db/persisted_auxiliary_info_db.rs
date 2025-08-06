@@ -9,7 +9,7 @@ use crate::{
     },
     utils::iterators::ExpectContinuousVersions,
 };
-use aptos_metrics_core::TimerHelper;
+use libra2_metrics_core::TimerHelper;
 use aptos_schemadb::{batch::SchemaBatch, DB};
 use aptos_storage_interface::Result;
 use libra2_types::transaction::{PersistedAuxiliaryInfo, Version};

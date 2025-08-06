@@ -15,7 +15,7 @@ use crate::{
     },
     test_utils::{consensus_runtime, timed_block_on, TreeInserter},
 };
-use aptos_config::config::ConsensusConfig;
+use libra2_config::config::ConsensusConfig;
 use aptos_consensus_types::{
     block::{
         block_test_utils::{certificate_for_genesis, gen_test_certificate},
@@ -28,8 +28,8 @@ use aptos_consensus_types::{
     sync_info::SyncInfo,
     timeout_2chain::{TwoChainTimeout, TwoChainTimeoutWithPartialSignatures},
 };
-use aptos_crypto::HashValue;
-use aptos_infallible::Mutex;
+use libra2_crypto::HashValue;
+use libra2_infallible::Mutex;
 use aptos_logger::prelude::info;
 use aptos_network::{protocols::network::Event, ProtocolId};
 use aptos_safety_rules::{PersistentSafetyStorage, SafetyRulesManager};

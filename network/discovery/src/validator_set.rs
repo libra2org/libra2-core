@@ -6,11 +6,11 @@ use crate::{
     counters::{DISCOVERY_COUNTS, EVENT_PROCESSING_LOOP_BUSY_DURATION_S, NETWORK_KEY_MISMATCH},
     DiscoveryError,
 };
-use aptos_config::{
+use libra2_config::{
     config::{Peer, PeerRole, PeerSet},
     network_id::NetworkContext,
 };
-use aptos_crypto::x25519;
+use libra2_crypto::x25519;
 use aptos_event_notifications::ReconfigNotificationListener;
 use aptos_logger::prelude::*;
 use aptos_network::{counters::inc_by_with_context, logging::NetworkSchema};
@@ -154,9 +154,9 @@ pub(crate) fn extract_validator_set_updates(
 mod tests {
     use super::*;
     use crate::DiscoveryChangeListener;
-    use aptos_channels::{aptos_channel, message_queues::QueueStyle};
-    use aptos_config::config::HANDSHAKE_VERSION;
-    use aptos_crypto::{bls12381, x25519::PrivateKey, PrivateKey as PK, Uniform};
+    use libra2_channels::{libra2_channel, message_queues::QueueStyle};
+    use libra2_config::config::HANDSHAKE_VERSION;
+    use libra2_crypto::{bls12381, x25519::PrivateKey, PrivateKey as PK, Uniform};
     use aptos_event_notifications::ReconfigNotification;
     use libra2_types::{
         network_address::NetworkAddress,
@@ -184,8 +184,8 @@ mod tests {
         let peer_id = libra2_types::account_address::from_identity_public_key(pubkey);
 
         // Build up the Reconfig Listener
-        let (conn_mgr_reqs_tx, _rx) = aptos_channels::new_test(1);
-        let (mut reconfig_sender, reconfig_events) = aptos_channel::new(QueueStyle::LIFO, 1, None);
+        let (conn_mgr_reqs_tx, _rx) = libra2_channels::new_test(1);
+        let (mut reconfig_sender, reconfig_events) = libra2_channel::new(QueueStyle::LIFO, 1, None);
         let reconfig_listener = ReconfigNotificationListener {
             notification_receiver: reconfig_events,
         };
@@ -239,7 +239,7 @@ mod tests {
         peer_id: PeerId,
         consensus_pubkey: bls12381::PublicKey,
         pubkey: x25519::PublicKey,
-        reconfig_tx: &mut aptos_channels::aptos_channel::Sender<
+        reconfig_tx: &mut libra2_channels::libra2_channel::Sender<
             (),
             ReconfigNotification<InMemoryOnChainConfig>,
         >,

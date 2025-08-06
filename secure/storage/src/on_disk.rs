@@ -3,8 +3,8 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{CryptoKVStorage, Error, GetResponse, KVStorage};
-use aptos_temppath::TempPath;
-use aptos_time_service::{TimeService, TimeServiceTrait};
+use libra2_temppath::TempPath;
+use libra2_time_service::{TimeService, TimeServiceTrait};
 use serde::{de::DeserializeOwned, Serialize};
 use serde_json::Value;
 use std::{

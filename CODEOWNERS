@@ -47,9 +47,9 @@
 # Owners for the `/crates/aptos` directory and all its subdirectories.
 /crates/aptos @gregnazario @banool
 
-# Owners for the `/crates/aptos-crypto*` directories.
-/crates/aptos-crypto-derive/ @alinush @zjma @mstraka100 @rex1fernando
-/crates/aptos-crypto/ @alinush @zjma @mstraka100 @rex1fernando
+# Owners for the `/crates/libra2-crypto*` directories.
+/crates/libra2-crypto-derive/ @alinush @zjma @mstraka100 @rex1fernando
+/crates/libra2-crypto/ @alinush @zjma @mstraka100 @rex1fernando
 
 # Owners for the `/crates/aptos-faucet` directory and all its subdirectories. And other faucet, genesis, and OpenAPI-related crates.
 /crates/aptos-faucet @banool @gregnazario
@@ -63,7 +63,7 @@
 # Owners for the aptos-protos crate
 /crates/aptos-protos @banool @bowenyang007 @jillxuu @larry-aptos @rtso  @aptos-labs/ecosystem-infra
 
-/crates/aptos-rest-client @banool @gregnazario
+/crates/libra2-rest-client @banool @gregnazario
 
 # Owners for the `/aptos-rosetta` directory and related crates.
 /crates/aptos-rosetta @gregnazario

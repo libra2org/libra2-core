@@ -15,23 +15,23 @@ rust-version = { workspace = true }
 [dependencies]
 anyhow = { workspace = true }
 aptos-accumulator = { workspace = true }
-aptos-config = { workspace = true }
-aptos-crypto = { workspace = true }
+libra2-config = { workspace = true }
+libra2-crypto = { workspace = true }
 aptos-db-indexer = { workspace = true }
 aptos-db-indexer-schemas = { workspace = true, features = ["fuzzing"] }
 aptos-executor-types = { workspace = true }
 aptos-experimental-runtimes = { workspace = true }
-aptos-infallible = { workspace = true }
+libra2-infallible = { workspace = true }
 aptos-jellyfish-merkle = { workspace = true }
 aptos-logger = { workspace = true }
-aptos-metrics-core = { workspace = true }
-aptos-proptest-helpers = { workspace = true, optional = true }
+libra2-metrics-core = { workspace = true }
+libra2-proptest-helpers = { workspace = true, optional = true }
 aptos-resource-viewer = { workspace = true }
 aptos-rocksdb-options = { workspace = true }
 aptos-schemadb = { workspace = true }
 aptos-scratchpad = { workspace = true }
 aptos-storage-interface = { workspace = true, features = ["fuzzing"] }
-aptos-temppath = { workspace = true, optional = true }
+libra2-temppath = { workspace = true, optional = true }
 libra2-types = { workspace = true }
 arc-swap = { workspace = true }
 arr_macro = { workspace = true }
@@ -61,10 +61,10 @@ tokio = { workspace = true }
 aptos-block-executor = { workspace = true }
 aptos-executor-types = { workspace = true }
 aptos-jellyfish-merkle = { workspace = true, features = ["fuzzing"] }
-aptos-proptest-helpers = { workspace = true }
+libra2-proptest-helpers = { workspace = true }
 aptos-schemadb = { workspace = true, features = ["fuzzing"] }
 aptos-scratchpad = { workspace = true, features = ["fuzzing"] }
-aptos-temppath = { workspace = true }
+libra2-temppath = { workspace = true }
 libra2-types = { workspace = true }
 ouroboros = { workspace = true }
 proptest = { workspace = true }
@@ -73,6 +73,6 @@ rand = { workspace = true }
 
 [features]
 default = []
-fuzzing = ["proptest", "proptest-derive", "aptos-proptest-helpers", "aptos-temppath", "aptos-crypto/fuzzing", "aptos-jellyfish-merkle/fuzzing", "libra2-types/fuzzing", "aptos-executor-types/fuzzing", "aptos-schemadb/fuzzing", "aptos-scratchpad/fuzzing"]
+fuzzing = ["proptest", "proptest-derive", "libra2-proptest-helpers", "libra2-temppath", "libra2-crypto/fuzzing", "aptos-jellyfish-merkle/fuzzing", "libra2-types/fuzzing", "aptos-executor-types/fuzzing", "aptos-schemadb/fuzzing", "aptos-scratchpad/fuzzing"]
 consensus-only-perf-test = []
-db-debugger = ["aptos-temppath", "clap", "crossbeam-channel", "owo-colors", "indicatif"]
+db-debugger = ["libra2-temppath", "clap", "crossbeam-channel", "owo-colors", "indicatif"]

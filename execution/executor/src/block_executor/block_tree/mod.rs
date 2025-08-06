@@ -13,10 +13,10 @@ use crate::{
 };
 use anyhow::{anyhow, ensure, Result};
 use aptos_consensus_types::block::Block as ConsensusBlock;
-use aptos_crypto::HashValue;
+use libra2_crypto::HashValue;
 use aptos_drop_helper::DEFAULT_DROPPER;
 use aptos_executor_types::ExecutorError;
-use aptos_infallible::Mutex;
+use libra2_infallible::Mutex;
 use aptos_logger::{debug, info};
 use aptos_storage_interface::DbReader;
 use libra2_types::{ledger_info::LedgerInfo, proof::definition::LeafCount};

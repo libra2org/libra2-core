@@ -5,7 +5,7 @@ use crate::pipeline::{
     execution_wait_phase::ExecutionWaitRequest, pipeline_phase::StatelessPipeline,
 };
 use aptos_consensus_types::pipelined_block::PipelinedBlock;
-use aptos_crypto::HashValue;
+use libra2_crypto::HashValue;
 use async_trait::async_trait;
 use futures::FutureExt;
 use std::{

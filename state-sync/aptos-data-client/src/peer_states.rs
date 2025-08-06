@@ -7,7 +7,7 @@ use crate::{
     logging::{LogEntry, LogEvent, LogSchema},
     metrics,
 };
-use aptos_config::{
+use libra2_config::{
     config::AptosDataClientConfig,
     network_id::{NetworkId, PeerNetworkId},
 };
@@ -15,7 +15,7 @@ use aptos_logger::prelude::*;
 use aptos_storage_service_types::{
     requests::StorageServiceRequest, responses::StorageServerSummary,
 };
-use aptos_time_service::TimeService;
+use libra2_time_service::TimeService;
 use dashmap::DashMap;
 use std::{
     cmp::min,

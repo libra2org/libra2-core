@@ -22,7 +22,7 @@ use crate::{
 };
 use anyhow::{bail, ensure, format_err, Context};
 use aptos_bitvec::BitVec;
-use aptos_config::config::BlockTransactionFilterConfig;
+use libra2_config::config::BlockTransactionFilterConfig;
 use aptos_consensus_types::{
     block::Block,
     common::Round,
@@ -32,9 +32,9 @@ use aptos_consensus_types::{
     timeout_2chain::TwoChainTimeoutCertificate,
     wrapped_ledger_info::WrappedLedgerInfo,
 };
-use aptos_crypto::{hash::ACCUMULATOR_PLACEHOLDER_HASH, HashValue};
+use libra2_crypto::{hash::ACCUMULATOR_PLACEHOLDER_HASH, HashValue};
 use aptos_executor_types::state_compute_result::StateComputeResult;
-use aptos_infallible::{Mutex, RwLock};
+use libra2_infallible::{Mutex, RwLock};
 use aptos_logger::prelude::*;
 use libra2_types::{
     ledger_info::LedgerInfoWithSignatures, proof::accumulator::InMemoryTransactionAccumulator,

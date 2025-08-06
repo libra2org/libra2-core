@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use anyhow::Result;
-use aptos_crypto::HashValue;
+use libra2_crypto::HashValue;
 use aptos_experimental_layered_map::{LayeredMap, MapLayer};
 use aptos_schemadb::{
     batch::WriteBatch,
@@ -10,7 +10,7 @@ use aptos_schemadb::{
     schema::{KeyCodec, ValueCodec},
     DB, DEFAULT_COLUMN_FAMILY_NAME,
 };
-use aptos_temppath::TempPath;
+use libra2_temppath::TempPath;
 use criterion::{
     criterion_group, criterion_main, measurement::WallTime, BatchSize, BenchmarkGroup, Criterion,
 };

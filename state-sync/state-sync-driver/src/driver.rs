@@ -20,7 +20,7 @@ use crate::{
     utils,
     utils::{OutputFallbackHandler, PENDING_DATA_LOG_FREQ_SECS},
 };
-use aptos_config::config::{ConsensusObserverConfig, RoleType, StateSyncDriverConfig};
+use libra2_config::config::{ConsensusObserverConfig, RoleType, StateSyncDriverConfig};
 use aptos_consensus_notifications::{
     ConsensusCommitNotification, ConsensusNotification, ConsensusSyncDurationNotification,
     ConsensusSyncTargetNotification,
@@ -30,12 +30,12 @@ use aptos_data_streaming_service::streaming_client::{
     DataStreamingClient, NotificationAndFeedback, NotificationFeedback,
 };
 use aptos_event_notifications::EventSubscriptionService;
-use aptos_infallible::Mutex;
+use libra2_infallible::Mutex;
 use aptos_logger::prelude::*;
 use aptos_mempool_notifications::MempoolNotificationSender;
 use aptos_storage_interface::DbReader;
 use aptos_storage_service_notifications::StorageServiceNotificationSender;
-use aptos_time_service::{TimeService, TimeServiceTrait};
+use libra2_time_service::{TimeService, TimeServiceTrait};
 use libra2_types::{contract_event::ContractEvent, waypoint::Waypoint};
 use futures::StreamExt;
 use std::{sync::Arc, time::Instant};

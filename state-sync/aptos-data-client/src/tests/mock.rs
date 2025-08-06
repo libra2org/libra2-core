@@ -9,8 +9,8 @@ use crate::{
     poller::DataSummaryPoller,
     priority::PeerPriority,
 };
-use aptos_channels::{aptos_channel, message_queues::QueueStyle};
-use aptos_config::{
+use libra2_channels::{libra2_channel, message_queues::QueueStyle};
+use libra2_config::{
     config::{AptosDataClientConfig, BaseConfig, RoleType},
     network_id::{NetworkId, PeerNetworkId},
 };
@@ -33,7 +33,7 @@ use aptos_storage_service_server::network::{NetworkRequest, ResponseSender};
 use aptos_storage_service_types::{
     responses::TransactionOrOutputListWithProofV2, Epoch, StorageServiceMessage,
 };
-use aptos_time_service::{MockTimeService, TimeService};
+use libra2_time_service::{MockTimeService, TimeService};
 use libra2_types::{
     ledger_info::LedgerInfoWithSignatures,
     state_store::state_value::StateValueChunkWithProof,
@@ -52,7 +52,7 @@ pub struct MockNetwork {
     networks: Vec<NetworkId>,                  // The networks that the node is connected to
     peers_and_metadata: Arc<PeersAndMetadata>, // The peers and metadata struct
     peer_mgr_reqs_rxs:
-        HashMap<NetworkId, aptos_channel::Receiver<(PeerId, ProtocolId), PeerManagerRequest>>, // The peer manager request receivers
+        HashMap<NetworkId, libra2_channel::Receiver<(PeerId, ProtocolId), PeerManagerRequest>>, // The peer manager request receivers
 }
 
 impl MockNetwork {
@@ -73,7 +73,7 @@ impl MockNetwork {
         let mut peer_mgr_reqs_rxs = HashMap::new();
         for network in &networks {
             // Setup the request managers
-            let queue_cfg = aptos_channel::Config::new(10).queue_style(QueueStyle::FIFO);
+            let queue_cfg = libra2_channel::Config::new(10).queue_style(QueueStyle::FIFO);
             let (peer_mgr_reqs_tx, peer_mgr_reqs_rx) = queue_cfg.build();
             let (connection_reqs_tx, _connection_reqs_rx) = queue_cfg.build();
 

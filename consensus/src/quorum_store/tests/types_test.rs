@@ -6,7 +6,7 @@ use crate::{
     test_utils::create_vec_signed_transactions,
 };
 use aptos_consensus_types::common::BatchPayload;
-use aptos_crypto::{hash::CryptoHash, HashValue};
+use libra2_crypto::{hash::CryptoHash, HashValue};
 use libra2_types::{account_address::AccountAddress, quorum_store::BatchId};
 use claims::{assert_err, assert_ok};
 

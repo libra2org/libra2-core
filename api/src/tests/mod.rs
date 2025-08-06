@@ -25,7 +25,7 @@ mod view_function;
 mod webauthn_secp256r1_ecdsa;
 
 use aptos_api_test_context::{new_test_context_inner as super_new_test_context, TestContext};
-use aptos_config::config::{internal_indexer_db_config::InternalIndexerDBConfig, NodeConfig};
+use libra2_config::config::{internal_indexer_db_config::InternalIndexerDBConfig, NodeConfig};
 
 #[cfg(test)]
 fn new_test_context_with_config(test_name: String, mut node_config: NodeConfig) -> TestContext {

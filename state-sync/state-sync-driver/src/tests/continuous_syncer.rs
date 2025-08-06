@@ -18,7 +18,7 @@ use crate::{
     },
     utils::OutputFallbackHandler,
 };
-use aptos_config::config::ContinuousSyncingMode;
+use libra2_config::config::ContinuousSyncingMode;
 use aptos_consensus_notifications::{
     ConsensusSyncDurationNotification, ConsensusSyncTargetNotification,
 };
@@ -26,9 +26,9 @@ use aptos_data_streaming_service::{
     data_notification::{DataNotification, DataPayload, NotificationId},
     streaming_client::{NotificationAndFeedback, NotificationFeedback},
 };
-use aptos_infallible::Mutex;
+use libra2_infallible::Mutex;
 use aptos_storage_service_types::Epoch;
-use aptos_time_service::TimeService;
+use libra2_time_service::TimeService;
 use libra2_types::transaction::{
     TransactionOutputListWithProof, TransactionOutputListWithProofV2, Version,
 };

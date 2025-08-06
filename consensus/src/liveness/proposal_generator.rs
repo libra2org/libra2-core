@@ -18,7 +18,7 @@ use crate::{
     util::time_service::TimeService,
 };
 use anyhow::{bail, ensure, format_err, Context};
-use aptos_config::config::{
+use libra2_config::config::{
     ChainHealthBackoffValues, ExecutionBackpressureConfig, ExecutionBackpressureMetric,
     PipelineBackpressureValues,
 };
@@ -32,8 +32,8 @@ use aptos_consensus_types::{
     quorum_cert::QuorumCert,
     utils::PayloadTxnsSize,
 };
-use aptos_crypto::{hash::CryptoHash, HashValue};
-use aptos_infallible::Mutex;
+use libra2_crypto::{hash::CryptoHash, HashValue};
+use libra2_infallible::Mutex;
 use aptos_logger::{error, sample, sample::SampleRate, warn};
 use libra2_types::{
     block_info::BlockInfo, on_chain_config::ValidatorTxnConfig, validator_txn::ValidatorTransaction,

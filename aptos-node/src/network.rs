@@ -2,8 +2,8 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::services::start_netbench_service;
-use aptos_channels::{self, aptos_channel, message_queues::QueueStyle};
-use aptos_config::{
+use libra2_channels::{self, libra2_channel, message_queues::QueueStyle};
+use libra2_config::{
     config::{NetworkConfig, NodeConfig},
     network_id::NetworkId,
 };
@@ -31,7 +31,7 @@ use aptos_network_benchmark::NetbenchMessage;
 use aptos_network_builder::builder::NetworkBuilder;
 use aptos_peer_monitoring_service_types::PeerMonitoringServiceMessage;
 use aptos_storage_service_types::StorageServiceMessage;
-use aptos_time_service::TimeService;
+use libra2_time_service::TimeService;
 use libra2_types::chain_id::ChainId;
 use serde::{Deserialize, Serialize};
 use std::{collections::HashMap, sync::Arc};
@@ -64,7 +64,7 @@ pub fn consensus_network_configuration(node_config: &NodeConfig) -> NetworkAppli
     let network_service_config = NetworkServiceConfig::new(
         direct_send_protocols,
         rpc_protocols,
-        aptos_channel::Config::new(node_config.consensus.max_network_channel_size)
+        libra2_channel::Config::new(node_config.consensus.max_network_channel_size)
             .queue_style(QueueStyle::FIFO)
             .counters(&aptos_consensus::counters::PENDING_CONSENSUS_NETWORK_EVENTS),
     );
@@ -82,7 +82,7 @@ pub fn dkg_network_configuration(node_config: &NodeConfig) -> NetworkApplication
     let network_service_config = NetworkServiceConfig::new(
         direct_send_protocols,
         rpc_protocols,
-        aptos_channel::Config::new(node_config.dkg.max_network_channel_size)
+        libra2_channel::Config::new(node_config.dkg.max_network_channel_size)
             .queue_style(QueueStyle::FIFO),
     );
     NetworkApplicationConfig::new(network_client_config, network_service_config)
@@ -99,7 +99,7 @@ pub fn jwk_consensus_network_configuration(node_config: &NodeConfig) -> NetworkA
     let network_service_config = NetworkServiceConfig::new(
         direct_send_protocols,
         rpc_protocols,
-        aptos_channel::Config::new(node_config.jwk_consensus.max_network_channel_size)
+        libra2_channel::Config::new(node_config.jwk_consensus.max_network_channel_size)
             .queue_style(QueueStyle::FIFO),
     );
     NetworkApplicationConfig::new(network_client_config, network_service_config)
@@ -115,7 +115,7 @@ pub fn mempool_network_configuration(node_config: &NodeConfig) -> NetworkApplica
     let network_service_config = NetworkServiceConfig::new(
         direct_send_protocols,
         rpc_protocols,
-        aptos_channel::Config::new(node_config.mempool.max_network_channel_size)
+        libra2_channel::Config::new(node_config.mempool.max_network_channel_size)
             .queue_style(QueueStyle::KLAST) // TODO: why is this not FIFO?
             .counters(&aptos_mempool::counters::PENDING_MEMPOOL_NETWORK_EVENTS),
     );
@@ -134,7 +134,7 @@ pub fn peer_monitoring_network_configuration(node_config: &NodeConfig) -> Networ
     let network_service_config = NetworkServiceConfig::new(
         direct_send_protocols,
         rpc_protocols,
-        aptos_channel::Config::new(max_network_channel_size)
+        libra2_channel::Config::new(max_network_channel_size)
             .queue_style(QueueStyle::FIFO)
             .counters(
                 &aptos_peer_monitoring_service_server::metrics::PENDING_PEER_MONITORING_SERVER_NETWORK_EVENTS,
@@ -157,7 +157,7 @@ pub fn storage_service_network_configuration(node_config: &NodeConfig) -> Networ
     let network_service_config = NetworkServiceConfig::new(
         direct_send_protocols,
         rpc_protocols,
-        aptos_channel::Config::new(max_network_channel_size)
+        libra2_channel::Config::new(max_network_channel_size)
             .queue_style(QueueStyle::FIFO)
             .counters(
                 &aptos_storage_service_server::metrics::PENDING_STORAGE_SERVER_NETWORK_EVENTS,
@@ -179,7 +179,7 @@ pub fn consensus_observer_network_configuration(
     let network_service_config = NetworkServiceConfig::new(
         direct_send_protocols,
         rpc_protocols,
-        aptos_channel::Config::new(max_network_channel_size)
+        libra2_channel::Config::new(max_network_channel_size)
             .queue_style(QueueStyle::FIFO)
             .counters(
                 &consensus_observer::common::metrics::PENDING_CONSENSUS_OBSERVER_NETWORK_EVENTS,
@@ -204,7 +204,7 @@ pub fn netbench_network_configuration(
     let network_service_config = NetworkServiceConfig::new(
         direct_send_protocols,
         rpc_protocols,
-        aptos_channel::Config::new(max_network_channel_size)
+        libra2_channel::Config::new(max_network_channel_size)
             .queue_style(QueueStyle::FIFO)
             .counters(&aptos_network_benchmark::PENDING_NETBENCH_NETWORK_EVENTS),
     );

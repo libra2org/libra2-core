@@ -2,8 +2,8 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{metrics::OTHER_TIMERS_SECONDS, state_store::hot_state::HotState};
-use aptos_infallible::Mutex;
-use aptos_metrics_core::TimerHelper;
+use libra2_infallible::Mutex;
+use libra2_metrics_core::TimerHelper;
 use aptos_scratchpad::SUBTREE_DROPPER;
 use aptos_storage_interface::state_store::{
     state::State, state_summary::StateSummary, state_view::hot_state_view::HotStateView,

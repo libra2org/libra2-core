@@ -15,10 +15,10 @@ use crate::{
     state_merkle_db::StateMerkleDb,
     state_store::StateStore,
 };
-use aptos_config::config::{LedgerPrunerConfig, StateMerklePrunerConfig};
-use aptos_crypto::{hash::CryptoHash, HashValue};
+use libra2_config::config::{LedgerPrunerConfig, StateMerklePrunerConfig};
+use libra2_crypto::{hash::CryptoHash, HashValue};
 use aptos_storage_interface::DbReader;
-use aptos_temppath::TempPath;
+use libra2_temppath::TempPath;
 use libra2_types::{
     state_store::{
         state_key::StateKey,

@@ -18,9 +18,9 @@ use crate::{
     util::is_vtxn_expected,
 };
 use anyhow::{bail, ensure, Context};
-use aptos_config::config::DagPayloadConfig;
+use libra2_config::config::DagPayloadConfig;
 use aptos_consensus_types::common::{Author, Round};
-use aptos_infallible::Mutex;
+use libra2_infallible::Mutex;
 use aptos_logger::{debug, error};
 use libra2_types::{
     epoch_state::EpochState,

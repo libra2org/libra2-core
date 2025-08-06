@@ -1,7 +1,7 @@
 // Copyright © Aptos Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-use aptos_config::{
+use libra2_config::{
     config::NodeConfig,
     network_id::{NetworkId, PeerNetworkId},
 };
@@ -10,13 +10,13 @@ use aptos_logger::{
     prelude::{sample, SampleRate},
     warn,
 };
-use aptos_metrics_core::{register_int_counter_vec, IntCounter, IntCounterVec};
+use libra2_metrics_core::{register_int_counter_vec, IntCounter, IntCounterVec};
 use aptos_network::{
     application::interface::{NetworkClient, NetworkClientInterface, NetworkServiceEvents},
     peer_manager::ConnectionNotification,
     protocols::{network::Event, rpc::error::RpcError, wire::handshake::v1::ProtocolId},
 };
-use aptos_time_service::{TimeService, TimeServiceTrait};
+use libra2_time_service::{TimeService, TimeServiceTrait};
 use libra2_types::{account_address::AccountAddress, PeerId};
 use bytes::Bytes;
 use futures::{

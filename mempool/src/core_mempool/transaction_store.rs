@@ -18,8 +18,8 @@ use crate::{
         MempoolSenderBucket, MultiBucketTimelineIndexIds, TimelineIndexIdentifier,
     },
 };
-use aptos_config::config::MempoolConfig;
-use aptos_crypto::HashValue;
+use libra2_config::config::MempoolConfig;
+use libra2_crypto::HashValue;
 use aptos_logger::{prelude::*, Level};
 use libra2_types::{
     account_address::AccountAddress,
@@ -808,7 +808,7 @@ impl TransactionStore {
                     } else {
                         batch.push((
                             txn.txn.clone(),
-                            aptos_infallible::duration_since_epoch_at(
+                            libra2_infallible::duration_since_epoch_at(
                                 &txn.insertion_info.ready_time,
                             )
                             .as_millis() as u64,
@@ -860,7 +860,7 @@ impl TransactionStore {
                     .map(|txn| {
                         (
                             txn.txn.clone(),
-                            aptos_infallible::duration_since_epoch_at(
+                            libra2_infallible::duration_since_epoch_at(
                                 &txn.insertion_info.ready_time,
                             )
                             .as_millis() as u64,

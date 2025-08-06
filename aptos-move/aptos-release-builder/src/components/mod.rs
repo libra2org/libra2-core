@@ -11,15 +11,15 @@ use crate::{
 };
 use anyhow::{anyhow, bail, Context, Result};
 use aptos::governance::GenerateExecutionHash;
-use aptos_crypto::HashValue;
+use libra2_crypto::HashValue;
 use aptos_gas_schedule::LATEST_GAS_FEATURE_VERSION;
-use aptos_infallible::duration_since_epoch;
-use aptos_rest_client::Client;
-use aptos_temppath::TempPath;
+use libra2_infallible::duration_since_epoch;
+use libra2_rest_client::Client;
+use libra2_temppath::TempPath;
 use libra2_types::{
     account_config::CORE_CODE_ADDRESS,
     on_chain_config::{
-        AptosVersion, ExecutionConfigV1, FeatureFlag as AptosFeatureFlag, GasScheduleV2,
+        Libra2Version, ExecutionConfigV1, FeatureFlag as AptosFeatureFlag, GasScheduleV2,
         OnChainConfig, OnChainConsensusConfig, OnChainExecutionConfig, OnChainJWKConsensusConfig,
         OnChainRandomnessConfig, RandomnessConfigMoveStruct, TransactionShufflerType,
     },
@@ -135,7 +135,7 @@ pub enum ReleaseEntry {
         old: Option<GasScheduleLocator>,
         new: GasScheduleLocator,
     },
-    Version(AptosVersion),
+    Version(Libra2Version),
     FeatureFlag(Features),
     Consensus(OnChainConsensusConfig),
     Execution(OnChainExecutionConfig),
@@ -290,7 +290,7 @@ impl ReleaseEntry {
                 }
             },
             ReleaseEntry::Version(version) => {
-                if !fetch_and_equals::<AptosVersion>(client, version)? {
+                if !fetch_and_equals::<Libra2Version>(client, version)? {
                     result.append(&mut version::generate_version_upgrade_proposal(
                         version,
                         is_testnet,

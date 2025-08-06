@@ -6,11 +6,11 @@ use crate::{
     AptosPublicInfo, ChainInfo, FullNode, NodeExt, Result, SwarmChaos, Validator, Version,
 };
 use anyhow::{anyhow, bail};
-use aptos_config::{
+use libra2_config::{
     config::{NodeConfig, OverrideNodeConfig},
     network_id::NetworkId,
 };
-use aptos_rest_client::Client as RestClient;
+use libra2_rest_client::Client as RestClient;
 use aptos_sdk::types::PeerId;
 use futures::future::{join_all, try_join_all};
 use log::info;

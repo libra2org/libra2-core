@@ -10,7 +10,7 @@ use crate::{
         get_current_version_in_state_merkle_db, get_state_kv_commit_progress,
     },
 };
-use aptos_config::config::{RocksdbConfigs, StorageDirPaths};
+use libra2_config::config::{RocksdbConfigs, StorageDirPaths};
 use aptos_schemadb::batch::SchemaBatch;
 use aptos_storage_interface::{db_ensure as ensure, AptosDbError, Result};
 use claims::assert_le;
@@ -175,7 +175,7 @@ mod test {
         utils::truncation_helper::num_frozen_nodes_in_accumulator,
     };
     use aptos_storage_interface::DbReader;
-    use aptos_temppath::TempPath;
+    use libra2_temppath::TempPath;
     use libra2_types::state_store::NUM_STATE_SHARDS;
     use proptest::prelude::*;
 
@@ -184,7 +184,7 @@ mod test {
 
         #[test]
         fn test_truncation(input in arb_blocks_to_commit_with_block_nums(80, 120)) {
-            use aptos_config::config::DEFAULT_MAX_NUM_NODES_PER_LRU_CACHE_SHARD;
+            use libra2_config::config::DEFAULT_MAX_NUM_NODES_PER_LRU_CACHE_SHARD;
             aptos_logger::Logger::new().init();
             let sharding_config = ShardingConfig {
                 enable_storage_sharding: input.1,

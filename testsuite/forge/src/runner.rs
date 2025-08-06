@@ -12,7 +12,7 @@ use crate::{
     NAMESPACE_CLEANUP_DURATION_BUFFER_SECS,
 };
 use anyhow::{bail, format_err, Error, Result};
-use aptos_config::config::NodeConfig;
+use libra2_config::config::NodeConfig;
 use clap::{Parser, ValueEnum};
 use rand::{rngs::OsRng, Rng, SeedableRng};
 use std::{
@@ -30,7 +30,7 @@ const KUBERNETES_SERVICE_HOST: &str = "KUBERNETES_SERVICE_HOST";
 pub const FORGE_RUNNER_MODE: &str = "FORGE_RUNNER_MODE";
 
 #[derive(Debug, Parser)]
-#[clap(about = "Forged in Fire", styles = aptos_cli_common::aptos_cli_style())]
+#[clap(about = "Forged in Fire", styles = libra2_cli_common::libra2_cli_style())]
 pub struct Options {
     /// The FILTER string is tested against the name of all tests, and only those tests whose names
     /// contain the filter are run.

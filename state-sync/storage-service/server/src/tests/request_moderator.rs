@@ -5,7 +5,7 @@ use crate::{
     moderator::UnhealthyPeerState,
     tests::{mock::MockClient, utils},
 };
-use aptos_config::{
+use libra2_config::{
     config::{PeerRole, StorageServiceConfig},
     network_id::{NetworkId, PeerNetworkId},
 };
@@ -20,7 +20,7 @@ use aptos_storage_service_types::{
     responses::StorageServiceResponse,
     StorageServiceError,
 };
-use aptos_time_service::MockTimeService;
+use libra2_time_service::MockTimeService;
 use libra2_types::{account_address::AccountAddress, network_address::NetworkAddress, PeerId};
 use claims::assert_matches;
 use dashmap::DashMap;

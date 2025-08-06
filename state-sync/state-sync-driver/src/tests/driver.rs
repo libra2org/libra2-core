@@ -11,7 +11,7 @@ use crate::{
         verify_commit_notification,
     },
 };
-use aptos_config::config::{NodeConfig, RoleType, StateSyncDriverConfig};
+use libra2_config::config::{NodeConfig, RoleType, StateSyncDriverConfig};
 use aptos_consensus_notifications::{ConsensusNotificationSender, ConsensusNotifier};
 use aptos_data_client::client::AptosDataClient;
 use aptos_data_streaming_service::streaming_client::new_streaming_service_client_listener_pair;
@@ -22,13 +22,13 @@ use aptos_event_notifications::{
 };
 use aptos_executor::chunk_executor::ChunkExecutor;
 use aptos_executor_test_helpers::bootstrap_genesis;
-use aptos_infallible::RwLock;
+use libra2_infallible::RwLock;
 use aptos_mempool_notifications::MempoolNotificationListener;
 use aptos_network::application::{interface::NetworkClient, storage::PeersAndMetadata};
 use aptos_storage_interface::DbReaderWriter;
 use aptos_storage_service_client::StorageServiceClient;
 use aptos_storage_service_notifications::StorageServiceNotificationListener;
-use aptos_time_service::TimeService;
+use libra2_time_service::TimeService;
 use libra2_types::{
     event::EventKey,
     transaction::{Transaction, WriteSetPayload},
@@ -333,7 +333,7 @@ async fn create_driver_for_tests(
     aptos_logger::Logger::init_for_testing();
 
     // Create test aptos database
-    let db_path = aptos_temppath::TempPath::new();
+    let db_path = libra2_temppath::TempPath::new();
     db_path.create_as_dir().unwrap();
     let (_, db_rw) = DbReaderWriter::wrap(AptosDB::new_for_test(db_path.path()));
 

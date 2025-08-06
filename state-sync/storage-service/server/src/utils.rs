@@ -6,8 +6,8 @@ use crate::{
     optimistic_fetch::OptimisticFetchRequest, storage::StorageReaderInterface,
     subscription::SubscriptionStreamRequests,
 };
-use aptos_config::network_id::PeerNetworkId;
-use aptos_metrics_core::HistogramVec;
+use libra2_config::network_id::PeerNetworkId;
+use libra2_metrics_core::HistogramVec;
 use aptos_storage_service_types::{
     requests::{DataRequest, EpochEndingLedgerInfoRequest, StorageServiceRequest},
     responses::{
@@ -15,7 +15,7 @@ use aptos_storage_service_types::{
         StorageServiceResponse,
     },
 };
-use aptos_time_service::TimeService;
+use libra2_time_service::TimeService;
 use libra2_types::ledger_info::LedgerInfoWithSignatures;
 use arc_swap::ArcSwap;
 use dashmap::DashMap;

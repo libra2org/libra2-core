@@ -14,16 +14,16 @@ use crate::{
     test_utils::mock_storage::MockStorage,
 };
 use anyhow::{anyhow, format_err, Result};
-use aptos_channels::aptos_channel;
+use libra2_channels::libra2_channel;
 use aptos_consensus_types::{
     common::{Payload, Round},
     pipelined_block::PipelinedBlock,
     vote_data::VoteData,
     wrapped_ledger_info::WrappedLedgerInfo,
 };
-use aptos_crypto::{bls12381::PrivateKey, HashValue};
+use libra2_crypto::{bls12381::PrivateKey, HashValue};
 use aptos_executor_types::ExecutorResult;
-use aptos_infallible::Mutex;
+use libra2_infallible::Mutex;
 use aptos_logger::prelude::*;
 use libra2_types::{
     epoch_state::EpochState,
@@ -120,7 +120,7 @@ impl TExecutionClient for MockExecutionClient {
         _onchain_randomness_config: &OnChainRandomnessConfig,
         _rand_config: Option<RandConfig>,
         _fast_rand_config: Option<RandConfig>,
-        _rand_msg_rx: aptos_channel::Receiver<AccountAddress, IncomingRandGenRequest>,
+        _rand_msg_rx: libra2_channel::Receiver<AccountAddress, IncomingRandGenRequest>,
         _highest_committed_round: Round,
     ) {
     }

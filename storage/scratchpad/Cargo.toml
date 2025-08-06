@@ -13,10 +13,10 @@ repository = { workspace = true }
 rust-version = { workspace = true }
 
 [dependencies]
-aptos-crypto = { workspace = true }
+libra2-crypto = { workspace = true }
 aptos-drop-helper = { workspace = true }
-aptos-infallible = { workspace = true }
-aptos-metrics-core = { workspace = true }
+libra2-infallible = { workspace = true }
+libra2-metrics-core = { workspace = true }
 libra2-types = { workspace = true }
 aptos-vm = { workspace = true }
 bitvec = { workspace = true }

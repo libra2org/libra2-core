@@ -20,7 +20,7 @@ use crate::{
     db_access::DbAccessUtil, pipeline::Pipeline, transaction_committer::TransactionCommitter,
     transaction_executor::TransactionExecutor, transaction_generator::TransactionGenerator,
 };
-use aptos_config::config::{NodeConfig, PrunerConfig, NO_OP_STORAGE_PRUNER_CONFIG};
+use libra2_config::config::{NodeConfig, PrunerConfig, NO_OP_STORAGE_PRUNER_CONFIG};
 use aptos_db::AptosDB;
 use aptos_executor::block_executor::BlockExecutor;
 use aptos_jellyfish_merkle::metrics::{
@@ -645,12 +645,12 @@ mod tests {
         transaction_generator::TransactionGenerator,
         BenchmarkWorkload,
     };
-    use aptos_config::config::NO_OP_STORAGE_PRUNER_CONFIG;
-    use aptos_crypto::HashValue;
+    use libra2_config::config::NO_OP_STORAGE_PRUNER_CONFIG;
+    use libra2_crypto::HashValue;
     use aptos_executor::block_executor::BlockExecutor;
     use aptos_executor_types::BlockExecutorTrait;
     use aptos_sdk::{transaction_builder::aptos_stdlib, types::LocalAccount};
-    use aptos_temppath::TempPath;
+    use libra2_temppath::TempPath;
     use aptos_transaction_generator_lib::WorkflowProgress;
     use aptos_transaction_workloads_lib::args::TransactionTypeArg;
     use libra2_types::{

@@ -21,8 +21,8 @@ use crate::utils::ensure_max_open_files_limit;
 use anyhow::{anyhow, Context};
 use aptos_admin_service::AdminService;
 use aptos_api::bootstrap as bootstrap_api;
-use aptos_build_info::build_information;
-use aptos_config::config::{merge_node_config, NodeConfig, PersistableConfig};
+use libra2_build_info::build_information;
+use libra2_config::config::{merge_node_config, NodeConfig, PersistableConfig};
 use aptos_framework::ReleaseBundle;
 use aptos_genesis::builder::GenesisConfiguration;
 use aptos_logger::{prelude::*, telemetry_log_writer::TelemetryLog, Level, LoggerFilterUpdater};
@@ -232,13 +232,13 @@ pub fn start_and_report_ports(
     indexer_grpc_port_tx: Option<oneshot::Sender<u16>>,
 ) -> anyhow::Result<()> {
     // Setup panic handler
-    aptos_crash_handler::setup_panic_handler();
+    libra2_crash_handler::setup_panic_handler();
 
     // Create global rayon thread pool
     utils::create_global_rayon_pool(create_global_rayon_pool);
 
-    // Initialize the global aptos-node-identity
-    aptos_node_identity::init(config.get_peer_id())?;
+    // Initialize the global libra2-node-identity
+    libra2_node_identity::init(config.get_peer_id())?;
 
     // Instantiate the global logger
     let (remote_log_receiver, logger_filter_update) = logger::create_logger(&config, log_file);
@@ -409,7 +409,7 @@ where
 {
     // If there wasn't a test directory specified, create a temporary one
     let test_dir =
-        test_dir.unwrap_or_else(|| aptos_temppath::TempPath::new().as_ref().to_path_buf());
+        test_dir.unwrap_or_else(|| libra2_temppath::TempPath::new().as_ref().to_path_buf());
 
     // Create the directories for the node
     fs::DirBuilder::new().recursive(true).create(&test_dir)?;
@@ -622,7 +622,7 @@ where
         genesis_waypoint.to_string().as_bytes(),
     )?;
 
-    aptos_config::config::sanitize_node_config(validators[0].config.override_config_mut())?;
+    libra2_config::config::sanitize_node_config(validators[0].config.override_config_mut())?;
 
     let mut node_config = validators[0].config.override_config().clone();
 
@@ -708,7 +708,7 @@ pub fn setup_environment_and_start_node(
     let chain_id = utils::fetch_chain_id(&db_rw)?;
 
     // Set the chain_id in global Libra2NodeIdentity
-    aptos_node_identity::set_chain_id(chain_id)?;
+    libra2_node_identity::set_chain_id(chain_id)?;
 
     // Start the telemetry service (as early as possible and before any blocking calls)
     let telemetry_runtime = services::start_telemetry_service(

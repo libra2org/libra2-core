@@ -9,9 +9,9 @@ use crate::{
     },
     RosettaContext,
 };
-use aptos_crypto::{ValidCryptoMaterial, ValidCryptoMaterialStringExt};
+use libra2_crypto::{ValidCryptoMaterial, ValidCryptoMaterialStringExt};
 use aptos_logger::debug;
-use aptos_rest_client::{Account, Response};
+use libra2_rest_client::{Account, Response};
 use aptos_sdk::move_types::{
     ident_str,
     language_storage::{StructTag, TypeTag},
@@ -98,7 +98,7 @@ where
 
 /// Retrieves an account's information by its address
 pub async fn get_account(
-    rest_client: &aptos_rest_client::Client,
+    rest_client: &libra2_rest_client::Client,
     address: AccountAddress,
 ) -> ApiResult<Response<Account>> {
     rest_client

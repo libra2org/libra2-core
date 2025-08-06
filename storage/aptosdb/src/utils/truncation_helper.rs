@@ -33,7 +33,7 @@ use crate::{
     transaction_store::TransactionStore,
     utils::get_progress,
 };
-use aptos_crypto::hash::CryptoHash;
+use libra2_crypto::hash::CryptoHash;
 use aptos_jellyfish_merkle::{node_type::NodeKey, StaleNodeIndex};
 use aptos_logger::info;
 use aptos_schemadb::{

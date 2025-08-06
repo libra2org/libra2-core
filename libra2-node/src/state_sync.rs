@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::network::ApplicationNetworkInterfaces;
-use aptos_config::config::{NodeConfig, StateSyncConfig};
+use libra2_config::config::{NodeConfig, StateSyncConfig};
 use aptos_consensus_notifications::ConsensusNotifier;
 use aptos_data_client::{client::AptosDataClient, poller};
 use aptos_data_streaming_service::{
@@ -14,7 +14,7 @@ use aptos_event_notifications::{
     ReconfigNotificationListener,
 };
 use aptos_executor::chunk_executor::ChunkExecutor;
-use aptos_infallible::RwLock;
+use libra2_infallible::RwLock;
 use aptos_mempool_notifications::MempoolNotificationListener;
 use aptos_network::application::{
     interface::{NetworkClient, NetworkClientInterface, NetworkServiceEvents},
@@ -31,7 +31,7 @@ use aptos_storage_service_server::{
     network::StorageServiceNetworkEvents, storage::StorageReader, StorageServiceServer,
 };
 use aptos_storage_service_types::StorageServiceMessage;
-use aptos_time_service::TimeService;
+use libra2_time_service::TimeService;
 use libra2_types::waypoint::Waypoint;
 use aptos_vm::aptos_vm::AptosVMBlockExecutor;
 use std::sync::Arc;

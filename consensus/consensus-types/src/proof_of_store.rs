@@ -3,8 +3,8 @@
 
 use crate::{payload::TDataInfo, utils::PayloadTxnsSize};
 use anyhow::{bail, ensure, Context};
-use aptos_crypto::{bls12381, CryptoMaterialError, HashValue};
-use aptos_crypto_derive::{BCSCryptoHash, CryptoHasher};
+use libra2_crypto::{bls12381, CryptoMaterialError, HashValue};
+use libra2_crypto_derive::{BCSCryptoHash, CryptoHasher};
 use libra2_types::{
     aggregate_signature::AggregateSignature, ledger_info::SignatureWithStatus,
     quorum_store::BatchId, validator_signer::ValidatorSigner,
@@ -219,13 +219,13 @@ impl SignedBatchInfo {
         }
 
         if self.expiration()
-            > aptos_infallible::duration_since_epoch().as_micros() as u64
+            > libra2_infallible::duration_since_epoch().as_micros() as u64
                 + max_batch_expiry_gap_usecs
         {
             bail!(
                 "Batch expiration too far in future: {} > {}",
                 self.expiration(),
-                aptos_infallible::duration_since_epoch().as_micros() as u64
+                libra2_infallible::duration_since_epoch().as_micros() as u64
                     + max_batch_expiry_gap_usecs
             );
         }

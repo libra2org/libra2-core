@@ -4,10 +4,10 @@
 
 use crate::{Factory, GenesisConfig, GenesisConfigFn, NodeConfigFn, Result, Swarm, Version};
 use anyhow::{bail, Context};
-use aptos_config::config::{NodeConfig, OverrideNodeConfig};
+use libra2_config::config::{NodeConfig, OverrideNodeConfig};
 use aptos_framework::ReleaseBundle;
 use aptos_genesis::builder::{InitConfigFn, InitGenesisConfigFn, InitGenesisStakeFn};
-use aptos_infallible::Mutex;
+use libra2_infallible::Mutex;
 use rand::rngs::StdRng;
 use std::{
     collections::HashMap,

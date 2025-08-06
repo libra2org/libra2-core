@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{error::Error, logging::LogEntry, metrics, utils, LogSchema};
-use aptos_config::{
+use libra2_config::{
     config::{AptosDataClientConfig, StorageServiceConfig},
     network_id::{NetworkId, PeerNetworkId},
 };
@@ -11,7 +11,7 @@ use aptos_network::application::storage::PeersAndMetadata;
 use aptos_storage_service_types::{
     requests::StorageServiceRequest, responses::StorageServerSummary,
 };
-use aptos_time_service::{TimeService, TimeServiceTrait};
+use libra2_time_service::{TimeService, TimeServiceTrait};
 use arc_swap::ArcSwap;
 use dashmap::DashMap;
 use std::{

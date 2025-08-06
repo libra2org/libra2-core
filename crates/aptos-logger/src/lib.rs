@@ -160,7 +160,7 @@ mod security;
 pub use crate::aptos_logger::{
     AptosData as Logger, AptosDataBuilder, LoggerFilterUpdater, Writer, CHANNEL_SIZE,
 };
-pub use aptos_log_derive::Schema;
+pub use libra2_log_derive::Schema;
 pub use event::Event;
 pub use filter::{Filter, LevelFilter};
 pub use kv::{Key, KeyValue, Schema, Value, Visitor};

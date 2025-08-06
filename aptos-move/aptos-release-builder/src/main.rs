@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use anyhow::{bail, Context};
-use aptos_crypto::{ed25519::Ed25519PrivateKey, ValidCryptoMaterialStringExt};
+use libra2_crypto::{ed25519::Ed25519PrivateKey, ValidCryptoMaterialStringExt};
 use aptos_framework::natives::code::PackageRegistry;
 use aptos_gas_schedule::LATEST_GAS_FEATURE_VERSION;
 use aptos_release_builder::{
@@ -11,7 +11,7 @@ use aptos_release_builder::{
     simulate::simulate_all_proposals,
     validate::{DEFAULT_RESOLUTION_TIME, FAST_RESOLUTION_TIME},
 };
-use aptos_rest_client::{AptosBaseUrl, Client};
+use libra2_rest_client::{AptosBaseUrl, Client};
 use libra2_types::{
     account_address::AccountAddress,
     chain_id::ChainId,
@@ -280,7 +280,7 @@ async fn main() -> anyhow::Result<()> {
             let config =
                 aptos_release_builder::ReleaseConfig::load_config(release_config.as_path())?;
 
-            let root_key_path = aptos_temppath::TempPath::new();
+            let root_key_path = libra2_temppath::TempPath::new();
             root_key_path.create_as_file()?;
 
             let mut network_config = match input_option {
@@ -391,7 +391,7 @@ async fn main() -> anyhow::Result<()> {
                 }
             }
 
-            print_configs!(OnChainConsensusConfig, OnChainExecutionConfig, AptosVersion);
+            print_configs!(OnChainConsensusConfig, OnChainExecutionConfig, Libra2Version);
 
             if print_gas_schedule {
                 print_configs!(GasScheduleV2, StorageGasSchedule);

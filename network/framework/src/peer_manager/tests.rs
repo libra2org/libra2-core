@@ -22,8 +22,8 @@ use crate::{
     ProtocolId,
 };
 use anyhow::anyhow;
-use aptos_channels::{aptos_channel, message_queues::QueueStyle};
-use aptos_config::{
+use libra2_channels::{libra2_channel, message_queues::QueueStyle};
+use libra2_config::{
     config::{PeerRole, MAX_INBOUND_CONNECTIONS},
     network_id::{NetworkContext, NetworkId},
 };
@@ -31,7 +31,7 @@ use aptos_memsocket::MemorySocket;
 use aptos_netcore::transport::{
     boxed::BoxedTransport, memory::MemoryTransport, ConnectionOrigin, TransportExt,
 };
-use aptos_time_service::TimeService;
+use libra2_time_service::TimeService;
 use libra2_types::{network_address::NetworkAddress, PeerId};
 use bytes::Bytes;
 use futures::{channel::oneshot, io::AsyncWriteExt, stream::StreamExt};
@@ -87,14 +87,14 @@ fn build_test_peer_manager(
         BoxedTransport<Connection<MemorySocket>, impl std::error::Error + Sync + Send + 'static>,
         MemorySocket,
     >,
-    aptos_channel::Sender<(PeerId, ProtocolId), PeerManagerRequest>,
-    aptos_channel::Sender<PeerId, ConnectionRequest>,
+    libra2_channel::Sender<(PeerId, ProtocolId), PeerManagerRequest>,
+    libra2_channel::Sender<PeerId, ConnectionRequest>,
     conn_notifs_channel::Receiver,
 ) {
     let (peer_manager_request_tx, peer_manager_request_rx) =
-        aptos_channel::new(QueueStyle::FIFO, 1, None);
-    let (connection_reqs_tx, connection_reqs_rx) = aptos_channel::new(QueueStyle::FIFO, 1, None);
-    let (hello_tx, _hello_rx) = aptos_channel::new(QueueStyle::FIFO, 1, None);
+        libra2_channel::new(QueueStyle::FIFO, 1, None);
+    let (connection_reqs_tx, connection_reqs_rx) = libra2_channel::new(QueueStyle::FIFO, 1, None);
+    let (hello_tx, _hello_rx) = libra2_channel::new(QueueStyle::FIFO, 1, None);
     let (conn_status_tx, conn_status_rx) = conn_notifs_channel::new();
 
     let network_id = NetworkId::Validator;

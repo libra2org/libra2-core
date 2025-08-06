@@ -12,13 +12,13 @@ use crate::{
     utils,
     utils::{OutputFallbackHandler, SpeculativeStreamState, PENDING_DATA_LOG_FREQ_SECS},
 };
-use aptos_config::config::ContinuousSyncingMode;
+use libra2_config::config::ContinuousSyncingMode;
 use aptos_data_streaming_service::{
     data_notification::{DataNotification, DataPayload, NotificationId},
     data_stream::DataStreamListener,
     streaming_client::{DataStreamingClient, Epoch, NotificationAndFeedback, NotificationFeedback},
 };
-use aptos_infallible::Mutex;
+use libra2_infallible::Mutex;
 use aptos_logger::{prelude::*, sample, sample::SampleRate};
 use aptos_storage_interface::DbReader;
 use libra2_types::{

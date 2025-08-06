@@ -19,11 +19,11 @@ use crate::{
     },
 };
 use anyhow::{anyhow, Result};
-use aptos_api_types::{HexEncodedBytes, U64};
+use libra2_api_types::{HexEncodedBytes, U64};
 use aptos_cached_packages::aptos_stdlib::EntryFunctionCall;
 use aptos_framework::{BuildOptions, BuiltPackage};
 use aptos_logger::error;
-use aptos_rest_client::Client;
+use libra2_rest_client::Client;
 use aptos_sdk::{bcs, types::LocalAccount};
 use libra2_types::{
     account_address::AccountAddress,

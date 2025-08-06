@@ -11,11 +11,11 @@ pub(crate) mod stream;
 #[cfg(any(test, feature = "testing"))]
 pub mod test_utils;
 
-use aptos_config::config::{
+use libra2_config::config::{
     RocksdbConfig, RocksdbConfigs, StorageDirPaths, BUFFERED_STATE_TARGET_ITEMS,
     DEFAULT_MAX_NUM_NODES_PER_LRU_CACHE_SHARD, NO_OP_STORAGE_PRUNER_CONFIG,
 };
-use aptos_crypto::HashValue;
+use libra2_crypto::HashValue;
 use aptos_db::{
     backup::restore_handler::RestoreHandler,
     db::AptosDB,
@@ -26,7 +26,7 @@ use aptos_db::{
 };
 use aptos_db_indexer_schemas::metadata::StateSnapshotProgress;
 use aptos_indexer_grpc_table_info::internal_indexer_db_service::InternalIndexerDBService;
-use aptos_infallible::duration_since_epoch;
+use libra2_infallible::duration_since_epoch;
 use aptos_jellyfish_merkle::{NodeBatch, TreeWriter};
 use aptos_logger::info;
 use aptos_storage_interface::{AptosDbError, Result};

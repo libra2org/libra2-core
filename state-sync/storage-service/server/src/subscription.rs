@@ -11,11 +11,11 @@ use crate::{
     storage::StorageReaderInterface,
     utils, LogEntry, LogSchema,
 };
-use aptos_config::{
+use libra2_config::{
     config::StorageServiceConfig,
     network_id::{NetworkId, PeerNetworkId},
 };
-use aptos_infallible::Mutex;
+use libra2_infallible::Mutex;
 use aptos_logger::{error, warn};
 use aptos_storage_service_types::{
     requests::{
@@ -27,7 +27,7 @@ use aptos_storage_service_types::{
         DataResponse, StorageServerSummary, StorageServiceResponse, TransactionDataResponseType,
     },
 };
-use aptos_time_service::{TimeService, TimeServiceTrait};
+use libra2_time_service::{TimeService, TimeServiceTrait};
 use libra2_types::{ledger_info::LedgerInfoWithSignatures, transaction::Version};
 use arc_swap::ArcSwap;
 use dashmap::DashMap;

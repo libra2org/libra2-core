@@ -9,10 +9,10 @@ use crate::{
     NODE_METRIC_PORT, REST_API_HAPROXY_SERVICE_PORT, REST_API_SERVICE_PORT,
 };
 use anyhow::{anyhow, format_err};
-use aptos_config::config::NodeConfig;
+use libra2_config::config::NodeConfig;
 use aptos_db::common::{LEDGER_DB_NAME, STATE_MERKLE_DB_NAME};
 use aptos_logger::info;
-use aptos_rest_client::Client as RestClient;
+use libra2_rest_client::Client as RestClient;
 use aptos_sdk::types::PeerId;
 use aptos_state_sync_driver::metadata_storage::STATE_SYNC_DB_NAME;
 use futures::try_join;

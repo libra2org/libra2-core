@@ -9,9 +9,9 @@ use crate::consensus_observer::{
     },
     network::observer_message::{BlockPayload, OrderedBlock},
 };
-use aptos_config::config::ConsensusObserverConfig;
+use libra2_config::config::ConsensusObserverConfig;
 use aptos_consensus_types::{common::Round, pipelined_block::PipelinedBlock};
-use aptos_infallible::Mutex;
+use libra2_infallible::Mutex;
 use aptos_logger::{error, warn};
 use libra2_types::epoch_state::EpochState;
 use std::{
@@ -287,7 +287,7 @@ mod test {
         proof_of_store::{BatchInfo, ProofOfStore},
         quorum_cert::QuorumCert,
     };
-    use aptos_crypto::HashValue;
+    use libra2_crypto::HashValue;
     use libra2_types::{
         aggregate_signature::AggregateSignature,
         block_info::{BlockInfo, Round},

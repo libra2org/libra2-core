@@ -14,13 +14,13 @@ use aptos_block_executor::{
     code_cache_global_manager::AptosModuleCacheManager, txn_commit_hook::NoOpTransactionCommitHook,
     txn_provider::default::DefaultTxnProvider,
 };
-use aptos_crypto::HashValue;
+use libra2_crypto::HashValue;
 use aptos_framework::ReleaseBundle;
 use aptos_gas_algebra::DynamicExpression;
 use aptos_gas_meter::{AptosGasMeter, GasAlgebra, StandardGasAlgebra, StandardGasMeter};
 use aptos_gas_profiling::{GasProfiler, TransactionGasLog};
-use aptos_keygen::KeyGen;
-use aptos_rest_client::AptosBaseUrl;
+use libra2_keygen::KeyGen;
+use libra2_rest_client::AptosBaseUrl;
 use aptos_transaction_simulation::{
     DeltaStateStore, EitherStateView, EmptyStateView, SimulationStateStore,
     GENESIS_CHANGE_SET_HEAD, GENESIS_CHANGE_SET_MAINNET, GENESIS_CHANGE_SET_TESTNET,
@@ -43,7 +43,7 @@ use libra2_types::{
     contract_event::ContractEvent,
     move_utils::MemberId,
     on_chain_config::{
-        AptosVersion, CurrentTimeMicroseconds, FeatureFlag, Features, OnChainConfig, ValidatorSet,
+        Libra2Version, CurrentTimeMicroseconds, FeatureFlag, Features, OnChainConfig, ValidatorSet,
     },
     state_store::{state_key::StateKey, state_value::StateValue, StateView, TStateView},
     transaction::{
@@ -254,7 +254,7 @@ impl FakeExecutor {
         txn_id: u64,
         api_key: Option<&str>,
     ) -> Self {
-        let mut builder = aptos_rest_client::Client::builder(network_url);
+        let mut builder = libra2_rest_client::Client::builder(network_url);
         if let Some(api_key) = api_key {
             builder = builder
                 .api_key(api_key)
@@ -412,7 +412,7 @@ impl FakeExecutor {
         //  - the environment variable is properly set
         if let Some(env_trace_dir) = env::var_os(ENV_TRACE_DIR) {
             let aptos_version =
-                AptosVersion::fetch_config(&self.state_store).map_or(0, |v| v.major);
+                Libra2Version::fetch_config(&self.state_store).map_or(0, |v| v.major);
 
             let trace_dir = Path::new(&env_trace_dir).join(file_name);
             if trace_dir.exists() {

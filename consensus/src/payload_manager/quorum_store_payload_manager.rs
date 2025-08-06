@@ -11,14 +11,14 @@ use crate::{
     quorum_store::{batch_store::BatchReader, quorum_store_coordinator::CoordinatorCommand},
 };
 use aptos_bitvec::BitVec;
-use aptos_config::config::BlockTransactionFilterConfig;
+use libra2_config::config::BlockTransactionFilterConfig;
 use aptos_consensus_types::{
     block::Block,
     common::{Author, Payload, ProofWithData},
     payload::{BatchPointer, TDataInfo},
     proof_of_store::BatchInfo,
 };
-use aptos_crypto::HashValue;
+use libra2_crypto::HashValue;
 use aptos_executor_types::*;
 use aptos_logger::prelude::*;
 use libra2_types::{transaction::SignedTransaction, PeerId};

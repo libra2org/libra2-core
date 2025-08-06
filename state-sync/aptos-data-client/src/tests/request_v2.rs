@@ -7,8 +7,8 @@ use crate::{
     priority::PeerPriority,
     tests::{mock::MockNetwork, utils},
 };
-use aptos_config::{config::AptosDataClientConfig, network_id::NetworkId};
-use aptos_crypto::{ed25519::Ed25519PrivateKey, HashValue, PrivateKey, SigningKey, Uniform};
+use libra2_config::{config::AptosDataClientConfig, network_id::NetworkId};
+use libra2_crypto::{ed25519::Ed25519PrivateKey, HashValue, PrivateKey, SigningKey, Uniform};
 use aptos_storage_service_types::{
     requests::{DataRequest, TransactionData, TransactionDataRequestType, TransactionOrOutputData},
     responses::{

@@ -2,11 +2,11 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{ledger_db::transaction_db::TransactionDb, AptosDB};
-use aptos_crypto::hash::CryptoHash;
-use aptos_proptest_helpers::Index;
+use libra2_crypto::hash::CryptoHash;
+use libra2_proptest_helpers::Index;
 use aptos_schemadb::batch::SchemaBatch;
 use aptos_storage_interface::Result;
-use aptos_temppath::TempPath;
+use libra2_temppath::TempPath;
 use libra2_types::{
     proptest_types::{AccountInfoUniverse, SignatureCheckedTransactionGen},
     transaction::{Transaction, Version},

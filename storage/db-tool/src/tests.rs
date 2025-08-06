@@ -85,7 +85,7 @@ mod dbtool_tests {
         test_execution_with_storage_impl, test_execution_with_storage_impl_inner,
     };
     use aptos_storage_interface::DbReader;
-    use aptos_temppath::TempPath;
+    use libra2_temppath::TempPath;
     use libra2_types::{
         state_store::state_key::{inner::StateKeyTag::AccessPath, prefix::StateKeyPrefix},
         transaction::Version,
@@ -286,7 +286,7 @@ mod dbtool_tests {
         old_db_dir: PathBuf,
         new_db_dir: PathBuf,
     ) -> (Runtime, String) {
-        use aptos_config::config::{
+        use libra2_config::config::{
             RocksdbConfigs, StorageDirPaths, BUFFERED_STATE_TARGET_ITEMS_FOR_TEST,
             NO_OP_STORAGE_PRUNER_CONFIG,
         };

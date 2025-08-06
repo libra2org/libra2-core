@@ -3,14 +3,14 @@
 
 use super::types::MempoolSenderBucket;
 use crate::{counters, network::BroadcastPeerPriority};
-use aptos_config::{
+use libra2_config::{
     config::{MempoolConfig, NodeType},
     network_id::{NetworkId, PeerNetworkId},
 };
-use aptos_infallible::RwLock;
+use libra2_infallible::RwLock;
 use aptos_logger::prelude::*;
 use aptos_peer_monitoring_service_types::PeerMonitoringMetadata;
-use aptos_time_service::{TimeService, TimeServiceTrait};
+use libra2_time_service::{TimeService, TimeServiceTrait};
 use itertools::Itertools;
 use std::{
     cmp::{max, min, Ordering},
@@ -560,7 +560,7 @@ fn compare_validator_distance(
 #[cfg(test)]
 mod test {
     use super::*;
-    use aptos_config::{
+    use libra2_config::{
         config::{MempoolConfig, NodeType},
         network_id::{NetworkId, PeerNetworkId},
     };

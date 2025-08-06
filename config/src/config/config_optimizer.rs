@@ -13,7 +13,7 @@ use crate::{
     },
     network_id::NetworkId,
 };
-use aptos_crypto::{x25519, ValidCryptoMaterialStringExt};
+use libra2_crypto::{x25519, ValidCryptoMaterialStringExt};
 use libra2_types::{chain_id::ChainId, network_address::NetworkAddress, PeerId};
 use maplit::hashset;
 use serde_yaml::Value;
@@ -328,7 +328,7 @@ mod tests {
         },
         network_id::NetworkId,
     };
-    use aptos_crypto::{Uniform, ValidCryptoMaterial};
+    use libra2_crypto::{Uniform, ValidCryptoMaterial};
     use libra2_types::{account_address::AccountAddress, waypoint::Waypoint};
     use rand::rngs::OsRng;
     use std::{io::Write, path::PathBuf};

@@ -9,7 +9,7 @@ use crate::{
     peer_location::PeerLocationUpdater,
     validator_cache::PeerSetCacheUpdater,
 };
-use aptos_crypto::{x25519, ValidCryptoMaterialStringExt};
+use libra2_crypto::{x25519, ValidCryptoMaterialStringExt};
 use libra2_types::{chain_id::ChainId, PeerId};
 use clap::Parser;
 use context::GroupedMetricsClients;
@@ -107,9 +107,9 @@ impl AptosTelemetryServiceArgs {
                 .as_str(),
         );
 
-        let validators = Arc::new(aptos_infallible::RwLock::new(HashMap::new()));
-        let validator_fullnodes = Arc::new(aptos_infallible::RwLock::new(HashMap::new()));
-        let peer_locations = Arc::new(aptos_infallible::RwLock::new(HashMap::new()));
+        let validators = Arc::new(libra2_infallible::RwLock::new(HashMap::new()));
+        let validator_fullnodes = Arc::new(libra2_infallible::RwLock::new(HashMap::new()));
+        let peer_locations = Arc::new(libra2_infallible::RwLock::new(HashMap::new()));
         let public_fullnodes = config.pfn_allowlist.clone();
 
         let context = Context::new(

@@ -30,7 +30,7 @@
 // TODO: https://github.com/aptos-labs/aptos-core/issues/2279
 
 use super::{accept_type::AcceptType, bcs_payload::Bcs};
-use aptos_api_types::{Address, AptosError, AptosErrorCode, HashValue, LedgerInfo};
+use libra2_api_types::{Address, AptosError, AptosErrorCode, HashValue, LedgerInfo};
 use move_core_types::{
     identifier::{IdentStr, Identifier},
     language_storage::StructTag,
@@ -80,37 +80,37 @@ macro_rules! generate_error_traits {
             #[allow(unused)]
             fn [<$trait_name:snake _with_code>]<Err: std::fmt::Display>(
                 err: Err,
-                error_code: aptos_api_types::AptosErrorCode,
-                ledger_info: &aptos_api_types::LedgerInfo,
+                error_code: libra2_api_types::AptosErrorCode,
+                ledger_info: &libra2_api_types::LedgerInfo,
             ) -> Self where Self: Sized;
 
             // With an error code and no ledger info headers (special case)
             #[allow(unused)]
             fn [<$trait_name:snake _with_code_no_info>]<Err: std::fmt::Display>(
                 err: Err,
-                error_code: aptos_api_types::AptosErrorCode,
+                error_code: libra2_api_types::AptosErrorCode,
             ) -> Self where Self: Sized;
 
             #[allow(unused)]
             fn [<$trait_name:snake _with_optional_vm_status_and_ledger_info>]<Err: std::fmt::Display>(
                 err: Err,
-                error_code: aptos_api_types::AptosErrorCode,
+                error_code: libra2_api_types::AptosErrorCode,
                 vm_status: Option<libra2_types::vm_status::StatusCode>,
-                ledger_info: Option<&aptos_api_types::LedgerInfo>
+                ledger_info: Option<&libra2_api_types::LedgerInfo>
             ) -> Self where Self: Sized;
 
             #[allow(unused)]
             fn [<$trait_name:snake _with_vm_status>]<Err: std::fmt::Display>(
                 err: Err,
-                error_code: aptos_api_types::AptosErrorCode,
+                error_code: libra2_api_types::AptosErrorCode,
                 vm_status: libra2_types::vm_status::StatusCode,
-                ledger_info: &aptos_api_types::LedgerInfo
+                ledger_info: &libra2_api_types::LedgerInfo
             ) -> Self where Self: Sized;
 
             #[allow(unused)]
             fn [<$trait_name:snake _from_aptos_error>](
-                aptos_error: aptos_api_types::AptosError,
-                ledger_info: &aptos_api_types::LedgerInfo
+                aptos_error: libra2_api_types::AptosError,
+                ledger_info: &libra2_api_types::LedgerInfo
             ) -> Self where Self: Sized;
         }
         )*
@@ -138,17 +138,17 @@ macro_rules! generate_error_response {
         pub enum $enum_name {
             $(
             #[oai(status = $status)]
-            $name(poem_openapi::payload::Json<Box<aptos_api_types::AptosError>>,
+            $name(poem_openapi::payload::Json<Box<libra2_api_types::AptosError>>,
                 // We use just regular u64 here instead of U64 since all header
                 // values are implicitly strings anyway.
                 /// Chain ID of the current chain
                 #[oai(header = "X-Aptos-Chain-Id")] Option<u8>,
                 /// Current ledger version of the chain
-                #[oai(header = "X-Aptos-Ledger-Version")] Option<u64>,
+                #[oai(header = "X-libra2-ledger-Version")] Option<u64>,
                 /// Oldest non-pruned ledger version of the chain
-                #[oai(header = "X-Aptos-Ledger-Oldest-Version")] Option<u64>,
+                #[oai(header = "X-libra2-ledger-Oldest-Version")] Option<u64>,
                 /// Current timestamp of the chain
-                #[oai(header = "X-Aptos-Ledger-TimestampUsec")] Option<u64>,
+                #[oai(header = "X-libra2-ledger-TimestampUsec")] Option<u64>,
                 /// Current epoch of the chain
                 #[oai(header = "X-Aptos-Epoch")] Option<u64>,
                 /// Current block height of the chain
@@ -169,10 +169,10 @@ macro_rules! generate_error_response {
         impl $crate::response::[<$name Error>] for $enum_name {
             fn [<$name:snake _with_code>]<Err: std::fmt::Display>(
                 err: Err,
-                error_code: aptos_api_types::AptosErrorCode,
-                ledger_info: &aptos_api_types::LedgerInfo
+                error_code: libra2_api_types::AptosErrorCode,
+                ledger_info: &libra2_api_types::LedgerInfo
             )-> Self where Self: Sized {
-                let error = aptos_api_types::AptosError::new_with_error_code(err, error_code);
+                let error = libra2_api_types::AptosError::new_with_error_code(err, error_code);
                 let payload = poem_openapi::payload::Json(Box::new(error));
 
                 Self::from($enum_name::$name(
@@ -190,9 +190,9 @@ macro_rules! generate_error_response {
 
             fn [<$name:snake _with_code_no_info>]<Err: std::fmt::Display>(
                 err: Err,
-                error_code: aptos_api_types::AptosErrorCode,
+                error_code: libra2_api_types::AptosErrorCode,
             )-> Self where Self: Sized {
-                let error = aptos_api_types::AptosError::new_with_error_code(err, error_code);
+                let error = libra2_api_types::AptosError::new_with_error_code(err, error_code);
                 let payload = poem_openapi::payload::Json(Box::new(error));
 
                 Self::from($enum_name::$name(
@@ -209,14 +209,14 @@ macro_rules! generate_error_response {
             }
             fn [<$name:snake _with_optional_vm_status_and_ledger_info>]<Err: std::fmt::Display>(
                 err: Err,
-                error_code: aptos_api_types::AptosErrorCode,
+                error_code: libra2_api_types::AptosErrorCode,
                 vm_status: Option<libra2_types::vm_status::StatusCode>,
-                ledger_info: Option<&aptos_api_types::LedgerInfo>
+                ledger_info: Option<&libra2_api_types::LedgerInfo>
             ) -> Self where Self: Sized {
                 let error = if let Some(vm_status) = vm_status {
-                    aptos_api_types::AptosError::new_with_vm_status(err, error_code, vm_status)
+                    libra2_api_types::AptosError::new_with_vm_status(err, error_code, vm_status)
                 } else {
-                    aptos_api_types::AptosError::new_with_error_code(err, error_code)
+                    libra2_api_types::AptosError::new_with_error_code(err, error_code)
                 };
                 let payload = poem_openapi::payload::Json(Box::new(error));
                 Self::from($enum_name::$name(
@@ -234,11 +234,11 @@ macro_rules! generate_error_response {
 
             fn [<$name:snake _with_vm_status>]<Err: std::fmt::Display>(
                 err: Err,
-                error_code: aptos_api_types::AptosErrorCode,
+                error_code: libra2_api_types::AptosErrorCode,
                 vm_status: libra2_types::vm_status::StatusCode,
-                ledger_info: &aptos_api_types::LedgerInfo
+                ledger_info: &libra2_api_types::LedgerInfo
             ) -> Self where Self: Sized {
-                let error = aptos_api_types::AptosError::new_with_vm_status(err, error_code, vm_status);
+                let error = libra2_api_types::AptosError::new_with_vm_status(err, error_code, vm_status);
                 let payload = poem_openapi::payload::Json(Box::new(error));
                 Self::from($enum_name::$name(
                     payload,
@@ -254,8 +254,8 @@ macro_rules! generate_error_response {
             }
 
             fn [<$name:snake _from_aptos_error>](
-                aptos_error: aptos_api_types::AptosError,
-                ledger_info: &aptos_api_types::LedgerInfo
+                aptos_error: libra2_api_types::AptosError,
+                ledger_info: &libra2_api_types::LedgerInfo
             ) -> Self where Self: Sized {
                 let payload = poem_openapi::payload::Json(Box::new(aptos_error));
                 Self::from($enum_name::$name(
@@ -276,7 +276,7 @@ macro_rules! generate_error_response {
 
         // Generate a function that helps get the AptosError within.
         impl $crate::response::AptosErrorResponse for $enum_name {
-            fn inner_mut(&mut self) -> &mut aptos_api_types::AptosError {
+            fn inner_mut(&mut self) -> &mut libra2_api_types::AptosError {
                 match self {
                     $(
                     $enum_name::$name(poem_openapi::payload::Json(inner),
@@ -329,11 +329,11 @@ macro_rules! generate_success_response {
                 /// Chain ID of the current chain
                 #[oai(header = "X-Aptos-Chain-Id")] u8,
                 /// Current ledger version of the chain
-                #[oai(header = "X-Aptos-Ledger-Version")] u64,
+                #[oai(header = "X-libra2-ledger-Version")] u64,
                 /// Oldest non-pruned ledger version of the chain
-                #[oai(header = "X-Aptos-Ledger-Oldest-Version")] u64,
+                #[oai(header = "X-libra2-ledger-Oldest-Version")] u64,
                 /// Current timestamp of the chain
-                #[oai(header = "X-Aptos-Ledger-TimestampUsec")] u64,
+                #[oai(header = "X-libra2-ledger-TimestampUsec")] u64,
                 /// Current epoch of the chain
                 #[oai(header = "X-Aptos-Epoch")] u64,
                 /// Current block height of the chain
@@ -363,13 +363,13 @@ macro_rules! generate_success_response {
         // Each variant in the main enum takes in the same argument, so the macro
         // is really just helping us enumerate and build each variant. We use this
         // in the other From impls.
-        impl <T: poem_openapi::types::ToJSON + Send + Sync> From<($crate::response::AptosResponseContent<T>, &aptos_api_types::LedgerInfo, [<$enum_name Status>])>
+        impl <T: poem_openapi::types::ToJSON + Send + Sync> From<($crate::response::AptosResponseContent<T>, &libra2_api_types::LedgerInfo, [<$enum_name Status>])>
             for $enum_name<T>
         {
             fn from(
                 (value, ledger_info, status): (
                     $crate::response::AptosResponseContent<T>,
-                    &aptos_api_types::LedgerInfo,
+                    &libra2_api_types::LedgerInfo,
                     [<$enum_name Status>]
                 ),
             ) -> Self {
@@ -395,11 +395,11 @@ macro_rules! generate_success_response {
         }
 
         // Generate a From impl that builds a response from a Json<T> and friends.
-        impl<T: poem_openapi::types::ToJSON + Send + Sync> From<(poem_openapi::payload::Json<T>, &aptos_api_types::LedgerInfo, [<$enum_name Status>])>
+        impl<T: poem_openapi::types::ToJSON + Send + Sync> From<(poem_openapi::payload::Json<T>, &libra2_api_types::LedgerInfo, [<$enum_name Status>])>
             for $enum_name<T>
         {
             fn from(
-                (value, ledger_info, status): (poem_openapi::payload::Json<T>, &aptos_api_types::LedgerInfo, [<$enum_name Status>]),
+                (value, ledger_info, status): (poem_openapi::payload::Json<T>, &libra2_api_types::LedgerInfo, [<$enum_name Status>]),
             ) -> Self {
                 let content = $crate::response::AptosResponseContent::Json(value);
                 Self::from((content, ledger_info, status))
@@ -407,13 +407,13 @@ macro_rules! generate_success_response {
         }
 
         // Generate a From impl that builds a response from a Bcs<Vec<u8>> and friends.
-        impl<T: poem_openapi::types::ToJSON + Send + Sync> From<($crate::bcs_payload::Bcs, &aptos_api_types::LedgerInfo, [<$enum_name Status>])>
+        impl<T: poem_openapi::types::ToJSON + Send + Sync> From<($crate::bcs_payload::Bcs, &libra2_api_types::LedgerInfo, [<$enum_name Status>])>
             for $enum_name<T>
         {
             fn from(
                 (value, ledger_info, status): (
                     $crate::bcs_payload::Bcs,
-                    &aptos_api_types::LedgerInfo,
+                    &libra2_api_types::LedgerInfo,
                     [<$enum_name Status>]
                 ),
             ) -> Self {
@@ -430,7 +430,7 @@ macro_rules! generate_success_response {
             pub fn try_from_rust_value<E: $crate::response::InternalError>(
                 (value, ledger_info, status, accept_type): (
                     T,
-                    &aptos_api_types::LedgerInfo,
+                    &libra2_api_types::LedgerInfo,
                     [<$enum_name Status>],
                     &$crate::accept_type::AcceptType
                 ),
@@ -441,7 +441,7 @@ macro_rules! generate_success_response {
                             bcs::to_bytes(&value)
                                 .map_err(|e| E::internal_with_code(
                                     e,
-                                    aptos_api_types::AptosErrorCode::InternalError,
+                                    libra2_api_types::AptosErrorCode::InternalError,
                                     ledger_info
                                 ))?
                         ),
@@ -459,7 +459,7 @@ macro_rules! generate_success_response {
            pub fn try_from_json<E: $crate::response::InternalError>(
                 (value, ledger_info, status): (
                     T,
-                    &aptos_api_types::LedgerInfo,
+                    &libra2_api_types::LedgerInfo,
                     [<$enum_name Status>],
                 ),
             ) -> Result<Self, E> {
@@ -473,7 +473,7 @@ macro_rules! generate_success_response {
             pub fn try_from_bcs<B: serde::Serialize, E: $crate::response::InternalError>(
                 (value, ledger_info, status): (
                     B,
-                    &aptos_api_types::LedgerInfo,
+                    &libra2_api_types::LedgerInfo,
                     [<$enum_name Status>],
                 ),
             ) -> Result<Self, E> {
@@ -482,7 +482,7 @@ macro_rules! generate_success_response {
                         bcs::to_bytes(&value)
                             .map_err(|e| E::internal_with_code(
                                 e,
-                                aptos_api_types::AptosErrorCode::InternalError,
+                                libra2_api_types::AptosErrorCode::InternalError,
                                 ledger_info
                             ))?
                     ),
@@ -494,7 +494,7 @@ macro_rules! generate_success_response {
             pub fn try_from_encoded<E: $crate::response::InternalError>(
                 (value, ledger_info, status): (
                     Vec<u8>,
-                    &aptos_api_types::LedgerInfo,
+                    &libra2_api_types::LedgerInfo,
                     [<$enum_name Status>],
                 ),
             ) -> Result<Self, E> {
@@ -511,7 +511,7 @@ macro_rules! generate_success_response {
                 match self {
                     $(
                     [<$enum_name>]::$name(_, _, _, _, _, _, _, _, _, ref mut cursor) => {
-                        *cursor = new_cursor.map(|c| aptos_api_types::StateKeyWrapper::from(c).to_string());
+                        *cursor = new_cursor.map(|c| libra2_api_types::StateKeyWrapper::from(c).to_string());
                     }
                     )*
                 }

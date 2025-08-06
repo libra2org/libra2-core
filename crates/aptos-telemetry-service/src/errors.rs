@@ -1,8 +1,8 @@
 // Copyright © Aptos Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-use aptos_crypto::noise::NoiseError;
-use aptos_rest_client::error::RestError;
+use libra2_crypto::noise::NoiseError;
+use libra2_rest_client::error::RestError;
 use libra2_types::{chain_id::ChainId, PeerId};
 use debug_ignore::DebugIgnore;
 use gcp_bigquery_client::{

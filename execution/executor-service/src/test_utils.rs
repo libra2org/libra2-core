@@ -3,7 +3,7 @@
 
 use aptos_block_executor::txn_provider::default::DefaultTxnProvider;
 use aptos_block_partitioner::{v2::config::PartitionerV2Config, PartitionerConfig};
-use aptos_keygen::KeyGen;
+use libra2_keygen::KeyGen;
 use aptos_language_e2e_tests::common_transactions::peer_to_peer_txn;
 use aptos_transaction_simulation::{
     Account, AccountData, InMemoryStateStore, SimulationStateStore,

@@ -5,7 +5,7 @@ use crate::{
     aptos::move_test_helpers, smoke_test_environment::SwarmBuilder,
     utils::check_create_mint_transfer, workspace_builder, workspace_builder::workspace_root,
 };
-use aptos_crypto::ValidCryptoMaterialStringExt;
+use libra2_crypto::ValidCryptoMaterialStringExt;
 use aptos_forge::Swarm;
 use aptos_gas_algebra::GasQuantity;
 use aptos_gas_schedule::{AptosGasParameters, InitialGasSchedule, ToOnChainGasSchedule};
@@ -18,7 +18,7 @@ use aptos_release_builder::{
     },
     ReleaseEntry,
 };
-use aptos_temppath::TempPath;
+use libra2_temppath::TempPath;
 use libra2_types::on_chain_config::{FeatureFlag as AptosFeatureFlag, OnChainConsensusConfig};
 use move_binary_format::file_format_common::VERSION_DEFAULT_LANG_V2;
 use std::{fs, path::PathBuf, process::Command, sync::Arc};

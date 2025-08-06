@@ -4,7 +4,7 @@
 use aptos_logger::{Level, Logger};
 use aptos_move_debugger::aptos_debugger::AptosDebugger;
 use aptos_push_metrics::MetricsPusher;
-use aptos_rest_client::{AptosBaseUrl, Client};
+use libra2_rest_client::{AptosBaseUrl, Client};
 pub use benchmark::BenchmarkCommand;
 use clap::Parser;
 pub use diff::DiffCommand;

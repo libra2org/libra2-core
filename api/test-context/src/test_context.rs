@@ -3,19 +3,19 @@
 
 use super::{golden_output::GoldenOutputs, pretty};
 use aptos_api::{attach_poem_to_runtime, BasicError, Context};
-use aptos_api_types::{
+use libra2_api_types::{
     mime_types, HexEncodedBytes, TransactionOnChainData, X_APTOS_CHAIN_ID,
-    X_APTOS_LEDGER_TIMESTAMP, X_APTOS_LEDGER_VERSION,
+    X_LIBRA2_LEDGER_TIMESTAMP, X_LIBRA2_LEDGER_VERSION,
 };
 use aptos_cached_packages::aptos_stdlib;
-use aptos_config::{
+use libra2_config::{
     config::{
         NodeConfig, RocksdbConfigs, StorageDirPaths, BUFFERED_STATE_TARGET_ITEMS_FOR_TEST,
         DEFAULT_MAX_NUM_NODES_PER_LRU_CACHE_SHARD, NO_OP_STORAGE_PRUNER_CONFIG,
     },
     keys::ConfigKey,
 };
-use aptos_crypto::{ed25519::Ed25519PrivateKey, hash::HashValue, SigningKey};
+use libra2_crypto::{ed25519::Ed25519PrivateKey, hash::HashValue, SigningKey};
 use aptos_db::AptosDB;
 use aptos_executor::{block_executor::BlockExecutor, db_bootstrapper};
 use aptos_executor_types::BlockExecutorTrait;
@@ -34,7 +34,7 @@ use aptos_sdk::{
 use aptos_storage_interface::{
     state_store::state_view::db_state_view::DbStateView, DbReaderWriter,
 };
-use aptos_temppath::TempPath;
+use libra2_temppath::TempPath;
 use libra2_types::{
     account_address::{create_multisig_account_address, AccountAddress},
     aggregate_signature::AggregateSignature,
@@ -726,11 +726,11 @@ impl TestContext {
             .into_inner()
     }
 
-    pub fn get_latest_ledger_info(&self) -> aptos_api_types::LedgerInfo {
+    pub fn get_latest_ledger_info(&self) -> libra2_api_types::LedgerInfo {
         self.context.get_latest_ledger_info::<BasicError>().unwrap()
     }
 
-    pub fn get_latest_storage_ledger_info(&self) -> aptos_api_types::LedgerInfo {
+    pub fn get_latest_storage_ledger_info(&self) -> libra2_api_types::LedgerInfo {
         self.context
             .get_latest_storage_ledger_info::<BasicError>()
             .unwrap()
@@ -1213,11 +1213,11 @@ impl TestContext {
             let ledger_info = self.get_latest_ledger_info();
             assert_eq!(headers[X_APTOS_CHAIN_ID], "4");
             assert_eq!(
-                headers[X_APTOS_LEDGER_VERSION],
+                headers[X_LIBRA2_LEDGER_VERSION],
                 ledger_info.version().to_string()
             );
             assert_eq!(
-                headers[X_APTOS_LEDGER_TIMESTAMP],
+                headers[X_LIBRA2_LEDGER_TIMESTAMP],
                 ledger_info.timestamp().to_string()
             );
         }

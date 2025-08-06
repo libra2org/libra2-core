@@ -12,8 +12,8 @@ use anyhow::Result;
 use aptos_consensus_types::{
     block::Block, quorum_cert::QuorumCert, timeout_2chain::TwoChainTimeoutCertificate, vote::Vote,
 };
-use aptos_crypto::HashValue;
-use aptos_infallible::Mutex;
+use libra2_crypto::HashValue;
+use libra2_infallible::Mutex;
 use aptos_storage_interface::DbReader;
 use libra2_types::{
     aggregate_signature::AggregateSignature,

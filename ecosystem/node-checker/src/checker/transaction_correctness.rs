@@ -7,7 +7,7 @@ use crate::{
     provider::{api_index::ApiIndexProvider, Provider, ProviderCollection},
 };
 use anyhow::Result;
-use aptos_rest_client::{aptos_api_types::TransactionData, Client as AptosRestClient};
+use libra2_rest_client::{libra2_api_types::TransactionData, Client as AptosRestClient};
 use serde::{Deserialize, Serialize};
 use std::cmp::{max, min};
 
@@ -55,7 +55,7 @@ impl TransactionCorrectnessChecker {
     /// as returned by the API.
     fn unwrap_accumulator_root_hash(
         transaction_data: &TransactionData,
-    ) -> Result<&aptos_crypto::HashValue, CheckerError> {
+    ) -> Result<&libra2_crypto::HashValue, CheckerError> {
         match transaction_data {
             TransactionData::OnChain(on_chain) => Ok(&on_chain.accumulator_root_hash),
             wildcard => Err(CheckerError::NonRetryableEndpointError(

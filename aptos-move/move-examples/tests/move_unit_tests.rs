@@ -5,7 +5,7 @@ use aptos_framework::extended_checks;
 use aptos_gas_schedule::{MiscGasParameters, NativeGasParameters, LATEST_GAS_FEATURE_VERSION};
 use libra2_types::{
     account_address::{create_resource_address, AccountAddress},
-    on_chain_config::{aptos_test_feature_flags_genesis, Features, TimedFeaturesBuilder},
+    on_chain_config::{libra2_test_feature_flags_genesis, Features, TimedFeaturesBuilder},
 };
 use aptos_vm::natives;
 use move_cli::base::test::{run_move_unit_tests, UnitTestResult};
@@ -45,7 +45,7 @@ pub fn run_tests_for_pkg(
         UnitTestingConfig::default(),
         // TODO(Gas): we may want to switch to non-zero costs in the future
         aptos_test_natives(),
-        aptos_test_feature_flags_genesis(),
+        libra2_test_feature_flags_genesis(),
         /* gas limit */ Some(100_000),
         /* cost_table */ None,
         /* compute_coverage */ false,

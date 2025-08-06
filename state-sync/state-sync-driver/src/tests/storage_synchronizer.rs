@@ -25,11 +25,11 @@ use crate::{
     },
 };
 use anyhow::format_err;
-use aptos_config::config::StateSyncDriverConfig;
+use libra2_config::config::StateSyncDriverConfig;
 use aptos_data_streaming_service::data_notification::NotificationId;
 use aptos_event_notifications::EventSubscriptionService;
 use aptos_executor_types::ChunkCommitNotification;
-use aptos_infallible::{Mutex, RwLock};
+use libra2_infallible::{Mutex, RwLock};
 use aptos_mempool_notifications::MempoolNotificationListener;
 use aptos_storage_interface::{AptosDbError, DbReaderWriter};
 use aptos_storage_service_notifications::StorageServiceNotificationListener;
@@ -920,7 +920,7 @@ fn create_storage_synchronizer(
         StorageServiceNotificationHandler::new(storage_service_notifier);
 
     // Create the metadata storage
-    let db_path = aptos_temppath::TempPath::new();
+    let db_path = libra2_temppath::TempPath::new();
     let metadata_storage = PersistentMetadataStorage::new(db_path.path());
 
     // Create the storage synchronizer

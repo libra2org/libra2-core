@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::scheduler_v2::ExecutionQueueManager;
-use aptos_infallible::Mutex;
+use libra2_infallible::Mutex;
 use aptos_mvhashmap::types::{Incarnation, TxnIndex};
 use libra2_types::error::{code_invariant_error, PanicError};
 use crossbeam::utils::CachePadded;

@@ -151,7 +151,7 @@ mod tests {
                     false,
                     0,
                     0.,
-                    aptos_infallible::duration_since_epoch(),
+                    libra2_infallible::duration_since_epoch(),
                 ),
                 vtxn_pool::TransactionFilter::PendingTxnHashSet(HashSet::new()),
             )
@@ -178,7 +178,7 @@ mod tests {
                     false,
                     0,
                     0.,
-                    aptos_infallible::duration_since_epoch(),
+                    libra2_infallible::duration_since_epoch(),
                 ),
                 vtxn_pool::TransactionFilter::PendingTxnHashSet(HashSet::new()),
             )
@@ -205,7 +205,7 @@ mod tests {
                     false,
                     0,
                     0.,
-                    aptos_infallible::duration_since_epoch(),
+                    libra2_infallible::duration_since_epoch(),
                 ),
                 vtxn_pool::TransactionFilter::PendingTxnHashSet(HashSet::new()),
             )
@@ -232,7 +232,7 @@ mod tests {
                     false,
                     0,
                     0.,
-                    aptos_infallible::duration_since_epoch(),
+                    libra2_infallible::duration_since_epoch(),
                 ),
                 vtxn_pool::TransactionFilter::PendingTxnHashSet(HashSet::new()),
             )
@@ -277,7 +277,7 @@ mod tests {
                     false,
                     0,
                     0.,
-                    aptos_infallible::duration_since_epoch(),
+                    libra2_infallible::duration_since_epoch(),
                 ),
                 vtxn_pool::TransactionFilter::PendingTxnHashSet(HashSet::new()),
             )

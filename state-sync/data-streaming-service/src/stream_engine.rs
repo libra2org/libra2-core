@@ -27,12 +27,12 @@ use crate::{
         Epoch, GetAllEpochEndingLedgerInfosRequest, GetAllStatesRequest, StreamRequest,
     },
 };
-use aptos_config::config::DataStreamingServiceConfig;
+use libra2_config::config::DataStreamingServiceConfig;
 use aptos_data_client::{
     global_summary::{AdvertisedData, GlobalDataSummary},
     interface::ResponsePayload,
 };
-use aptos_id_generator::{IdGenerator, U64IdGenerator};
+use libra2_id_generator::{IdGenerator, U64IdGenerator};
 use aptos_logger::prelude::*;
 use libra2_types::{ledger_info::LedgerInfoWithSignatures, transaction::Version};
 use enum_dispatch::enum_dispatch;

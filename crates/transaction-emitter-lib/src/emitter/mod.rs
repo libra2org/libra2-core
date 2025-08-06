@@ -18,10 +18,10 @@ use crate::emitter::{
 };
 use again::RetryPolicy;
 use anyhow::{ensure, format_err, Result};
-use aptos_config::config::DEFAULT_MAX_SUBMIT_TRANSACTION_BATCH_SIZE;
-use aptos_crypto::ed25519::Ed25519PrivateKey;
+use libra2_config::config::DEFAULT_MAX_SUBMIT_TRANSACTION_BATCH_SIZE;
+use libra2_crypto::ed25519::Ed25519PrivateKey;
 use aptos_logger::{sample, sample::SampleRate};
-use aptos_rest_client::{aptos_api_types::AptosErrorCode, error::RestError, Client as RestClient};
+use libra2_rest_client::{libra2_api_types::AptosErrorCode, error::RestError, Client as RestClient};
 use aptos_sdk::{
     move_types::account_address::AccountAddress,
     transaction_builder::{aptos_stdlib, TransactionFactory},
@@ -1064,7 +1064,7 @@ async fn wait_for_accounts_sequence(
             },
         }
 
-        if aptos_infallible::duration_since_epoch().as_secs() >= txn_expiration_ts_secs + 240 {
+        if libra2_infallible::duration_since_epoch().as_secs() >= txn_expiration_ts_secs + 240 {
             sample!(
                 SampleRate::Duration(Duration::from_secs(15)),
                 error!(

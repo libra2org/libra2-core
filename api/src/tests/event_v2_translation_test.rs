@@ -4,7 +4,7 @@
 
 use super::new_test_context;
 use aptos_api_test_context::{current_function_name, TestContext};
-use aptos_crypto::{ed25519::Ed25519PrivateKey, SigningKey, ValidCryptoMaterial};
+use libra2_crypto::{ed25519::Ed25519PrivateKey, SigningKey, ValidCryptoMaterial};
 use aptos_sdk::types::LocalAccount;
 use libra2_types::account_config::RotationProofChallenge;
 use move_core_types::{account_address::AccountAddress, language_storage::CORE_CODE_ADDRESS};

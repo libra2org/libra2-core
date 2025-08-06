@@ -16,7 +16,7 @@ use crate::{
     subscription::{SubscriptionRequest, SubscriptionStreamRequests},
     utils,
 };
-use aptos_config::{config::StorageServiceConfig, network_id::PeerNetworkId};
+use libra2_config::{config::StorageServiceConfig, network_id::PeerNetworkId};
 use aptos_logger::{debug, sample, sample::SampleRate, trace, warn};
 use aptos_network::protocols::wire::handshake::v1::ProtocolId;
 use aptos_storage_service_types::{
@@ -30,7 +30,7 @@ use aptos_storage_service_types::{
     },
     StorageServiceError,
 };
-use aptos_time_service::TimeService;
+use libra2_time_service::TimeService;
 use libra2_types::transaction::Version;
 use arc_swap::ArcSwap;
 use dashmap::{mapref::entry::Entry, DashMap};

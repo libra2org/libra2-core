@@ -18,7 +18,7 @@ use crate::{
     Event, Filter, Key, Level, LevelFilter, Metadata, ERROR_LOG_COUNT, INFO_LOG_COUNT,
     WARN_LOG_COUNT,
 };
-use aptos_infallible::RwLock;
+use libra2_infallible::RwLock;
 use backtrace::Backtrace;
 use chrono::{SecondsFormat, Utc};
 use futures::channel;
@@ -212,8 +212,8 @@ impl LogEntry {
 
         #[cfg(node_identity)]
         {
-            peer_id = aptos_node_identity::peer_id_as_str();
-            chain_id = aptos_node_identity::chain_id().map(|chain_id| chain_id.id());
+            peer_id = libra2_node_identity::peer_id_as_str();
+            chain_id = libra2_node_identity::chain_id().map(|chain_id| chain_id.id());
         }
 
         #[cfg(not(node_identity))]

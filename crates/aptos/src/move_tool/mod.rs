@@ -28,8 +28,8 @@ use crate::{
     },
     CliCommand, CliResult,
 };
-use aptos_api_types::AptosErrorCode;
-use aptos_crypto::HashValue;
+use libra2_api_types::AptosErrorCode;
+use libra2_crypto::HashValue;
 use aptos_framework::{
     chunked_publish::{
         chunk_package_and_create_payloads, large_packages_cleanup_staging_area, PublishType,
@@ -42,15 +42,15 @@ use aptos_framework::{
 };
 use aptos_gas_schedule::{MiscGasParameters, NativeGasParameters};
 use aptos_move_debugger::aptos_debugger::AptosDebugger;
-use aptos_rest_client::{
-    aptos_api_types::{EntryFunctionId, HexEncodedBytes, IdentifierWrapper, MoveModuleId},
+use libra2_rest_client::{
+    libra2_api_types::{EntryFunctionId, HexEncodedBytes, IdentifierWrapper, MoveModuleId},
     error::RestError,
     AptosBaseUrl, Client,
 };
 use libra2_types::{
     account_address::{create_resource_address, AccountAddress},
     object_address::create_object_code_deployment_address,
-    on_chain_config::aptos_test_feature_flags_genesis,
+    on_chain_config::libra2_test_feature_flags_genesis,
     transaction::{
         ReplayProtector, Transaction, TransactionArgument, TransactionPayload, TransactionStatus,
     },
@@ -617,7 +617,7 @@ impl CliCommand<&'static str> for TestPackage {
                 NativeGasParameters::zeros(),
                 MiscGasParameters::zeros(),
             ),
-            aptos_test_feature_flags_genesis(),
+            libra2_test_feature_flags_genesis(),
             None,
             None,
             self.compute_coverage,

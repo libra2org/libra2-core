@@ -3,7 +3,7 @@
 
 use crate::{components::get_signer_arg, utils::*};
 use anyhow::Result;
-use aptos_crypto::HashValue;
+use libra2_crypto::HashValue;
 use aptos_framework::generate_blob_as_hex_string;
 use libra2_types::on_chain_config::{DiffItem, GasScheduleV2};
 use move_model::{code_writer::CodeWriter, emit, emitln, model::Loc};
@@ -92,7 +92,7 @@ pub fn generate_gas_upgrade_proposal(
     emitln!(
         writer,
         "// Source commit hash: {}",
-        aptos_build_info::get_git_hash()
+        libra2_build_info::get_git_hash()
     );
     emitln!(writer);
 

@@ -7,10 +7,10 @@ use aptos_forge::{
     NetworkContextSynchronizer, NetworkTest, Result, SwarmExt, Test, DEFAULT_ROOT_PRIV_KEY,
     FORGE_KEY_SEED,
 };
-use aptos_keygen::KeyGen;
+use libra2_keygen::KeyGen;
 use aptos_release_builder::ReleaseConfig;
 use aptos_sdk::crypto::{ed25519::Ed25519PrivateKey, PrivateKey};
-use aptos_temppath::TempPath;
+use libra2_temppath::TempPath;
 use libra2_types::transaction::authenticator::AuthenticationKey;
 use async_trait::async_trait;
 use log::info;

@@ -8,7 +8,7 @@ use aptos_consensus_types::{
     pipelined_block::PipelinedBlock,
     proof_of_store::{BatchInfo, ProofCache, ProofOfStore},
 };
-use aptos_crypto::{hash::CryptoHash, HashValue};
+use libra2_crypto::{hash::CryptoHash, HashValue};
 use libra2_types::{
     block_info::{BlockInfo, Round},
     epoch_change::Verifier,
@@ -1049,7 +1049,7 @@ mod test {
         pipelined_block::OrderedBlockWindow,
         quorum_cert::QuorumCert,
     };
-    use aptos_crypto::{ed25519::Ed25519PrivateKey, HashValue, PrivateKey, SigningKey, Uniform};
+    use libra2_crypto::{ed25519::Ed25519PrivateKey, HashValue, PrivateKey, SigningKey, Uniform};
     use libra2_types::{
         aggregate_signature::AggregateSignature,
         chain_id::ChainId,

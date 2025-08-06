@@ -13,8 +13,8 @@ use crate::{
     warn,
 };
 use anyhow::Result;
-use aptos_config::config::{PeerRole, RoleType};
-use aptos_crypto::{noise, x25519};
+use libra2_config::config::{PeerRole, RoleType};
+use libra2_crypto::{noise, x25519};
 use libra2_types::{chain_id::ChainId, PeerId};
 use reqwest::header::AUTHORIZATION;
 use warp::{filters::BoxedFilter, reject, reply, Filter, Rejection, Reply};

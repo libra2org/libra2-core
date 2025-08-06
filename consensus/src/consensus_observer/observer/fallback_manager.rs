@@ -5,10 +5,10 @@ use crate::consensus_observer::common::{
     error::Error,
     logging::{LogEntry, LogSchema},
 };
-use aptos_config::config::ConsensusObserverConfig;
+use libra2_config::config::ConsensusObserverConfig;
 use aptos_logger::warn;
 use aptos_storage_interface::DbReader;
-use aptos_time_service::{TimeService, TimeServiceTrait};
+use libra2_time_service::{TimeService, TimeServiceTrait};
 use libra2_types::{ledger_info::LedgerInfoWithSignatures, transaction::Version};
 use std::{
     sync::Arc,
@@ -167,7 +167,7 @@ impl ObserverFallbackManager {
 #[cfg(test)]
 mod test {
     use super::*;
-    use aptos_crypto::HashValue;
+    use libra2_crypto::HashValue;
     use aptos_storage_interface::Result;
     use libra2_types::{
         aggregate_signature::AggregateSignature, block_info::BlockInfo, ledger_info::LedgerInfo,

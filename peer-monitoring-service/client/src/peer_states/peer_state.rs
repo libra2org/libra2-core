@@ -12,17 +12,17 @@ use crate::{
     },
     Error, PeerMonitoringServiceClient,
 };
-use aptos_config::{
+use libra2_config::{
     config::{NodeConfig, PeerMonitoringServiceConfig},
     network_id::PeerNetworkId,
 };
-use aptos_id_generator::{IdGenerator, U64IdGenerator};
-use aptos_infallible::RwLock;
+use libra2_id_generator::{IdGenerator, U64IdGenerator};
+use libra2_infallible::RwLock;
 use aptos_network::application::{interface::NetworkClient, metadata::PeerMetadata};
 use aptos_peer_monitoring_service_types::{
     response::PeerMonitoringServiceResponse, PeerMonitoringMetadata, PeerMonitoringServiceMessage,
 };
-use aptos_time_service::{TimeService, TimeServiceTrait};
+use libra2_time_service::{TimeService, TimeServiceTrait};
 use rand::{rngs::OsRng, Rng};
 use std::{
     collections::HashMap,

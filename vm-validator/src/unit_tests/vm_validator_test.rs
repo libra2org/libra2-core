@@ -4,7 +4,7 @@
 
 use crate::vm_validator::{get_account_sequence_number, PooledVMValidator, TransactionValidation};
 use aptos_cached_packages::aptos_stdlib;
-use aptos_crypto::{ed25519::Ed25519PrivateKey, PrivateKey, Uniform};
+use libra2_crypto::{ed25519::Ed25519PrivateKey, PrivateKey, Uniform};
 use aptos_db::AptosDB;
 use aptos_gas_schedule::{InitialGasSchedule, TransactionGasParameters};
 use aptos_storage_interface::{
@@ -25,12 +25,12 @@ const MAX_TRANSACTION_SIZE_IN_BYTES: u64 = 6 * 1024 * 1024;
 
 struct TestValidator {
     vm_validator: PooledVMValidator,
-    _db_path: aptos_temppath::TempPath,
+    _db_path: libra2_temppath::TempPath,
 }
 
 impl TestValidator {
     fn new() -> Self {
-        let _db_path = aptos_temppath::TempPath::new();
+        let _db_path = libra2_temppath::TempPath::new();
         _db_path.create_as_dir().unwrap();
         let (db, db_rw) = DbReaderWriter::wrap(AptosDB::new_for_test(_db_path.path()));
         aptos_executor_test_helpers::bootstrap_genesis::<AptosVMBlockExecutor>(

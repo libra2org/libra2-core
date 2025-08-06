@@ -14,8 +14,8 @@ use crate::{
     },
     CliCommand, CliResult,
 };
-use aptos_config::config::{Peer, PeerRole};
-use aptos_crypto::{
+use libra2_config::config::{Peer, PeerRole};
+use libra2_crypto::{
     bls12381, ed25519, ed25519::Ed25519PrivateKey, encoding_type::EncodingType, x25519, PrivateKey,
     ValidCryptoMaterial,
 };

@@ -10,7 +10,7 @@ use crate::{
     subscription::{SubscriptionRequest, SubscriptionStreamRequests},
     tests::{mock, mock::MockClient, utils},
 };
-use aptos_config::{
+use libra2_config::{
     config::{AptosDataClientConfig, StorageServiceConfig},
     network_id::PeerNetworkId,
 };
@@ -23,7 +23,7 @@ use aptos_storage_service_types::{
     responses::StorageServerSummary,
     StorageServiceError,
 };
-use aptos_time_service::TimeService;
+use libra2_time_service::TimeService;
 use libra2_types::epoch_change::EpochChangeProof;
 use arc_swap::ArcSwap;
 use claims::assert_matches;

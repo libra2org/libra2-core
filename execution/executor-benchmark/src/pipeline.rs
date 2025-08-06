@@ -9,10 +9,10 @@ use crate::{
     OverallMeasurement, TransactionCommitter, TransactionExecutor,
 };
 use aptos_block_partitioner::v2::config::PartitionerV2Config;
-use aptos_crypto::HashValue;
+use libra2_crypto::HashValue;
 use aptos_executor::block_executor::BlockExecutor;
 use aptos_executor_types::{state_compute_result::StateComputeResult, BlockExecutorTrait};
-use aptos_infallible::Mutex;
+use libra2_infallible::Mutex;
 use aptos_logger::info;
 use libra2_types::{
     block_executor::partitioner::ExecutableBlock,

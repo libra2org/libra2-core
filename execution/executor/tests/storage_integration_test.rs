@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use aptos_cached_packages::aptos_stdlib;
-use aptos_crypto::{hash::CryptoHash, PrivateKey};
+use libra2_crypto::{hash::CryptoHash, PrivateKey};
 use aptos_executor_test_helpers::{
     gen_block_id, gen_ledger_info_with_sigs, get_test_signed_transaction,
     integration_test_impl::{
@@ -15,7 +15,7 @@ use aptos_storage_interface::state_store::state_view::db_state_view::DbStateView
 use libra2_types::{
     account_config::{aptos_test_root_address, AccountResource, CORE_CODE_ADDRESS},
     block_metadata::BlockMetadata,
-    on_chain_config::{AptosVersion, OnChainConfig, ValidatorSet},
+    on_chain_config::{Libra2Version, OnChainConfig, ValidatorSet},
     state_store::{state_key::StateKey, MoveResourceExt},
     test_helpers::transaction_test_helpers::TEST_BLOCK_EXECUTOR_ONCHAIN_CONFIG,
     transaction::{
@@ -29,7 +29,7 @@ use std::sync::Arc;
 
 #[test]
 fn test_genesis() {
-    let path = aptos_temppath::TempPath::new();
+    let path = libra2_temppath::TempPath::new();
     path.create_as_dir().unwrap();
     let genesis = aptos_vm_genesis::test_genesis_transaction();
     let (_, db, _executor, waypoint) = create_db_and_executor(path.path(), &genesis, false);
@@ -71,7 +71,7 @@ fn test_reconfiguration() {
     // When executing a transaction emits a validator set change,
     // storage should propagate the new validator set
 
-    let path = aptos_temppath::TempPath::new();
+    let path = libra2_temppath::TempPath::new();
     path.create_as_dir().unwrap();
     let (genesis, validators) = aptos_vm_genesis::test_genesis_change_set_and_validators(Some(1));
     let genesis_key = &aptos_vm_genesis::GENESIS_KEYPAIR.0;
@@ -177,7 +177,7 @@ fn test_reconfiguration() {
         .unwrap();
 
     assert_eq!(
-        AptosVersion::fetch_config(&db_state_view).unwrap().major,
+        Libra2Version::fetch_config(&db_state_view).unwrap().major,
         42
     );
 }

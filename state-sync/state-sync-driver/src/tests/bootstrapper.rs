@@ -20,13 +20,13 @@ use crate::{
     },
     utils::OutputFallbackHandler,
 };
-use aptos_config::config::BootstrappingMode;
+use libra2_config::config::BootstrappingMode;
 use aptos_data_client::global_summary::GlobalDataSummary;
 use aptos_data_streaming_service::{
     data_notification::{DataNotification, DataPayload, NotificationId},
     streaming_client::{NotificationAndFeedback, NotificationFeedback},
 };
-use aptos_time_service::TimeService;
+use libra2_time_service::TimeService;
 use libra2_types::{
     transaction::{TransactionOutputListWithProofV2, Version},
     waypoint::Waypoint,

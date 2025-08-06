@@ -10,11 +10,11 @@ use crate::{
     vote_data::VoteData,
 };
 use aptos_bitvec::BitVec;
-use aptos_crypto::{
+use libra2_crypto::{
     hash::{CryptoHash, CryptoHasher},
     HashValue,
 };
-use aptos_crypto_derive::CryptoHasher;
+use libra2_crypto_derive::CryptoHasher;
 use libra2_types::{
     aggregate_signature::AggregateSignature,
     block_info::BlockInfo,

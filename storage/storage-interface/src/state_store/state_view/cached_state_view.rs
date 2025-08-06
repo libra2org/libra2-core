@@ -15,7 +15,7 @@ use crate::{
     DbReader,
 };
 use anyhow::Result;
-use aptos_metrics_core::{IntCounterHelper, TimerHelper};
+use libra2_metrics_core::{IntCounterHelper, TimerHelper};
 use libra2_types::{
     state_store::{
         hot_state::THotStateSlot, state_key::StateKey, state_slot::StateSlot,

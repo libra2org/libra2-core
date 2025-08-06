@@ -10,18 +10,18 @@ use crate::{
         wire::handshake::v1::{HandshakeMsg, MessagingProtocolVersion, ProtocolIdSet},
     },
 };
-use aptos_config::{
+use libra2_config::{
     config::{PeerRole, HANDSHAKE_VERSION},
     network_id::{NetworkContext, NetworkId},
 };
-use aptos_crypto::x25519;
-use aptos_id_generator::{IdGenerator, U32IdGenerator};
+use libra2_crypto::x25519;
+use libra2_id_generator::{IdGenerator, U32IdGenerator};
 use aptos_logger::prelude::*;
 // Re-exposed for aptos-network-checker
 pub use aptos_netcore::transport::tcp::{resolve_and_connect, TCPBufferCfg, TcpSocket};
 use aptos_netcore::transport::{proxy_protocol, tcp, ConnectionOrigin, Transport};
 use aptos_short_hex_str::AsShortHexStr;
-use aptos_time_service::{timeout, TimeService, TimeServiceTrait};
+use libra2_time_service::{timeout, TimeService, TimeServiceTrait};
 use libra2_types::{
     chain_id::ChainId,
     network_address::{parse_dns_tcp, parse_ip_tcp, parse_memory, NetworkAddress},

@@ -19,10 +19,10 @@ use crate::{
     Epoch, StorageServiceRequest, COMPRESSION_SUFFIX_LABEL,
 };
 use aptos_compression::{client::CompressionClient, CompressedData};
-use aptos_config::config::{
+use libra2_config::config::{
     AptosDataClientConfig, StorageServiceConfig, MAX_APPLICATION_MESSAGE_SIZE,
 };
-use aptos_time_service::{TimeService, TimeServiceTrait};
+use libra2_time_service::{TimeService, TimeServiceTrait};
 use libra2_types::{
     epoch_change::EpochChangeProof,
     ledger_info::LedgerInfoWithSignatures,

@@ -16,9 +16,9 @@ use crate::{
     },
 };
 use anyhow::{Context, Result};
-use aptos_crypto::{ed25519::Ed25519Signature, secp256r1_ecdsa, HashValue, PrivateKey, SigningKey};
-use aptos_ledger::AptosLedgerError;
-use aptos_rest_client::{aptos_api_types::MoveStructTag, Client, PepperRequest, ProverRequest};
+use libra2_crypto::{ed25519::Ed25519Signature, secp256r1_ecdsa, HashValue, PrivateKey, SigningKey};
+use libra2_ledger::AptosLedgerError;
+use libra2_rest_client::{libra2_api_types::MoveStructTag, Client, PepperRequest, ProverRequest};
 pub use libra2_types::*;
 use libra2_types::{
     event::EventKey,
@@ -144,7 +144,7 @@ pub fn get_paired_fa_primary_store_address(
     let mut bytes = address.to_vec();
     bytes.append(&mut fa_metadata_address.to_vec());
     bytes.push(0xFC);
-    AccountAddress::from_bytes(aptos_crypto::hash::HashValue::sha3_256_of(&bytes).to_vec()).unwrap()
+    AccountAddress::from_bytes(libra2_crypto::hash::HashValue::sha3_256_of(&bytes).to_vec()).unwrap()
 }
 
 pub fn get_paired_fa_metadata_address(coin_type_name: &MoveStructTag) -> AccountAddress {
@@ -667,7 +667,7 @@ impl HardwareWalletAccount {
         derivation_path: String,
         sequence_number: u64,
     ) -> Result<Self, AptosLedgerError> {
-        let public_key = aptos_ledger::get_public_key(&derivation_path, false)?;
+        let public_key = libra2_ledger::get_public_key(&derivation_path, false)?;
         let authentication_key = AuthenticationKey::ed25519(&public_key);
         let address = authentication_key.account_address();
 
@@ -708,7 +708,7 @@ impl HardwareWalletAccount {
         &self,
         message: &[u8],
     ) -> Result<Ed25519Signature, AptosLedgerError> {
-        aptos_ledger::sign_message(&self.derivation_path, message)
+        libra2_ledger::sign_message(&self.derivation_path, message)
     }
 }
 
@@ -1228,8 +1228,8 @@ async fn get_pepper_from_jwt(
 mod tests {
     use super::*;
     use crate::coin_client::CoinClient;
-    use aptos_crypto::ed25519::Ed25519PrivateKey;
-    use aptos_rest_client::{AptosBaseUrl, FaucetClient};
+    use libra2_crypto::ed25519::Ed25519PrivateKey;
+    use libra2_rest_client::{AptosBaseUrl, FaucetClient};
     use reqwest::Url;
 
     #[test]
@@ -1276,7 +1276,7 @@ mod tests {
     #[ignore]
     #[tokio::test]
     async fn test_derive_keyless_account() {
-        let aptos_rest_client = Client::builder(AptosBaseUrl::Devnet).build();
+        let libra2_rest_client = Client::builder(AptosBaseUrl::Devnet).build();
         // This JWT is taken from https://github.com/aptos-labs/aptos-ts-sdk/blob/f644e61beb70e69dfd489e75287c67b527385135/tests/e2e/api/keyless.test.ts#L11
         // As is the ephemeralKeyPair
         // This ephemeralKeyPair expires December 29, 2024.
@@ -1287,11 +1287,11 @@ mod tests {
         let esk = Ed25519PrivateKey::try_from(sk_bytes.as_slice()).unwrap();
         let ephemeral_key_pair =
             EphemeralKeyPair::new_ed25519(esk, 1735475012, vec![0; 31]).unwrap();
-        let mut account = derive_keyless_account(&aptos_rest_client, jwt, ephemeral_key_pair, None)
+        let mut account = derive_keyless_account(&libra2_rest_client, jwt, ephemeral_key_pair, None)
             .await
             .unwrap();
         println!("Address: {}", account.address().to_hex_literal());
-        let balance = aptos_rest_client
+        let balance = libra2_rest_client
             .view_apt_account_balance(account.address())
             .await
             .unwrap()
@@ -1300,7 +1300,7 @@ mod tests {
             println!("Funding account");
             let faucet_client = FaucetClient::new_from_rest_client(
                 Url::from_str("https://faucet.devnet.aptoslabs.com").unwrap(),
-                aptos_rest_client.clone(),
+                libra2_rest_client.clone(),
             );
             faucet_client
                 .fund(account.address(), 10000000)
@@ -1309,13 +1309,13 @@ mod tests {
         }
         println!(
             "Balance: {}",
-            aptos_rest_client
+            libra2_rest_client
                 .view_apt_account_balance(account.address())
                 .await
                 .unwrap()
                 .into_inner()
         );
-        let coin_client = CoinClient::new(&aptos_rest_client);
+        let coin_client = CoinClient::new(&libra2_rest_client);
         let signed_txn = coin_client
             .get_signed_transfer_txn(
                 &mut account,
@@ -1331,7 +1331,7 @@ mod tests {
         println!(
             "Sent 1111111 to 0x7968dab936c1bad187c60ce4082f307d030d780e91e694ae03aef16aba73f30"
         );
-        aptos_rest_client
+        libra2_rest_client
             .submit_without_deserializing_response(&signed_txn)
             .await
             .unwrap();

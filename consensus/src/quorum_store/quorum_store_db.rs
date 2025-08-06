@@ -9,7 +9,7 @@ use crate::{
     },
 };
 use anyhow::Result;
-use aptos_crypto::HashValue;
+use libra2_crypto::HashValue;
 use aptos_logger::prelude::*;
 use aptos_schemadb::{
     batch::{SchemaBatch, WriteBatch},

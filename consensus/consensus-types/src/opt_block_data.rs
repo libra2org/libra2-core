@@ -8,9 +8,9 @@ use crate::{
     quorum_cert::QuorumCert,
 };
 use anyhow::ensure;
-use aptos_crypto::HashValue;
-use aptos_crypto_derive::CryptoHasher;
-use aptos_infallible::duration_since_epoch;
+use libra2_crypto::HashValue;
+use libra2_crypto_derive::CryptoHasher;
+use libra2_infallible::duration_since_epoch;
 use libra2_types::{block_info::BlockInfo, validator_txn::ValidatorTransaction};
 use serde::{Deserialize, Serialize};
 use std::{
