@@ -8,9 +8,9 @@ use crate::{
     },
     EmitModeParams,
 };
-use aptos_logger::{sample, sample::SampleRate};
+use libra2_logger::{sample, sample::SampleRate};
 use libra2_rest_client::Client as RestClient;
-use aptos_sdk::{
+use libra2_sdk::{
     move_types::account_address::AccountAddress,
     types::{transaction::SignedTransaction, vm_status::StatusCode, LocalAccount},
 };

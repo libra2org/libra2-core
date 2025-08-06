@@ -13,12 +13,12 @@ use libra2_config::{
     network_id::{NetworkId, PeerNetworkId},
 };
 use libra2_crypto::{ed25519::Ed25519PrivateKey, HashValue, PrivateKey, SigningKey, Uniform};
-use aptos_logger::Level;
-use aptos_network::protocols::network::RpcError;
-use aptos_storage_service_notifications::{
+use libra2_logger::Level;
+use libra2_network::protocols::network::RpcError;
+use libra2_storage_service_notifications::{
     StorageServiceNotificationSender, StorageServiceNotifier,
 };
-use aptos_storage_service_types::{
+use libra2_storage_service_types::{
     requests::{
         DataRequest, StateValuesWithProofRequest, StorageServiceRequest,
         SubscribeTransactionOutputsWithProofRequest,
@@ -608,7 +608,7 @@ pub async fn get_transactions_with_proof(
 
 /// Initializes the Aptos logger for tests
 pub fn initialize_logger() {
-    aptos_logger::Logger::builder()
+    libra2_logger::Logger::builder()
         .is_async(false)
         .level(Level::Debug)
         .build();
@@ -672,7 +672,7 @@ pub async fn subscribe_to_transactions_or_outputs(
     stream_id: u64,
     stream_index: u64,
     use_request_v2: bool,
-) -> Receiver<Result<bytes::Bytes, aptos_network::protocols::network::RpcError>> {
+) -> Receiver<Result<bytes::Bytes, libra2_network::protocols::network::RpcError>> {
     subscribe_to_transactions_or_outputs_for_peer(
         mock_client,
         known_version,

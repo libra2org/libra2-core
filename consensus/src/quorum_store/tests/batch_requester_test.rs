@@ -9,7 +9,7 @@ use crate::{
     },
     test_utils::create_vec_signed_transactions,
 };
-use aptos_consensus_types::{
+use libra2_consensus_types::{
     common::Author,
     proof_of_store::{ProofOfStore, SignedBatchInfo},
 };

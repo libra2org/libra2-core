@@ -12,7 +12,7 @@ use aptos_db_indexer::{
     db_ops::open_db,
     db_v2::IndexerAsyncV2,
 };
-use aptos_mempool::MempoolClientSender;
+use libra2_mempool::MempoolClientSender;
 use aptos_storage_interface::DbReaderWriter;
 use libra2_types::{chain_id::ChainId, transaction::Version};
 use std::{sync::Arc, time::Instant};
@@ -29,7 +29,7 @@ pub fn bootstrap_internal_indexer_db(
     if !config.indexer_db_config.is_internal_indexer_db_enabled() || internal_indexer_db.is_none() {
         return None;
     }
-    let runtime = aptos_runtimes::spawn_named_runtime("index-db".to_string(), None);
+    let runtime = libra2_runtimes::spawn_named_runtime("index-db".to_string(), None);
     // Set up db config and open up the db initially to read metadata
     let mut indexer_service = InternalIndexerDBService::new(
         db_rw.reader,
@@ -62,7 +62,7 @@ pub fn bootstrap(
         return None;
     }
 
-    let runtime = aptos_runtimes::spawn_named_runtime("table-info".to_string(), None);
+    let runtime = libra2_runtimes::spawn_named_runtime("table-info".to_string(), None);
 
     // Set up db config and open up the db initially to read metadata
     let node_config = config.clone();

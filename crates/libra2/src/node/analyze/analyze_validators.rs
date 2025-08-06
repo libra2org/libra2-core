@@ -3,8 +3,8 @@
 
 use super::fetch_metadata::ValidatorInfo;
 use anyhow::Result;
-use aptos_bitvec::BitVec;
-use aptos_logger::error;
+use libra2_bitvec::BitVec;
+use libra2_logger::error;
 use libra2_rest_client::VersionedNewBlockEvent;
 use aptos_storage_interface::{DbReader, Order};
 use libra2_types::{

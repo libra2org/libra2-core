@@ -9,13 +9,13 @@ use libra2_config::{
     config::{PeerRole, StorageServiceConfig},
     network_id::{NetworkId, PeerNetworkId},
 };
-use aptos_netcore::transport::ConnectionOrigin;
-use aptos_network::{
+use libra2_netcore::transport::ConnectionOrigin;
+use libra2_network::{
     application::metadata::ConnectionState,
     protocols::wire::handshake::v1::{MessagingProtocolVersion, ProtocolIdSet},
     transport::{ConnectionId, ConnectionMetadata},
 };
-use aptos_storage_service_types::{
+use libra2_storage_service_types::{
     requests::{DataRequest, StorageServiceRequest, TransactionsWithProofRequest},
     responses::StorageServiceResponse,
     StorageServiceError,

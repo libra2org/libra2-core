@@ -14,13 +14,13 @@ use crate::{
     utils::{OutputFallbackHandler, SpeculativeStreamState, PENDING_DATA_LOG_FREQ_SECS},
 };
 use libra2_config::config::BootstrappingMode;
-use aptos_data_client::global_summary::GlobalDataSummary;
-use aptos_data_streaming_service::{
+use libra2_data_client::global_summary::GlobalDataSummary;
+use libra2_data_streaming_service::{
     data_notification::{DataNotification, DataPayload, NotificationId},
     data_stream::DataStreamListener,
     streaming_client::{DataStreamingClient, NotificationAndFeedback, NotificationFeedback},
 };
-use aptos_logger::{prelude::*, sample::SampleRate};
+use libra2_logger::{prelude::*, sample::SampleRate};
 use aptos_storage_interface::DbReader;
 use libra2_types::{
     epoch_change::Verifier,

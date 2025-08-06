@@ -5,11 +5,11 @@
 #![forbid(unsafe_code)]
 
 use libra2_config::network_id::PeerNetworkId;
-use aptos_network::{
+use libra2_network::{
     application::{interface::NetworkClientInterface, storage::PeersAndMetadata},
     protocols::network::RpcError,
 };
-use aptos_storage_service_types::{
+use libra2_storage_service_types::{
     requests::StorageServiceRequest, responses::StorageServiceResponse, StorageServiceError,
     StorageServiceMessage,
 };

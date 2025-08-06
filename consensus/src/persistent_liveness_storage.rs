@@ -8,12 +8,12 @@ use crate::{
 };
 use anyhow::{bail, format_err, Context, Result};
 use libra2_config::config::NodeConfig;
-use aptos_consensus_types::{
+use libra2_consensus_types::{
     block::Block, quorum_cert::QuorumCert, timeout_2chain::TwoChainTimeoutCertificate, vote::Vote,
     vote_data::VoteData, wrapped_ledger_info::WrappedLedgerInfo,
 };
 use libra2_crypto::HashValue;
-use aptos_logger::prelude::*;
+use libra2_logger::prelude::*;
 use aptos_storage_interface::DbReader;
 use libra2_types::{
     block_info::Round, epoch_change::EpochChangeProof, ledger_info::LedgerInfoWithSignatures,

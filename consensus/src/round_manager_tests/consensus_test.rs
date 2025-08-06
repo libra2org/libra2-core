@@ -16,7 +16,7 @@ use crate::{
     test_utils::{consensus_runtime, timed_block_on, TreeInserter},
 };
 use libra2_config::config::ConsensusConfig;
-use aptos_consensus_types::{
+use libra2_consensus_types::{
     block::{
         block_test_utils::{certificate_for_genesis, gen_test_certificate},
         Block,
@@ -30,10 +30,10 @@ use aptos_consensus_types::{
 };
 use libra2_crypto::HashValue;
 use libra2_infallible::Mutex;
-use aptos_logger::prelude::info;
-use aptos_network::{protocols::network::Event, ProtocolId};
-use aptos_safety_rules::{PersistentSafetyStorage, SafetyRulesManager};
-use aptos_secure_storage::Storage;
+use libra2_logger::prelude::info;
+use libra2_network::{protocols::network::Event, ProtocolId};
+use libra2_safety_rules::{PersistentSafetyStorage, SafetyRulesManager};
+use libra2_secure_storage::Storage;
 use libra2_types::validator_verifier::generate_validator_verifier;
 use futures::{channel::oneshot, StreamExt};
 use std::{sync::Arc, time::Duration};
@@ -1272,7 +1272,7 @@ fn safety_rules_crash() {
 
     fn reset_safety_rules(node: &mut NodeSetup) {
         let safety_storage = PersistentSafetyStorage::initialize(
-            Storage::from(aptos_secure_storage::InMemoryStorage::new()),
+            Storage::from(libra2_secure_storage::InMemoryStorage::new()),
             node.signer.author(),
             node.signer.private_key().clone(),
             node.round_manager.consensus_state().waypoint(),

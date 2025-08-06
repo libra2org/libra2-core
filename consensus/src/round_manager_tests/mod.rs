@@ -36,7 +36,7 @@ use libra2_config::{
     config::{BlockTransactionFilterConfig, ConsensusConfig},
     network_id::{NetworkId, PeerNetworkId},
 };
-use aptos_consensus_types::{
+use libra2_consensus_types::{
     block_retrieval::BlockRetrievalRequest,
     common::{Author, Round},
     opt_block_data::OptBlockData,
@@ -53,8 +53,8 @@ use aptos_consensus_types::{
 use libra2_crypto::HashValue;
 use aptos_executor_types::ExecutorResult;
 use libra2_infallible::Mutex;
-use aptos_logger::prelude::info;
-use aptos_network::{
+use libra2_logger::prelude::info;
+use libra2_network::{
     application::interface::NetworkClient,
     peer_manager::{ConnectionRequestSender, PeerManagerRequestSender},
     protocols::{
@@ -65,8 +65,8 @@ use aptos_network::{
     transport::ConnectionMetadata,
     ProtocolId,
 };
-use aptos_safety_rules::{PersistentSafetyStorage, SafetyRulesManager};
-use aptos_secure_storage::Storage;
+use libra2_safety_rules::{PersistentSafetyStorage, SafetyRulesManager};
+use libra2_secure_storage::Storage;
 use libra2_types::{
     epoch_state::EpochState,
     ledger_info::LedgerInfo,
@@ -304,7 +304,7 @@ impl NodeSetup {
             let (initial_data, storage) = MockStorage::start_for_testing((&validators).into());
 
             let safety_storage = PersistentSafetyStorage::initialize(
-                Storage::from(aptos_secure_storage::InMemoryStorage::new()),
+                Storage::from(libra2_secure_storage::InMemoryStorage::new()),
                 signer.author(),
                 signer.private_key().clone(),
                 waypoint,

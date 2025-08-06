@@ -11,7 +11,7 @@ use libra2_config::{
 };
 use aptos_forge::{reconfig, LocalSwarm, NodeExt, Swarm, SwarmExt};
 use libra2_rest_client::{Client as RestClient, Client};
-use aptos_sdk::{
+use libra2_sdk::{
     transaction_builder::TransactionFactory,
     types::{transaction::SignedTransaction, LocalAccount},
 };
@@ -317,7 +317,7 @@ pub async fn update_consensus_config(
 #[cfg(test)]
 pub mod swarm_utils {
     use libra2_config::config::{NodeConfig, SecureBackend, WaypointConfig};
-    use aptos_secure_storage::{KVStorage, Storage};
+    use libra2_secure_storage::{KVStorage, Storage};
     use libra2_types::waypoint::Waypoint;
 
     pub fn insert_waypoint(node_config: &mut NodeConfig, waypoint: Waypoint) {
@@ -326,10 +326,10 @@ pub mod swarm_utils {
         let f = |backend: &SecureBackend| {
             let mut storage: Storage = backend.into();
             storage
-                .set(aptos_global_constants::WAYPOINT, waypoint)
+                .set(libra2_global_constants::WAYPOINT, waypoint)
                 .expect("Unable to write waypoint");
             storage
-                .set(aptos_global_constants::GENESIS_WAYPOINT, waypoint)
+                .set(libra2_global_constants::GENESIS_WAYPOINT, waypoint)
                 .expect("Unable to write waypoint");
         };
         let backend = &node_config.consensus.safety_rules.backend;

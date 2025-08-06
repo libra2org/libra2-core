@@ -13,14 +13,14 @@ use crate::{
         utils::Timeouts,
     },
 };
-use aptos_consensus_types::{
+use libra2_consensus_types::{
     payload::TDataInfo,
     proof_of_store::{
         BatchInfo, ProofCache, ProofOfStore, SignedBatchInfo, SignedBatchInfoError,
         SignedBatchInfoMsg,
     },
 };
-use aptos_logger::prelude::*;
+use libra2_logger::prelude::*;
 use aptos_short_hex_str::AsShortHexStr;
 use libra2_types::{
     ledger_info::SignatureAggregator, validator_verifier::ValidatorVerifier, PeerId,

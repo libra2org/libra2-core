@@ -6,12 +6,12 @@ use crate::{
     metrics, Error,
 };
 use libra2_config::network_id::PeerNetworkId;
-use aptos_logger::{trace, warn};
-use aptos_network::application::{
+use libra2_logger::{trace, warn};
+use libra2_network::application::{
     interface::{NetworkClient, NetworkClientInterface},
     storage::PeersAndMetadata,
 };
-use aptos_peer_monitoring_service_types::{
+use libra2_peer_monitoring_service_types::{
     request::PeerMonitoringServiceRequest, response::PeerMonitoringServiceResponse,
     PeerMonitoringServiceMessage,
 };

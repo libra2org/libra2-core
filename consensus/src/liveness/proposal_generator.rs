@@ -22,7 +22,7 @@ use libra2_config::config::{
     ChainHealthBackoffValues, ExecutionBackpressureConfig, ExecutionBackpressureMetric,
     PipelineBackpressureValues,
 };
-use aptos_consensus_types::{
+use libra2_consensus_types::{
     block::Block,
     block_data::BlockData,
     common::{Author, Payload, PayloadFilter, Round},
@@ -34,7 +34,7 @@ use aptos_consensus_types::{
 };
 use libra2_crypto::{hash::CryptoHash, HashValue};
 use libra2_infallible::Mutex;
-use aptos_logger::{error, sample, sample::SampleRate, warn};
+use libra2_logger::{error, sample, sample::SampleRate, warn};
 use libra2_types::{
     block_info::BlockInfo, on_chain_config::ValidatorTxnConfig, validator_txn::ValidatorTransaction,
 };

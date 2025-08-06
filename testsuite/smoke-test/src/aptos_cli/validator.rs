@@ -14,13 +14,13 @@ use aptos::{
     },
     test::{CliTestFramework, ValidatorPerformance},
 };
-use aptos_bitvec::BitVec;
+use libra2_bitvec::BitVec;
 use aptos_cached_packages::aptos_stdlib;
 use libra2_crypto::{bls12381, ed25519::Ed25519PrivateKey, x25519, ValidCryptoMaterialStringExt};
 use aptos_forge::{reconfig, wait_for_all_nodes_to_catchup, LocalSwarm, NodeExt, Swarm, SwarmExt};
 use aptos_genesis::config::HostAndPort;
 use libra2_keygen::KeyGen;
-use aptos_logger::info;
+use libra2_logger::info;
 use libra2_rest_client::{Client, State};
 use libra2_types::{
     account_config::CORE_CODE_ADDRESS,

@@ -15,8 +15,8 @@ use crate::{
 };
 use anyhow::{bail, ensure};
 use libra2_channels::libra2_channel;
-use aptos_consensus_types::common::{Author, Round};
-use aptos_logger::{debug, error};
+use libra2_consensus_types::common::{Author, Round};
+use libra2_logger::{debug, error};
 use libra2_time_service::TimeService;
 use libra2_types::{
     epoch_change::EpochChangeProof, epoch_state::EpochState, ledger_info::LedgerInfoWithSignatures,

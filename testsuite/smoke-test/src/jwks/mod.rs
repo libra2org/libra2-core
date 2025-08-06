@@ -13,7 +13,7 @@ use aptos::{
     test::CliTestFramework,
 };
 use aptos_forge::{NodeExt, Swarm, SwarmExt};
-use aptos_logger::{debug, info};
+use libra2_logger::{debug, info};
 use libra2_rest_client::Client;
 use libra2_types::{
     jwks::{

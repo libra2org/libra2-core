@@ -15,9 +15,9 @@ use libra2_crypto::{
     ed25519::{Ed25519PrivateKey, Ed25519PublicKey},
     hash::CryptoHash,
 };
-use aptos_move_debugger::aptos_debugger::AptosDebugger;
+use libra2_move_debugger::libra2_debugger::Libra2Debugger;
 use libra2_rest_client::Client;
-use aptos_sdk::{transaction_builder::TransactionFactory, types::LocalAccount};
+use libra2_sdk::{transaction_builder::TransactionFactory, types::LocalAccount};
 use libra2_types::{
     account_address::AccountAddress,
     chain_id::ChainId,
@@ -249,7 +249,7 @@ impl TxnOptions {
     ) -> CliTypedResult<TransactionSummary>
     where
         F: FnOnce(
-            &AptosDebugger,
+            &Libra2Debugger,
             u64,
             SignedTransaction,
             libra2_crypto::HashValue,
@@ -295,7 +295,7 @@ impl TxnOptions {
             sender_account.sign_with_transaction_builder(transaction_factory.payload(payload));
         let hash = transaction.committed_hash();
 
-        let debugger = AptosDebugger::rest_client(client)?;
+        let debugger = Libra2Debugger::rest_client(client)?;
         let (vm_status, vm_output) = execute(&debugger, version, transaction, hash)?;
 
         let success = match vm_output.status() {

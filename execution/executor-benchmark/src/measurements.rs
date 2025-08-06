@@ -9,7 +9,7 @@ use aptos_executor::metrics::{
     COMMIT_BLOCKS, GET_BLOCK_EXECUTION_OUTPUT_BY_EXECUTING, OTHER_TIMERS,
     PROCESSED_TXNS_OUTPUT_SIZE, UPDATE_LEDGER,
 };
-use aptos_logger::info;
+use libra2_logger::info;
 use libra2_metrics_core::Histogram;
 use move_core_types::language_storage::StructTag;
 use std::{

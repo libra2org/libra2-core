@@ -2,7 +2,7 @@
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
-//! Implementation of the unary RPC protocol as per [AptosNet wire protocol v1].
+//! Implementation of the unary RPC protocol as per [Libra2Net wire protocol v1].
 //!
 //! ## Design:
 //!
@@ -41,7 +41,7 @@
 //! We limit the number of pending inbound and outbound RPC tasks to ensure that
 //! resource usage is bounded.
 //!
-//! [AptosNet wire protocol v1]: https://github.com/aptos-labs/aptos-core/blob/main/specifications/network/messaging-v1.md
+//! [Libra2Net wire protocol v1]: https://github.com/aptos-labs/aptos-core/blob/main/specifications/network/messaging-v1.md
 //! [`Peer`]: crate::peer::Peer
 
 use crate::{
@@ -61,7 +61,7 @@ use anyhow::anyhow;
 use libra2_channels::libra2_channel;
 use libra2_config::network_id::NetworkContext;
 use libra2_id_generator::{IdGenerator, U32IdGenerator};
-use aptos_logger::prelude::*;
+use libra2_logger::prelude::*;
 use aptos_short_hex_str::AsShortHexStr;
 use libra2_time_service::{timeout, TimeService, TimeServiceTrait};
 use libra2_types::PeerId;

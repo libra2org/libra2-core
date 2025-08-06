@@ -25,15 +25,15 @@ use crate::{
 };
 use libra2_bounded_executor::BoundedExecutor;
 use libra2_config::config::ConsensusObserverConfig;
-use aptos_consensus_types::{
+use libra2_consensus_types::{
     common::{Author, Round},
     pipeline::commit_vote::CommitVote,
     pipelined_block::PipelinedBlock,
 };
 use libra2_crypto::HashValue;
 use aptos_executor_types::ExecutorResult;
-use aptos_logger::prelude::*;
-use aptos_network::protocols::{rpc::error::RpcError, wire::handshake::v1::ProtocolId};
+use libra2_logger::prelude::*;
+use libra2_network::protocols::{rpc::error::RpcError, wire::handshake::v1::ProtocolId};
 use aptos_reliable_broadcast::{DropGuard, ReliableBroadcast};
 use libra2_time_service::TimeService;
 use libra2_types::{

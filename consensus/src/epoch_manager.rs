@@ -62,7 +62,7 @@ use libra2_config::config::{
     BatchTransactionFilterConfig, BlockTransactionFilterConfig, ConsensusConfig,
     DagConsensusConfig, NodeConfig,
 };
-use aptos_consensus_types::{
+use libra2_consensus_types::{
     block_retrieval::BlockRetrievalRequest,
     common::{Author, Round},
     epoch_retrieval::EpochRetrievalRequest,
@@ -74,12 +74,12 @@ use aptos_dkg::{
     pvss::{traits::Transcript, Player},
     weighted_vuf::traits::WeightedVUF,
 };
-use aptos_event_notifications::ReconfigNotificationListener;
+use libra2_event_notifications::ReconfigNotificationListener;
 use libra2_infallible::{duration_since_epoch, Mutex};
-use aptos_logger::prelude::*;
-use aptos_mempool::QuorumStoreRequest;
-use aptos_network::{application::interface::NetworkClient, protocols::network::Event};
-use aptos_safety_rules::{
+use libra2_logger::prelude::*;
+use libra2_mempool::QuorumStoreRequest;
+use libra2_network::{application::interface::NetworkClient, protocols::network::Event};
+use libra2_safety_rules::{
     safety_rules_manager, Error, PersistentSafetyStorage, SafetyRulesManager,
 };
 use libra2_types::{

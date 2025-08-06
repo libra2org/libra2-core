@@ -10,9 +10,9 @@ import subprocess
 import traceback
 from dataclasses import dataclass
 
-from aptos_sdk.async_client import RestClient
+from libra2_sdk.async_client import RestClient
 from common import METRICS_PORT, NODE_PORT, AccountInfo, Network, build_image_name
-from aptos_sdk.account_address import AccountAddress
+from libra2_sdk.account_address import AccountAddress
 
 LOG = logging.getLogger(__name__)
 

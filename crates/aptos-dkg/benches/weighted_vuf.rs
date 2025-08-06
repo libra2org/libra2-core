@@ -22,7 +22,7 @@ use aptos_dkg::{
         traits::WeightedVUF,
     },
 };
-use aptos_runtimes::spawn_rayon_thread_pool;
+use libra2_runtimes::spawn_rayon_thread_pool;
 use blstrs::{G1Projective, G2Projective, Scalar};
 use core::iter::zip;
 use criterion::{

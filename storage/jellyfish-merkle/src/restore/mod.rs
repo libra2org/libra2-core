@@ -16,7 +16,7 @@ use libra2_crypto::{
     hash::{CryptoHash, SPARSE_MERKLE_PLACEHOLDER_HASH},
     HashValue,
 };
-use aptos_logger::info;
+use libra2_logger::info;
 use aptos_storage_interface::{db_ensure as ensure, AptosDbError, Result};
 use libra2_types::{
     nibble::{

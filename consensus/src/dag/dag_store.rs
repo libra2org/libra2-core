@@ -13,10 +13,10 @@ use crate::{
     payload_manager::TPayloadManager,
 };
 use anyhow::{anyhow, ensure};
-use aptos_consensus_types::common::{Author, Round};
+use libra2_consensus_types::common::{Author, Round};
 use libra2_crypto::HashValue;
 use libra2_infallible::RwLock;
-use aptos_logger::{debug, error, warn};
+use libra2_logger::{debug, error, warn};
 use libra2_types::{epoch_state::EpochState, validator_verifier::ValidatorVerifier};
 use std::{
     collections::{BTreeMap, HashMap, HashSet},

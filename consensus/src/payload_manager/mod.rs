@@ -1,9 +1,9 @@
 // Copyright © Aptos Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-use aptos_bitvec::BitVec;
+use libra2_bitvec::BitVec;
 use libra2_config::config::BlockTransactionFilterConfig;
-use aptos_consensus_types::{
+use libra2_consensus_types::{
     block::Block,
     common::{Author, Payload},
 };

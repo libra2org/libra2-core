@@ -29,7 +29,7 @@ use crate::{
     schema::{KeyCodec, Schema, SeekKeyCodec, ValueCodec},
 };
 use anyhow::format_err;
-use aptos_logger::prelude::*;
+use libra2_logger::prelude::*;
 use aptos_storage_interface::{AptosDbError, Result as DbResult};
 use batch::{IntoRawBatch, NativeBatch, WriteBatch};
 use iterator::{ScanDirection, SchemaIterator};

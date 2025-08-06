@@ -12,9 +12,9 @@ use crate::{
     utils::{check_balance, create_account, emit_step_metrics, NetworkName, TestFailure, TestName},
 };
 use libra2_api_types::U64;
-use aptos_logger::error;
+use libra2_logger::error;
 use libra2_rest_client::{Account, Client, FaucetClient};
-use aptos_sdk::types::LocalAccount;
+use libra2_sdk::types::LocalAccount;
 use libra2_types::account_address::AccountAddress;
 
 /// Tests new account creation. Checks that:

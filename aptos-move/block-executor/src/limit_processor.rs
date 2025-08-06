@@ -4,7 +4,7 @@
 use crate::{
     counters, hot_state_op_accumulator::BlockHotStateOpAccumulator, types::ReadWriteSummary,
 };
-use aptos_logger::{info, warn};
+use libra2_logger::{info, warn};
 use libra2_types::{
     fee_statement::FeeStatement,
     on_chain_config::BlockGasLimitType,

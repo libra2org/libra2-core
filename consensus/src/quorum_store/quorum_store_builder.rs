@@ -29,12 +29,12 @@ use crate::{
 };
 use libra2_channels::{libra2_channel, message_queues::QueueStyle};
 use libra2_config::config::{BatchTransactionFilterConfig, QuorumStoreConfig};
-use aptos_consensus_types::{
+use libra2_consensus_types::{
     common::Author, proof_of_store::ProofCache, request_response::GetPayloadCommand,
 };
 use libra2_crypto::bls12381::PrivateKey;
-use aptos_logger::prelude::*;
-use aptos_mempool::QuorumStoreRequest;
+use libra2_logger::prelude::*;
+use libra2_mempool::QuorumStoreRequest;
 use aptos_storage_interface::DbReader;
 use libra2_types::{
     account_address::AccountAddress, validator_signer::ValidatorSigner,

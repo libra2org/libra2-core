@@ -5,7 +5,7 @@
 
 use anyhow::{ensure, Result};
 use libra2_crypto::HashValue;
-use aptos_drop_helper::DropHelper;
+use libra2_drop_helper::DropHelper;
 use libra2_types::{
     proof::accumulator::InMemoryTransactionAccumulator,
     transaction::{TransactionInfo, Version},

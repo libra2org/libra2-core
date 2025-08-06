@@ -14,10 +14,10 @@ use crate::{
     epoch_manager::EpochManager, network::NetworkTask, network_interface::DKGNetworkClient,
 };
 use libra2_config::config::{ReliableBroadcastConfig, SafetyRulesConfig};
-use aptos_event_notifications::{
+use libra2_event_notifications::{
     DbBackedOnChainConfig, EventNotificationListener, ReconfigNotificationListener,
 };
-use aptos_network::application::interface::{NetworkClient, NetworkServiceEvents};
+use libra2_network::application::interface::{NetworkClient, NetworkServiceEvents};
 use aptos_validator_transaction_pool::VTxnPoolState;
 use move_core_types::account_address::AccountAddress;
 use tokio::runtime::Runtime;
@@ -34,7 +34,7 @@ pub fn start_dkg_runtime(
     rb_config: ReliableBroadcastConfig,
     randomness_override_seq_num: u64,
 ) -> Runtime {
-    let runtime = aptos_runtimes::spawn_named_runtime("dkg".into(), Some(4));
+    let runtime = libra2_runtimes::spawn_named_runtime("dkg".into(), Some(4));
     let (self_sender, self_receiver) = libra2_channels::new(1_024, &counters::PENDING_SELF_MESSAGES);
     let dkg_network_client = DKGNetworkClient::new(network_client);
 

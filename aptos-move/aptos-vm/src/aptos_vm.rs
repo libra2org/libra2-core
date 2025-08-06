@@ -43,7 +43,7 @@ use aptos_gas_schedule::{
     gas_feature_versions::{RELEASE_V1_10, RELEASE_V1_27},
     AptosGasParameters, VMGasParameters,
 };
-use aptos_logger::{enabled, prelude::*, Level};
+use libra2_logger::{enabled, prelude::*, Level};
 #[cfg(any(test, feature = "testing"))]
 use libra2_types::state_store::StateViewId;
 use libra2_types::{

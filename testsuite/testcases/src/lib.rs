@@ -33,7 +33,7 @@ use aptos_forge::{
     Result, Swarm, SwarmExt, Test, TestReport, TxnEmitter, TxnStats, Version,
 };
 use libra2_rest_client::Client as RestClient;
-use aptos_sdk::{transaction_builder::TransactionFactory, types::PeerId};
+use libra2_sdk::{transaction_builder::TransactionFactory, types::PeerId};
 use async_trait::async_trait;
 use futures::future::join_all;
 use log::info;
@@ -162,7 +162,7 @@ pub async fn create_emitter_and_request(
 }
 
 pub fn traffic_emitter_runtime() -> Result<Runtime> {
-    let runtime = aptos_runtimes::spawn_named_runtime("emitter".into(), Some(64));
+    let runtime = libra2_runtimes::spawn_named_runtime("emitter".into(), Some(64));
     Ok(runtime)
 }
 

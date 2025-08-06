@@ -14,16 +14,16 @@ use crate::{
         network::{NetworkClientConfig, NetworkServiceConfig, ReceivedMessage},
         wire::handshake::v1::ProtocolIdSet,
     },
-    transport::{self, AptosNetTransport, Connection, APTOS_TCP_TRANSPORT},
+    transport::{self, Libra2NetTransport, Connection, APTOS_TCP_TRANSPORT},
     ProtocolId,
 };
 use libra2_channels::{self, libra2_channel, message_queues::QueueStyle};
 use libra2_config::{config::HANDSHAKE_VERSION, network_id::NetworkContext};
 use libra2_crypto::x25519;
-use aptos_logger::prelude::*;
+use libra2_logger::prelude::*;
 #[cfg(any(test, feature = "testing", feature = "fuzzing"))]
-use aptos_netcore::transport::memory::MemoryTransport;
-use aptos_netcore::transport::{
+use libra2_netcore::transport::memory::MemoryTransport;
+use libra2_netcore::transport::{
     tcp::{TCPBufferCfg, TcpSocket, TcpTransport},
     Transport,
 };
@@ -137,8 +137,8 @@ impl PeerManagerContext {
 
 #[cfg(any(test, feature = "testing", feature = "fuzzing"))]
 type MemoryPeerManager =
-    PeerManager<AptosNetTransport<MemoryTransport>, NoiseStream<aptos_memsocket::MemorySocket>>;
-type TcpPeerManager = PeerManager<AptosNetTransport<TcpTransport>, NoiseStream<TcpSocket>>;
+    PeerManager<Libra2NetTransport<MemoryTransport>, NoiseStream<libra2_memsocket::MemorySocket>>;
+type TcpPeerManager = PeerManager<Libra2NetTransport<TcpTransport>, NoiseStream<TcpSocket>>;
 
 enum TransportPeerManager {
     #[cfg(any(test, feature = "testing", feature = "fuzzing"))]
@@ -269,7 +269,7 @@ impl PeerManagerBuilder {
         self.peer_manager = match self.listen_address.as_slice() {
             [Ip4(_), Tcp(_)] | [Ip6(_), Tcp(_)] => {
                 Some(TransportPeerManager::Tcp(self.build_with_transport(
-                    AptosNetTransport::new(
+                    Libra2NetTransport::new(
                         aptos_tcp_transport,
                         self.network_context,
                         self.time_service.clone(),
@@ -285,7 +285,7 @@ impl PeerManagerBuilder {
             },
             #[cfg(any(test, feature = "testing", feature = "fuzzing"))]
             [Memory(_)] => Some(TransportPeerManager::Memory(self.build_with_transport(
-                AptosNetTransport::new(
+                Libra2NetTransport::new(
                     MemoryTransport,
                     self.network_context,
                     self.time_service.clone(),

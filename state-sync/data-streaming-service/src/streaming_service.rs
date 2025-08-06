@@ -12,13 +12,13 @@ use crate::{
     },
 };
 use libra2_channels::{libra2_channel, message_queues::QueueStyle};
-use libra2_config::config::{AptosDataClientConfig, DataStreamingServiceConfig};
-use aptos_data_client::{
+use libra2_config::config::{Libra2DataClientConfig, DataStreamingServiceConfig};
+use libra2_data_client::{
     global_summary::{GlobalDataSummary, OptimalChunkSizes},
-    interface::AptosDataClientInterface,
+    interface::Libra2DataClientInterface,
 };
 use libra2_id_generator::{IdGenerator, U64IdGenerator};
-use aptos_logger::prelude::*;
+use libra2_logger::prelude::*;
 use libra2_time_service::TimeService;
 use arc_swap::ArcSwap;
 use futures::StreamExt;
@@ -54,13 +54,13 @@ impl StreamUpdateNotification {
 /// The data streaming service that responds to data stream requests.
 pub struct DataStreamingService<T> {
     // The configuration for the data client
-    data_client_config: AptosDataClientConfig,
+    data_client_config: Libra2DataClientConfig,
 
     // The configuration for the streaming service
     streaming_service_config: DataStreamingServiceConfig,
 
     // The data client through which to fetch data from the Aptos network
-    aptos_data_client: T,
+    libra2_data_client: T,
 
     // Cached global data summary
     global_data_summary: Arc<ArcSwap<GlobalDataSummary>>,
@@ -87,11 +87,11 @@ pub struct DataStreamingService<T> {
     time_service: TimeService,
 }
 
-impl<T: AptosDataClientInterface + Send + Clone + 'static> DataStreamingService<T> {
+impl<T: Libra2DataClientInterface + Send + Clone + 'static> DataStreamingService<T> {
     pub fn new(
-        data_client_config: AptosDataClientConfig,
+        data_client_config: Libra2DataClientConfig,
         streaming_service_config: DataStreamingServiceConfig,
-        aptos_data_client: T,
+        libra2_data_client: T,
         stream_requests: StreamingServiceListener,
         time_service: TimeService,
     ) -> Self {
@@ -103,7 +103,7 @@ impl<T: AptosDataClientInterface + Send + Clone + 'static> DataStreamingService<
         Self {
             data_client_config,
             streaming_service_config,
-            aptos_data_client,
+            libra2_data_client,
             global_data_summary: Arc::new(ArcSwap::new(Arc::new(GlobalDataSummary::empty()))),
             data_streams: HashMap::new(),
             stream_requests,
@@ -120,7 +120,7 @@ impl<T: AptosDataClientInterface + Send + Clone + 'static> DataStreamingService<
         // Spawn a dedicated task that refreshes the global data summary
         spawn_global_data_summary_refresher(
             self.streaming_service_config,
-            self.aptos_data_client.clone(),
+            self.libra2_data_client.clone(),
             self.global_data_summary.clone(),
         );
 
@@ -265,7 +265,7 @@ impl<T: AptosDataClientInterface + Send + Clone + 'static> DataStreamingService<
 
         // Refresh the cached global data summary
         refresh_global_data_summary(
-            self.aptos_data_client.clone(),
+            self.libra2_data_client.clone(),
             self.global_data_summary.clone(),
         );
 
@@ -278,7 +278,7 @@ impl<T: AptosDataClientInterface + Send + Clone + 'static> DataStreamingService<
             stream_id,
             &request_message.stream_request,
             stream_update_notifier,
-            self.aptos_data_client.clone(),
+            self.libra2_data_client.clone(),
             self.notification_id_generator.clone(),
             &advertised_data,
             self.time_service.clone(),
@@ -407,16 +407,16 @@ impl<T: AptosDataClientInterface + Send + Clone + 'static> DataStreamingService<
 }
 
 /// Spawns a task that periodically refreshes the global data summary
-fn spawn_global_data_summary_refresher<T: AptosDataClientInterface + Send + Clone + 'static>(
+fn spawn_global_data_summary_refresher<T: Libra2DataClientInterface + Send + Clone + 'static>(
     data_streaming_service_config: DataStreamingServiceConfig,
-    aptos_data_client: T,
+    libra2_data_client: T,
     cached_global_data_summary: Arc<ArcSwap<GlobalDataSummary>>,
 ) {
     tokio::spawn(async move {
         loop {
             // Refresh the cached global data summary
             refresh_global_data_summary(
-                aptos_data_client.clone(),
+                libra2_data_client.clone(),
                 cached_global_data_summary.clone(),
             );
 
@@ -429,12 +429,12 @@ fn spawn_global_data_summary_refresher<T: AptosDataClientInterface + Send + Clon
 }
 
 /// Refreshes the global data summary and updates the cache
-fn refresh_global_data_summary<T: AptosDataClientInterface + Send + Clone + 'static>(
-    aptos_data_client: T,
+fn refresh_global_data_summary<T: Libra2DataClientInterface + Send + Clone + 'static>(
+    libra2_data_client: T,
     cached_global_data_summary: Arc<ArcSwap<GlobalDataSummary>>,
 ) {
     // Fetch the global data summary and update the cache
-    match fetch_global_data_summary(aptos_data_client) {
+    match fetch_global_data_summary(libra2_data_client) {
         Ok(global_data_summary) => {
             // Update the cached global data summary
             cached_global_data_summary.store(Arc::new(global_data_summary));
@@ -453,11 +453,11 @@ fn refresh_global_data_summary<T: AptosDataClientInterface + Send + Clone + 'sta
 }
 
 /// Fetches and returns the global data summary from the data client
-fn fetch_global_data_summary<T: AptosDataClientInterface + Send + Clone + 'static>(
-    aptos_data_client: T,
+fn fetch_global_data_summary<T: Libra2DataClientInterface + Send + Clone + 'static>(
+    libra2_data_client: T,
 ) -> Result<GlobalDataSummary, Error> {
     // Fetch the global data summary from the data client
-    let global_data_summary = aptos_data_client.get_global_data_summary();
+    let global_data_summary = libra2_data_client.get_global_data_summary();
 
     // Periodically log if the global data summary is empty.
     // Otherwise, verify that all optimal chunk sizes are valid.
@@ -482,7 +482,7 @@ fn verify_optimal_chunk_sizes(optimal_chunk_sizes: &OptimalChunkSizes) -> Result
         || optimal_chunk_sizes.transaction_chunk_size == 0
         || optimal_chunk_sizes.transaction_output_chunk_size == 0
     {
-        Err(Error::AptosDataClientResponseIsInvalid(format!(
+        Err(Error::Libra2DataClientResponseIsInvalid(format!(
             "Found at least one optimal chunk size of zero: {:?}",
             optimal_chunk_sizes
         )))

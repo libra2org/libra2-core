@@ -9,7 +9,7 @@ use once_cell::sync::Lazy;
 /// Counter for successful telemetry events sent from Telemetry Sender to Telemetry Service
 pub(crate) static APTOS_TELEMETRY_SERVICE_SUCCESS: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_telemetry_service_success",
+        "libra2_telemetry_service_success",
         "Number of telemetry events successfully sent to telemetry service",
         &["event_name"]
     )
@@ -19,7 +19,7 @@ pub(crate) static APTOS_TELEMETRY_SERVICE_SUCCESS: Lazy<IntCounterVec> = Lazy::n
 /// Counter for failed telemetry events sent from Telemetry Sender to Telemetry Service
 pub(crate) static APTOS_TELEMETRY_SERVICE_FAILURE: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_telemetry_service_failure",
+        "libra2_telemetry_service_failure",
         "Number of telemetry events that failed to send to telemetry service",
         &["event_name"]
     )

@@ -2,12 +2,12 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use libra2_config::config::{AuthenticationConfig, NodeConfig};
-use aptos_consensus::{
+use libra2_consensus::{
     persistent_liveness_storage::StorageWriteProxy, quorum_store::quorum_store_db::QuorumStoreDB,
 };
 use libra2_infallible::RwLock;
-use aptos_logger::info;
-use aptos_mempool::MempoolClientSender;
+use libra2_logger::info;
+use libra2_mempool::MempoolClientSender;
 use aptos_storage_interface::DbReaderWriter;
 use libra2_system_utils::utils::reply_with_status;
 #[cfg(target_os = "linux")]
@@ -84,7 +84,7 @@ impl AdminService {
             .unwrap();
 
         // Create a runtime for the admin service
-        let runtime = aptos_runtimes::spawn_named_runtime("admin".into(), None);
+        let runtime = libra2_runtimes::spawn_named_runtime("admin".into(), None);
 
         let admin_service = Self {
             runtime,

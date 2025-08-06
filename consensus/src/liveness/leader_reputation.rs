@@ -14,11 +14,11 @@ use crate::{
     liveness::proposer_election::{choose_index, ProposerElection},
 };
 use anyhow::{ensure, Result};
-use aptos_bitvec::BitVec;
-use aptos_consensus_types::common::{Author, Round};
+use libra2_bitvec::BitVec;
+use libra2_consensus_types::common::{Author, Round};
 use libra2_crypto::HashValue;
 use libra2_infallible::{Mutex, MutexGuard};
-use aptos_logger::prelude::*;
+use libra2_logger::prelude::*;
 use aptos_storage_interface::DbReader;
 use libra2_types::{
     account_config::NewBlockEvent, epoch_change::EpochChangeProof, epoch_state::EpochState,

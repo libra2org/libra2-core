@@ -10,8 +10,8 @@ use crate::consensus_observer::{
     observer::execution_pool::ObservedOrderedBlock,
 };
 use libra2_config::config::ConsensusObserverConfig;
-use aptos_consensus_types::{common::Round, pipelined_block::PipelinedBlock};
-use aptos_logger::{debug, warn};
+use libra2_consensus_types::{common::Round, pipelined_block::PipelinedBlock};
+use libra2_logger::{debug, warn};
 use libra2_types::ledger_info::LedgerInfoWithSignatures;
 use std::{collections::BTreeMap, sync::Arc};
 
@@ -218,7 +218,7 @@ impl OrderedBlockStore {
 #[cfg(test)]
 mod test {
     use super::*;
-    use aptos_consensus_types::{
+    use libra2_consensus_types::{
         block::Block,
         block_data::{BlockData, BlockType},
         pipelined_block::{OrderedBlockWindow, PipelinedBlock},

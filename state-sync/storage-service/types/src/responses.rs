@@ -20,7 +20,7 @@ use crate::{
 };
 use aptos_compression::{client::CompressionClient, CompressedData};
 use libra2_config::config::{
-    AptosDataClientConfig, StorageServiceConfig, MAX_APPLICATION_MESSAGE_SIZE,
+    Libra2DataClientConfig, StorageServiceConfig, MAX_APPLICATION_MESSAGE_SIZE,
 };
 use libra2_time_service::{TimeService, TimeServiceTrait};
 use libra2_types::{
@@ -535,14 +535,14 @@ pub struct StorageServerSummary {
 impl StorageServerSummary {
     pub fn can_service(
         &self,
-        aptos_data_client_config: &AptosDataClientConfig,
+        libra2_data_client_config: &Libra2DataClientConfig,
         time_service: TimeService,
         request: &StorageServiceRequest,
     ) -> bool {
         self.protocol_metadata.can_service(request)
             && self
                 .data_summary
-                .can_service(aptos_data_client_config, time_service, request)
+                .can_service(libra2_data_client_config, time_service, request)
     }
 }
 
@@ -604,7 +604,7 @@ impl DataSummary {
     /// Returns true iff the request can be serviced
     pub fn can_service(
         &self,
-        aptos_data_client_config: &AptosDataClientConfig,
+        libra2_data_client_config: &Libra2DataClientConfig,
         time_service: TimeService,
         request: &StorageServiceRequest,
     ) -> bool {
@@ -621,17 +621,17 @@ impl DataSummary {
                     .unwrap_or(false)
             },
             GetNewTransactionOutputsWithProof(_) => can_service_optimistic_request(
-                aptos_data_client_config,
+                libra2_data_client_config,
                 time_service,
                 self.synced_ledger_info.as_ref(),
             ),
             GetNewTransactionsWithProof(_) => can_service_optimistic_request(
-                aptos_data_client_config,
+                libra2_data_client_config,
                 time_service,
                 self.synced_ledger_info.as_ref(),
             ),
             GetNewTransactionsOrOutputsWithProof(_) => can_service_optimistic_request(
-                aptos_data_client_config,
+                libra2_data_client_config,
                 time_service,
                 self.synced_ledger_info.as_ref(),
             ),
@@ -673,17 +673,17 @@ impl DataSummary {
                     request.proof_version,
                 ),
             SubscribeTransactionOutputsWithProof(_) => can_service_subscription_request(
-                aptos_data_client_config,
+                libra2_data_client_config,
                 time_service,
                 self.synced_ledger_info.as_ref(),
             ),
             SubscribeTransactionsOrOutputsWithProof(_) => can_service_subscription_request(
-                aptos_data_client_config,
+                libra2_data_client_config,
                 time_service,
                 self.synced_ledger_info.as_ref(),
             ),
             SubscribeTransactionsWithProof(_) => can_service_subscription_request(
-                aptos_data_client_config,
+                libra2_data_client_config,
                 time_service,
                 self.synced_ledger_info.as_ref(),
             ),
@@ -710,12 +710,12 @@ impl DataSummary {
                     ),
             },
             GetNewTransactionDataWithProof(_) => can_service_optimistic_request(
-                aptos_data_client_config,
+                libra2_data_client_config,
                 time_service,
                 self.synced_ledger_info.as_ref(),
             ),
             SubscribeTransactionDataWithProof(_) => can_service_subscription_request(
-                aptos_data_client_config,
+                libra2_data_client_config,
                 time_service,
                 self.synced_ledger_info.as_ref(),
             ),
@@ -807,22 +807,22 @@ impl DataSummary {
 /// Returns true iff an optimistic data request can be serviced
 /// by the peer with the given synced ledger info.
 fn can_service_optimistic_request(
-    aptos_data_client_config: &AptosDataClientConfig,
+    libra2_data_client_config: &Libra2DataClientConfig,
     time_service: TimeService,
     synced_ledger_info: Option<&LedgerInfoWithSignatures>,
 ) -> bool {
-    let max_lag_secs = aptos_data_client_config.max_optimistic_fetch_lag_secs;
+    let max_lag_secs = libra2_data_client_config.max_optimistic_fetch_lag_secs;
     check_synced_ledger_lag(synced_ledger_info, time_service, max_lag_secs)
 }
 
 /// Returns true iff a subscription data request can be serviced
 /// by the peer with the given synced ledger info.
 fn can_service_subscription_request(
-    aptos_data_client_config: &AptosDataClientConfig,
+    libra2_data_client_config: &Libra2DataClientConfig,
     time_service: TimeService,
     synced_ledger_info: Option<&LedgerInfoWithSignatures>,
 ) -> bool {
-    let max_lag_secs = aptos_data_client_config.max_subscription_lag_secs;
+    let max_lag_secs = libra2_data_client_config.max_subscription_lag_secs;
     check_synced_ledger_lag(synced_ledger_info, time_service, max_lag_secs)
 }
 

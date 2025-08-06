@@ -6,7 +6,7 @@ use super::GENESIS_HELM_RELEASE_NAME;
 use crate::{
     get_validator_fullnodes, get_validators, k8s_wait_nodes_strategy, nodes_healthcheck,
     wait_stateful_set, ForgeDeployerManager, ForgeRunnerMode, GenesisConfigFn, K8sApi, K8sNode,
-    NodeConfigFn, ReadWrite, Result, APTOS_NODE_HELM_RELEASE_NAME, DEFAULT_ROOT_KEY,
+    NodeConfigFn, ReadWrite, Result, LIBRA2_NODE_HELM_RELEASE_NAME, DEFAULT_ROOT_KEY,
     DEFAULT_TEST_SUITE_NAME, DEFAULT_USERNAME, FORGE_KEY_SEED,
     FORGE_TESTNET_DEPLOYER_DOCKER_IMAGE_REPO, FULLNODE_HAPROXY_SERVICE_SUFFIX,
     FULLNODE_SERVICE_SUFFIX, HELM_BIN, KUBECTL_BIN, MANAGEMENT_CONFIGMAP_PREFIX,
@@ -15,7 +15,7 @@ use crate::{
 };
 use again::RetryPolicy;
 use anyhow::{anyhow, bail, format_err};
-use aptos_sdk::types::PeerId;
+use libra2_sdk::types::PeerId;
 use k8s_openapi::api::{
     apps::v1::{Deployment, StatefulSet},
     batch::v1::Job,
@@ -191,12 +191,12 @@ async fn wait_node_haproxy(
     kube_namespace: &str,
     num_haproxy: usize,
 ) -> Result<()> {
-    aptos_retrier::retry_async(k8s_wait_nodes_strategy(), || {
+    libra2_retrier::retry_async(k8s_wait_nodes_strategy(), || {
         let deployments_api: Api<Deployment> = Api::namespaced(kube_client.clone(), kube_namespace);
         Box::pin(async move {
             for i in 0..num_haproxy {
                 let haproxy_deployment_name =
-                    format!("{}-{}-haproxy", APTOS_NODE_HELM_RELEASE_NAME, i);
+                    format!("{}-{}-haproxy", LIBRA2_NODE_HELM_RELEASE_NAME, i);
                 match deployments_api.get_status(&haproxy_deployment_name).await {
                     Ok(s) => {
                         let deployment_name = s.name();
@@ -581,7 +581,7 @@ pub async fn install_testnet_resources(
     // get existing helm values from the cluster
     // if the release doesn't exist, return an empty mapping, which may work, especially as we move away from this pattern and instead having default values baked into the deployer
     let mut aptos_node_helm_values =
-        get_default_helm_release_values_from_cluster(APTOS_NODE_HELM_RELEASE_NAME)
+        get_default_helm_release_values_from_cluster(LIBRA2_NODE_HELM_RELEASE_NAME)
             .unwrap_or_else(|_| serde_yaml::Value::Mapping(serde_yaml::Mapping::new()));
     let mut genesis_helm_values =
         get_default_helm_release_values_from_cluster(GENESIS_HELM_RELEASE_NAME)

@@ -13,8 +13,8 @@ use crate::consensus_observer::{
     },
 };
 use libra2_config::network_id::PeerNetworkId;
-use aptos_logger::{debug, warn};
-use aptos_network::application::{interface::NetworkClientInterface, storage::PeersAndMetadata};
+use libra2_logger::{debug, warn};
+use libra2_network::application::{interface::NetworkClientInterface, storage::PeersAndMetadata};
 use libra2_time_service::{TimeService, TimeServiceTrait};
 use bytes::Bytes;
 use rand::Rng;

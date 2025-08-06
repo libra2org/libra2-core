@@ -11,7 +11,7 @@ use crate::consensus_observer::{
 };
 use libra2_config::{config::ConsensusObserverConfig, network_id::PeerNetworkId};
 use libra2_crypto::HashValue;
-use aptos_logger::{error, info, warn};
+use libra2_logger::{error, info, warn};
 use libra2_types::block_info::Round;
 use std::{
     collections::{btree_map::Entry, BTreeMap},
@@ -318,7 +318,7 @@ mod test {
         network::observer_message::{BlockPayload, BlockTransactionPayload},
         observer::payload_store::BlockPayloadStore,
     };
-    use aptos_consensus_types::{
+    use libra2_consensus_types::{
         block::Block,
         block_data::{BlockData, BlockType},
         pipelined_block::{OrderedBlockWindow, PipelinedBlock},

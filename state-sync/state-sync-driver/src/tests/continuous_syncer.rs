@@ -19,15 +19,15 @@ use crate::{
     utils::OutputFallbackHandler,
 };
 use libra2_config::config::ContinuousSyncingMode;
-use aptos_consensus_notifications::{
+use libra2_consensus_notifications::{
     ConsensusSyncDurationNotification, ConsensusSyncTargetNotification,
 };
-use aptos_data_streaming_service::{
+use libra2_data_streaming_service::{
     data_notification::{DataNotification, DataPayload, NotificationId},
     streaming_client::{NotificationAndFeedback, NotificationFeedback},
 };
 use libra2_infallible::Mutex;
-use aptos_storage_service_types::Epoch;
+use libra2_storage_service_types::Epoch;
 use libra2_time_service::TimeService;
 use libra2_types::transaction::{
     TransactionOutputListWithProof, TransactionOutputListWithProofV2, Version,
@@ -796,7 +796,7 @@ fn create_continuous_syncer(
     OutputFallbackHandler,
 ) {
     // Initialize the logger for tests
-    aptos_logger::Logger::init_for_testing();
+    libra2_logger::Logger::init_for_testing();
 
     // Create the mock storage synchronizer
     let mock_storage_synchronizer = create_ready_storage_synchronizer(expect_reset_executor);

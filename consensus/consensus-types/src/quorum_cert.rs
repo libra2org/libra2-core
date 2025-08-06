@@ -4,7 +4,7 @@
 
 use crate::{vote_data::VoteData, wrapped_ledger_info::WrappedLedgerInfo};
 use anyhow::{ensure, Context};
-use aptos_bitvec::BitVec;
+use libra2_bitvec::BitVec;
 use libra2_crypto::{hash::CryptoHash, HashValue};
 use libra2_types::{
     aggregate_signature::AggregateSignature,

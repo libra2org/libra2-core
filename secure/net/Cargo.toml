@@ -1,7 +1,7 @@
 [package]
-name = "aptos-secure-net"
-description = "Aptos's Simple Network Substrate"
-version = "0.1.0"
+name = "libra2-secure-net"
+description = "Libra2's Simple Network Substrate"
+version = "0.1.1"
 
 # Workspace inherited keys
 authors = { workspace = true }
@@ -13,7 +13,7 @@ repository = { workspace = true }
 rust-version = { workspace = true }
 
 [dependencies]
-aptos-logger = { workspace = true }
+libra2-logger = { workspace = true }
 libra2-metrics-core = { workspace = true }
 aptos-protos = { workspace = true }
 bcs = { workspace = true }

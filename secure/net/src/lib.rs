@@ -19,7 +19,7 @@
 pub mod grpc_network_service;
 pub mod network_controller;
 
-use aptos_logger::{info, trace, warn, Schema};
+use libra2_logger::{info, trace, warn, Schema};
 use libra2_metrics_core::{register_int_counter_vec, IntCounterVec};
 use once_cell::sync::Lazy;
 use serde::Serialize;
@@ -82,7 +82,7 @@ impl NetworkMode {
 
 static EVENT_COUNTER: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_secure_net_events",
+        "libra2_secure_net_events",
         "Outcome of secure net events",
         &["service", "mode", "method", "result"]
     )

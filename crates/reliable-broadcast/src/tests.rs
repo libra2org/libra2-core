@@ -4,8 +4,8 @@
 use crate::{BroadcastStatus, RBMessage, RBNetworkSender, ReliableBroadcast};
 use anyhow::bail;
 use libra2_bounded_executor::BoundedExecutor;
-use aptos_consensus_types::common::Author;
-use aptos_enum_conversion_derive::EnumConversion;
+use libra2_consensus_types::common::Author;
+use libra2_enum_conversion_derive::EnumConversion;
 use libra2_infallible::Mutex;
 use libra2_time_service::TimeService;
 use libra2_types::validator_verifier::random_validator_verifier;

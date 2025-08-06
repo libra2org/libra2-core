@@ -13,12 +13,12 @@ use libra2_config::{
     config::{MempoolConfig, NodeType, TransactionFilterConfig},
     network_id::PeerNetworkId,
 };
-use aptos_consensus_types::common::{
+use libra2_consensus_types::common::{
     RejectedTransactionSummary, TransactionInProgress, TransactionSummary,
 };
 use libra2_crypto::HashValue;
 use libra2_infallible::{Mutex, RwLock};
-use aptos_network::application::interface::NetworkClientInterface;
+use libra2_network::application::interface::NetworkClientInterface;
 use aptos_storage_interface::DbReader;
 use libra2_types::{
     account_address::AccountAddress, mempool_status::MempoolStatus, transaction::SignedTransaction,

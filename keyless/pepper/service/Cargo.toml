@@ -1,7 +1,7 @@
 [package]
-name = "aptos-keyless-pepper-service"
-description = "Aptos Keyless pepper service"
-version = "0.1.0"
+name = "libra2-keyless-pepper-service"
+description = "Libra2 Keyless pepper service"
+version = "0.1.1"
 
 # Workspace inherited keys
 authors = { workspace = true }
@@ -17,9 +17,9 @@ aes-gcm = { workspace = true }
 anyhow = { workspace = true }
 libra2-crypto = { workspace = true }
 libra2-infallible = { workspace = true }
-aptos-inspection-service = { workspace = true }
-aptos-keyless-pepper-common = { workspace = true }
-aptos-logger = { workspace = true }
+libra2-inspection-service = { workspace = true }
+libra2-keyless-pepper-common = { workspace = true }
+libra2-logger = { workspace = true }
 libra2-metrics-core = { workspace = true }
 libra2-types = { workspace = true }
 ark-bls12-381 = { workspace = true }

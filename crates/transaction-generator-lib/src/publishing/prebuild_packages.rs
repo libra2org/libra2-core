@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use aptos_framework::{BuildOptions, BuiltPackage};
-use aptos_sdk::bcs;
+use libra2_sdk::bcs;
 use move_binary_format::CompiledModule;
 use move_package::source_package::std_lib::StdVersion;
 use std::{

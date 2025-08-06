@@ -41,8 +41,8 @@ use libra2_config::{
 };
 use libra2_crypto::x25519;
 use libra2_infallible::RwLock;
-use aptos_logger::prelude::*;
-use aptos_netcore::transport::ConnectionOrigin;
+use libra2_logger::prelude::*;
+use libra2_netcore::transport::ConnectionOrigin;
 use aptos_num_variants::NumVariants;
 use aptos_short_hex_str::AsShortHexStr;
 use libra2_time_service::{TimeService, TimeServiceTrait};

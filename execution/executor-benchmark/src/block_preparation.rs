@@ -8,7 +8,7 @@ use crate::{
 use aptos_block_partitioner::{BlockPartitioner, PartitionerConfig};
 use libra2_crypto::HashValue;
 use aptos_experimental_runtimes::thread_manager::optimal_min_len;
-use aptos_logger::info;
+use libra2_logger::info;
 use libra2_types::{
     block_executor::partitioner::{ExecutableBlock, ExecutableTransactions},
     transaction::{signature_verified_transaction::SignatureVerifiedTransaction, Transaction},

@@ -13,9 +13,9 @@ use crate::{
         proposer_election::ProposerElection,
     },
 };
-use aptos_bitvec::BitVec;
+use libra2_bitvec::BitVec;
 use aptos_collections::BoundedVecDeque;
-use aptos_consensus_types::common::{Author, Round};
+use libra2_consensus_types::common::{Author, Round};
 use libra2_crypto::HashValue;
 use libra2_infallible::Mutex;
 use libra2_types::account_config::NewBlockEvent;

@@ -16,10 +16,10 @@ use libra2_config::{
 };
 use libra2_crypto::x25519;
 use libra2_id_generator::{IdGenerator, U32IdGenerator};
-use aptos_logger::prelude::*;
-// Re-exposed for aptos-network-checker
-pub use aptos_netcore::transport::tcp::{resolve_and_connect, TCPBufferCfg, TcpSocket};
-use aptos_netcore::transport::{proxy_protocol, tcp, ConnectionOrigin, Transport};
+use libra2_logger::prelude::*;
+// Re-exposed for libra2-network-checker
+pub use libra2_netcore::transport::tcp::{resolve_and_connect, TCPBufferCfg, TcpSocket};
+use libra2_netcore::transport::{proxy_protocol, tcp, ConnectionOrigin, Transport};
 use aptos_short_hex_str::AsShortHexStr;
 use libra2_time_service::{timeout, TimeService, TimeServiceTrait};
 use libra2_types::{
@@ -411,7 +411,7 @@ pub async fn upgrade_outbound<T: TSocket>(
     })
 }
 
-/// The common AptosNet Transport.
+/// The common Libra2Net Transport.
 ///
 /// The base transport layer is pluggable, so long as it provides a reliable,
 /// ordered, connection-oriented, byte-stream abstraction (e.g., TCP). We currently
@@ -423,7 +423,7 @@ pub async fn upgrade_outbound<T: TSocket>(
 /// the `Handshake` protocol.
 // TODO(philiphayes): rework Transport trait, possibly include Upgrade trait.
 // ideas in this PR thread: https://github.com/aptos-labs/aptos-core/pull/3478#issuecomment-617385633
-pub struct AptosNetTransport<TTransport> {
+pub struct Libra2NetTransport<TTransport> {
     base_transport: TTransport,
     ctxt: Arc<UpgradeContext>,
     time_service: TimeService,
@@ -431,7 +431,7 @@ pub struct AptosNetTransport<TTransport> {
     enable_proxy_protocol: bool,
 }
 
-impl<TTransport> AptosNetTransport<TTransport>
+impl<TTransport> Libra2NetTransport<TTransport>
 where
     TTransport: Transport<Error = io::Error>,
     TTransport::Output: TSocket,
@@ -631,14 +631,14 @@ where
     }
 }
 
-// If using `AptosNetTransport` as a `Transport` trait, then all upgrade futures
+// If using `Libra2NetTransport` as a `Transport` trait, then all upgrade futures
 // and listening streams must be boxed, since `upgrade_inbound` and `upgrade_outbound`
 // are async fns (and therefore unnamed types).
 //
 // TODO(philiphayes): We can change these `Pin<Box<dyn Future<..>>> to `impl Future<..>`
 // when/if this rust feature is stabilized: https://github.com/rust-lang/rust/issues/63063
 
-impl<TTransport: Transport> Transport for AptosNetTransport<TTransport>
+impl<TTransport: Transport> Transport for Libra2NetTransport<TTransport>
 where
     TTransport: Transport<Error = io::Error> + Send + 'static,
     TTransport::Output: TSocket,

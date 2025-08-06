@@ -9,8 +9,8 @@ use libra2_crypto::{
     x25519,
 };
 use libra2_infallible::{Mutex, RwLock};
-use aptos_logger::debug;
-use aptos_telemetry_service::types::{
+use libra2_logger::debug;
+use libra2_telemetry_service::types::{
     auth::{AuthRequest, AuthResponse},
     response::IndexResponse,
     telemetry::TelemetryDump,
@@ -423,7 +423,7 @@ mod tests {
     use super::*;
     use crate::metrics::{APTOS_TELEMETRY_SERVICE_FAILURE, APTOS_TELEMETRY_SERVICE_SUCCESS};
     use libra2_crypto::Uniform;
-    use aptos_telemetry_service::types::telemetry::TelemetryEvent;
+    use libra2_telemetry_service::types::telemetry::TelemetryEvent;
     use httpmock::MockServer;
     use prometheus::{register_int_counter_vec_with_registry, Registry};
     use std::{
@@ -579,7 +579,7 @@ mod tests {
         let test_registry = Registry::default();
 
         let counter = register_int_counter_vec_with_registry!(
-            "aptos_telemetry_service_success",
+            "libra2_telemetry_service_success",
             "Number of telemetry events successfully sent to telemetry service",
             &["event_name"],
             test_registry

@@ -4,7 +4,7 @@
 
 pub use super::prebuilt_packages::PreBuiltPackagesImpl;
 use aptos_framework::natives::code::{MoveOption, PackageMetadata};
-use aptos_sdk::{
+use libra2_sdk::{
     bcs,
     move_types::{
         account_address::AccountAddress, ident_str, identifier::Identifier,

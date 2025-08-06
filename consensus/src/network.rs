@@ -22,7 +22,7 @@ use crate::{
 use anyhow::{anyhow, bail, ensure};
 use libra2_channels::{self, libra2_channel, message_queues::QueueStyle};
 use libra2_config::network_id::NetworkId;
-use aptos_consensus_types::{
+use libra2_consensus_types::{
     block_retrieval::{BlockRetrievalRequest, BlockRetrievalRequestV1, BlockRetrievalResponse},
     common::Author,
     opt_proposal_msg::OptProposalMsg,
@@ -34,8 +34,8 @@ use aptos_consensus_types::{
     sync_info::SyncInfo,
     vote_msg::VoteMsg,
 };
-use aptos_logger::prelude::*;
-use aptos_network::{
+use libra2_logger::prelude::*;
+use libra2_network::{
     application::interface::{NetworkClient, NetworkServiceEvents},
     protocols::{network::Event, rpc::error::RpcError},
     ProtocolId,

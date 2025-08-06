@@ -16,7 +16,7 @@ use libra2_channels::{
     message_queues::QueueStyle,
 };
 use libra2_config::{config::ConsensusObserverConfig, network_id::PeerNetworkId};
-use aptos_logger::{error, info, warn};
+use libra2_logger::{error, info, warn};
 use futures::StreamExt;
 
 /// A simple struct that holds a message to be sent to the consensus observer
@@ -251,7 +251,7 @@ mod test {
         network_id::{NetworkId, PeerNetworkId},
     };
     use libra2_crypto::HashValue;
-    use aptos_network::{
+    use libra2_network::{
         application::{
             interface::{NetworkClient, NetworkServiceEvents},
             storage::PeersAndMetadata,

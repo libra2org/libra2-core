@@ -12,7 +12,7 @@ use aptos_forge::{
     NetworkContext, NetworkContextSynchronizer, NetworkTest, OverrideNodeConfigFn, Result, Swarm,
     SwarmChaos, SwarmCpuStress, SwarmNetEm, Test,
 };
-use aptos_sdk::move_types::account_address::AccountAddress;
+use libra2_sdk::move_types::account_address::AccountAddress;
 use libra2_types::PeerId;
 use async_trait::async_trait;
 use itertools::{EitherOrBoth, Itertools};

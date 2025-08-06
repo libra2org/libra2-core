@@ -1,7 +1,7 @@
 [package]
-name = "aptos-sdk"
-description = "The Official Aptos SDK"
-version = "0.0.3"
+name = "libra2-sdk"
+description = "The Official Libra2 SDK"
+version = "0.0.4"
 
 # Workspace inherited keys
 authors = { workspace = true }
@@ -16,7 +16,7 @@ rust-version = { workspace = true }
 anyhow = { workspace = true }
 aptos-cached-packages = { workspace = true }
 libra2-crypto = { workspace = true }
-aptos-global-constants = { workspace = true }
+libra2-global-constants = { workspace = true }
 libra2-ledger = { workspace = true }
 libra2-rest-client = { workspace = true }
 libra2-types = { workspace = true }

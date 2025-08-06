@@ -14,9 +14,9 @@ use libra2_config::{
     network_id::{NetworkId, PeerNetworkId},
 };
 use libra2_crypto::HashValue;
-use aptos_logger::Level;
-use aptos_netcore::transport::ConnectionOrigin;
-use aptos_network::{
+use libra2_logger::Level;
+use libra2_netcore::transport::ConnectionOrigin;
+use libra2_network::{
     application::{
         interface::NetworkServiceEvents, metadata::ConnectionState, storage::PeersAndMetadata,
     },
@@ -29,7 +29,7 @@ use aptos_network::{
     },
     transport::{ConnectionId, ConnectionMetadata},
 };
-use aptos_peer_monitoring_service_types::{
+use libra2_peer_monitoring_service_types::{
     request::{LatencyPingRequest, PeerMonitoringServiceRequest},
     response::{
         NetworkInformationResponse, NodeInformationResponse, PeerMonitoringServiceResponse,
@@ -423,12 +423,12 @@ async fn verify_network_information(
 /// metadata expected by the peer monitoring service.
 fn transform_connection_metadata(
     expected_peers: BTreeMap<PeerNetworkId, ConnectionMetadata>,
-) -> BTreeMap<PeerNetworkId, aptos_peer_monitoring_service_types::response::ConnectionMetadata> {
+) -> BTreeMap<PeerNetworkId, libra2_peer_monitoring_service_types::response::ConnectionMetadata> {
     expected_peers
         .into_iter()
         .map(|(peer_id, metadata)| {
             let connection_metadata =
-                aptos_peer_monitoring_service_types::response::ConnectionMetadata::new(
+                libra2_peer_monitoring_service_types::response::ConnectionMetadata::new(
                     metadata.addr,
                     metadata.remote_peer_id,
                     metadata.role,
@@ -588,7 +588,7 @@ impl MockClient {
 
 /// Initializes the Aptos logger for tests
 pub fn initialize_logger() {
-    aptos_logger::Logger::builder()
+    libra2_logger::Logger::builder()
         .is_async(false)
         .level(Level::Debug)
         .build();

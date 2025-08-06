@@ -15,8 +15,8 @@ use crate::{
 use anyhow::{anyhow, Context, Result};
 use libra2_config::keys::ConfigKey;
 use aptos_faucet_metrics_server::{run_metrics_server, MetricsServerConfig};
-use aptos_logger::info;
-use aptos_sdk::{
+use libra2_logger::info;
+use libra2_sdk::{
     crypto::ed25519::Ed25519PrivateKey,
     types::{account_config::aptos_test_root_address, chain_id::ChainId},
 };
@@ -385,7 +385,7 @@ mod test {
         helpers::get_current_time_secs,
     };
     use anyhow::{bail, Result};
-    use aptos_sdk::{
+    use libra2_sdk::{
         crypto::{ed25519::Ed25519PrivateKey, HashValue, PrivateKey, Uniform},
         types::{account_address::AccountAddress, transaction::authenticator::AuthenticationKey},
     };
@@ -624,7 +624,7 @@ mod test {
     #[tokio::test(flavor = "multi_thread", worker_threads = 2)]
     async fn test_redis_ratelimiter() -> Result<()> {
         // Assert that a localnet is alive.
-        let aptos_node_api_client = aptos_sdk::rest_client::Client::new(
+        let aptos_node_api_client = libra2_sdk::rest_client::Client::new(
             reqwest::Url::from_str("http://127.0.0.1:8080").unwrap(),
         );
         aptos_node_api_client
@@ -699,7 +699,7 @@ mod test {
         // Create a local account and store its private key at the path expected by
         // the config for this test.
         let private_key = Ed25519PrivateKey::generate(&mut StdRng::from_seed(OsRng.gen()));
-        let serialized_keys = aptos_sdk::bcs::to_bytes(&private_key)?;
+        let serialized_keys = libra2_sdk::bcs::to_bytes(&private_key)?;
         let mut key_file = std::fs::File::create("/tmp/transfer_funder_devnet.key")?;
         key_file.write_all(&serialized_keys)?;
 
@@ -787,7 +787,7 @@ mod test {
     #[tokio::test(flavor = "multi_thread", worker_threads = 2)]
     async fn test_mint_funder() -> Result<()> {
         // Assert that a localnet is alive.
-        let aptos_node_api_client = aptos_sdk::rest_client::Client::new(
+        let aptos_node_api_client = libra2_sdk::rest_client::Client::new(
             reqwest::Url::from_str("http://127.0.0.1:8080").unwrap(),
         );
         aptos_node_api_client
@@ -851,7 +851,7 @@ mod test {
     #[tokio::test(flavor = "multi_thread", worker_threads = 2)]
     async fn test_mint_funder_wait_for_txns() -> Result<()> {
         // Assert that a localnet is alive.
-        let aptos_node_api_client = aptos_sdk::rest_client::Client::new(
+        let aptos_node_api_client = libra2_sdk::rest_client::Client::new(
             reqwest::Url::from_str("http://127.0.0.1:8080").unwrap(),
         );
         aptos_node_api_client
@@ -913,7 +913,7 @@ mod test {
         make_auth_tokens_file(&["test_token"])?;
 
         // Assert that a localnet is alive.
-        let aptos_node_api_client = aptos_sdk::rest_client::Client::new(
+        let aptos_node_api_client = libra2_sdk::rest_client::Client::new(
             reqwest::Url::from_str("http://127.0.0.1:8080").unwrap(),
         );
         aptos_node_api_client

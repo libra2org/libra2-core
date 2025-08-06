@@ -14,10 +14,10 @@ use libra2_config::{
     config::{StateSyncConfig, StorageServiceConfig},
     network_id::PeerNetworkId,
 };
-use aptos_logger::prelude::*;
-use aptos_network::application::storage::PeersAndMetadata;
-use aptos_storage_service_notifications::StorageServiceNotificationListener;
-use aptos_storage_service_types::{
+use libra2_logger::prelude::*;
+use libra2_network::application::storage::PeersAndMetadata;
+use libra2_storage_service_notifications::StorageServiceNotificationListener;
+use libra2_storage_service_types::{
     requests::StorageServiceRequest,
     responses::{ProtocolMetadata, StorageServerSummary, StorageServiceResponse},
 };
@@ -99,7 +99,7 @@ impl<T: StorageReaderInterface + Send + Sync> StorageServiceServer<T> {
         storage_service_listener: StorageServiceNotificationListener,
     ) -> Self {
         // Extract the individual component configs
-        let aptos_data_client_config = config.aptos_data_client;
+        let libra2_data_client_config = config.libra2_data_client;
         let storage_service_config = config.storage_service;
 
         // Create the required components
@@ -109,7 +109,7 @@ impl<T: StorageReaderInterface + Send + Sync> StorageServiceServer<T> {
         let lru_response_cache = Cache::new(storage_service_config.max_lru_cache_size);
         let subscriptions = Arc::new(DashMap::new());
         let request_moderator = Arc::new(RequestModerator::new(
-            aptos_data_client_config,
+            libra2_data_client_config,
             cached_storage_server_summary.clone(),
             peers_and_metadata,
             storage_service_config,

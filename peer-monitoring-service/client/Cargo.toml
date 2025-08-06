@@ -1,7 +1,7 @@
 [package]
-name = "aptos-peer-monitoring-service-client"
-description = "The Aptos peer monitoring service (client-side)"
-version = "0.1.0"
+name = "libra2-peer-monitoring-service-client"
+description = "The Libra2 peer monitoring service (client-side)"
+version = "0.1.1"
 
 # Workspace inherited keys
 authors = { workspace = true }
@@ -17,10 +17,10 @@ libra2-channels = { workspace = true }
 libra2-config = { workspace = true }
 libra2-id-generator = { workspace = true }
 libra2-infallible = { workspace = true }
-aptos-logger = { workspace = true }
+libra2-logger = { workspace = true }
 libra2-metrics-core = { workspace = true }
-aptos-network = { workspace = true }
-aptos-peer-monitoring-service-types = { workspace = true }
+libra2-network = { workspace = true }
+libra2-peer-monitoring-service-types = { workspace = true }
 libra2-time-service = { workspace = true }
 libra2-types = { workspace = true }
 enum_dispatch = { workspace = true }
@@ -35,9 +35,9 @@ tokio = { workspace = true }
 [dev-dependencies]
 libra2-build-info = { workspace = true }
 libra2-config = { workspace = true }
-aptos-netcore = { workspace = true }
-aptos-network = { workspace = true, features = ["fuzzing"] }
-aptos-peer-monitoring-service-server = { workspace = true }
+libra2-netcore = { workspace = true }
+libra2-network = { workspace = true, features = ["fuzzing"] }
+libra2-peer-monitoring-service-server = { workspace = true }
 bcs = { workspace = true }
 maplit = { workspace = true }
 tokio-stream = { workspace = true }

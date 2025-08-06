@@ -25,8 +25,8 @@ use libra2_build_info::build_information;
 use libra2_config::config::{merge_node_config, NodeConfig, PersistableConfig};
 use aptos_framework::ReleaseBundle;
 use aptos_genesis::builder::GenesisConfiguration;
-use aptos_logger::{prelude::*, telemetry_log_writer::TelemetryLog, Level, LoggerFilterUpdater};
-use aptos_state_sync_driver::driver_factory::StateSyncRuntimes;
+use libra2_logger::{prelude::*, telemetry_log_writer::TelemetryLog, Level, LoggerFilterUpdater};
+use libra2_state_sync_driver::driver_factory::StateSyncRuntimes;
 use libra2_types::{
     chain_id::ChainId, keyless::Groth16VerificationKey, on_chain_config::OnChainJWKConsensusConfig,
 };
@@ -754,7 +754,7 @@ pub fn setup_environment_and_start_node(
     );
 
     // Start state sync and get the notification endpoints for mempool and consensus
-    let (aptos_data_client, state_sync_runtimes, mempool_listener, consensus_notifier) =
+    let (libra2_data_client, state_sync_runtimes, mempool_listener, consensus_notifier) =
         state_sync::start_state_sync_and_get_notification_handles(
             &node_config,
             storage_service_network_interfaces,
@@ -766,7 +766,7 @@ pub fn setup_environment_and_start_node(
     // Start the node inspection service
     services::start_node_inspection_service(
         &node_config,
-        aptos_data_client,
+        libra2_data_client,
         peers_and_metadata.clone(),
     );
 

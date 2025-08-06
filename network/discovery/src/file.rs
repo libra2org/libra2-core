@@ -5,7 +5,7 @@
 use crate::DiscoveryError;
 use libra2_config::config::PeerSet;
 #[cfg(test)]
-use aptos_logger::spawn_named;
+use libra2_logger::spawn_named;
 use libra2_time_service::{Interval, TimeService, TimeServiceTrait};
 use futures::Stream;
 use std::{
@@ -62,8 +62,8 @@ mod tests {
         config::{Peer, PeerRole},
         network_id::NetworkContext,
     };
-    use aptos_event_notifications::DbBackedOnChainConfig;
-    use aptos_network::connectivity_manager::{ConnectivityRequest, DiscoverySource};
+    use libra2_event_notifications::DbBackedOnChainConfig;
+    use libra2_network::connectivity_manager::{ConnectivityRequest, DiscoverySource};
     use libra2_temppath::TempPath;
     use libra2_types::{network_address::NetworkAddress, PeerId};
     use futures::StreamExt;
@@ -76,7 +76,7 @@ mod tests {
         let time_service = TimeService::real();
         let (conn_mgr_reqs_tx, conn_mgr_reqs_rx) = libra2_channels::new(
             1,
-            &aptos_network::counters::PENDING_CONNECTIVITY_MANAGER_REQUESTS,
+            &libra2_network::counters::PENDING_CONNECTIVITY_MANAGER_REQUESTS,
         );
         let listener_task = async move {
             let listener = DiscoveryChangeListener::<DbBackedOnChainConfig>::file(

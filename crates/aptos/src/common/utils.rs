@@ -18,7 +18,7 @@ use libra2_crypto::{
     ValidCryptoMaterial, ValidCryptoMaterialStringExt,
 };
 use libra2_keygen::KeyGen;
-use aptos_logger::{debug, Level};
+use libra2_logger::{debug, Level};
 use libra2_rest_client::{libra2_api_types::HashValue, Account, Client, FaucetClient, State};
 use aptos_telemetry::service::telemetry_is_disabled;
 use libra2_types::{
@@ -493,7 +493,7 @@ pub async fn wait_for_transactions(
 }
 
 pub fn start_logger(level: Level) {
-    let mut logger = aptos_logger::Logger::new();
+    let mut logger = libra2_logger::Logger::new();
     logger.channel_size(1000).is_async(false).level(level);
     logger.build();
 }

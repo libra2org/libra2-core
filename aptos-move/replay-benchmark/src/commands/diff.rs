@@ -9,7 +9,7 @@ use crate::{
     workload::{TransactionBlock, Workload},
 };
 use anyhow::{anyhow, bail};
-use aptos_logger::Level;
+use libra2_logger::Level;
 use libra2_types::transaction::TransactionOutput;
 use aptos_vm::{aptos_vm::AptosVMBlockExecutor, VMBlockExecutor};
 use clap::Parser;

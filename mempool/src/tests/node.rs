@@ -14,10 +14,10 @@ use libra2_config::{
     network_id::{NetworkId, PeerNetworkId},
 };
 use libra2_crypto::{x25519::PrivateKey, Uniform};
-use aptos_event_notifications::{ReconfigNotification, ReconfigNotificationListener};
+use libra2_event_notifications::{ReconfigNotification, ReconfigNotificationListener};
 use libra2_infallible::{Mutex, MutexGuard, RwLock};
-use aptos_netcore::transport::ConnectionOrigin;
-use aptos_network::{
+use libra2_netcore::transport::ConnectionOrigin;
+use libra2_network::{
     application::{
         interface::{NetworkClient, NetworkServiceEvents},
         storage::PeersAndMetadata,
@@ -577,7 +577,7 @@ fn start_node_mempool(
     let (_ac_endpoint_sender, ac_endpoint_receiver) = mpsc::channel(1_024);
     let (_quorum_store_sender, quorum_store_receiver) = mpsc::channel(1_024);
     let (_mempool_notifier, mempool_listener) =
-        aptos_mempool_notifications::new_mempool_notifier_listener_pair(100);
+        libra2_mempool_notifications::new_mempool_notifier_listener_pair(100);
     let (reconfig_sender, reconfig_events) = libra2_channel::new(QueueStyle::LIFO, 1, None);
     let reconfig_event_subscriber = ReconfigNotificationListener {
         notification_receiver: reconfig_events,
@@ -592,7 +592,7 @@ fn start_node_mempool(
         })
         .unwrap();
 
-    let runtime = aptos_runtimes::spawn_named_runtime("shared-mem".into(), None);
+    let runtime = libra2_runtimes::spawn_named_runtime("shared-mem".into(), None);
     start_shared_mempool(
         runtime.handle(),
         &config,

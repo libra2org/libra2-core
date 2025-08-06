@@ -31,14 +31,14 @@ use libra2_config::{
     config::{BlockTransactionFilterConfig, ConsensusConfig},
     network_id::NetworkId,
 };
-use aptos_consensus_types::{proposal_msg::ProposalMsg, utils::PayloadTxnsSize};
+use libra2_consensus_types::{proposal_msg::ProposalMsg, utils::PayloadTxnsSize};
 use libra2_infallible::Mutex;
-use aptos_network::{
+use libra2_network::{
     application::{interface::NetworkClient, storage::PeersAndMetadata},
     peer_manager::{ConnectionRequestSender, PeerManagerRequestSender},
     protocols::{network, network::NewNetworkSender},
 };
-use aptos_safety_rules::{test_utils, SafetyRules, TSafetyRules};
+use libra2_safety_rules::{test_utils, SafetyRules, TSafetyRules};
 use libra2_types::{
     aggregate_signature::AggregateSignature,
     epoch_change::EpochChangeProof,

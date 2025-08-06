@@ -25,7 +25,7 @@ use crate::{
 };
 use libra2_bounded_executor::BoundedExecutor;
 use libra2_config::config::DagPayloadConfig;
-use aptos_consensus_types::common::{Author, Round};
+use libra2_consensus_types::common::{Author, Round};
 use libra2_infallible::Mutex;
 use aptos_reliable_broadcast::{RBNetworkSender, ReliableBroadcast};
 use libra2_time_service::TimeService;
@@ -236,7 +236,7 @@ async fn test_certified_node_handler() {
 
 #[tokio::test]
 async fn test_dag_driver_drop() {
-    aptos_logger::Logger::init_for_testing();
+    libra2_logger::Logger::init_for_testing();
 
     let (signers, validator_verifier) = random_validator_verifier(4, None, false);
     let (tx, rx) = oneshot::channel();

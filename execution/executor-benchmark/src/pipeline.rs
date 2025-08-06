@@ -13,7 +13,7 @@ use libra2_crypto::HashValue;
 use aptos_executor::block_executor::BlockExecutor;
 use aptos_executor_types::{state_compute_result::StateComputeResult, BlockExecutorTrait};
 use libra2_infallible::Mutex;
-use aptos_logger::info;
+use libra2_logger::info;
 use libra2_types::{
     block_executor::partitioner::ExecutableBlock,
     transaction::{Transaction, TransactionPayload, Version},

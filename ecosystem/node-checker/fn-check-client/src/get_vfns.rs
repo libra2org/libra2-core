@@ -12,8 +12,8 @@ use crate::{
     helpers::extract_network_address,
 };
 use anyhow::{Context, Result};
-use aptos_logger::info;
-use aptos_sdk::{
+use libra2_logger::info;
+use libra2_sdk::{
     rest_client::Client as AptosClient,
     types::{
         account_address::AccountAddress, account_config::CORE_CODE_ADDRESS,

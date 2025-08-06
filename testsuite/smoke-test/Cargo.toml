@@ -16,10 +16,10 @@ rust-version = { workspace = true }
 anyhow = { workspace = true }
 aptos = { workspace = true, features = ["fuzzing"] }
 libra2-api-types = { workspace = true }
-aptos-bitvec = { path = "../../crates/aptos-bitvec" }
+libra2-bitvec = { path = "../../crates/libra2-bitvec" }
 aptos-cached-packages = { workspace = true }
 libra2-config = { workspace = true, features = ["smoke-test"] }
-aptos-consensus = { workspace = true }
+libra2-consensus = { workspace = true }
 libra2-crypto = { workspace = true }
 aptos-db = { workspace = true }
 aptos-db-indexer-schemas = { workspace = true }
@@ -29,20 +29,20 @@ aptos-forge = { workspace = true }
 aptos-framework = { workspace = true }
 aptos-gas-algebra = { workspace = true }
 aptos-gas-schedule = { workspace = true, features = ["testing"] }
-aptos-global-constants = { workspace = true }
+libra2-global-constants = { workspace = true }
 aptos-indexer = { workspace = true }
 aptos-indexer-grpc-table-info = { workspace = true }
-aptos-inspection-service = { workspace = true }
+libra2-inspection-service = { workspace = true }
 libra2-keygen = { workspace = true }
-aptos-move-debugger = { workspace = true }
+libra2-move-debugger = { workspace = true }
 aptos-release-builder = { workspace = true }
 libra2-rest-client = { workspace = true }
-aptos-rosetta = { workspace = true }
+libra2-rosetta = { workspace = true }
 aptos-schemadb = { workspace = true }
-aptos-sdk = { workspace = true }
+libra2-sdk = { workspace = true }
 aptos-storage-interface = { workspace = true }
 libra2-temppath = { workspace = true }
-aptos-transaction-filters = { workspace = true }
+libra2-transaction-filters = { workspace = true }
 libra2-types = { workspace = true }
 aptos-vm = { workspace = true }
 bcs = { workspace = true }
@@ -71,10 +71,10 @@ aptos-backup-cli = { workspace = true }
 aptos-db-indexer = { workspace = true, features = ["fuzzing"] }
 aptos-genesis = { workspace = true }
 libra2-infallible = { workspace = true }
-aptos-logger = { workspace = true }
-aptos-secure-storage = { workspace = true }
+libra2-logger = { workspace = true }
+libra2-secure-storage = { workspace = true }
 libra2-time-service = { workspace = true }
-aptos-vault-client = { workspace = true }
+libra2-vault-client = { workspace = true }
 base64 = { workspace = true }
 futures = { workspace = true }
 itertools = { workspace = true }

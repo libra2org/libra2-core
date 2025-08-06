@@ -5,9 +5,9 @@ use super::Test;
 use crate::{CoreContext, Result, TestReport};
 use anyhow::anyhow;
 use aptos_cached_packages::aptos_stdlib;
-use aptos_logger::info;
+use libra2_logger::info;
 use libra2_rest_client::{Client as RestClient, PendingTransaction, State, Transaction};
-use aptos_sdk::{
+use libra2_sdk::{
     crypto::ed25519::Ed25519PublicKey,
     transaction_builder::TransactionFactory,
     types::{
@@ -76,7 +76,7 @@ impl<'t> AptosContext<'t> {
     }
 
     pub fn transaction_factory(&self) -> TransactionFactory {
-        let unit_price = std::cmp::max(aptos_global_constants::GAS_UNIT_PRICE, 1);
+        let unit_price = std::cmp::max(libra2_global_constants::GAS_UNIT_PRICE, 1);
         TransactionFactory::new(self.chain_id()).with_gas_unit_price(unit_price)
     }
 
@@ -222,7 +222,7 @@ impl AptosPublicInfo {
     }
 
     pub fn transaction_factory(&self) -> TransactionFactory {
-        let unit_price = std::cmp::max(aptos_global_constants::GAS_UNIT_PRICE, 1);
+        let unit_price = std::cmp::max(libra2_global_constants::GAS_UNIT_PRICE, 1);
         TransactionFactory::new(self.chain_id).with_gas_unit_price(unit_price)
     }
 

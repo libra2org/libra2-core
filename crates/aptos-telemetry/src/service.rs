@@ -10,11 +10,11 @@ use crate::{
     telemetry_log_sender::TelemetryLogSender, utils::create_build_info_telemetry_event,
 };
 use libra2_config::config::NodeConfig;
-use aptos_logger::{
-    aptos_logger::RUST_LOG_TELEMETRY, prelude::*, telemetry_log_writer::TelemetryLog,
+use libra2_logger::{
+    libra2_logger::RUST_LOG_TELEMETRY, prelude::*, telemetry_log_writer::TelemetryLog,
     LoggerFilterUpdater,
 };
-use aptos_telemetry_service::types::telemetry::{TelemetryDump, TelemetryEvent};
+use libra2_telemetry_service::types::telemetry::{TelemetryDump, TelemetryEvent};
 use libra2_types::chain_id::ChainId;
 use futures::channel::mpsc::{self, Receiver};
 use once_cell::sync::Lazy;
@@ -40,7 +40,7 @@ const TELEMETRY_TOKEN_KEY: &str = "TELEMETRY_TOKEN";
 // The default for unknown metric values
 const UNKNOWN_METRIC_VALUE: &str = "UNKNOWN";
 
-const APTOS_NODE_CONFIG_EVENT_NAME: &str = "APTOS_NODE_CONFIG";
+const LIBRA2_NODE_CONFIG_EVENT_NAME: &str = "LIBRA2_NODE_CONFIG";
 
 /// The random token presented by the node to connect all
 /// telemetry events.
@@ -115,7 +115,7 @@ pub fn start_telemetry_service(
     }
 
     // Create the telemetry runtime
-    let telemetry_runtime = aptos_runtimes::spawn_named_runtime("telemetry".into(), None);
+    let telemetry_runtime = libra2_runtimes::spawn_named_runtime("telemetry".into(), None);
     telemetry_runtime.handle().spawn(spawn_telemetry_service(
         node_config,
         chain_id,
@@ -373,7 +373,7 @@ async fn send_node_config(
         .unwrap_or_default();
 
     let telemetry_event = TelemetryEvent {
-        name: APTOS_NODE_CONFIG_EVENT_NAME.into(),
+        name: LIBRA2_NODE_CONFIG_EVENT_NAME.into(),
         params: node_config,
     };
     send_telemetry_event_with_ip(peer_id, chain_id, telemetry_sender, telemetry_event).await;
@@ -476,7 +476,7 @@ async fn send_telemetry_event(
             telemetry_dump,
         )
     } else {
-        // Aptos nodes send their metrics to aptos-telemetry-service crate.
+        // Aptos nodes send their metrics to libra2-telemetry-service crate.
         spawn_event_sender_to_telemetry_service(event_name, telemetry_sender, telemetry_dump)
     }
 }

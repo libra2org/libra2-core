@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{metrics_safety_rules::MetricsSafetyRules, test_utils::MockStorage};
-use aptos_consensus_types::{
+use libra2_consensus_types::{
     block::block_test_utils::certificate_for_genesis,
     common::{Payload, Round},
     pipelined_block::PipelinedBlock,
@@ -13,11 +13,11 @@ use aptos_consensus_types::{
 use libra2_crypto::{hash::ACCUMULATOR_PLACEHOLDER_HASH, HashValue};
 use aptos_executor_types::state_compute_result::StateComputeResult;
 use libra2_infallible::Mutex;
-use aptos_safety_rules::{
+use libra2_safety_rules::{
     test_utils::{make_proposal_with_parent, make_proposal_with_qc},
     PersistentSafetyStorage, SafetyRulesManager,
 };
-use aptos_secure_storage::Storage;
+use libra2_secure_storage::Storage;
 use libra2_types::{
     ledger_info::{generate_ledger_info_with_sig, LedgerInfo, LedgerInfoWithSignatures},
     validator_signer::ValidatorSigner,
@@ -38,7 +38,7 @@ pub fn prepare_safety_rules() -> (Arc<Mutex<MetricsSafetyRules>>, Vec<ValidatorS
         Waypoint::new_epoch_boundary(&LedgerInfo::mock_genesis(Some(validator_set))).unwrap();
 
     let safety_storage = PersistentSafetyStorage::initialize(
-        Storage::from(aptos_secure_storage::InMemoryStorage::new()),
+        Storage::from(libra2_secure_storage::InMemoryStorage::new()),
         signer.author(),
         signer.private_key().clone(),
         waypoint,

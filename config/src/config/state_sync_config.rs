@@ -27,7 +27,7 @@ const MAX_CONCURRENT_STATE_REQUESTS: u64 = 6;
 #[serde(default, deny_unknown_fields)]
 pub struct StateSyncConfig {
     pub data_streaming_service: DataStreamingServiceConfig,
-    pub aptos_data_client: AptosDataClientConfig,
+    pub libra2_data_client: Libra2DataClientConfig,
     pub state_sync_driver: StateSyncDriverConfig,
     pub storage_service: StorageServiceConfig,
 }
@@ -394,7 +394,7 @@ impl Default for AptosLatencyFilteringConfig {
 
 #[derive(Clone, Copy, Debug, Deserialize, PartialEq, Eq, Serialize)]
 #[serde(default, deny_unknown_fields)]
-pub struct AptosDataClientConfig {
+pub struct Libra2DataClientConfig {
     /// Whether transaction data v2 is enabled
     pub enable_transaction_data_v2: bool,
     /// The aptos data poller config for the data client
@@ -439,7 +439,7 @@ pub struct AptosDataClientConfig {
     pub use_compression: bool,
 }
 
-impl Default for AptosDataClientConfig {
+impl Default for Libra2DataClientConfig {
     fn default() -> Self {
         Self {
             enable_transaction_data_v2: false, // TODO: flip this once V2 data is enabled

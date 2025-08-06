@@ -8,10 +8,10 @@ use crate::{
     block_storage::tracing::{observe_block, BlockStage},
     quorum_store,
 };
-use aptos_consensus_types::{block::Block, pipelined_block::PipelinedBlock};
+use libra2_consensus_types::{block::Block, pipelined_block::PipelinedBlock};
 use libra2_crypto::HashValue;
 use aptos_executor_types::{state_compute_result::StateComputeResult, ExecutorError};
-use aptos_logger::prelude::warn;
+use libra2_logger::prelude::warn;
 use libra2_metrics_core::{
     exponential_buckets, op_counters::DurationHistogram, register_avg_counter, register_counter,
     register_gauge, register_gauge_vec, register_histogram, register_histogram_vec,
@@ -58,7 +58,7 @@ pub static OP_COUNTERS: Lazy<libra2_metrics_core::op_counters::OpMetrics> =
 /// Counts the total number of errors
 pub static ERROR_COUNT: Lazy<IntGauge> = Lazy::new(|| {
     register_int_gauge!(
-        "aptos_consensus_error_count",
+        "libra2_consensus_error_count",
         "Total number of errors in main loop"
     )
     .unwrap()
@@ -67,7 +67,7 @@ pub static ERROR_COUNT: Lazy<IntGauge> = Lazy::new(|| {
 /// This counter is set to the round of the highest committed block.
 pub static LAST_COMMITTED_ROUND: Lazy<IntGauge> = Lazy::new(|| {
     register_int_gauge!(
-        "aptos_consensus_last_committed_round",
+        "libra2_consensus_last_committed_round",
         "This counter is set to the round of the highest committed block."
     )
     .unwrap()
@@ -76,7 +76,7 @@ pub static LAST_COMMITTED_ROUND: Lazy<IntGauge> = Lazy::new(|| {
 /// The counter corresponds to the round of the highest committed opt block.
 pub static LAST_COMMITTED_OPT_BLOCK_ROUND: Lazy<IntGauge> = Lazy::new(|| {
     register_int_gauge!(
-        "aptos_consensus_last_committed_opt_block_round",
+        "libra2_consensus_last_committed_opt_block_round",
         "The counter corresponds to the round of the highest committed opt block."
     )
     .unwrap()
@@ -85,7 +85,7 @@ pub static LAST_COMMITTED_OPT_BLOCK_ROUND: Lazy<IntGauge> = Lazy::new(|| {
 /// The counter corresponds to the version of the last committed ledger info.
 pub static LAST_COMMITTED_VERSION: Lazy<IntGauge> = Lazy::new(|| {
     register_int_gauge!(
-        "aptos_consensus_last_committed_version",
+        "libra2_consensus_last_committed_version",
         "The counter corresponds to the version of the last committed ledger info."
     )
     .unwrap()
@@ -94,7 +94,7 @@ pub static LAST_COMMITTED_VERSION: Lazy<IntGauge> = Lazy::new(|| {
 /// Count of the committed failed rounds since last restart.
 pub static COMMITTED_FAILED_ROUNDS_COUNT: Lazy<IntCounter> = Lazy::new(|| {
     register_int_counter!(
-        "aptos_consensus_committed_failed_rounds_count",
+        "libra2_consensus_committed_failed_rounds_count",
         "Count of the committed failed rounds since last restart."
     )
     .unwrap()
@@ -103,7 +103,7 @@ pub static COMMITTED_FAILED_ROUNDS_COUNT: Lazy<IntCounter> = Lazy::new(|| {
 /// Count of the committed blocks since last restart.
 pub static COMMITTED_BLOCKS_COUNT: Lazy<IntCounter> = Lazy::new(|| {
     register_int_counter!(
-        "aptos_consensus_committed_blocks_count",
+        "libra2_consensus_committed_blocks_count",
         "Count of the committed blocks since last restart."
     )
     .unwrap()
@@ -112,7 +112,7 @@ pub static COMMITTED_BLOCKS_COUNT: Lazy<IntCounter> = Lazy::new(|| {
 /// Count of the committed opt blocks since last restart.
 pub static COMMITTED_OPT_BLOCKS_COUNT: Lazy<IntCounter> = Lazy::new(|| {
     register_int_counter!(
-        "aptos_consensus_committed_opt_blocks_count",
+        "libra2_consensus_committed_opt_blocks_count",
         "Count of the committed opt blocks since last restart."
     )
     .unwrap()
@@ -121,7 +121,7 @@ pub static COMMITTED_OPT_BLOCKS_COUNT: Lazy<IntCounter> = Lazy::new(|| {
 /// Count of the committed transactions since last restart.
 pub static COMMITTED_TXNS_COUNT: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_consensus_committed_txns_count",
+        "libra2_consensus_committed_txns_count",
         "Count of the transactions since last restart. state is success or failed",
         &["state"]
     )
@@ -134,7 +134,7 @@ pub static COMMITTED_TXNS_COUNT: Lazy<IntCounterVec> = Lazy::new(|| {
 
 pub static PROPOSAL_VOTE_ADDED: Lazy<IntCounter> = Lazy::new(|| {
     register_int_counter!(
-        "aptos_consensus_proposal_vote_added",
+        "libra2_consensus_proposal_vote_added",
         "Count of the number of proposal votes added to pending votes"
     )
     .unwrap()
@@ -142,7 +142,7 @@ pub static PROPOSAL_VOTE_ADDED: Lazy<IntCounter> = Lazy::new(|| {
 
 pub static QC_AGGREGATED_FROM_VOTES: Lazy<IntCounter> = Lazy::new(|| {
     register_int_counter!(
-        "aptos_consensus_qc_aggregated_from_votes",
+        "libra2_consensus_qc_aggregated_from_votes",
         "Count of the number of QC aggregated from votes"
     )
     .unwrap()
@@ -150,7 +150,7 @@ pub static QC_AGGREGATED_FROM_VOTES: Lazy<IntCounter> = Lazy::new(|| {
 
 pub static PROPOSAL_VOTE_BROADCASTED: Lazy<IntCounter> = Lazy::new(|| {
     register_int_counter!(
-        "aptos_consensus_proposal_vote_broadcasted",
+        "libra2_consensus_proposal_vote_broadcasted",
         "Count of the number of proposal votes broadcasted"
     )
     .unwrap()
@@ -163,13 +163,13 @@ pub static PROPOSAL_VOTE_BROADCASTED: Lazy<IntCounter> = Lazy::new(|| {
 /// Count of the block proposals sent by this validator since last restart
 /// (both primary and secondary)
 pub static PROPOSALS_COUNT: Lazy<IntCounter> = Lazy::new(|| {
-    register_int_counter!("aptos_consensus_proposals_count", "Count of the block proposals sent by this validator since last restart (both primary and secondary)").unwrap()
+    register_int_counter!("libra2_consensus_proposals_count", "Count of the block proposals sent by this validator since last restart (both primary and secondary)").unwrap()
 });
 
 /// Count the number of times a validator voted for a nil block since last restart.
 pub static VOTE_NIL_COUNT: Lazy<IntCounter> = Lazy::new(|| {
     register_int_counter!(
-        "aptos_consensus_vote_nil_count",
+        "libra2_consensus_vote_nil_count",
         "Count the number of times a validator voted for a nil block since last restart."
     )
     .unwrap()
@@ -310,7 +310,7 @@ pub static LEADER_REPUTATION_ROUND_HISTORY_SIZE: Lazy<IntGauge> = Lazy::new(|| {
 /// Counts when chain_health backoff is triggered
 pub static CONSENSUS_WITHOLD_VOTE_BACKPRESSURE_TRIGGERED: Lazy<Histogram> = Lazy::new(|| {
     register_avg_counter(
-        "aptos_consensus_withold_vote_backpressure_triggered",
+        "libra2_consensus_withold_vote_backpressure_triggered",
         "Counts when consensus vote_backpressure is triggered",
     )
 });
@@ -350,7 +350,7 @@ pub static EXECUTION_BACKPRESSURE_ON_PROPOSAL_TRIGGERED: Lazy<Histogram> = Lazy:
 /// number of rounds pending when creating proposal
 pub static CONSENSUS_PROPOSAL_PENDING_ROUNDS: Lazy<Histogram> = Lazy::new(|| {
     register_avg_counter(
-        "aptos_consensus_proposal_pending_rounds",
+        "libra2_consensus_proposal_pending_rounds",
         "number of rounds pending when creating proposal",
     )
 });
@@ -359,7 +359,7 @@ pub static CONSENSUS_PROPOSAL_PENDING_ROUNDS: Lazy<Histogram> = Lazy::new(|| {
 pub static CONSENSUS_PROPOSAL_PENDING_DURATION: Lazy<DurationHistogram> = Lazy::new(|| {
     DurationHistogram::new(
         register_histogram!(
-            "aptos_consensus_proposal_pending_duration",
+            "libra2_consensus_proposal_pending_duration",
             "duration pending when creating proposal",
         )
         .unwrap(),
@@ -507,7 +507,7 @@ pub static CHAIN_HEALTH_PARTICIPATING_NUM_VALIDATORS: Lazy<Vec<IntGauge>> = Lazy
 /// 1 otherwise.
 pub static CONSENSUS_PARTICIPATION_STATUS: Lazy<IntGaugeVec> = Lazy::new(|| {
     register_int_gauge_vec!(
-        "aptos_consensus_participation_status",
+        "libra2_consensus_participation_status",
         "Counter for consensus participation status, 0 means no participation and 1 otherwise",
         &["peer_id"]
     )
@@ -536,7 +536,7 @@ pub static ALL_VALIDATORS_VOTING_POWER: Lazy<IntGaugeVec> = Lazy::new(|| {
 /// For the current ordering round, voting power needed for quorum.
 pub static CONSENSUS_CURRENT_ROUND_QUORUM_VOTING_POWER: Lazy<Gauge> = Lazy::new(|| {
     register_gauge!(
-        "aptos_consensus_current_round_quorum_voting_power",
+        "libra2_consensus_current_round_quorum_voting_power",
         "Counter for consensus participation status, 0 means no participation and 1 otherwise",
     )
     .unwrap()
@@ -545,7 +545,7 @@ pub static CONSENSUS_CURRENT_ROUND_QUORUM_VOTING_POWER: Lazy<Gauge> = Lazy::new(
 /// For the current ordering round, for each peer, whether they have voted, and for which hash_index
 pub static CONSENSUS_CURRENT_ROUND_VOTED_POWER: Lazy<GaugeVec> = Lazy::new(|| {
     register_gauge_vec!(
-        "aptos_consensus_current_round_voted_power",
+        "libra2_consensus_current_round_voted_power",
         "Counter for consensus participation status, 0 means no participation and 1 otherwise",
         &["peer_id", "hash_index"]
     )
@@ -555,7 +555,7 @@ pub static CONSENSUS_CURRENT_ROUND_VOTED_POWER: Lazy<GaugeVec> = Lazy::new(|| {
 /// For the current ordering round, for each peer, whether they have voted for a timeout
 pub static CONSENSUS_CURRENT_ROUND_TIMEOUT_VOTED_POWER: Lazy<GaugeVec> = Lazy::new(|| {
     register_gauge_vec!(
-        "aptos_consensus_current_round_timeout_voted_power",
+        "libra2_consensus_current_round_timeout_voted_power",
         "Counter for consensus participation status, 0 means no participation and 1 otherwise",
         &["peer_id"]
     )
@@ -565,7 +565,7 @@ pub static CONSENSUS_CURRENT_ROUND_TIMEOUT_VOTED_POWER: Lazy<GaugeVec> = Lazy::n
 /// Last vote seen for each of the peers
 pub static CONSENSUS_LAST_VOTE_EPOCH: Lazy<IntGaugeVec> = Lazy::new(|| {
     register_int_gauge_vec!(
-        "aptos_consensus_last_voted_epoch",
+        "libra2_consensus_last_voted_epoch",
         "for each peer_id, last epoch we've seen consensus vote",
         &["peer_id"]
     )
@@ -575,7 +575,7 @@ pub static CONSENSUS_LAST_VOTE_EPOCH: Lazy<IntGaugeVec> = Lazy::new(|| {
 /// Last vote seen for each of the peers
 pub static CONSENSUS_LAST_VOTE_ROUND: Lazy<IntGaugeVec> = Lazy::new(|| {
     register_int_gauge_vec!(
-        "aptos_consensus_last_voted_round",
+        "libra2_consensus_last_voted_round",
         "for each peer_id, last round we've seen consensus vote",
         &["peer_id"]
     )
@@ -585,7 +585,7 @@ pub static CONSENSUS_LAST_VOTE_ROUND: Lazy<IntGaugeVec> = Lazy::new(|| {
 /// Last timeout vote seen for each of the peers
 pub static CONSENSUS_LAST_TIMEOUT_VOTE_EPOCH: Lazy<IntGaugeVec> = Lazy::new(|| {
     register_int_gauge_vec!(
-        "aptos_consensus_last_timeout_voted_epoch",
+        "libra2_consensus_last_timeout_voted_epoch",
         "for each peer_id, last epoch we've seen consensus timeout vote",
         &["peer_id"]
     )
@@ -595,7 +595,7 @@ pub static CONSENSUS_LAST_TIMEOUT_VOTE_EPOCH: Lazy<IntGaugeVec> = Lazy::new(|| {
 /// Last timeout vote seen for each of the peers
 pub static CONSENSUS_LAST_TIMEOUT_VOTE_ROUND: Lazy<IntGaugeVec> = Lazy::new(|| {
     register_int_gauge_vec!(
-        "aptos_consensus_last_timeout_voted_round",
+        "libra2_consensus_last_timeout_voted_round",
         "for each peer_id, last round we've seen consensus timeout vote",
         &["peer_id"]
     )
@@ -608,7 +608,7 @@ pub static CONSENSUS_LAST_TIMEOUT_VOTE_ROUND: Lazy<IntGaugeVec> = Lazy::new(|| {
 /// This counter is set to the last round reported by the local round_state.
 pub static CURRENT_ROUND: Lazy<IntGauge> = Lazy::new(|| {
     register_int_gauge!(
-        "aptos_consensus_current_round",
+        "libra2_consensus_current_round",
         "This counter is set to the last round reported by the local round_state."
     )
     .unwrap()
@@ -617,7 +617,7 @@ pub static CURRENT_ROUND: Lazy<IntGauge> = Lazy::new(|| {
 /// Count of the rounds that gathered QC since last restart.
 pub static QC_ROUNDS_COUNT: Lazy<IntCounter> = Lazy::new(|| {
     register_int_counter!(
-        "aptos_consensus_qc_rounds_count",
+        "libra2_consensus_qc_rounds_count",
         "Count of the rounds that gathered QC since last restart."
     )
     .unwrap()
@@ -626,7 +626,7 @@ pub static QC_ROUNDS_COUNT: Lazy<IntCounter> = Lazy::new(|| {
 /// Count of the timeout rounds since last restart (close to 0 in happy path).
 pub static TIMEOUT_ROUNDS_COUNT: Lazy<IntCounter> = Lazy::new(|| {
     register_int_counter!(
-        "aptos_consensus_timeout_rounds_count",
+        "libra2_consensus_timeout_rounds_count",
         "Count of the timeout rounds since last restart (close to 0 in happy path)."
     )
     .unwrap()
@@ -635,7 +635,7 @@ pub static TIMEOUT_ROUNDS_COUNT: Lazy<IntCounter> = Lazy::new(|| {
 /// Count of the round timeout by reason and by whether the aggregator is the next proposer.
 pub static AGGREGATED_ROUND_TIMEOUT_REASON: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_consensus_agg_round_timeout_reason",
+        "libra2_consensus_agg_round_timeout_reason",
         "Count of round timeouts by reason",
         &["reason", "author", "is_next_proposer"],
     )
@@ -645,7 +645,7 @@ pub static AGGREGATED_ROUND_TIMEOUT_REASON: Lazy<IntCounterVec> = Lazy::new(|| {
 /// Count of the missing authors if any reported in the round timeout reason
 pub static AGGREGATED_ROUND_TIMEOUT_REASON_MISSING_AUTHORS: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_consensus_agg_round_timeout_reason_missing_authors",
+        "libra2_consensus_agg_round_timeout_reason_missing_authors",
         "Count of missing authors in round timeout reason",
         &["author"],
     )
@@ -657,13 +657,13 @@ pub static AGGREGATED_ROUND_TIMEOUT_REASON_MISSING_AUTHORS: Lazy<IntCounterVec> 
 /// a timeout there is an ultimate decision to move to the next round (it might take multiple
 /// timeouts to get the timeout certificate).
 pub static TIMEOUT_COUNT: Lazy<IntCounter> = Lazy::new(|| {
-    register_int_counter!("aptos_consensus_timeout_count", "Count the number of timeouts a node experienced since last restart (close to 0 in happy path).").unwrap()
+    register_int_counter!("libra2_consensus_timeout_count", "Count the number of timeouts a node experienced since last restart (close to 0 in happy path).").unwrap()
 });
 
 /// The timeout of the current round.
 pub static ROUND_TIMEOUT_MS: Lazy<IntGauge> = Lazy::new(|| {
     register_int_gauge!(
-        "aptos_consensus_round_timeout_s",
+        "libra2_consensus_round_timeout_s",
         "The timeout of the current round."
     )
     .unwrap()
@@ -675,7 +675,7 @@ pub static ROUND_TIMEOUT_MS: Lazy<IntGauge> = Lazy::new(|| {
 
 pub static SUCCESSFUL_EXECUTED_WITH_ORDER_VOTE_QC: Lazy<IntCounter> = Lazy::new(|| {
     register_int_counter!(
-        "aptos_consensus_successful_executed_with_order_vote_qc",
+        "libra2_consensus_successful_executed_with_order_vote_qc",
         "Count of the number of blocks successfully executed with order vote QC"
     )
     .unwrap()
@@ -683,7 +683,7 @@ pub static SUCCESSFUL_EXECUTED_WITH_ORDER_VOTE_QC: Lazy<IntCounter> = Lazy::new(
 
 pub static LATE_EXECUTION_WITH_ORDER_VOTE_QC: Lazy<IntCounter> = Lazy::new(|| {
     register_int_counter!(
-        "aptos_consensus_late_execution_with_order_vote_qc",
+        "libra2_consensus_late_execution_with_order_vote_qc",
         "Count of the number of blocks that were executed with order vote QC after the block was already ordered"
     )
     .unwrap()
@@ -692,7 +692,7 @@ pub static LATE_EXECUTION_WITH_ORDER_VOTE_QC: Lazy<IntCounter> = Lazy::new(|| {
 // Created order certificate from order votes. But the block isn't available in the block store.
 pub static ORDER_CERT_CREATED_WITHOUT_BLOCK_IN_BLOCK_STORE: Lazy<IntCounter> = Lazy::new(|| {
     register_int_counter!(
-        "aptos_consensus_order_cert_created_without_block_in_block_store",
+        "libra2_consensus_order_cert_created_without_block_in_block_store",
         "Count of the number of order certificates created without the block being in the block store"
     )
     .unwrap()
@@ -700,7 +700,7 @@ pub static ORDER_CERT_CREATED_WITHOUT_BLOCK_IN_BLOCK_STORE: Lazy<IntCounter> = L
 
 pub static SUCCESSFUL_EXECUTED_WITH_REGULAR_QC: Lazy<IntCounter> = Lazy::new(|| {
     register_int_counter!(
-        "aptos_consensus_successful_executed_with_regular_qc",
+        "libra2_consensus_successful_executed_with_regular_qc",
         "Count of the number of blocks successfully executed with regular QC"
     )
     .unwrap()
@@ -708,7 +708,7 @@ pub static SUCCESSFUL_EXECUTED_WITH_REGULAR_QC: Lazy<IntCounter> = Lazy::new(|| 
 
 pub static SYNC_TO_HIGHEST_QC: Lazy<IntCounter> = Lazy::new(|| {
     register_int_counter!(
-        "aptos_consensus_sync_to_highest_qc",
+        "libra2_consensus_sync_to_highest_qc",
         "Count of the number of times we sync to highest QC"
     )
     .unwrap()
@@ -716,7 +716,7 @@ pub static SYNC_TO_HIGHEST_QC: Lazy<IntCounter> = Lazy::new(|| {
 
 pub static ORDER_VOTE_ADDED: Lazy<IntCounter> = Lazy::new(|| {
     register_int_counter!(
-        "aptos_consensus_order_vote_added",
+        "libra2_consensus_order_vote_added",
         "Count of the number of order votes added"
     )
     .unwrap()
@@ -724,7 +724,7 @@ pub static ORDER_VOTE_ADDED: Lazy<IntCounter> = Lazy::new(|| {
 
 pub static ORDER_VOTE_NOT_IN_RANGE: Lazy<IntCounter> = Lazy::new(|| {
     register_int_counter!(
-        "aptos_consensus_order_vote_not_in_range",
+        "libra2_consensus_order_vote_not_in_range",
         "Count of the number of order votes that are very old"
     )
     .unwrap()
@@ -732,7 +732,7 @@ pub static ORDER_VOTE_NOT_IN_RANGE: Lazy<IntCounter> = Lazy::new(|| {
 
 pub static ORDER_VOTE_OTHER_ERRORS: Lazy<IntCounter> = Lazy::new(|| {
     register_int_counter!(
-        "aptos_consensus_order_vote_other_errors",
+        "libra2_consensus_order_vote_other_errors",
         "Count of the number of order votes that have other errors"
     )
     .unwrap()
@@ -740,7 +740,7 @@ pub static ORDER_VOTE_OTHER_ERRORS: Lazy<IntCounter> = Lazy::new(|| {
 
 pub static ORDER_VOTE_BROADCASTED: Lazy<IntCounter> = Lazy::new(|| {
     register_int_counter!(
-        "aptos_consensus_order_vote_broadcasted",
+        "libra2_consensus_order_vote_broadcasted",
         "Count of the number of order votes broadcasted"
     )
     .unwrap()
@@ -752,7 +752,7 @@ pub static ORDER_VOTE_BROADCASTED: Lazy<IntCounter> = Lazy::new(|| {
 /// Counts the number of times the sync info message has been set since last restart.
 pub static SYNC_INFO_MSGS_SENT_COUNT: Lazy<IntCounter> = Lazy::new(|| {
     register_int_counter!(
-        "aptos_consensus_sync_info_msg_sent_count",
+        "libra2_consensus_sync_info_msg_sent_count",
         "Counts the number of times the sync info message has been set since last restart."
     )
     .unwrap()
@@ -761,7 +761,7 @@ pub static SYNC_INFO_MSGS_SENT_COUNT: Lazy<IntCounter> = Lazy::new(|| {
 /// Received sync info with a newer cert
 pub static SYNC_INFO_RECEIVED_WITH_NEWER_CERT: Lazy<IntCounter> = Lazy::new(|| {
     register_int_counter!(
-        "aptos_consensus_sync_info_received_with_newer_cert",
+        "libra2_consensus_sync_info_received_with_newer_cert",
         "Received sync info with a newer cert"
     )
     .unwrap()
@@ -770,7 +770,7 @@ pub static SYNC_INFO_RECEIVED_WITH_NEWER_CERT: Lazy<IntCounter> = Lazy::new(|| {
 /// Number of blocks being fetched from the network in block retriever
 pub static BLOCKS_FETCHED_FROM_NETWORK_IN_BLOCK_RETRIEVER: Lazy<IntCounter> = Lazy::new(|| {
     register_int_counter!(
-        "aptos_consensus_blocks_fetched_from_network_in_block_retriever",
+        "libra2_consensus_blocks_fetched_from_network_in_block_retriever",
         "Number of blocks being fetched from the network in block retriever"
     )
     .unwrap()
@@ -780,7 +780,7 @@ pub static BLOCKS_FETCHED_FROM_NETWORK_IN_BLOCK_RETRIEVER: Lazy<IntCounter> = La
 pub static BLOCKS_FETCHED_FROM_NETWORK_WHILE_INSERTING_QUORUM_CERT: Lazy<IntCounter> =
     Lazy::new(|| {
         register_int_counter!(
-            "aptos_consensus_blocks_fetched_network_while_inserting_quorum_cert",
+            "libra2_consensus_blocks_fetched_network_while_inserting_quorum_cert",
             "Number of blocks fetched from the network while inserting quorum cert"
         )
         .unwrap()
@@ -790,7 +790,7 @@ pub static BLOCKS_FETCHED_FROM_NETWORK_WHILE_INSERTING_QUORUM_CERT: Lazy<IntCoun
 pub static BLOCKS_FETCHED_FROM_NETWORK_WHILE_FAST_FORWARD_SYNC: Lazy<IntCounter> =
     Lazy::new(|| {
         register_int_counter!(
-            "aptos_consensus_blocks_fetched_network_while_fast_forward_sync",
+            "libra2_consensus_blocks_fetched_network_while_fast_forward_sync",
             "Number of blocks fetched from the network while fast forward sync"
         )
         .unwrap()
@@ -801,12 +801,12 @@ pub static BLOCKS_FETCHED_FROM_NETWORK_WHILE_FAST_FORWARD_SYNC: Lazy<IntCounter>
 //////////////////////
 /// Current epoch num
 pub static EPOCH: Lazy<IntGauge> =
-    Lazy::new(|| register_int_gauge!("aptos_consensus_epoch", "Current epoch num").unwrap());
+    Lazy::new(|| register_int_gauge!("libra2_consensus_epoch", "Current epoch num").unwrap());
 
 /// The number of validators in the current epoch
 pub static CURRENT_EPOCH_VALIDATORS: Lazy<IntGauge> = Lazy::new(|| {
     register_int_gauge!(
-        "aptos_consensus_current_epoch_validators",
+        "libra2_consensus_current_epoch_validators",
         "The number of validators in the current epoch"
     )
     .unwrap()
@@ -819,7 +819,7 @@ pub static CURRENT_EPOCH_VALIDATORS: Lazy<IntGauge> = Lazy::new(|| {
 /// In a "happy path" with no collisions and timeouts, should be equal to 3 or 4.
 pub static NUM_BLOCKS_IN_TREE: Lazy<IntGauge> = Lazy::new(|| {
     register_int_gauge!(
-        "aptos_consensus_num_blocks_in_tree",
+        "libra2_consensus_num_blocks_in_tree",
         "Counter for the number of blocks in the block tree (including the root)."
     )
     .unwrap()
@@ -828,7 +828,7 @@ pub static NUM_BLOCKS_IN_TREE: Lazy<IntGauge> = Lazy::new(|| {
 /// Counter for the number of blocks in the pipeline broken down by stage.
 pub static NUM_BLOCKS_IN_PIPELINE: Lazy<IntGaugeVec> = Lazy::new(|| {
     register_int_gauge_vec!(
-        "aptos_consensus_num_blocks_in_pipeline",
+        "libra2_consensus_num_blocks_in_pipeline",
         "Counter for the number of blocks in the pipeline",
         &["stage"]
     )
@@ -841,7 +841,7 @@ pub static NUM_BLOCKS_IN_PIPELINE: Lazy<IntGaugeVec> = Lazy::new(|| {
 // TODO Consider reintroducing this counter
 // pub static UNWRAPPED_PROPOSAL_SIZE_BYTES: Lazy<Histogram> = Lazy::new(|| {
 //     register_histogram!(
-//         "aptos_consensus_unwrapped_proposal_size_bytes",
+//         "libra2_consensus_unwrapped_proposal_size_bytes",
 //         "Histogram of proposal size after BCS but before wrapping with GRPC and aptos net."
 //     )
 //     .unwrap()
@@ -855,7 +855,7 @@ const NUM_CONSENSUS_TRANSACTIONS_BUCKETS: [f64; 24] = [
 /// Histogram for the number of txns per (committed) blocks.
 pub static NUM_TXNS_PER_BLOCK: Lazy<Histogram> = Lazy::new(|| {
     register_histogram!(
-        "aptos_consensus_num_txns_per_block",
+        "libra2_consensus_num_txns_per_block",
         "Histogram for the number of txns per (committed) blocks.",
         NUM_CONSENSUS_TRANSACTIONS_BUCKETS.to_vec()
     )
@@ -865,7 +865,7 @@ pub static NUM_TXNS_PER_BLOCK: Lazy<Histogram> = Lazy::new(|| {
 /// Histogram for the number of bytes in the committed blocks.
 pub static NUM_BYTES_PER_BLOCK: Lazy<Histogram> = Lazy::new(|| {
     register_histogram!(
-        "aptos_consensus_num_bytes_per_block",
+        "libra2_consensus_num_bytes_per_block",
         "Histogram for the number of bytes per (committed) blocks.",
         exponential_buckets(/*start=*/ 500.0, /*factor=*/ 1.4, /*count=*/ 32).unwrap()
     )
@@ -885,7 +885,7 @@ const TRACING_BUCKETS: &[f64] = &[
 /// Traces block movement throughout the node
 pub static BLOCK_TRACING: Lazy<HistogramVec> = Lazy::new(|| {
     register_histogram_vec!(
-        "aptos_consensus_block_tracing",
+        "libra2_consensus_block_tracing",
         "Histogram for different stages of a block",
         &["stage"],
         TRACING_BUCKETS.to_vec()
@@ -896,7 +896,7 @@ pub static BLOCK_TRACING: Lazy<HistogramVec> = Lazy::new(|| {
 /// Traces pipeline stages
 pub static PIPELINE_TRACING: Lazy<HistogramVec> = Lazy::new(|| {
     register_histogram_vec!(
-        "aptos_consensus_pipeline_tracing",
+        "libra2_consensus_pipeline_tracing",
         "Histogram for different stages of a block's pipeline",
         &["stage", "type"],
         TRACING_BUCKETS.to_vec()
@@ -907,7 +907,7 @@ pub static PIPELINE_TRACING: Lazy<HistogramVec> = Lazy::new(|| {
 pub static PIPELINE_INSERTION_TO_EXECUTED_TIME: Lazy<DurationHistogram> = Lazy::new(|| {
     DurationHistogram::new(
         register_histogram!(
-            "aptos_consensus_pipeline_insertion_to_executed_time",
+            "libra2_consensus_pipeline_insertion_to_executed_time",
             "Histogram for the time it takes for a block to be executed after being inserted into the pipeline"
         ).unwrap()
     )
@@ -916,7 +916,7 @@ pub static PIPELINE_INSERTION_TO_EXECUTED_TIME: Lazy<DurationHistogram> = Lazy::
 pub static PIPELINE_ENTRY_TO_INSERTED_TIME: Lazy<DurationHistogram> = Lazy::new(|| {
     DurationHistogram::new(
         register_histogram!(
-            "aptos_consensus_pipeline_entry_to_inserted_time",
+            "libra2_consensus_pipeline_entry_to_inserted_time",
             "Histogram for the time it takes for a block to be inserted into the pipeline after being received"
         ).unwrap()
     )
@@ -925,7 +925,7 @@ pub static PIPELINE_ENTRY_TO_INSERTED_TIME: Lazy<DurationHistogram> = Lazy::new(
 pub static PREPARE_BLOCK_SIG_VERIFICATION_TIME: Lazy<DurationHistogram> = Lazy::new(|| {
     DurationHistogram::new(
         register_histogram!(
-            "aptos_consensus_prepare_block_sig_verification_time",
+            "libra2_consensus_prepare_block_sig_verification_time",
             "Histogram for the time it takes to verify the signatures of a block after it is prepared"
         ).unwrap()
     )
@@ -934,7 +934,7 @@ pub static PREPARE_BLOCK_SIG_VERIFICATION_TIME: Lazy<DurationHistogram> = Lazy::
 pub static PREPARE_BLOCK_WAIT_TIME: Lazy<DurationHistogram> = Lazy::new(|| {
     DurationHistogram::new(
         register_histogram!(
-            "aptos_consensus_prepare_block_wait_time",
+            "libra2_consensus_prepare_block_wait_time",
             "Histogram for the time the block waits after it enters the pipeline before the block prepration starts"
         ).unwrap()
     )
@@ -943,7 +943,7 @@ pub static PREPARE_BLOCK_WAIT_TIME: Lazy<DurationHistogram> = Lazy::new(|| {
 pub static EXECUTE_BLOCK_WAIT_TIME: Lazy<DurationHistogram> = Lazy::new(|| {
     DurationHistogram::new(
         register_histogram!(
-            "aptos_consensus_execute_block_wait_time",
+            "libra2_consensus_execute_block_wait_time",
             "Histogram for the time the block waits after the block is prepared before the block execution starts"
         ).unwrap()
     )
@@ -952,7 +952,7 @@ pub static EXECUTE_BLOCK_WAIT_TIME: Lazy<DurationHistogram> = Lazy::new(|| {
 pub static APPLY_LEDGER_WAIT_TIME: Lazy<DurationHistogram> = Lazy::new(|| {
     DurationHistogram::new(
         register_histogram!(
-            "aptos_consensus_apply_ledger_wait_time",
+            "libra2_consensus_apply_ledger_wait_time",
             "Histogram for the time the block waits after the block is executed before the ledger is applied"
         ).unwrap()
     )
@@ -966,7 +966,7 @@ const CONSENSUS_WAIT_DURATION_BUCKETS: [f64; 19] = [
 /// Histogram of the time it requires to wait before inserting blocks into block store.
 /// Measured as the block's timestamp minus local timestamp.
 pub static WAIT_DURATION_S: Lazy<DurationHistogram> = Lazy::new(|| {
-    DurationHistogram::new(register_histogram!("aptos_consensus_wait_duration_s",
+    DurationHistogram::new(register_histogram!("libra2_consensus_wait_duration_s",
     "Histogram of the time it requires to wait before inserting blocks into block store. Measured as the block's timestamp minus the local timestamp.",
     CONSENSUS_WAIT_DURATION_BUCKETS.to_vec()).unwrap())
 });
@@ -978,7 +978,7 @@ const VERIFY_BUCKETS: &[f64] = &[
 
 pub static VERIFY_MSG: Lazy<HistogramVec> = Lazy::new(|| {
     register_histogram_vec!(
-        "aptos_consensus_verify_msg",
+        "libra2_consensus_verify_msg",
         "Histogram of the time it takes to verify a message",
         &["msg"],
         VERIFY_BUCKETS.to_vec()
@@ -992,7 +992,7 @@ pub static VERIFY_MSG: Lazy<HistogramVec> = Lazy::new(|| {
 /// Count of the pending messages sent to itself in the channel
 pub static PENDING_SELF_MESSAGES: Lazy<IntGauge> = Lazy::new(|| {
     register_int_gauge!(
-        "aptos_consensus_pending_self_messages",
+        "libra2_consensus_pending_self_messages",
         "Count of the pending messages sent to itself in the channel"
     )
     .unwrap()
@@ -1001,7 +1001,7 @@ pub static PENDING_SELF_MESSAGES: Lazy<IntGauge> = Lazy::new(|| {
 /// Count of the pending outbound round timeouts
 pub static PENDING_ROUND_TIMEOUTS: Lazy<IntGauge> = Lazy::new(|| {
     register_int_gauge!(
-        "aptos_consensus_pending_round_timeouts",
+        "libra2_consensus_pending_round_timeouts",
         "Count of the pending outbound round timeouts"
     )
     .unwrap()
@@ -1010,7 +1010,7 @@ pub static PENDING_ROUND_TIMEOUTS: Lazy<IntGauge> = Lazy::new(|| {
 /// Counter of pending network events to Consensus
 pub static PENDING_CONSENSUS_NETWORK_EVENTS: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_consensus_pending_network_events",
+        "libra2_consensus_pending_network_events",
         "Counters(queued,dequeued,dropped) related to pending network notifications to Consensus",
         &["state"]
     )
@@ -1020,7 +1020,7 @@ pub static PENDING_CONSENSUS_NETWORK_EVENTS: Lazy<IntCounterVec> = Lazy::new(|| 
 /// Count of the pending state sync notification.
 pub static PENDING_STATE_SYNC_NOTIFICATION: Lazy<IntGauge> = Lazy::new(|| {
     register_int_gauge!(
-        "aptos_consensus_pending_state_sync_notification",
+        "libra2_consensus_pending_state_sync_notification",
         "Count of the pending state sync notification"
     )
     .unwrap()
@@ -1028,7 +1028,7 @@ pub static PENDING_STATE_SYNC_NOTIFICATION: Lazy<IntGauge> = Lazy::new(|| {
 
 pub static PENDING_COMMIT_NOTIFICATION: Lazy<IntGauge> = Lazy::new(|| {
     register_int_gauge!(
-        "aptos_consensus_pending_commit_notification",
+        "libra2_consensus_pending_commit_notification",
         "Count of the pending commit notification"
     )
     .unwrap()
@@ -1037,7 +1037,7 @@ pub static PENDING_COMMIT_NOTIFICATION: Lazy<IntGauge> = Lazy::new(|| {
 /// Count of the pending quorum store commit notification.
 pub static PENDING_QUORUM_STORE_COMMIT_NOTIFICATION: Lazy<IntGauge> = Lazy::new(|| {
     register_int_gauge!(
-        "aptos_consensus_pending_quorum_store_commit_notification",
+        "libra2_consensus_pending_quorum_store_commit_notification",
         "Count of the pending quorum store commit notification"
     )
     .unwrap()
@@ -1046,7 +1046,7 @@ pub static PENDING_QUORUM_STORE_COMMIT_NOTIFICATION: Lazy<IntGauge> = Lazy::new(
 /// Counters related to pending commit votes
 pub static BUFFER_MANAGER_MSGS: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_consensus_buffer_manager_msgs_count",
+        "libra2_consensus_buffer_manager_msgs_count",
         "Counters(queued,dequeued,dropped) related to pending commit votes",
         &["state"]
     )
@@ -1056,7 +1056,7 @@ pub static BUFFER_MANAGER_MSGS: Lazy<IntCounterVec> = Lazy::new(|| {
 /// Counters(queued,dequeued,dropped) related to consensus channel
 pub static CONSENSUS_CHANNEL_MSGS: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_consensus_channel_msgs_count",
+        "libra2_consensus_channel_msgs_count",
         "Counters(queued,dequeued,dropped) related to consensus channel",
         &["state"]
     )
@@ -1076,7 +1076,7 @@ pub static BUFFER_MANAGER_CHANNEL_MSGS: Lazy<IntCounterVec> = Lazy::new(|| {
 /// Counters for received consensus messages broken down by type
 pub static CONSENSUS_RECEIVED_MSGS: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_consensus_received_msgs_count",
+        "libra2_consensus_received_msgs_count",
         "Counters for received consensus messages broken down by type",
         &["type"]
     )
@@ -1086,7 +1086,7 @@ pub static CONSENSUS_RECEIVED_MSGS: Lazy<IntCounterVec> = Lazy::new(|| {
 /// Counters for sent consensus messages broken down by type
 pub static CONSENSUS_SENT_MSGS: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_consensus_sent_msgs_count",
+        "libra2_consensus_sent_msgs_count",
         "Counters for received consensus messages broken down by type",
         &["type"]
     )
@@ -1096,7 +1096,7 @@ pub static CONSENSUS_SENT_MSGS: Lazy<IntCounterVec> = Lazy::new(|| {
 /// Counters(queued,dequeued,dropped) related to consensus round manager channel
 pub static ROUND_MANAGER_CHANNEL_MSGS: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_consensus_round_manager_msgs_count",
+        "libra2_consensus_round_manager_msgs_count",
         "Counters(queued,dequeued,dropped) related to consensus round manager channel",
         &["state"]
     )
@@ -1116,7 +1116,7 @@ pub static QUORUM_STORE_CHANNEL_MSGS: Lazy<IntCounterVec> = Lazy::new(|| {
 /// Counters(queued,dequeued,dropped) related to rpc request channel
 pub static RPC_CHANNEL_MSGS: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_consensus_rpc_channel_msgs_count",
+        "libra2_consensus_rpc_channel_msgs_count",
         "Counters(queued,dequeued,dropped) related to rpc request channel",
         &["state"]
     )
@@ -1126,7 +1126,7 @@ pub static RPC_CHANNEL_MSGS: Lazy<IntCounterVec> = Lazy::new(|| {
 /// Counters(queued,dequeued,dropped) related to block retrieval per epoch task
 pub static BLOCK_RETRIEVAL_TASK_MSGS: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_consensus_block_retrieval_task_msgs_count",
+        "libra2_consensus_block_retrieval_task_msgs_count",
         "Counters(queued,dequeued,dropped) related to block retrieval task",
         &["state"]
     )
@@ -1135,7 +1135,7 @@ pub static BLOCK_RETRIEVAL_TASK_MSGS: Lazy<IntCounterVec> = Lazy::new(|| {
 
 pub static BLOCK_RETRIEVAL_LOCAL_FULFILL_COUNT: Lazy<IntCounter> = Lazy::new(|| {
     register_int_counter!(
-        "aptos_consensus_block_retrieval_local_fulfill_count",
+        "libra2_consensus_block_retrieval_local_fulfill_count",
         "Count of the number of local fulfillments of block retrieval requests"
     )
     .unwrap()
@@ -1144,7 +1144,7 @@ pub static BLOCK_RETRIEVAL_LOCAL_FULFILL_COUNT: Lazy<IntCounter> = Lazy::new(|| 
 /// Count of the buffer manager retry requests since last restart.
 pub static BUFFER_MANAGER_RETRY_COUNT: Lazy<IntCounter> = Lazy::new(|| {
     register_int_counter!(
-        "aptos_consensus_buffer_manager_retry_count",
+        "libra2_consensus_buffer_manager_retry_count",
         "Count of the buffer manager retry requests since last restart"
     )
     .unwrap()
@@ -1153,7 +1153,7 @@ pub static BUFFER_MANAGER_RETRY_COUNT: Lazy<IntCounter> = Lazy::new(|| {
 /// Count of the buffer manager receiving executor error
 pub static BUFFER_MANAGER_RECEIVED_EXECUTOR_ERROR_COUNT: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_consensus_buffer_manager_received_executor_error_count",
+        "libra2_consensus_buffer_manager_received_executor_error_count",
         "Count of the buffer manager receiving executor error",
         &["error_type"],
     )
@@ -1163,7 +1163,7 @@ pub static BUFFER_MANAGER_RECEIVED_EXECUTOR_ERROR_COUNT: Lazy<IntCounterVec> = L
 /// Count of the executor errors pipeline discarded
 pub static PIPELINE_DISCARDED_EXECUTOR_ERROR_COUNT: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_consensus_pipeline_discarded_executor_error_count",
+        "libra2_consensus_pipeline_discarded_executor_error_count",
         "Count of the executor errors pipeline discarded",
         &["error_type"],
     )
@@ -1208,7 +1208,7 @@ const PROPSER_ELECTION_DURATION_BUCKETS: [f64; 17] = [
 /// Time it takes for proposer election to compute proposer (when not cached)
 pub static PROPOSER_ELECTION_DURATION: Lazy<Histogram> = Lazy::new(|| {
     register_histogram!(
-        "aptos_consensus_proposer_election_duration",
+        "libra2_consensus_proposer_election_duration",
         "Time it takes for proposer election to compute proposer (when not cached)",
         PROPSER_ELECTION_DURATION_BUCKETS.to_vec()
     )
@@ -1218,7 +1218,7 @@ pub static PROPOSER_ELECTION_DURATION: Lazy<Histogram> = Lazy::new(|| {
 /// Count of the number of blocks that have ready batches to execute.
 pub static QUORUM_BATCH_READY_COUNT: Lazy<IntCounter> = Lazy::new(|| {
     register_int_counter!(
-        "aptos_consensus_quorum_store_batch_ready_count",
+        "libra2_consensus_quorum_store_batch_ready_count",
         "Count of the number of blocks that have ready batches to execute"
     )
     .unwrap()
@@ -1228,7 +1228,7 @@ pub static QUORUM_BATCH_READY_COUNT: Lazy<IntCounter> = Lazy::new(|| {
 pub static BATCH_WAIT_DURATION: Lazy<DurationHistogram> = Lazy::new(|| {
     DurationHistogram::new(
         register_histogram!(
-            "aptos_consensus_batch_wait_duration",
+            "libra2_consensus_batch_wait_duration",
             "Histogram of the time durations for waiting batches.",
             // exponential_buckets(/*start=*/ 100.0, /*factor=*/ 1.1, /*count=*/ 100).unwrap(),
         )
@@ -1240,7 +1240,7 @@ pub static BATCH_WAIT_DURATION: Lazy<DurationHistogram> = Lazy::new(|| {
 pub static BUFFER_MANAGER_PHASE_PROCESS_SECONDS: Lazy<HistogramVec> = Lazy::new(|| {
     register_histogram_vec!(
         // metric name
-        "aptos_consensus_buffer_manager_phase_process_seconds",
+        "libra2_consensus_buffer_manager_phase_process_seconds",
         // metric description
         "Timer for buffer manager PipelinePhase::process()",
         // metric labels (dimensions)
@@ -1253,7 +1253,7 @@ pub static BUFFER_MANAGER_PHASE_PROCESS_SECONDS: Lazy<HistogramVec> = Lazy::new(
 /// Count of the number of `ProposalExt` blocks received while the feature is disabled.
 pub static UNEXPECTED_PROPOSAL_EXT_COUNT: Lazy<IntCounter> = Lazy::new(|| {
     register_int_counter!(
-        "aptos_consensus_unexpected_proposal_ext_count",
+        "libra2_consensus_unexpected_proposal_ext_count",
         "Count of the number of `ProposalExt` blocks received while the feature is disabled."
     )
     .unwrap()
@@ -1262,7 +1262,7 @@ pub static UNEXPECTED_PROPOSAL_EXT_COUNT: Lazy<IntCounter> = Lazy::new(|| {
 /// Count of the number of rejected proposals due to denied inline transactions
 pub static REJECTED_PROPOSAL_DENY_TXN_COUNT: Lazy<IntCounter> = Lazy::new(|| {
     register_int_counter!(
-        "aptos_consensus_rejected_proposal_deny_txn_count",
+        "libra2_consensus_rejected_proposal_deny_txn_count",
         "Count of the number of rejected proposals due to denied inline transactions"
     )
     .unwrap()
@@ -1281,7 +1281,7 @@ pub static MAX_TXNS_FROM_BLOCK_TO_EXECUTE: Lazy<Histogram> = Lazy::new(|| {
 /// Count of the number of `DKG` validator transactions received while the feature is disabled.
 pub static UNEXPECTED_DKG_VTXN_COUNT: Lazy<IntCounter> = Lazy::new(|| {
     register_int_counter!(
-        "aptos_consensus_unexpected_dkg_vtxn_count",
+        "libra2_consensus_unexpected_dkg_vtxn_count",
         "Count of the number of `DKG` validator transactions received while the feature is disabled."
     )
         .unwrap()
@@ -1291,7 +1291,7 @@ pub static UNEXPECTED_DKG_VTXN_COUNT: Lazy<IntCounter> = Lazy::new(|| {
 pub static FETCH_COMMIT_HISTORY_DURATION: Lazy<DurationHistogram> = Lazy::new(|| {
     DurationHistogram::new(
         register_histogram!(
-            "aptos_consensus_fetch_commit_history_duration",
+            "libra2_consensus_fetch_commit_history_duration",
             "Histogram of the time durations for fetching commit history.",
             // exponential_buckets(/*start=*/ 100.0, /*factor=*/ 1.1, /*count=*/ 100).unwrap(),
         )
@@ -1360,7 +1360,7 @@ pub fn update_counters_for_committed_blocks(blocks_to_commit: &[Arc<PipelinedBlo
 
 pub static EPOCH_MANAGER_ISSUES_DETAILS: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_consensus_epoch_manager_issues",
+        "libra2_consensus_epoch_manager_issues",
         "Count of occurences of different epoch manager processing issues.",
         &["kind"]
     )
@@ -1387,7 +1387,7 @@ pub static PROPOSED_VTXN_BYTES: Lazy<IntCounterVec> = Lazy::new(|| {
 
 pub static RAND_QUEUE_SIZE: Lazy<IntGauge> = Lazy::new(|| {
     register_int_gauge!(
-        "aptos_consensus_rand_queue_size",
+        "libra2_consensus_rand_queue_size",
         "Number of randomness-pending blocks."
     )
     .unwrap()
@@ -1395,7 +1395,7 @@ pub static RAND_QUEUE_SIZE: Lazy<IntGauge> = Lazy::new(|| {
 
 pub static CONSENSUS_PROPOSAL_PAYLOAD_AVAILABILITY: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_consensus_proposal_payload_availability_count",
+        "libra2_consensus_proposal_payload_availability_count",
         "The availability of proposal payload locally",
         &["status"]
     )
@@ -1404,7 +1404,7 @@ pub static CONSENSUS_PROPOSAL_PAYLOAD_AVAILABILITY: Lazy<IntCounterVec> = Lazy::
 
 pub static CONSENSUS_PROPOSAL_PAYLOAD_FETCH_DURATION: Lazy<HistogramVec> = Lazy::new(|| {
     register_histogram_vec!(
-        "aptos_consensus_proposal_payload_fetch_duration",
+        "libra2_consensus_proposal_payload_fetch_duration",
         "Time to fetch payload behind proposal with status",
         &["status"]
     )
@@ -1414,7 +1414,7 @@ pub static CONSENSUS_PROPOSAL_PAYLOAD_FETCH_DURATION: Lazy<HistogramVec> = Lazy:
 pub static CONSENSUS_PROPOSAL_PAYLOAD_BATCH_AVAILABILITY_IN_QS: Lazy<IntCounterVec> = Lazy::new(
     || {
         register_int_counter_vec!(
-            "aptos_consensus_proposal_payload_batch_availability",
+            "libra2_consensus_proposal_payload_batch_availability",
             "The number of batches in payload that are available and missing locally by batch author",
             &["author", "is_proof", "state"]
         )

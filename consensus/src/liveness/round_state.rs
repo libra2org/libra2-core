@@ -7,7 +7,7 @@ use crate::{
     pending_votes::{PendingVotes, VoteReceptionResult, VoteStatus},
     util::time_service::{SendTask, TimeService},
 };
-use aptos_consensus_types::{
+use libra2_consensus_types::{
     common::Round,
     round_timeout::{RoundTimeout, RoundTimeoutReason},
     sync_info::SyncInfo,
@@ -15,7 +15,7 @@ use aptos_consensus_types::{
     vote::Vote,
 };
 use libra2_crypto::HashValue;
-use aptos_logger::{prelude::*, Schema};
+use libra2_logger::{prelude::*, Schema};
 use libra2_types::validator_verifier::ValidatorVerifier;
 use futures::future::AbortHandle;
 use serde::Serialize;

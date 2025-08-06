@@ -1,16 +1,16 @@
 ---
 id: network
 title: Network
-custom_edit_url: https://github.com/aptos-labs/aptos-core/edit/main/network/README.md
+custom_edit_url: https://github.com/libra2org/libra2-core/edit/main/network/README.md
 ---
 
 ## Overview
 
-For more detailed info, see the [AptosNet Specification](../documentation/specifications/network/README.md).
+For more detailed info, see the [Libra2Net Specification](../documentation/specifications/network/README.md).
 
-AptosNet is the primary protocol for communication between any two nodes in the
+Libra2Net is the primary protocol for communication between any two nodes in the
 Aptos ecosystem. It is specifically designed to facilitate the consensus, shared
-mempool, and state sync protocols. AptosNet tries to maintain at-most one connection
+mempool, and state sync protocols. Libra2Net tries to maintain at-most one connection
 with each remote peer; the application protocols to that remote peer are then
 multiplexed over the single peer connection.
 
@@ -72,7 +72,7 @@ independent "tasks." The [tokio](https://tokio.rs/) framework is used as the tas
 runtime. The primary subcomponents in the network module are:
 
 * [`Network Interface`] &mdash; The interface provided to application modules
-using AptosNet.
+using Libra2Net.
 
 * [`PeerManager`] &mdash; Listens for incoming connections, and dials outbound
 connections to other peers. Demultiplexes and forwards inbound messages from
@@ -86,8 +86,8 @@ protocols: DirectSend and Rpc.
 
 + [`AptosTransport`] &mdash; A secure, reliable transport. It uses [NoiseIK] over
 TCP to negotiate an encrypted and authenticated connection between peers.
-The AptosNet version and any Aptos-specific application protocols are negotiated
-afterward using the [AptosNet Handshake Protocol].
+The Libra2Net version and any Aptos-specific application protocols are negotiated
+afterward using the [Libra2Net Handshake Protocol].
 
 * [`ConnectivityManager`] &mdash; Establishes connections to known peers found
 via Discovery. Notifies [`PeerManager`] to make outbound dials, or disconnects based
@@ -126,13 +126,13 @@ configurable static timeout.
         │   ├── direct_send        # Protocol for fire-and-forget style message delivery
         │   ├── health_checker     # Protocol for health probing
         │   ├── rpc                # Protocol for remote procedure calls
-        │   └── wire               # Protocol for AptosNet handshakes and messaging
+        │   └── wire               # Protocol for Libra2Net handshakes and messaging
         ├── transport              # The base transport layer for dialing/listening
         └── noise                  # Noise handshaking and wire integration
 
 [`NetworkConfig`]:../config/src/config/network_config.rs
 [`ConnectivityManager`]: ./src/connectivity_manager/mod.rs
-[`AptosNet Handshake Protocol`]: ../specifications/network/handshake-v1.md
+[`Libra2Net Handshake Protocol`]: ../specifications/network/handshake-v1.md
 [`ValidatorSet`]: ../types/src/on_chain_config/validator_set.rs
 [`AptosTransport`]: ./src/transport/mod.rs
 [`HealthChecker`]: ./src/protocols/health_checker/mod.rs

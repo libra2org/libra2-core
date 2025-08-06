@@ -18,4 +18,4 @@ runs:
         python3 ${{ github.action_path }}/bump_aptos_node_version.py
       env:
         RELEASE_TAG: ${{ inputs.release_tag }}
-        APTOS_NODE_CARGO_TOML: ${{ inputs.aptos_node_cargo_toml }}
+        LIBRA2_NODE_CARGO_TOML: ${{ inputs.aptos_node_cargo_toml }}

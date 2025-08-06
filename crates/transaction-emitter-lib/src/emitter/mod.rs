@@ -20,9 +20,9 @@ use again::RetryPolicy;
 use anyhow::{ensure, format_err, Result};
 use libra2_config::config::DEFAULT_MAX_SUBMIT_TRANSACTION_BATCH_SIZE;
 use libra2_crypto::ed25519::Ed25519PrivateKey;
-use aptos_logger::{sample, sample::SampleRate};
+use libra2_logger::{sample, sample::SampleRate};
 use libra2_rest_client::{libra2_api_types::AptosErrorCode, error::RestError, Client as RestClient};
-use aptos_sdk::{
+use libra2_sdk::{
     move_types::account_address::AccountAddress,
     transaction_builder::{aptos_stdlib, TransactionFactory},
     types::{transaction::SignedTransaction, AccountKey, LocalAccount},
@@ -212,8 +212,8 @@ impl Default for EmitJobRequest {
                 mempool_backlog: 3000,
             },
             transaction_mix_per_phase: vec![vec![(TransactionType::default(), 1)]],
-            max_gas_per_txn: aptos_global_constants::MAX_GAS_AMOUNT,
-            gas_price: aptos_global_constants::GAS_UNIT_PRICE,
+            max_gas_per_txn: libra2_global_constants::MAX_GAS_AMOUNT,
+            gas_price: libra2_global_constants::GAS_UNIT_PRICE,
             init_max_gas_per_txn: None,
             init_gas_price_multiplier: 2,
             mint_to_root: false,

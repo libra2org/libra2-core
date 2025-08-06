@@ -1,6 +1,6 @@
 [package]
-name = "aptos-consensus-types"
-description = "Aptos consensus types"
+name = "libra2-consensus-types"
+description = "Libra2 consensus types"
 version = "0.1.0"
 
 # Workspace inherited keys
@@ -14,12 +14,12 @@ rust-version = { workspace = true }
 
 [dependencies]
 anyhow = { workspace = true }
-aptos-bitvec = { workspace = true }
+libra2-bitvec = { workspace = true }
 libra2-crypto = { workspace = true }
 libra2-crypto-derive = { workspace = true }
 aptos-executor-types = { workspace = true }
 libra2-infallible = { workspace = true }
-aptos-logger = { workspace = true }
+libra2-logger = { workspace = true }
 aptos-short-hex-str = { workspace = true }
 libra2-types = { workspace = true }
 bcs = { workspace = true }

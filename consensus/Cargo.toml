@@ -1,7 +1,7 @@
 [package]
-name = "aptos-consensus"
-description = "Aptos consensus"
-version = "0.1.0"
+name = "libra2-consensus"
+description = "Libra2 consensus"
+version = "0.1.1"
 
 # Workspace inherited keys
 authors = { workspace = true }
@@ -14,38 +14,38 @@ rust-version = { workspace = true }
 
 [dependencies]
 anyhow = { workspace = true }
-aptos-bitvec = { workspace = true }
+libra2-bitvec = { workspace = true }
 libra2-bounded-executor = { workspace = true }
 libra2-channels = { workspace = true }
 aptos-collections = { workspace = true }
 libra2-config = { workspace = true }
-aptos-consensus-notifications = { workspace = true }
-aptos-consensus-types = { workspace = true }
+libra2-consensus-notifications = { workspace = true }
+libra2-consensus-types = { workspace = true }
 libra2-crypto = { workspace = true }
 libra2-crypto-derive = { workspace = true }
 aptos-dkg = { workspace = true }
-aptos-enum-conversion-derive = { workspace = true }
-aptos-event-notifications = { workspace = true }
+libra2-enum-conversion-derive = { workspace = true }
+libra2-event-notifications = { workspace = true }
 aptos-executor = { workspace = true }
 aptos-executor-types = { workspace = true }
 aptos-experimental-runtimes = { workspace = true }
 libra2-fallible = { workspace = true }
 libra2-infallible = { workspace = true }
-aptos-logger = { workspace = true }
-aptos-mempool = { workspace = true }
+libra2-logger = { workspace = true }
+libra2-mempool = { workspace = true }
 libra2-metrics-core = { workspace = true }
-aptos-network = { workspace = true }
-aptos-peer-monitoring-service-types = { workspace = true }
+libra2-network = { workspace = true }
+libra2-peer-monitoring-service-types = { workspace = true }
 aptos-reliable-broadcast = { workspace = true }
-aptos-runtimes = { workspace = true }
-aptos-safety-rules = { workspace = true }
+libra2-runtimes = { workspace = true }
+libra2-safety-rules = { workspace = true }
 aptos-schemadb = { workspace = true }
-aptos-secure-storage = { workspace = true }
+libra2-secure-storage = { workspace = true }
 aptos-short-hex-str = { workspace = true }
 aptos-storage-interface = { workspace = true }
 libra2-temppath = { workspace = true }
 libra2-time-service = { workspace = true }
-aptos-transaction-filters = { workspace = true }
+libra2-transaction-filters = { workspace = true }
 libra2-types = { workspace = true }
 aptos-validator-transaction-pool = { workspace = true }
 aptos-vm = { workspace = true }
@@ -89,14 +89,14 @@ tokio-stream = { workspace = true }
 [dev-dependencies]
 aptos-cached-packages = { workspace = true }
 libra2-config = { workspace = true, features = ["fuzzing"] }
-aptos-consensus-types = { workspace = true, features = ["fuzzing"] }
+libra2-consensus-types = { workspace = true, features = ["fuzzing"] }
 aptos-executor-test-helpers = { workspace = true }
 libra2-keygen = { workspace = true }
-aptos-mempool = { workspace = true, features = ["fuzzing"] }
-aptos-netcore = { workspace = true }
-aptos-network = { workspace = true, features = ["fuzzing"] }
-aptos-safety-rules = { workspace = true, features = ["testing"] }
-aptos-transaction-filters = { workspace = true, features = ["fuzzing"] }
+libra2-mempool = { workspace = true, features = ["fuzzing"] }
+libra2-netcore = { workspace = true }
+libra2-network = { workspace = true, features = ["fuzzing"] }
+libra2-safety-rules = { workspace = true, features = ["testing"] }
+libra2-transaction-filters = { workspace = true, features = ["fuzzing"] }
 libra2-types = { workspace = true, features = ["testing"] }
 aptos-vm = { workspace = true, features = ["fuzzing"] }
 aptos-vm-validator = { workspace = true }
@@ -110,12 +110,12 @@ tempfile = { workspace = true }
 [features]
 default = []
 fuzzing = [
-    "aptos-consensus-types/fuzzing",
+    "libra2-consensus-types/fuzzing",
     "libra2-config/fuzzing",
     "libra2-crypto/fuzzing",
-    "aptos-mempool/fuzzing",
+    "libra2-mempool/fuzzing",
     "libra2-types/fuzzing",
-    "aptos-safety-rules/testing",
+    "libra2-safety-rules/testing",
 ]
 failpoints = ["fail/failpoints"]
 

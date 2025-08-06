@@ -36,7 +36,7 @@ use crate::{
 use anyhow::{bail, ensure, Context};
 use libra2_channels::libra2_channel;
 use libra2_config::config::{BlockTransactionFilterConfig, ConsensusConfig};
-use aptos_consensus_types::{
+use libra2_consensus_types::{
     block::Block,
     block_data::BlockType,
     common::{Author, Round},
@@ -58,10 +58,10 @@ use aptos_consensus_types::{
 };
 use libra2_crypto::{hash::CryptoHash, HashValue};
 use libra2_infallible::{checked, Mutex};
-use aptos_logger::prelude::*;
+use libra2_logger::prelude::*;
 #[cfg(test)]
-use aptos_safety_rules::ConsensusState;
-use aptos_safety_rules::TSafetyRules;
+use libra2_safety_rules::ConsensusState;
+use libra2_safety_rules::TSafetyRules;
 use aptos_short_hex_str::AsShortHexStr;
 use libra2_types::{
     block_info::BlockInfo,

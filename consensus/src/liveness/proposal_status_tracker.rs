@@ -4,11 +4,11 @@
 use super::round_state::NewRoundReason;
 use crate::counters;
 use aptos_collections::BoundedVecDeque;
-use aptos_consensus_types::{
+use libra2_consensus_types::{
     common::Author, payload_pull_params::OptQSPayloadPullParams, round_timeout::RoundTimeoutReason,
 };
 use libra2_infallible::Mutex;
-use aptos_logger::warn;
+use libra2_logger::warn;
 use aptos_short_hex_str::AsShortHexStr;
 use std::{collections::HashSet, sync::Arc};
 
@@ -164,8 +164,8 @@ impl TOptQSPullParamsProvider for OptQSPullParamsProvider {
 mod tests {
     use super::ExponentialWindowFailureTracker;
     use crate::liveness::round_state::NewRoundReason;
-    use aptos_bitvec::BitVec;
-    use aptos_consensus_types::round_timeout::RoundTimeoutReason;
+    use libra2_bitvec::BitVec;
+    use libra2_consensus_types::round_timeout::RoundTimeoutReason;
     use libra2_types::validator_verifier::random_validator_verifier;
 
     #[test]

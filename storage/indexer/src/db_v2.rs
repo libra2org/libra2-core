@@ -9,7 +9,7 @@ use aptos_db_indexer_schemas::{
     metadata::{MetadataKey, MetadataValue},
     schema::{indexer_metadata::IndexerMetadataSchema, table_info::TableInfoSchema},
 };
-use aptos_logger::{info, sample, sample::SampleRate};
+use libra2_logger::{info, sample, sample::SampleRate};
 use aptos_resource_viewer::{AnnotatedMoveValue, AptosValueAnnotator};
 use aptos_schemadb::{batch::SchemaBatch, DB};
 use aptos_storage_interface::{
@@ -105,7 +105,7 @@ impl IndexerAsyncV2 {
         match self.finish_table_info_parsing(&mut batch, &table_info_parser.result) {
             Ok(_) => {},
             Err(err) => {
-                aptos_logger::error!(
+                libra2_logger::error!(
                     first_version = first_version,
                     end_version = end_version,
                     error = ?&err,
@@ -180,7 +180,7 @@ impl IndexerAsyncV2 {
         if !self.pending_on.is_empty() {
             let pending_keys: Vec<TableHandle> =
                 self.pending_on.iter().map(|entry| *entry.key()).collect();
-            aptos_logger::warn!(
+            libra2_logger::warn!(
                 "There are still pending table items to parse due to unknown table info for table handles: {:?}",
                 pending_keys
             );

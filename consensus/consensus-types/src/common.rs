@@ -12,7 +12,7 @@ use libra2_crypto::{
     HashValue,
 };
 use libra2_crypto_derive::CryptoHasher;
-use aptos_logger::prelude::*;
+use libra2_logger::prelude::*;
 use libra2_types::{
     account_address::AccountAddress,
     transaction::{ReplayProtector, SignedTransaction},

@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 //! This module defines the structs transported during the network handshake protocol v1.
-//! These should serialize as per the [AptosNet Handshake v1 Specification].
+//! These should serialize as per the [Libra2Net Handshake v1 Specification].
 //!
 //! During the v1 Handshake protocol, both end-points of a connection send a serialized and
 //! length-prefixed [`HandshakeMsg`] to each other. The handshake message contains a map from
@@ -11,7 +11,7 @@
 //! supported over that messaging protocol. On receipt, both ends will determine the highest
 //! intersecting messaging protocol version and use that for the remainder of the session.
 //!
-//! [AptosNet Handshake v1 Specification]: https://github.com/aptos-labs/aptos-core/blob/main/specifications/network/handshake-v1.md
+//! [Libra2Net Handshake v1 Specification]: https://github.com/aptos-labs/aptos-core/blob/main/specifications/network/handshake-v1.md
 
 use crate::counters::{start_serialization_timer, DESERIALIZATION_LABEL, SERIALIZATION_LABEL};
 use anyhow::anyhow;
@@ -283,11 +283,11 @@ impl fmt::Display for ProtocolId {
 /// bitvec which supports at most 256 bits.
 ///
 /// These sets are sent over-the-wire in the initial [`HandshakeMsg`] to other
-/// AptosNet peers in order to negotiate the set of common supported protocols for
-/// use on a new AptosNet connection.
+/// Libra2Net peers in order to negotiate the set of common supported protocols for
+/// use on a new Libra2Net connection.
 #[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 #[cfg_attr(any(test, feature = "fuzzing"), derive(Arbitrary))]
-pub struct ProtocolIdSet(aptos_bitvec::BitVec);
+pub struct ProtocolIdSet(libra2_bitvec::BitVec);
 
 impl ProtocolIdSet {
     pub fn empty() -> Self {

@@ -1,7 +1,7 @@
 [package]
-name = "aptos-storage-service-client"
-description = "The Aptos storage service (client-side)"
-version = "0.1.0"
+name = "libra2-storage-service-client"
+description = "The Libra2 storage service (client-side)"
+version = "0.1.1"
 
 # Workspace inherited keys
 authors = { workspace = true }
@@ -14,6 +14,6 @@ rust-version = { workspace = true }
 
 [dependencies]
 libra2-config = { workspace = true }
-aptos-network = { workspace = true }
-aptos-storage-service-types = { workspace = true }
+libra2-network = { workspace = true }
+libra2-storage-service-types = { workspace = true }
 thiserror = { workspace = true }

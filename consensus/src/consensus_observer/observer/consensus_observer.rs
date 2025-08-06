@@ -37,15 +37,15 @@ use libra2_config::{
     config::{ConsensusObserverConfig, NodeConfig},
     network_id::PeerNetworkId,
 };
-use aptos_consensus_types::{
+use libra2_consensus_types::{
     pipeline, pipelined_block::PipelinedBlock, vote_data::VoteData,
     wrapped_ledger_info::WrappedLedgerInfo,
 };
 use libra2_crypto::{bls12381, Genesis};
-use aptos_event_notifications::{DbBackedOnChainConfig, ReconfigNotificationListener};
+use libra2_event_notifications::{DbBackedOnChainConfig, ReconfigNotificationListener};
 use libra2_infallible::Mutex;
-use aptos_logger::{debug, error, info, warn};
-use aptos_network::{
+use libra2_logger::{debug, error, info, warn};
+use libra2_network::{
     application::interface::NetworkClient, protocols::wire::handshake::v1::ProtocolId,
 };
 use aptos_storage_interface::DbReader;

@@ -9,7 +9,7 @@ use crate::sharded_block_executor::{
     },
     executor_client::ExecutorClient,
 };
-use aptos_logger::info;
+use libra2_logger::info;
 use libra2_types::{
     block_executor::{
         config::BlockExecutorConfigFromOnchain,

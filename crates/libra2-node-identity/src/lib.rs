@@ -7,7 +7,7 @@ use once_cell::sync::OnceCell;
 use std::sync::Arc;
 
 /// The global [AptosNodeIdentity]
-static APTOS_NODE_IDENTITY: OnceCell<Arc<AptosNodeIdentity>> = OnceCell::new();
+static LIBRA2_NODE_IDENTITY: OnceCell<Arc<AptosNodeIdentity>> = OnceCell::new();
 
 /// Structure that holds information related to a node's identity
 pub struct AptosNodeIdentity {
@@ -26,40 +26,40 @@ pub fn init(peer_id: Option<PeerId>) -> Result<()> {
         peer_id_str: peer_id.map(|id| id.to_string()),
     };
 
-    APTOS_NODE_IDENTITY
+    LIBRA2_NODE_IDENTITY
         .set(Arc::new(identity))
-        .map_err(|_| format_err!("APTOS_NODE_IDENTITY was already set"))
+        .map_err(|_| format_err!("LIBRA2_NODE_IDENTITY was already set"))
 }
 
 /// Sets the [ChainId] in the global [AptosNodeIdentity], returning an error
 /// if [init] was not called already.
 pub fn set_chain_id(chain_id: ChainId) -> Result<()> {
-    match APTOS_NODE_IDENTITY.get() {
+    match LIBRA2_NODE_IDENTITY.get() {
         Some(identity) => identity
             .chain_id
             .set(chain_id)
             .map_err(|_| format_err!("chain_id was already set.")),
-        None => Err(format_err!("APTOS_NODE_IDENTITY has not been set yet")),
+        None => Err(format_err!("LIBRA2_NODE_IDENTITY has not been set yet")),
     }
 }
 
-/// Returns the [PeerId] from the global `APTOS_NODE_IDENTITY`
+/// Returns the [PeerId] from the global `LIBRA2_NODE_IDENTITY`
 pub fn peer_id() -> Option<PeerId> {
-    APTOS_NODE_IDENTITY
+    LIBRA2_NODE_IDENTITY
         .get()
         .and_then(|identity| identity.peer_id)
 }
 
-/// Returns the [PeerId] as [str] from the global `APTOS_NODE_IDENTITY`
+/// Returns the [PeerId] as [str] from the global `LIBRA2_NODE_IDENTITY`
 pub fn peer_id_as_str() -> Option<&'static str> {
-    APTOS_NODE_IDENTITY
+    LIBRA2_NODE_IDENTITY
         .get()
         .and_then(|identity| identity.peer_id_str.as_deref())
 }
 
-/// Returns the [ChainId] from the global `APTOS_NODE_IDENTITY`
+/// Returns the [ChainId] from the global `LIBRA2_NODE_IDENTITY`
 pub fn chain_id() -> Option<ChainId> {
-    APTOS_NODE_IDENTITY
+    LIBRA2_NODE_IDENTITY
         .get()
         .and_then(|identity| identity.chain_id.get().cloned())
 }

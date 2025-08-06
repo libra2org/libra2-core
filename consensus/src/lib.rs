@@ -54,7 +54,7 @@ pub mod consensus_observer;
 pub mod consensus_provider;
 /// Required by the telemetry service
 pub mod counters;
-/// AptosNet interface.
+/// Libra2Net interface.
 pub mod network_interface;
 mod payload_manager;
 mod transaction_deduper;

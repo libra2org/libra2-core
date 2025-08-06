@@ -15,8 +15,8 @@ use crate::{
 };
 use aptos_api::context::Context;
 use libra2_config::config::{IndexerConfig, NodeConfig};
-use aptos_logger::{error, info};
-use aptos_mempool::MempoolClientSender;
+use libra2_logger::{error, info};
+use libra2_mempool::MempoolClientSender;
 use aptos_storage_interface::DbReader;
 use libra2_types::chain_id::ChainId;
 use std::{collections::VecDeque, sync::Arc};
@@ -84,7 +84,7 @@ pub fn bootstrap(
         return None;
     }
 
-    let runtime = aptos_runtimes::spawn_named_runtime("indexer".into(), None);
+    let runtime = libra2_runtimes::spawn_named_runtime("indexer".into(), None);
 
     let indexer_config = config.indexer.clone();
     let node_config = config.clone();

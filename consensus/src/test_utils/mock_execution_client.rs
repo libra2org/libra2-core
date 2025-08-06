@@ -15,7 +15,7 @@ use crate::{
 };
 use anyhow::{anyhow, format_err, Result};
 use libra2_channels::libra2_channel;
-use aptos_consensus_types::{
+use libra2_consensus_types::{
     common::{Payload, Round},
     pipelined_block::PipelinedBlock,
     vote_data::VoteData,
@@ -24,7 +24,7 @@ use aptos_consensus_types::{
 use libra2_crypto::{bls12381::PrivateKey, HashValue};
 use aptos_executor_types::ExecutorResult;
 use libra2_infallible::Mutex;
-use aptos_logger::prelude::*;
+use libra2_logger::prelude::*;
 use libra2_types::{
     epoch_state::EpochState,
     ledger_info::LedgerInfoWithSignatures,

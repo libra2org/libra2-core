@@ -12,7 +12,7 @@ use libra2_api_types::{
     NoAccountSignature as APINoAccountSignature, SingleKeySignature as APISingleKeySignature,
     TransactionSignature as APITransactionSignature,
 };
-use aptos_bitvec::BitVec;
+use libra2_bitvec::BitVec;
 use field_count::FieldCount;
 use serde::{Deserialize, Serialize};
 

@@ -10,12 +10,12 @@ use aptos_cached_packages::aptos_stdlib;
 use libra2_config::config::GasEstimationConfig;
 use libra2_crypto::ed25519::Ed25519Signature;
 use aptos_forge::{LocalSwarm, NodeExt, Swarm, TransactionType};
-use aptos_global_constants::{DEFAULT_BUCKETS, GAS_UNIT_PRICE};
+use libra2_global_constants::{DEFAULT_BUCKETS, GAS_UNIT_PRICE};
 use libra2_rest_client::{
     libra2_api_types::{MoveModuleId, TransactionData, ViewFunction, ViewRequest},
     Client,
 };
-use aptos_sdk::move_types::language_storage::StructTag;
+use libra2_sdk::move_types::language_storage::StructTag;
 use libra2_types::{
     account_address::AccountAddress,
     account_config::{AccountResource, CORE_CODE_ADDRESS},

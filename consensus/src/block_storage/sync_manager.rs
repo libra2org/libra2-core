@@ -25,7 +25,7 @@ use crate::{
     util::calculate_window_start_round,
 };
 use anyhow::{anyhow, bail, ensure, Context};
-use aptos_consensus_types::{
+use libra2_consensus_types::{
     block::Block,
     block_retrieval::{
         BlockRetrievalRequest, BlockRetrievalRequestV1, BlockRetrievalRequestV2,
@@ -39,7 +39,7 @@ use aptos_consensus_types::{
 };
 use libra2_crypto::HashValue;
 use libra2_infallible::Mutex;
-use aptos_logger::prelude::*;
+use libra2_logger::prelude::*;
 use libra2_types::{
     account_address::AccountAddress, epoch_change::EpochChangeProof,
     ledger_info::LedgerInfoWithSignatures,

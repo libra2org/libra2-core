@@ -21,8 +21,8 @@ use crate::{
     utils::OutputFallbackHandler,
 };
 use libra2_config::config::BootstrappingMode;
-use aptos_data_client::global_summary::GlobalDataSummary;
-use aptos_data_streaming_service::{
+use libra2_data_client::global_summary::GlobalDataSummary;
+use libra2_data_streaming_service::{
     data_notification::{DataNotification, DataPayload, NotificationId},
     streaming_client::{NotificationAndFeedback, NotificationFeedback},
 };
@@ -1594,7 +1594,7 @@ fn create_bootstrapper(
     OutputFallbackHandler,
 ) {
     // Initialize the logger for tests
-    aptos_logger::Logger::init_for_testing();
+    libra2_logger::Logger::init_for_testing();
 
     // Create the mock storage synchronizer
     let mock_storage_synchronizer = create_ready_storage_synchronizer(expect_reset_executor);
@@ -1648,7 +1648,7 @@ fn create_bootstrapper_with_storage(
     expect_reset_executor: bool,
 ) -> Bootstrapper<MockMetadataStorage, MockStorageSynchronizer, MockStreamingClient> {
     // Initialize the logger for tests
-    aptos_logger::Logger::init_for_testing();
+    libra2_logger::Logger::init_for_testing();
 
     // Create the mock storage synchronizer
     let mock_storage_synchronizer = create_ready_storage_synchronizer(expect_reset_executor);

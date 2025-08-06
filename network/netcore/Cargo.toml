@@ -1,7 +1,7 @@
 [package]
-name = "aptos-netcore"
-description = "Aptos netcore"
-version = "0.1.0"
+name = "libra2-netcore"
+description = "Libra2 netcore"
+version = "0.1.1"
 
 # Workspace inherited keys
 authors = { workspace = true }
@@ -13,7 +13,7 @@ repository = { workspace = true }
 rust-version = { workspace = true }
 
 [dependencies]
-aptos-memsocket = { workspace = true }
+libra2-memsocket = { workspace = true }
 aptos-proxy = { workspace = true }
 libra2-types = { workspace = true }
 bytes = { workspace = true }
@@ -25,10 +25,10 @@ tokio-util = { workspace = true }
 url = { workspace = true }
 
 [dev-dependencies]
-aptos-memsocket = { workspace = true }
+libra2-memsocket = { workspace = true }
 libra2-types = { workspace = true, features = ["fuzzing"] }
 
 [features]
 default = []
-fuzzing = ["aptos-memsocket/fuzzing", "libra2-types/fuzzing"]
-testing = ["aptos-memsocket/testing"]
+fuzzing = ["libra2-memsocket/fuzzing", "libra2-types/fuzzing"]
+testing = ["libra2-memsocket/testing"]

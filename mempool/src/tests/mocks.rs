@@ -14,10 +14,10 @@ use libra2_config::{
     config::{NetworkConfig, NodeConfig},
     network_id::NetworkId,
 };
-use aptos_event_notifications::{ReconfigNotification, ReconfigNotificationListener};
+use libra2_event_notifications::{ReconfigNotification, ReconfigNotificationListener};
 use libra2_infallible::{Mutex, RwLock};
-use aptos_mempool_notifications::{self, MempoolNotifier};
-use aptos_network::{
+use libra2_mempool_notifications::{self, MempoolNotifier};
+use libra2_network::{
     application::{
         interface::{NetworkClient, NetworkServiceEvents},
         storage::PeersAndMetadata,
@@ -79,7 +79,7 @@ impl MockSharedMempool {
     /// Creates a mock shared mempool and runtime
     pub fn new_with_runtime() -> Self {
         // Create a runtime
-        let runtime = aptos_runtimes::spawn_named_runtime("shared-mem".into(), None);
+        let runtime = libra2_runtimes::spawn_named_runtime("shared-mem".into(), None);
         let _entered_runtime = runtime.enter();
 
         // Create and return the shared mempool
@@ -130,7 +130,7 @@ impl MockSharedMempool {
         let (ac_client, client_events) = mpsc::channel(1_024);
         let (quorum_store_sender, quorum_store_receiver) = mpsc::channel(1_024);
         let (mempool_notifier, mempool_listener) =
-            aptos_mempool_notifications::new_mempool_notifier_listener_pair(100);
+            libra2_mempool_notifications::new_mempool_notifier_listener_pair(100);
         let (reconfig_sender, reconfig_events) = libra2_channel::new(QueueStyle::LIFO, 1, None);
         let reconfig_event_subscriber = ReconfigNotificationListener {
             notification_receiver: reconfig_events,

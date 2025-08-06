@@ -30,7 +30,7 @@ use libra2_api_types::{
     VerifyInput, VerifyInputWithRecursion, U64,
 };
 use libra2_crypto::{hash::CryptoHash, signing_message};
-use aptos_logger::error;
+use libra2_logger::error;
 use libra2_types::{
     account_address::AccountAddress,
     mempool_status::MempoolStatusCode,

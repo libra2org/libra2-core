@@ -1,7 +1,7 @@
 // Copyright © Aptos Foundation
 // SPDX-License-Identifier: Apache-2.0
 use crate::{RemoteKVRequest, RemoteKVResponse};
-use aptos_secure_net::network_controller::{Message, NetworkController};
+use libra2_secure_net::network_controller::{Message, NetworkController};
 use crossbeam_channel::{Receiver, Sender};
 use std::{
     net::SocketAddr,
@@ -10,7 +10,7 @@ use std::{
 
 extern crate itertools;
 use crate::metrics::REMOTE_EXECUTOR_TIMER;
-use aptos_logger::trace;
+use libra2_logger::trace;
 use libra2_types::state_store::{StateView, TStateView};
 use itertools::Itertools;
 

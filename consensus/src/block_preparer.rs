@@ -8,7 +8,7 @@ use crate::{
     transaction_shuffler::TransactionShuffler,
 };
 use libra2_config::config::BlockTransactionFilterConfig;
-use aptos_consensus_types::{block::Block, quorum_cert::QuorumCert};
+use libra2_consensus_types::{block::Block, quorum_cert::QuorumCert};
 use libra2_crypto::HashValue;
 use aptos_executor_types::ExecutorResult;
 use libra2_types::transaction::SignedTransaction;

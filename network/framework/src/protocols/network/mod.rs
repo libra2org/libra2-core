@@ -14,7 +14,7 @@ use crate::{
 };
 use libra2_channels::libra2_channel;
 use libra2_config::network_id::PeerNetworkId;
-use aptos_logger::prelude::*;
+use libra2_logger::prelude::*;
 use aptos_short_hex_str::AsShortHexStr;
 use libra2_types::{network_address::NetworkAddress, PeerId};
 use bytes::Bytes;
@@ -67,7 +67,7 @@ impl<TMessage: PartialEq> PartialEq for Event<TMessage> {
     }
 }
 
-/// Configuration needed for the client side of AptosNet applications
+/// Configuration needed for the client side of Libra2Net applications
 #[derive(Clone)]
 pub struct NetworkClientConfig {
     /// Direct send protocols for the application (sorted by preference, highest to lowest)
@@ -88,7 +88,7 @@ impl NetworkClientConfig {
     }
 }
 
-/// Configuration needed for the service side of AptosNet applications
+/// Configuration needed for the service side of Libra2Net applications
 #[derive(Clone)]
 pub struct NetworkServiceConfig {
     /// Direct send protocols for the application (sorted by preference, highest to lowest)
@@ -113,7 +113,7 @@ impl NetworkServiceConfig {
     }
 }
 
-/// Configuration needed for AptosNet applications to register with the network
+/// Configuration needed for Libra2Net applications to register with the network
 /// builder. Supports client and service side.
 #[derive(Clone)]
 pub struct NetworkApplicationConfig {

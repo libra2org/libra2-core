@@ -56,12 +56,12 @@ use libra2_crypto::{
 use aptos_framework::chunked_publish::CHUNK_SIZE_IN_BYTES;
 use aptos_genesis::config::HostAndPort;
 use libra2_keygen::KeyGen;
-use aptos_logger::warn;
+use libra2_logger::warn;
 use libra2_rest_client::{
     libra2_api_types::{MoveStructTag, MoveType},
     Transaction,
 };
-use aptos_sdk::move_types::{account_address::AccountAddress, language_storage::ModuleId};
+use libra2_sdk::move_types::{account_address::AccountAddress, language_storage::ModuleId};
 use libra2_temppath::TempPath;
 use libra2_types::on_chain_config::ValidatorSet;
 use move_core_types::ident_str;

@@ -29,7 +29,7 @@ use libra2_api_types::{
     UserTransaction, VersionedEvent, ViewFunction, ViewRequest,
 };
 use libra2_crypto::HashValue;
-use aptos_logger::{debug, info, sample, sample::SampleRate};
+use libra2_logger::{debug, info, sample, sample::SampleRate};
 use libra2_types::{
     account_address::AccountAddress,
     account_config::{AccountResource, NewBlockEvent, CORE_CODE_ADDRESS},

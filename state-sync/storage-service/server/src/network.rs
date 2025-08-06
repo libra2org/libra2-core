@@ -3,12 +3,12 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use libra2_config::network_id::{NetworkId, PeerNetworkId};
-use aptos_network::{
+use libra2_network::{
     application::interface::NetworkServiceEvents,
     protocols::network::{Event, RpcError},
     ProtocolId,
 };
-use aptos_storage_service_types::{
+use libra2_storage_service_types::{
     requests::StorageServiceRequest, responses::StorageServiceResponse, Result,
     StorageServiceMessage,
 };

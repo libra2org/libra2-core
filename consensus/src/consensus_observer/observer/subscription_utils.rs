@@ -13,8 +13,8 @@ use crate::consensus_observer::{
     publisher::consensus_publisher::ConsensusPublisher,
 };
 use libra2_config::{config::ConsensusObserverConfig, network_id::PeerNetworkId};
-use aptos_logger::{error, info, warn};
-use aptos_network::{
+use libra2_logger::{error, info, warn};
+use libra2_network::{
     application::{interface::NetworkClient, metadata::PeerMetadata},
     ProtocolId,
 };
@@ -299,7 +299,7 @@ pub fn sort_peers_by_subscription_optimality(
 
         // If the distance is not found, use the maximum distance
         let distance =
-            distance.unwrap_or(aptos_peer_monitoring_service_types::MAX_DISTANCE_FROM_VALIDATORS);
+            distance.unwrap_or(libra2_peer_monitoring_service_types::MAX_DISTANCE_FROM_VALIDATORS);
 
         // If the latency is not found, use a large latency
         let latency = latency.unwrap_or(MAX_PING_LATENCY_SECS);
@@ -360,8 +360,8 @@ mod tests {
     use super::*;
     use libra2_channels::{libra2_channel, message_queues::QueueStyle};
     use libra2_config::{config::PeerRole, network_id::NetworkId};
-    use aptos_netcore::transport::ConnectionOrigin;
-    use aptos_network::{
+    use libra2_netcore::transport::ConnectionOrigin;
+    use libra2_network::{
         application::storage::PeersAndMetadata,
         peer_manager::{ConnectionRequestSender, PeerManagerRequest, PeerManagerRequestSender},
         protocols::{
@@ -370,7 +370,7 @@ mod tests {
         },
         transport::{ConnectionId, ConnectionMetadata},
     };
-    use aptos_peer_monitoring_service_types::{
+    use libra2_peer_monitoring_service_types::{
         response::NetworkInformationResponse, PeerMonitoringMetadata,
     };
     use aptos_storage_interface::Result;

@@ -32,8 +32,8 @@ use aptos_experimental_ptx_executor::PtxBlockExecutor;
 #[cfg(target_os = "linux")]
 use aptos_experimental_runtimes::thread_manager::{ThreadConfigStrategy, ThreadManagerBuilder};
 use libra2_metrics_core::{register_int_gauge, IntGauge};
-use aptos_profiler::{ProfilerConfig, ProfilerHandler};
-use aptos_push_metrics::MetricsPusher;
+use libra2_profiler::{ProfilerConfig, ProfilerHandler};
+use libra2_push_metrics::MetricsPusher;
 use aptos_transaction_generator_lib::WorkflowProgress;
 use aptos_transaction_workloads_lib::args::TransactionTypeArg;
 use libra2_types::on_chain_config::{FeatureFlag, Features};
@@ -565,7 +565,7 @@ where
 
 fn main() {
     let opt = Opt::parse();
-    aptos_logger::Logger::new().init();
+    libra2_logger::Logger::new().init();
     START_TIME.set(
         SystemTime::now()
             .duration_since(UNIX_EPOCH)

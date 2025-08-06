@@ -5,31 +5,31 @@ use crate::{bootstrap_api, indexer, mpsc::Receiver, network::ApplicationNetworkI
 use aptos_admin_service::AdminService;
 use libra2_build_info::build_information;
 use libra2_config::config::NodeConfig;
-use aptos_consensus::{
+use libra2_consensus::{
     consensus_observer::publisher::consensus_publisher::ConsensusPublisher,
     network_interface::ConsensusMsg, persistent_liveness_storage::StorageWriteProxy,
     quorum_store::quorum_store_db::QuorumStoreDB,
 };
-use aptos_consensus_notifications::ConsensusNotifier;
-use aptos_data_client::client::AptosDataClient;
+use libra2_consensus_notifications::ConsensusNotifier;
+use libra2_data_client::client::Libra2DataClient;
 use aptos_db_indexer::{db_indexer::InternalIndexerDB, indexer_reader::IndexerReaders};
-use aptos_event_notifications::{DbBackedOnChainConfig, ReconfigNotificationListener};
+use libra2_event_notifications::{DbBackedOnChainConfig, ReconfigNotificationListener};
 use aptos_indexer_grpc_fullnode::runtime::bootstrap as bootstrap_indexer_grpc;
 use aptos_indexer_grpc_table_info::runtime::{
     bootstrap as bootstrap_indexer_table_info, bootstrap_internal_indexer_db,
 };
-use aptos_logger::{debug, telemetry_log_writer::TelemetryLog, LoggerFilterUpdater};
-use aptos_mempool::{
+use libra2_logger::{debug, telemetry_log_writer::TelemetryLog, LoggerFilterUpdater};
+use libra2_mempool::{
     network::MempoolSyncMsg, MempoolClientRequest, MempoolClientSender, QuorumStoreRequest,
 };
-use aptos_mempool_notifications::MempoolNotificationListener;
-use aptos_network::application::{interface::NetworkClientInterface, storage::PeersAndMetadata};
-use aptos_network_benchmark::{run_netbench_service, NetbenchMessage};
-use aptos_peer_monitoring_service_server::{
+use libra2_mempool_notifications::MempoolNotificationListener;
+use libra2_network::application::{interface::NetworkClientInterface, storage::PeersAndMetadata};
+use libra2_network_benchmark::{run_netbench_service, NetbenchMessage};
+use libra2_peer_monitoring_service_server::{
     network::PeerMonitoringServiceNetworkEvents, storage::StorageReader,
     PeerMonitoringServiceServer,
 };
-use aptos_peer_monitoring_service_types::PeerMonitoringServiceMessage;
+use libra2_peer_monitoring_service_types::PeerMonitoringServiceMessage;
 use aptos_storage_interface::{DbReader, DbReaderWriter};
 use libra2_time_service::TimeService;
 use libra2_types::{
@@ -155,7 +155,7 @@ pub fn start_consensus_runtime(
     let reconfig_subscription = consensus_reconfig_subscription
         .expect("Consensus requires a reconfiguration subscription!");
 
-    let consensus = aptos_consensus::consensus_provider::start_consensus(
+    let consensus = libra2_consensus::consensus_provider::start_consensus(
         node_config,
         consensus_network_interfaces.network_client,
         consensus_network_interfaces.network_service_events,
@@ -187,7 +187,7 @@ pub fn start_mempool_runtime_and_get_consensus_sender(
 
     // Bootstrap and start mempool
     let instant = Instant::now();
-    let mempool = aptos_mempool::bootstrap(
+    let mempool = libra2_mempool::bootstrap(
         node_config,
         Arc::clone(&db_rw.reader),
         network_interfaces.network_client,
@@ -211,12 +211,12 @@ pub fn start_admin_service(node_config: &NodeConfig) -> AdminService {
 /// Spawns a new thread for the node inspection service
 pub fn start_node_inspection_service(
     node_config: &NodeConfig,
-    aptos_data_client: AptosDataClient,
+    libra2_data_client: Libra2DataClient,
     peers_and_metadata: Arc<PeersAndMetadata>,
 ) {
-    aptos_inspection_service::start_inspection_service(
+    libra2_inspection_service::start_inspection_service(
         node_config.clone(),
-        aptos_data_client,
+        libra2_data_client,
         peers_and_metadata,
     )
 }
@@ -233,7 +233,7 @@ pub fn start_peer_monitoring_service(
 
     // Create a new runtime for the monitoring service
     let peer_monitoring_service_runtime =
-        aptos_runtimes::spawn_named_runtime("peer-mon".into(), None);
+        libra2_runtimes::spawn_named_runtime("peer-mon".into(), None);
 
     // Create and spawn the peer monitoring server
     let peer_monitoring_network_events =
@@ -254,7 +254,7 @@ pub fn start_peer_monitoring_service(
         .enable_peer_monitoring_client
     {
         peer_monitoring_service_runtime.spawn(
-            aptos_peer_monitoring_service_client::start_peer_monitor(
+            libra2_peer_monitoring_service_client::start_peer_monitor(
                 node_config.clone(),
                 network_client,
                 Some(peer_monitoring_service_runtime.handle().clone()),

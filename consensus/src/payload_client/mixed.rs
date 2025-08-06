@@ -5,10 +5,10 @@ use crate::{
     error::QuorumStoreError,
     payload_client::{user::UserPayloadClient, PayloadClient},
 };
-use aptos_consensus_types::{
+use libra2_consensus_types::{
     common::Payload, payload_pull_params::PayloadPullParameters, utils::PayloadTxnsSize,
 };
-use aptos_logger::debug;
+use libra2_logger::debug;
 use libra2_types::{on_chain_config::ValidatorTxnConfig, validator_txn::ValidatorTransaction};
 use aptos_validator_transaction_pool::TransactionFilter;
 use fail::fail_point;
@@ -109,7 +109,7 @@ mod tests {
     use crate::payload_client::{
         mixed::MixedPayloadClient, user, validator::DummyValidatorTxnClient, PayloadClient,
     };
-    use aptos_consensus_types::{
+    use libra2_consensus_types::{
         common::{Payload, PayloadFilter},
         payload_pull_params::PayloadPullParameters,
     };

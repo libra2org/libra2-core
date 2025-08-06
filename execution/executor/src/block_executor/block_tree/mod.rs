@@ -12,12 +12,12 @@ use crate::{
     types::partial_state_compute_result::PartialStateComputeResult,
 };
 use anyhow::{anyhow, ensure, Result};
-use aptos_consensus_types::block::Block as ConsensusBlock;
+use libra2_consensus_types::block::Block as ConsensusBlock;
 use libra2_crypto::HashValue;
-use aptos_drop_helper::DEFAULT_DROPPER;
+use libra2_drop_helper::DEFAULT_DROPPER;
 use aptos_executor_types::ExecutorError;
 use libra2_infallible::Mutex;
-use aptos_logger::{debug, info};
+use libra2_logger::{debug, info};
 use aptos_storage_interface::DbReader;
 use libra2_types::{ledger_info::LedgerInfo, proof::definition::LeafCount};
 use std::{

@@ -1,6 +1,6 @@
 [package]
-name = "aptos-safety-rules"
-description = "Aptos safety rules"
+name = "libra2-safety-rules"
+description = "Libra2 safety rules"
 version = "0.1.0"
 
 # Workspace inherited keys
@@ -14,16 +14,16 @@ rust-version = { workspace = true }
 
 [dependencies]
 libra2-config = { workspace = true }
-aptos-consensus-types = { workspace = true }
+libra2-consensus-types = { workspace = true }
 libra2-crypto = { workspace = true }
-aptos-global-constants = { workspace = true }
+libra2-global-constants = { workspace = true }
 libra2-infallible = { workspace = true }
-aptos-logger = { workspace = true }
+libra2-logger = { workspace = true }
 libra2-metrics-core = { workspace = true }
-aptos-secure-net = { workspace = true }
-aptos-secure-storage = { workspace = true }
+libra2-secure-net = { workspace = true }
+libra2-secure-storage = { workspace = true }
 libra2-types = { workspace = true }
-aptos-vault-client = { workspace = true }
+libra2-vault-client = { workspace = true }
 hex = { workspace = true }
 once_cell = { workspace = true }
 proptest = { workspace = true, optional = true }
@@ -34,9 +34,9 @@ thiserror = { workspace = true }
 
 [dev-dependencies]
 libra2-config = { workspace = true, features = ["fuzzing"] }
-aptos-consensus-types = { workspace = true, features = ["fuzzing"] }
+libra2-consensus-types = { workspace = true, features = ["fuzzing"] }
 libra2-proptest-helpers = { workspace = true }
-aptos-secure-storage = { workspace = true, features = ["testing"] }
+libra2-secure-storage = { workspace = true, features = ["testing"] }
 claims = { workspace = true }
 criterion = { workspace = true }
 proptest = { workspace = true }
@@ -50,5 +50,5 @@ required-features = ["testing"]
 
 [features]
 default = []
-fuzzing = ["aptos-consensus-types/fuzzing", "libra2-config/fuzzing", "proptest"]
-testing = ["aptos-secure-storage/testing"]
+fuzzing = ["libra2-consensus-types/fuzzing", "libra2-config/fuzzing", "proptest"]
+testing = ["libra2-secure-storage/testing"]

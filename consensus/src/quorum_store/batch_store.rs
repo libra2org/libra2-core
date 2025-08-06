@@ -12,11 +12,11 @@ use crate::{
     },
 };
 use anyhow::bail;
-use aptos_consensus_types::proof_of_store::{BatchInfo, SignedBatchInfo};
+use libra2_consensus_types::proof_of_store::{BatchInfo, SignedBatchInfo};
 use libra2_crypto::{CryptoMaterialError, HashValue};
 use aptos_executor_types::{ExecutorError, ExecutorResult};
 use libra2_infallible::Mutex;
-use aptos_logger::prelude::*;
+use libra2_logger::prelude::*;
 use libra2_types::{transaction::SignedTransaction, validator_signer::ValidatorSigner, PeerId};
 use dashmap::{
     mapref::entry::Entry::{Occupied, Vacant},

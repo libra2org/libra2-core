@@ -8,7 +8,7 @@ use aptos_db::{fast_sync_storage_wrapper::FastSyncStorageWrapper, AptosDB};
 use aptos_db_indexer::db_indexer::InternalIndexerDB;
 use aptos_executor::db_bootstrapper::maybe_bootstrap;
 use aptos_indexer_grpc_table_info::internal_indexer_db_service::InternalIndexerDBService;
-use aptos_logger::{debug, info};
+use libra2_logger::{debug, info};
 use aptos_storage_interface::{DbReader, DbReaderWriter};
 use libra2_types::{
     ledger_info::LedgerInfoWithSignatures, transaction::Version, waypoint::Waypoint,
@@ -155,12 +155,12 @@ fn create_rocksdb_checkpoint_and_change_working_dir(
     .expect("AptosDB checkpoint creation failed.");
 
     // Create a consensus db checkpoint
-    aptos_consensus::create_checkpoint(&source_dir, &checkpoint_dir)
+    libra2_consensus::create_checkpoint(&source_dir, &checkpoint_dir)
         .expect("ConsensusDB checkpoint creation failed.");
 
     // Create a state sync db checkpoint
     let state_sync_db =
-        aptos_state_sync_driver::metadata_storage::PersistentMetadataStorage::new(&source_dir);
+        libra2_state_sync_driver::metadata_storage::PersistentMetadataStorage::new(&source_dir);
     state_sync_db
         .create_checkpoint(&checkpoint_dir)
         .expect("StateSyncDB checkpoint creation failed.");

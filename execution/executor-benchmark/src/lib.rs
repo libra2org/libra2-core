@@ -26,8 +26,8 @@ use aptos_executor::block_executor::BlockExecutor;
 use aptos_jellyfish_merkle::metrics::{
     APTOS_JELLYFISH_INTERNAL_ENCODED_BYTES, APTOS_JELLYFISH_LEAF_ENCODED_BYTES,
 };
-use aptos_logger::{info, warn};
-use aptos_sdk::types::LocalAccount;
+use libra2_logger::{info, warn};
+use libra2_sdk::types::LocalAccount;
 use aptos_storage_interface::{
     state_store::state_view::db_state_view::LatestDbStateCheckpointView, DbReader, DbReaderWriter,
 };
@@ -309,7 +309,7 @@ where
     }
 
     // Assert there were no error log lines in the run.
-    assert_eq!(0, aptos_logger::ERROR_LOG_COUNT.get());
+    assert_eq!(0, libra2_logger::ERROR_LOG_COUNT.get());
 
     OverallMeasurement::print_end_table(&staged_results, &overall_results);
     staged_events.print_end_table();
@@ -485,7 +485,7 @@ fn add_accounts_impl<V>(
     );
 
     // Assert there were no error log lines in the run.
-    assert_eq!(0, aptos_logger::ERROR_LOG_COUNT.get());
+    assert_eq!(0, libra2_logger::ERROR_LOG_COUNT.get());
 
     log_total_supply(&db.reader);
 
@@ -525,7 +525,7 @@ pub fn run_single_with_default_params(
     concurrency_level: usize,
     mode: SingleRunMode,
 ) -> SingleRunResults {
-    aptos_logger::Logger::new().init();
+    libra2_logger::Logger::new().init();
 
     AptosVM::set_num_shards_once(1);
     AptosVM::set_concurrency_level_once(concurrency_level);
@@ -649,7 +649,7 @@ mod tests {
     use libra2_crypto::HashValue;
     use aptos_executor::block_executor::BlockExecutor;
     use aptos_executor_types::BlockExecutorTrait;
-    use aptos_sdk::{transaction_builder::aptos_stdlib, types::LocalAccount};
+    use libra2_sdk::{transaction_builder::aptos_stdlib, types::LocalAccount};
     use libra2_temppath::TempPath;
     use aptos_transaction_generator_lib::WorkflowProgress;
     use aptos_transaction_workloads_lib::args::TransactionTypeArg;
@@ -733,7 +733,7 @@ mod tests {
         features: Features,
         txn_payload_f: impl Fn(AccountAddress) -> TransactionPayload,
     ) {
-        aptos_logger::Logger::new().init();
+        libra2_logger::Logger::new().init();
 
         let db_dir = TempPath::new();
 
@@ -897,7 +897,7 @@ mod tests {
     ) where
         E: VMBlockExecutor + 'static,
     {
-        aptos_logger::Logger::new().init();
+        libra2_logger::Logger::new().init();
 
         let storage_dir = TempPath::new();
         let checkpoint_dir = TempPath::new();

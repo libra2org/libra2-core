@@ -7,8 +7,8 @@ use libra2_config::{
     config::PeerRole,
     network_id::{NetworkId, PeerNetworkId},
 };
-use aptos_netcore::transport::ConnectionOrigin;
-use aptos_network::{
+use libra2_netcore::transport::ConnectionOrigin;
+use libra2_network::{
     application::{interface::NetworkClient, metadata::ConnectionState, storage::PeersAndMetadata},
     peer_manager::{ConnectionRequestSender, PeerManagerRequest, PeerManagerRequestSender},
     protocols::{
@@ -17,8 +17,8 @@ use aptos_network::{
     },
     transport::ConnectionMetadata,
 };
-use aptos_peer_monitoring_service_server::network::{NetworkRequest, ResponseSender};
-use aptos_peer_monitoring_service_types::PeerMonitoringServiceMessage;
+use libra2_peer_monitoring_service_server::network::{NetworkRequest, ResponseSender};
+use libra2_peer_monitoring_service_types::PeerMonitoringServiceMessage;
 use libra2_time_service::TimeService;
 use libra2_types::account_address::{AccountAddress as PeerId, AccountAddress};
 use futures::FutureExt;
@@ -41,7 +41,7 @@ impl MockMonitoringServer {
         TimeService,
     ) {
         // Setup the test logger (if it hasn't already been initialized)
-        ::aptos_logger::Logger::init_for_testing();
+        ::libra2_logger::Logger::init_for_testing();
 
         // Setup the request channels and the network sender for each network
         let mut network_senders = HashMap::new();

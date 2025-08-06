@@ -7,7 +7,7 @@ use crate::{
     timeout_2chain::TwoChainTimeout,
 };
 use anyhow::{ensure, Context};
-use aptos_bitvec::BitVec;
+use libra2_bitvec::BitVec;
 use libra2_crypto::bls12381;
 use aptos_short_hex_str::AsShortHexStr;
 use libra2_types::validator_verifier::ValidatorVerifier;

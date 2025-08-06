@@ -18,7 +18,7 @@ In the final call, the caller can use <code>stage_code_chunk_and_publish_to_acco
 <code>stage_code_chunk_and_upgrade_object_code</code> to upload the final data chunk and publish or upgrade the package on-chain.
 
 The above logic is currently implemented in the Python
-SDK: [<code>aptos-python-sdk</code>](https://github.com/aptos-labs/aptos-python-sdk/blob/main/aptos_sdk/package_publisher.py).
+SDK: [<code>aptos-python-sdk</code>](https://github.com/aptos-labs/aptos-python-sdk/blob/main/libra2_sdk/package_publisher.py).
 
 Aptos CLI supports this as well with <code>--chunked-publish</code> flag:
 - <code>aptos <b>move</b> publish [OPTIONS] --chunked-publish</code>

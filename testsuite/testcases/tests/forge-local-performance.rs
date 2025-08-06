@@ -11,7 +11,7 @@ use aptos_testcases::performance_test::PerformanceBenchmark;
 use std::num::NonZeroUsize;
 
 fn main() -> Result<()> {
-    ::aptos_logger::Logger::init_for_testing();
+    ::libra2_logger::Logger::init_for_testing();
 
     let tests = ForgeConfig::default()
         .with_initial_validator_count(NonZeroUsize::new(2).unwrap())
@@ -20,7 +20,7 @@ fn main() -> Result<()> {
         .with_emit_job(
             EmitJobRequest::default()
                 .mode(EmitJobMode::ConstTps { tps: 30 })
-                .gas_price(aptos_global_constants::GAS_UNIT_PRICE),
+                .gas_price(libra2_global_constants::GAS_UNIT_PRICE),
         )
         .with_success_criteria(SuccessCriteria::new(20).add_chain_progress(
             StateProgressThreshold {

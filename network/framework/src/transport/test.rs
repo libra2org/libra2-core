@@ -10,7 +10,7 @@ use crate::{
 };
 use libra2_config::config::{Peer, PeerRole, PeerSet, HANDSHAKE_VERSION};
 use libra2_crypto::{test_utils::TEST_SEED, traits::Uniform, x25519, x25519::PrivateKey};
-use aptos_netcore::{
+use libra2_netcore::{
     framing::{read_u16frame, write_u16frame},
     transport::{memory, ConnectionOrigin, Transport},
 };
@@ -51,8 +51,8 @@ fn setup<TTransport>(
 ) -> (
     Runtime,
     MockTimeService,
-    (PeerId, AptosNetTransport<TTransport>),
-    (PeerId, AptosNetTransport<TTransport>),
+    (PeerId, Libra2NetTransport<TTransport>),
+    (PeerId, Libra2NetTransport<TTransport>),
     Arc<PeersAndMetadata>,
     ProtocolIdSet,
 )
@@ -160,7 +160,7 @@ where
     let supported_protocols =
         ProtocolIdSet::from_iter([ProtocolId::ConsensusRpcBcs, ProtocolId::DiscoveryDirectSend]);
     let chain_id = ChainId::default();
-    let listener_transport = AptosNetTransport::new(
+    let listener_transport = Libra2NetTransport::new(
         base_transport.clone(),
         listener_network_context,
         time_service.clone(),
@@ -172,7 +172,7 @@ where
         false, /* Disable proxy protocol */
     );
 
-    let dialer_transport = AptosNetTransport::new(
+    let dialer_transport = Libra2NetTransport::new(
         base_transport,
         dialer_network_context,
         time_service.clone(),
@@ -513,7 +513,7 @@ fn test_transport_maybe_mutual<TTransport>(
 }
 
 ////////////////////////////////////////
-// AptosNetTransport<MemoryTransport> //
+// Libra2NetTransport<MemoryTransport> //
 ////////////////////////////////////////
 
 #[test]
@@ -555,7 +555,7 @@ fn test_memory_transport_maybe_mutual() {
 }
 
 /////////////////////////////////////
-// AptosNetTransport<TcpTransport> //
+// Libra2NetTransport<TcpTransport> //
 /////////////////////////////////////
 
 #[test]

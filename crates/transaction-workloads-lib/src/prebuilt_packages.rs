@@ -4,7 +4,7 @@
 use crate::raw_module_data::{PACKAGE_TO_METADATA, PACKAGE_TO_MODULES, PACKAGE_TO_SCRIPT};
 use anyhow::anyhow;
 use aptos_framework::natives::code::PackageMetadata;
-use aptos_sdk::bcs;
+use libra2_sdk::bcs;
 use aptos_transaction_generator_lib::entry_point_trait::PreBuiltPackages;
 use move_binary_format::{
     deserializer::DeserializerConfig,

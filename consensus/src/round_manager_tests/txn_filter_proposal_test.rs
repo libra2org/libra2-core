@@ -7,7 +7,7 @@ use crate::{
     test_utils::{consensus_runtime, timed_block_on},
 };
 use libra2_config::config::BlockTransactionFilterConfig;
-use aptos_consensus_types::{
+use libra2_consensus_types::{
     block::{block_test_utils::certificate_for_genesis, Block},
     common::{Payload, ProofWithData},
     proof_of_store::BatchInfo,
@@ -16,7 +16,7 @@ use libra2_crypto::{
     ed25519::{Ed25519PrivateKey, Ed25519Signature},
     HashValue, PrivateKey, Uniform,
 };
-use aptos_transaction_filters::{
+use libra2_transaction_filters::{
     block_transaction_filter::{BlockTransactionFilter, BlockTransactionMatcher},
     transaction_filter::TransactionMatcher,
 };

@@ -16,12 +16,12 @@ rust-version = { workspace = true }
 anyhow = { workspace = true }
 aptos-cached-packages = { workspace = true }
 libra2-config = { workspace = true }
-aptos-consensus-types = { workspace = true }
+libra2-consensus-types = { workspace = true }
 libra2-crypto = { workspace = true }
 aptos-db = { workspace = true, features = ["fuzzing"] }
 aptos-executor = { workspace = true }
 aptos-executor-types = { workspace = true }
-aptos-sdk = { workspace = true }
+libra2-sdk = { workspace = true }
 aptos-storage-interface = { workspace = true }
 libra2-temppath = { workspace = true }
 libra2-types = { workspace = true }

@@ -4,21 +4,21 @@ groups:
 {{- if .Values.validator.name }}
   # consensus
   - alert: Zero Block Commit Rate
-    expr: rate(aptos_consensus_last_committed_round{role="validator"}[1m]) == 0 OR absent(aptos_consensus_last_committed_round{role="validator"})
+    expr: rate(libra2_consensus_last_committed_round{role="validator"}[1m]) == 0 OR absent(libra2_consensus_last_committed_round{role="validator"})
     for: 20m
     labels:
       severity: error
       summary: "The block commit rate is low"
     annotations:
   - alert: High local timeout rate
-    expr: rate(aptos_consensus_timeout_count{role="validator"}[1m]) > 0.5
+    expr: rate(libra2_consensus_timeout_count{role="validator"}[1m]) > 0.5
     for: 20m
     labels:
       severity: warning
       summary: "Consensus timeout rate is high"
     annotations:
   - alert: High consensus error rate
-    expr: rate(aptos_consensus_error_count{role="validator"}[1m]) / on (role) rate(consensus_duration_count{op='main_loop', role="validator"}[1m]) > 0.25
+    expr: rate(libra2_consensus_error_count{role="validator"}[1m]) / on (role) rate(consensus_duration_count{op='main_loop', role="validator"}[1m]) > 0.25
     for: 20m
     labels:
       severity: warning
@@ -34,7 +34,7 @@ groups:
       summary: "State sync is not making progress (i.e., the synced version is not increasing!)"
     annotations:
   - alert: State sync is lagging significantly
-    expr: (aptos_data_client_highest_advertised_data{data_type="transactions"} - on(kubernetes_pod_name, role) aptos_state_sync_version{type="synced"}) > 1000000
+    expr: (libra2_data_client_highest_advertised_data{data_type="transactions"} - on(kubernetes_pod_name, role) aptos_state_sync_version{type="synced"}) > 1000000
     for: 5m
     labels:
       severity: error
@@ -43,7 +43,7 @@ groups:
 
     # Mempool alerts
   - alert: Mempool has no active upstream peers
-    expr: (sum by (kubernetes_pod_name) (aptos_mempool_active_upstream_peers_count)) == 0
+    expr: (sum by (kubernetes_pod_name) (libra2_mempool_active_upstream_peers_count)) == 0
     for: 3m
     labels:
       severity: error
@@ -80,7 +80,7 @@ groups:
 
   # Networking alerts
   - alert: Validator Connected Peers
-    expr: 0 == min(aptos_network_peers{state="connected", role_type="validator", role="validator"})
+    expr: 0 == min(libra2_network_peers{state="connected", role_type="validator", role="validator"})
     for: 15m
     labels:
       severity: error

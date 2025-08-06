@@ -2,12 +2,12 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use libra2_config::network_id::{NetworkId, PeerNetworkId};
-use aptos_network::{
+use libra2_network::{
     application::interface::NetworkServiceEvents,
     protocols::network::{Event, RpcError},
     ProtocolId,
 };
-use aptos_peer_monitoring_service_types::{
+use libra2_peer_monitoring_service_types::{
     request::PeerMonitoringServiceRequest, response::PeerMonitoringServiceResponse,
     PeerMonitoringServiceMessage, Result,
 };

@@ -12,9 +12,9 @@ use crate::{
     },
 };
 use libra2_config::config::NodeConfig;
-use aptos_event_notifications::{DbBackedOnChainConfig, ReconfigNotificationListener};
+use libra2_event_notifications::{DbBackedOnChainConfig, ReconfigNotificationListener};
 use libra2_infallible::Mutex;
-use aptos_logger::{error, info, warn};
+use libra2_logger::{error, info, warn};
 use libra2_types::{
     epoch_state::EpochState,
     on_chain_config::{
@@ -84,7 +84,7 @@ impl ObserverEpochState {
     pub async fn wait_for_epoch_start(
         &mut self,
         block_payloads: Arc<
-            Mutex<BTreeMap<(u64, aptos_consensus_types::common::Round), BlockPayloadStatus>>,
+            Mutex<BTreeMap<(u64, libra2_consensus_types::common::Round), BlockPayloadStatus>>,
         >,
     ) -> (
         Arc<dyn TPayloadManager>,
@@ -222,7 +222,7 @@ async fn extract_on_chain_configs(
 mod test {
     use super::*;
     use libra2_channels::{libra2_channel, message_queues::QueueStyle};
-    use aptos_event_notifications::ReconfigNotification;
+    use libra2_event_notifications::ReconfigNotification;
 
     #[test]
     fn test_simple_epoch_state() {

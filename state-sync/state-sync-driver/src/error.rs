@@ -82,14 +82,14 @@ impl From<Canceled> for Error {
     }
 }
 
-impl From<aptos_data_streaming_service::error::Error> for Error {
-    fn from(error: aptos_data_streaming_service::error::Error) -> Self {
+impl From<libra2_data_streaming_service::error::Error> for Error {
+    fn from(error: libra2_data_streaming_service::error::Error) -> Self {
         Error::UnexpectedError(error.to_string())
     }
 }
 
-impl From<aptos_event_notifications::Error> for Error {
-    fn from(error: aptos_event_notifications::Error) -> Self {
+impl From<libra2_event_notifications::Error> for Error {
+    fn from(error: libra2_event_notifications::Error) -> Self {
         Error::EventNotificationError(error.to_string())
     }
 }

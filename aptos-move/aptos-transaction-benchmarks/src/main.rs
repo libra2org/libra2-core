@@ -5,7 +5,7 @@
 use libra2_crypto::_once_cell::sync::Lazy;
 use aptos_language_e2e_tests::account_universe::P2PTransferGen;
 use libra2_metrics_core::{register_int_gauge, IntGauge};
-use aptos_push_metrics::MetricsPusher;
+use libra2_push_metrics::MetricsPusher;
 use aptos_transaction_benchmarks::transactions::TransactionBencher;
 use aptos_vm_logging::disable_speculative_logging;
 use clap::{Parser, Subcommand};
@@ -196,7 +196,7 @@ fn execute(opt: ExecuteOpt) {
 }
 
 fn main() {
-    aptos_logger::Logger::new().init();
+    libra2_logger::Logger::new().init();
     START_TIME.set(
         SystemTime::now()
             .duration_since(UNIX_EPOCH)

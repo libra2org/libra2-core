@@ -7,7 +7,7 @@ use crate::{
     publishing::{entry_point_trait::PreBuiltPackages, publish_util::PackageHandler},
     RootAccountHandle, TransactionGenerator, TransactionGeneratorCreator,
 };
-use aptos_sdk::{
+use libra2_sdk::{
     transaction_builder::TransactionFactory,
     types::{transaction::SignedTransaction, LocalAccount},
 };

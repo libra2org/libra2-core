@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::counters::HOT_STATE_OP_ACCUMULATOR_COUNTER as COUNTER;
-use aptos_logger::error;
+use libra2_logger::error;
 use libra2_metrics_core::IntCounterHelper;
 use libra2_types::{
     state_store::{state_slot::StateSlot, TStateView},

@@ -12,7 +12,7 @@ use libra2_config::{
     network_id::{NetworkId, PeerNetworkId},
 };
 use libra2_crypto::HashValue;
-use aptos_network::{
+use libra2_network::{
     application::{interface::NetworkServiceEvents, storage::PeersAndMetadata},
     protocols::{
         network::{NetworkEvents, NewNetworkEvents, ReceivedMessage},
@@ -23,8 +23,8 @@ use aptos_network::{
     },
 };
 use aptos_storage_interface::{DbReader, LedgerSummary, Order};
-use aptos_storage_service_notifications::StorageServiceNotifier;
-use aptos_storage_service_types::{
+use libra2_storage_service_notifications::StorageServiceNotifier;
+use libra2_storage_service_types::{
     requests::StorageServiceRequest, responses::StorageServiceResponse, StorageServiceError,
     StorageServiceMessage,
 };
@@ -108,7 +108,7 @@ impl MockClient {
 
         // Create the storage service notifier and listener
         let (storage_service_notifier, storage_service_listener) =
-            aptos_storage_service_notifications::new_storage_service_notifier_listener_pair();
+            libra2_storage_service_notifications::new_storage_service_notifier_listener_pair();
 
         // Create the storage service
         let peers_and_metadata = create_peers_and_metadata(network_ids);
@@ -153,7 +153,7 @@ impl MockClient {
         request: StorageServiceRequest,
         peer_id: Option<AccountAddress>,
         network_id: Option<NetworkId>,
-    ) -> Receiver<Result<bytes::Bytes, aptos_network::protocols::network::RpcError>> {
+    ) -> Receiver<Result<bytes::Bytes, libra2_network::protocols::network::RpcError>> {
         // Create the inbound rpc request
         let peer_id = peer_id.unwrap_or_else(PeerId::random);
         let network_id = network_id.unwrap_or_else(get_random_network_id);
@@ -187,7 +187,7 @@ impl MockClient {
     /// Helper method to wait for and deserialize a response on the specified receiver
     pub async fn wait_for_response(
         &mut self,
-        receiver: Receiver<Result<bytes::Bytes, aptos_network::protocols::network::RpcError>>,
+        receiver: Receiver<Result<bytes::Bytes, libra2_network::protocols::network::RpcError>>,
     ) -> Result<StorageServiceResponse, StorageServiceError> {
         if let Ok(response) =
             timeout(Duration::from_secs(MAX_RESPONSE_TIMEOUT_SECS), receiver).await

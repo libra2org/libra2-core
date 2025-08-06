@@ -11,8 +11,8 @@ use crate::{
     IntGaugeGuard,
 };
 use anyhow::anyhow;
-use aptos_consensus_notifications::ConsensusNotificationSender;
-use aptos_consensus_types::{
+use libra2_consensus_notifications::ConsensusNotificationSender;
+use libra2_consensus_types::{
     block::Block,
     common::Round,
     pipeline::commit_vote::CommitVote,
@@ -29,7 +29,7 @@ use libra2_crypto::HashValue;
 use aptos_executor_types::{state_compute_result::StateComputeResult, BlockExecutorTrait};
 use aptos_experimental_runtimes::thread_manager::optimal_min_len;
 use libra2_infallible::Mutex;
-use aptos_logger::{debug, error, info, warn};
+use libra2_logger::{debug, error, info, warn};
 use libra2_types::{
     block_executor::config::BlockExecutorConfigFromOnchain,
     ledger_info::{LedgerInfo, LedgerInfoWithSignatures},

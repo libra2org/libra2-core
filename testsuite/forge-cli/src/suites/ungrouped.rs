@@ -26,9 +26,9 @@ use aptos_forge::{
     NetworkContext, NetworkContextSynchronizer, NetworkTest, NodeResourceOverride, Test,
     WorkflowProgress,
 };
-use aptos_logger::info;
+use libra2_logger::info;
 use libra2_rest_client::Client as RestClient;
-use aptos_sdk::{
+use libra2_sdk::{
     move_types::account_address::AccountAddress,
     types::on_chain_config::{OnChainConsensusConfig, OnChainExecutionConfig},
 };
@@ -415,7 +415,7 @@ fn background_emit_request(high_gas_price: bool) -> EmitJobRequest {
         .num_accounts_mode(NumAccountsMode::TransactionsPerAccount(1))
         .mode(EmitJobMode::ConstTps { tps: 10 });
     if high_gas_price {
-        result = result.gas_price(5 * aptos_global_constants::GAS_UNIT_PRICE);
+        result = result.gas_price(5 * libra2_global_constants::GAS_UNIT_PRICE);
     }
     result
 }
@@ -555,7 +555,7 @@ pub(crate) fn single_cluster_test(
         .with_emit_job(
             EmitJobRequest::default()
                 .mode(EmitJobMode::ConstTps { tps: 10 })
-                .gas_price(5 * aptos_global_constants::GAS_UNIT_PRICE),
+                .gas_price(5 * libra2_global_constants::GAS_UNIT_PRICE),
         )
         .with_success_criteria(success_criteria)
         .with_validator_resource_override(resource_override)
@@ -810,7 +810,7 @@ pub fn optimize_state_sync_for_throughput(node_config: &mut NodeConfig, max_chun
     let max_chunk_bytes = 40 * 1024 * 1024; // 10x the current limit (to prevent execution fallback)
 
     // Update the chunk sizes for the data client
-    let data_client_config = &mut node_config.state_sync.aptos_data_client;
+    let data_client_config = &mut node_config.state_sync.libra2_data_client;
     data_client_config.max_transaction_chunk_size = max_chunk_size;
     data_client_config.max_transaction_output_chunk_size = max_chunk_size;
 

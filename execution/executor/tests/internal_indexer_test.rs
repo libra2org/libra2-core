@@ -9,7 +9,7 @@ use aptos_executor_test_helpers::{
 };
 use aptos_executor_types::BlockExecutorTrait;
 use aptos_indexer_grpc_table_info::internal_indexer_db_service::InternalIndexerDBService;
-use aptos_sdk::{
+use libra2_sdk::{
     transaction_builder::TransactionFactory,
     types::{AccountKey, LocalAccount},
 };

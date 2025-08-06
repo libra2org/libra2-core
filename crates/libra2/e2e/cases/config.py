@@ -6,7 +6,7 @@ import json
 from common import TestError
 from test_helpers import RunHelper
 from test_results import test_case
-from aptos_sdk.account_address import AccountAddress
+from libra2_sdk.account_address import AccountAddress
 
 @test_case
 def test_config_show_profiles(run_helper: RunHelper, test_name=None):

@@ -21,16 +21,16 @@ libra2-build-info = { workspace = true }
 aptos-cached-packages = { workspace = true }
 libra2-channels = { workspace = true }
 libra2-config = { workspace = true }
-aptos-consensus = { workspace = true }
-aptos-consensus-notifications = { workspace = true }
+libra2-consensus = { workspace = true }
+libra2-consensus-notifications = { workspace = true }
 libra2-crash-handler = { workspace = true }
 libra2-crypto = { workspace = true }
-aptos-data-client = { workspace = true }
-aptos-data-streaming-service = { workspace = true }
+libra2-data-client = { workspace = true }
+libra2-data-streaming-service = { workspace = true }
 aptos-db = { workspace = true }
 aptos-db-indexer = { workspace = true }
 aptos-dkg-runtime = { workspace = true }
-aptos-event-notifications = { workspace = true }
+libra2-event-notifications = { workspace = true }
 aptos-executor = { workspace = true }
 aptos-framework = { workspace = true }
 aptos-genesis = { workspace = true }
@@ -38,25 +38,25 @@ aptos-indexer = { workspace = true, optional = true }
 aptos-indexer-grpc-fullnode = { workspace = true }
 aptos-indexer-grpc-table-info = { workspace = true }
 libra2-infallible = { workspace = true }
-aptos-inspection-service = { workspace = true }
-aptos-jwk-consensus = { workspace = true }
-aptos-logger = { workspace = true, features = ["node-identity"] }
-aptos-mempool = { workspace = true }
-aptos-mempool-notifications = { workspace = true }
-aptos-network = { workspace = true }
-aptos-network-benchmark = { workspace = true }
-aptos-network-builder = { workspace = true }
+libra2-inspection-service = { workspace = true }
+libra2-jwk-consensus = { workspace = true }
+libra2-logger = { workspace = true, features = ["node-identity"] }
+libra2-mempool = { workspace = true }
+libra2-mempool-notifications = { workspace = true }
+libra2-network = { workspace = true }
+libra2-network-benchmark = { workspace = true }
+libra2-network-builder = { workspace = true }
 libra2-node-identity = { workspace = true }
-aptos-peer-monitoring-service-client = { workspace = true }
-aptos-peer-monitoring-service-server = { workspace = true }
-aptos-peer-monitoring-service-types = { workspace = true }
-aptos-runtimes = { workspace = true }
-aptos-state-sync-driver = { workspace = true }
+libra2-peer-monitoring-service-client = { workspace = true }
+libra2-peer-monitoring-service-server = { workspace = true }
+libra2-peer-monitoring-service-types = { workspace = true }
+libra2-runtimes = { workspace = true }
+libra2-state-sync-driver = { workspace = true }
 aptos-storage-interface = { workspace = true }
-aptos-storage-service-client = { workspace = true }
-aptos-storage-service-notifications = { workspace = true }
-aptos-storage-service-server = { workspace = true }
-aptos-storage-service-types = { workspace = true }
+libra2-storage-service-client = { workspace = true }
+libra2-storage-service-notifications = { workspace = true }
+libra2-storage-service-server = { workspace = true }
+libra2-storage-service-types = { workspace = true }
 aptos-telemetry = { workspace = true }
 libra2-temppath = { workspace = true }
 libra2-time-service = { workspace = true }
@@ -94,12 +94,12 @@ rstack-self = { workspace = true }
 [features]
 assert-private-keys-not-cloneable = ["libra2-crypto/assert-private-keys-not-cloneable"]
 check-vm-features = []
-consensus-only-perf-test = ["aptos-executor/consensus-only-perf-test", "aptos-mempool/consensus-only-perf-test", "aptos-db/consensus-only-perf-test"]
+consensus-only-perf-test = ["aptos-executor/consensus-only-perf-test", "libra2-mempool/consensus-only-perf-test", "aptos-db/consensus-only-perf-test"]
 default = []
-failpoints = ["fail/failpoints", "aptos-consensus/failpoints", "aptos-executor/failpoints", "aptos-mempool/failpoints", "aptos-api/failpoints", "libra2-config/failpoints"]
+failpoints = ["fail/failpoints", "libra2-consensus/failpoints", "aptos-executor/failpoints", "libra2-mempool/failpoints", "aptos-api/failpoints", "libra2-config/failpoints"]
 indexer = ["aptos-indexer"]
-tokio-console = ["aptos-logger/tokio-console", "libra2-config/tokio-console"]
-smoke-test = ["aptos-jwk-consensus/smoke-test", "aptos-dkg-runtime/smoke-test"]
+tokio-console = ["libra2-logger/tokio-console", "libra2-config/tokio-console"]
+smoke-test = ["libra2-jwk-consensus/smoke-test", "aptos-dkg-runtime/smoke-test"]
 
 [package.metadata.cargo-machete]
 ignored = ["libra2-crypto"]

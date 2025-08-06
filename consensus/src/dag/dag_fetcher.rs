@@ -10,10 +10,10 @@ use crate::dag::{
     RpcHandler, RpcWithFallback,
 };
 use anyhow::{bail, ensure};
-use aptos_bitvec::BitVec;
+use libra2_bitvec::BitVec;
 use libra2_config::config::DagFetcherConfig;
-use aptos_consensus_types::common::{Author, Round};
-use aptos_logger::{debug, error, info};
+use libra2_consensus_types::common::{Author, Round};
+use libra2_logger::{debug, error, info};
 use libra2_time_service::TimeService;
 use libra2_types::epoch_state::EpochState;
 use async_trait::async_trait;

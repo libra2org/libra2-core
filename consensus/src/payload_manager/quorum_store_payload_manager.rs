@@ -10,9 +10,9 @@ use crate::{
     payload_manager::TPayloadManager,
     quorum_store::{batch_store::BatchReader, quorum_store_coordinator::CoordinatorCommand},
 };
-use aptos_bitvec::BitVec;
+use libra2_bitvec::BitVec;
 use libra2_config::config::BlockTransactionFilterConfig;
-use aptos_consensus_types::{
+use libra2_consensus_types::{
     block::Block,
     common::{Author, Payload, ProofWithData},
     payload::{BatchPointer, TDataInfo},
@@ -20,7 +20,7 @@ use aptos_consensus_types::{
 };
 use libra2_crypto::HashValue;
 use aptos_executor_types::*;
-use aptos_logger::prelude::*;
+use libra2_logger::prelude::*;
 use libra2_types::{transaction::SignedTransaction, PeerId};
 use async_trait::async_trait;
 use futures::{channel::mpsc::Sender, future::Shared};

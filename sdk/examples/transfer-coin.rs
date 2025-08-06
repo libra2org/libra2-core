@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use anyhow::{Context, Result};
-use aptos_sdk::{
+use libra2_sdk::{
     coin_client::CoinClient,
     rest_client::{Client, FaucetClient},
     types::LocalAccount,
@@ -14,10 +14,10 @@ use url::Url;
 // :!:>section_1c
 static NODE_URL: Lazy<Url> = Lazy::new(|| {
     Url::from_str(
-        std::env::var("APTOS_NODE_URL")
+        std::env::var("LIBRA2_NODE_URL")
             .as_ref()
             .map(|s| s.as_str())
-            .unwrap_or("https://fullnode.devnet.aptoslabs.com"),
+            .unwrap_or("https://fullnode.devnet.libra2.org"),
     )
     .unwrap()
 });
@@ -27,7 +27,7 @@ static FAUCET_URL: Lazy<Url> = Lazy::new(|| {
         std::env::var("APTOS_FAUCET_URL")
             .as_ref()
             .map(|s| s.as_str())
-            .unwrap_or("https://faucet.devnet.aptoslabs.com"),
+            .unwrap_or("https://faucet.devnet.libra2.org"),
     )
     .unwrap()
 });

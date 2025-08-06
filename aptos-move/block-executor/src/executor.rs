@@ -30,8 +30,8 @@ use aptos_aggregator::{
     delta_change_set::serialize,
 };
 use libra2_crypto::HashValue;
-use aptos_drop_helper::DEFAULT_DROPPER;
-use aptos_logger::{error, info};
+use libra2_drop_helper::DEFAULT_DROPPER;
+use libra2_logger::{error, info};
 use aptos_mvhashmap::{
     types::{Incarnation, MVDelayedFieldsError, TxnIndex, ValueWithLayout},
     unsync_map::UnsyncMap,

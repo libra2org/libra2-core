@@ -5,8 +5,8 @@
 use crate::shared_mempool::types::{MempoolMessageId, QuorumStoreRequest};
 use anyhow::Error;
 use libra2_config::network_id::{NetworkId, PeerNetworkId};
-use aptos_logger::Schema;
-use aptos_mempool_notifications::MempoolCommitNotification;
+use libra2_logger::Schema;
+use libra2_mempool_notifications::MempoolCommitNotification;
 use libra2_types::{account_address::AccountAddress, transaction::ReplayProtector};
 use serde::Serialize;
 use std::{fmt, fmt::Write, time::SystemTime};

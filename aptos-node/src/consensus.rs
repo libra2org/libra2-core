@@ -5,7 +5,7 @@ use crate::{network::ApplicationNetworkInterfaces, services};
 use aptos_admin_service::AdminService;
 use libra2_channels::libra2_channel::Receiver;
 use libra2_config::config::NodeConfig;
-use aptos_consensus::{
+use libra2_consensus::{
     consensus_observer::{
         network::{
             network_events::ConsensusObserverNetworkEvents,
@@ -21,14 +21,14 @@ use aptos_consensus::{
     consensus_provider::start_consensus_observer,
     network_interface::ConsensusMsg,
 };
-use aptos_consensus_notifications::ConsensusNotifier;
+use libra2_consensus_notifications::ConsensusNotifier;
 use aptos_dkg_runtime::{start_dkg_runtime, DKGMessage};
-use aptos_event_notifications::{
+use libra2_event_notifications::{
     DbBackedOnChainConfig, EventNotificationListener, ReconfigNotificationListener,
 };
-use aptos_jwk_consensus::{start_jwk_consensus_runtime, types::JWKConsensusMsg};
-use aptos_mempool::QuorumStoreRequest;
-use aptos_network::application::interface::{NetworkClient, NetworkServiceEvents};
+use libra2_jwk_consensus::{start_jwk_consensus_runtime, types::JWKConsensusMsg};
+use libra2_mempool::QuorumStoreRequest;
+use libra2_network::application::interface::{NetworkClient, NetworkServiceEvents};
 use aptos_storage_interface::DbReaderWriter;
 use aptos_validator_transaction_pool::VTxnPoolState;
 use futures::channel::mpsc::Sender;
@@ -251,7 +251,7 @@ fn create_consensus_publisher(
     }
 
     // Create the publisher runtime
-    let runtime = aptos_runtimes::spawn_named_runtime("publisher".into(), None);
+    let runtime = libra2_runtimes::spawn_named_runtime("publisher".into(), None);
 
     // Create the consensus publisher
     let (consensus_publisher, outbound_message_receiver) =
@@ -279,7 +279,7 @@ fn create_observer_network_handler(
     Receiver<(), ConsensusPublisherNetworkMessage>,
 ) {
     // Create the consensus observer runtime
-    let consensus_observer_runtime = aptos_runtimes::spawn_named_runtime("observer".into(), None);
+    let consensus_observer_runtime = libra2_runtimes::spawn_named_runtime("observer".into(), None);
 
     // Create the consensus observer network events
     let consensus_observer_events = ConsensusObserverNetworkEvents::new(consensus_observer_events);

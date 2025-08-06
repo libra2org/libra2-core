@@ -17,7 +17,7 @@ use crate::{
 };
 use anyhow::Result;
 use libra2_infallible::Mutex;
-use aptos_logger::prelude::*;
+use libra2_logger::prelude::*;
 use aptos_schemadb::{ColumnFamilyName, DB};
 use libra2_types::state_store::NUM_STATE_SHARDS;
 use once_cell::sync::Lazy;

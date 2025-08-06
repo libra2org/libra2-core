@@ -17,7 +17,7 @@ use crate::{
     network_id::NetworkId,
 };
 use libra2_crypto::x25519;
-use aptos_logger::info;
+use libra2_logger::info;
 use libra2_temppath::TempPath;
 use libra2_types::account_address::AccountAddress as PeerId;
 use rand::{prelude::StdRng, SeedableRng};

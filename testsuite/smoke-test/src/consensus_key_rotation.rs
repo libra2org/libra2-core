@@ -7,7 +7,7 @@ use aptos::common::types::GasOptions;
 use libra2_config::config::{OverrideNodeConfig, PersistableConfig};
 use libra2_crypto::{bls12381, Uniform};
 use aptos_forge::{NodeExt, Swarm, SwarmExt};
-use aptos_logger::info;
+use libra2_logger::info;
 use libra2_rest_client::Client;
 use libra2_types::{
     on_chain_config::{ConfigurationResource, OnChainRandomnessConfig, ValidatorSet},

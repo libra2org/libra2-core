@@ -12,7 +12,7 @@ use crate::{
     smoke_test_environment::SwarmBuilder,
 };
 use aptos_forge::{NodeExt, Swarm, SwarmExt};
-use aptos_logger::{debug, info};
+use libra2_logger::{debug, info};
 use libra2_types::{
     jwks::{jwk::JWK, rsa::RSA_JWK, secure_test_rsa_jwk, AllProvidersJWKs, ProviderJWKs},
     keyless::test_utils::get_sample_iss,

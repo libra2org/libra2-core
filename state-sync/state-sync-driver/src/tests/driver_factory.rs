@@ -9,19 +9,19 @@ use libra2_config::{
     },
     utils::get_genesis_txn,
 };
-use aptos_consensus_notifications::new_consensus_notifier_listener_pair;
-use aptos_data_client::client::AptosDataClient;
-use aptos_data_streaming_service::streaming_client::new_streaming_service_client_listener_pair;
+use libra2_consensus_notifications::new_consensus_notifier_listener_pair;
+use libra2_data_client::client::Libra2DataClient;
+use libra2_data_streaming_service::streaming_client::new_streaming_service_client_listener_pair;
 use aptos_db::AptosDB;
-use aptos_event_notifications::EventSubscriptionService;
+use libra2_event_notifications::EventSubscriptionService;
 use aptos_executor::chunk_executor::ChunkExecutor;
 use aptos_executor_test_helpers::bootstrap_genesis;
 use aptos_genesis::test_utils::test_config;
 use libra2_infallible::RwLock;
-use aptos_mempool_notifications::new_mempool_notifier_listener_pair;
-use aptos_network::application::{interface::NetworkClient, storage::PeersAndMetadata};
+use libra2_mempool_notifications::new_mempool_notifier_listener_pair;
+use libra2_network::application::{interface::NetworkClient, storage::PeersAndMetadata};
 use aptos_storage_interface::DbReaderWriter;
-use aptos_storage_service_client::StorageServiceClient;
+use libra2_storage_service_client::StorageServiceClient;
 use libra2_temppath::TempPath;
 use libra2_time_service::TimeService;
 use aptos_vm::aptos_vm::AptosVMBlockExecutor;
@@ -63,7 +63,7 @@ fn test_new_initialized_configs() {
 
     // Create the storage service notifier and listener
     let (storage_service_notifier, _storage_service_listener) =
-        aptos_storage_service_notifications::new_storage_service_notifier_listener_pair();
+        libra2_storage_service_notifications::new_storage_service_notifier_listener_pair();
 
     // Create a test streaming service client
     let (streaming_service_client, _) = new_streaming_service_client_listener_pair();
@@ -75,8 +75,8 @@ fn test_new_initialized_configs() {
         HashMap::new(),
         PeersAndMetadata::new(&[]),
     ));
-    let (aptos_data_client, _) = AptosDataClient::new(
-        node_config.state_sync.aptos_data_client,
+    let (libra2_data_client, _) = Libra2DataClient::new(
+        node_config.state_sync.libra2_data_client,
         node_config.base.clone(),
         TimeService::mock(),
         db_rw.reader.clone(),
@@ -98,7 +98,7 @@ fn test_new_initialized_configs() {
         metadata_storage,
         consensus_listener,
         event_subscription_service,
-        aptos_data_client,
+        libra2_data_client,
         streaming_service_client,
         TimeService::mock(),
     );

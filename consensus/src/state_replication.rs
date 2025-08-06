@@ -7,7 +7,7 @@ use crate::{
     transaction_deduper::TransactionDeduper, transaction_shuffler::TransactionShuffler,
 };
 use anyhow::Result;
-use aptos_consensus_types::pipelined_block::PipelinedBlock;
+use libra2_consensus_types::pipelined_block::PipelinedBlock;
 use libra2_types::{
     block_executor::config::BlockExecutorConfigFromOnchain, epoch_state::EpochState,
     ledger_info::LedgerInfoWithSignatures,

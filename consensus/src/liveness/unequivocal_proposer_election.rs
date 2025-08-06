@@ -2,13 +2,13 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use super::proposer_election::ProposerElection;
-use aptos_consensus_types::{
+use libra2_consensus_types::{
     block::Block,
     common::{Author, Round},
 };
 use libra2_crypto::HashValue;
 use libra2_infallible::Mutex;
-use aptos_logger::{error, warn, SecurityEvent};
+use libra2_logger::{error, warn, SecurityEvent};
 use std::{cmp::Ordering, sync::Arc};
 
 // Wrapper around ProposerElection.

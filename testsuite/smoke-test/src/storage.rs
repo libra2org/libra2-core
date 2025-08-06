@@ -14,7 +14,7 @@ use crate::{
 use anyhow::{bail, Result};
 use aptos_backup_cli::metadata::view::BackupStorageState;
 use aptos_forge::{reconfig, AptosPublicInfo, Node, NodeExt, Swarm, SwarmExt};
-use aptos_logger::info;
+use libra2_logger::info;
 use libra2_temppath::TempPath;
 use libra2_types::{transaction::Version, waypoint::Waypoint};
 use itertools::Itertools;
@@ -34,9 +34,9 @@ const LINE: &str = "----------";
 #[tokio::test]
 async fn test_db_restore() {
     // pre-build tools
-    ::aptos_logger::Logger::new().init();
+    ::libra2_logger::Logger::new().init();
     info!("---------- 0. test_db_restore started.");
-    workspace_builder::get_bin("aptos-debugger");
+    workspace_builder::get_bin("libra2-debugger");
     info!("---------- 1. pre-building finished.");
 
     let mut swarm = SwarmBuilder::new_local(4).with_aptos().build().await;
@@ -180,9 +180,9 @@ async fn test_db_restore() {
 }
 
 fn db_backup_verify(backup_path: &Path, trusted_waypoints: &[Waypoint]) {
-    info!("---------- running aptos-debugger aptos-db backup-verify");
+    info!("---------- running libra2-debugger aptos-db backup-verify");
     let now = Instant::now();
-    let bin_path = workspace_builder::get_bin("aptos-debugger");
+    let bin_path = workspace_builder::get_bin("libra2-debugger");
     let metadata_cache_path = TempPath::new();
 
     metadata_cache_path.create_as_dir().unwrap();
@@ -213,7 +213,7 @@ fn db_backup_verify(backup_path: &Path, trusted_waypoints: &[Waypoint]) {
 fn replay_verify(backup_path: &Path, trusted_waypoints: &[Waypoint]) {
     info!("---------- running replay-verify");
     let now = Instant::now();
-    let bin_path = workspace_builder::get_bin("aptos-debugger");
+    let bin_path = workspace_builder::get_bin("libra2-debugger");
     let metadata_cache_path = TempPath::new();
     let target_db_dir = TempPath::new();
 
@@ -330,7 +330,7 @@ pub(crate) fn db_backup(
 ) -> (TempPath, Version) {
     info!("---------- running aptos db tool backup");
     let now = Instant::now();
-    let bin_path = workspace_builder::get_bin("aptos-debugger");
+    let bin_path = workspace_builder::get_bin("libra2-debugger");
     let metadata_cache_path1 = TempPath::new();
     let metadata_cache_path2 = TempPath::new();
     let backup_path = TempPath::new();
@@ -417,7 +417,7 @@ pub(crate) fn db_restore(
     target_verion: Option<Version>, /* target version should be same as epoch ending version to start a node */
 ) {
     let now = Instant::now();
-    let bin_path = workspace_builder::get_bin("aptos-debugger");
+    let bin_path = workspace_builder::get_bin("libra2-debugger");
     let metadata_cache_path = TempPath::new();
 
     metadata_cache_path.create_as_dir().unwrap();
@@ -490,7 +490,7 @@ async fn do_transfers_and_reconfigs(mut info: AptosPublicInfo, quit_flag: Arc<At
 
 #[tokio::test(flavor = "multi_thread", worker_threads = 10)]
 async fn test_db_restart() {
-    ::aptos_logger::Logger::new().init();
+    ::libra2_logger::Logger::new().init();
 
     info!("{LINE} Test started.");
     let mut swarm = SwarmBuilder::new_local(4).with_aptos().build().await;

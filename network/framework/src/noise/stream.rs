@@ -10,7 +10,7 @@
 //! [handshake]: crate::noise::handshake
 
 use libra2_crypto::{noise, x25519};
-use aptos_logger::prelude::*;
+use libra2_logger::prelude::*;
 use futures::{
     io::{AsyncRead, AsyncWrite},
     ready,
@@ -528,7 +528,7 @@ mod test {
     };
     use libra2_config::network_id::NetworkContext;
     use libra2_crypto::{test_utils::TEST_SEED, traits::Uniform as _, x25519};
-    use aptos_memsocket::MemorySocket;
+    use libra2_memsocket::MemorySocket;
     use futures::{
         executor::block_on,
         future::join,

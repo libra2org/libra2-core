@@ -3,7 +3,7 @@
 
 use super::publish_util::Package;
 use aptos_framework::natives::code::PackageMetadata;
-use aptos_sdk::{
+use libra2_sdk::{
     move_types::{
         account_address::AccountAddress, identifier::Identifier, language_storage::ModuleId,
     },

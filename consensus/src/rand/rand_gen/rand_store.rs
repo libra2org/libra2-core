@@ -9,8 +9,8 @@ use crate::{
     },
 };
 use anyhow::ensure;
-use aptos_consensus_types::common::{Author, Round};
-use aptos_logger::warn;
+use libra2_consensus_types::common::{Author, Round};
+use libra2_logger::warn;
 use libra2_types::randomness::{FullRandMetadata, RandMetadata, Randomness};
 use itertools::Either;
 use std::collections::{BTreeMap, HashMap, HashSet};
@@ -338,7 +338,7 @@ mod tests {
         test_utils::{create_ordered_blocks, create_share, create_share_for_round},
         types::{MockShare, PathType, RandConfig},
     };
-    use aptos_consensus_types::common::Author;
+    use libra2_consensus_types::common::Author;
     use libra2_crypto::{bls12381, HashValue, Uniform};
     use aptos_dkg::{
         pvss::{traits::Transcript, Player, WeightedConfig},

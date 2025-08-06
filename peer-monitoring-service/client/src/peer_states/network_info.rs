@@ -11,9 +11,9 @@ use libra2_config::{
     network_id::PeerNetworkId,
 };
 use libra2_infallible::RwLock;
-use aptos_logger::warn;
-use aptos_network::application::metadata::PeerMetadata;
-use aptos_peer_monitoring_service_types::{
+use libra2_logger::warn;
+use libra2_network::application::metadata::PeerMetadata;
+use libra2_peer_monitoring_service_types::{
     request::PeerMonitoringServiceRequest,
     response::{NetworkInformationResponse, PeerMonitoringServiceResponse},
     MAX_DISTANCE_FROM_VALIDATORS,
@@ -211,13 +211,13 @@ mod test {
         config::{BaseConfig, NodeConfig, PeerRole, RoleType},
         network_id::{NetworkId, PeerNetworkId},
     };
-    use aptos_netcore::transport::ConnectionOrigin;
-    use aptos_network::{
+    use libra2_netcore::transport::ConnectionOrigin;
+    use libra2_network::{
         application::metadata::PeerMetadata,
         protocols::wire::handshake::v1::{MessagingProtocolVersion, ProtocolIdSet},
         transport::{ConnectionId, ConnectionMetadata},
     };
-    use aptos_peer_monitoring_service_types::{
+    use libra2_peer_monitoring_service_types::{
         request::PeerMonitoringServiceRequest,
         response::{NetworkInformationResponse, PeerMonitoringServiceResponse},
     };

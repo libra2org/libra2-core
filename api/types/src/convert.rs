@@ -18,7 +18,7 @@ use crate::{
 };
 use anyhow::{bail, ensure, format_err, Context as AnyhowContext, Result};
 use libra2_crypto::{hash::CryptoHash, HashValue};
-use aptos_logger::{sample, sample::SampleRate};
+use libra2_logger::{sample, sample::SampleRate};
 use aptos_resource_viewer::AptosValueAnnotator;
 use aptos_storage_interface::DbReader;
 use libra2_types::{
@@ -1165,7 +1165,7 @@ impl<'a, S: StateView> MoveConverter<'a, S> {
 fn log_missing_table_info(handle: TableHandle) {
     sample!(
         SampleRate::Duration(Duration::from_secs(1)),
-        aptos_logger::debug!(
+        libra2_logger::debug!(
             "Table info not found for handle {:?}, can't decode table item. OK for simulation",
             handle
         )

@@ -26,13 +26,13 @@ use crate::{
 };
 use anyhow::format_err;
 use libra2_config::config::StateSyncDriverConfig;
-use aptos_data_streaming_service::data_notification::NotificationId;
-use aptos_event_notifications::EventSubscriptionService;
+use libra2_data_streaming_service::data_notification::NotificationId;
+use libra2_event_notifications::EventSubscriptionService;
 use aptos_executor_types::ChunkCommitNotification;
 use libra2_infallible::{Mutex, RwLock};
-use aptos_mempool_notifications::MempoolNotificationListener;
+use libra2_mempool_notifications::MempoolNotificationListener;
 use aptos_storage_interface::{AptosDbError, DbReaderWriter};
-use aptos_storage_service_notifications::StorageServiceNotificationListener;
+use libra2_storage_service_notifications::StorageServiceNotificationListener;
 use libra2_types::{
     ledger_info::LedgerInfoWithSignatures,
     transaction::{TransactionOutputListWithProofV2, Version},
@@ -896,7 +896,7 @@ fn create_storage_synchronizer(
     StorageSynchronizer<MockChunkExecutor, PersistentMetadataStorage>,
     StorageSynchronizerHandles,
 ) {
-    aptos_logger::Logger::init_for_testing();
+    libra2_logger::Logger::init_for_testing();
 
     // Create the notification channels
     let (commit_notification_sender, commit_notification_listener) =
@@ -910,12 +910,12 @@ fn create_storage_synchronizer(
 
     // Create the mempool notification handler
     let (mempool_notification_sender, mempool_notification_listener) =
-        aptos_mempool_notifications::new_mempool_notifier_listener_pair(100);
+        libra2_mempool_notifications::new_mempool_notifier_listener_pair(100);
     let mempool_notification_handler = MempoolNotificationHandler::new(mempool_notification_sender);
 
     // Create the storage service handler
     let (storage_service_notifier, storage_service_listener) =
-        aptos_storage_service_notifications::new_storage_service_notifier_listener_pair();
+        libra2_storage_service_notifications::new_storage_service_notifier_listener_pair();
     let storage_service_notification_handler =
         StorageServiceNotificationHandler::new(storage_service_notifier);
 

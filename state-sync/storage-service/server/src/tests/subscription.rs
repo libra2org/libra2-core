@@ -11,10 +11,10 @@ use crate::{
     tests::{mock, mock::MockClient, utils},
 };
 use libra2_config::{
-    config::{AptosDataClientConfig, StorageServiceConfig},
+    config::{Libra2DataClientConfig, StorageServiceConfig},
     network_id::PeerNetworkId,
 };
-use aptos_storage_service_types::{
+use libra2_storage_service_types::{
     requests::{
         DataRequest, StorageServiceRequest, SubscribeTransactionOutputsWithProofRequest,
         SubscribeTransactionsOrOutputsWithProofRequest, SubscribeTransactionsWithProofRequest,
@@ -81,7 +81,7 @@ async fn test_peers_with_ready_subscriptions() {
         let optimistic_fetches = Arc::new(DashMap::new());
         let lru_response_cache = Cache::new(0);
         let request_moderator = Arc::new(RequestModerator::new(
-            AptosDataClientConfig::default(),
+            Libra2DataClientConfig::default(),
             cached_storage_server_summary.clone(),
             mock::create_peers_and_metadata(vec![]),
             StorageServiceConfig::default(),
@@ -203,7 +203,7 @@ async fn test_remove_expired_subscriptions_no_new_data() {
         let optimistic_fetches = Arc::new(DashMap::new());
         let lru_response_cache = Cache::new(0);
         let request_moderator = Arc::new(RequestModerator::new(
-            AptosDataClientConfig::default(),
+            Libra2DataClientConfig::default(),
             cached_storage_server_summary.clone(),
             mock::create_peers_and_metadata(vec![]),
             StorageServiceConfig::default(),
@@ -350,7 +350,7 @@ async fn test_remove_expired_subscriptions_blocked_stream() {
         let optimistic_fetches = Arc::new(DashMap::new());
         let lru_response_cache = Cache::new(0);
         let request_moderator = Arc::new(RequestModerator::new(
-            AptosDataClientConfig::default(),
+            Libra2DataClientConfig::default(),
             cached_storage_server_summary.clone(),
             mock::create_peers_and_metadata(vec![]),
             StorageServiceConfig::default(),
@@ -460,7 +460,7 @@ async fn test_remove_expired_subscriptions_blocked_stream_index() {
         let optimistic_fetches = Arc::new(DashMap::new());
         let lru_response_cache = Cache::new(0);
         let request_moderator = Arc::new(RequestModerator::new(
-            AptosDataClientConfig::default(),
+            Libra2DataClientConfig::default(),
             cached_storage_server_summary.clone(),
             mock::create_peers_and_metadata(vec![]),
             StorageServiceConfig::default(),

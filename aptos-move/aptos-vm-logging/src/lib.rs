@@ -15,8 +15,8 @@ use crate::{
     counters::{CRITICAL_ERRORS, SPECULATIVE_LOGGING_ERRORS},
     log_schema::AdapterLogSchema,
 };
-use aptos_logger::{prelude::*, Level};
-use aptos_speculative_state_helper::{SpeculativeEvent, SpeculativeEvents};
+use libra2_logger::{prelude::*, Level};
+use libra2_speculative_state_helper::{SpeculativeEvent, SpeculativeEvents};
 use arc_swap::ArcSwapOption;
 use once_cell::sync::Lazy;
 use std::sync::{

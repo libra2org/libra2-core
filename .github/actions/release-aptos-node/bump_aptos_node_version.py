@@ -21,17 +21,17 @@ def get_release_number_from_release_tag(release_tag: str) -> str:
 
 
 def main():
-    required_envs = ["RELEASE_TAG", "APTOS_NODE_CARGO_TOML"]
+    required_envs = ["RELEASE_TAG", "LIBRA2_NODE_CARGO_TOML"]
     for env in required_envs:
         if not os.environ.get(env):
             print(f"Required environment variable {env} not set")
             sys.exit(1)
 
     RELEASE_TAG = os.environ.get("RELEASE_TAG")
-    APTOS_NODE_TOML = os.environ.get("APTOS_NODE_CARGO_TOML")
+    LIBRA2_NODE_TOML = os.environ.get("LIBRA2_NODE_CARGO_TOML")
 
     new_lines = []  # construct the file again
-    with open(APTOS_NODE_TOML, "r") as f:
+    with open(LIBRA2_NODE_TOML, "r") as f:
         lines = f.readlines()
         for line in lines:
             new_line = line
@@ -41,7 +41,7 @@ def main():
                 )
             new_lines.append(new_line)
 
-    with open(APTOS_NODE_TOML, "w") as f:
+    with open(LIBRA2_NODE_TOML, "w") as f:
         f.writelines(new_lines)
 
 if __name__ == "__main__":
@@ -52,7 +52,7 @@ class CheckAptosNodeVersionTests(unittest.TestCase):
     def test_envs_not_specified(self):
         with self.assertRaises(SystemExit):
             os.environ["RELEASE_TAG"] = ""
-            os.environ["APTOS_NODE_CARGO_TOML"] = ""
+            os.environ["LIBRA2_NODE_CARGO_TOML"] = ""
             main()
 
     def test_version_match(self):
@@ -65,7 +65,7 @@ class CheckAptosNodeVersionTests(unittest.TestCase):
                 """
             )
         os.environ["RELEASE_TAG"] = "release-1.0"
-        os.environ["APTOS_NODE_CARGO_TOML"] = tmp.name
+        os.environ["LIBRA2_NODE_CARGO_TOML"] = tmp.name
         main()  # this should work
 
     def test_version_mismatch(self):
@@ -78,7 +78,7 @@ class CheckAptosNodeVersionTests(unittest.TestCase):
                 """
             )
         os.environ["RELEASE_TAG"] = "release-v1.1.0"
-        os.environ["APTOS_NODE_CARGO_TOML"] = tmp.name
+        os.environ["LIBRA2_NODE_CARGO_TOML"] = tmp.name
         main()
         with open(tmp.name, "r") as f:
             lines = f.readlines()

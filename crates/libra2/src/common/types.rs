@@ -30,16 +30,16 @@ use libra2_crypto::{
 use aptos_framework::chunked_publish::{
     default_large_packages_module_address, CHUNK_SIZE_IN_BYTES,
 };
-use aptos_global_constants::adjust_gas_headroom;
+use libra2_global_constants::adjust_gas_headroom;
 use libra2_keygen::KeyGen;
-use aptos_logger::Level;
-use aptos_move_debugger::aptos_debugger::AptosDebugger;
+use libra2_logger::Level;
+use libra2_move_debugger::libra2_debugger::Libra2Debugger;
 use libra2_rest_client::{
     libra2_api_types::{EntryFunctionId, HashValue, MoveType, ViewRequest},
     error::RestError,
     AptosBaseUrl, Client, Transaction,
 };
-use aptos_sdk::{
+use libra2_sdk::{
     transaction_builder::TransactionFactory,
     types::{HardwareWalletAccount, HardwareWalletType, LocalAccount, TransactionSigner},
 };
@@ -2078,7 +2078,7 @@ impl TransactionOptions {
     ) -> CliTypedResult<TransactionSummary>
     where
         F: FnOnce(
-            &AptosDebugger,
+            &Libra2Debugger,
             u64,
             SignedTransaction,
             libra2_crypto::HashValue,
@@ -2124,7 +2124,7 @@ impl TransactionOptions {
             sender_account.sign_with_transaction_builder(transaction_factory.payload(payload));
         let hash = transaction.committed_hash();
 
-        let debugger = AptosDebugger::rest_client(client).unwrap();
+        let debugger = Libra2Debugger::rest_client(client).unwrap();
         let (vm_status, vm_output) = execute(&debugger, version, transaction, hash)?;
 
         let success = match vm_output.status() {

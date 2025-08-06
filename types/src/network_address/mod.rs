@@ -43,7 +43,7 @@ const MAX_DNS_NAME_SIZE: usize = 255;
 /// 3. Perform a Noise IK handshake and assume the peer's static pubkey is
 ///    `<x25519-pubkey>`. After this step, we will have a secure, authenticated
 ///    connection with the peer.
-/// 4. Perform a AptosNet version negotiation handshake (version 1).
+/// 4. Perform a Libra2Net version negotiation handshake (version 1).
 ///
 /// ## Self-describing, Upgradable
 ///
@@ -65,7 +65,7 @@ const MAX_DNS_NAME_SIZE: usize = 255;
 ///
 /// ## Transport
 ///
-/// In addition, `NetworkAddress` is integrated with the AptosNet concept of a
+/// In addition, `NetworkAddress` is integrated with the Libra2Net concept of a
 /// [`Transport`], which takes a `NetworkAddress` when dialing and peels off
 /// [`Protocol`]s to establish a connection and perform initial handshakes.
 /// Similarly, the [`Transport`] takes `NetworkAddress` to listen on, which tells
@@ -348,10 +348,10 @@ impl NetworkAddress {
             .push(Protocol::Handshake(handshake_version))
     }
 
-    /// Check that a `NetworkAddress` looks like a typical AptosNet address with
+    /// Check that a `NetworkAddress` looks like a typical Libra2Net address with
     /// associated protocols.
     ///
-    /// "typical" AptosNet addresses begin with a transport protocol:
+    /// "typical" Libra2Net addresses begin with a transport protocol:
     ///
     /// `"/ip4/<addr>/tcp/<port>"` or
     /// `"/ip6/<addr>/tcp/<port>"` or

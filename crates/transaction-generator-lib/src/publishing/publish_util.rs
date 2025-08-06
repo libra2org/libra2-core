@@ -9,7 +9,7 @@ use aptos_framework::{
     },
     natives::code::PackageMetadata,
 };
-use aptos_sdk::{
+use libra2_sdk::{
     bcs,
     move_types::{identifier::Identifier, language_storage::ModuleId},
     transaction_builder::aptos_stdlib,

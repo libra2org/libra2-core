@@ -7,9 +7,9 @@
 //!
 //! ```
 //! use libra2_config::network_id::NetworkContext;
-//! use aptos_logger::info;
+//! use libra2_logger::info;
 //! use libra2_types::{PeerId, network_address::NetworkAddress};
-//! use aptos_network::logging::NetworkSchema;
+//! use libra2_network::logging::NetworkSchema;
 //!
 //! info!(
 //!   NetworkSchema::new(&NetworkContext::mock())
@@ -26,8 +26,8 @@ use crate::{
     transport::{ConnectionId, ConnectionMetadata},
 };
 use libra2_config::network_id::NetworkContext;
-use aptos_logger::Schema;
-use aptos_netcore::transport::ConnectionOrigin;
+use libra2_logger::Schema;
+use libra2_netcore::transport::ConnectionOrigin;
 use libra2_types::{network_address::NetworkAddress, PeerId};
 
 #[derive(Schema)]

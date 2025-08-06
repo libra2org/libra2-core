@@ -16,8 +16,8 @@ use libra2_config::{
     network_id::{NetworkId, PeerNetworkId},
 };
 use libra2_infallible::Mutex;
-use aptos_logger::{error, warn};
-use aptos_storage_service_types::{
+use libra2_logger::{error, warn};
+use libra2_storage_service_types::{
     requests::{
         DataRequest, GetTransactionDataWithProofRequest, StorageServiceRequest,
         SubscriptionStreamMetadata, TransactionDataRequestType, TransactionOutputsWithProofRequest,
@@ -70,7 +70,7 @@ impl SubscriptionRequest {
         config: StorageServiceConfig,
         known_version: u64,
         target_ledger_info: &LedgerInfoWithSignatures,
-    ) -> aptos_storage_service_types::Result<StorageServiceRequest, Error> {
+    ) -> libra2_storage_service_types::Result<StorageServiceRequest, Error> {
         // Calculate the number of versions to fetch
         let target_version = target_ledger_info.ledger_info().version();
         let mut num_versions_to_fetch =
@@ -757,7 +757,7 @@ pub(crate) async fn get_peers_with_ready_subscriptions<T: StorageReaderInterface
     storage: T,
     subscriptions: Arc<DashMap<PeerNetworkId, SubscriptionStreamRequests>>,
     time_service: TimeService,
-) -> aptos_storage_service_types::Result<Vec<(PeerNetworkId, LedgerInfoWithSignatures)>, Error> {
+) -> libra2_storage_service_types::Result<Vec<(PeerNetworkId, LedgerInfoWithSignatures)>, Error> {
     // Fetch the latest storage summary and highest synced version
     let latest_storage_summary = cached_storage_server_summary.load().clone();
     let highest_synced_ledger_info = match &latest_storage_summary.data_summary.synced_ledger_info {

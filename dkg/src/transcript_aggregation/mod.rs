@@ -3,9 +3,9 @@
 
 use crate::{counters::DKG_STAGE_SECONDS, types::DKGTranscriptRequest, DKGMessage};
 use anyhow::{anyhow, ensure, Context};
-use aptos_consensus_types::common::Author;
+use libra2_consensus_types::common::Author;
 use libra2_infallible::{duration_since_epoch, Mutex};
-use aptos_logger::info;
+use libra2_logger::info;
 use aptos_reliable_broadcast::BroadcastStatus;
 use libra2_types::{
     dkg::{DKGTrait, DKGTranscript},

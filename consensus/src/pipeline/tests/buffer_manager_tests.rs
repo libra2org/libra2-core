@@ -26,13 +26,13 @@ use crate::{
 use libra2_bounded_executor::BoundedExecutor;
 use libra2_channels::{libra2_channel, message_queues::QueueStyle};
 use libra2_config::{config::ConsensusObserverConfig, network_id::NetworkId};
-use aptos_consensus_types::{
+use libra2_consensus_types::{
     block::block_test_utils::certificate_for_genesis, pipelined_block::PipelinedBlock,
     vote_proposal::VoteProposal,
 };
 use libra2_crypto::{hash::ACCUMULATOR_PLACEHOLDER_HASH, HashValue};
 use libra2_infallible::Mutex;
-use aptos_network::{
+use libra2_network::{
     application::{interface::NetworkClient, storage::PeersAndMetadata},
     peer_manager::{ConnectionRequestSender, PeerManagerRequestSender},
     protocols::{
@@ -40,8 +40,8 @@ use aptos_network::{
         network::{Event, NewNetworkSender},
     },
 };
-use aptos_safety_rules::{PersistentSafetyStorage, SafetyRulesManager};
-use aptos_secure_storage::Storage;
+use libra2_safety_rules::{PersistentSafetyStorage, SafetyRulesManager};
+use libra2_secure_storage::Storage;
 use libra2_types::{
     account_address::AccountAddress,
     epoch_state::EpochState,
@@ -85,7 +85,7 @@ pub fn prepare_buffer_manager(
         Waypoint::new_epoch_boundary(&LedgerInfo::mock_genesis(Some(validator_set))).unwrap();
 
     let safety_storage = PersistentSafetyStorage::initialize(
-        Storage::from(aptos_secure_storage::InMemoryStorage::new()),
+        Storage::from(libra2_secure_storage::InMemoryStorage::new()),
         signer.author(),
         signer.private_key().clone(),
         waypoint,

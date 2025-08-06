@@ -10,7 +10,7 @@ use aptos_indexer_grpc_utils::{
     counters::{log_grpc_step_fullnode, IndexerGrpcStep},
     timestamp_now_proto,
 };
-use aptos_logger::{error, info};
+use libra2_logger::{error, info};
 use aptos_moving_average::MovingAverage;
 use aptos_protos::{
     indexer::v1::FullnodeInfo,
@@ -164,7 +164,7 @@ impl FullnodeData for FullnodeDataService {
                         }
                     },
                     Err(_) => {
-                        aptos_logger::warn!("[Indexer Fullnode] Unable to send end batch status");
+                        libra2_logger::warn!("[Indexer Fullnode] Unable to send end batch status");
                         break;
                     },
                 }

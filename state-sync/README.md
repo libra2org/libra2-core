@@ -1,7 +1,7 @@
 ---
 id: state sync
 title: State Sync
-custom_edit_url: https://github.com/aptos-labs/aptos-core/edit/main/state-sync/README.md
+custom_edit_url: https://github.com/libra2org/libra2-core/edit/main/state-sync/README.md
 ---
 
 # State Synchronization (State Sync)
@@ -13,7 +13,7 @@ of the network. To achieve this, state sync identifies and fetches new
 blockchain data from peers, validates the data and persists it to local
 storage.
 
-To read more about state sync and node configurations, see the [state sync developer documentation](https://aptos.dev/guides/state-sync/).
+To read more about state sync and node configurations, see the [state sync developer documentation](https://docs.libra2.org/guides/state-sync/).
 
 ## State sync architecture
 
@@ -43,13 +43,13 @@ a batch of transactions.
 ### Code structure
 
 The state sync code structure matches the architecture outlined above:
-- **Driver:** [https://github.com/aptos-labs/aptos-core/tree/main/state-sync/state-sync-driver](https://github.com/aptos-labs/aptos-core/tree/main/state-sync/state-sync-driver)
-- **Data Streaming Service:** [https://github.com/aptos-labs/aptos-core/tree/main/state-sync/data-streaming-service](https://github.com/aptos-labs/aptos-core/tree/main/state-sync/data-streaming-service)
-- **Aptos Data Client**: [https://github.com/aptos-labs/aptos-core/tree/main/state-sync/aptos-data-client](https://github.com/aptos-labs/aptos-core/tree/main/state-sync/aptos-data-client)
-- **Storage Service:** [https://github.com/aptos-labs/aptos-core/tree/main/state-sync/storage-service](https://github.com/aptos-labs/aptos-core/tree/main/state-sync/storage-service)
+- **Driver:** [https://github.com/libra2org/libra2-core/tree/main/state-sync/state-sync-driver](https://github.com/libra2org/libra2-core/tree/main/state-sync/state-sync-driver)
+- **Data Streaming Service:** [https://github.com/libra2org/libra2-core/tree/main/state-sync/data-streaming-service](https://github.com/libra2org/libra2-core/tree/main/state-sync/data-streaming-service)
+- **Aptos Data Client**: [https://github.com/libra2org/libra2-core/tree/main/state-sync/libra2-data-client](https://github.com/libra2org/libra2-core/tree/main/state-sync/libra2-data-client)
+- **Storage Service:** [https://github.com/libra2org/libra2-core/tree/main/state-sync/storage-service](https://github.com/libra2org/libra2-core/tree/main/state-sync/storage-service)
 
 In addition, there is also a directory containing the code for
-**inter-component** communication: [https://github.com/aptos-labs/aptos-core/tree/main/state-sync/inter-component](https://github.com/aptos-labs/aptos-core/tree/main/state-sync/inter-component).
+**inter-component** communication: [https://github.com/libra2org/libra2-core/tree/main/state-sync/inter-component](https://github.com/libra2org/libra2-core/tree/main/state-sync/inter-component).
 This is required so that:
    - State sync can handle notifications from consensus (e.g., to catch up after falling behind)
    - State sync can notify mempool when transactions are committed (i.e., so they can be removed from mempool)

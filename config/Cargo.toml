@@ -15,12 +15,12 @@ rust-version = { workspace = true }
 [dependencies]
 anyhow = { workspace = true }
 libra2-crypto = { workspace = true }
-aptos-global-constants = { workspace = true }
-aptos-logger = { workspace = true }
-aptos-secure-storage = { workspace = true }
+libra2-global-constants = { workspace = true }
+libra2-logger = { workspace = true }
+libra2-secure-storage = { workspace = true }
 aptos-short-hex-str = { workspace = true }
 libra2-temppath = { workspace = true }
-aptos-transaction-filters = { workspace = true }
+libra2-transaction-filters = { workspace = true }
 libra2-types = { workspace = true }
 arr_macro = { workspace = true }
 bcs = { workspace = true }

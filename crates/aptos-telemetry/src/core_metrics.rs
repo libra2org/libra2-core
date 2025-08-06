@@ -3,13 +3,13 @@
 
 use crate::{utils, utils::sum_all_histogram_counts};
 use libra2_config::config::NodeConfig;
-use aptos_state_sync_driver::metrics::StorageSynchronizerOperations;
-use aptos_telemetry_service::types::telemetry::TelemetryEvent;
+use libra2_state_sync_driver::metrics::StorageSynchronizerOperations;
+use libra2_telemetry_service::types::telemetry::TelemetryEvent;
 use prometheus::core::Collector;
 use std::collections::BTreeMap;
 
 /// Core metrics event name
-const APTOS_NODE_CORE_METRICS: &str = "APTOS_NODE_CORE_METRICS";
+const LIBRA2_NODE_CORE_METRICS: &str = "LIBRA2_NODE_CORE_METRICS";
 
 /// Core metric keys
 const CONSENSUS_LAST_COMMITTED_ROUND: &str = "consensus_last_committed_round";
@@ -37,7 +37,7 @@ pub(crate) async fn create_core_metric_telemetry_event(node_config: &NodeConfig)
 
     // Create and return a new telemetry event
     TelemetryEvent {
-        name: APTOS_NODE_CORE_METRICS.into(),
+        name: LIBRA2_NODE_CORE_METRICS.into(),
         params: core_metrics,
     }
 }
@@ -68,17 +68,17 @@ fn collect_core_metrics(core_metrics: &mut BTreeMap<String, String>, node_config
 fn collect_consensus_metrics(core_metrics: &mut BTreeMap<String, String>) {
     core_metrics.insert(
         CONSENSUS_PROPOSALS_COUNT.into(),
-        aptos_consensus::counters::PROPOSALS_COUNT.get().to_string(),
+        libra2_consensus::counters::PROPOSALS_COUNT.get().to_string(),
     );
     core_metrics.insert(
         CONSENSUS_LAST_COMMITTED_ROUND.into(),
-        aptos_consensus::counters::LAST_COMMITTED_ROUND
+        libra2_consensus::counters::LAST_COMMITTED_ROUND
             .get()
             .to_string(),
     );
     core_metrics.insert(
         CONSENSUS_TIMEOUT_COUNT.into(),
-        aptos_consensus::counters::TIMEOUT_COUNT.get().to_string(),
+        libra2_consensus::counters::TIMEOUT_COUNT.get().to_string(),
     );
     //TODO(joshlind): add block tracing and back pressure!
 }
@@ -87,7 +87,7 @@ fn collect_consensus_metrics(core_metrics: &mut BTreeMap<String, String>) {
 fn collect_mempool_metrics(core_metrics: &mut BTreeMap<String, String>) {
     core_metrics.insert(
         MEMPOOL_CORE_MEMPOOL_INDEX_SIZE.into(),
-        aptos_mempool::counters::CORE_MEMPOOL_INDEX_SIZE
+        libra2_mempool::counters::CORE_MEMPOOL_INDEX_SIZE
             .with_label_values(&["system_ttl"])
             .get()
             .to_string(),
@@ -113,14 +113,14 @@ fn collect_state_sync_metrics(
 
     core_metrics.insert(
         STATE_SYNC_SYNCED_EPOCH.into(),
-        aptos_state_sync_driver::metrics::STORAGE_SYNCHRONIZER_OPERATIONS
+        libra2_state_sync_driver::metrics::STORAGE_SYNCHRONIZER_OPERATIONS
             .with_label_values(&[StorageSynchronizerOperations::SyncedEpoch.get_label()])
             .get()
             .to_string(),
     );
     core_metrics.insert(
         STATE_SYNC_SYNCED_VERSION.into(),
-        aptos_state_sync_driver::metrics::STORAGE_SYNCHRONIZER_OPERATIONS
+        libra2_state_sync_driver::metrics::STORAGE_SYNCHRONIZER_OPERATIONS
             .with_label_values(&[StorageSynchronizerOperations::Synced.get_label()])
             .get()
             .to_string(),

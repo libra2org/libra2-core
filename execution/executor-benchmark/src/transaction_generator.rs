@@ -7,8 +7,8 @@ use crate::{
     metrics::{NUM_TXNS, TIMER},
 };
 use libra2_crypto::ed25519::Ed25519PrivateKey;
-use aptos_logger::info;
-use aptos_sdk::{
+use libra2_logger::info;
+use libra2_sdk::{
     transaction_builder::{aptos_stdlib, TransactionFactory},
     types::LocalAccount,
 };

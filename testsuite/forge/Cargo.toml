@@ -22,16 +22,16 @@ libra2-config = { workspace = true }
 aptos-db = { workspace = true }
 aptos-framework = { workspace = true }
 aptos-genesis = { workspace = true }
-aptos-global-constants = { workspace = true }
+libra2-global-constants = { workspace = true }
 libra2-infallible = { workspace = true }
-aptos-inspection-service = { workspace = true }
-aptos-logger = { workspace = true }
+libra2-inspection-service = { workspace = true }
+libra2-logger = { workspace = true }
 libra2-rest-client = { workspace = true }
-aptos-retrier = { workspace = true }
-aptos-runtimes = { workspace = true }
-aptos-sdk = { workspace = true }
+libra2-retrier = { workspace = true }
+libra2-runtimes = { workspace = true }
+libra2-sdk = { workspace = true }
 aptos-short-hex-str = { workspace = true }
-aptos-state-sync-driver = { workspace = true }
+libra2-state-sync-driver = { workspace = true }
 aptos-transaction-emitter-lib = { workspace = true }
 aptos-transaction-generator-lib = { workspace = true }
 aptos-transaction-workloads-lib = { workspace = true }
@@ -72,4 +72,4 @@ serde_merge = { workspace = true }
 
 [features]
 default = []
-testing = ["aptos-global-constants/testing"]
+testing = ["libra2-global-constants/testing"]

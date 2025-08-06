@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use anyhow::{anyhow, bail, ensure};
-use aptos_consensus_types::common::{Author, Round};
+use libra2_consensus_types::common::{Author, Round};
 use libra2_crypto::bls12381::Signature;
 use libra2_crypto_derive::{BCSCryptoHash, CryptoHasher};
 use aptos_dkg::{
@@ -10,7 +10,7 @@ use aptos_dkg::{
     weighted_vuf::traits::WeightedVUF,
 };
 use aptos_experimental_runtimes::thread_manager::THREAD_MANAGER;
-use aptos_logger::debug;
+use libra2_logger::debug;
 use libra2_types::{
     aggregate_signature::AggregateSignature,
     randomness::{

@@ -4,7 +4,7 @@
 import os
 from dataclasses import dataclass
 from enum import Enum
-from aptos_sdk.account_address import AccountAddress
+from libra2_sdk.account_address import AccountAddress
 NODE_PORT = 8080
 METRICS_PORT = 9101
 FAUCET_PORT = 8081

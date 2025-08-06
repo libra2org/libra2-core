@@ -1,8 +1,8 @@
 // Copyright © Aptos Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-use aptos_network::protocols::network::RpcError;
-use aptos_peer_monitoring_service_types::{
+use libra2_network::protocols::network::RpcError;
+use libra2_peer_monitoring_service_types::{
     response::UnexpectedResponseError, PeerMonitoringServiceError,
 };
 use thiserror::Error;
@@ -34,8 +34,8 @@ impl Error {
     }
 }
 
-impl From<aptos_network::application::error::Error> for Error {
-    fn from(error: aptos_network::application::error::Error) -> Self {
+impl From<libra2_network::application::error::Error> for Error {
+    fn from(error: libra2_network::application::error::Error) -> Self {
         Error::NetworkError(error.to_string())
     }
 }

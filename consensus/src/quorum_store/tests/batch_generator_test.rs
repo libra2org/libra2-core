@@ -12,11 +12,11 @@ use crate::{
     },
 };
 use libra2_config::config::QuorumStoreConfig;
-use aptos_consensus_types::{
+use libra2_consensus_types::{
     common::{TransactionInProgress, TransactionSummary},
     proof_of_store::SignedBatchInfo,
 };
-use aptos_mempool::{QuorumStoreRequest, QuorumStoreResponse};
+use libra2_mempool::{QuorumStoreRequest, QuorumStoreResponse};
 use libra2_types::{quorum_store::BatchId, transaction::SignedTransaction};
 use futures::{
     channel::mpsc::{channel, Receiver},

@@ -8,8 +8,8 @@ use crate::{
 };
 use anyhow::{bail, Result};
 use libra2_config::config::DEFAULT_MAX_SUBMIT_TRANSACTION_BATCH_SIZE;
-use aptos_logger::{error, info, sample, sample::SampleRate, warn};
-use aptos_sdk::{
+use libra2_logger::{error, info, sample, sample::SampleRate, warn};
+use libra2_sdk::{
     move_types::account_address::AccountAddress,
     rest_client::{
         libra2_api_types::{AptosError, AptosErrorCode, TransactionOnChainData},

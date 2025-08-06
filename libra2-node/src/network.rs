@@ -7,16 +7,16 @@ use libra2_config::{
     config::{NetworkConfig, NodeConfig},
     network_id::NetworkId,
 };
-use aptos_consensus::{
+use libra2_consensus::{
     consensus_observer, consensus_observer::network::observer_message::ConsensusObserverMessage,
     network_interface::ConsensusMsg,
 };
 use aptos_dkg_runtime::DKGMessage;
-use aptos_event_notifications::EventSubscriptionService;
-use aptos_jwk_consensus::types::JWKConsensusMsg;
-use aptos_logger::debug;
-use aptos_mempool::network::MempoolSyncMsg;
-use aptos_network::{
+use libra2_event_notifications::EventSubscriptionService;
+use libra2_jwk_consensus::types::JWKConsensusMsg;
+use libra2_logger::debug;
+use libra2_mempool::network::MempoolSyncMsg;
+use libra2_network::{
     application::{
         interface::{NetworkClient, NetworkServiceEvents},
         storage::PeersAndMetadata,
@@ -27,10 +27,10 @@ use aptos_network::{
     },
     ProtocolId,
 };
-use aptos_network_benchmark::NetbenchMessage;
-use aptos_network_builder::builder::NetworkBuilder;
-use aptos_peer_monitoring_service_types::PeerMonitoringServiceMessage;
-use aptos_storage_service_types::StorageServiceMessage;
+use libra2_network_benchmark::NetbenchMessage;
+use libra2_network_builder::builder::NetworkBuilder;
+use libra2_peer_monitoring_service_types::PeerMonitoringServiceMessage;
+use libra2_storage_service_types::StorageServiceMessage;
 use libra2_time_service::TimeService;
 use libra2_types::chain_id::ChainId;
 use serde::{Deserialize, Serialize};
@@ -56,8 +56,8 @@ struct ApplicationNetworkHandle<T> {
 /// Returns the network application config for the consensus client and service
 pub fn consensus_network_configuration(node_config: &NodeConfig) -> NetworkApplicationConfig {
     let direct_send_protocols: Vec<ProtocolId> =
-        aptos_consensus::network_interface::DIRECT_SEND.into();
-    let rpc_protocols: Vec<ProtocolId> = aptos_consensus::network_interface::RPC.into();
+        libra2_consensus::network_interface::DIRECT_SEND.into();
+    let rpc_protocols: Vec<ProtocolId> = libra2_consensus::network_interface::RPC.into();
 
     let network_client_config =
         NetworkClientConfig::new(direct_send_protocols.clone(), rpc_protocols.clone());
@@ -66,7 +66,7 @@ pub fn consensus_network_configuration(node_config: &NodeConfig) -> NetworkAppli
         rpc_protocols,
         libra2_channel::Config::new(node_config.consensus.max_network_channel_size)
             .queue_style(QueueStyle::FIFO)
-            .counters(&aptos_consensus::counters::PENDING_CONSENSUS_NETWORK_EVENTS),
+            .counters(&libra2_consensus::counters::PENDING_CONSENSUS_NETWORK_EVENTS),
     );
     NetworkApplicationConfig::new(network_client_config, network_service_config)
 }
@@ -91,8 +91,8 @@ pub fn dkg_network_configuration(node_config: &NodeConfig) -> NetworkApplication
 /// Returns the network application config for the JWK consensus client and service
 pub fn jwk_consensus_network_configuration(node_config: &NodeConfig) -> NetworkApplicationConfig {
     let direct_send_protocols: Vec<ProtocolId> =
-        aptos_jwk_consensus::network_interface::DIRECT_SEND.into();
-    let rpc_protocols: Vec<ProtocolId> = aptos_jwk_consensus::network_interface::RPC.into();
+        libra2_jwk_consensus::network_interface::DIRECT_SEND.into();
+    let rpc_protocols: Vec<ProtocolId> = libra2_jwk_consensus::network_interface::RPC.into();
 
     let network_client_config =
         NetworkClientConfig::new(direct_send_protocols.clone(), rpc_protocols.clone());
@@ -117,7 +117,7 @@ pub fn mempool_network_configuration(node_config: &NodeConfig) -> NetworkApplica
         rpc_protocols,
         libra2_channel::Config::new(node_config.mempool.max_network_channel_size)
             .queue_style(QueueStyle::KLAST) // TODO: why is this not FIFO?
-            .counters(&aptos_mempool::counters::PENDING_MEMPOOL_NETWORK_EVENTS),
+            .counters(&libra2_mempool::counters::PENDING_MEMPOOL_NETWORK_EVENTS),
     );
     NetworkApplicationConfig::new(network_client_config, network_service_config)
 }
@@ -137,7 +137,7 @@ pub fn peer_monitoring_network_configuration(node_config: &NodeConfig) -> Networ
         libra2_channel::Config::new(max_network_channel_size)
             .queue_style(QueueStyle::FIFO)
             .counters(
-                &aptos_peer_monitoring_service_server::metrics::PENDING_PEER_MONITORING_SERVER_NETWORK_EVENTS,
+                &libra2_peer_monitoring_service_server::metrics::PENDING_PEER_MONITORING_SERVER_NETWORK_EVENTS,
             ),
     );
     NetworkApplicationConfig::new(network_client_config, network_service_config)
@@ -160,7 +160,7 @@ pub fn storage_service_network_configuration(node_config: &NodeConfig) -> Networ
         libra2_channel::Config::new(max_network_channel_size)
             .queue_style(QueueStyle::FIFO)
             .counters(
-                &aptos_storage_service_server::metrics::PENDING_STORAGE_SERVER_NETWORK_EVENTS,
+                &libra2_storage_service_server::metrics::PENDING_STORAGE_SERVER_NETWORK_EVENTS,
             ),
     );
     NetworkApplicationConfig::new(network_client_config, network_service_config)
@@ -206,7 +206,7 @@ pub fn netbench_network_configuration(
         rpc_protocols,
         libra2_channel::Config::new(max_network_channel_size)
             .queue_style(QueueStyle::FIFO)
-            .counters(&aptos_network_benchmark::PENDING_NETBENCH_NETWORK_EVENTS),
+            .counters(&libra2_network_benchmark::PENDING_NETBENCH_NETWORK_EVENTS),
     );
     Some(NetworkApplicationConfig::new(
         network_client_config,
@@ -438,7 +438,7 @@ pub fn setup_networks_and_get_interfaces(
         );
         let netbench_service_threads = node_config.netbench.unwrap().netbench_service_threads;
         let netbench_runtime =
-            aptos_runtimes::spawn_named_runtime("benchmark".into(), netbench_service_threads);
+            libra2_runtimes::spawn_named_runtime("benchmark".into(), netbench_service_threads);
         start_netbench_service(node_config, netbench_interfaces, netbench_runtime.handle());
         network_runtimes.push(netbench_runtime);
     }
@@ -465,7 +465,7 @@ fn create_network_runtime(network_config: &NetworkConfig) -> Runtime {
         "network-{}",
         network_id.as_str().chars().take(3).collect::<String>()
     );
-    aptos_runtimes::spawn_named_runtime(thread_name, network_config.runtime_threads)
+    libra2_runtimes::spawn_named_runtime(thread_name, network_config.runtime_threads)
 }
 
 /// Registers a new application client and service with the network

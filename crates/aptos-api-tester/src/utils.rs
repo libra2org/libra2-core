@@ -12,9 +12,9 @@ use crate::{
 };
 use anyhow::{anyhow, Error, Result};
 use libra2_api_types::U64;
-use aptos_logger::{error, info};
+use libra2_logger::{error, info};
 use libra2_rest_client::{error::RestError, Client, FaucetClient};
-use aptos_sdk::types::LocalAccount;
+use libra2_sdk::types::LocalAccount;
 use libra2_types::account_address::AccountAddress;
 use std::{env, fmt::Display, num::ParseIntError, str::FromStr};
 

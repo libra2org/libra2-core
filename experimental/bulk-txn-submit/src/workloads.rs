@@ -3,7 +3,7 @@
 
 use crate::event_lookup::get_deposit_dst;
 use anyhow::{anyhow, Result};
-use aptos_sdk::{
+use libra2_sdk::{
     move_types::account_address::AccountAddress,
     rest_client::libra2_api_types::TransactionOnChainData,
     transaction_builder::{aptos_stdlib, TransactionFactory},

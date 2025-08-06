@@ -12,11 +12,11 @@ use crate::{
     QuorumStoreRequest,
 };
 use libra2_config::config::{NodeConfig, NodeType};
-use aptos_event_notifications::{DbBackedOnChainConfig, ReconfigNotificationListener};
+use libra2_event_notifications::{DbBackedOnChainConfig, ReconfigNotificationListener};
 use libra2_infallible::{Mutex, RwLock};
-use aptos_logger::Level;
-use aptos_mempool_notifications::MempoolNotificationListener;
-use aptos_network::application::{
+use libra2_logger::Level;
+use libra2_mempool_notifications::MempoolNotificationListener;
+use libra2_network::application::{
     interface::{NetworkClient, NetworkServiceEvents},
     storage::PeersAndMetadata,
 };
@@ -81,7 +81,7 @@ pub(crate) fn start_shared_mempool<TransactionValidator, ConfigProvider>(
         config.mempool.system_transaction_gc_interval_ms,
     ));
 
-    if aptos_logger::enabled!(Level::Trace) {
+    if libra2_logger::enabled!(Level::Trace) {
         executor.spawn(snapshot_job(
             mempool,
             config.mempool.mempool_snapshot_interval_secs,
@@ -100,7 +100,7 @@ pub fn bootstrap(
     mempool_reconfig_events: ReconfigNotificationListener<DbBackedOnChainConfig>,
     peers_and_metadata: Arc<PeersAndMetadata>,
 ) -> Runtime {
-    let runtime = aptos_runtimes::spawn_named_runtime("shared-mem".into(), None);
+    let runtime = libra2_runtimes::spawn_named_runtime("shared-mem".into(), None);
     let mempool = Arc::new(Mutex::new(CoreMempool::new(config)));
     let vm_validator = Arc::new(RwLock::new(PooledVMValidator::new(
         Arc::clone(&db),

@@ -5,7 +5,7 @@ use anyhow::{Context, Result};
 use aptos_faucet_core::funder::{
     ApiConnectionConfig, FunderTrait, MintFunder, TransactionSubmissionConfig,
 };
-use aptos_sdk::{
+use libra2_sdk::{
     crypto::ed25519::Ed25519PublicKey,
     types::{
         account_address::AccountAddress, transaction::authenticator::AuthenticationKey,
@@ -17,8 +17,8 @@ use std::{collections::HashSet, str::FromStr};
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    aptos_logger::Logger::new()
-        .level(aptos_logger::Level::Warn)
+    libra2_logger::Logger::new()
+        .level(libra2_logger::Level::Warn)
         .init();
     let args: FaucetCliArgs = FaucetCliArgs::parse();
     args.run().await

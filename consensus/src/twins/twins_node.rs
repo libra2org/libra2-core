@@ -22,10 +22,10 @@ use libra2_config::{
     generator::{self, ValidatorSwarm},
     network_id::{NetworkId, PeerNetworkId},
 };
-use aptos_consensus_types::common::{Author, Round};
-use aptos_event_notifications::{ReconfigNotification, ReconfigNotificationListener};
-use aptos_mempool::mocks::MockSharedMempool;
-use aptos_network::{
+use libra2_consensus_types::common::{Author, Round};
+use libra2_event_notifications::{ReconfigNotification, ReconfigNotificationListener};
+use libra2_mempool::mocks::MockSharedMempool;
+use libra2_network::{
     application::interface::{NetworkClient, NetworkServiceEvents},
     peer_manager::{ConnectionRequestSender, PeerManagerRequestSender},
     protocols::{
@@ -79,7 +79,7 @@ impl SMRNode {
     ) -> Self {
         // Create a runtime for the twin
         let thread_name = format!("twin-{}", twin_id.id);
-        let runtime = aptos_runtimes::spawn_named_runtime(thread_name, None);
+        let runtime = libra2_runtimes::spawn_named_runtime(thread_name, None);
         let _entered_runtime = runtime.enter();
 
         // Setup the network and SMR node

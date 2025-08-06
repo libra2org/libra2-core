@@ -6,7 +6,7 @@ use crate::{
     persistent_safety_storage::PersistentSafetyStorage, serializer::SerializerService, SafetyRules,
     TSafetyRules,
 };
-use aptos_consensus_types::{
+use libra2_consensus_types::{
     block::Block,
     common::{Payload, Round},
     quorum_cert::QuorumCert,
@@ -18,7 +18,7 @@ use aptos_consensus_types::{
     vote_proposal::VoteProposal,
 };
 use libra2_crypto::hash::{CryptoHash, TransactionAccumulatorHasher};
-use aptos_secure_storage::{InMemoryStorage, Storage};
+use libra2_secure_storage::{InMemoryStorage, Storage};
 use libra2_types::{
     aggregate_signature::{AggregateSignature, PartialSignatures},
     block_info::BlockInfo,

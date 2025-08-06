@@ -21,9 +21,9 @@ use crate::{
     util::time_service::TimeService,
 };
 use anyhow::{bail, ensure, format_err, Context};
-use aptos_bitvec::BitVec;
+use libra2_bitvec::BitVec;
 use libra2_config::config::BlockTransactionFilterConfig;
-use aptos_consensus_types::{
+use libra2_consensus_types::{
     block::Block,
     common::Round,
     pipelined_block::{ExecutionSummary, OrderedBlockWindow, PipelinedBlock},
@@ -35,7 +35,7 @@ use aptos_consensus_types::{
 use libra2_crypto::{hash::ACCUMULATOR_PLACEHOLDER_HASH, HashValue};
 use aptos_executor_types::state_compute_result::StateComputeResult;
 use libra2_infallible::{Mutex, RwLock};
-use aptos_logger::prelude::*;
+use libra2_logger::prelude::*;
 use libra2_types::{
     ledger_info::LedgerInfoWithSignatures, proof::accumulator::InMemoryTransactionAccumulator,
 };

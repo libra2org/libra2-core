@@ -16,8 +16,8 @@ use crate::{
     pipeline::buffer_manager::OrderedBlocks,
 };
 use anyhow::{anyhow, bail, format_err};
-use aptos_bitvec::BitVec;
-use aptos_consensus_types::{
+use libra2_bitvec::BitVec;
+use libra2_consensus_types::{
     block::Block,
     common::{Author, Payload, Round},
     pipelined_block::PipelinedBlock,
@@ -26,7 +26,7 @@ use aptos_consensus_types::{
 use libra2_crypto::HashValue;
 use aptos_executor_types::state_compute_result::StateComputeResult;
 use libra2_infallible::RwLock;
-use aptos_logger::{error, info};
+use libra2_logger::{error, info};
 use aptos_storage_interface::DbReader;
 use libra2_types::{
     account_config::NewBlockEvent,

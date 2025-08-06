@@ -8,7 +8,7 @@ use aptos_forge::{
     get_highest_synced_epoch, get_highest_synced_version, NetworkContext,
     NetworkContextSynchronizer, NetworkTest, Result, SwarmExt, Test,
 };
-use aptos_sdk::move_types::account_address::AccountAddress;
+use libra2_sdk::move_types::account_address::AccountAddress;
 use async_trait::async_trait;
 use log::info;
 use std::{ops::DerefMut, time::Instant};

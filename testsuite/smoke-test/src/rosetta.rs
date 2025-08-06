@@ -17,12 +17,12 @@ use libra2_crypto::{
 use aptos_forge::{AptosPublicInfo, LocalSwarm, Node, NodeExt, Swarm};
 use aptos_gas_schedule::{AptosGasParameters, FromOnChainGasSchedule};
 use aptos_genesis::builder::InitConfigFn;
-use aptos_global_constants::GAS_UNIT_PRICE;
+use libra2_global_constants::GAS_UNIT_PRICE;
 use libra2_rest_client::{
     libra2_api_types::{TransactionOnChainData, UserTransaction},
     Response, Transaction,
 };
-use aptos_rosetta::{
+use libra2_rosetta::{
     client::RosettaClient,
     common::{native_coin, BlockHash, BLOCKCHAIN, Y2K_MS},
     types::{
@@ -33,7 +33,7 @@ use aptos_rosetta::{
     },
     ROSETTA_VERSION,
 };
-use aptos_sdk::{transaction_builder::TransactionFactory, types::LocalAccount};
+use libra2_sdk::{transaction_builder::TransactionFactory, types::LocalAccount};
 use libra2_types::{
     account_address::AccountAddress,
     account_config::CORE_CODE_ADDRESS,
@@ -113,7 +113,7 @@ async fn setup_test(
     };
 
     // Start the server
-    let _rosetta = aptos_rosetta::bootstrap_async(
+    let _rosetta = libra2_rosetta::bootstrap_async(
         swarm.chain_id(),
         api_config,
         Some(libra2_rest_client::Client::new(
@@ -1020,7 +1020,7 @@ async fn test_block() {
 
 /// Parse the transactions in each block
 async fn parse_block_transactions(
-    block: &aptos_rosetta::types::Block,
+    block: &libra2_rosetta::types::Block,
     balances: &mut BTreeMap<AccountAddress, BTreeMap<u64, i128>>,
     actual_txns: &[TransactionOnChainData],
     current_version: &mut u64,
@@ -1142,7 +1142,7 @@ async fn parse_block_transactions(
 async fn parse_operations(
     block_height: u64,
     balances: &mut BTreeMap<AccountAddress, BTreeMap<u64, i128>>,
-    transaction: &aptos_rosetta::types::Transaction,
+    transaction: &libra2_rosetta::types::Transaction,
     actual_txn: &TransactionOnChainData,
 ) {
     // If there are no operations, then there is no gas operation
@@ -1915,7 +1915,7 @@ fn assert_failed_transfer_transaction(
     receiver: AccountAddress,
     transfer_amount: u64,
     actual_txn: &UserTransaction,
-    rosetta_txn: &aptos_rosetta::types::Transaction,
+    rosetta_txn: &libra2_rosetta::types::Transaction,
 ) {
     // Check the transaction
     assert_eq!(

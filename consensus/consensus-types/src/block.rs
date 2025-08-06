@@ -9,7 +9,7 @@ use crate::{
     quorum_cert::QuorumCert,
 };
 use anyhow::{bail, ensure, format_err, Result};
-use aptos_bitvec::BitVec;
+use libra2_bitvec::BitVec;
 use libra2_crypto::{bls12381, hash::CryptoHash, HashValue};
 use libra2_infallible::duration_since_epoch;
 use libra2_types::{

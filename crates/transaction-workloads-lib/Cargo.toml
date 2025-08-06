@@ -15,7 +15,7 @@ rust-version = { workspace = true }
 [dependencies]
 anyhow = { workspace = true }
 aptos-framework = { workspace = true }
-aptos-sdk = { workspace = true }
+libra2-sdk = { workspace = true }
 aptos-transaction-generator-lib = { workspace = true }
 async-trait = { workspace = true }
 clap = { workspace = true }

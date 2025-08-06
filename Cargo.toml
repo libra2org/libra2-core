@@ -8,7 +8,7 @@ members = [
     "api/types",
     "aptos-move/aptos-abstract-gas-usage",
     "aptos-move/aptos-aggregator",
-    "aptos-move/aptos-debugger",
+    "aptos-move/libra2-debugger",
     "aptos-move/aptos-e2e-comparison-testing",
     "aptos-move/aptos-gas-algebra",
     "aptos-move/aptos-gas-calibration",
@@ -20,7 +20,7 @@ members = [
     "aptos-move/aptos-native-interface",
     "aptos-move/aptos-release-builder",
     "aptos-move/aptos-resource-viewer",
-    "aptos-move/aptos-sdk-builder",
+    "aptos-move/libra2-sdk-builder",
     "aptos-move/aptos-transaction-benchmarks",
     "aptos-move/aptos-transaction-simulation",
     "aptos-move/aptos-transactional-test-harness",
@@ -57,17 +57,17 @@ members = [
     "crates/aptos",
     "crates/aptos-admin-service",
     "crates/aptos-api-tester",
-    "crates/aptos-bcs-utils",
-    "crates/aptos-bitvec",
+    "crates/libra2-bcs-utils",
+    "crates/libra2-bitvec",
     "crates/libra2-build-info",
     "crates/aptos-collections",
     "crates/aptos-compression",
     "crates/libra2-crypto",
     "crates/libra2-crypto-derive",
-    "crates/aptos-debugger",
+    "crates/libra2-debugger",
     "crates/aptos-dkg",
-    "crates/aptos-drop-helper",
-    "crates/aptos-enum-conversion-derive",
+    "crates/libra2-drop-helper",
+    "crates/libra2-enum-conversion-derive",
     "crates/aptos-faucet/cli",
     "crates/aptos-faucet/core",
     "crates/aptos-faucet/metrics-server",
@@ -76,34 +76,34 @@ members = [
     "crates/aptos-github-client",
     "crates/libra2-id-generator",
     "crates/libra2-infallible",
-    "crates/aptos-inspection-service",
-    "crates/aptos-jwk-consensus",
+    "crates/libra2-inspection-service",
+    "crates/libra2-jwk-consensus",
     "crates/libra2-keygen",
     "crates/libra2-ledger",
     "crates/libra2-localnet",
     "crates/libra2-log-derive",
-    "crates/aptos-logger",
+    "crates/libra2-logger",
     "crates/libra2-metrics-core",
-    "crates/aptos-network-checker",
+    "crates/libra2-network-checker",
     "crates/libra2-node-identity",
-    "crates/aptos-openapi",
-    "crates/aptos-profiler",
+    "crates/libra2-openapi",
+    "crates/libra2-profiler",
     "crates/libra2-proptest-helpers",
-    "crates/aptos-push-metrics",
-    "crates/aptos-rate-limiter",
+    "crates/libra2-push-metrics",
+    "crates/libra2-rate-limiter",
     "crates/libra2-rest-client",
-    "crates/aptos-retrier",
-    "crates/aptos-rosetta",
-    "crates/aptos-rosetta-cli",
-    "crates/aptos-runtimes",
-    "crates/aptos-speculative-state-helper",
+    "crates/libra2-retrier",
+    "crates/libra2-rosetta",
+    "crates/libra2-rosetta-cli",
+    "crates/libra2-runtimes",
+    "crates/libra2-speculative-state-helper",
     "crates/libra2-system-utils",
     "crates/aptos-telemetry",
-    "crates/aptos-telemetry-service",
+    "crates/libra2-telemetry-service",
     "crates/libra2-temppath",
     "crates/libra2-time-service",
-    "crates/aptos-transaction-filters",
-    "crates/aptos-warp-webserver",
+    "crates/libra2-transaction-filters",
+    "crates/libra2-warp-webserver",
     "crates/bounded-executor",
     "crates/channel",
     "crates/crash-handler",
@@ -170,7 +170,7 @@ members = [
     "secure/net",
     "secure/storage",
     "secure/storage/vault",
-    "state-sync/aptos-data-client",
+    "state-sync/libra2-data-client",
     "state-sync/data-streaming-service",
     "state-sync/inter-component/consensus-notifications",
     "state-sync/inter-component/event-notifications",
@@ -273,11 +273,11 @@ default-members = [
     "consensus/safety-rules",
     "crates/libra2",
     "crates/aptos",
-    "crates/aptos-debugger",
+    "crates/libra2-debugger",
     "crates/aptos-faucet/service",
     "crates/libra2-keygen",
-    "crates/aptos-rate-limiter",
-    "crates/aptos-rosetta",
+    "crates/libra2-rate-limiter",
+    "crates/libra2-rosetta",
     "crates/transaction-emitter",
     "aptos-move/framework",
     "storage/backup/backup-cli",
@@ -308,37 +308,37 @@ aptos-api-test-context = { path = "api/test-context" }
 libra2-api-types = { path = "api/types" }
 aptos-backup-cli = { path = "storage/backup/backup-cli" }
 aptos-backup-service = { path = "storage/backup/backup-service" }
-aptos-bcs-utils = { path = "crates/aptos-bcs-utils" }
+libra2-bcs-utils = { path = "crates/libra2-bcs-utils" }
 libra2-bounded-executor = { path = "crates/bounded-executor" }
 aptos-block-executor = { path = "aptos-move/block-executor" }
-aptos-bitvec = { path = "crates/aptos-bitvec" }
+libra2-bitvec = { path = "crates/libra2-bitvec" }
 libra2-build-info = { path = "crates/libra2-build-info" }
 aptos-cached-packages = { path = "aptos-move/framework/cached-packages" }
 libra2-channels = { path = "crates/channel" }
 libra2-cli-common = { path = "crates/libra2-cli-common" }
 aptos-collections = { path = "crates/aptos-collections" }
 aptos-compression = { path = "crates/aptos-compression" }
-aptos-consensus = { path = "consensus" }
-aptos-consensus-notifications = { path = "state-sync/inter-component/consensus-notifications" }
-aptos-consensus-types = { path = "consensus/consensus-types" }
+libra2-consensus = { path = "consensus" }
+libra2-consensus-notifications = { path = "state-sync/inter-component/consensus-notifications" }
+libra2-consensus-types = { path = "consensus/consensus-types" }
 libra2-config = { path = "config" }
 libra2-crash-handler = { path = "crates/crash-handler" }
 libra2-crypto = { path = "crates/libra2-crypto" }
 libra2-crypto-derive = { path = "crates/libra2-crypto-derive" }
-aptos-data-client = { path = "state-sync/aptos-data-client" }
-aptos-data-streaming-service = { path = "state-sync/data-streaming-service" }
+libra2-data-client = { path = "state-sync/libra2-data-client" }
+libra2-data-streaming-service = { path = "state-sync/data-streaming-service" }
 aptos-db = { path = "storage/aptosdb" }
 aptos-db-indexer = { path = "storage/indexer" }
 aptos-db-indexer-schemas = { path = "storage/indexer_schemas" }
 aptos-db-tool = { path = "storage/db-tool" }
-aptos-debugger = { path = "crates/aptos-debugger" }
+libra2-debugger = { path = "crates/libra2-debugger" }
 aptos-dkg = { path = "crates/aptos-dkg" }
 aptos-dkg-runtime = { path = "dkg" }
-aptos-drop-helper = { path = "crates/aptos-drop-helper" }
-aptos-event-notifications = { path = "state-sync/inter-component/event-notifications" }
+libra2-drop-helper = { path = "crates/libra2-drop-helper" }
+libra2-event-notifications = { path = "state-sync/inter-component/event-notifications" }
 aptos-executor = { path = "execution/executor" }
 aptos-block-partitioner = { path = "execution/block-partitioner" }
-aptos-enum-conversion-derive = { path = "crates/aptos-enum-conversion-derive" }
+libra2-enum-conversion-derive = { path = "crates/libra2-enum-conversion-derive" }
 aptos-executor-service = { path = "execution/executor-service" }
 aptos-executor-test-helpers = { path = "execution/executor-test-helpers" }
 aptos-executor-types = { path = "execution/executor-types" }
@@ -364,7 +364,7 @@ aptos-gas-schedule = { path = "aptos-move/aptos-gas-schedule" }
 aptos-gas-schedule-updator = { path = "aptos-move/aptos-gas-schedule-updator" }
 aptos-genesis = { path = "crates/aptos-genesis" }
 aptos-github-client = { path = "crates/aptos-github-client" }
-aptos-global-constants = { path = "config/global-constants" }
+libra2-global-constants = { path = "config/global-constants" }
 libra2-id-generator = { path = "crates/libra2-id-generator" }
 aptos-indexer = { path = "crates/indexer" }
 aptos-indexer-grpc-cache-worker = { path = "ecosystem/indexer-grpc/indexer-grpc-cache-worker" }
@@ -383,32 +383,32 @@ aptos-indexer-grpc-v2-file-store-backfiller = { path = "ecosystem/indexer-grpc/i
 aptos-indexer-grpc-server-framework = { path = "ecosystem/indexer-grpc/indexer-grpc-server-framework" }
 aptos-indexer-transaction-generator = { path = "ecosystem/indexer-grpc/indexer-transaction-generator" }
 libra2-infallible = { path = "crates/libra2-infallible" }
-aptos-inspection-service = { path = "crates/aptos-inspection-service" }
+libra2-inspection-service = { path = "crates/libra2-inspection-service" }
 aptos-jellyfish-merkle = { path = "storage/jellyfish-merkle" }
-aptos-jwk-consensus = { path = "crates/aptos-jwk-consensus" }
+libra2-jwk-consensus = { path = "crates/libra2-jwk-consensus" }
 libra2-jwk-utils = { path = "crates/jwk-utils" }
 libra2-keygen = { path = "crates/libra2-keygen" }
 aptos-language-e2e-tests = { path = "aptos-move/e2e-tests" }
 libra2-ledger = { path = "crates/libra2-ledger" }
 libra2-localnet = { path = "crates/libra2-localnet" }
 libra2-log-derive = { path = "crates/libra2-log-derive" }
-aptos-logger = { path = "crates/aptos-logger" }
+libra2-logger = { path = "crates/libra2-logger" }
 aptos-memory-usage-tracker = { path = "aptos-move/aptos-memory-usage-tracker" }
-aptos-mempool = { path = "mempool" }
-aptos-mempool-notifications = { path = "state-sync/inter-component/mempool-notifications" }
-aptos-memsocket = { path = "network/memsocket" }
+libra2-mempool = { path = "mempool" }
+libra2-mempool-notifications = { path = "state-sync/inter-component/mempool-notifications" }
+libra2-memsocket = { path = "network/memsocket" }
 libra2-metrics-core = { path = "crates/libra2-metrics-core" }
-aptos-move-debugger = { path = "aptos-move/aptos-debugger" }
+libra2-move-debugger = { path = "aptos-move/libra2-debugger" }
 aptos-move-examples = { path = "aptos-move/move-examples" }
 aptos-move-e2e-benchmark = { path = "aptos-move/e2e-benchmark" }
 aptos-mvhashmap = { path = "aptos-move/mvhashmap" }
 aptos-native-interface = { path = "aptos-move/aptos-native-interface" }
-aptos-netcore = { path = "network/netcore" }
-aptos-network = { path = "network/framework" }
-aptos-network-benchmark = { path = "network/benchmark" }
-aptos-network-builder = { path = "network/builder" }
-aptos-network-checker = { path = "crates/aptos-network-checker" }
-aptos-network-discovery = { path = "network/discovery" }
+libra2-netcore = { path = "network/netcore" }
+libra2-network = { path = "network/framework" }
+libra2-network-benchmark = { path = "network/benchmark" }
+libra2-network-builder = { path = "network/builder" }
+libra2-network-checker = { path = "crates/libra2-network-checker" }
+libra2-network-discovery = { path = "network/discovery" }
 aptos-nft-metadata-crawler = { path = "ecosystem/nft-metadata-crawler" }
 libra2-node = { path = "libra2-node" }
 aptos-node = { path = "aptos-node" }
@@ -416,50 +416,50 @@ aptos-node-checker = { path = "ecosystem/node-checker" }
 libra2-node-identity = { path = "crates/libra2-node-identity" }
 aptos-node-resource-metrics = { path = "crates/node-resource-metrics" }
 aptos-num-variants = { path = "crates/num-variants" }
-aptos-openapi = { path = "crates/aptos-openapi" }
+libra2-openapi = { path = "crates/libra2-openapi" }
 libra2-package-builder = { path = "aptos-move/package-builder" }
-aptos-peer-monitoring-service-client = { path = "peer-monitoring-service/client" }
-aptos-peer-monitoring-service-server = { path = "peer-monitoring-service/server" }
-aptos-peer-monitoring-service-types = { path = "peer-monitoring-service/types" }
+libra2-peer-monitoring-service-client = { path = "peer-monitoring-service/client" }
+libra2-peer-monitoring-service-server = { path = "peer-monitoring-service/server" }
+libra2-peer-monitoring-service-types = { path = "peer-monitoring-service/types" }
 aptos-keyless-common = { path = "keyless/common" }
-aptos-keyless-pepper-common = { path = "keyless/pepper/common" }
-aptos-keyless-pepper-service = { path = "keyless/pepper/service" }
-aptos-profiler = { path = "crates/aptos-profiler" }
+libra2-keyless-pepper-common = { path = "keyless/pepper/common" }
+libra2-keyless-pepper-service = { path = "keyless/pepper/service" }
+libra2-profiler = { path = "crates/libra2-profiler" }
 libra2-proptest-helpers = { path = "crates/libra2-proptest-helpers" }
 aptos-protos = { path = "protos/rust" }
 aptos-proxy = { path = "crates/proxy" }
-aptos-push-metrics = { path = "crates/aptos-push-metrics" }
-aptos-rate-limiter = { path = "crates/aptos-rate-limiter" }
+libra2-push-metrics = { path = "crates/libra2-push-metrics" }
+libra2-rate-limiter = { path = "crates/libra2-rate-limiter" }
 aptos-release-builder = { path = "aptos-move/aptos-release-builder" }
 aptos-reliable-broadcast = { path = "crates/reliable-broadcast" }
 aptos-replay-benchmark = { path = "aptos-move/replay-benchmark" }
 aptos-resource-viewer = { path = "aptos-move/aptos-resource-viewer" }
 libra2-rest-client = { path = "crates/libra2-rest-client" }
-aptos-retrier = { path = "crates/aptos-retrier" }
+libra2-retrier = { path = "crates/libra2-retrier" }
 aptos-rocksdb-options = { path = "storage/rocksdb-options" }
-aptos-rosetta = { path = "crates/aptos-rosetta" }
-aptos-runtimes = { path = "crates/aptos-runtimes" }
-aptos-safety-rules = { path = "consensus/safety-rules" }
+libra2-rosetta = { path = "crates/libra2-rosetta" }
+libra2-runtimes = { path = "crates/libra2-runtimes" }
+libra2-safety-rules = { path = "consensus/safety-rules" }
 aptos-schemadb = { path = "storage/schemadb" }
 aptos-scratchpad = { path = "storage/scratchpad" }
 aptos-script-composer = { path = "aptos-move/script-composer" }
-aptos-sdk = { path = "sdk" }
-aptos-sdk-builder = { path = "aptos-move/aptos-sdk-builder" }
-aptos-secure-net = { path = "secure/net" }
-aptos-secure-storage = { path = "secure/storage" }
+libra2-sdk = { path = "sdk" }
+libra2-sdk-builder = { path = "aptos-move/libra2-sdk-builder" }
+libra2-secure-net = { path = "secure/net" }
+libra2-secure-storage = { path = "secure/storage" }
 aptos-short-hex-str = { path = "crates/short-hex-str" }
-aptos-speculative-state-helper = { path = "crates/aptos-speculative-state-helper" }
-aptos-state-sync-driver = { path = "state-sync/state-sync-driver" }
+libra2-speculative-state-helper = { path = "crates/libra2-speculative-state-helper" }
+libra2-state-sync-driver = { path = "state-sync/state-sync-driver" }
 aptos-storage-interface = { path = "storage/storage-interface" }
-aptos-storage-service-client = { path = "state-sync/storage-service/client" }
-aptos-storage-service-notifications = { path = "state-sync/inter-component/storage-service-notifications" }
-aptos-storage-service-types = { path = "state-sync/storage-service/types" }
-aptos-storage-service-server = { path = "state-sync/storage-service/server" }
+libra2-storage-service-client = { path = "state-sync/storage-service/client" }
+libra2-storage-service-notifications = { path = "state-sync/inter-component/storage-service-notifications" }
+libra2-storage-service-types = { path = "state-sync/storage-service/types" }
+libra2-storage-service-server = { path = "state-sync/storage-service/server" }
 libra2-system-utils = { path = "crates/libra2-system-utils" }
 aptos-transaction-filter = { path = "ecosystem/indexer-grpc/transaction-filter" }
-aptos-transaction-filters = { path = "crates/aptos-transaction-filters" }
+libra2-transaction-filters = { path = "crates/libra2-transaction-filters" }
 aptos-telemetry = { path = "crates/aptos-telemetry" }
-aptos-telemetry-service = { path = "crates/aptos-telemetry-service" }
+libra2-telemetry-service = { path = "crates/libra2-telemetry-service" }
 libra2-temppath = { path = "crates/libra2-temppath" }
 aptos-testcases = { path = "testsuite/testcases" }
 libra2-time-service = { path = "crates/libra2-time-service", features = [
@@ -473,7 +473,7 @@ aptos-transactional-test-harness = { path = "aptos-move/aptos-transactional-test
 libra2-types = { path = "types" }
 aptos-validator-interface = { path = "aptos-move/aptos-validator-interface" }
 aptos-validator-transaction-pool = { path = "crates/validator-transaction-pool" }
-aptos-vault-client = { path = "secure/storage/vault" }
+libra2-vault-client = { path = "secure/storage/vault" }
 aptos-vm = { path = "aptos-move/aptos-vm" }
 aptos-vm-environment = { path = "aptos-move/aptos-vm-environment" }
 aptos-vm-logging = { path = "aptos-move/aptos-vm-logging" }
@@ -481,7 +481,7 @@ aptos-vm-genesis = { path = "aptos-move/vm-genesis" }
 aptos-vm-types = { path = "aptos-move/aptos-vm-types" }
 aptos-vm-validator = { path = "vm-validator" }
 aptos-workspace-server = { path = "aptos-move/aptos-workspace-server" }
-aptos-warp-webserver = { path = "crates/aptos-warp-webserver" }
+libra2-warp-webserver = { path = "crates/libra2-warp-webserver" }
 aptos-cargo-cli = { path = "devtools/aptos-cargo-cli" }
 
 # External crate dependencies.
