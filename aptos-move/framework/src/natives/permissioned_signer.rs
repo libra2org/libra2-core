@@ -37,7 +37,7 @@ fn native_is_permissioned_signer_impl(
 
     if !context
         .get_feature_flags()
-        .is_enabled(aptos_types::on_chain_config::FeatureFlag::PERMISSIONED_SIGNER)
+        .is_enabled(libra2_types::on_chain_config::FeatureFlag::PERMISSIONED_SIGNER)
     {
         return SafeNativeResult::Err(SafeNativeError::Abort {
             abort_code: EPERMISSION_SIGNER_DISABLED,
@@ -68,7 +68,7 @@ fn native_permission_address(
 
     if !context
         .get_feature_flags()
-        .is_enabled(aptos_types::on_chain_config::FeatureFlag::PERMISSIONED_SIGNER)
+        .is_enabled(libra2_types::on_chain_config::FeatureFlag::PERMISSIONED_SIGNER)
     {
         return SafeNativeResult::Err(SafeNativeError::Abort {
             abort_code: EPERMISSION_SIGNER_DISABLED,
@@ -101,7 +101,7 @@ fn native_signer_from_permissioned(
 
     if !context
         .get_feature_flags()
-        .is_enabled(aptos_types::on_chain_config::FeatureFlag::PERMISSIONED_SIGNER)
+        .is_enabled(libra2_types::on_chain_config::FeatureFlag::PERMISSIONED_SIGNER)
     {
         return SafeNativeResult::Err(SafeNativeError::Abort {
             abort_code: EPERMISSION_SIGNER_DISABLED,
@@ -137,7 +137,7 @@ fn native_borrow_address(
 
     if !context
         .get_feature_flags()
-        .is_enabled(aptos_types::on_chain_config::FeatureFlag::PERMISSIONED_SIGNER)
+        .is_enabled(libra2_types::on_chain_config::FeatureFlag::PERMISSIONED_SIGNER)
         && signer_reference.is_permissioned()?
     {
         return SafeNativeResult::Err(SafeNativeError::Abort {

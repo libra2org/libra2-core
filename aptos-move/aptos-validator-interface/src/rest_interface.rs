@@ -12,7 +12,7 @@ use aptos_rest_client::{
     error::{AptosErrorResponse, RestError},
     Client,
 };
-use aptos_types::{
+use libra2_types::{
     account_address::AccountAddress,
     state_store::{state_key::StateKey, state_value::StateValue},
     transaction::{

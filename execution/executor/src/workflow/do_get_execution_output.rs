@@ -27,8 +27,8 @@ use aptos_storage_interface::state_store::{
     state::LedgerState, state_view::cached_state_view::CachedStateView,
 };
 #[cfg(feature = "consensus-only-perf-test")]
-use aptos_types::transaction::ExecutionStatus;
-use aptos_types::{
+use libra2_types::transaction::ExecutionStatus;
+use libra2_types::{
     block_executor::{
         config::BlockExecutorConfigFromOnchain,
         partitioner::{ExecutableTransactions, PartitionedTransactions},
@@ -264,7 +264,7 @@ impl DoGetExecutionOutput {
         onchain_config: BlockExecutorConfigFromOnchain,
         transaction_slice_metadata: TransactionSliceMetadata,
     ) -> Result<BlockOutput<TransactionOutput>> {
-        use aptos_types::{
+        use libra2_types::{
             state_store::{StateViewId, TStateView},
             transaction::TransactionAuxiliaryData,
             write_set::WriteSet,
@@ -502,14 +502,14 @@ impl TStateView for WriteSetStateView<'_> {
     fn get_state_value(
         &self,
         state_key: &Self::Key,
-    ) -> aptos_types::state_store::StateViewResult<Option<StateValue>> {
+    ) -> libra2_types::state_store::StateViewResult<Option<StateValue>> {
         Ok(self
             .write_set
             .get_write_op(state_key)
             .and_then(|write_op| write_op.as_state_value()))
     }
 
-    fn get_usage(&self) -> aptos_types::state_store::StateViewResult<StateStorageUsage> {
+    fn get_usage(&self) -> libra2_types::state_store::StateViewResult<StateStorageUsage> {
         unreachable!("Not supposed to be called on WriteSetStateView.")
     }
 }
@@ -520,7 +520,7 @@ mod tests {
     use aptos_storage_interface::state_store::{
         state::LedgerState, state_view::cached_state_view::CachedStateView,
     };
-    use aptos_types::{
+    use libra2_types::{
         contract_event::ContractEvent,
         transaction::{
             AuxiliaryInfo, ExecutionStatus, PersistedAuxiliaryInfo, Transaction,

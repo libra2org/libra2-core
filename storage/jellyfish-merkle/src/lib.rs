@@ -88,7 +88,7 @@ use aptos_crypto::{hash::CryptoHash, HashValue};
 use aptos_experimental_runtimes::thread_manager::THREAD_MANAGER;
 use aptos_metrics_core::IntCounterHelper;
 use aptos_storage_interface::{db_ensure as ensure, db_other_bail, AptosDbError, Result};
-use aptos_types::{
+use libra2_types::{
     nibble::{nibble_path::NibblePath, Nibble, ROOT_NIBBLE_HEIGHT},
     proof::{SparseMerkleProof, SparseMerkleProofExt, SparseMerkleRangeProof},
     state_store::{state_key::StateKey, state_value::StateValue},
@@ -1076,7 +1076,7 @@ impl NibbleExt for HashValue {
 mod test {
     use super::NibbleExt;
     use aptos_crypto::hash::{HashValue, TestOnlyHash};
-    use aptos_types::nibble::Nibble;
+    use libra2_types::nibble::Nibble;
 
     #[test]
     fn test_common_prefix_nibbles_len() {

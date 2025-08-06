@@ -16,7 +16,7 @@ use aptos_storage_interface::{
     },
     DbReader, Result as DbResult,
 };
-use aptos_types::{
+use libra2_types::{
     proof::SparseMerkleProofExt,
     state_store::{
         state_key::StateKey,

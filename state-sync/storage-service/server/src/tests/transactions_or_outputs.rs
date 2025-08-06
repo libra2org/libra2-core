@@ -8,7 +8,7 @@ use aptos_storage_service_types::{
     responses::{DataResponse, StorageServiceResponse, TransactionDataResponseType},
     StorageServiceError,
 };
-use aptos_types::transaction::{
+use libra2_types::transaction::{
     TransactionListWithProof, TransactionListWithProofV2, TransactionOutputListWithProof,
     TransactionOutputListWithProofV2,
 };

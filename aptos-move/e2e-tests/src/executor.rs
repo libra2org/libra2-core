@@ -25,7 +25,7 @@ use aptos_transaction_simulation::{
     DeltaStateStore, EitherStateView, EmptyStateView, SimulationStateStore,
     GENESIS_CHANGE_SET_HEAD, GENESIS_CHANGE_SET_MAINNET, GENESIS_CHANGE_SET_TESTNET,
 };
-use aptos_types::{
+use libra2_types::{
     account_config::{
         new_block_event_key, primary_apt_store, AccountResource, CoinInfoResource,
         ConcurrentSupplyResource, FungibleStoreResource, NewBlockEvent, ObjectGroupResource,

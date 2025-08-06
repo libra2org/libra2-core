@@ -13,7 +13,7 @@ use crate::{
 use aptos_consensus_types::proof_of_store::{BatchInfo, SignedBatchInfo, SignedBatchInfoMsg};
 use aptos_crypto::HashValue;
 use aptos_executor_types::ExecutorResult;
-use aptos_types::{
+use libra2_types::{
     quorum_store::BatchId, transaction::SignedTransaction,
     validator_verifier::random_validator_verifier, PeerId,
 };

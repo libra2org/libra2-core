@@ -7,7 +7,7 @@ use aptos_config::{
     network_id::{NetworkId, PeerNetworkId},
 };
 use aptos_network::protocols::network::RpcError;
-use aptos_types::{
+use libra2_types::{
     epoch_change::EpochChangeProof,
     ledger_info::LedgerInfoWithSignatures,
     transaction::{TransactionListWithProofV2, TransactionOutputListWithProofV2},

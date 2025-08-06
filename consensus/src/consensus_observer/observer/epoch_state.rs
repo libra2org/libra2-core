@@ -15,7 +15,7 @@ use aptos_config::config::NodeConfig;
 use aptos_event_notifications::{DbBackedOnChainConfig, ReconfigNotificationListener};
 use aptos_infallible::Mutex;
 use aptos_logger::{error, info, warn};
-use aptos_types::{
+use libra2_types::{
     epoch_state::EpochState,
     on_chain_config::{
         OnChainConsensusConfig, OnChainExecutionConfig, OnChainRandomnessConfig,

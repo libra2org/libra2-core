@@ -12,7 +12,7 @@ use crate::consensus_observer::{
 use aptos_config::{config::ConsensusObserverConfig, network_id::PeerNetworkId};
 use aptos_crypto::HashValue;
 use aptos_logger::{error, info, warn};
-use aptos_types::block_info::Round;
+use libra2_types::block_info::Round;
 use std::{
     collections::{btree_map::Entry, BTreeMap},
     sync::Arc,
@@ -326,7 +326,7 @@ mod test {
     };
     use aptos_crypto::HashValue;
     use aptos_infallible::Mutex;
-    use aptos_types::{
+    use libra2_types::{
         aggregate_signature::AggregateSignature,
         block_info::BlockInfo,
         ledger_info::{LedgerInfo, LedgerInfoWithSignatures},

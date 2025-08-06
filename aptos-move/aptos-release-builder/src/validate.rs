@@ -12,7 +12,7 @@ use aptos::{
 use aptos_crypto::ed25519::Ed25519PrivateKey;
 use aptos_genesis::keys::PrivateIdentity;
 use aptos_temppath::TempPath;
-use aptos_types::account_address::AccountAddress;
+use libra2_types::account_address::AccountAddress;
 use clap::Parser;
 use std::{
     fs,
@@ -552,7 +552,7 @@ pub mod test {
     use super::NetworkConfig;
     use aptos_crypto::PrivateKey;
     use aptos_keygen::KeyGen;
-    use aptos_types::transaction::authenticator::AuthenticationKey;
+    use libra2_types::transaction::authenticator::AuthenticationKey;
 
     #[tokio::test]
     pub async fn test_network_config() {

@@ -40,7 +40,7 @@ use aptos_config::network_id::{NetworkContext, PeerNetworkId};
 use aptos_logger::prelude::*;
 use aptos_short_hex_str::AsShortHexStr;
 use aptos_time_service::{TimeService, TimeServiceTrait};
-use aptos_types::PeerId;
+use libra2_types::PeerId;
 use futures::{
     self,
     channel::oneshot,

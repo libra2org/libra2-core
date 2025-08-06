@@ -12,7 +12,7 @@ use crate::{
     ProtocolId,
 };
 use aptos_channels::{self, aptos_channel};
-use aptos_types::{network_address::NetworkAddress, PeerId};
+use libra2_types::{network_address::NetworkAddress, PeerId};
 use bytes::Bytes;
 use futures::channel::oneshot;
 use std::time::Duration;

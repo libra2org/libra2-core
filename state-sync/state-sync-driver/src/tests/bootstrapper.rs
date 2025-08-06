@@ -27,7 +27,7 @@ use aptos_data_streaming_service::{
     streaming_client::{NotificationAndFeedback, NotificationFeedback},
 };
 use aptos_time_service::TimeService;
-use aptos_types::{
+use libra2_types::{
     transaction::{TransactionOutputListWithProofV2, Version},
     waypoint::Waypoint,
 };

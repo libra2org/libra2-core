@@ -46,6 +46,7 @@ members = [
     "aptos-move/replay-benchmark",
     "aptos-move/script-composer",
     "aptos-move/vm-genesis",
+    "libra2-node",
     "aptos-node",
     "config",
     "config/global-constants",
@@ -266,6 +267,7 @@ members = [
 #
 # For more, see the "Conditional compilation for tests" section in documentation/coding_guidelines.md.
 default-members = [
+    "libra2-node",
     "aptos-node",
     "consensus/safety-rules",
     "crates/aptos",
@@ -283,12 +285,12 @@ default-members = [
 # All workspace members should inherit these keys
 # for package declarations.
 [workspace.package]
-authors = ["Aptos Labs <opensource@aptoslabs.com>"]
+authors = ["Libra2 <info@libra2.org>"]
 edition = "2021"
-homepage = "https://aptoslabs.com"
+homepage = "https://libra2.org/"
 license = "Apache-2.0"
 publish = false
-repository = "https://github.com/aptos-labs/aptos-core"
+repository = "https://github.com/libra2org/libra2-core"
 rust-version = "1.80.1"
 
 [workspace.dependencies]
@@ -405,6 +407,7 @@ aptos-network-builder = { path = "network/builder" }
 aptos-network-checker = { path = "crates/aptos-network-checker" }
 aptos-network-discovery = { path = "network/discovery" }
 aptos-nft-metadata-crawler = { path = "ecosystem/nft-metadata-crawler" }
+libra2-node = { path = "libra2-node" }
 aptos-node = { path = "aptos-node" }
 aptos-node-checker = { path = "ecosystem/node-checker" }
 aptos-node-identity = { path = "crates/aptos-node-identity" }
@@ -464,7 +467,7 @@ aptos-transaction-generator-lib = { path = "crates/transaction-generator-lib" }
 aptos-transaction-workloads-lib = { path = "crates/transaction-workloads-lib" }
 aptos-transaction-simulation = { path = "aptos-move/aptos-transaction-simulation" }
 aptos-transactional-test-harness = { path = "aptos-move/aptos-transactional-test-harness" }
-aptos-types = { path = "types" }
+libra2-types = { path = "types" }
 aptos-validator-interface = { path = "aptos-move/aptos-validator-interface" }
 aptos-validator-transaction-pool = { path = "crates/validator-transaction-pool" }
 aptos-vault-client = { path = "secure/storage/vault" }
@@ -521,7 +524,7 @@ version-compare = "0.1.1"
 bitvec = "1.0.1"
 blake2 = "0.10.4"
 blake2-rfc = "0.2.18"
-blst = "0.3.11"
+blst = "0.3.15"
 # The __private_bench feature exposes the Fp12 type which we need to implement a multi-threaded multi-pairing.
 blstrs = { version = "0.7.1", features = ["serde", "__private_bench"] }
 bollard = "0.15"

@@ -13,7 +13,7 @@ use aptos_event_notifications::{
     DbBackedOnChainConfig, EventNotificationListener, ReconfigNotificationListener,
 };
 use aptos_network::application::interface::{NetworkClient, NetworkServiceEvents};
-use aptos_types::{
+use libra2_types::{
     account_address::AccountAddress,
     jwks::{ObservedJWKs, ObservedJWKsUpdated, SupportedOIDCProviders},
 };

@@ -23,7 +23,7 @@ use aptos_storage_interface::{
     },
     AptosDbError, DbReader, DbWriter, LedgerSummary, MAX_REQUEST_LIMIT,
 };
-use aptos_types::{
+use libra2_types::{
     access_path::AccessPath,
     account_address::AccountAddress,
     account_config::{AccountResource, NewBlockEvent},
@@ -489,7 +489,7 @@ impl DbReader for FakeAptosDB {
         &self,
         start_epoch: u64,
         end_epoch: u64,
-    ) -> Result<aptos_types::epoch_change::EpochChangeProof> {
+    ) -> Result<libra2_types::epoch_change::EpochChangeProof> {
         (&self.inner as &dyn DbReader).get_epoch_ending_ledger_infos(start_epoch, end_epoch)
     }
 
@@ -659,7 +659,7 @@ impl DbReader for FakeAptosDB {
 
     fn get_events(
         &self,
-        event_key: &aptos_types::event::EventKey,
+        event_key: &libra2_types::event::EventKey,
         start: u64,
         order: aptos_storage_interface::Order,
         limit: u64,
@@ -742,7 +742,7 @@ impl DbReader for FakeAptosDB {
 
     fn get_account_ordered_transaction(
         &self,
-        address: aptos_types::PeerId,
+        address: libra2_types::PeerId,
         seq_num: u64,
         include_events: bool,
         ledger_version: Version,
@@ -753,12 +753,12 @@ impl DbReader for FakeAptosDB {
 
     fn get_account_ordered_transactions(
         &self,
-        address: aptos_types::PeerId,
+        address: libra2_types::PeerId,
         seq_num: u64,
         limit: u64,
         include_events: bool,
         ledger_version: Version,
-    ) -> Result<aptos_types::transaction::AccountOrderedTransactionsWithProof> {
+    ) -> Result<libra2_types::transaction::AccountOrderedTransactionsWithProof> {
         self.inner.get_account_ordered_transactions(
             address,
             seq_num,
@@ -999,7 +999,7 @@ mod tests {
         state_store::state_view::cached_state_view::ShardedStateCache, DbReader, DbWriter,
     };
     use aptos_temppath::TempPath;
-    use aptos_types::{
+    use libra2_types::{
         account_address::AccountAddress,
         ledger_info::LedgerInfoWithSignatures,
         transaction::{

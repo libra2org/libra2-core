@@ -4,7 +4,7 @@
 use crate::schema::ordered_transaction_by_account::OrderedTransactionByAccountSchema;
 use aptos_schemadb::iterator::SchemaIterator;
 use aptos_storage_interface::{db_ensure as ensure, AptosDbError, Result};
-use aptos_types::{
+use libra2_types::{
     account_address::AccountAddress, indexer::indexer_db_reader::Order, transaction::Version,
 };
 

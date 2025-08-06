@@ -4,7 +4,7 @@
 use aptos_crypto::bls12381::Signature;
 use aptos_enum_conversion_derive::EnumConversion;
 use aptos_reliable_broadcast::RBMessage;
-use aptos_types::{
+use libra2_types::{
     account_address::AccountAddress,
     jwks::{Issuer, KeyLevelUpdate, ProviderJWKs, QuorumCertifiedUpdate, KID},
 };

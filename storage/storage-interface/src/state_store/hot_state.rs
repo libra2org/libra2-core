@@ -3,7 +3,7 @@
 
 use crate::state_store::state_view::hot_state_view::HotStateView;
 use aptos_experimental_layered_map::LayeredMap;
-use aptos_types::state_store::{
+use libra2_types::state_store::{
     hot_state::THotStateSlot, state_key::StateKey, state_slot::StateSlot,
 };
 use std::{collections::HashMap, sync::Arc};
@@ -198,7 +198,7 @@ mod tests {
     use super::HotStateLRU;
     use crate::state_store::state_view::hot_state_view::HotStateView;
     use aptos_experimental_layered_map::{LayeredMap, MapLayer};
-    use aptos_types::{
+    use libra2_types::{
         state_store::{
             hot_state::LRUEntry, state_key::StateKey, state_slot::StateSlot,
             state_value::StateValue,

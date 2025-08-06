@@ -15,7 +15,7 @@ use aptos_crypto::{
     HashValue,
 };
 use aptos_crypto_derive::CryptoHasher;
-use aptos_types::{
+use libra2_types::{
     aggregate_signature::AggregateSignature,
     block_info::BlockInfo,
     ledger_info::{LedgerInfo, LedgerInfoWithSignatures},
@@ -427,7 +427,7 @@ impl BlockData {
 
 #[test]
 fn test_reconfiguration_suffix() {
-    use aptos_types::{
+    use libra2_types::{
         account_address::AccountAddress, epoch_state::EpochState, on_chain_config::ValidatorSet,
     };
 

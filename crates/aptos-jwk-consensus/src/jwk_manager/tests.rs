@@ -18,7 +18,7 @@ use aptos_crypto::{
     SigningKey, Uniform,
 };
 use aptos_infallible::{Mutex, RwLock};
-use aptos_types::{
+use libra2_types::{
     account_address::AccountAddress,
     aggregate_signature::AggregateSignature,
     epoch_state::EpochState,

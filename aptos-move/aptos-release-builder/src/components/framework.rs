@@ -6,7 +6,7 @@ use anyhow::Result;
 use aptos_crypto::HashValue;
 use aptos_framework::{BuildOptions, BuiltPackage, ReleasePackage};
 use aptos_temppath::TempPath;
-use aptos_types::account_address::AccountAddress;
+use libra2_types::account_address::AccountAddress;
 use git2::Repository;
 use serde::{Deserialize, Serialize};
 

@@ -10,7 +10,7 @@ use aptos_consensus_types::{
     utils::PayloadTxnsSize,
 };
 use aptos_crypto::HashValue;
-use aptos_types::{
+use libra2_types::{
     aggregate_signature::AggregateSignature, quorum_store::BatchId, transaction::ReplayProtector,
     PeerId,
 };

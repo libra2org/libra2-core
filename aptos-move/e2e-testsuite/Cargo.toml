@@ -20,7 +20,7 @@ aptos-gas-schedule = { workspace = true, features = ["testing"] }
 aptos-language-e2e-tests = { workspace = true }
 aptos-logger = { workspace = true }
 aptos-transaction-simulation = { workspace = true }
-aptos-types = { workspace = true }
+libra2-types = { workspace = true }
 aptos-vm = { workspace = true, features = ['failpoints'] }
 aptos-vm-genesis = { workspace = true }
 claims = { workspace = true }
@@ -35,5 +35,5 @@ proptest = { workspace = true }
 default = [
     "aptos-cached-packages/fuzzing",
     "move-core-types/fuzzing",
-    "aptos-types/fuzzing",
+    "libra2-types/fuzzing",
 ]

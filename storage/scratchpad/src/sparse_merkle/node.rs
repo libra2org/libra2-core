@@ -26,7 +26,7 @@ use aptos_crypto::{
     hash::{CryptoHash, SPARSE_MERKLE_PLACEHOLDER_HASH},
     HashValue,
 };
-use aptos_types::proof::{SparseMerkleInternalNode, SparseMerkleLeafNode};
+use libra2_types::proof::{SparseMerkleInternalNode, SparseMerkleLeafNode};
 use std::sync::{Arc, Weak};
 
 #[derive(Clone, Debug)]

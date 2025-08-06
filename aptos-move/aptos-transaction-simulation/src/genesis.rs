@@ -1,7 +1,7 @@
 // Copyright (c) Aptos Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-use aptos_types::transaction::ChangeSet;
+use libra2_types::transaction::ChangeSet;
 use aptos_vm_genesis::{
     generate_genesis_change_set_for_mainnet, generate_genesis_change_set_for_testing,
     GenesisOptions,

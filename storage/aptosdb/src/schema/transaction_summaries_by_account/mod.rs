@@ -17,7 +17,7 @@ use aptos_schemadb::{
     define_pub_schema,
     schema::{KeyCodec, ValueCodec},
 };
-use aptos_types::{
+use libra2_types::{
     account_address::AccountAddress,
     transaction::{IndexedTransactionSummary, Version},
 };

@@ -14,7 +14,7 @@ use aptos_logger::prelude::*;
 use aptos_storage_interface::{
     state_store::state_view::db_state_view::DbStateViewAtVersion, AptosDbError, DbReader,
 };
-use aptos_types::{
+use libra2_types::{
     contract_event::ContractEvent,
     transaction::{
         signature_verified_transaction::SignatureVerifiedTransaction, AuxiliaryInfo,

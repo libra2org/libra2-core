@@ -27,7 +27,7 @@ use aptos_storage_interface::{
     },
     AptosDbError, DbReader, Order, MAX_REQUEST_LIMIT,
 };
-use aptos_types::{
+use libra2_types::{
     access_path::{AccessPath, Path},
     account_address::AccountAddress,
     account_config::{AccountResource, NewBlockEvent},
@@ -812,10 +812,10 @@ impl Context {
                     version: t.version().into(),
                     transaction_hash: t.transaction_hash().into(),
                     replay_protector: match t.replay_protector() {
-                        aptos_types::transaction::ReplayProtector::Nonce(nonce) => {
+                        libra2_types::transaction::ReplayProtector::Nonce(nonce) => {
                             ReplayProtector::Nonce(nonce.into())
                         },
-                        aptos_types::transaction::ReplayProtector::SequenceNumber(seq_num) => {
+                        libra2_types::transaction::ReplayProtector::SequenceNumber(seq_num) => {
                             ReplayProtector::SequenceNumber(seq_num.into())
                         },
                     },

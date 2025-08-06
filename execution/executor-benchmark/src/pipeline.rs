@@ -14,7 +14,7 @@ use aptos_executor::block_executor::BlockExecutor;
 use aptos_executor_types::{state_compute_result::StateComputeResult, BlockExecutorTrait};
 use aptos_infallible::Mutex;
 use aptos_logger::info;
-use aptos_types::{
+use libra2_types::{
     block_executor::partitioner::ExecutableBlock,
     transaction::{Transaction, TransactionPayload, Version},
 };

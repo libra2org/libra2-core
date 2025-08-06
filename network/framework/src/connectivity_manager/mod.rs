@@ -46,7 +46,7 @@ use aptos_netcore::transport::ConnectionOrigin;
 use aptos_num_variants::NumVariants;
 use aptos_short_hex_str::AsShortHexStr;
 use aptos_time_service::{TimeService, TimeServiceTrait};
-use aptos_types::{account_address::AccountAddress, network_address::NetworkAddress, PeerId};
+use libra2_types::{account_address::AccountAddress, network_address::NetworkAddress, PeerId};
 use futures::{
     channel::oneshot,
     future::{BoxFuture, FutureExt},

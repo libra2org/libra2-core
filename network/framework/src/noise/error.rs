@@ -5,7 +5,7 @@
 use crate::application;
 use aptos_crypto::noise::NoiseError;
 use aptos_short_hex_str::ShortHexStr;
-use aptos_types::PeerId;
+use libra2_types::PeerId;
 use std::io;
 use thiserror::Error;
 

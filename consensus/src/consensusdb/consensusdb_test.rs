@@ -11,7 +11,7 @@ use aptos_consensus_types::{
 };
 use aptos_crypto::bls12381::Signature;
 use aptos_temppath::TempPath;
-use aptos_types::aggregate_signature::AggregateSignature;
+use libra2_types::aggregate_signature::AggregateSignature;
 use std::{collections::HashMap, hash::Hash};
 
 #[test]

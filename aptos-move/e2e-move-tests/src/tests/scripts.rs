@@ -4,7 +4,7 @@
 use crate::{assert_success, tests::common, MoveHarness};
 use aptos_framework::BuiltPackage;
 use aptos_language_e2e_tests::account::TransactionBuilder;
-use aptos_types::{
+use libra2_types::{
     account_address::AccountAddress,
     on_chain_config::FeatureFlag,
     transaction::{Script, TransactionArgument, TransactionStatus},
@@ -179,8 +179,8 @@ fn test_script_with_signer_parameter() {
     assert_eq!(
         status,
         TransactionStatus::Keep(
-            aptos_types::transaction::ExecutionStatus::MiscellaneousError(Some(
-                aptos_types::vm_status::StatusCode::INVALID_MAIN_FUNCTION_SIGNATURE
+            libra2_types::transaction::ExecutionStatus::MiscellaneousError(Some(
+                libra2_types::vm_status::StatusCode::INVALID_MAIN_FUNCTION_SIGNATURE
             ))
         )
     );

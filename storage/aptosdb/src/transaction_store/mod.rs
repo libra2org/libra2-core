@@ -15,7 +15,7 @@ use aptos_db_indexer_schemas::{
 };
 use aptos_schemadb::{batch::SchemaBatch, iterator::ScanDirection};
 use aptos_storage_interface::{AptosDbError, Result};
-use aptos_types::{
+use libra2_types::{
     account_address::AccountAddress,
     transaction::{ReplayProtector, Transaction, Version},
 };

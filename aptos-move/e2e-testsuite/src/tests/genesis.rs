@@ -4,7 +4,7 @@
 
 use aptos_language_e2e_tests::{common_transactions::peer_to_peer_txn, executor::FakeExecutor};
 use aptos_transaction_simulation::GENESIS_CHANGE_SET_HEAD;
-use aptos_types::{
+use libra2_types::{
     transaction::{ChangeSet, Transaction, TransactionStatus, WriteSetPayload},
     write_set::TransactionWrite,
 };

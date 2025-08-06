@@ -7,7 +7,7 @@ use crate::{
 };
 use aptos_gas_algebra::DynamicExpression;
 use aptos_gas_schedule::{MiscGasParameters, NativeGasParameters};
-use aptos_types::on_chain_config::{Features, TimedFeatures};
+use libra2_types::on_chain_config::{Features, TimedFeatures};
 use move_vm_runtime::native_functions::{NativeContext, NativeFunction};
 use move_vm_types::{
     loaded_data::runtime_types::Type, natives::function::NativeResult, values::Value,

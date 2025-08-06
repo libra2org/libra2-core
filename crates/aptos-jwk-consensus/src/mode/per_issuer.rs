@@ -3,7 +3,7 @@
 
 use crate::{mode::TConsensusMode, types::ObservedUpdateRequest};
 use aptos_logger::info;
-use aptos_types::jwks::{Issuer, ProviderJWKs, QuorumCertifiedUpdate};
+use libra2_types::jwks::{Issuer, ProviderJWKs, QuorumCertifiedUpdate};
 
 pub struct PerIssuerMode {}
 

@@ -1,7 +1,7 @@
 // Copyright © Aptos Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-use aptos_types::{
+use libra2_types::{
     account_address::AccountAddress,
     transaction::signature_verified_transaction::SignatureVerifiedTransaction,
 };
@@ -41,9 +41,9 @@ pub enum NativeTransaction {
 impl NativeTransaction {
     pub fn parse(txn: &SignatureVerifiedTransaction) -> Self {
         match &txn.expect_valid() {
-            aptos_types::transaction::Transaction::UserTransaction(user_txn) => {
+            libra2_types::transaction::Transaction::UserTransaction(user_txn) => {
                 match user_txn.payload() {
-                    aptos_types::transaction::TransactionPayload::EntryFunction(f) => {
+                    libra2_types::transaction::TransactionPayload::EntryFunction(f) => {
                         match (
                             *f.module().address(),
                             f.module().name().as_str(),
@@ -116,7 +116,7 @@ impl NativeTransaction {
                     _ => unimplemented!(),
                 }
             },
-            aptos_types::transaction::Transaction::BlockEpilogue(_) => Self::BlockEpilogue,
+            libra2_types::transaction::Transaction::BlockEpilogue(_) => Self::BlockEpilogue,
             _ => unimplemented!(),
         }
     }

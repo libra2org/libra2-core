@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use aptos_aggregator::{delta_change_set::DeltaOp, types::DelayedFieldsSpeculativeError};
-use aptos_types::{
+use libra2_types::{
     error::PanicOr,
     write_set::{TransactionWrite, WriteOpKind},
 };
@@ -187,7 +187,7 @@ pub enum UnknownOrLayout<'a> {
 pub(crate) mod test {
     use super::*;
     use aptos_aggregator::delta_change_set::serialize;
-    use aptos_types::{
+    use libra2_types::{
         executable::ModulePath,
         state_store::state_value::StateValue,
         write_set::{TransactionWrite, WriteOpKind},

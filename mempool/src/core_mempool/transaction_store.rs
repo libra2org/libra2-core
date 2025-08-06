@@ -21,7 +21,7 @@ use crate::{
 use aptos_config::config::MempoolConfig;
 use aptos_crypto::HashValue;
 use aptos_logger::{prelude::*, Level};
-use aptos_types::{
+use libra2_types::{
     account_address::AccountAddress,
     mempool_status::{MempoolStatus, MempoolStatusCode},
     transaction::{ReplayProtector, SignedTransaction},

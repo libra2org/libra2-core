@@ -6,7 +6,7 @@ use aptos_crypto::{
     ed25519::{Ed25519PrivateKey, Ed25519PublicKey, Ed25519Signature},
     HashValue, PrivateKey, SigningKey, Uniform,
 };
-use aptos_types::{
+use libra2_types::{
     chain_id::ChainId,
     move_utils::MemberId,
     quorum_store::BatchId,

@@ -13,7 +13,7 @@ use aptos_crypto::HashValue;
 use aptos_executor_types::*;
 use aptos_infallible::Mutex;
 use aptos_logger::prelude::*;
-use aptos_types::{transaction::SignedTransaction, validator_verifier::ValidatorVerifier, PeerId};
+use libra2_types::{transaction::SignedTransaction, validator_verifier::ValidatorVerifier, PeerId};
 use futures::{stream::FuturesUnordered, StreamExt};
 use rand::Rng;
 use std::{collections::BTreeSet, sync::Arc, time::Duration};

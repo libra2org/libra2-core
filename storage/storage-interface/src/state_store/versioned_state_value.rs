@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use aptos_crypto::{hash::CryptoHash, HashValue};
-use aptos_types::{
+use libra2_types::{
     state_store::{hot_state::LRUEntry, state_slot::StateSlot},
     transaction::Version,
     write_set::BaseStateOp,

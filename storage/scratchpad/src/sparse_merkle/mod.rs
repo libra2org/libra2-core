@@ -90,7 +90,7 @@ use crate::sparse_merkle::{
 use aptos_crypto::{hash::SPARSE_MERKLE_PLACEHOLDER_HASH, HashValue};
 use aptos_infallible::Mutex;
 use aptos_metrics_core::IntGaugeHelper;
-use aptos_types::{
+use libra2_types::{
     nibble::{nibble_path::NibblePath, Nibble},
     proof::SparseMerkleProofExt,
     state_store::state_key::StateKey,

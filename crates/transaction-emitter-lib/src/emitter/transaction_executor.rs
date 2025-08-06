@@ -163,7 +163,7 @@ async fn warn_detailed_error(
     call_name: &str,
     rest_client: &RestClient,
     txn: &SignedTransaction,
-    err: Result<&aptos_types::transaction::TransactionInfo, &RestError>,
+    err: Result<&libra2_types::transaction::TransactionInfo, &RestError>,
 ) {
     let sender = txn.sender();
     let payload = txn.payload().payload_type();

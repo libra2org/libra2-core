@@ -21,7 +21,7 @@ aptos-logger = { workspace = true }
 aptos-move-debugger = { workspace = true }
 aptos-push-metrics = { workspace = true }
 aptos-rest-client = { workspace = true }
-aptos-types = { workspace = true }
+libra2-types = { workspace = true }
 aptos-vm = { workspace = true }
 aptos-vm-environment = { workspace = true }
 bcs = { workspace = true }
@@ -36,5 +36,5 @@ url = { workspace = true }
 
 [dev-dependencies]
 aptos-crypto = { workspace = true }
-aptos-types = { workspace = true, features = ["testing"] }
+libra2-types = { workspace = true, features = ["testing"] }
 rand = { workspace = true }

@@ -16,7 +16,7 @@ use crate::{
 };
 use anyhow::Result;
 use aptos_metrics_core::{IntCounterHelper, TimerHelper};
-use aptos_types::{
+use libra2_types::{
     state_store::{
         hot_state::THotStateSlot, state_key::StateKey, state_slot::StateSlot,
         state_storage_usage::StateStorageUsage, state_value::StateValue, StateViewId,

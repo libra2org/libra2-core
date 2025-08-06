@@ -11,7 +11,7 @@ use aptos_config::config::BlockTransactionFilterConfig;
 use aptos_consensus_types::{block::Block, quorum_cert::QuorumCert};
 use aptos_crypto::HashValue;
 use aptos_executor_types::ExecutorResult;
-use aptos_types::transaction::SignedTransaction;
+use libra2_types::transaction::SignedTransaction;
 use fail::fail_point;
 use futures::future::Shared;
 use move_core_types::account_address::AccountAddress;

@@ -30,7 +30,7 @@ use aptos_infallible::duration_since_epoch;
 use aptos_jellyfish_merkle::{NodeBatch, TreeWriter};
 use aptos_logger::info;
 use aptos_storage_interface::{AptosDbError, Result};
-use aptos_types::{
+use libra2_types::{
     state_store::{
         state_key::StateKey, state_storage_usage::StateStorageUsage, state_value::StateValue,
     },

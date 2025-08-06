@@ -63,7 +63,7 @@ use aptos_logger::prelude::*;
 use aptos_safety_rules::ConsensusState;
 use aptos_safety_rules::TSafetyRules;
 use aptos_short_hex_str::AsShortHexStr;
-use aptos_types::{
+use libra2_types::{
     block_info::BlockInfo,
     epoch_state::EpochState,
     on_chain_config::{

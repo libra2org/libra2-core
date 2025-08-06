@@ -34,7 +34,7 @@ use aptos_logger::prelude::info;
 use aptos_network::{protocols::network::Event, ProtocolId};
 use aptos_safety_rules::{PersistentSafetyStorage, SafetyRulesManager};
 use aptos_secure_storage::Storage;
-use aptos_types::validator_verifier::generate_validator_verifier;
+use libra2_types::validator_verifier::generate_validator_verifier;
 use futures::{channel::oneshot, StreamExt};
 use std::{sync::Arc, time::Duration};
 use tokio::{runtime::Runtime, time::timeout};

@@ -4,7 +4,7 @@
 use crate::scheduler_v2::ExecutionQueueManager;
 use aptos_infallible::Mutex;
 use aptos_mvhashmap::types::{Incarnation, TxnIndex};
-use aptos_types::error::{code_invariant_error, PanicError};
+use libra2_types::error::{code_invariant_error, PanicError};
 use crossbeam::utils::CachePadded;
 use std::{
     cmp,

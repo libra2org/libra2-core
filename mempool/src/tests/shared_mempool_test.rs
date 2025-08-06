@@ -12,7 +12,7 @@ use crate::{
 use aptos_config::config::MempoolConfig;
 use aptos_consensus_types::common::RejectedTransactionSummary;
 use aptos_mempool_notifications::MempoolNotificationSender;
-use aptos_types::{
+use libra2_types::{
     transaction::{ReplayProtector, Transaction},
     vm_status::DiscardedVMStatus,
 };

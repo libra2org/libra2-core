@@ -24,7 +24,7 @@ use aptos_transaction_filters::{
     block_transaction_filter::{BlockTransactionFilter, BlockTransactionMatcher},
     transaction_filter::{TransactionFilter, TransactionMatcher},
 };
-use aptos_types::on_chain_config::{
+use libra2_types::on_chain_config::{
     ConsensusAlgorithmConfig, OnChainConsensusConfig, ValidatorTxnConfig, DEFAULT_WINDOW_SIZE,
 };
 use move_core_types::account_address::AccountAddress;

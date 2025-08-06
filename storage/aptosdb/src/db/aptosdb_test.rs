@@ -18,7 +18,7 @@ use aptos_config::config::{
 use aptos_crypto::{hash::CryptoHash, HashValue};
 use aptos_storage_interface::{DbReader, Order};
 use aptos_temppath::TempPath;
-use aptos_types::{
+use libra2_types::{
     ledger_info::LedgerInfoWithSignatures,
     proof::SparseMerkleLeafNode,
     state_store::{state_key::StateKey, state_value::StateValue},

@@ -8,7 +8,7 @@
 //! ```
 //! use aptos_config::network_id::NetworkContext;
 //! use aptos_logger::info;
-//! use aptos_types::{PeerId, network_address::NetworkAddress};
+//! use libra2_types::{PeerId, network_address::NetworkAddress};
 //! use aptos_network::logging::NetworkSchema;
 //!
 //! info!(
@@ -28,7 +28,7 @@ use crate::{
 use aptos_config::network_id::NetworkContext;
 use aptos_logger::Schema;
 use aptos_netcore::transport::ConnectionOrigin;
-use aptos_types::{network_address::NetworkAddress, PeerId};
+use libra2_types::{network_address::NetworkAddress, PeerId};
 
 #[derive(Schema)]
 pub struct NetworkSchema<'a> {

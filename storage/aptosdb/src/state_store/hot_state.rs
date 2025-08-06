@@ -9,7 +9,7 @@ use aptos_metrics_core::{IntCounterHelper, IntGaugeHelper, TimerHelper};
 use aptos_storage_interface::state_store::{
     state::State, state_view::hot_state_view::HotStateView,
 };
-use aptos_types::state_store::{
+use libra2_types::state_store::{
     hot_state::THotStateSlot, state_key::StateKey, state_slot::StateSlot, NUM_STATE_SHARDS,
 };
 use arr_macro::arr;

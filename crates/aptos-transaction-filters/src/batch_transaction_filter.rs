@@ -3,7 +3,7 @@
 
 use crate::transaction_filter::TransactionMatcher;
 use aptos_crypto::HashValue;
-use aptos_types::{quorum_store::BatchId, transaction::SignedTransaction, PeerId};
+use libra2_types::{quorum_store::BatchId, transaction::SignedTransaction, PeerId};
 #[cfg(any(test, feature = "fuzzing"))]
 use move_core_types::account_address::AccountAddress;
 use serde::{Deserialize, Serialize};

@@ -6,7 +6,7 @@ use aptos_cached_packages::aptos_stdlib;
 use aptos_crypto::SigningKey;
 use aptos_forge::Swarm;
 use aptos_sdk::types::{AccountKey, LocalAccount};
-use aptos_types::function_info::FunctionInfo;
+use libra2_types::function_info::FunctionInfo;
 use ethers::{
     core::rand::rngs::OsRng,
     signers::{LocalWallet, Signer},

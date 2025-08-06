@@ -16,7 +16,7 @@ use aptos_schemadb::{
     schema::Schema,
     Options, DB,
 };
-use aptos_types::quorum_store::BatchId;
+use libra2_types::quorum_store::BatchId;
 use std::{collections::HashMap, path::Path, time::Instant};
 
 pub trait QuorumStoreStorage: Sync + Send {

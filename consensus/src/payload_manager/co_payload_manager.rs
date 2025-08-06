@@ -18,7 +18,7 @@ use aptos_consensus_types::{
 use aptos_crypto::HashValue;
 use aptos_executor_types::{ExecutorError::InternalError, *};
 use aptos_infallible::Mutex;
-use aptos_types::transaction::SignedTransaction;
+use libra2_types::transaction::SignedTransaction;
 use async_trait::async_trait;
 use std::{
     collections::{btree_map::Entry, BTreeMap},

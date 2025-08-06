@@ -12,7 +12,7 @@ use crate::{
 use aptos_consensus_types::common::TransactionSummary;
 use aptos_crypto::HashValue;
 use aptos_logger::error;
-use aptos_types::{account_address::AccountAddress, transaction::ReplayProtector};
+use libra2_types::{account_address::AccountAddress, transaction::ReplayProtector};
 use rand::seq::SliceRandom;
 use std::{
     cmp::Ordering,

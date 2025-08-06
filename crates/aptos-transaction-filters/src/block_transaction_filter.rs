@@ -3,7 +3,7 @@
 
 use crate::transaction_filter::TransactionMatcher;
 use aptos_crypto::HashValue;
-use aptos_types::transaction::SignedTransaction;
+use libra2_types::transaction::SignedTransaction;
 use move_core_types::account_address::AccountAddress;
 use serde::{Deserialize, Serialize};
 

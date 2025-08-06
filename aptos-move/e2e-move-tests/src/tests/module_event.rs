@@ -4,7 +4,7 @@
 use crate::{assert_success, assert_vm_status, tests::common, MoveHarness};
 use aptos_framework::{BuildOptions, BuiltPackage};
 use aptos_package_builder::PackageBuilder;
-use aptos_types::{
+use libra2_types::{
     account_address::AccountAddress, move_utils::MemberId, on_chain_config::FeatureFlag,
     transaction::ExecutionStatus,
 };

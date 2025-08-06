@@ -20,7 +20,7 @@ use crate::{
     txn_commit_hook::NoOpTransactionCommitHook,
     txn_provider::default::DefaultTxnProvider,
 };
-use aptos_types::block_executor::{
+use libra2_types::block_executor::{
     config::BlockExecutorConfig, transaction_slice_metadata::TransactionSliceMetadata,
 };
 use proptest::{collection::vec, prelude::*, strategy::ValueTree, test_runner::TestRunner};

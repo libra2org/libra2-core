@@ -9,7 +9,7 @@ use crate::{
     test_utils::create_vec_signed_transactions,
 };
 use aptos_temppath::TempPath;
-use aptos_types::{account_address::AccountAddress, quorum_store::BatchId};
+use libra2_types::{account_address::AccountAddress, quorum_store::BatchId};
 use claims::assert_ok;
 
 #[test]

@@ -22,7 +22,7 @@ use aptos_config::config::DagPayloadConfig;
 use aptos_consensus_types::common::{Author, Round};
 use aptos_infallible::Mutex;
 use aptos_logger::{debug, error};
-use aptos_types::{
+use libra2_types::{
     epoch_state::EpochState,
     on_chain_config::{OnChainJWKConsensusConfig, OnChainRandomnessConfig, ValidatorTxnConfig},
     validator_signer::ValidatorSigner,

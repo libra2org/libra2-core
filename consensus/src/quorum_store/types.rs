@@ -7,7 +7,7 @@ use aptos_consensus_types::{
     proof_of_store::BatchInfo,
 };
 use aptos_crypto::{hash::CryptoHash, HashValue};
-use aptos_types::{
+use libra2_types::{
     ledger_info::LedgerInfoWithSignatures, quorum_store::BatchId, transaction::SignedTransaction,
     PeerId,
 };

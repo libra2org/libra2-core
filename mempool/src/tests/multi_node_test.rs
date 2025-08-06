@@ -28,7 +28,7 @@ use aptos_network::{
     },
     ProtocolId,
 };
-use aptos_types::{
+use libra2_types::{
     transaction::{ReplayProtector, SignedTransaction},
     PeerId,
 };

@@ -8,7 +8,7 @@ use aptos_storage_service_types::{
     responses::{DataResponse, StorageServiceResponse, TransactionDataResponseType},
     StorageServiceError,
 };
-use aptos_types::transaction::TransactionOutputListWithProofV2;
+use libra2_types::transaction::TransactionOutputListWithProofV2;
 use claims::assert_matches;
 use mockall::{predicate::eq, Sequence};
 

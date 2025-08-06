@@ -21,7 +21,7 @@ use aptos_consensus_types::{
 use aptos_crypto::HashValue;
 use aptos_executor_types::*;
 use aptos_logger::prelude::*;
-use aptos_types::{transaction::SignedTransaction, PeerId};
+use libra2_types::{transaction::SignedTransaction, PeerId};
 use async_trait::async_trait;
 use futures::{channel::mpsc::Sender, future::Shared};
 use itertools::Itertools;

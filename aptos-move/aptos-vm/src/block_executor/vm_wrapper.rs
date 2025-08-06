@@ -6,7 +6,7 @@ use crate::{aptos_vm::AptosVM, block_executor::AptosTransactionOutput};
 use aptos_block_executor::task::{ExecutionStatus, ExecutorTask};
 use aptos_logger::{enabled, Level};
 use aptos_mvhashmap::types::TxnIndex;
-use aptos_types::{
+use libra2_types::{
     state_store::{StateView, StateViewId},
     transaction::{
         signature_verified_transaction::SignatureVerifiedTransaction, Transaction, WriteSetPayload,

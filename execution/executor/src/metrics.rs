@@ -8,7 +8,7 @@ use aptos_metrics_core::{
     register_int_counter_vec, register_int_gauge_vec, Histogram, HistogramVec, IntCounter,
     IntCounterVec, IntGaugeVec,
 };
-use aptos_types::{
+use libra2_types::{
     contract_event::ContractEvent,
     transaction::{
         authenticator::AccountAuthenticator, signature_verified_transaction::TransactionProvider,

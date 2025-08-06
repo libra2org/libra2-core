@@ -4,7 +4,7 @@
 
 use crate::move_vm_ext::AptosMoveResolver;
 use aptos_crypto::ed25519::Ed25519PublicKey;
-use aptos_types::{
+use libra2_types::{
     invalid_signature,
     jwks::{jwk::JWK, AllProvidersJWKs, FederatedJWKs, PatchedJWKs},
     keyless::{

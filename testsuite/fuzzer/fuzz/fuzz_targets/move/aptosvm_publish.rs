@@ -6,7 +6,7 @@
 mod utils;
 use aptos_language_e2e_tests::executor::FakeExecutor;
 use aptos_transaction_simulation::GENESIS_CHANGE_SET_HEAD;
-use aptos_types::{chain_id::ChainId, write_set::WriteSet};
+use libra2_types::{chain_id::ChainId, write_set::WriteSet};
 use aptos_vm::AptosVM;
 use fuzzer::{ExecVariant, RunnableState};
 use libfuzzer_sys::{fuzz_target, Corpus};

@@ -45,8 +45,8 @@ use aptos_gas_schedule::{
 };
 use aptos_logger::{enabled, prelude::*, Level};
 #[cfg(any(test, feature = "testing"))]
-use aptos_types::state_store::StateViewId;
-use aptos_types::{
+use libra2_types::state_store::StateViewId;
+use libra2_types::{
     account_config::{self, new_block_event_key, AccountResource},
     block_executor::{
         config::{
@@ -1614,7 +1614,7 @@ impl AptosVM {
             ));
         }
 
-        let keyless_authenticators = aptos_types::keyless::get_authenticators(transaction)
+        let keyless_authenticators = libra2_types::keyless::get_authenticators(transaction)
             .map_err(|_| VMStatus::error(StatusCode::INVALID_SIGNATURE, None))?;
 
         // If there are keyless TXN authenticators, validate them all.
@@ -2905,7 +2905,7 @@ impl VMValidator for AptosVM {
             .features()
             .is_enabled(FeatureFlag::SINGLE_SENDER_AUTHENTICATOR)
         {
-            if let aptos_types::transaction::authenticator::TransactionAuthenticator::SingleSender{ .. } = transaction.authenticator_ref() {
+            if let libra2_types::transaction::authenticator::TransactionAuthenticator::SingleSender{ .. } = transaction.authenticator_ref() {
                 return VMValidatorResult::error(StatusCode::FEATURE_UNDER_GATING);
             }
         }
@@ -3157,7 +3157,7 @@ pub(crate) fn should_create_account_resource(
 #[cfg(test)]
 mod tests {
     use crate::{move_vm_ext::MoveVmExt, AptosVM};
-    use aptos_types::{
+    use libra2_types::{
         account_address::AccountAddress,
         account_config::{NEW_EPOCH_EVENT_MOVE_TYPE_TAG, NEW_EPOCH_EVENT_V2_MOVE_TYPE_TAG},
         contract_event::ContractEvent,

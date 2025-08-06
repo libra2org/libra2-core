@@ -10,7 +10,7 @@ use aptos_crypto::{
     traits::{SigningKey, Uniform},
 };
 use aptos_crypto_derive::{BCSCryptoHash, CryptoHasher};
-use aptos_types::{
+use libra2_types::{
     access_path::{AccessPath, Path},
     account_config::{CoinStoreResource, DepositEvent, WithdrawEvent},
     block_metadata_ext::BlockMetadataExt,
@@ -120,7 +120,7 @@ pub fn get_registry() -> Result<Registry> {
     tracer.trace_type::<transaction::authenticator::AnyPublicKey>(&samples)?;
     tracer.trace_type::<transaction::authenticator::AnySignature>(&samples)?;
     tracer.trace_type::<transaction::webauthn::AssertionSignature>(&samples)?;
-    tracer.trace_type::<aptos_types::keyless::EphemeralCertificate>(&samples)?;
+    tracer.trace_type::<libra2_types::keyless::EphemeralCertificate>(&samples)?;
     tracer.trace_type::<transaction::authenticator::AbstractionAuthData>(&samples)?;
 
     // events

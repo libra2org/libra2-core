@@ -30,7 +30,7 @@ use aptos_executor_types::{state_compute_result::StateComputeResult, BlockExecut
 use aptos_experimental_runtimes::thread_manager::optimal_min_len;
 use aptos_infallible::Mutex;
 use aptos_logger::{debug, error, info, warn};
-use aptos_types::{
+use libra2_types::{
     block_executor::config::BlockExecutorConfigFromOnchain,
     ledger_info::{LedgerInfo, LedgerInfoWithSignatures},
     randomness::Randomness,

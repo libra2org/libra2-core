@@ -12,7 +12,7 @@ use aptos_storage_service_types::{
         TransactionDataWithProofResponse,
     },
 };
-use aptos_types::{
+use libra2_types::{
     epoch_change::EpochChangeProof,
     ledger_info::LedgerInfoWithSignatures,
     state_store::state_value::StateValueChunkWithProof,

@@ -12,7 +12,7 @@ use aptos_consensus_types::{
     vote_data::VoteData,
 };
 use aptos_crypto::{hash::CryptoHash, HashValue};
-use aptos_types::{
+use libra2_types::{
     aggregate_signature::PartialSignatures,
     block_info::{BlockInfo, Round},
     ledger_info::{LedgerInfo, LedgerInfoWithVerifiedSignatures},

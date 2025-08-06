@@ -10,7 +10,7 @@ use aptos_infallible::RwLock;
 use aptos_storage_interface::{
     chunk_to_commit::ChunkToCommit, DbReader, DbWriter, Result, StateSnapshotReceiver,
 };
-use aptos_types::{
+use libra2_types::{
     ledger_info::LedgerInfoWithSignatures,
     state_store::{state_key::StateKey, state_value::StateValue},
     transaction::{TransactionOutputListWithProofV2, Version},

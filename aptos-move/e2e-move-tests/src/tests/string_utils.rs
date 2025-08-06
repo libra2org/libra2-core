@@ -4,7 +4,7 @@
 use crate::{assert_success, tests::common, MoveHarness};
 use aptos_framework::{BuildOptions, BuiltPackage};
 use aptos_language_e2e_tests::executor::FakeExecutor;
-use aptos_types::move_utils::MemberId;
+use libra2_types::move_utils::MemberId;
 use move_core_types::account_address::AccountAddress;
 use std::str::FromStr;
 

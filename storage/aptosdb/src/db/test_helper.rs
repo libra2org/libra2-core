@@ -12,7 +12,7 @@ use aptos_crypto::{
 use aptos_scratchpad::SparseMerkleTree;
 use aptos_storage_interface::{DbReader, Order, Result};
 use aptos_temppath::TempPath;
-use aptos_types::{
+use libra2_types::{
     account_address::AccountAddress,
     contract_event::ContractEvent,
     event::EventKey,

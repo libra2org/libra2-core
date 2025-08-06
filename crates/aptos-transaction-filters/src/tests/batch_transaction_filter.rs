@@ -7,7 +7,7 @@ use crate::{
     transaction_filter::TransactionMatcher,
 };
 use aptos_crypto::HashValue;
-use aptos_types::{quorum_store::BatchId, transaction::SignedTransaction, PeerId};
+use libra2_types::{quorum_store::BatchId, transaction::SignedTransaction, PeerId};
 
 #[test]
 fn test_all_filter() {

@@ -21,7 +21,7 @@ use aptos_config::config::NodeConfig;
 use aptos_consensus_types::common::{TransactionInProgress, TransactionSummary};
 use aptos_crypto::HashValue;
 use aptos_logger::prelude::*;
-use aptos_types::{
+use libra2_types::{
     account_address::AccountAddress,
     mempool_status::{MempoolStatus, MempoolStatusCode},
     transaction::{use_case::UseCaseKey, ReplayProtector, SignedTransaction},

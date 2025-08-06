@@ -13,7 +13,7 @@ use crate::{
 };
 use aptos_bitvec::BitVec;
 use aptos_crypto::hash::HashValue;
-use aptos_types::{
+use libra2_types::{
     account_address::AccountAddress,
     aggregate_signature::PartialSignatures,
     block_info::{BlockInfo, Round},

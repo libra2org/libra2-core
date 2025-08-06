@@ -3,7 +3,7 @@
 
 use crate::db_debugger::common::DbDir;
 use aptos_storage_interface::Result;
-use aptos_types::{
+use libra2_types::{
     state_store::{state_key::StateKey, state_value::StateValue},
     transaction::Version,
 };

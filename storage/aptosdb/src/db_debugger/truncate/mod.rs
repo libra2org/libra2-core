@@ -176,7 +176,7 @@ mod test {
     };
     use aptos_storage_interface::DbReader;
     use aptos_temppath::TempPath;
-    use aptos_types::state_store::NUM_STATE_SHARDS;
+    use libra2_types::state_store::NUM_STATE_SHARDS;
     use proptest::prelude::*;
 
     proptest! {

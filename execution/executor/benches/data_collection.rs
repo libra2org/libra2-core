@@ -1,7 +1,7 @@
 // Copyright (c) Aptos Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-use aptos_types::{
+use libra2_types::{
     account_address::AccountAddress,
     account_config::AccountResource,
     event::{EventHandle, EventKey},

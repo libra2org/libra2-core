@@ -17,7 +17,7 @@ use aptos_crypto::{bls12381, HashValue};
 use aptos_infallible::Mutex;
 use aptos_keygen::KeyGen;
 use aptos_storage_interface::DbReader;
-use aptos_types::{
+use libra2_types::{
     account_address::AccountAddress,
     account_config::{new_block_event_key, NewBlockEvent},
     contract_event::{ContractEvent, EventWithVersion},

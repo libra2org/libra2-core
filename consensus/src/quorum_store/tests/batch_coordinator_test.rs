@@ -15,7 +15,7 @@ use aptos_consensus_types::common::Author;
 use aptos_crypto::{ed25519::Ed25519PrivateKey, PrivateKey, SigningKey, Uniform};
 use aptos_network::application::{interface::NetworkClient, storage::PeersAndMetadata};
 use aptos_transaction_filters::batch_transaction_filter::BatchTransactionFilter;
-use aptos_types::{
+use libra2_types::{
     chain_id::ChainId,
     quorum_store::BatchId,
     transaction::{RawTransaction, Script, SignedTransaction, TransactionPayload},

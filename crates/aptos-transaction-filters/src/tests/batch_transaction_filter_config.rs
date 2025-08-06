@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{batch_transaction_filter::BatchTransactionFilter, tests::utils};
-use aptos_types::{quorum_store::BatchId, PeerId};
+use libra2_types::{quorum_store::BatchId, PeerId};
 
 #[test]
 fn test_batch_transaction_filter_config_allow() {

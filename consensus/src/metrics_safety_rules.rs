@@ -18,7 +18,7 @@ use aptos_crypto::bls12381;
 use aptos_infallible::Mutex;
 use aptos_logger::prelude::info;
 use aptos_safety_rules::{ConsensusState, Error, TSafetyRules};
-use aptos_types::{
+use libra2_types::{
     epoch_change::EpochChangeProof,
     ledger_info::{LedgerInfo, LedgerInfoWithSignatures},
 };
@@ -174,7 +174,7 @@ mod tests {
     };
     use aptos_crypto::bls12381;
     use aptos_safety_rules::{ConsensusState, Error, TSafetyRules};
-    use aptos_types::{
+    use libra2_types::{
         epoch_change::EpochChangeProof,
         ledger_info::{LedgerInfo, LedgerInfoWithSignatures},
     };

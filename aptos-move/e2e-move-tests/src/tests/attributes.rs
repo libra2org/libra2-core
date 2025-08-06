@@ -5,7 +5,7 @@ use crate::{assert_success, assert_vm_status, MoveHarness};
 use aptos_cached_packages::aptos_stdlib;
 use aptos_framework::{BuildOptions, BuiltPackage};
 use aptos_package_builder::PackageBuilder;
-use aptos_types::{
+use libra2_types::{
     account_address::AccountAddress,
     on_chain_config::FeatureFlag,
     vm::module_metadata::{KnownAttribute, RuntimeModuleMetadataV1, APTOS_METADATA_KEY_V1},

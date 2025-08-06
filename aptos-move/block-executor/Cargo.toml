@@ -23,7 +23,7 @@ aptos-infallible = { workspace = true }
 aptos-logger = { workspace = true }
 aptos-metrics-core = { workspace = true }
 aptos-mvhashmap = { workspace = true }
-aptos-types = { workspace = true }
+libra2-types = { workspace = true }
 aptos-vm-environment = { workspace = true }
 aptos-vm-logging = { workspace = true }
 aptos-vm-types = { workspace = true }
@@ -54,7 +54,7 @@ scopeguard = { workspace = true }
 [dev-dependencies]
 aptos-aggregator = { workspace = true, features = ["testing"] }
 aptos-transaction-simulation = { workspace = true }
-aptos-types = { workspace = true, features = ["testing"] }
+libra2-types = { workspace = true, features = ["testing"] }
 criterion = { workspace = true }
 fail = { workspace = true, features = ["failpoints"] }
 itertools = { workspace = true }

@@ -10,7 +10,7 @@ use crate::{
 };
 use aptos_aggregator::delta_change_set::serialize;
 use aptos_transaction_simulation::{InMemoryStateStore, SimulationStateStore};
-use aptos_types::{
+use libra2_types::{
     state_store::{state_key::StateKey, state_value::StateValue},
     transaction::TransactionOutput,
     write_set::WriteOp,

@@ -23,7 +23,7 @@ use aptos_consensus_types::{
     vote_data::VoteData,
 };
 use aptos_crypto::{HashValue, PrivateKey};
-use aptos_types::{
+use libra2_types::{
     validator_signer::ValidatorSigner, validator_verifier::random_validator_verifier,
 };
 use proptest::prelude::*;

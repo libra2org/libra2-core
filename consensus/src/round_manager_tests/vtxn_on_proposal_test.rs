@@ -12,7 +12,7 @@ use aptos_consensus_types::{
     block::{block_test_utils::certificate_for_genesis, Block},
     common::Payload,
 };
-use aptos_types::{
+use libra2_types::{
     dkg::{real_dkg::RealDKG, DKGSessionMetadata, DKGTrait, DKGTranscript},
     jwks::QuorumCertifiedUpdate,
     on_chain_config::{

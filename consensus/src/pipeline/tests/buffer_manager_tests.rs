@@ -42,7 +42,7 @@ use aptos_network::{
 };
 use aptos_safety_rules::{PersistentSafetyStorage, SafetyRulesManager};
 use aptos_secure_storage::Storage;
-use aptos_types::{
+use libra2_types::{
     account_address::AccountAddress,
     epoch_state::EpochState,
     ledger_info::LedgerInfo,

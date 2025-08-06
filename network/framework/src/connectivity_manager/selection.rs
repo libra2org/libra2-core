@@ -8,7 +8,7 @@ use crate::{
 use aptos_config::network_id::NetworkContext;
 use aptos_infallible::RwLock;
 use aptos_logger::error;
-use aptos_types::PeerId;
+use libra2_types::PeerId;
 use maplit::hashset;
 use ordered_float::OrderedFloat;
 use rand_latest::prelude::*;
@@ -228,7 +228,7 @@ mod test {
         config::{PeerRole, RoleType},
         network_id::NetworkId,
     };
-    use aptos_types::account_address::AccountAddress;
+    use libra2_types::account_address::AccountAddress;
     use rand::Rng;
     use std::collections::{BinaryHeap, HashMap};
 

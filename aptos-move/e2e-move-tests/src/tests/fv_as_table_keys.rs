@@ -7,7 +7,7 @@ use crate::{assert_success, tests::common, MoveHarness};
 use aptos_framework::BuildOptions;
 use aptos_language_e2e_tests::account::Account;
 use aptos_package_builder::PackageBuilder;
-use aptos_types::{account_address::AccountAddress, transaction::TransactionStatus};
+use libra2_types::{account_address::AccountAddress, transaction::TransactionStatus};
 
 #[test]
 fn fv_in_table() {

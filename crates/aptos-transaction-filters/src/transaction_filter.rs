@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use aptos_crypto::{ed25519::Ed25519PublicKey, HashValue};
-use aptos_types::transaction::{
+use libra2_types::transaction::{
     authenticator::{AccountAuthenticator, AnyPublicKey, TransactionAuthenticator},
     EntryFunction, MultisigTransactionPayload, Script, SignedTransaction, TransactionExecutableRef,
     TransactionExtraConfig, TransactionPayload, TransactionPayloadInner,
@@ -521,7 +521,7 @@ mod test {
         multi_ed25519::{MultiEd25519PublicKey, MultiEd25519Signature},
         secp256k1_ecdsa, secp256r1_ecdsa, PrivateKey, SigningKey, Uniform,
     };
-    use aptos_types::{
+    use libra2_types::{
         chain_id::ChainId,
         function_info::FunctionInfo,
         keyless::test_utils::get_sample_groth16_sig_and_pk,
@@ -606,7 +606,7 @@ mod test {
         verify_matches_public_key_address(&public_key, &target_address, false);
 
         // Create a FederatedKeyless public key with the target address as the JWK address
-        let federated_keyless_public_key = aptos_types::keyless::FederatedKeylessPublicKey {
+        let federated_keyless_public_key = libra2_types::keyless::FederatedKeylessPublicKey {
             jwk_addr: target_address,
             pk: keyless_public_key,
         };

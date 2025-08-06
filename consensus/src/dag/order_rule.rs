@@ -17,7 +17,7 @@ use crate::dag::{
 use aptos_consensus_types::common::Round;
 use aptos_infallible::Mutex;
 use aptos_logger::debug;
-use aptos_types::epoch_state::EpochState;
+use libra2_types::epoch_state::EpochState;
 use std::sync::Arc;
 
 pub trait TOrderRule: Send + Sync {

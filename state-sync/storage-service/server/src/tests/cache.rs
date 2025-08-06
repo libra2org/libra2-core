@@ -4,7 +4,7 @@
 use crate::tests::{mock, mock::MockClient, utils};
 use aptos_config::config::StorageServiceConfig;
 use aptos_crypto::hash::HashValue;
-use aptos_types::{
+use libra2_types::{
     proof::definition::SparseMerkleRangeProof, state_store::state_value::StateValueChunkWithProof,
 };
 use mockall::{

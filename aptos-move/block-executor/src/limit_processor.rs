@@ -5,7 +5,7 @@ use crate::{
     counters, hot_state_op_accumulator::BlockHotStateOpAccumulator, types::ReadWriteSummary,
 };
 use aptos_logger::{info, warn};
-use aptos_types::{
+use libra2_types::{
     fee_statement::FeeStatement,
     on_chain_config::BlockGasLimitType,
     state_store::{state_slot::StateSlot, TStateView},
@@ -317,7 +317,7 @@ mod test {
         },
         types::InputOutputKey,
     };
-    use aptos_types::state_store::{
+    use libra2_types::state_store::{
         state_storage_usage::StateStorageUsage, state_value::StateValue, StateViewResult,
     };
     use std::collections::HashSet;

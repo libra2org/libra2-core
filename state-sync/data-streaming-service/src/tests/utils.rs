@@ -26,7 +26,7 @@ use aptos_storage_service_types::{
     responses::{CompleteDataRange, TransactionOrOutputListWithProofV2},
     Epoch,
 };
-use aptos_types::{
+use libra2_types::{
     account_address::AccountAddress,
     aggregate_signature::AggregateSignature,
     block_info::BlockInfo,

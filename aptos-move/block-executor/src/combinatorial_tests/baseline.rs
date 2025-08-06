@@ -18,7 +18,7 @@ use crate::{
 };
 use aptos_aggregator::delta_change_set::{serialize, DeltaOp};
 use aptos_mvhashmap::types::TxnIndex;
-use aptos_types::{
+use libra2_types::{
     contract_event::TransactionEvent, state_store::state_value::StateValueMetadata,
     transaction::BlockOutput, write_set::TransactionWrite,
 };

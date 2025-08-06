@@ -11,7 +11,7 @@ use crate::{
     ProofRead,
 };
 use aptos_crypto::{hash::SPARSE_MERKLE_PLACEHOLDER_HASH, HashValue};
-use aptos_types::proof::{definition::NodeInProof, SparseMerkleLeafNode, SparseMerkleProofExt};
+use libra2_types::proof::{definition::NodeInProof, SparseMerkleLeafNode, SparseMerkleProofExt};
 use aptos_vm::AptosVM;
 use once_cell::sync::Lazy;
 use std::cmp::Ordering;

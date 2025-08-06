@@ -40,7 +40,7 @@ use aptos_executor_types::ExecutorResult;
 use aptos_infallible::RwLock;
 use aptos_logger::prelude::*;
 use aptos_network::{application::interface::NetworkClient, protocols::network::Event};
-use aptos_types::{
+use libra2_types::{
     epoch_state::EpochState,
     ledger_info::LedgerInfoWithSignatures,
     on_chain_config::{OnChainConsensusConfig, OnChainExecutionConfig, OnChainRandomnessConfig},

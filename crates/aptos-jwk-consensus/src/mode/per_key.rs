@@ -4,7 +4,7 @@
 use crate::{mode::TConsensusMode, types::ObservedKeyLevelUpdateRequest};
 use anyhow::Context;
 use aptos_logger::info;
-use aptos_types::jwks::{Issuer, KeyLevelUpdate, ProviderJWKs, QuorumCertifiedUpdate, KID};
+use libra2_types::jwks::{Issuer, KeyLevelUpdate, ProviderJWKs, QuorumCertifiedUpdate, KID};
 
 pub struct PerKeyMode {}
 

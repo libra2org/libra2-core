@@ -8,7 +8,7 @@ use crate::{
 use aptos::test::CliTestFramework;
 use aptos_forge::{LocalSwarm, NodeExt, Swarm, SwarmExt};
 use aptos_rest_client::Client;
-use aptos_types::on_chain_config::{
+use libra2_types::on_chain_config::{
     ConsensusAlgorithmConfig, OnChainConsensusConfig, ValidatorTxnConfig,
 };
 use move_core_types::language_storage::CORE_CODE_ADDRESS;

@@ -12,7 +12,7 @@ use aptos_crypto::{
 };
 use aptos_sdk::types::{AccountKey, LocalAccount};
 use aptos_transaction_filters::transaction_filter::TransactionFilter;
-use aptos_types::{
+use libra2_types::{
     account_address::AccountAddress,
     account_config::aptos_test_root_address,
     transaction::{

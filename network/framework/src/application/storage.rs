@@ -19,7 +19,7 @@ use aptos_config::{
 use aptos_infallible::{Mutex, RwLock};
 use aptos_logger::{sample, sample::SampleRate, warn};
 use aptos_peer_monitoring_service_types::PeerMonitoringMetadata;
-use aptos_types::{account_address::AccountAddress, PeerId};
+use libra2_types::{account_address::AccountAddress, PeerId};
 use arc_swap::ArcSwap;
 use std::{
     collections::{hash_map::Entry, HashMap},

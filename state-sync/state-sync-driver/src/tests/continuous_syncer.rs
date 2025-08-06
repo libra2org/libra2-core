@@ -29,7 +29,7 @@ use aptos_data_streaming_service::{
 use aptos_infallible::Mutex;
 use aptos_storage_service_types::Epoch;
 use aptos_time_service::TimeService;
-use aptos_types::transaction::{
+use libra2_types::transaction::{
     TransactionOutputListWithProof, TransactionOutputListWithProofV2, Version,
 };
 use claims::assert_matches;

@@ -15,7 +15,7 @@ use aptos_config::config::DagFetcherConfig;
 use aptos_consensus_types::common::{Author, Round};
 use aptos_logger::{debug, error, info};
 use aptos_time_service::TimeService;
-use aptos_types::epoch_state::EpochState;
+use libra2_types::epoch_state::EpochState;
 use async_trait::async_trait;
 use futures::{future::Shared, stream::FuturesUnordered, Future, FutureExt, Stream, StreamExt};
 use std::{

@@ -22,7 +22,7 @@ use aptos_bounded_executor::{concurrent_map, BoundedExecutor};
 use aptos_channels::aptos_channel;
 use aptos_consensus_types::common::{Author, Round};
 use aptos_logger::{debug, error, warn};
-use aptos_types::epoch_state::EpochState;
+use libra2_types::epoch_state::EpochState;
 use futures::{stream::FuturesUnordered, StreamExt};
 use std::sync::Arc;
 use tokio::{runtime::Handle, select};

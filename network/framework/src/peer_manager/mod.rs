@@ -28,7 +28,7 @@ use aptos_logger::prelude::*;
 use aptos_netcore::transport::{ConnectionOrigin, Transport};
 use aptos_short_hex_str::AsShortHexStr;
 use aptos_time_service::{TimeService, TimeServiceTrait};
-use aptos_types::{network_address::NetworkAddress, PeerId};
+use libra2_types::{network_address::NetworkAddress, PeerId};
 use futures::{
     channel::oneshot,
     io::{AsyncRead, AsyncWrite, AsyncWriteExt},
@@ -59,7 +59,7 @@ use crate::{
     protocols::network::{ReceivedMessage, SerializedRequest},
 };
 use aptos_config::config::PeerRole;
-use aptos_types::account_address::AccountAddress;
+use libra2_types::account_address::AccountAddress;
 pub use senders::*;
 pub use types::*;
 

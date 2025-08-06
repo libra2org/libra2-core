@@ -3,7 +3,7 @@
 
 use crate::{genesis::GENESIS_CHANGE_SET_HEAD, Account, AccountData};
 use anyhow::{anyhow, bail, Result};
-use aptos_types::{
+use libra2_types::{
     chain_id::ChainId,
     on_chain_config::{FeatureFlag, Features, OnChainConfig},
     state_store::{

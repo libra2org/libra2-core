@@ -4,7 +4,7 @@
 use super::common::NodeType;
 use aptos_config::config::RoleType;
 use aptos_crypto::x25519;
-use aptos_types::{chain_id::ChainId, PeerId};
+use libra2_types::{chain_id::ChainId, PeerId};
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 

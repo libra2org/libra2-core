@@ -5,7 +5,7 @@
 
 use aptos_language_e2e_tests::{account::Account, executor::FakeExecutor};
 use aptos_transaction_simulation::GENESIS_CHANGE_SET_HEAD;
-use aptos_types::{
+use libra2_types::{
     chain_id::ChainId,
     on_chain_config::Features,
     transaction::{

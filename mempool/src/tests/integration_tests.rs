@@ -19,7 +19,7 @@ use aptos_network::{
     transport::ConnectionMetadata,
     ProtocolId,
 };
-use aptos_types::transaction::ReplayProtector;
+use libra2_types::transaction::ReplayProtector;
 use once_cell::sync::Lazy;
 use std::time::Duration;
 

@@ -4,7 +4,7 @@
 use crate::{counters, scheduler::ArmedLock, scheduler_status::ExecutionStatuses};
 use aptos_infallible::Mutex;
 use aptos_mvhashmap::types::{Incarnation, TxnIndex};
-use aptos_types::error::{code_invariant_error, PanicError};
+use libra2_types::error::{code_invariant_error, PanicError};
 use aptos_vm_logging::clear_speculative_txn_logs;
 use concurrent_queue::{ConcurrentQueue, PopError};
 use crossbeam::utils::CachePadded;

@@ -15,7 +15,7 @@ use aptos_resource_viewer::AptosValueAnnotator;
 use aptos_transaction_simulation::{
     InMemoryStateStore, SimulationStateStore, GENESIS_CHANGE_SET_HEAD,
 };
-use aptos_types::{
+use libra2_types::{
     account_config::{
         aptos_test_root_address, primary_apt_store, AccountResource, FungibleStoreResource,
         ObjectGroupResource,
@@ -437,12 +437,12 @@ impl AptosTestAdapter<'_> {
             .unwrap_or(AccountResource::new(
                 0,
                 signer_addr.to_vec(),
-                aptos_types::event::EventHandle::new(
-                    aptos_types::event::EventKey::new(0, *signer_addr),
+                libra2_types::event::EventHandle::new(
+                    libra2_types::event::EventKey::new(0, *signer_addr),
                     0,
                 ),
-                aptos_types::event::EventHandle::new(
-                    aptos_types::event::EventKey::new(1, *signer_addr),
+                libra2_types::event::EventHandle::new(
+                    libra2_types::event::EventKey::new(1, *signer_addr),
                     0,
                 ),
             ))

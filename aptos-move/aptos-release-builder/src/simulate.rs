@@ -32,7 +32,7 @@ use aptos_language_e2e_tests::account::AccountData;
 use aptos_move_debugger::aptos_debugger::AptosDebugger;
 use aptos_rest_client::{AptosBaseUrl, Client};
 use aptos_transaction_simulation::{DeltaStateStore, SimulationStateStore};
-use aptos_types::{
+use libra2_types::{
     account_address::AccountAddress,
     account_config::ChainIdResource,
     on_chain_config::{ApprovedExecutionHashes, GasScheduleV2, OnChainConfig},

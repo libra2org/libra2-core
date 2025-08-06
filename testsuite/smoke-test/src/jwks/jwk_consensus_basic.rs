@@ -13,7 +13,7 @@ use crate::{
 };
 use aptos_forge::{NodeExt, Swarm, SwarmExt};
 use aptos_logger::{debug, info};
-use aptos_types::{
+use libra2_types::{
     jwks::{
         jwk::JWK, rsa::RSA_JWK, secure_test_rsa_jwk, unsupported::UnsupportedJWK, AllProvidersJWKs,
         ProviderJWKs,

@@ -19,7 +19,7 @@ aptos-logger = { workspace = true }
 aptos-metrics-core = { workspace = true }
 aptos-network = { workspace = true }
 aptos-time-service = { workspace = true }
-aptos-types = { workspace = true }
+libra2-types = { workspace = true }
 async-channel = { workspace = true }
 bytes = { workspace = true }
 futures = { workspace = true }

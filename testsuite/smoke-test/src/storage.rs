@@ -16,7 +16,7 @@ use aptos_backup_cli::metadata::view::BackupStorageState;
 use aptos_forge::{reconfig, AptosPublicInfo, Node, NodeExt, Swarm, SwarmExt};
 use aptos_logger::info;
 use aptos_temppath::TempPath;
-use aptos_types::{transaction::Version, waypoint::Waypoint};
+use libra2_types::{transaction::Version, waypoint::Waypoint};
 use itertools::Itertools;
 use std::{
     fs,

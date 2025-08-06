@@ -20,7 +20,7 @@ use aptos_crypto::HashValue;
 use aptos_infallible::{Mutex, MutexGuard};
 use aptos_logger::prelude::*;
 use aptos_storage_interface::DbReader;
-use aptos_types::{
+use libra2_types::{
     account_config::NewBlockEvent, epoch_change::EpochChangeProof, epoch_state::EpochState,
 };
 use std::{

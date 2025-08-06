@@ -10,7 +10,7 @@ use anyhow::{ensure, Context};
 use aptos_bitvec::BitVec;
 use aptos_crypto::bls12381;
 use aptos_short_hex_str::AsShortHexStr;
-use aptos_types::validator_verifier::ValidatorVerifier;
+use libra2_types::validator_verifier::ValidatorVerifier;
 use serde::{Deserialize, Serialize};
 
 #[derive(Deserialize, Serialize, Clone, PartialEq, Eq, Hash, Debug)]

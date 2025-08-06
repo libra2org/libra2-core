@@ -29,7 +29,7 @@ use aptos_mempool_notifications::CommittedTransaction;
 use aptos_metrics_core::HistogramTimer;
 use aptos_network::application::interface::NetworkClientInterface;
 use aptos_storage_interface::state_store::state_view::db_state_view::LatestDbStateCheckpointView;
-use aptos_types::{
+use libra2_types::{
     account_address::AccountAddress,
     mempool_status::{MempoolStatus, MempoolStatusCode},
     on_chain_config::{OnChainConfigPayload, OnChainConfigProvider, OnChainConsensusConfig},
@@ -785,7 +785,7 @@ mod test {
     use super::*;
     use aptos_crypto::{ed25519::Ed25519PrivateKey, PrivateKey, SigningKey, Uniform};
     use aptos_transaction_filters::transaction_filter::TransactionFilter;
-    use aptos_types::{
+    use libra2_types::{
         chain_id::ChainId,
         transaction::{RawTransaction, Script, TransactionPayload},
     };

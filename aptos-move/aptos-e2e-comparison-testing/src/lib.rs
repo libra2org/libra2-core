@@ -5,7 +5,7 @@ use aptos_framework::{
     natives::code::PackageMetadata, unzip_metadata_str, BuiltPackage, APTOS_PACKAGES,
 };
 use aptos_transaction_simulation::InMemoryStateStore;
-use aptos_types::{
+use libra2_types::{
     account_address::AccountAddress,
     state_store::{state_key::StateKey, state_value::StateValue},
     transaction::Transaction,

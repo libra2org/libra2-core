@@ -4,7 +4,7 @@
 use aptos_channels::aptos_channel;
 use aptos_crypto::{hash::CryptoHash, HashValue};
 use aptos_infallible::Mutex;
-use aptos_types::validator_txn::{Topic, ValidatorTransaction};
+use libra2_types::validator_txn::{Topic, ValidatorTransaction};
 use std::{
     collections::{BTreeMap, HashMap, HashSet},
     fmt::{Debug, Formatter},

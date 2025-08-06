@@ -17,7 +17,7 @@ use aptos_consensus_types::common::{Author, Round};
 use aptos_crypto::HashValue;
 use aptos_infallible::RwLock;
 use aptos_logger::{debug, error, warn};
-use aptos_types::{epoch_state::EpochState, validator_verifier::ValidatorVerifier};
+use libra2_types::{epoch_state::EpochState, validator_verifier::ValidatorVerifier};
 use std::{
     collections::{BTreeMap, HashMap, HashSet},
     ops::Deref,

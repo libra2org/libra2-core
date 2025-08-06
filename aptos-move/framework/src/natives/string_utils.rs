@@ -7,7 +7,7 @@ use aptos_native_interface::{
     safely_pop_arg, RawSafeNative, SafeNativeBuilder, SafeNativeContext, SafeNativeError,
     SafeNativeResult,
 };
-use aptos_types::on_chain_config::FeatureFlag;
+use libra2_types::on_chain_config::FeatureFlag;
 use ark_std::iterable::Iterable;
 use move_binary_format::errors::PartialVMError;
 use move_core_types::{
@@ -268,7 +268,7 @@ fn native_format_impl(
             if let MoveTypeLayout::U8 = ty.as_ref() {
                 let bytes = val.value_as::<Vec<u8>>()?;
                 if context.context.timed_feature_enabled(
-                    aptos_types::on_chain_config::TimedFeatureFlag::ChargeBytesForPrints,
+                    libra2_types::on_chain_config::TimedFeatureFlag::ChargeBytesForPrints,
                 ) {
                     context
                         .context

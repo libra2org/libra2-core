@@ -8,7 +8,7 @@ use crate::{
 use anyhow::{ensure, Context};
 use aptos_crypto::{bls12381, hash::CryptoHash, CryptoMaterialError};
 use aptos_short_hex_str::AsShortHexStr;
-use aptos_types::{
+use libra2_types::{
     ledger_info::{LedgerInfo, SignatureWithStatus},
     validator_signer::ValidatorSigner,
     validator_verifier::ValidatorVerifier,

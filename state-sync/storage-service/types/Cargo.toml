@@ -17,7 +17,7 @@ aptos-compression = { workspace = true }
 aptos-config = { workspace = true }
 aptos-crypto = { workspace = true }
 aptos-time-service = { workspace = true }
-aptos-types = { workspace = true }
+libra2-types = { workspace = true }
 bcs = { workspace = true }
 num-traits = { workspace = true }
 serde = { workspace = true }

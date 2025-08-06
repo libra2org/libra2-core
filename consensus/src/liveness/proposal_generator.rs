@@ -35,7 +35,7 @@ use aptos_consensus_types::{
 use aptos_crypto::{hash::CryptoHash, HashValue};
 use aptos_infallible::Mutex;
 use aptos_logger::{error, sample, sample::SampleRate, warn};
-use aptos_types::{
+use libra2_types::{
     block_info::BlockInfo, on_chain_config::ValidatorTxnConfig, validator_txn::ValidatorTransaction,
 };
 use aptos_validator_transaction_pool as vtxn_pool;

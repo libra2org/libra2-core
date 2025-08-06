@@ -8,7 +8,7 @@ use crate::{
 };
 use anyhow::{anyhow, Result};
 use aptos_crypto::HashValue;
-use aptos_types::{
+use libra2_types::{
     block_executor::config::BlockExecutorConfigFromOnchain, epoch_state::EpochState,
     ledger_info::LedgerInfoWithSignatures,
 };

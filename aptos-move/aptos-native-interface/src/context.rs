@@ -9,7 +9,7 @@ use aptos_gas_schedule::{
     gas_feature_versions::RELEASE_V1_32, AbstractValueSizeGasParameters, MiscGasParameters,
     NativeGasParameters,
 };
-use aptos_types::on_chain_config::{Features, TimedFeatureFlag, TimedFeatures};
+use libra2_types::on_chain_config::{Features, TimedFeatureFlag, TimedFeatures};
 use move_binary_format::errors::{PartialVMResult, VMResult};
 use move_core_types::{
     gas_algebra::InternalGas, identifier::Identifier, language_storage::ModuleId,

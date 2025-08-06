@@ -18,7 +18,7 @@ use aptos_channels::aptos_channel;
 use aptos_consensus_types::common::{Author, Round};
 use aptos_logger::{debug, error};
 use aptos_time_service::TimeService;
-use aptos_types::{
+use libra2_types::{
     epoch_change::EpochChangeProof, epoch_state::EpochState, ledger_info::LedgerInfoWithSignatures,
 };
 use core::fmt;

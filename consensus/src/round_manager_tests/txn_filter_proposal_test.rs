@@ -20,7 +20,7 @@ use aptos_transaction_filters::{
     block_transaction_filter::{BlockTransactionFilter, BlockTransactionMatcher},
     transaction_filter::TransactionMatcher,
 };
-use aptos_types::{
+use libra2_types::{
     account_address::AccountAddress,
     chain_id::ChainId,
     quorum_store::BatchId,

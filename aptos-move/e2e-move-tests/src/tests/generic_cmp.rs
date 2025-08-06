@@ -7,7 +7,7 @@
 use crate::{assert_success, tests::common, MoveHarness};
 use aptos_framework::{BuildOptions, BuiltPackage};
 use aptos_language_e2e_tests::account::TransactionBuilder;
-use aptos_types::{account_address::AccountAddress, transaction::Script};
+use libra2_types::{account_address::AccountAddress, transaction::Script};
 
 #[test]
 fn function_generic_cmp() {

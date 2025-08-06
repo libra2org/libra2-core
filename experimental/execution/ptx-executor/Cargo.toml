@@ -18,7 +18,7 @@ aptos-experimental-runtimes = { workspace = true }
 aptos-infallible = { workspace = true }
 aptos-logger = { workspace = true }
 aptos-metrics-core = { workspace = true }
-aptos-types = { workspace = true }
+libra2-types = { workspace = true }
 aptos-vm = { workspace = true }
 aptos-vm-environment = { workspace = true }
 aptos-vm-logging = { workspace = true }

@@ -4,7 +4,7 @@
 
 use aptos_crypto::HashValue;
 use aptos_gas_algebra::{FeePerGasUnit, Gas, NumBytes};
-use aptos_types::{
+use libra2_types::{
     account_address::AccountAddress,
     chain_id::ChainId,
     transaction::{
@@ -74,7 +74,7 @@ impl TransactionMetadata {
             } else {
                 NumBytes::zero()
             },
-            is_keyless: aptos_types::keyless::get_authenticators(txn)
+            is_keyless: libra2_types::keyless::get_authenticators(txn)
                 .map(|res| !res.is_empty())
                 .unwrap_or(false),
             entry_function_payload: if txn.payload().is_multisig() {

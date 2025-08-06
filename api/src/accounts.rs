@@ -19,7 +19,7 @@ use aptos_api_types::{
     MoveModuleId, MoveResource, MoveStructTag, StateKeyWrapper, U64,
 };
 use aptos_sdk::types::{get_paired_fa_metadata_address, get_paired_fa_primary_store_address};
-use aptos_types::{
+use libra2_types::{
     account_config::{
         AccountResource, CoinStoreResourceUntyped, ConcurrentFungibleBalanceResource,
         FungibleStoreResource, ObjectGroupResource,
@@ -281,7 +281,7 @@ impl Account {
             let stateless_account_enabled = self
                 .context
                 .feature_enabled(
-                    aptos_types::on_chain_config::FeatureFlag::DEFAULT_ACCOUNT_RESOURCE,
+                    libra2_types::on_chain_config::FeatureFlag::DEFAULT_ACCOUNT_RESOURCE,
                 )
                 .context("Failed to check if stateless account is enabled")
                 .map_err(|_| {

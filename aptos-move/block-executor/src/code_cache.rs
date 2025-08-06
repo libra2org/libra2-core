@@ -9,8 +9,8 @@ use crate::{
 use ambassador::delegate_to_methods;
 use aptos_mvhashmap::types::TxnIndex;
 #[cfg(test)]
-use aptos_types::on_chain_config::CurrentTimeMicroseconds;
-use aptos_types::{
+use libra2_types::on_chain_config::CurrentTimeMicroseconds;
+use libra2_types::{
     executable::ModulePath,
     state_store::{state_value::StateValueMetadata, TStateView},
     transaction::BlockExecutableTransaction as Transaction,

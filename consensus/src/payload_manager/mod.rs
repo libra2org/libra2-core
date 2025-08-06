@@ -8,7 +8,7 @@ use aptos_consensus_types::{
     common::{Author, Payload},
 };
 use aptos_executor_types::*;
-use aptos_types::transaction::SignedTransaction;
+use libra2_types::transaction::SignedTransaction;
 use async_trait::async_trait;
 
 mod co_payload_manager;

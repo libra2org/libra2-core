@@ -7,7 +7,7 @@ use aptos_api_test_context::{current_function_name, find_value, TestContext};
 use aptos_api_types::{MoveModuleBytecode, MoveResource, MoveStructTag, StateKeyWrapper};
 use aptos_cached_packages::aptos_stdlib;
 use aptos_sdk::types::APTOS_COIN_TYPE_STR;
-use aptos_types::{
+use libra2_types::{
     account_config::{primary_apt_store, ObjectCoreResource},
     transaction::{EntryFunction, TransactionPayload},
     AptosCoinType, CoinType,
@@ -325,7 +325,7 @@ async fn test_get_core_account_data_not_found() {
     let resp = context.expect_status_code(200).get("/accounts/0xf").await;
     context.check_golden_output(resp);
     context
-        .disable_feature(aptos_types::on_chain_config::FeatureFlag::DEFAULT_ACCOUNT_RESOURCE as u64)
+        .disable_feature(libra2_types::on_chain_config::FeatureFlag::DEFAULT_ACCOUNT_RESOURCE as u64)
         .await;
     context.expect_status_code(404).get("/accounts/0xf").await;
 }

@@ -8,7 +8,7 @@ use aptos_schemadb::{
     schema::{KeyCodec, Schema, ValueCodec},
     ColumnFamilyName,
 };
-use aptos_types::quorum_store::BatchId;
+use libra2_types::quorum_store::BatchId;
 
 pub(crate) const BATCH_CF_NAME: ColumnFamilyName = "batch";
 pub(crate) const BATCH_ID_CF_NAME: ColumnFamilyName = "batch_ID";

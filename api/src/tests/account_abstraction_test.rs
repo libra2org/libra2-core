@@ -9,7 +9,7 @@ use aptos_crypto::{
     test_utils::KeyPair,
     SigningKey, Uniform,
 };
-use aptos_types::{
+use libra2_types::{
     function_info::FunctionInfo,
     transaction::{EntryFunction, TransactionStatus},
 };

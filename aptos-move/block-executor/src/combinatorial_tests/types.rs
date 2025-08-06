@@ -4,7 +4,7 @@
 
 use crate::types::delayed_field_mock_serialization::serialize_delayed_field_tuple;
 use aptos_aggregator::delta_change_set::{delta_add, delta_sub, serialize, DeltaOp};
-use aptos_types::{
+use libra2_types::{
     account_address::AccountAddress,
     contract_event::TransactionEvent,
     executable::ModulePath,
@@ -491,10 +491,10 @@ impl<
         0
     }
 
-    fn from_txn(txn: aptos_types::transaction::Transaction) -> Self {
+    fn from_txn(txn: libra2_types::transaction::Transaction) -> Self {
         match txn {
-            aptos_types::transaction::Transaction::StateCheckpoint(_)
-            | aptos_types::transaction::Transaction::BlockEpilogue(_) => {
+            libra2_types::transaction::Transaction::StateCheckpoint(_)
+            | libra2_types::transaction::Transaction::BlockEpilogue(_) => {
                 let behaivor = MockIncarnation::new(vec![], vec![], vec![], vec![], 0);
                 Self::from_behavior(behaivor)
             },

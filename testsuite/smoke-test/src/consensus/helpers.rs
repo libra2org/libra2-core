@@ -3,7 +3,7 @@
 
 use crate::txn_emitter::generate_traffic;
 use aptos_forge::{NodeExt, Swarm, TransactionType};
-use aptos_types::PeerId;
+use libra2_types::PeerId;
 use std::time::Duration;
 
 pub async fn generate_traffic_and_assert_committed(

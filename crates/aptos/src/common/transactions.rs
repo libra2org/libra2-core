@@ -18,7 +18,7 @@ use aptos_crypto::{
 use aptos_move_debugger::aptos_debugger::AptosDebugger;
 use aptos_rest_client::Client;
 use aptos_sdk::{transaction_builder::TransactionFactory, types::LocalAccount};
-use aptos_types::{
+use libra2_types::{
     account_address::AccountAddress,
     chain_id::ChainId,
     transaction::{

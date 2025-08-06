@@ -8,7 +8,7 @@ use crate::types::{
 use anyhow::Result;
 use aptos_aggregator::delta_change_set::DeltaOp;
 use aptos_infallible::Mutex;
-use aptos_types::{
+use libra2_types::{
     error::{code_invariant_error, PanicError},
     write_set::TransactionWrite,
 };
@@ -812,7 +812,7 @@ mod tests {
     use super::*;
     use crate::types::StorageVersion;
     use aptos_aggregator::{bounded_math::SignedU128, delta_math::DeltaHistory};
-    use aptos_types::{
+    use libra2_types::{
         on_chain_config::CurrentTimeMicroseconds,
         state_store::state_value::{StateValue, StateValueMetadata},
         write_set::{TransactionWrite, WriteOpKind},

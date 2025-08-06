@@ -13,7 +13,7 @@ use aptos_crypto::{
     Uniform,
 };
 use aptos_infallible::RwLock;
-use aptos_types::{
+use libra2_types::{
     dkg::{
         dummy_dkg::DummyDKG, DKGSessionMetadata, DKGStartEvent, DKGTrait, DKGTranscript,
         DKGTranscriptMetadata,

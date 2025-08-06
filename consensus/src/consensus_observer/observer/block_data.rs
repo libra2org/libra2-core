@@ -27,7 +27,7 @@ use aptos_executor_types::state_compute_result::StateComputeResult;
 use aptos_infallible::Mutex;
 use aptos_logger::{info, warn};
 use aptos_storage_interface::DbReader;
-use aptos_types::{
+use libra2_types::{
     block_info::{BlockInfo, Round},
     epoch_state::EpochState,
     ledger_info::LedgerInfoWithSignatures,
@@ -369,7 +369,7 @@ mod test {
         quorum_cert::QuorumCert,
     };
     use aptos_crypto::HashValue;
-    use aptos_types::{
+    use libra2_types::{
         aggregate_signature::AggregateSignature, block_info::BlockInfo, ledger_info::LedgerInfo,
         transaction::Version, validator_verifier::ValidatorVerifier,
     };

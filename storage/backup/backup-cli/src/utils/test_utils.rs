@@ -7,7 +7,7 @@ use aptos_config::utils::get_available_port;
 use aptos_db::{db::test_helper::arb_blocks_to_commit, AptosDB};
 use aptos_proptest_helpers::ValueGenerator;
 use aptos_temppath::TempPath;
-use aptos_types::{
+use libra2_types::{
     ledger_info::LedgerInfoWithSignatures,
     transaction::{TransactionToCommit, Version},
 };

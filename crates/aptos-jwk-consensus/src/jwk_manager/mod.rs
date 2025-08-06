@@ -16,7 +16,7 @@ use anyhow::{anyhow, bail, Context, Result};
 use aptos_channels::{aptos_channel, message_queues::QueueStyle};
 use aptos_crypto::{bls12381::PrivateKey, SigningKey};
 use aptos_logger::{debug, error, info, warn};
-use aptos_types::{
+use libra2_types::{
     account_address::AccountAddress,
     epoch_state::EpochState,
     jwks::{

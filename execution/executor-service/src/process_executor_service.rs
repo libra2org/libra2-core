@@ -4,7 +4,7 @@
 use crate::remote_executor_service::ExecutorService;
 use aptos_logger::info;
 use aptos_push_metrics::MetricsPusher;
-use aptos_types::block_executor::partitioner::ShardId;
+use libra2_types::block_executor::partitioner::ShardId;
 use aptos_vm::AptosVM;
 use std::net::SocketAddr;
 

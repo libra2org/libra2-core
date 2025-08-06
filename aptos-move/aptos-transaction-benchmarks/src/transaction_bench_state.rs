@@ -12,7 +12,7 @@ use aptos_language_e2e_tests::account_universe::{
     AUTransactionGen, AccountPickStyle, AccountUniverse, AccountUniverseGen,
 };
 use aptos_transaction_simulation::InMemoryStateStore;
-use aptos_types::{
+use libra2_types::{
     block_executor::{
         config::{BlockExecutorConfig, BlockExecutorConfigFromOnchain},
         partitioner::PartitionedTransactions,

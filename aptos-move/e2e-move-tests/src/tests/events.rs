@@ -3,7 +3,7 @@
 
 use crate::{assert_success, tests::common, MoveHarness};
 use aptos_framework::natives::event::ECANNOT_CREATE_EVENT;
-use aptos_types::{move_utils::MemberId, transaction::ExecutionStatus};
+use libra2_types::{move_utils::MemberId, transaction::ExecutionStatus};
 use claims::assert_ok;
 use move_core_types::account_address::AccountAddress;
 use std::str::FromStr;

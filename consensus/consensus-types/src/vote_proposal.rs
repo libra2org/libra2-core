@@ -5,7 +5,7 @@
 use crate::{block::Block, vote_data::VoteData};
 use aptos_crypto::hash::{TransactionAccumulatorHasher, ACCUMULATOR_PLACEHOLDER_HASH};
 use aptos_crypto_derive::{BCSCryptoHash, CryptoHasher};
-use aptos_types::{
+use libra2_types::{
     epoch_state::EpochState,
     proof::{accumulator::InMemoryTransactionAccumulator, AccumulatorExtensionProof},
 };

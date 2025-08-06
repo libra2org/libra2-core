@@ -203,7 +203,7 @@ mod test_utils {
     use aptos_transaction_simulation::{
         Account, AccountData, InMemoryStateStore, SimulationStateStore,
     };
-    use aptos_types::{
+    use libra2_types::{
         block_executor::{
             config::BlockExecutorConfigFromOnchain, partitioner::PartitionedTransactions,
         },

@@ -1,7 +1,7 @@
 // Copyright © Aptos Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-use aptos_types::vm::module_metadata::{
+use libra2_types::vm::module_metadata::{
     KnownAttribute, RandomnessAnnotation, ResourceGroupScope, RuntimeModuleMetadataV1,
 };
 use legacy_move_compiler::shared::known_attributes;

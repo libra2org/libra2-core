@@ -16,7 +16,7 @@ use aptos_storage_service_types::{
     responses::{CompleteDataRange, DataResponse, StorageServerSummary, StorageServiceResponse},
 };
 use aptos_time_service::MockTimeService;
-use aptos_types::transaction::{TransactionListWithProofV2, Version};
+use libra2_types::transaction::{TransactionListWithProofV2, Version};
 use claims::assert_matches;
 use std::time::Duration;
 use tokio::time::timeout;

@@ -8,7 +8,7 @@ use crate::{
     zip_metadata, zip_metadata_str,
 };
 use anyhow::bail;
-use aptos_types::{
+use libra2_types::{
     account_address::AccountAddress,
     transaction::EntryABI,
     vm::module_metadata::{

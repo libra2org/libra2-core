@@ -3,7 +3,7 @@
 
 use aptos_config::config::HANDSHAKE_VERSION;
 use aptos_crypto::{bls12381, ed25519::Ed25519PublicKey, x25519};
-use aptos_types::{
+use libra2_types::{
     account_address::{AccountAddress, AccountAddressWithChecks},
     chain_id::ChainId,
     jwks::patch::IssuerJWK,

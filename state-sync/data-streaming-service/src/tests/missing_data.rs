@@ -24,7 +24,7 @@ use aptos_crypto::HashValue;
 use aptos_data_client::{global_summary::GlobalDataSummary, interface::ResponsePayload};
 use aptos_id_generator::U64IdGenerator;
 use aptos_storage_service_types::responses::CompleteDataRange;
-use aptos_types::{
+use libra2_types::{
     proof::{SparseMerkleRangeProof, TransactionInfoListWithProof},
     state_store::{
         state_key::StateKey,

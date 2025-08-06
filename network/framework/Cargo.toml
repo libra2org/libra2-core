@@ -30,7 +30,7 @@ aptos-peer-monitoring-service-types = { workspace = true }
 aptos-proptest-helpers = { workspace = true, optional = true }
 aptos-short-hex-str = { workspace = true }
 aptos-time-service = { workspace = true }
-aptos-types = { workspace = true }
+libra2-types = { workspace = true }
 arc-swap = { workspace = true }
 async-trait = { workspace = true }
 bcs = { workspace = true }
@@ -66,14 +66,14 @@ aptos-memsocket = { workspace = true }
 aptos-netcore = { workspace = true, features = ["testing"] }
 aptos-proptest-helpers = { workspace = true }
 aptos-time-service = { workspace = true, features = ["testing"] }
-aptos-types = { workspace = true, features = ["fuzzing"] }
+libra2-types = { workspace = true, features = ["fuzzing"] }
 proptest = { workspace = true }
 proptest-derive = { workspace = true }
 rand_core = { workspace = true }
 
 [features]
 default = []
-fuzzing = ["aptos-bitvec/fuzzing", "aptos-config/fuzzing", "aptos-crypto/fuzzing", "aptos-types/fuzzing", "aptos-proptest-helpers", "aptos-time-service/testing", "aptos-types/fuzzing", "aptos-memsocket/testing", "aptos-netcore/fuzzing", "proptest", "proptest-derive"]
+fuzzing = ["aptos-bitvec/fuzzing", "aptos-config/fuzzing", "aptos-crypto/fuzzing", "libra2-types/fuzzing", "aptos-proptest-helpers", "aptos-time-service/testing", "libra2-types/fuzzing", "aptos-memsocket/testing", "aptos-netcore/fuzzing", "proptest", "proptest-derive"]
 testing = ["aptos-config/testing", "aptos-time-service/testing", "aptos-memsocket/testing", "aptos-netcore/testing"]
 
 [package.metadata.cargo-machete]

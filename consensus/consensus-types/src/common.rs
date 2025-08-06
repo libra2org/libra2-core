@@ -13,7 +13,7 @@ use aptos_crypto::{
 };
 use aptos_crypto_derive::CryptoHasher;
 use aptos_logger::prelude::*;
-use aptos_types::{
+use libra2_types::{
     account_address::AccountAddress,
     transaction::{ReplayProtector, SignedTransaction},
     validator_verifier::ValidatorVerifier,

@@ -4,7 +4,7 @@
 //! Tests for enum variant counts
 
 use crate::{assert_success, tests::common::test_dir_path, MoveHarness};
-use aptos_types::{
+use libra2_types::{
     account_address::AccountAddress,
     transaction::{ExecutionStatus, TransactionStatus},
 };

@@ -20,7 +20,7 @@ aptos-enum-conversion-derive = { workspace = true }
 aptos-infallible = { workspace = true }
 aptos-logger = { workspace = true }
 aptos-time-service = { workspace = true }
-aptos-types = { workspace = true }
+libra2-types = { workspace = true }
 async-trait = { workspace = true }
 bytes = { workspace = true }
 claims = { workspace = true }

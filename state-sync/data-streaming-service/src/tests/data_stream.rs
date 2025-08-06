@@ -42,7 +42,7 @@ use aptos_id_generator::U64IdGenerator;
 use aptos_infallible::Mutex;
 use aptos_storage_service_types::responses::CompleteDataRange;
 use aptos_time_service::{TimeService, TimeServiceTrait};
-use aptos_types::{
+use libra2_types::{
     ledger_info::LedgerInfoWithSignatures,
     proof::SparseMerkleRangeProof,
     state_store::{

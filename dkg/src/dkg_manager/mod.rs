@@ -12,7 +12,7 @@ use aptos_channels::{aptos_channel, message_queues::QueueStyle};
 use aptos_crypto::Uniform;
 use aptos_infallible::duration_since_epoch;
 use aptos_logger::{debug, error, info, warn};
-use aptos_types::{
+use libra2_types::{
     dkg::{
         DKGSessionMetadata, DKGSessionState, DKGStartEvent, DKGTrait, DKGTranscript,
         DKGTranscriptMetadata, MayHaveRoundingSummary,

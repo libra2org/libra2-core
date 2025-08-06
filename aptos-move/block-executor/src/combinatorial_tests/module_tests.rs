@@ -16,7 +16,7 @@ use crate::{
     task::ExecutorTask,
     txn_provider::default::DefaultTxnProvider,
 };
-use aptos_types::state_store::MockStateView;
+use libra2_types::state_store::MockStateView;
 use fail::FailScenario;
 use move_core_types::language_storage::ModuleId;
 use proptest::{collection::vec, prelude::*, strategy::ValueTree, test_runner::TestRunner};

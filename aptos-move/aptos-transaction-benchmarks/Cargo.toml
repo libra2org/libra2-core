@@ -23,7 +23,7 @@ aptos-metrics-core = { workspace = true }
 aptos-node-resource-metrics = { workspace = true }
 aptos-push-metrics =  { workspace = true }
 aptos-transaction-simulation = { workspace = true }
-aptos-types = { workspace = true }
+libra2-types = { workspace = true }
 aptos-vm = { workspace = true }
 aptos-vm-logging = { workspace = true }
 clap = { workspace = true }

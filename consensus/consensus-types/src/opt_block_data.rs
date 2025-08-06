@@ -11,7 +11,7 @@ use anyhow::ensure;
 use aptos_crypto::HashValue;
 use aptos_crypto_derive::CryptoHasher;
 use aptos_infallible::duration_since_epoch;
-use aptos_types::{block_info::BlockInfo, validator_txn::ValidatorTransaction};
+use libra2_types::{block_info::BlockInfo, validator_txn::ValidatorTransaction};
 use serde::{Deserialize, Serialize};
 use std::{
     fmt::{Display, Formatter},

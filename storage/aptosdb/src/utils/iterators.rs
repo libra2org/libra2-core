@@ -13,7 +13,7 @@ use aptos_schemadb::{
     ReadOptions,
 };
 use aptos_storage_interface::{db_ensure as ensure, AptosDbError, Result};
-use aptos_types::{
+use libra2_types::{
     account_address::AccountAddress,
     contract_event::ContractEvent,
     ledger_info::LedgerInfoWithSignatures,

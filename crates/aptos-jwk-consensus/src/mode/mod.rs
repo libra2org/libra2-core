@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::types::JWKConsensusMsg;
-use aptos_types::jwks::{ProviderJWKs, QuorumCertifiedUpdate};
+use libra2_types::jwks::{ProviderJWKs, QuorumCertifiedUpdate};
 use std::hash::Hash;
 
 /// This trait captures the differences between per-issuer mode and per-key mode.

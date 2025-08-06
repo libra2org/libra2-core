@@ -20,7 +20,7 @@ use aptos_crypto::{
     ValidCryptoMaterial,
 };
 use aptos_genesis::config::HostAndPort;
-use aptos_types::account_address::{
+use libra2_types::account_address::{
     create_multisig_account_address, from_identity_public_key, AccountAddress,
 };
 use async_trait::async_trait;

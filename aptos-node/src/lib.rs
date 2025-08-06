@@ -27,7 +27,7 @@ use aptos_framework::ReleaseBundle;
 use aptos_genesis::builder::GenesisConfiguration;
 use aptos_logger::{prelude::*, telemetry_log_writer::TelemetryLog, Level, LoggerFilterUpdater};
 use aptos_state_sync_driver::driver_factory::StateSyncRuntimes;
-use aptos_types::{
+use libra2_types::{
     chain_id::ChainId, keyless::Groth16VerificationKey, on_chain_config::OnChainJWKConsensusConfig,
 };
 use clap::Parser;

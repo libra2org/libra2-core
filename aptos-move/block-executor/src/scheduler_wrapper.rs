@@ -6,7 +6,7 @@ use crate::{
     scheduler_v2::SchedulerV2,
 };
 use aptos_mvhashmap::types::{Incarnation, TxnIndex};
-use aptos_types::error::PanicError;
+use libra2_types::error::PanicError;
 use std::sync::atomic::{AtomicBool, Ordering};
 
 #[derive(Copy, Clone)]

@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use aptos_transaction_simulation::InMemoryStateStore;
-use aptos_types::{
+use libra2_types::{
     state_store::{
         state_key::StateKey, state_storage_usage::StateStorageUsage, state_value::StateValue,
         StateViewResult, TStateView,

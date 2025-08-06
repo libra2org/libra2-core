@@ -40,7 +40,7 @@ use aptos_consensus_types::{
 use aptos_crypto::HashValue;
 use aptos_infallible::Mutex;
 use aptos_logger::prelude::*;
-use aptos_types::{
+use libra2_types::{
     account_address::AccountAddress, epoch_change::EpochChangeProof,
     ledger_info::LedgerInfoWithSignatures,
 };

@@ -21,7 +21,7 @@ use aptos_data_streaming_service::{
 use aptos_infallible::Mutex;
 use aptos_logger::{prelude::*, sample, sample::SampleRate};
 use aptos_storage_interface::DbReader;
-use aptos_types::{
+use libra2_types::{
     ledger_info::LedgerInfoWithSignatures,
     transaction::{TransactionListWithProofV2, TransactionOutputListWithProofV2, Version},
 };

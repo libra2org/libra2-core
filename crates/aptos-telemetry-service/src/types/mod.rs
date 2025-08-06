@@ -8,7 +8,7 @@ pub mod common {
 
     use crate::types::auth::Claims;
     use aptos_config::config::PeerSet;
-    use aptos_types::{chain_id::ChainId, PeerId};
+    use libra2_types::{chain_id::ChainId, PeerId};
     use serde::{Deserialize, Serialize};
     use std::{collections::HashMap, fmt};
     use uuid::Uuid;

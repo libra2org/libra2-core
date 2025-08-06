@@ -13,7 +13,7 @@ Here is the set of currently published packages that make up the aptos-sdk:
 * move-core-types
 * aptos-crypto-derive
 * aptos-crypto
-* aptos-types
+* libra2-types
 * aptos-json-rpc-types
 * aptos-client
 * aptos-sdk

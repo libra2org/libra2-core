@@ -9,7 +9,7 @@ use aptos_storage_interface::state_store::{
     state::State, state_summary::StateSummary, state_view::hot_state_view::HotStateView,
     state_with_summary::StateWithSummary,
 };
-use aptos_types::state_store::hot_state::{
+use libra2_types::state_store::hot_state::{
     HOT_STATE_MAX_BYTES_PER_SHARD, HOT_STATE_MAX_ITEMS_PER_SHARD, HOT_STATE_MAX_SINGLE_VALUE_BYTES,
 };
 use std::sync::Arc;

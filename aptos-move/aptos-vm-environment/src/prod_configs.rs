@@ -6,7 +6,7 @@ use aptos_gas_schedule::{
     gas_feature_versions::{RELEASE_V1_15, RELEASE_V1_30, RELEASE_V1_34},
     AptosGasParameters,
 };
-use aptos_types::{
+use libra2_types::{
     on_chain_config::{
         randomness_api_v0_config::{AllowCustomMaxGasFlag, RequiredGasDeposit},
         FeatureFlag, Features, OnChainConfig, TimedFeatureFlag, TimedFeatureOverride,

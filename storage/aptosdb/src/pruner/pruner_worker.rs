@@ -6,7 +6,7 @@ use aptos_logger::{
     error,
     prelude::{sample, SampleRate},
 };
-use aptos_types::transaction::Version;
+use libra2_types::transaction::Version;
 use std::{
     sync::{
         atomic::{AtomicBool, Ordering},

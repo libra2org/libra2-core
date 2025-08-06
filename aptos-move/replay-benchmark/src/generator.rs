@@ -9,7 +9,7 @@ use crate::{
 };
 use aptos_logger::error;
 use aptos_move_debugger::aptos_debugger::AptosDebugger;
-use aptos_types::transaction::Version;
+use libra2_types::transaction::Version;
 use aptos_vm::{aptos_vm::AptosVMBlockExecutor, VMBlockExecutor};
 use std::{
     sync::{

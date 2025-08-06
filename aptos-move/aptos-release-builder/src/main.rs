@@ -12,7 +12,7 @@ use aptos_release_builder::{
     validate::{DEFAULT_RESOLUTION_TIME, FAST_RESOLUTION_TIME},
 };
 use aptos_rest_client::{AptosBaseUrl, Client};
-use aptos_types::{
+use libra2_types::{
     account_address::AccountAddress,
     chain_id::ChainId,
     jwks::{ObservedJWKs, SupportedOIDCProviders},
@@ -374,7 +374,7 @@ async fn main() -> anyhow::Result<()> {
             print_gas_schedule,
             node_api_key,
         } => {
-            use aptos_types::on_chain_config::*;
+            use libra2_types::on_chain_config::*;
 
             let mut client = Client::builder(AptosBaseUrl::Custom(endpoint));
             if let Some(api_key) = node_api_key {

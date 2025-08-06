@@ -4,8 +4,8 @@
 
 use crate::state_store::state_view::hot_state_view::HotStateView;
 use aptos_crypto::HashValue;
-pub use aptos_types::indexer::indexer_db_reader::Order;
-use aptos_types::{
+pub use libra2_types::indexer::indexer_db_reader::Order;
+use libra2_types::{
     account_address::AccountAddress,
     account_config::NewBlockEvent,
     contract_event::{ContractEvent, EventWithVersion},
@@ -48,8 +48,8 @@ use crate::{
     chunk_to_commit::ChunkToCommit,
     state_store::{state::State, state_summary::StateSummary},
 };
-pub use aptos_types::block_info::BlockHeight;
-use aptos_types::state_store::state_key::prefix::StateKeyPrefix;
+pub use libra2_types::block_info::BlockHeight;
+use libra2_types::state_store::state_key::prefix::StateKeyPrefix;
 pub use errors::AptosDbError;
 pub use ledger_summary::LedgerSummary;
 

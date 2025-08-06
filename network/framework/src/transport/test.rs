@@ -15,7 +15,7 @@ use aptos_netcore::{
     transport::{memory, ConnectionOrigin, Transport},
 };
 use aptos_time_service::MockTimeService;
-use aptos_types::{
+use libra2_types::{
     account_address::AccountAddress,
     chain_id::ChainId,
     network_address::{NetworkAddress, Protocol::*},

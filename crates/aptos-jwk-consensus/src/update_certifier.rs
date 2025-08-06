@@ -9,7 +9,7 @@ use anyhow::Context;
 use aptos_channels::aptos_channel;
 use aptos_logger::error;
 use aptos_reliable_broadcast::ReliableBroadcast;
-use aptos_types::{
+use libra2_types::{
     epoch_state::EpochState,
     jwks::{ProviderJWKs, QuorumCertifiedUpdate},
 };

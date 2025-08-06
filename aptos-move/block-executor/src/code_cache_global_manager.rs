@@ -9,7 +9,7 @@ use crate::{
     },
 };
 use aptos_gas_schedule::gas_feature_versions::RELEASE_V1_34;
-use aptos_types::{
+use libra2_types::{
     block_executor::{
         config::BlockExecutorModuleCacheLocalConfig,
         transaction_slice_metadata::TransactionSliceMetadata,
@@ -275,7 +275,7 @@ impl AptosModuleCacheManagerGuard<'_> {
     /// environment. Use for testing only.
     #[cfg(test)]
     pub(crate) fn none() -> Self {
-        use aptos_types::state_store::MockStateView;
+        use libra2_types::state_store::MockStateView;
         Self::none_for_state_view(&MockStateView::empty())
     }
 
@@ -331,7 +331,7 @@ fn prefetch_aptos_framework(
 mod test {
     use super::*;
     use aptos_transaction_simulation::InMemoryStateStore;
-    use aptos_types::{
+    use libra2_types::{
         on_chain_config::{FeatureFlag, Features, OnChainConfig},
         state_store::{state_key::StateKey, state_value::StateValue, MockStateView},
     };

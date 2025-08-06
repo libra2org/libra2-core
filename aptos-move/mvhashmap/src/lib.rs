@@ -6,7 +6,7 @@ use crate::{
     types::TxnIndex, versioned_data::VersionedData,
     versioned_delayed_fields::VersionedDelayedFields, versioned_group_data::VersionedGroupData,
 };
-use aptos_types::{
+use libra2_types::{
     executable::ModulePath, vm::modules::AptosModuleExtension, write_set::TransactionWrite,
 };
 use move_binary_format::{file_format::CompiledScript, CompiledModule};

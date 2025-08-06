@@ -11,7 +11,7 @@ use aptos_crypto::{
     hash::{CryptoHash, SPARSE_MERKLE_PLACEHOLDER_HASH},
     HashValue,
 };
-use aptos_types::state_store::state_value::StateValue;
+use libra2_types::state_store::state_value::StateValue;
 use proptest::{
     collection::{hash_set, vec},
     prelude::*,

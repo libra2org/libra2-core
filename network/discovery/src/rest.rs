@@ -5,7 +5,7 @@ use crate::{validator_set::extract_validator_set_updates, DiscoveryError};
 use aptos_config::{config::PeerSet, network_id::NetworkContext};
 use aptos_logger::info;
 use aptos_time_service::{Interval, TimeService, TimeServiceTrait};
-use aptos_types::{account_address::AccountAddress, on_chain_config::ValidatorSet};
+use libra2_types::{account_address::AccountAddress, on_chain_config::ValidatorSet};
 use futures::{executor::block_on, Stream};
 use std::{
     pin::Pin,

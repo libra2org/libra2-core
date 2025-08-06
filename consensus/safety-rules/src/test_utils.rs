@@ -19,7 +19,7 @@ use aptos_consensus_types::{
 };
 use aptos_crypto::hash::{CryptoHash, TransactionAccumulatorHasher};
 use aptos_secure_storage::{InMemoryStorage, Storage};
-use aptos_types::{
+use libra2_types::{
     aggregate_signature::{AggregateSignature, PartialSignatures},
     block_info::BlockInfo,
     epoch_change::EpochChangeProof,

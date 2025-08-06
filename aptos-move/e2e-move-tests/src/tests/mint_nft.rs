@@ -7,7 +7,7 @@ use aptos_crypto::{
     SigningKey, ValidCryptoMaterialStringExt,
 };
 use aptos_framework::BuiltPackage;
-use aptos_types::{
+use libra2_types::{
     account_address::{create_resource_address, AccountAddress},
     event::EventHandle,
     state_store::{state_key::StateKey, table::TableHandle},

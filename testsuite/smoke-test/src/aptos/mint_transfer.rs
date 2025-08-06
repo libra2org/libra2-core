@@ -5,7 +5,7 @@ use crate::smoke_test_environment::SwarmBuilder;
 use aptos_cached_packages::aptos_stdlib;
 use aptos_forge::Swarm;
 use aptos_move_debugger::aptos_debugger::AptosDebugger;
-use aptos_types::transaction::{ExecutionStatus, TransactionStatus};
+use libra2_types::transaction::{ExecutionStatus, TransactionStatus};
 use std::sync::Arc;
 
 #[tokio::test(flavor = "multi_thread", worker_threads = 1)]

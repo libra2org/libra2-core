@@ -13,7 +13,7 @@ use crate::{
 use aptos_config::config::{MempoolConfig, NodeConfig};
 use aptos_consensus_types::common::{TransactionInProgress, TransactionSummary};
 use aptos_crypto::HashValue;
-use aptos_types::{
+use libra2_types::{
     account_address::AccountAddress,
     mempool_status::MempoolStatusCode,
     transaction::{ReplayProtector, SignedTransaction},

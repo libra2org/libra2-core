@@ -18,7 +18,7 @@ use aptos_api_types::{
     U64,
 };
 use aptos_bcs_utils::serialize_uleb128;
-use aptos_types::{state_store::StateView, transaction::ViewFunctionError, vm_status::StatusCode};
+use libra2_types::{state_store::StateView, transaction::ViewFunctionError, vm_status::StatusCode};
 use aptos_vm::AptosVM;
 use itertools::Itertools;
 use move_core_types::language_storage::TypeTag;

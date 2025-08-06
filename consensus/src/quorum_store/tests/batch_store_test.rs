@@ -9,7 +9,7 @@ use crate::quorum_store::{
 use aptos_consensus_types::proof_of_store::BatchInfo;
 use aptos_crypto::HashValue;
 use aptos_temppath::TempPath;
-use aptos_types::{
+use libra2_types::{
     account_address::AccountAddress, quorum_store::BatchId, transaction::SignedTransaction,
     validator_verifier::random_validator_verifier,
 };

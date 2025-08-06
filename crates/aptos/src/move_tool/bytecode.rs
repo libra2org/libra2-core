@@ -12,7 +12,7 @@ use crate::{
     update::get_revela_path,
 };
 use anyhow::Context;
-use aptos_types::vm::module_metadata::prelude::*;
+use libra2_types::vm::module_metadata::prelude::*;
 use async_trait::async_trait;
 use clap::{Args, Parser};
 use itertools::Itertools;

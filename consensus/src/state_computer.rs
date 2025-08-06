@@ -15,7 +15,7 @@ use aptos_consensus_types::common::Round;
 use aptos_executor_types::BlockExecutorTrait;
 use aptos_infallible::RwLock;
 use aptos_logger::prelude::*;
-use aptos_types::{
+use libra2_types::{
     account_address::AccountAddress, block_executor::config::BlockExecutorConfigFromOnchain,
     epoch_state::EpochState, ledger_info::LedgerInfoWithSignatures,
     validator_signer::ValidatorSigner,

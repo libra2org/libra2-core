@@ -4,7 +4,7 @@
 
 use crate::{db::test_helper::put_persisted_auxiliary_info, AptosDB};
 use aptos_temppath::TempPath;
-use aptos_types::transaction::PersistedAuxiliaryInfo;
+use libra2_types::transaction::PersistedAuxiliaryInfo;
 use proptest::{collection::vec, prelude::*};
 
 fn get_persisted_auxiliary_info(

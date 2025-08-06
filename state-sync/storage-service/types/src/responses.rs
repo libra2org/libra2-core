@@ -23,7 +23,7 @@ use aptos_config::config::{
     AptosDataClientConfig, StorageServiceConfig, MAX_APPLICATION_MESSAGE_SIZE,
 };
 use aptos_time_service::{TimeService, TimeServiceTrait};
-use aptos_types::{
+use libra2_types::{
     epoch_change::EpochChangeProof,
     ledger_info::LedgerInfoWithSignatures,
     state_store::state_value::StateValueChunkWithProof,

@@ -1,5 +1,5 @@
 [package]
-name = "aptos-types"
+name = "libra2-types"
 description = "Aptos core types"
 version = "0.0.3"
 

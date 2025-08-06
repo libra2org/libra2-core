@@ -4,7 +4,7 @@
 use crate::smoke_test_environment::new_local_swarm_with_aptos;
 use aptos_cached_packages::aptos_stdlib;
 use aptos_forge::Swarm;
-use aptos_types::CoinType;
+use libra2_types::CoinType;
 
 #[tokio::test(flavor = "multi_thread", worker_threads = 1)]
 async fn test_account_auto_creation() {
@@ -18,7 +18,7 @@ async fn test_account_auto_creation() {
     let account2 = info.random_account();
 
     let migrate_txn = account1.sign_with_transaction_builder(info.transaction_factory().payload(
-        aptos_stdlib::coin_migrate_to_fungible_store(aptos_types::AptosCoinType::type_tag()),
+        aptos_stdlib::coin_migrate_to_fungible_store(libra2_types::AptosCoinType::type_tag()),
     ));
     info.client().submit_and_wait(&migrate_txn).await.unwrap();
 

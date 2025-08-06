@@ -25,7 +25,7 @@ use aptos_crypto::{bls12381::PrivateKey, HashValue};
 use aptos_executor_types::ExecutorResult;
 use aptos_infallible::Mutex;
 use aptos_logger::prelude::*;
-use aptos_types::{
+use libra2_types::{
     epoch_state::EpochState,
     ledger_info::LedgerInfoWithSignatures,
     on_chain_config::{OnChainConsensusConfig, OnChainExecutionConfig, OnChainRandomnessConfig},

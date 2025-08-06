@@ -12,7 +12,7 @@ use aptos_forge::{
 };
 use aptos_logger::info;
 use aptos_rest_client::Client;
-use aptos_types::on_chain_config::{ConsensusConfigV1, OnChainConsensusConfig};
+use libra2_types::on_chain_config::{ConsensusConfigV1, OnChainConsensusConfig};
 use std::{fs, sync::Arc, time::Duration};
 
 const MAX_WAIT_SECS: u64 = 60;

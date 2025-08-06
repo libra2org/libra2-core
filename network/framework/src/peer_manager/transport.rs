@@ -14,7 +14,7 @@ use aptos_logger::prelude::*;
 use aptos_netcore::transport::{ConnectionOrigin, Transport};
 use aptos_short_hex_str::AsShortHexStr;
 use aptos_time_service::{TimeService, TimeServiceTrait};
-use aptos_types::{network_address::NetworkAddress, PeerId};
+use libra2_types::{network_address::NetworkAddress, PeerId};
 use futures::{
     channel::oneshot,
     future::{BoxFuture, FutureExt},

@@ -8,7 +8,7 @@ use aptos_language_e2e_tests::common_transactions::peer_to_peer_txn;
 use aptos_transaction_simulation::{
     Account, AccountData, InMemoryStateStore, SimulationStateStore,
 };
-use aptos_types::{
+use libra2_types::{
     account_address::AccountAddress,
     block_executor::{
         config::BlockExecutorConfigFromOnchain, partitioner::PartitionedTransactions,

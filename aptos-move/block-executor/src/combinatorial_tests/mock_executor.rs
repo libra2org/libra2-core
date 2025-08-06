@@ -19,7 +19,7 @@ use aptos_aggregator::{
     resolver::TAggregatorV1View,
 };
 use aptos_mvhashmap::types::TxnIndex;
-use aptos_types::{
+use libra2_types::{
     contract_event::TransactionEvent,
     error::PanicError,
     executable::ModulePath,

@@ -18,7 +18,7 @@ use aptos_config::config::BatchTransactionFilterConfig;
 use aptos_consensus_types::payload::TDataInfo;
 use aptos_logger::prelude::*;
 use aptos_short_hex_str::AsShortHexStr;
-use aptos_types::PeerId;
+use libra2_types::PeerId;
 use std::sync::Arc;
 use tokio::sync::{
     mpsc::{Receiver, Sender},
