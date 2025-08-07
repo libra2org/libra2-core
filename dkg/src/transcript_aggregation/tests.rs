@@ -4,7 +4,7 @@
 use crate::transcript_aggregation::TranscriptAggregationState;
 use libra2_crypto::{bls12381::bls12381_keys, Uniform};
 use libra2_infallible::duration_since_epoch;
-use aptos_reliable_broadcast::BroadcastStatus;
+use libra2_reliable_broadcast::BroadcastStatus;
 use libra2_types::{
     dkg::{real_dkg::RealDKG, DKGSessionMetadata, DKGTrait, DKGTranscript, DKGTranscriptMetadata},
     epoch_state::EpochState,

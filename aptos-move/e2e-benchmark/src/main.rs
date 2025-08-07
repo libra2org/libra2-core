@@ -5,11 +5,11 @@ use aptos_language_e2e_tests::{
     account::Account,
     executor::{ExecFuncTimerDynamicArgs, FakeExecutor, GasMeterType, Measurement},
 };
-use aptos_transaction_generator_lib::{
+use libra2_transaction_generator_lib::{
     entry_point_trait::{AutomaticArgs, EntryPointTrait, MultiSigConfig},
     publishing::publish_util::{Package, PackageHandler},
 };
-use aptos_transaction_workloads_lib::{EntryPoints, LoopType, MapType, OrderBookState};
+use libra2_transaction_workloads_lib::{EntryPoints, LoopType, MapType, OrderBookState};
 use libra2_types::{
     account_address::AccountAddress, chain_id::ChainId, transaction::TransactionPayload,
 };

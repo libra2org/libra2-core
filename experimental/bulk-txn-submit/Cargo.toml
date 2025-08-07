@@ -17,8 +17,8 @@ anyhow = { workspace = true }
 libra2-config = { workspace = true }
 libra2-logger = { workspace = true }
 libra2-sdk = { workspace = true }
-aptos-transaction-emitter-lib = { workspace = true }
-aptos-transaction-generator-lib = { workspace = true }
+libra2-transaction-emitter-lib = { workspace = true }
+libra2-transaction-generator-lib = { workspace = true }
 bcs = { workspace = true }
 chrono = { workspace = true }
 clap = { workspace = true }

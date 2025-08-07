@@ -31,7 +31,7 @@ use libra2_sdk::types::LocalAccount;
 use aptos_storage_interface::{
     state_store::state_view::db_state_view::LatestDbStateCheckpointView, DbReader, DbReaderWriter,
 };
-use aptos_transaction_generator_lib::{
+use libra2_transaction_generator_lib::{
     create_txn_generator_creator, AlwaysApproveRootAccountHandle, TransactionGeneratorCreator,
     TransactionType::{self, CoinTransfer},
 };
@@ -103,7 +103,7 @@ pub enum BenchmarkWorkload {
 
 enum InitializedBenchmarkWorkload {
     TransactionMix {
-        transaction_generators: Vec<Box<dyn aptos_transaction_generator_lib::TransactionGenerator>>,
+        transaction_generators: Vec<Box<dyn libra2_transaction_generator_lib::TransactionGenerator>>,
         phase: Arc<AtomicUsize>,
         workload_name: String,
     },
@@ -141,7 +141,7 @@ where
         enable_storage_sharding,
     );
     let (mut config, genesis_key) =
-        aptos_genesis::test_utils::test_config_with_custom_features(init_features);
+        libra2_genesis::test_utils::test_config_with_custom_features(init_features);
     config.storage.dir = checkpoint_dir.as_ref().to_path_buf();
     config.storage.storage_pruner_config = pruner_config;
     config.storage.rocksdb_configs.enable_storage_sharding = enable_storage_sharding;
@@ -424,7 +424,7 @@ fn add_accounts_impl<V>(
     V: VMBlockExecutor + 'static,
 {
     let (mut config, genesis_key) =
-        aptos_genesis::test_utils::test_config_with_custom_features(init_features);
+        libra2_genesis::test_utils::test_config_with_custom_features(init_features);
     config.storage.dir = output_dir.as_ref().to_path_buf();
     config.storage.storage_pruner_config = pruner_config;
     config.storage.rocksdb_configs.enable_storage_sharding = enable_storage_sharding;
@@ -651,8 +651,8 @@ mod tests {
     use aptos_executor_types::BlockExecutorTrait;
     use libra2_sdk::{transaction_builder::aptos_stdlib, types::LocalAccount};
     use libra2_temppath::TempPath;
-    use aptos_transaction_generator_lib::WorkflowProgress;
-    use aptos_transaction_workloads_lib::args::TransactionTypeArg;
+    use libra2_transaction_generator_lib::WorkflowProgress;
+    use libra2_transaction_workloads_lib::args::TransactionTypeArg;
     use libra2_types::{
         access_path::Path,
         account_address::AccountAddress,
@@ -742,7 +742,7 @@ mod tests {
         bootstrap_with_genesis(&db_dir, false, features.clone());
 
         let (mut config, genesis_key) =
-            aptos_genesis::test_utils::test_config_with_custom_features(features);
+            libra2_genesis::test_utils::test_config_with_custom_features(features);
         config.storage.dir = db_dir.as_ref().to_path_buf();
         config.storage.storage_pruner_config = NO_OP_STORAGE_PRUNER_CONFIG;
         config.storage.rocksdb_configs.enable_storage_sharding = false;

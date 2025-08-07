@@ -62,7 +62,7 @@ use libra2_logger::prelude::*;
 #[cfg(test)]
 use libra2_safety_rules::ConsensusState;
 use libra2_safety_rules::TSafetyRules;
-use aptos_short_hex_str::AsShortHexStr;
+use libra2_short_hex_str::AsShortHexStr;
 use libra2_types::{
     block_info::BlockInfo,
     epoch_state::EpochState,

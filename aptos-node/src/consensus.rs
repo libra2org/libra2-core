@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{network::ApplicationNetworkInterfaces, services};
-use aptos_admin_service::AdminService;
+use libra2_admin_service::AdminService;
 use libra2_channels::libra2_channel::Receiver;
 use libra2_config::config::NodeConfig;
 use libra2_consensus::{
@@ -22,7 +22,7 @@ use libra2_consensus::{
     network_interface::ConsensusMsg,
 };
 use libra2_consensus_notifications::ConsensusNotifier;
-use aptos_dkg_runtime::{start_dkg_runtime, DKGMessage};
+use libra2_dkg_runtime::{start_dkg_runtime, DKGMessage};
 use libra2_event_notifications::{
     DbBackedOnChainConfig, EventNotificationListener, ReconfigNotificationListener,
 };
@@ -30,7 +30,7 @@ use libra2_jwk_consensus::{start_jwk_consensus_runtime, types::JWKConsensusMsg};
 use libra2_mempool::QuorumStoreRequest;
 use libra2_network::application::interface::{NetworkClient, NetworkServiceEvents};
 use aptos_storage_interface::DbReaderWriter;
-use aptos_validator_transaction_pool::VTxnPoolState;
+use libra2_validator_transaction_pool::VTxnPoolState;
 use futures::channel::mpsc::Sender;
 use std::sync::Arc;
 use tokio::runtime::Runtime;

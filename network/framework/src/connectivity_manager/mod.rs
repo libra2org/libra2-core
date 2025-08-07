@@ -43,8 +43,8 @@ use libra2_crypto::x25519;
 use libra2_infallible::RwLock;
 use libra2_logger::prelude::*;
 use libra2_netcore::transport::ConnectionOrigin;
-use aptos_num_variants::NumVariants;
-use aptos_short_hex_str::AsShortHexStr;
+use libra2_num_variants::NumVariants;
+use libra2_short_hex_str::AsShortHexStr;
 use libra2_time_service::{TimeService, TimeServiceTrait};
 use libra2_types::{account_address::AccountAddress, network_address::NetworkAddress, PeerId};
 use futures::{

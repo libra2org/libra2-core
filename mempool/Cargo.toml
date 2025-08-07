@@ -28,7 +28,7 @@ libra2-netcore = { workspace = true }
 libra2-network = { workspace = true }
 libra2-peer-monitoring-service-types = { workspace = true }
 libra2-runtimes = { workspace = true }
-aptos-short-hex-str = { workspace = true }
+libra2-short-hex-str = { workspace = true }
 aptos-storage-interface = { workspace = true }
 libra2-time-service = { workspace = true }
 libra2-transaction-filters = { workspace = true }
@@ -50,7 +50,7 @@ tokio = { workspace = true }
 tokio-stream = { workspace = true }
 
 [dev-dependencies]
-aptos-compression = { workspace = true }
+libra2-compression = { workspace = true }
 libra2-config = { workspace = true }
 libra2-id-generator = { workspace = true }
 libra2-network = { workspace = true, features = ["fuzzing"] }

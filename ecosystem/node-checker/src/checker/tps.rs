@@ -8,10 +8,10 @@ use crate::{
 };
 use anyhow::{Context, Result};
 use libra2_sdk::types::chain_id::ChainId;
-use aptos_transaction_emitter_lib::{
+use libra2_transaction_emitter_lib::{
     emit_transactions_with_cluster, Cluster, ClusterArgs, CoinSourceArgs, EmitArgs,
 };
-use aptos_transaction_workloads_lib::args::EmitWorkloadArgs;
+use libra2_transaction_workloads_lib::args::EmitWorkloadArgs;
 use serde::{Deserialize, Serialize};
 use thiserror::Error as ThisError;
 

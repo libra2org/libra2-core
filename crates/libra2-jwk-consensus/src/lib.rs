@@ -17,7 +17,7 @@ use libra2_types::{
     account_address::AccountAddress,
     jwks::{ObservedJWKs, ObservedJWKsUpdated, SupportedOIDCProviders},
 };
-use aptos_validator_transaction_pool::VTxnPoolState;
+use libra2_validator_transaction_pool::VTxnPoolState;
 use futures_channel::oneshot;
 use tokio::runtime::Runtime;
 

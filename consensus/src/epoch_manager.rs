@@ -70,7 +70,7 @@ use libra2_consensus_types::{
     utils::PayloadTxnsSize,
 };
 use libra2_crypto::bls12381::PrivateKey;
-use aptos_dkg::{
+use libra2_dkg::{
     pvss::{traits::Transcript, Player},
     weighted_vuf::traits::WeightedVUF,
 };
@@ -98,7 +98,7 @@ use libra2_types::{
     validator_signer::ValidatorSigner,
     validator_verifier::ValidatorVerifier,
 };
-use aptos_validator_transaction_pool::VTxnPoolState;
+use libra2_validator_transaction_pool::VTxnPoolState;
 use fail::fail_point;
 use futures::{
     channel::{mpsc, mpsc::Sender, oneshot},

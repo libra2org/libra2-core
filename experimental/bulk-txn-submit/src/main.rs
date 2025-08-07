@@ -14,7 +14,7 @@ use aptos_experimental_bulk_txn_submit::{
 };
 use libra2_logger::{Level, Logger};
 use libra2_sdk::move_types::account_address::AccountAddress;
-use aptos_transaction_emitter_lib::Cluster;
+use libra2_transaction_emitter_lib::Cluster;
 use clap::{Parser, Subcommand};
 use rand::{seq::SliceRandom, thread_rng};
 use std::collections::HashSet;

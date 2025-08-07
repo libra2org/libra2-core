@@ -13,7 +13,7 @@ use anyhow::{anyhow, bail, ensure, Context};
 #[cfg(any(test, feature = "testing"))]
 use libra2_crypto::Uniform;
 use libra2_crypto::{bls12381, bls12381::PrivateKey};
-use aptos_dkg::{
+use libra2_dkg::{
     pvss,
     pvss::{
         traits::{Convert, Reconstructable, Transcript},

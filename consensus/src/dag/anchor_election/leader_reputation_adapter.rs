@@ -14,7 +14,7 @@ use crate::{
     },
 };
 use libra2_bitvec::BitVec;
-use aptos_collections::BoundedVecDeque;
+use libra2_collections::BoundedVecDeque;
 use libra2_consensus_types::common::{Author, Round};
 use libra2_crypto::HashValue;
 use libra2_infallible::Mutex;

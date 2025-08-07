@@ -40,7 +40,7 @@ use libra2_network::{
     protocols::{network::Event, rpc::error::RpcError},
     ProtocolId,
 };
-use aptos_reliable_broadcast::{RBMessage, RBNetworkSender};
+use libra2_reliable_broadcast::{RBMessage, RBNetworkSender};
 use libra2_types::{
     account_address::AccountAddress, epoch_change::EpochChangeProof,
     ledger_info::LedgerInfoWithSignatures, validator_verifier::ValidatorVerifier,

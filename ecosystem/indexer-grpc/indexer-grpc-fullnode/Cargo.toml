@@ -56,7 +56,7 @@ aptos-db = { workspace = true }
 aptos-executor = { workspace = true }
 aptos-executor-types = { workspace = true }
 aptos-framework = { workspace = true }
-aptos-genesis = { workspace = true }
+libra2-genesis = { workspace = true }
 libra2-global-constants = { workspace = true }
 libra2-mempool = { workspace = true }
 libra2-mempool-notifications = { workspace = true }

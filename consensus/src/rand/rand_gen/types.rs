@@ -5,7 +5,7 @@ use anyhow::{anyhow, bail, ensure};
 use libra2_consensus_types::common::{Author, Round};
 use libra2_crypto::bls12381::Signature;
 use libra2_crypto_derive::{BCSCryptoHash, CryptoHasher};
-use aptos_dkg::{
+use libra2_dkg::{
     pvss::{Player, WeightedConfig},
     weighted_vuf::traits::WeightedVUF,
 };

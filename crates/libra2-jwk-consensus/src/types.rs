@@ -3,12 +3,12 @@
 
 use libra2_crypto::bls12381::Signature;
 use libra2_enum_conversion_derive::EnumConversion;
-use aptos_reliable_broadcast::RBMessage;
+use libra2_reliable_broadcast::RBMessage;
 use libra2_types::{
     account_address::AccountAddress,
     jwks::{Issuer, KeyLevelUpdate, ProviderJWKs, QuorumCertifiedUpdate, KID},
 };
-use aptos_validator_transaction_pool::TxnGuard;
+use libra2_validator_transaction_pool::TxnGuard;
 use futures_util::future::AbortHandle;
 use serde::{Deserialize, Serialize};
 use std::fmt::Debug;

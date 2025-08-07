@@ -21,7 +21,7 @@ use libra2_consensus_types::{
     },
 };
 use libra2_logger::prelude::*;
-use aptos_short_hex_str::AsShortHexStr;
+use libra2_short_hex_str::AsShortHexStr;
 use libra2_types::{
     ledger_info::SignatureAggregator, validator_verifier::ValidatorVerifier, PeerId,
 };

@@ -23,12 +23,12 @@ libra2-cli-common = { workspace = true }
 # libra2-cli-common = { workspace = true }
 libra2-config = { workspace = true }
 libra2-crypto = { workspace = true }
-aptos-faucet-core = { workspace = true }
+libra2-faucet-core = { workspace = true }
 aptos-framework = { workspace = true }
 aptos-gas-profiling = { workspace = true }
 aptos-gas-schedule = { workspace = true }
-aptos-genesis = { workspace = true }
-aptos-github-client = { workspace = true }
+libra2-genesis = { workspace = true }
+libra2-github-client = { workspace = true }
 libra2-global-constants = { workspace = true }
 aptos-indexer-grpc-server-framework = { workspace = true }
 aptos-indexer-processor-sdk = { workspace = true }
@@ -43,7 +43,7 @@ aptos-node = { workspace = true }
 libra2-rest-client = { workspace = true }
 libra2-sdk = { workspace = true }
 aptos-storage-interface = { workspace = true }
-aptos-telemetry = { workspace = true }
+libra2-telemetry = { workspace = true }
 libra2-temppath = { workspace = true }
 libra2-types = { workspace = true }
 aptos-vm = { workspace = true, features = ["testing"] }

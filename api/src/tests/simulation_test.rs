@@ -248,7 +248,7 @@ async fn test_bcs_simulate_fee_payer_transaction_without_gas_fee_check_with_aa_d
         false,
     );
     context
-        .disable_feature(aptos_types::on_chain_config::FeatureFlag::ACCOUNT_ABSTRACTION as u64)
+        .disable_feature(libra2_types::on_chain_config::FeatureFlag::ACCOUNT_ABSTRACTION as u64)
         .await;
     bcs_simulate_fee_payer_transaction_without_gas_fee_check(&mut context).await;
 }
@@ -264,7 +264,7 @@ async fn test_bcs_simulate_fee_payer_transaction_without_gas_fee_check(
         false,
     );
     context
-        .disable_feature(aptos_types::on_chain_config::FeatureFlag::ACCOUNT_ABSTRACTION as u64)
+        .disable_feature(libra2_types::on_chain_config::FeatureFlag::ACCOUNT_ABSTRACTION as u64)
         .await;
     bcs_simulate_fee_payer_transaction_without_gas_fee_check(&mut context).await;
 }
@@ -552,7 +552,7 @@ async fn test_bcs_simulate_automated_account_creation(
     if !context.use_orderless_transactions
         && !context
             .is_feature_enabled(
-                aptos_types::on_chain_config::FeatureFlag::ORDERLESS_TRANSACTIONS as u64,
+                libra2_types::on_chain_config::FeatureFlag::ORDERLESS_TRANSACTIONS as u64,
             )
             .await
     {

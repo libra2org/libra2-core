@@ -5,7 +5,7 @@
 use crate::{block_info::Round, on_chain_config::OnChainConfig};
 use libra2_crypto::HashValue;
 use libra2_crypto_derive::SilentDebug;
-use aptos_dkg::{weighted_vuf, weighted_vuf::traits::WeightedVUF};
+use libra2_dkg::{weighted_vuf, weighted_vuf::traits::WeightedVUF};
 use once_cell::sync::OnceCell;
 use serde::{Deserialize, Serialize};
 

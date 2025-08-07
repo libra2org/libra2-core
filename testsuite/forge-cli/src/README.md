@@ -23,7 +23,7 @@ run the above command you should see:
 
 ```
 ...
-2022-09-01T15:41:27.228289Z [main] INFO crates/aptos-genesis/src/builder.rs:462 Building genesis with 4 validators. Directory of output: "/private/var/folders/dx/c0l2rrkn0656gfx6v5_dy_p80000gn/T/.tmpq9uPMJ"
+2022-09-01T15:41:27.228289Z [main] INFO crates/libra2-genesis/src/builder.rs:462 Building genesis with 4 validators. Directory of output: "/private/var/folders/dx/c0l2rrkn0656gfx6v5_dy_p80000gn/T/.tmpq9uPMJ"
 ...
 2022-09-01T15:41:28.090606Z [main] INFO testsuite/forge/src/backend/local/swarm.rs:207 The root (or mint) key for the swarm is: 0xf9f...
 ...
@@ -46,7 +46,7 @@ cargo run -p aptos-node -- -f <Location to the node 0 configuration file display
 In order to mint coins in this test network you need to run a faucet. You can do that with this command:
 
 ```bash
-cargo run -p aptos-faucet-service -- run-simple --key <key> --node-url <node_url>
+cargo run -p libra2-faucet-service -- run-simple --key <key> --node-url <node_url>
 ```
 
 You can get the values above like this:
@@ -61,11 +61,11 @@ curl -X POST http://127.0.0.1:8081/mint?amount=<amount to mint>&pub_key=<public 
 
 As an alternative to using the faucet service, you may use the faucet CLI directly:
 ```
-cargo run -p aptos-faucet-cli -- --amount 10 --accounts <account_address> --key <private_key>
+cargo run -p libra2-faucet-cli -- --amount 10 --accounts <account_address> --key <private_key>
 ```
 
 :::tip Faucet and Aptos CLI
-See more on how the faucet works in the [README](https://github.com/aptos-labs/aptos-core/tree/main/crates/aptos-faucet).
+See more on how the faucet works in the [README](https://github.com/aptos-labs/aptos-core/tree/main/crates/libra2-faucet).
 
 Also see how to use the [Aptos CLI](../cli-tools/aptos-cli/use-cli/use-aptos-cli.md#account-examples) with an existing faucet.
 :::

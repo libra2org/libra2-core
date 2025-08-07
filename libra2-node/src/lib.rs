@@ -19,12 +19,12 @@ mod tests;
 
 use crate::utils::ensure_max_open_files_limit;
 use anyhow::{anyhow, Context};
-use aptos_admin_service::AdminService;
+use libra2_admin_service::AdminService;
 use aptos_api::bootstrap as bootstrap_api;
 use libra2_build_info::build_information;
 use libra2_config::config::{merge_node_config, NodeConfig, PersistableConfig};
 use aptos_framework::ReleaseBundle;
-use aptos_genesis::builder::GenesisConfiguration;
+use libra2_genesis::builder::GenesisConfiguration;
 use libra2_logger::{prelude::*, telemetry_log_writer::TelemetryLog, Level, LoggerFilterUpdater};
 use libra2_state_sync_driver::driver_factory::StateSyncRuntimes;
 use libra2_types::{
@@ -577,7 +577,7 @@ where
     let aptos_root_key_path = test_dir.join("mint.key");
 
     // Build genesis and the validator node
-    let builder = aptos_genesis::builder::Builder::new(test_dir, framework.clone())?
+    let builder = libra2_genesis::builder::Builder::new(test_dir, framework.clone())?
         .with_init_config(Some(Arc::new(move |_, config, _| {
             *config = node_config.clone();
         })))

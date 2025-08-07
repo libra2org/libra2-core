@@ -14,7 +14,7 @@ use libra2_consensus_types::{
 };
 use libra2_logger::{info, sample, sample::SampleRate, warn};
 use libra2_metrics_core::TimerHelper;
-use aptos_short_hex_str::AsShortHexStr;
+use libra2_short_hex_str::AsShortHexStr;
 use libra2_types::{transaction::SignedTransaction, PeerId};
 use rand::{prelude::SliceRandom, thread_rng};
 use std::{

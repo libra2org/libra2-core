@@ -16,7 +16,7 @@ use libra2_config::{
     network_id::NetworkId,
 };
 use libra2_sdk::types::PeerId;
-use aptos_short_hex_str::AsShortHexStr;
+use libra2_short_hex_str::AsShortHexStr;
 use k8s_openapi::{
     api::{
         apps::v1::{StatefulSet, StatefulSetSpec},

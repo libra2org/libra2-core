@@ -17,7 +17,7 @@ use anyhow::ensure;
 use libra2_config::config::BatchTransactionFilterConfig;
 use libra2_consensus_types::payload::TDataInfo;
 use libra2_logger::prelude::*;
-use aptos_short_hex_str::AsShortHexStr;
+use libra2_short_hex_str::AsShortHexStr;
 use libra2_types::PeerId;
 use std::sync::Arc;
 use tokio::sync::{

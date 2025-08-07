@@ -19,7 +19,7 @@ use libra2_sdk::{
     transaction_builder::{aptos_stdlib, TransactionFactory},
     types::LocalAccount,
 };
-use aptos_transaction_emitter_lib::{
+use libra2_transaction_emitter_lib::{
     emitter::{
         account_minter::{bulk_create_accounts, prompt_yes, BulkAccountCreationConfig},
         get_account_seq_num, get_needed_balance_per_account,
@@ -30,7 +30,7 @@ use aptos_transaction_emitter_lib::{
     },
     Cluster, ClusterArgs,
 };
-use aptos_transaction_generator_lib::ReliableTransactionSubmitter;
+use libra2_transaction_generator_lib::ReliableTransactionSubmitter;
 use clap::Parser;
 use futures::{future::join_all, StreamExt};
 use rand::{rngs::StdRng, seq::SliceRandom, Rng, SeedableRng};

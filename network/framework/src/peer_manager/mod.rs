@@ -26,7 +26,7 @@ use libra2_channels::{self, libra2_channel, message_queues::QueueStyle};
 use libra2_config::network_id::{NetworkContext, PeerNetworkId};
 use libra2_logger::prelude::*;
 use libra2_netcore::transport::{ConnectionOrigin, Transport};
-use aptos_short_hex_str::AsShortHexStr;
+use libra2_short_hex_str::AsShortHexStr;
 use libra2_time_service::{TimeService, TimeServiceTrait};
 use libra2_types::{network_address::NetworkAddress, PeerId};
 use futures::{

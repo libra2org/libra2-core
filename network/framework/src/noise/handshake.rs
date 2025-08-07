@@ -23,7 +23,7 @@ use libra2_config::{
 use libra2_crypto::{noise, x25519};
 use libra2_infallible::{duration_since_epoch, RwLock};
 use libra2_logger::{error, trace};
-use aptos_short_hex_str::{AsShortHexStr, ShortHexStr};
+use libra2_short_hex_str::{AsShortHexStr, ShortHexStr};
 use libra2_types::PeerId;
 use futures::io::{AsyncRead, AsyncReadExt, AsyncWrite, AsyncWriteExt};
 use std::{collections::HashMap, convert::TryFrom as _, fmt::Debug, sync::Arc};

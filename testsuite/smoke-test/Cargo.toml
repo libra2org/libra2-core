@@ -23,8 +23,8 @@ libra2-consensus = { workspace = true }
 libra2-crypto = { workspace = true }
 aptos-db = { workspace = true }
 aptos-db-indexer-schemas = { workspace = true }
-aptos-dkg = { workspace = true }
-aptos-faucet-core = { workspace = true }
+libra2-dkg = { workspace = true }
+libra2-faucet-core = { workspace = true }
 aptos-forge = { workspace = true }
 aptos-framework = { workspace = true }
 aptos-gas-algebra = { workspace = true }
@@ -69,7 +69,7 @@ walkdir = { workspace = true }
 [dev-dependencies]
 aptos-backup-cli = { workspace = true }
 aptos-db-indexer = { workspace = true, features = ["fuzzing"] }
-aptos-genesis = { workspace = true }
+libra2-genesis = { workspace = true }
 libra2-infallible = { workspace = true }
 libra2-logger = { workspace = true }
 libra2-secure-storage = { workspace = true }

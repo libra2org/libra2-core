@@ -20,7 +20,7 @@ use libra2_logger::prelude::*;
 // Re-exposed for libra2-network-checker
 pub use libra2_netcore::transport::tcp::{resolve_and_connect, TCPBufferCfg, TcpSocket};
 use libra2_netcore::transport::{proxy_protocol, tcp, ConnectionOrigin, Transport};
-use aptos_short_hex_str::AsShortHexStr;
+use libra2_short_hex_str::AsShortHexStr;
 use libra2_time_service::{timeout, TimeService, TimeServiceTrait};
 use libra2_types::{
     chain_id::ChainId,

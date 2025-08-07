@@ -38,7 +38,7 @@ use libra2_logger::{error, sample, sample::SampleRate, warn};
 use libra2_types::{
     block_info::BlockInfo, on_chain_config::ValidatorTxnConfig, validator_txn::ValidatorTransaction,
 };
-use aptos_validator_transaction_pool as vtxn_pool;
+use libra2_validator_transaction_pool as vtxn_pool;
 use itertools::Itertools;
 use std::{
     collections::{BTreeMap, HashSet},

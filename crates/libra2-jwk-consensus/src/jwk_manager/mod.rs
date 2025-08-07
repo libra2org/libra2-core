@@ -25,7 +25,7 @@ use libra2_types::{
     },
     validator_txn::{Topic, ValidatorTransaction},
 };
-use aptos_validator_transaction_pool::VTxnPoolState;
+use libra2_validator_transaction_pool::VTxnPoolState;
 use futures_channel::oneshot;
 use futures_util::{future::join_all, FutureExt, StreamExt};
 use std::{

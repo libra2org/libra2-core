@@ -231,9 +231,9 @@ dependencies = [
 
 [[package]]
 name = "anstream"
-version = "0.6.19"
+version = "0.6.20"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "301af1932e46185686725e0fad2f8f2aa7da69dd70bf6ecc44d6b703844a3933"
+checksum = "3ae563653d1938f79b1ab1b5e668c87c76a9930414574a6583a7b7e11a8e6192"
 dependencies = [
  "anstyle",
  "anstyle-parse",
@@ -261,22 +261,22 @@ dependencies = [
 
 [[package]]
 name = "anstyle-query"
-version = "1.1.3"
+version = "1.1.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6c8bdeb6047d8983be085bab0ba1472e6dc604e7041dbf6fcd5e71523014fae9"
+checksum = "9e231f6134f61b71076a3eab506c379d4f36122f2af15a9ff04415ea4c3339e2"
 dependencies = [
- "windows-sys 0.59.0",
+ "windows-sys 0.60.2",
 ]
 
 [[package]]
 name = "anstyle-wincon"
-version = "3.0.9"
+version = "3.0.10"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "403f75924867bb1033c59fbf0797484329750cfbe3c4325cd33127941fabc882"
+checksum = "3e0633414522a32ffaac8ac6cc8f748e090c5717661fddeea04219e2344f5f2a"
 dependencies = [
  "anstyle",
  "once_cell_polyfill",
- "windows-sys 0.59.0",
+ "windows-sys 0.60.2",
 ]
 
 [[package]]
@@ -310,17 +310,13 @@ dependencies = [
  "anyhow",
  "aptos-backup-cli",
  "aptos-cached-packages",
- "aptos-faucet-core",
  "aptos-framework",
  "aptos-gas-profiling",
  "aptos-gas-schedule",
- "aptos-genesis",
- "aptos-github-client",
  "aptos-indexer-grpc-server-framework",
  "aptos-indexer-processor-sdk",
  "aptos-node",
  "aptos-storage-interface",
- "aptos-telemetry",
  "aptos-vm",
  "aptos-vm-environment",
  "aptos-vm-genesis",
@@ -333,7 +329,7 @@ dependencies = [
  "bcs 0.1.4",
  "bollard",
  "chrono",
- "clap 4.5.42",
+ "clap 4.5.43",
  "clap_complete",
  "colored",
  "dashmap 7.0.0-rc2",
@@ -352,6 +348,9 @@ dependencies = [
  "libra2-cli-common",
  "libra2-config",
  "libra2-crypto",
+ "libra2-faucet-core",
+ "libra2-genesis",
+ "libra2-github-client",
  "libra2-global-constants",
  "libra2-keygen",
  "libra2-ledger",
@@ -361,6 +360,7 @@ dependencies = [
  "libra2-network-checker",
  "libra2-rest-client",
  "libra2-sdk",
+ "libra2-telemetry",
  "libra2-temppath",
  "libra2-types",
  "maplit",
@@ -423,30 +423,6 @@ dependencies = [
  "libra2-types",
  "proptest",
  "rand 0.7.3",
-]
-
-[[package]]
-name = "aptos-admin-service"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-storage-interface",
- "bcs 0.1.4",
- "futures-channel",
- "http 0.2.12",
- "hyper 0.14.32",
- "libra2-config",
- "libra2-consensus",
- "libra2-crypto",
- "libra2-infallible",
- "libra2-logger",
- "libra2-mempool",
- "libra2-runtimes",
- "libra2-system-utils",
- "libra2-types",
- "sha256",
- "tokio",
- "url",
 ]
 
 [[package]]
@@ -528,7 +504,6 @@ dependencies = [
  "aptos-executor",
  "aptos-executor-types",
  "aptos-framework",
- "aptos-genesis",
  "aptos-indexer-grpc-table-info",
  "aptos-storage-interface",
  "aptos-vm",
@@ -541,6 +516,7 @@ dependencies = [
  "libra2-api-types",
  "libra2-config",
  "libra2-crypto",
+ "libra2-genesis",
  "libra2-mempool",
  "libra2-mempool-notifications",
  "libra2-sdk",
@@ -552,30 +528,6 @@ dependencies = [
  "tokio",
  "warp",
  "warp-reverse-proxy",
-]
-
-[[package]]
-name = "aptos-api-tester"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-cached-packages",
- "aptos-framework",
- "futures",
- "libra2-api-types",
- "libra2-logger",
- "libra2-push-metrics",
- "libra2-rest-client",
- "libra2-sdk",
- "libra2-types",
- "move-core-types",
- "once_cell",
- "prometheus",
- "rand 0.7.3",
- "serde",
- "serde_json",
- "tokio",
- "url",
 ]
 
 [[package]]
@@ -597,7 +549,7 @@ dependencies = [
  "async-trait",
  "bcs 0.1.4",
  "bytes",
- "clap 4.5.42",
+ "clap 4.5.43",
  "csv",
  "futures",
  "itertools 0.13.0",
@@ -705,7 +657,7 @@ name = "aptos-block-partitioner"
 version = "0.1.0"
 dependencies = [
  "bcs 0.1.4",
- "clap 4.5.42",
+ "clap 4.5.43",
  "criterion",
  "dashmap 7.0.0-rc2",
  "itertools 0.13.0",
@@ -743,7 +695,7 @@ dependencies = [
  "anyhow",
  "camino",
  "chrono",
- "clap 4.5.42",
+ "clap 4.5.43",
  "clap-verbosity-flag",
  "determinator",
  "env_logger 0.10.2",
@@ -752,10 +704,6 @@ dependencies = [
  "reqwest 0.11.27",
  "url",
 ]
-
-[[package]]
-name = "aptos-collections"
-version = "0.1.0"
 
 [[package]]
 name = "aptos-comparison-testing"
@@ -769,7 +717,7 @@ dependencies = [
  "aptos-validator-interface",
  "aptos-vm",
  "bcs 0.1.4",
- "clap 4.5.42",
+ "clap 4.5.43",
  "futures",
  "itertools 0.13.0",
  "legacy-move-compiler",
@@ -784,22 +732,6 @@ dependencies = [
  "tempfile",
  "tokio",
  "url",
-]
-
-[[package]]
-name = "aptos-compression"
-version = "0.1.0"
-dependencies = [
- "bcs 0.1.4",
- "libra2-crypto",
- "libra2-logger",
- "libra2-metrics-core",
- "libra2-types",
- "lz4",
- "once_cell",
- "rand 0.7.3",
- "serde",
- "thiserror 1.0.69",
 ]
 
 [[package]]
@@ -824,7 +756,7 @@ dependencies = [
  "bcs 0.1.4",
  "byteorder",
  "claims",
- "clap 4.5.42",
+ "clap 4.5.43",
  "crossbeam-channel",
  "dashmap 7.0.0-rc2",
  "either",
@@ -912,7 +844,7 @@ dependencies = [
  "aptos-storage-interface",
  "aptos-vm",
  "bcs 0.1.4",
- "clap 4.5.42",
+ "clap 4.5.43",
  "itertools 0.13.0",
  "libra2-config",
  "libra2-logger",
@@ -921,76 +853,6 @@ dependencies = [
  "rayon",
  "serde_json",
  "tokio",
-]
-
-[[package]]
-name = "aptos-dkg"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "bcs 0.1.4",
- "blst",
- "blstrs",
- "criterion",
- "ff",
- "group",
- "hex",
- "libra2-crypto",
- "libra2-crypto-derive",
- "libra2-runtimes",
- "merlin",
- "more-asserts",
- "num-bigint 0.3.3",
- "num-integer",
- "num-traits",
- "num_cpus",
- "once_cell",
- "pairing",
- "rand 0.7.3",
- "rand_core 0.5.1",
- "rayon",
- "serde",
- "serde_bytes",
- "sha3 0.9.1",
- "static_assertions",
-]
-
-[[package]]
-name = "aptos-dkg-runtime"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-reliable-broadcast",
- "aptos-validator-transaction-pool",
- "async-trait",
- "bcs 0.1.4",
- "bytes",
- "fail",
- "futures",
- "futures-channel",
- "futures-util",
- "libra2-bounded-executor",
- "libra2-channels",
- "libra2-config",
- "libra2-consensus-types",
- "libra2-crypto",
- "libra2-crypto-derive",
- "libra2-enum-conversion-derive",
- "libra2-event-notifications",
- "libra2-infallible",
- "libra2-logger",
- "libra2-metrics-core",
- "libra2-network",
- "libra2-runtimes",
- "libra2-safety-rules",
- "libra2-time-service",
- "libra2-types",
- "move-core-types",
- "once_cell",
- "rand 0.7.3",
- "serde",
- "tokio",
- "tokio-retry",
 ]
 
 [[package]]
@@ -1067,13 +929,9 @@ dependencies = [
  "aptos-executor-types",
  "aptos-experimental-ptx-executor",
  "aptos-experimental-runtimes",
- "aptos-genesis",
  "aptos-jellyfish-merkle",
  "aptos-mvhashmap",
- "aptos-node-resource-metrics",
  "aptos-storage-interface",
- "aptos-transaction-generator-lib",
- "aptos-transaction-workloads-lib",
  "aptos-vm",
  "aptos-vm-environment",
  "aptos-vm-logging",
@@ -1082,7 +940,7 @@ dependencies = [
  "bcs 0.1.4",
  "bytes",
  "chrono",
- "clap 4.5.42",
+ "clap 4.5.43",
  "dashmap 7.0.0-rc2",
  "derivative",
  "indicatif 0.15.0",
@@ -1090,13 +948,17 @@ dependencies = [
  "jemallocator",
  "libra2-config",
  "libra2-crypto",
+ "libra2-genesis",
  "libra2-infallible",
  "libra2-logger",
  "libra2-metrics-core",
+ "libra2-node-resource-metrics",
  "libra2-profiler",
  "libra2-push-metrics",
  "libra2-sdk",
  "libra2-temppath",
+ "libra2-transaction-generator-lib",
+ "libra2-transaction-workloads-lib",
  "libra2-types",
  "move-core-types",
  "move-vm-types",
@@ -1117,12 +979,11 @@ dependencies = [
  "aptos-block-executor",
  "aptos-block-partitioner",
  "aptos-language-e2e-tests",
- "aptos-node-resource-metrics",
  "aptos-storage-interface",
  "aptos-transaction-simulation",
  "aptos-vm",
  "bcs 0.1.4",
- "clap 4.5.42",
+ "clap 4.5.43",
  "crossbeam-channel",
  "ctrlc",
  "dashmap 7.0.0-rc2",
@@ -1132,6 +993,7 @@ dependencies = [
  "libra2-keygen",
  "libra2-logger",
  "libra2-metrics-core",
+ "libra2-node-resource-metrics",
  "libra2-push-metrics",
  "libra2-secure-net",
  "libra2-types",
@@ -1193,15 +1055,15 @@ name = "aptos-experimental-bulk-txn-submit"
 version = "0.0.0"
 dependencies = [
  "anyhow",
- "aptos-transaction-emitter-lib",
- "aptos-transaction-generator-lib",
  "bcs 0.1.4",
  "chrono",
- "clap 4.5.42",
+ "clap 4.5.43",
  "futures",
  "libra2-config",
  "libra2-logger",
  "libra2-sdk",
+ "libra2-transaction-emitter-lib",
+ "libra2-transaction-generator-lib",
  "rand 0.7.3",
  "reqwest 0.11.27",
  "serde",
@@ -1281,81 +1143,12 @@ dependencies = [
 ]
 
 [[package]]
-name = "aptos-faucet-cli"
-version = "2.0.1"
-dependencies = [
- "anyhow",
- "aptos-faucet-core",
- "clap 4.5.42",
- "libra2-logger",
- "libra2-sdk",
- "tokio",
-]
-
-[[package]]
-name = "aptos-faucet-core"
-version = "2.0.1"
-dependencies = [
- "anyhow",
- "aptos-faucet-metrics-server",
- "async-trait",
- "captcha",
- "clap 4.5.42",
- "deadpool-redis",
- "enum_dispatch",
- "firebase-token",
- "futures",
- "hex",
- "ipnet",
- "iprange",
- "libra2-config",
- "libra2-logger",
- "libra2-metrics-core",
- "libra2-sdk",
- "lru",
- "once_cell",
- "poem",
- "poem-openapi",
- "rand 0.7.3",
- "redis",
- "reqwest 0.11.27",
- "serde",
- "serde_json",
- "serde_yaml 0.8.26",
- "tokio",
-]
-
-[[package]]
-name = "aptos-faucet-metrics-server"
-version = "2.0.0"
-dependencies = [
- "anyhow",
- "libra2-logger",
- "libra2-metrics-core",
- "once_cell",
- "poem",
- "prometheus",
- "serde",
-]
-
-[[package]]
-name = "aptos-faucet-service"
-version = "2.0.1"
-dependencies = [
- "anyhow",
- "aptos-faucet-core",
- "clap 4.5.42",
- "libra2-logger",
- "tokio",
-]
-
-[[package]]
 name = "aptos-fn-check-client"
 version = "0.1.0"
 dependencies = [
  "anyhow",
  "aptos-node-checker",
- "clap 4.5.42",
+ "clap 4.5.43",
  "env_logger 0.10.2",
  "futures",
  "gcp-bigquery-client",
@@ -1377,14 +1170,9 @@ dependencies = [
  "aptos-cached-packages",
  "aptos-db",
  "aptos-framework",
- "aptos-genesis",
- "aptos-short-hex-str",
- "aptos-transaction-emitter-lib",
- "aptos-transaction-generator-lib",
- "aptos-transaction-workloads-lib",
  "async-trait",
  "chrono",
- "clap 4.5.42",
+ "clap 4.5.43",
  "either",
  "futures",
  "hex",
@@ -1395,6 +1183,7 @@ dependencies = [
  "kube",
  "libra2-cli-common",
  "libra2-config",
+ "libra2-genesis",
  "libra2-global-constants",
  "libra2-infallible",
  "libra2-inspection-service",
@@ -1403,7 +1192,11 @@ dependencies = [
  "libra2-retrier",
  "libra2-runtimes",
  "libra2-sdk",
+ "libra2-short-hex-str",
  "libra2-state-sync-driver",
+ "libra2-transaction-emitter-lib",
+ "libra2-transaction-generator-lib",
+ "libra2-transaction-workloads-lib",
  "log",
  "num_cpus",
  "once_cell",
@@ -1435,7 +1228,7 @@ dependencies = [
  "aptos-testcases",
  "async-trait",
  "chrono",
- "clap 4.5.42",
+ "clap 4.5.43",
  "env_logger 0.10.2",
  "futures",
  "jemallocator",
@@ -1480,7 +1273,7 @@ dependencies = [
  "bulletproofs",
  "byteorder",
  "claims",
- "clap 4.5.42",
+ "clap 4.5.43",
  "codespan-reporting",
  "curve25519-dalek-ng",
  "either",
@@ -1547,7 +1340,7 @@ dependencies = [
  "aptos-gas-schedule",
  "aptos-language-e2e-tests",
  "bcs 0.1.4",
- "clap 4.5.42",
+ "clap 4.5.43",
  "float-cmp",
  "libra2-types",
  "move-binary-format",
@@ -1611,48 +1404,12 @@ dependencies = [
  "aptos-framework",
  "aptos-gas-schedule",
  "bcs 0.1.4",
- "clap 4.5.42",
+ "clap 4.5.43",
  "libra2-package-builder",
  "libra2-types",
  "move-core-types",
  "move-model",
  "tempfile",
-]
-
-[[package]]
-name = "aptos-genesis"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-cached-packages",
- "aptos-db",
- "aptos-executor",
- "aptos-framework",
- "aptos-storage-interface",
- "aptos-vm",
- "aptos-vm-genesis",
- "bcs 0.1.4",
- "libra2-config",
- "libra2-crypto",
- "libra2-keygen",
- "libra2-logger",
- "libra2-temppath",
- "libra2-types",
- "rand 0.7.3",
- "serde",
- "serde_yaml 0.8.26",
-]
-
-[[package]]
-name = "aptos-github-client"
-version = "0.1.0"
-dependencies = [
- "aptos-proxy",
- "base64 0.13.1",
- "serde",
- "serde_json",
- "thiserror 1.0.69",
- "ureq",
 ]
 
 [[package]]
@@ -1697,7 +1454,7 @@ dependencies = [
  "aptos-moving-average 0.1.0 (git+https://github.com/aptos-labs/aptos-indexer-processors.git?rev=62beedc881d1b76632318ceb186ee9065236468e)",
  "aptos-protos 1.3.1",
  "async-trait",
- "clap 4.5.42",
+ "clap 4.5.43",
  "futures",
  "futures-core",
  "jemallocator",
@@ -1726,7 +1483,7 @@ dependencies = [
  "aptos-protos 1.3.1",
  "aptos-transaction-filter 0.1.0",
  "async-trait",
- "clap 4.5.42",
+ "clap 4.5.43",
  "futures",
  "jemallocator",
  "libra2-metrics-core",
@@ -1755,7 +1512,7 @@ dependencies = [
  "aptos-transaction-filter 0.1.0",
  "async-trait",
  "build_html",
- "clap 4.5.42",
+ "clap 4.5.43",
  "dashmap 7.0.0-rc2",
  "futures",
  "jemallocator",
@@ -1782,7 +1539,7 @@ dependencies = [
  "aptos-indexer-grpc-server-framework",
  "aptos-indexer-grpc-utils",
  "async-trait",
- "clap 4.5.42",
+ "clap 4.5.43",
  "cloud-storage",
  "jemallocator",
  "libra2-metrics-core",
@@ -1802,7 +1559,7 @@ dependencies = [
  "aptos-indexer-grpc-utils",
  "aptos-moving-average 0.1.0 (git+https://github.com/aptos-labs/aptos-indexer-processors.git?rev=62beedc881d1b76632318ceb186ee9065236468e)",
  "async-trait",
- "clap 4.5.42",
+ "clap 4.5.43",
  "futures",
  "jemallocator",
  "libra2-metrics-core",
@@ -1822,7 +1579,7 @@ dependencies = [
  "aptos-indexer-grpc-utils",
  "aptos-protos 1.3.1",
  "async-trait",
- "clap 4.5.42",
+ "clap 4.5.43",
  "futures",
  "jemallocator",
  "serde",
@@ -1844,7 +1601,6 @@ dependencies = [
  "aptos-executor",
  "aptos-executor-types",
  "aptos-framework",
- "aptos-genesis",
  "aptos-indexer-grpc-utils",
  "aptos-moving-average 0.1.0 (git+https://github.com/aptos-labs/aptos-indexer-processors.git?rev=62beedc881d1b76632318ceb186ee9065236468e)",
  "aptos-protos 1.3.1",
@@ -1863,6 +1619,7 @@ dependencies = [
  "libra2-bitvec",
  "libra2-config",
  "libra2-crypto",
+ "libra2-genesis",
  "libra2-global-constants",
  "libra2-logger",
  "libra2-mempool",
@@ -1912,7 +1669,7 @@ dependencies = [
  "aptos-protos 1.3.1",
  "async-trait",
  "build_html",
- "clap 4.5.42",
+ "clap 4.5.43",
  "dashmap 7.0.0-rc2",
  "futures",
  "jemallocator",
@@ -1937,7 +1694,7 @@ dependencies = [
  "anyhow",
  "async-trait",
  "backtrace",
- "clap 4.5.42",
+ "clap 4.5.43",
  "figment",
  "libra2-metrics-core",
  "libra2-system-utils",
@@ -2028,7 +1785,7 @@ dependencies = [
  "aptos-indexer-grpc-utils",
  "aptos-protos 1.3.1",
  "async-trait",
- "clap 4.5.42",
+ "clap 4.5.43",
  "futures",
  "jemallocator",
  "serde",
@@ -2057,7 +1814,7 @@ dependencies = [
  "bcs 0.1.4",
  "bigdecimal",
  "chrono",
- "clap 4.5.42",
+ "clap 4.5.43",
  "derive_builder",
  "diesel",
  "diesel-async",
@@ -2106,13 +1863,13 @@ version = "1.0.0"
 dependencies = [
  "anyhow",
  "aptos",
- "aptos-faucet-core",
  "aptos-indexer-grpc-utils",
  "aptos-protos 1.3.1",
- "clap 4.5.42",
+ "clap 4.5.43",
  "futures",
  "itertools 0.13.0",
  "libra2-config",
+ "libra2-faucet-core",
  "rand 0.7.3",
  "serde",
  "serde_json",
@@ -2240,10 +1997,10 @@ name = "aptos-move-e2e-benchmark"
 version = "0.1.0"
 dependencies = [
  "aptos-language-e2e-tests",
- "aptos-transaction-generator-lib",
- "aptos-transaction-workloads-lib",
- "clap 4.5.42",
+ "clap 4.5.43",
  "libra2-logger",
+ "libra2-transaction-generator-lib",
+ "libra2-transaction-workloads-lib",
  "libra2-types",
  "rand 0.7.3",
  "serde_json",
@@ -2256,7 +2013,7 @@ dependencies = [
  "aptos-framework",
  "aptos-gas-schedule",
  "aptos-vm",
- "clap 4.5.42",
+ "clap 4.5.43",
  "libra2-types",
  "move-cli",
  "move-model",
@@ -2359,7 +2116,7 @@ dependencies = [
  "backoff",
  "bytes",
  "chrono",
- "clap 4.5.42",
+ "clap 4.5.43",
  "diesel",
  "diesel_migrations",
  "enum_dispatch",
@@ -2385,31 +2142,27 @@ name = "aptos-node"
 version = "0.0.0-main"
 dependencies = [
  "anyhow",
- "aptos-admin-service",
  "aptos-api",
  "aptos-backup-service",
  "aptos-cached-packages",
  "aptos-db",
  "aptos-db-indexer",
- "aptos-dkg-runtime",
  "aptos-executor",
  "aptos-framework",
- "aptos-genesis",
  "aptos-indexer",
  "aptos-indexer-grpc-fullnode",
  "aptos-indexer-grpc-table-info",
  "aptos-storage-interface",
- "aptos-telemetry",
- "aptos-validator-transaction-pool",
  "aptos-vm",
  "aptos-vm-environment",
  "bcs 0.1.4",
- "clap 4.5.42",
+ "clap 4.5.43",
  "either",
  "fail",
  "futures",
  "hex",
  "jemallocator",
+ "libra2-admin-service",
  "libra2-build-info",
  "libra2-channels",
  "libra2-config",
@@ -2419,7 +2172,9 @@ dependencies = [
  "libra2-crypto",
  "libra2-data-client",
  "libra2-data-streaming-service",
+ "libra2-dkg-runtime",
  "libra2-event-notifications",
+ "libra2-genesis",
  "libra2-infallible",
  "libra2-inspection-service",
  "libra2-jwk-consensus",
@@ -2439,9 +2194,11 @@ dependencies = [
  "libra2-storage-service-notifications",
  "libra2-storage-service-server",
  "libra2-storage-service-types",
+ "libra2-telemetry",
  "libra2-temppath",
  "libra2-time-service",
  "libra2-types",
+ "libra2-validator-transaction-pool",
  "num_cpus",
  "rand 0.7.3",
  "rayon",
@@ -2460,10 +2217,8 @@ name = "aptos-node-checker"
 version = "0.1.1"
 dependencies = [
  "anyhow",
- "aptos-transaction-emitter-lib",
- "aptos-transaction-workloads-lib",
  "async-trait",
- "clap 4.5.42",
+ "clap 4.5.43",
  "futures",
  "libra2-config",
  "libra2-crypto",
@@ -2471,6 +2226,8 @@ dependencies = [
  "libra2-network-checker",
  "libra2-rest-client",
  "libra2-sdk",
+ "libra2-transaction-emitter-lib",
+ "libra2-transaction-workloads-lib",
  "once_cell",
  "poem",
  "poem-openapi",
@@ -2482,31 +2239,6 @@ dependencies = [
  "thiserror 1.0.69",
  "tokio",
  "url",
-]
-
-[[package]]
-name = "aptos-node-resource-metrics"
-version = "0.1.0"
-dependencies = [
- "cfg-if",
- "libra2-build-info",
- "libra2-infallible",
- "libra2-logger",
- "libra2-metrics-core",
- "once_cell",
- "procfs",
- "prometheus",
- "rlimit",
- "sysinfo",
-]
-
-[[package]]
-name = "aptos-num-variants"
-version = "0.1.0"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn 1.0.109",
 ]
 
 [[package]]
@@ -2544,13 +2276,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "aptos-proxy"
-version = "0.1.0"
-dependencies = [
- "ipnet",
-]
-
-[[package]]
 name = "aptos-release-builder"
 version = "0.1.0"
 dependencies = [
@@ -2560,7 +2285,6 @@ dependencies = [
  "aptos-gas-profiling",
  "aptos-gas-schedule",
  "aptos-gas-schedule-updator",
- "aptos-genesis",
  "aptos-language-e2e-tests",
  "aptos-transaction-simulation",
  "aptos-vm",
@@ -2568,13 +2292,14 @@ dependencies = [
  "aptos-vm-logging",
  "aptos-vm-types",
  "bcs 0.1.4",
- "clap 4.5.42",
+ "clap 4.5.43",
  "futures",
  "git2 0.16.1",
  "handlebars",
  "hex",
  "libra2-build-info",
  "libra2-crypto",
+ "libra2-genesis",
  "libra2-infallible",
  "libra2-keygen",
  "libra2-move-debugger",
@@ -2601,27 +2326,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "aptos-reliable-broadcast"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "async-trait",
- "bytes",
- "claims",
- "futures",
- "futures-channel",
- "libra2-bounded-executor",
- "libra2-consensus-types",
- "libra2-enum-conversion-derive",
- "libra2-infallible",
- "libra2-logger",
- "libra2-time-service",
- "libra2-types",
- "tokio",
- "tokio-retry",
-]
-
-[[package]]
 name = "aptos-replay-benchmark"
 version = "0.1.0"
 dependencies = [
@@ -2633,7 +2337,7 @@ dependencies = [
  "aptos-vm-environment",
  "bcs 0.1.4",
  "claims",
- "clap 4.5.42",
+ "clap 4.5.43",
  "colored",
  "libra2-crypto",
  "libra2-logger",
@@ -2712,18 +2416,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "aptos-short-hex-str"
-version = "0.1.0"
-dependencies = [
- "hex",
- "mirai-annotations",
- "proptest",
- "serde",
- "static_assertions",
- "thiserror 1.0.69",
-]
-
-[[package]]
 name = "aptos-storage-interface"
 version = "0.1.0"
 dependencies = [
@@ -2789,45 +2481,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "aptos-telemetry"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-api",
- "aptos-db",
- "aptos-node-resource-metrics",
- "flate2",
- "futures",
- "httpmock",
- "libra2-config",
- "libra2-consensus",
- "libra2-crypto",
- "libra2-infallible",
- "libra2-logger",
- "libra2-mempool",
- "libra2-metrics-core",
- "libra2-network",
- "libra2-runtimes",
- "libra2-state-sync-driver",
- "libra2-telemetry-service",
- "libra2-types",
- "once_cell",
- "prometheus",
- "rand 0.7.3",
- "rand_core 0.5.1",
- "reqwest 0.11.27",
- "reqwest-middleware",
- "reqwest-retry",
- "serde",
- "serde_json",
- "sysinfo",
- "tokio",
- "tokio-stream",
- "url",
- "uuid 1.17.0",
-]
-
-[[package]]
 name = "aptos-testcases"
 version = "0.0.0"
 dependencies = [
@@ -2864,69 +2517,21 @@ dependencies = [
  "aptos-block-executor",
  "aptos-block-partitioner",
  "aptos-language-e2e-tests",
- "aptos-node-resource-metrics",
  "aptos-transaction-simulation",
  "aptos-vm",
  "aptos-vm-logging",
- "clap 4.5.42",
+ "clap 4.5.43",
  "criterion",
  "criterion-cpu-time",
  "libra2-bitvec",
  "libra2-crypto",
  "libra2-logger",
  "libra2-metrics-core",
+ "libra2-node-resource-metrics",
  "libra2-push-metrics",
  "libra2-types",
  "num_cpus",
  "proptest",
-]
-
-[[package]]
-name = "aptos-transaction-emitter"
-version = "0.0.0"
-dependencies = [
- "anyhow",
- "aptos-transaction-emitter-lib",
- "aptos-transaction-workloads-lib",
- "clap 4.5.42",
- "futures",
- "libra2-global-constants",
- "libra2-logger",
- "libra2-sdk",
- "rand 0.7.3",
- "tokio",
-]
-
-[[package]]
-name = "aptos-transaction-emitter-lib"
-version = "0.0.0"
-dependencies = [
- "again",
- "anyhow",
- "aptos-transaction-generator-lib",
- "async-trait",
- "base64 0.13.1",
- "clap 4.5.42",
- "futures",
- "hex",
- "itertools 0.13.0",
- "libra2-config",
- "libra2-crypto",
- "libra2-global-constants",
- "libra2-infallible",
- "libra2-logger",
- "libra2-rest-client",
- "libra2-sdk",
- "libra2-types",
- "log",
- "once_cell",
- "rand 0.7.3",
- "rand_core 0.5.1",
- "reqwest 0.11.27",
- "serde",
- "serde_json",
- "tokio",
- "url",
 ]
 
 [[package]]
@@ -2966,25 +2571,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "aptos-transaction-generator-lib"
-version = "0.0.0"
-dependencies = [
- "anyhow",
- "aptos-framework",
- "async-trait",
- "clap 4.5.42",
- "libra2-infallible",
- "libra2-logger",
- "libra2-sdk",
- "log",
- "move-binary-format",
- "move-package",
- "once_cell",
- "rand 0.7.3",
- "serde",
-]
-
-[[package]]
 name = "aptos-transaction-simulation"
 version = "0.0.1"
 dependencies = [
@@ -3000,22 +2586,6 @@ dependencies = [
  "once_cell",
  "parking_lot 0.12.4",
  "proptest",
- "serde",
-]
-
-[[package]]
-name = "aptos-transaction-workloads-lib"
-version = "0.0.0"
-dependencies = [
- "aptos-framework",
- "aptos-transaction-generator-lib",
- "async-trait",
- "clap 4.5.42",
- "libra2-sdk",
- "move-binary-format",
- "once_cell",
- "rand 0.7.3",
- "rand_core 0.5.1",
  "serde",
 ]
 
@@ -3036,7 +2606,7 @@ dependencies = [
  "aptos-vm-genesis",
  "aptos-vm-types",
  "bcs 0.1.4",
- "clap 4.5.42",
+ "clap 4.5.43",
  "codespan-reporting",
  "datatest-stable",
  "hex",
@@ -3075,18 +2645,6 @@ dependencies = [
  "libra2-types",
  "lru",
  "move-core-types",
- "tokio",
-]
-
-[[package]]
-name = "aptos-validator-transaction-pool"
-version = "0.1.0"
-dependencies = [
- "futures-util",
- "libra2-channels",
- "libra2-crypto",
- "libra2-infallible",
- "libra2-types",
  "tokio",
 ]
 
@@ -3155,7 +2713,7 @@ dependencies = [
  "aptos-framework",
  "aptos-language-e2e-tests",
  "bcs 0.1.4",
- "clap 4.5.42",
+ "clap 4.5.43",
  "libra2-types",
  "move-binary-format",
  "move-core-types",
@@ -3238,7 +2796,7 @@ dependencies = [
  "aptos-transaction-simulation",
  "aptos-vm",
  "bcs 0.1.4",
- "clap 4.5.42",
+ "clap 4.5.43",
  "glob",
  "libra2-types",
  "move-binary-format",
@@ -3308,15 +2866,15 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "aptos-cached-packages",
- "aptos-faucet-core",
  "aptos-indexer-processor-sdk",
  "aptos-node",
  "bollard",
- "clap 4.5.42",
+ "clap 4.5.43",
  "diesel",
  "diesel-async",
  "futures",
  "libra2-config",
+ "libra2-faucet-core",
  "libra2-localnet",
  "libra2-types",
  "maplit",
@@ -4683,7 +4241,7 @@ name = "calc-dep-sizes"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "clap 4.5.42",
+ "clap 4.5.43",
  "futures",
  "move-binary-format",
  "move-core-types",
@@ -5013,9 +4571,9 @@ dependencies = [
 
 [[package]]
 name = "clap"
-version = "4.5.42"
+version = "4.5.43"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ed87a9d530bb41a67537289bafcac159cb3ee28460e0a4571123d2a778a6a882"
+checksum = "50fd97c9dc2399518aa331917ac6f274280ec5eb34e555dd291899745c48ec6f"
 dependencies = [
  "clap_builder",
  "clap_derive 4.5.41",
@@ -5027,15 +4585,15 @@ version = "2.2.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "34c77f67047557f62582784fd7482884697731b2932c7d37ced54bce2312e1e2"
 dependencies = [
- "clap 4.5.42",
+ "clap 4.5.43",
  "log",
 ]
 
 [[package]]
 name = "clap_builder"
-version = "4.5.42"
+version = "4.5.43"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "64f4f3f3c77c94aff3c7e9aac9a2ca1974a5adf392a8bb751e827d6d127ab966"
+checksum = "c35b5830294e1fa0462034af85cc95225a4cb07092c088c55bda3147cfcd8f65"
 dependencies = [
  "anstream",
  "anstyle",
@@ -5050,7 +4608,7 @@ version = "4.5.55"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a5abde44486daf70c5be8b8f8f1b66c49f86236edf6fa2abadb4d961c4c6229a"
 dependencies = [
- "clap 4.5.42",
+ "clap 4.5.43",
 ]
 
 [[package]]
@@ -5249,7 +4807,7 @@ name = "compute-module-expansion-size"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "clap 4.5.42",
+ "clap 4.5.43",
  "futures",
  "move-binary-format",
  "move-core-types",
@@ -6524,9 +6082,7 @@ dependencies = [
  "aptos-gas-profiling",
  "aptos-gas-schedule",
  "aptos-language-e2e-tests",
- "aptos-transaction-generator-lib",
  "aptos-transaction-simulation",
- "aptos-transaction-workloads-lib",
  "aptos-vm",
  "aptos-vm-environment",
  "aptos-vm-types",
@@ -6536,6 +6092,8 @@ dependencies = [
  "libra2-crypto",
  "libra2-package-builder",
  "libra2-rest-client",
+ "libra2-transaction-generator-lib",
+ "libra2-transaction-workloads-lib",
  "libra2-types",
  "move-binary-format",
  "move-core-types",
@@ -7667,7 +7225,7 @@ dependencies = [
  "arbitrary",
  "base64 0.21.7",
  "bcs 0.1.4",
- "clap 4.5.42",
+ "clap 4.5.43",
  "csv",
  "dearbitrary",
  "hex",
@@ -7782,7 +7340,7 @@ name = "generate-format"
 version = "0.1.0"
 dependencies = [
  "bcs 0.1.4",
- "clap 4.5.42",
+ "clap 4.5.43",
  "libra2-api-types",
  "libra2-config",
  "libra2-consensus",
@@ -8194,9 +7752,9 @@ dependencies = [
 
 [[package]]
 name = "h2"
-version = "0.4.11"
+version = "0.4.12"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "17da50a276f1e01e0ba6c029e47b7100754904ee8a278f886546e98575380785"
+checksum = "f3c0b69cfcb4e1b9f1bf2f53f95f766e4661169728ec61cd3fe5a0166f2d1386"
 dependencies = [
  "atomic-waker",
  "bytes",
@@ -8646,7 +8204,7 @@ dependencies = [
  "bytes",
  "futures-channel",
  "futures-util",
- "h2 0.4.11",
+ "h2 0.4.12",
  "http 1.3.1",
  "http-body 1.0.1",
  "httparse",
@@ -9068,9 +8626,9 @@ dependencies = [
 
 [[package]]
 name = "indenter"
-version = "0.3.3"
+version = "0.3.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ce23b50ad8242c51a442f3ff322d56b02f08852c77e4c0b4d3fd684abc89c683"
+checksum = "964de6e86d545b246d84badc0fef527924ace5134f30641c203ef52ba83f58d5"
 
 [[package]]
 name = "indexmap"
@@ -9132,7 +8690,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "232929e1d75fe899576a3d5c7416ad0d88dbfbb3c3d6aa00873a7408a50ddb88"
 dependencies = [
  "ahash 0.8.12",
- "clap 4.5.42",
+ "clap 4.5.43",
  "crossbeam-channel",
  "crossbeam-utils",
  "dashmap 6.1.0",
@@ -9754,7 +9312,7 @@ version = "0.0.1"
 dependencies = [
  "anyhow",
  "bcs 0.1.4",
- "clap 4.5.42",
+ "clap 4.5.43",
  "codespan-reporting",
  "hex",
  "move-binary-format",
@@ -9839,17 +9397,13 @@ dependencies = [
  "anyhow",
  "aptos-backup-cli",
  "aptos-cached-packages",
- "aptos-faucet-core",
  "aptos-framework",
  "aptos-gas-profiling",
  "aptos-gas-schedule",
- "aptos-genesis",
- "aptos-github-client",
  "aptos-indexer-grpc-server-framework",
  "aptos-indexer-processor-sdk",
  "aptos-node",
  "aptos-storage-interface",
- "aptos-telemetry",
  "aptos-vm",
  "aptos-vm-environment",
  "aptos-vm-genesis",
@@ -9862,7 +9416,7 @@ dependencies = [
  "bcs 0.1.4",
  "bollard",
  "chrono",
- "clap 4.5.42",
+ "clap 4.5.43",
  "clap_complete",
  "colored",
  "dashmap 7.0.0-rc2",
@@ -9881,6 +9435,9 @@ dependencies = [
  "libra2-cli-common",
  "libra2-config",
  "libra2-crypto",
+ "libra2-faucet-core",
+ "libra2-genesis",
+ "libra2-github-client",
  "libra2-global-constants",
  "libra2-keygen",
  "libra2-ledger",
@@ -9891,6 +9448,7 @@ dependencies = [
  "libra2-node",
  "libra2-rest-client",
  "libra2-sdk",
+ "libra2-telemetry",
  "libra2-temppath",
  "libra2-types",
  "maplit",
@@ -9929,6 +9487,54 @@ dependencies = [
  "toml 0.7.8",
  "tracing",
  "tracing-subscriber 0.3.19",
+ "url",
+]
+
+[[package]]
+name = "libra2-admin-service"
+version = "0.1.1"
+dependencies = [
+ "anyhow",
+ "aptos-storage-interface",
+ "bcs 0.1.4",
+ "futures-channel",
+ "http 0.2.12",
+ "hyper 0.14.32",
+ "libra2-config",
+ "libra2-consensus",
+ "libra2-crypto",
+ "libra2-infallible",
+ "libra2-logger",
+ "libra2-mempool",
+ "libra2-runtimes",
+ "libra2-system-utils",
+ "libra2-types",
+ "sha256",
+ "tokio",
+ "url",
+]
+
+[[package]]
+name = "libra2-api-tester"
+version = "0.1.1"
+dependencies = [
+ "anyhow",
+ "aptos-cached-packages",
+ "aptos-framework",
+ "futures",
+ "libra2-api-types",
+ "libra2-logger",
+ "libra2-push-metrics",
+ "libra2-rest-client",
+ "libra2-sdk",
+ "libra2-types",
+ "move-core-types",
+ "once_cell",
+ "prometheus",
+ "rand 0.7.3",
+ "serde",
+ "serde_json",
+ "tokio",
  "url",
 ]
 
@@ -10013,8 +9619,28 @@ name = "libra2-cli-common"
 version = "1.0.0"
 dependencies = [
  "anstyle",
- "clap 4.5.42",
+ "clap 4.5.43",
  "clap_complete",
+]
+
+[[package]]
+name = "libra2-collections"
+version = "0.1.1"
+
+[[package]]
+name = "libra2-compression"
+version = "0.1.1"
+dependencies = [
+ "bcs 0.1.4",
+ "libra2-crypto",
+ "libra2-logger",
+ "libra2-metrics-core",
+ "libra2-types",
+ "lz4",
+ "once_cell",
+ "rand 0.7.3",
+ "serde",
+ "thiserror 1.0.69",
 ]
 
 [[package]]
@@ -10022,7 +9648,6 @@ name = "libra2-config"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "aptos-short-hex-str",
  "arr_macro",
  "bcs 0.1.4",
  "byteorder",
@@ -10032,6 +9657,7 @@ dependencies = [
  "libra2-global-constants",
  "libra2-logger",
  "libra2-secure-storage",
+ "libra2-short-hex-str",
  "libra2-temppath",
  "libra2-transaction-filters",
  "libra2-types",
@@ -10056,17 +9682,12 @@ version = "0.1.1"
 dependencies = [
  "anyhow",
  "aptos-cached-packages",
- "aptos-collections",
- "aptos-dkg",
  "aptos-executor",
  "aptos-executor-test-helpers",
  "aptos-executor-types",
  "aptos-experimental-runtimes",
- "aptos-reliable-broadcast",
  "aptos-schemadb",
- "aptos-short-hex-str",
  "aptos-storage-interface",
- "aptos-validator-transaction-pool",
  "aptos-vm",
  "aptos-vm-validator",
  "async-trait",
@@ -10075,7 +9696,7 @@ dependencies = [
  "bytes",
  "chrono",
  "claims",
- "clap 4.5.42",
+ "clap 4.5.43",
  "dashmap 7.0.0-rc2",
  "enum_dispatch",
  "fail",
@@ -10086,11 +9707,13 @@ dependencies = [
  "libra2-bitvec",
  "libra2-bounded-executor",
  "libra2-channels",
+ "libra2-collections",
  "libra2-config",
  "libra2-consensus-notifications",
  "libra2-consensus-types",
  "libra2-crypto",
  "libra2-crypto-derive",
+ "libra2-dkg",
  "libra2-enum-conversion-derive",
  "libra2-event-notifications",
  "libra2-fallible",
@@ -10102,13 +9725,16 @@ dependencies = [
  "libra2-netcore",
  "libra2-network",
  "libra2-peer-monitoring-service-types",
+ "libra2-reliable-broadcast",
  "libra2-runtimes",
  "libra2-safety-rules",
  "libra2-secure-storage",
+ "libra2-short-hex-str",
  "libra2-temppath",
  "libra2-time-service",
  "libra2-transaction-filters",
  "libra2-types",
+ "libra2-validator-transaction-pool",
  "lru",
  "maplit",
  "mini-moka",
@@ -10159,7 +9785,6 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "aptos-executor-types",
- "aptos-short-hex-str",
  "bcs 0.1.4",
  "derivative",
  "fail",
@@ -10170,6 +9795,7 @@ dependencies = [
  "libra2-crypto-derive",
  "libra2-infallible",
  "libra2-logger",
+ "libra2-short-hex-str",
  "libra2-types",
  "mini-moka",
  "mirai-annotations",
@@ -10336,13 +9962,83 @@ version = "0.1.1"
 dependencies = [
  "anyhow",
  "aptos-db-tool",
- "clap 4.5.42",
+ "clap 4.5.43",
  "jemallocator",
  "libra2-consensus",
  "libra2-logger",
  "libra2-move-debugger",
  "libra2-push-metrics",
  "tokio",
+]
+
+[[package]]
+name = "libra2-dkg"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "bcs 0.1.4",
+ "blst",
+ "blstrs",
+ "criterion",
+ "ff",
+ "group",
+ "hex",
+ "libra2-crypto",
+ "libra2-crypto-derive",
+ "libra2-runtimes",
+ "merlin",
+ "more-asserts",
+ "num-bigint 0.3.3",
+ "num-integer",
+ "num-traits",
+ "num_cpus",
+ "once_cell",
+ "pairing",
+ "rand 0.7.3",
+ "rand_core 0.5.1",
+ "rayon",
+ "serde",
+ "serde_bytes",
+ "sha3 0.9.1",
+ "static_assertions",
+]
+
+[[package]]
+name = "libra2-dkg-runtime"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "async-trait",
+ "bcs 0.1.4",
+ "bytes",
+ "fail",
+ "futures",
+ "futures-channel",
+ "futures-util",
+ "libra2-bounded-executor",
+ "libra2-channels",
+ "libra2-config",
+ "libra2-consensus-types",
+ "libra2-crypto",
+ "libra2-crypto-derive",
+ "libra2-enum-conversion-derive",
+ "libra2-event-notifications",
+ "libra2-infallible",
+ "libra2-logger",
+ "libra2-metrics-core",
+ "libra2-network",
+ "libra2-reliable-broadcast",
+ "libra2-runtimes",
+ "libra2-safety-rules",
+ "libra2-time-service",
+ "libra2-types",
+ "libra2-validator-transaction-pool",
+ "move-core-types",
+ "once_cell",
+ "rand 0.7.3",
+ "serde",
+ "tokio",
+ "tokio-retry",
 ]
 
 [[package]]
@@ -10399,6 +10095,111 @@ dependencies = [
 ]
 
 [[package]]
+name = "libra2-faucet-cli"
+version = "2.0.2"
+dependencies = [
+ "anyhow",
+ "clap 4.5.43",
+ "libra2-faucet-core",
+ "libra2-logger",
+ "libra2-sdk",
+ "tokio",
+]
+
+[[package]]
+name = "libra2-faucet-core"
+version = "2.0.1"
+dependencies = [
+ "anyhow",
+ "async-trait",
+ "captcha",
+ "clap 4.5.43",
+ "deadpool-redis",
+ "enum_dispatch",
+ "firebase-token",
+ "futures",
+ "hex",
+ "ipnet",
+ "iprange",
+ "libra2-config",
+ "libra2-faucet-metrics-server",
+ "libra2-logger",
+ "libra2-metrics-core",
+ "libra2-sdk",
+ "lru",
+ "once_cell",
+ "poem",
+ "poem-openapi",
+ "rand 0.7.3",
+ "redis",
+ "reqwest 0.11.27",
+ "serde",
+ "serde_json",
+ "serde_yaml 0.8.26",
+ "tokio",
+]
+
+[[package]]
+name = "libra2-faucet-metrics-server"
+version = "2.0.1"
+dependencies = [
+ "anyhow",
+ "libra2-logger",
+ "libra2-metrics-core",
+ "once_cell",
+ "poem",
+ "prometheus",
+ "serde",
+]
+
+[[package]]
+name = "libra2-faucet-service"
+version = "2.0.2"
+dependencies = [
+ "anyhow",
+ "clap 4.5.43",
+ "libra2-faucet-core",
+ "libra2-logger",
+ "tokio",
+]
+
+[[package]]
+name = "libra2-genesis"
+version = "0.1.1"
+dependencies = [
+ "anyhow",
+ "aptos-cached-packages",
+ "aptos-db",
+ "aptos-executor",
+ "aptos-framework",
+ "aptos-storage-interface",
+ "aptos-vm",
+ "aptos-vm-genesis",
+ "bcs 0.1.4",
+ "libra2-config",
+ "libra2-crypto",
+ "libra2-keygen",
+ "libra2-logger",
+ "libra2-temppath",
+ "libra2-types",
+ "rand 0.7.3",
+ "serde",
+ "serde_yaml 0.8.26",
+]
+
+[[package]]
+name = "libra2-github-client"
+version = "0.1.1"
+dependencies = [
+ "base64 0.13.1",
+ "libra2-proxy",
+ "serde",
+ "serde_json",
+ "thiserror 1.0.69",
+ "ureq",
+]
+
+[[package]]
 name = "libra2-global-constants"
 version = "0.1.1"
 
@@ -10416,7 +10217,6 @@ version = "0.1.1"
 dependencies = [
  "anyhow",
  "aptos-storage-interface",
- "aptos-telemetry",
  "assert_approx_eq",
  "futures",
  "hyper 0.14.32",
@@ -10428,6 +10228,7 @@ dependencies = [
  "libra2-network",
  "libra2-runtimes",
  "libra2-storage-service-client",
+ "libra2-telemetry",
  "libra2-time-service",
  "once_cell",
  "prometheus",
@@ -10442,8 +10243,6 @@ name = "libra2-jwk-consensus"
 version = "0.1.1"
 dependencies = [
  "anyhow",
- "aptos-reliable-broadcast",
- "aptos-validator-transaction-pool",
  "async-trait",
  "bytes",
  "futures",
@@ -10462,10 +10261,12 @@ dependencies = [
  "libra2-logger",
  "libra2-metrics-core",
  "libra2-network",
+ "libra2-reliable-broadcast",
  "libra2-runtimes",
  "libra2-safety-rules",
  "libra2-time-service",
  "libra2-types",
+ "libra2-validator-transaction-pool",
  "move-core-types",
  "once_cell",
  "serde",
@@ -10501,7 +10302,6 @@ name = "libra2-keyless-pepper-common"
 version = "0.1.1"
 dependencies = [
  "anyhow",
- "aptos-dkg",
  "ark-bls12-381",
  "ark-ec",
  "ark-ff",
@@ -10516,6 +10316,7 @@ dependencies = [
  "jsonwebtoken 8.3.0",
  "libra2-crypto",
  "libra2-crypto-derive",
+ "libra2-dkg",
  "libra2-types",
  "once_cell",
  "rand 0.7.3",
@@ -10654,8 +10455,6 @@ name = "libra2-mempool"
 version = "0.1.1"
 dependencies = [
  "anyhow",
- "aptos-compression",
- "aptos-short-hex-str",
  "aptos-storage-interface",
  "aptos-vm-validator",
  "bcs 0.1.4",
@@ -10665,6 +10464,7 @@ dependencies = [
  "itertools 0.13.0",
  "libra2-bounded-executor",
  "libra2-channels",
+ "libra2-compression",
  "libra2-config",
  "libra2-consensus-types",
  "libra2-crypto",
@@ -10678,6 +10478,7 @@ dependencies = [
  "libra2-network",
  "libra2-peer-monitoring-service-types",
  "libra2-runtimes",
+ "libra2-short-hex-str",
  "libra2-time-service",
  "libra2-transaction-filters",
  "libra2-types",
@@ -10739,7 +10540,7 @@ dependencies = [
  "aptos-vm-logging",
  "aptos-vm-types",
  "bcs 0.1.4",
- "clap 4.5.42",
+ "clap 4.5.43",
  "itertools 0.13.0",
  "libra2-consensus",
  "libra2-crypto",
@@ -10756,10 +10557,10 @@ dependencies = [
 name = "libra2-netcore"
 version = "0.1.1"
 dependencies = [
- "aptos-proxy",
  "bytes",
  "futures",
  "libra2-memsocket",
+ "libra2-proxy",
  "libra2-types",
  "pin-project 1.1.10",
  "serde",
@@ -10773,9 +10574,6 @@ name = "libra2-network"
 version = "0.1.1"
 dependencies = [
  "anyhow",
- "aptos-compression",
- "aptos-num-variants",
- "aptos-short-hex-str",
  "arc-swap",
  "async-trait",
  "bcs 0.1.4",
@@ -10786,6 +10584,7 @@ dependencies = [
  "itertools 0.13.0",
  "libra2-bitvec",
  "libra2-channels",
+ "libra2-compression",
  "libra2-config",
  "libra2-crypto",
  "libra2-id-generator",
@@ -10794,8 +10593,10 @@ dependencies = [
  "libra2-memsocket",
  "libra2-metrics-core",
  "libra2-netcore",
+ "libra2-num-variants",
  "libra2-peer-monitoring-service-types",
  "libra2-proptest-helpers",
+ "libra2-short-hex-str",
  "libra2-time-service",
  "libra2-types",
  "maplit",
@@ -10863,7 +10664,7 @@ name = "libra2-network-checker"
 version = "0.0.1"
 dependencies = [
  "anyhow",
- "clap 4.5.42",
+ "clap 4.5.43",
  "futures",
  "libra2-config",
  "libra2-crypto",
@@ -10879,7 +10680,6 @@ name = "libra2-network-discovery"
 version = "0.1.1"
 dependencies = [
  "anyhow",
- "aptos-short-hex-str",
  "bcs 0.1.4",
  "futures",
  "libra2-channels",
@@ -10891,6 +10691,7 @@ dependencies = [
  "libra2-netcore",
  "libra2-network",
  "libra2-rest-client",
+ "libra2-short-hex-str",
  "libra2-temppath",
  "libra2-time-service",
  "libra2-types",
@@ -10906,31 +10707,27 @@ name = "libra2-node"
 version = "0.0.0-main"
 dependencies = [
  "anyhow",
- "aptos-admin-service",
  "aptos-api",
  "aptos-backup-service",
  "aptos-cached-packages",
  "aptos-db",
  "aptos-db-indexer",
- "aptos-dkg-runtime",
  "aptos-executor",
  "aptos-framework",
- "aptos-genesis",
  "aptos-indexer",
  "aptos-indexer-grpc-fullnode",
  "aptos-indexer-grpc-table-info",
  "aptos-storage-interface",
- "aptos-telemetry",
- "aptos-validator-transaction-pool",
  "aptos-vm",
  "aptos-vm-environment",
  "bcs 0.1.4",
- "clap 4.5.42",
+ "clap 4.5.43",
  "either",
  "fail",
  "futures",
  "hex",
  "jemallocator",
+ "libra2-admin-service",
  "libra2-build-info",
  "libra2-channels",
  "libra2-config",
@@ -10940,7 +10737,9 @@ dependencies = [
  "libra2-crypto",
  "libra2-data-client",
  "libra2-data-streaming-service",
+ "libra2-dkg-runtime",
  "libra2-event-notifications",
+ "libra2-genesis",
  "libra2-infallible",
  "libra2-inspection-service",
  "libra2-jwk-consensus",
@@ -10960,9 +10759,11 @@ dependencies = [
  "libra2-storage-service-notifications",
  "libra2-storage-service-server",
  "libra2-storage-service-types",
+ "libra2-telemetry",
  "libra2-temppath",
  "libra2-time-service",
  "libra2-types",
+ "libra2-validator-transaction-pool",
  "num_cpus",
  "rand 0.7.3",
  "rayon",
@@ -10987,6 +10788,31 @@ dependencies = [
 ]
 
 [[package]]
+name = "libra2-node-resource-metrics"
+version = "0.1.0"
+dependencies = [
+ "cfg-if",
+ "libra2-build-info",
+ "libra2-infallible",
+ "libra2-logger",
+ "libra2-metrics-core",
+ "once_cell",
+ "procfs",
+ "prometheus",
+ "rlimit",
+ "sysinfo",
+]
+
+[[package]]
+name = "libra2-num-variants"
+version = "0.1.1"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn 1.0.109",
+]
+
+[[package]]
 name = "libra2-openapi"
 version = "0.1.0"
 dependencies = [
@@ -11004,7 +10830,7 @@ dependencies = [
  "anyhow",
  "aptos-api",
  "aptos-storage-interface",
- "clap 4.5.42",
+ "clap 4.5.43",
  "libra2-config",
  "libra2-mempool",
  "libra2-types",
@@ -11116,6 +10942,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "libra2-proxy"
+version = "0.1.0"
+dependencies = [
+ "ipnet",
+]
+
+[[package]]
 name = "libra2-push-metrics"
 version = "0.1.1"
 dependencies = [
@@ -11140,13 +10973,34 @@ dependencies = [
 ]
 
 [[package]]
+name = "libra2-reliable-broadcast"
+version = "0.1.1"
+dependencies = [
+ "anyhow",
+ "async-trait",
+ "bytes",
+ "claims",
+ "futures",
+ "futures-channel",
+ "libra2-bounded-executor",
+ "libra2-consensus-types",
+ "libra2-enum-conversion-derive",
+ "libra2-infallible",
+ "libra2-logger",
+ "libra2-time-service",
+ "libra2-types",
+ "tokio",
+ "tokio-retry",
+]
+
+[[package]]
 name = "libra2-rest-client"
 version = "0.0.1"
 dependencies = [
  "anyhow",
  "bcs 0.1.4",
  "bytes",
- "clap 4.5.42",
+ "clap 4.5.43",
  "hex",
  "libra2-api-types",
  "libra2-crypto",
@@ -11178,7 +11032,7 @@ dependencies = [
  "aptos-cached-packages",
  "aptos-node",
  "bcs 0.1.4",
- "clap 4.5.42",
+ "clap 4.5.43",
  "futures",
  "hex",
  "itertools 0.13.0",
@@ -11206,7 +11060,7 @@ name = "libra2-rosetta-cli"
 version = "0.0.2"
 dependencies = [
  "anyhow",
- "clap 4.5.42",
+ "clap 4.5.43",
  "libra2",
  "libra2-logger",
  "libra2-rosetta",
@@ -11290,7 +11144,7 @@ dependencies = [
  "aptos-cached-packages",
  "aptos-framework",
  "bcs 0.1.4",
- "clap 4.5.42",
+ "clap 4.5.43",
  "heck 0.4.1",
  "libra2-types",
  "move-core-types",
@@ -11343,6 +11197,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "libra2-short-hex-str"
+version = "0.1.1"
+dependencies = [
+ "hex",
+ "mirai-annotations",
+ "proptest",
+ "serde",
+ "static_assertions",
+ "thiserror 1.0.69",
+]
+
+[[package]]
 name = "libra2-speculative-state-helper"
 version = "0.1.0"
 dependencies = [
@@ -11365,7 +11231,6 @@ dependencies = [
  "aptos-executor",
  "aptos-executor-test-helpers",
  "aptos-executor-types",
- "aptos-genesis",
  "aptos-schemadb",
  "aptos-storage-interface",
  "aptos-vm",
@@ -11381,6 +11246,7 @@ dependencies = [
  "libra2-data-client",
  "libra2-data-streaming-service",
  "libra2-event-notifications",
+ "libra2-genesis",
  "libra2-infallible",
  "libra2-logger",
  "libra2-mempool-notifications",
@@ -11467,9 +11333,9 @@ dependencies = [
 name = "libra2-storage-service-types"
 version = "0.1.1"
 dependencies = [
- "aptos-compression",
  "bcs 0.1.4",
  "claims",
+ "libra2-compression",
  "libra2-config",
  "libra2-crypto",
  "libra2-time-service",
@@ -11501,6 +11367,45 @@ dependencies = [
 ]
 
 [[package]]
+name = "libra2-telemetry"
+version = "0.1.1"
+dependencies = [
+ "anyhow",
+ "aptos-api",
+ "aptos-db",
+ "flate2",
+ "futures",
+ "httpmock",
+ "libra2-config",
+ "libra2-consensus",
+ "libra2-crypto",
+ "libra2-infallible",
+ "libra2-logger",
+ "libra2-mempool",
+ "libra2-metrics-core",
+ "libra2-network",
+ "libra2-node-resource-metrics",
+ "libra2-runtimes",
+ "libra2-state-sync-driver",
+ "libra2-telemetry-service",
+ "libra2-types",
+ "once_cell",
+ "prometheus",
+ "rand 0.7.3",
+ "rand_core 0.5.1",
+ "reqwest 0.11.27",
+ "reqwest-middleware",
+ "reqwest-retry",
+ "serde",
+ "serde_json",
+ "sysinfo",
+ "tokio",
+ "tokio-stream",
+ "url",
+ "uuid 1.17.0",
+]
+
+[[package]]
 name = "libra2-telemetry-service"
 version = "0.1.1"
 dependencies = [
@@ -11509,7 +11414,7 @@ dependencies = [
  "bcs 0.1.4",
  "chrono",
  "claims",
- "clap 4.5.42",
+ "clap 4.5.43",
  "debug-ignore",
  "flate2",
  "futures",
@@ -11563,6 +11468,54 @@ dependencies = [
 ]
 
 [[package]]
+name = "libra2-transaction-emitter"
+version = "0.0.1"
+dependencies = [
+ "anyhow",
+ "clap 4.5.43",
+ "futures",
+ "libra2-global-constants",
+ "libra2-logger",
+ "libra2-sdk",
+ "libra2-transaction-emitter-lib",
+ "libra2-transaction-workloads-lib",
+ "rand 0.7.3",
+ "tokio",
+]
+
+[[package]]
+name = "libra2-transaction-emitter-lib"
+version = "0.0.1"
+dependencies = [
+ "again",
+ "anyhow",
+ "async-trait",
+ "base64 0.13.1",
+ "clap 4.5.43",
+ "futures",
+ "hex",
+ "itertools 0.13.0",
+ "libra2-config",
+ "libra2-crypto",
+ "libra2-global-constants",
+ "libra2-infallible",
+ "libra2-logger",
+ "libra2-rest-client",
+ "libra2-sdk",
+ "libra2-transaction-generator-lib",
+ "libra2-types",
+ "log",
+ "once_cell",
+ "rand 0.7.3",
+ "rand_core 0.5.1",
+ "reqwest 0.11.27",
+ "serde",
+ "serde_json",
+ "tokio",
+ "url",
+]
+
+[[package]]
 name = "libra2-transaction-filters"
 version = "0.1.1"
 dependencies = [
@@ -11575,12 +11528,46 @@ dependencies = [
 ]
 
 [[package]]
+name = "libra2-transaction-generator-lib"
+version = "0.0.1"
+dependencies = [
+ "anyhow",
+ "aptos-framework",
+ "async-trait",
+ "clap 4.5.43",
+ "libra2-infallible",
+ "libra2-logger",
+ "libra2-sdk",
+ "log",
+ "move-binary-format",
+ "move-package",
+ "once_cell",
+ "rand 0.7.3",
+ "serde",
+]
+
+[[package]]
+name = "libra2-transaction-workloads-lib"
+version = "0.0.1"
+dependencies = [
+ "aptos-framework",
+ "async-trait",
+ "clap 4.5.43",
+ "libra2-sdk",
+ "libra2-transaction-generator-lib",
+ "move-binary-format",
+ "once_cell",
+ "rand 0.7.3",
+ "rand_core 0.5.1",
+ "serde",
+]
+
+[[package]]
 name = "libra2-types"
 version = "0.0.4"
 dependencies = [
  "ahash 0.8.12",
  "anyhow",
- "aptos-dkg",
  "arbitrary",
  "ark-bn254",
  "ark-ec",
@@ -11611,6 +11598,7 @@ dependencies = [
  "libra2-bitvec",
  "libra2-crypto",
  "libra2-crypto-derive",
+ "libra2-dkg",
  "libra2-infallible",
  "libra2-proptest-helpers",
  "lru",
@@ -11650,6 +11638,18 @@ dependencies = [
  "tokio",
  "tracing",
  "url",
+]
+
+[[package]]
+name = "libra2-validator-transaction-pool"
+version = "0.1.1"
+dependencies = [
+ "futures-util",
+ "libra2-channels",
+ "libra2-crypto",
+ "libra2-infallible",
+ "libra2-types",
+ "tokio",
 ]
 
 [[package]]
@@ -12258,7 +12258,7 @@ name = "move-asm"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "clap 4.5.42",
+ "clap 4.5.43",
  "codespan",
  "codespan-reporting",
  "either",
@@ -12370,7 +12370,7 @@ name = "move-bytecode-viewer"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "clap 4.5.42",
+ "clap 4.5.43",
  "crossterm 0.26.1",
  "move-binary-format",
  "move-bytecode-source-map",
@@ -12384,7 +12384,7 @@ name = "move-cli"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "clap 4.5.42",
+ "clap 4.5.43",
  "codespan-reporting",
  "colored",
  "datatest-stable",
@@ -12433,7 +12433,7 @@ dependencies = [
  "abstract-domain-derive",
  "anyhow",
  "bcs 0.1.4",
- "clap 4.5.42",
+ "clap 4.5.43",
  "codespan",
  "codespan-reporting",
  "colored",
@@ -12510,7 +12510,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "bcs 0.1.4",
- "clap 4.5.42",
+ "clap 4.5.43",
  "codespan",
  "colored",
  "move-binary-format",
@@ -12528,7 +12528,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "bcs 0.1.4",
- "clap 4.5.42",
+ "clap 4.5.43",
  "codespan",
  "codespan-reporting",
  "datatest-stable",
@@ -12547,7 +12547,7 @@ name = "move-disassembler"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "clap 4.5.42",
+ "clap 4.5.43",
  "colored",
  "legacy-move-compiler",
  "move-binary-format",
@@ -12563,7 +12563,7 @@ name = "move-docgen"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "clap 4.5.42",
+ "clap 4.5.43",
  "codespan",
  "codespan-reporting",
  "datatest-stable",
@@ -12608,7 +12608,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "bcs 0.1.4",
- "clap 4.5.42",
+ "clap 4.5.43",
  "move-binary-format",
  "move-bytecode-source-map",
  "move-bytecode-verifier",
@@ -12714,7 +12714,7 @@ name = "move-package"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "clap 4.5.42",
+ "clap 4.5.43",
  "colored",
  "datatest-stable",
  "itertools 0.13.0",
@@ -12783,7 +12783,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "atty",
- "clap 4.5.42",
+ "clap 4.5.43",
  "codespan-reporting",
  "itertools 0.13.0",
  "legacy-move-compiler",
@@ -12861,7 +12861,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "chrono",
- "clap 4.5.42",
+ "clap 4.5.43",
  "codespan-reporting",
  "itertools 0.13.0",
  "move-model",
@@ -12996,7 +12996,7 @@ dependencies = [
  "aptos-framework",
  "arbitrary",
  "bcs 0.1.4",
- "clap 4.5.42",
+ "clap 4.5.43",
  "datatest-stable",
  "dearbitrary",
  "difference",
@@ -13032,7 +13032,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "better_any",
- "clap 4.5.42",
+ "clap 4.5.43",
  "codespan-reporting",
  "colored",
  "datatest-stable",
@@ -13909,8 +13909,8 @@ name = "package-generator"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "aptos-transaction-generator-lib",
- "clap 4.5.21",
+ "clap 4.5.43",
+ "libra2-transaction-generator-lib",
 ]
 
 [[package]]
@@ -15129,7 +15129,7 @@ dependencies = [
  "bitflags 2.9.1",
  "canonical_json",
  "chrono",
- "clap 4.5.42",
+ "clap 4.5.43",
  "const_format",
  "diesel",
  "diesel-async",
@@ -15317,6 +15317,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "prost"
+version = "0.14.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7231bd9b3d3d33c86b58adbac74b5ec0ad9f496b19d22801d773636feaa95f3d"
+dependencies = [
+ "bytes",
+ "prost-derive 0.14.1",
+]
+
+[[package]]
 name = "prost-derive"
 version = "0.11.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -15356,6 +15366,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "prost-derive"
+version = "0.14.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9120690fafc389a67ba3803df527d0ec9cbbc9cc45e4cc20b332996dfb672425"
+dependencies = [
+ "anyhow",
+ "itertools 0.14.0",
+ "proc-macro2",
+ "quote",
+ "syn 2.0.104",
+]
+
+[[package]]
 name = "prost-types"
 version = "0.11.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -15380,6 +15403,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "52c2c1bf36ddb1a1c396b3601a3cec27c2462e45f07c386894ec3ccf5332bd16"
 dependencies = [
  "prost 0.13.5",
+]
+
+[[package]]
+name = "prost-types"
+version = "0.14.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b9b4db3d6da204ed77bb26ba83b6122a73aeb2e87e25fbf7ad2e84c4ccbf8f72"
+dependencies = [
+ "prost 0.14.1",
 ]
 
 [[package]]
@@ -16450,7 +16482,7 @@ dependencies = [
  "openssl-probe",
  "rustls-pki-types",
  "schannel",
- "security-framework 3.2.0",
+ "security-framework 3.3.0",
 ]
 
 [[package]]
@@ -16744,12 +16776,12 @@ dependencies = [
 
 [[package]]
 name = "secret-vault-value"
-version = "0.3.9"
+version = "0.3.10"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bc32a777b53b3433b974c9c26b6d502a50037f8da94e46cb8ce2ced2cfdfaea0"
+checksum = "662c7f8e99d46c9d3a87561d771a970c29efaccbab4bbdc6ab65d099d2358077"
 dependencies = [
- "prost 0.13.5",
- "prost-types 0.13.5",
+ "prost 0.14.1",
+ "prost-types 0.14.1",
  "serde",
  "serde_json",
  "zeroize",
@@ -16770,9 +16802,9 @@ dependencies = [
 
 [[package]]
 name = "security-framework"
-version = "3.2.0"
+version = "3.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "271720403f46ca04f7ba6f55d438f8bd878d6b8ca0a1046e8228c4145bcbb316"
+checksum = "80fb1d92c5028aa318b4b8bd7302a5bfcf48be96a37fc6fc790f806b0004ee0c"
 dependencies = [
  "bitflags 2.9.1",
  "core-foundation 0.10.1",
@@ -17347,9 +17379,15 @@ dependencies = [
 
 [[package]]
 name = "siphasher"
-version = "1.0.1"
+version = "0.3.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "38b58827f4464d87d377d175e90bf58eb00fd8716ff0a62f80356b5e61555d0d"
+
+[[package]]
+name = "siphasher"
+version = "1.0.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "56199f7ddabf13fe5074ce809e7d3f42b42ae711800501b5b16ea82ad029c39d"
 
 [[package]]
 name = "sized-chunks"
@@ -17438,13 +17476,10 @@ dependencies = [
  "aptos-db",
  "aptos-db-indexer",
  "aptos-db-indexer-schemas",
- "aptos-dkg",
- "aptos-faucet-core",
  "aptos-forge",
  "aptos-framework",
  "aptos-gas-algebra",
  "aptos-gas-schedule",
- "aptos-genesis",
  "aptos-indexer",
  "aptos-indexer-grpc-table-info",
  "aptos-release-builder",
@@ -17465,6 +17500,9 @@ dependencies = [
  "libra2-config",
  "libra2-consensus",
  "libra2-crypto",
+ "libra2-dkg",
+ "libra2-faucet-core",
+ "libra2-genesis",
  "libra2-global-constants",
  "libra2-infallible",
  "libra2-inspection-service",
@@ -18051,9 +18089,9 @@ dependencies = [
 
 [[package]]
 name = "termcolor"
-version = "1.1.3"
+version = "1.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bab24d30b911b2376f3a13cc2cd443142f0c81dda04c118693e35b3835757755"
+checksum = "06794f8f6c5c898b3275aebefa6b8a1cb24cd2c6c79397ab15774837a0bc5755"
 dependencies = [
  "winapi-util",
 ]
@@ -18726,7 +18764,7 @@ dependencies = [
  "base64 0.22.1",
  "bytes",
  "flate2",
- "h2 0.4.11",
+ "h2 0.4.12",
  "http 1.3.1",
  "http-body 1.0.1",
  "http-body-util",
@@ -20436,9 +20474,9 @@ dependencies = [
 
 [[package]]
 name = "zerovec"
-version = "0.11.3"
+version = "0.11.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bdbb9122ea75b11bf96e7492afb723e8a7fbe12c67417aa95e7e3d18144d37cd"
+checksum = "e7aa2bd55086f1ab526693ecbe444205da57e25f4489879da80635a46d90e73b"
 dependencies = [
  "yoke",
  "zerofrom",

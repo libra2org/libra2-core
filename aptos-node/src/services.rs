@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{bootstrap_api, indexer, mpsc::Receiver, network::ApplicationNetworkInterfaces};
-use aptos_admin_service::AdminService;
+use libra2_admin_service::AdminService;
 use libra2_build_info::build_information;
 use libra2_config::config::NodeConfig;
 use libra2_consensus::{
@@ -35,7 +35,7 @@ use libra2_time_service::TimeService;
 use libra2_types::{
     chain_id::ChainId, indexer::indexer_db_reader::IndexerReader, transaction::Version,
 };
-use aptos_validator_transaction_pool::VTxnPoolState;
+use libra2_validator_transaction_pool::VTxnPoolState;
 use futures::channel::{mpsc, mpsc::Sender, oneshot};
 use std::{sync::Arc, time::Instant};
 use tokio::{
@@ -288,7 +288,7 @@ pub fn start_telemetry_service(
     chain_id: ChainId,
 ) -> Option<Runtime> {
     let build_info = build_information!();
-    aptos_telemetry::service::start_telemetry_service(
+    libra2_telemetry::service::start_telemetry_service(
         node_config.clone(),
         chain_id,
         build_info,

@@ -14,7 +14,7 @@ rust-version = { workspace = true }
 
 [dependencies]
 libra2-memsocket = { workspace = true }
-aptos-proxy = { workspace = true }
+libra2-proxy = { workspace = true }
 libra2-types = { workspace = true }
 bytes = { workspace = true }
 futures = { workspace = true }

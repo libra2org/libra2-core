@@ -3,7 +3,7 @@
 
 use crate::EntryPoints;
 use libra2_sdk::transaction_builder::TransactionFactory;
-use aptos_transaction_generator_lib::{
+use libra2_transaction_generator_lib::{
     call_custom_modules::{
         CustomModulesDelegationGeneratorCreator, UserModuleTransactionGenerator,
     },

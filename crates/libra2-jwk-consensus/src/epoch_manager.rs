@@ -21,7 +21,7 @@ use libra2_event_notifications::{
 };
 use libra2_logger::{error, info};
 use libra2_network::{application::interface::NetworkClient, protocols::network::Event};
-use aptos_reliable_broadcast::ReliableBroadcast;
+use libra2_reliable_broadcast::ReliableBroadcast;
 use libra2_safety_rules::{safety_rules_manager::storage, PersistentSafetyStorage};
 use libra2_types::{
     account_address::AccountAddress,
@@ -33,7 +33,7 @@ use libra2_types::{
         OnChainJWKConsensusConfig, ValidatorSet,
     },
 };
-use aptos_validator_transaction_pool::VTxnPoolState;
+use libra2_validator_transaction_pool::VTxnPoolState;
 use futures::StreamExt;
 use futures_channel::oneshot;
 use std::{sync::Arc, time::Duration};

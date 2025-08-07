@@ -1,7 +1,7 @@
 [package]
-name = "aptos-reliable-broadcast"
-description = "Aptos Reliable Broadcast Implementation"
-version = "0.1.0"
+name = "libra2-reliable-broadcast"
+description = "Libra2 Reliable Broadcast Implementation"
+version = "0.1.1"
 
 # Workspace inherited keys
 authors = { workspace = true }

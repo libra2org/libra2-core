@@ -18,7 +18,7 @@ libra2-crypto = { workspace = true }
 libra2-global-constants = { workspace = true }
 libra2-logger = { workspace = true }
 libra2-secure-storage = { workspace = true }
-aptos-short-hex-str = { workspace = true }
+libra2-short-hex-str = { workspace = true }
 libra2-temppath = { workspace = true }
 libra2-transaction-filters = { workspace = true }
 libra2-types = { workspace = true }

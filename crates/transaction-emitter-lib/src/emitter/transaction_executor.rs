@@ -8,7 +8,7 @@ use libra2_rest_client::{libra2_api_types::AptosErrorCode, error::RestError, Cli
 use libra2_sdk::{
     move_types::account_address::AccountAddress, types::transaction::SignedTransaction,
 };
-use aptos_transaction_generator_lib::{CounterState, ReliableTransactionSubmitter};
+use libra2_transaction_generator_lib::{CounterState, ReliableTransactionSubmitter};
 use async_trait::async_trait;
 use futures::future::join_all;
 use log::{debug, info, warn};

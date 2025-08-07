@@ -12,7 +12,7 @@ use crate::{
 use anyhow::{bail, Context};
 use aptos::node::analyze::{analyze_validators::AnalyzeValidators, fetch_metadata::FetchMetadata};
 use libra2_logger::info as libra2_logger_info;
-use aptos_transaction_emitter_lib::{TxnStats, TxnStatsRate};
+use libra2_transaction_emitter_lib::{TxnStats, TxnStatsRate};
 use log::info;
 use prometheus_http_query::response::Sample;
 use serde_json::json;

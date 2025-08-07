@@ -16,7 +16,7 @@ use anyhow::{anyhow, bail, Context, Result};
 use libra2_channels::{libra2_channel, message_queues::QueueStyle};
 use libra2_crypto::{bls12381::PrivateKey, SigningKey};
 use libra2_logger::{debug, error, info, warn};
-use aptos_reliable_broadcast::ReliableBroadcast;
+use libra2_reliable_broadcast::ReliableBroadcast;
 use libra2_types::{
     account_address::AccountAddress,
     epoch_state::EpochState,
@@ -27,7 +27,7 @@ use libra2_types::{
     },
     validator_txn::{Topic, ValidatorTransaction},
 };
-use aptos_validator_transaction_pool::VTxnPoolState;
+use libra2_validator_transaction_pool::VTxnPoolState;
 use futures_channel::oneshot;
 use futures_util::{future::join_all, FutureExt, StreamExt};
 use std::{

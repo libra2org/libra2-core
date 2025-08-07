@@ -2,9 +2,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{explicit_sync_wrapper::ExplicitSyncWrapper, scheduler_status::ExecutionStatuses};
-use aptos_infallible::Mutex;
+use libra2_infallible::Mutex;
 use aptos_mvhashmap::types::{Incarnation, TxnIndex};
-use aptos_types::error::{code_invariant_error, PanicError};
+use libra2_types::error::{code_invariant_error, PanicError};
 use crossbeam::utils::CachePadded;
 use std::{
     collections::{BTreeMap, BTreeSet},

@@ -3,13 +3,13 @@
 
 use super::round_state::NewRoundReason;
 use crate::counters;
-use aptos_collections::BoundedVecDeque;
+use libra2_collections::BoundedVecDeque;
 use libra2_consensus_types::{
     common::Author, payload_pull_params::OptQSPayloadPullParams, round_timeout::RoundTimeoutReason,
 };
 use libra2_infallible::Mutex;
 use libra2_logger::warn;
-use aptos_short_hex_str::AsShortHexStr;
+use libra2_short_hex_str::AsShortHexStr;
 use std::{collections::HashSet, sync::Arc};
 
 pub trait TPastProposalStatusTracker: Send + Sync {

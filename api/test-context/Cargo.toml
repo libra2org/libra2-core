@@ -22,7 +22,7 @@ aptos-db = { workspace = true, features = ["fuzzing"] }
 aptos-executor = { workspace = true }
 aptos-executor-types = { workspace = true }
 aptos-framework = { workspace = true }
-aptos-genesis = { workspace = true }
+libra2-genesis = { workspace = true }
 aptos-indexer-grpc-table-info = { workspace = true }
 libra2-mempool = { workspace = true, features = ["fuzzing"] }
 libra2-mempool-notifications = { workspace = true }
