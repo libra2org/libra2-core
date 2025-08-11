@@ -35,7 +35,7 @@ use libra2_consensus_types::{
 use libra2_crypto::bls12381::PrivateKey;
 use libra2_logger::prelude::*;
 use libra2_mempool::QuorumStoreRequest;
-use aptos_storage_interface::DbReader;
+use libra2_storage_interface::DbReader;
 use libra2_types::{
     account_address::AccountAddress, validator_signer::ValidatorSigner,
     validator_verifier::ValidatorVerifier,
@@ -129,7 +129,7 @@ pub struct InnerBuilder {
     consensus_to_quorum_store_receiver: Receiver<GetPayloadCommand>,
     quorum_store_to_mempool_sender: Sender<QuorumStoreRequest>,
     mempool_txn_pull_timeout_ms: u64,
-    aptos_db: Arc<dyn DbReader>,
+    libra2_db: Arc<dyn DbReader>,
     network_sender: NetworkSender,
     verifier: Arc<ValidatorVerifier>,
     proof_cache: ProofCache,
@@ -165,7 +165,7 @@ impl InnerBuilder {
         consensus_to_quorum_store_receiver: Receiver<GetPayloadCommand>,
         quorum_store_to_mempool_sender: Sender<QuorumStoreRequest>,
         mempool_txn_pull_timeout_ms: u64,
-        aptos_db: Arc<dyn DbReader>,
+        libra2_db: Arc<dyn DbReader>,
         network_sender: NetworkSender,
         verifier: Arc<ValidatorVerifier>,
         proof_cache: ProofCache,
@@ -205,7 +205,7 @@ impl InnerBuilder {
             consensus_to_quorum_store_receiver,
             quorum_store_to_mempool_sender,
             mempool_txn_pull_timeout_ms,
-            aptos_db,
+            libra2_db,
             network_sender,
             verifier,
             proof_cache,
@@ -235,7 +235,7 @@ impl InnerBuilder {
         let signer = ValidatorSigner::new(self.author, self.consensus_key.clone());
 
         let latest_ledger_info_with_sigs = self
-            .aptos_db
+            .libra2_db
             .get_latest_ledger_info()
             .expect("could not get latest ledger info");
         let last_committed_timestamp = latest_ledger_info_with_sigs.commit_info().timestamp_usecs();
@@ -398,7 +398,7 @@ impl InnerBuilder {
                 10,
                 Some(&counters::BATCH_RETRIEVAL_TASK_MSGS),
             );
-        let aptos_db_clone = self.aptos_db.clone();
+        let libra2_db_clone = self.libra2_db.clone();
         spawn_named!("batch_serve", async move {
             info!(epoch = epoch, "Batch retrieval task starts");
             while let Some(rpc_request) = batch_retrieval_rx.next().await {
@@ -409,7 +409,7 @@ impl InnerBuilder {
                     let batch: Batch = value.try_into().unwrap();
                     BatchResponse::Batch(batch)
                 } else {
-                    match aptos_db_clone.get_latest_ledger_info() {
+                    match libra2_db_clone.get_latest_ledger_info() {
                         Ok(ledger_info) => BatchResponse::NotFound(ledger_info),
                         Err(e) => {
                             let e = anyhow::Error::from(e);

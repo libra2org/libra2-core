@@ -4,13 +4,13 @@
 use crate::metrics::INDEXER_DB_LATENCY;
 use anyhow::Result;
 use libra2_config::config::{internal_indexer_db_config::InternalIndexerDBConfig, NodeConfig};
-use aptos_db_indexer::{
+use libra2_db_indexer::{
     db_indexer::{DBIndexer, InternalIndexerDB},
     db_ops::open_internal_indexer_db,
     indexer_reader::IndexerReaders,
 };
 use aptos_indexer_grpc_utils::counters::{log_grpc_step, IndexerGrpcStep};
-use aptos_storage_interface::DbReader;
+use libra2_storage_interface::DbReader;
 use libra2_types::{indexer::indexer_db_reader::IndexerReader, transaction::Version};
 use std::{
     path::{Path, PathBuf},

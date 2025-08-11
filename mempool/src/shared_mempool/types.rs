@@ -19,12 +19,12 @@ use libra2_consensus_types::common::{
 use libra2_crypto::HashValue;
 use libra2_infallible::{Mutex, RwLock};
 use libra2_network::application::interface::NetworkClientInterface;
-use aptos_storage_interface::DbReader;
+use libra2_storage_interface::DbReader;
 use libra2_types::{
     account_address::AccountAddress, mempool_status::MempoolStatus, transaction::SignedTransaction,
     vm_status::DiscardedVMStatus,
 };
-use aptos_vm_validator::vm_validator::TransactionValidation;
+use libra2_vm_validator::vm_validator::TransactionValidation;
 use futures::{
     channel::{mpsc, mpsc::UnboundedSender, oneshot},
     future::Future,

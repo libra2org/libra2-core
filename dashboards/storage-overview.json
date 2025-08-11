@@ -435,7 +435,7 @@
             {
               "datasource": { "type": "prometheus", "uid": "${Datasource}" },
               "editorMode": "code",
-              "expr": "quantile(0.8, aptos_jellyfish_leaf_count{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"})",
+              "expr": "quantile(0.8, libra2_jellyfish_leaf_count{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"})",
               "hide": true,
               "legendFormat": "{{kubernetes_pod_name}} {{role}}",
               "range": true,
@@ -1738,7 +1738,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "sum by (kubernetes_pod_name, run_uuid) (rate(aptos_schemadb_batch_commit_bytes_sum{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", db_name=~\"$db_name\"}[1m]))",
+          "expr": "sum by (kubernetes_pod_name, run_uuid) (rate(libra2_schemadb_batch_commit_bytes_sum{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", db_name=~\"$db_name\"}[1m]))",
           "interval": "",
           "legendFormat": "{{kubernetes_pod_name}} {{kubernetes_pod_name}} {{db_name}}",
           "range": true,
@@ -2256,7 +2256,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "sum by (kubernetes_pod_name, run_uuid) (irate(aptos_schemadb_get_latency_seconds_sum{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[1m])) / sum by (kubernetes_pod_name, run_uuid) (irate(aptos_schemadb_get_latency_seconds_count[1m]))",
+          "expr": "sum by (kubernetes_pod_name, run_uuid) (irate(libra2_schemadb_get_latency_seconds_sum{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[1m])) / sum by (kubernetes_pod_name, run_uuid) (irate(libra2_schemadb_get_latency_seconds_count[1m]))",
           "interval": "",
           "legendFormat": "{{kubernetes_pod_name}}",
           "range": true,
@@ -2656,14 +2656,14 @@
       {
         "current": { "selected": true, "text": ["All"], "value": ["$__all"] },
         "datasource": { "type": "prometheus", "uid": "${Datasource}" },
-        "definition": "aptos_backup_service_latency_s_count",
+        "definition": "libra2_backup_service_latency_s_count",
         "hide": 0,
         "includeAll": true,
         "multi": true,
         "name": "backup_service_api_name",
         "options": [],
         "query": {
-          "query": "aptos_backup_service_latency_s_count",
+          "query": "libra2_backup_service_latency_s_count",
           "refId": "Prometheus-backup_service_api_name-Variable-Query"
         },
         "refresh": 1,

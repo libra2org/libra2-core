@@ -168,7 +168,7 @@ and other network configuration parameters
   Rules
 - StateSyncConfig - Specifies parameters around state sycnhronization and the
   set of peers that provide the data
-- StorageConfig - Where the AptosDB is stored and its gRPC service endpoints
+- StorageConfig - Where the Libra2DB is stored and its gRPC service endpoints
 
 ### External Component Configurations
 Outside of each node, external components can also be configured:

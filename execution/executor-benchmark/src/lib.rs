@@ -21,14 +21,14 @@ use crate::{
     transaction_executor::TransactionExecutor, transaction_generator::TransactionGenerator,
 };
 use libra2_config::config::{NodeConfig, PrunerConfig, NO_OP_STORAGE_PRUNER_CONFIG};
-use aptos_db::AptosDB;
+use libra2_db::Libra2DB;
 use aptos_executor::block_executor::BlockExecutor;
-use aptos_jellyfish_merkle::metrics::{
-    APTOS_JELLYFISH_INTERNAL_ENCODED_BYTES, APTOS_JELLYFISH_LEAF_ENCODED_BYTES,
+use libra2_jellyfish_merkle::metrics::{
+    LIBRA2_JELLYFISH_INTERNAL_ENCODED_BYTES, LIBRA2_JELLYFISH_LEAF_ENCODED_BYTES,
 };
 use libra2_logger::{info, warn};
 use libra2_sdk::types::LocalAccount;
-use aptos_storage_interface::{
+use libra2_storage_interface::{
     state_store::state_view::db_state_view::LatestDbStateCheckpointView, DbReader, DbReaderWriter,
 };
 use libra2_transaction_generator_lib::{
@@ -63,7 +63,7 @@ pub fn default_benchmark_features() -> Features {
 
 pub fn init_db(config: &NodeConfig) -> DbReaderWriter {
     DbReaderWriter::new(
-        AptosDB::open(
+        Libra2DB::open(
             config.storage.get_dir_paths(),
             false, /* readonly */
             config.storage.storage_pruner_config,
@@ -88,7 +88,7 @@ fn create_checkpoint(
     }
     std::fs::create_dir_all(checkpoint_dir.as_ref()).unwrap();
 
-    AptosDB::create_checkpoint(source_dir, checkpoint_dir, enable_storage_sharding)
+    Libra2DB::create_checkpoint(source_dir, checkpoint_dir, enable_storage_sharding)
         .expect("db checkpoint creation fails.");
 }
 
@@ -494,11 +494,11 @@ fn add_accounts_impl<V>(
 
     println!(
         "Total written internal nodes value size: {} bytes",
-        APTOS_JELLYFISH_INTERNAL_ENCODED_BYTES.get()
+        LIBRA2_JELLYFISH_INTERNAL_ENCODED_BYTES.get()
     );
     println!(
         "Total written leaf nodes value size: {} bytes",
-        APTOS_JELLYFISH_LEAF_ENCODED_BYTES.get()
+        LIBRA2_JELLYFISH_LEAF_ENCODED_BYTES.get()
     );
 }
 

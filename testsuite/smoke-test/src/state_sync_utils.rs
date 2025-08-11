@@ -9,12 +9,12 @@ use crate::{
     },
 };
 use libra2_config::config::{BootstrappingMode, NodeConfig, OverrideNodeConfig};
-use aptos_db::AptosDB;
+use libra2_db::Libra2DB;
 use aptos_forge::{LocalNode, LocalSwarm, Node, NodeExt, Swarm};
 use libra2_inspection_service::inspection_client::InspectionClient;
 use libra2_rest_client::Client as RestClient;
 use libra2_sdk::types::PeerId;
-use aptos_storage_interface::DbReader;
+use libra2_storage_interface::DbReader;
 use move_core_types::account_address::AccountAddress;
 use std::{
     sync::Arc,
@@ -199,8 +199,8 @@ fn verify_first_ledger_info(node: &mut LocalNode) {
     node.stop();
 
     // Verify that the ledger info exists at version 0
-    let aptos_db = AptosDB::new_for_test_with_sharding(db_path_buf.as_path(), 1 << 13);
-    aptos_db.get_epoch_ending_ledger_info(0).unwrap();
+    let libra2_db = Libra2DB::new_for_test_with_sharding(db_path_buf.as_path(), 1 << 13);
+    libra2_db.get_epoch_ending_ledger_info(0).unwrap();
 
     // Restart the node
     node.start().unwrap();

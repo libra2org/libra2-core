@@ -1,7 +1,7 @@
 [package]
-name = "aptos-jellyfish-merkle"
-description = "Aptos jellyfish merkle"
-version = "0.1.0"
+name = "libra2-jellyfish-merkle"
+description = "Libra2 jellyfish merkle"
+version = "0.1.1"
 
 # Workspace inherited keys
 authors = { workspace = true }
@@ -16,11 +16,11 @@ rust-version = { workspace = true }
 anyhow = { workspace = true }
 libra2-crypto = { workspace = true }
 libra2-crypto-derive = { workspace = true }
-aptos-experimental-runtimes = { workspace = true }
+libra2-experimental-runtimes = { workspace = true }
 libra2-infallible = { workspace = true }
 libra2-logger = { workspace = true }
 libra2-metrics-core = { workspace = true }
-aptos-storage-interface = { workspace = true }
+libra2-storage-interface = { workspace = true }
 libra2-types = { workspace = true }
 arr_macro = { workspace = true }
 bcs = { workspace = true }
@@ -37,7 +37,7 @@ thiserror = { workspace = true }
 
 [dev-dependencies]
 libra2-crypto = { workspace = true }
-aptos-db = { workspace = true }
+libra2-db = { workspace = true }
 libra2-types = { workspace = true, features = ["fuzzing"] }
 proptest = { workspace = true }
 proptest-derive = { workspace = true }

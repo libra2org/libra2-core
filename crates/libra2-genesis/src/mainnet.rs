@@ -6,9 +6,9 @@ use libra2_config::config::{
     RocksdbConfigs, StorageDirPaths, BUFFERED_STATE_TARGET_ITEMS,
     DEFAULT_MAX_NUM_NODES_PER_LRU_CACHE_SHARD, NO_OP_STORAGE_PRUNER_CONFIG,
 };
-use aptos_db::AptosDB;
+use libra2_db::Libra2DB;
 use aptos_framework::ReleaseBundle;
-use aptos_storage_interface::DbReaderWriter;
+use libra2_storage_interface::DbReaderWriter;
 use libra2_temppath::TempPath;
 use libra2_types::{
     chain_id::ChainId,
@@ -152,7 +152,7 @@ impl MainnetGenesisInfo {
     pub fn generate_waypoint(&mut self) -> anyhow::Result<Waypoint> {
         let genesis = self.get_genesis();
         let path = TempPath::new();
-        let aptosdb = AptosDB::open(
+        let libra2db = Libra2DB::open(
             StorageDirPaths::from_path(path),
             false,
             NO_OP_STORAGE_PRUNER_CONFIG,
@@ -162,7 +162,7 @@ impl MainnetGenesisInfo {
             DEFAULT_MAX_NUM_NODES_PER_LRU_CACHE_SHARD,
             None,
         )?;
-        let db_rw = DbReaderWriter::new(aptosdb);
+        let db_rw = DbReaderWriter::new(libra2db);
         aptos_executor::db_bootstrapper::generate_waypoint::<AptosVMBlockExecutor>(&db_rw, genesis)
     }
 }

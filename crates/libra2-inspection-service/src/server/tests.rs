@@ -13,7 +13,7 @@ use crate::{
 use libra2_config::config::{Libra2DataClientConfig, BaseConfig, NodeConfig};
 use libra2_data_client::client::Libra2DataClient;
 use libra2_network::application::{interface::NetworkClient, storage::PeersAndMetadata};
-use aptos_storage_interface::DbReader;
+use libra2_storage_interface::DbReader;
 use libra2_storage_service_client::StorageServiceClient;
 use libra2_time_service::TimeService;
 use assert_approx_eq::assert_approx_eq;

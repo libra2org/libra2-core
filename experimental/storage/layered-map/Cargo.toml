@@ -1,7 +1,7 @@
 [package]
-name = "aptos-experimental-layered-map"
-description = "Aptos LayeredMap"
-version = "0.1.0"
+name = "libra2-experimental-layered-map"
+description = "Libra2 LayeredMap"
+version = "0.1.1"
 
 # Workspace inherited keys
 authors = { workspace = true }
@@ -24,7 +24,7 @@ once_cell = { workspace = true }
 
 [dev-dependencies]
 anyhow = { workspace = true }
-aptos-schemadb = { workspace = true }
+libra2-schemadb = { workspace = true }
 libra2-temppath = { workspace = true }
 criterion = { workspace = true }
 itertools = { workspace = true }

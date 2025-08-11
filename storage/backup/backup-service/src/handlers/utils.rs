@@ -3,12 +3,12 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::handlers::bytes_sender;
-use aptos_db::{backup::backup_handler::BackupHandler, metrics::BACKUP_TIMER};
+use libra2_db::{backup::backup_handler::BackupHandler, metrics::BACKUP_TIMER};
 use libra2_logger::prelude::*;
 use libra2_metrics_core::{
     register_histogram_vec, register_int_counter_vec, HistogramVec, IntCounterVec, TimerHelper,
 };
-use aptos_storage_interface::Result as DbResult;
+use libra2_storage_interface::Result as DbResult;
 use hyper::Body;
 use once_cell::sync::Lazy;
 use serde::Serialize;
@@ -17,7 +17,7 @@ use warp::{reply::Response, Rejection, Reply};
 
 pub(super) static LATENCY_HISTOGRAM: Lazy<HistogramVec> = Lazy::new(|| {
     register_histogram_vec!(
-        "aptos_backup_service_latency_s",
+        "libra2_backup_service_latency_s",
         "Backup service endpoint latency.",
         &["endpoint", "status"]
     )
@@ -26,7 +26,7 @@ pub(super) static LATENCY_HISTOGRAM: Lazy<HistogramVec> = Lazy::new(|| {
 
 pub(super) static THROUGHPUT_COUNTER: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_backup_service_sent_bytes",
+        "libra2_backup_service_sent_bytes",
         "Backup service throughput in bytes.",
         &["endpoint"]
     )

@@ -12,7 +12,7 @@ use crate::{
     workspace_builder::workspace_root,
 };
 use anyhow::{bail, Result};
-use aptos_backup_cli::metadata::view::BackupStorageState;
+use libra2_backup_cli::metadata::view::BackupStorageState;
 use aptos_forge::{reconfig, AptosPublicInfo, Node, NodeExt, Swarm, SwarmExt};
 use libra2_logger::info;
 use libra2_temppath::TempPath;
@@ -180,7 +180,7 @@ async fn test_db_restore() {
 }
 
 fn db_backup_verify(backup_path: &Path, trusted_waypoints: &[Waypoint]) {
-    info!("---------- running libra2-debugger aptos-db backup-verify");
+    info!("---------- running libra2-debugger libra2-db backup-verify");
     let now = Instant::now();
     let bin_path = workspace_builder::get_bin("libra2-debugger");
     let metadata_cache_path = TempPath::new();
@@ -188,7 +188,7 @@ fn db_backup_verify(backup_path: &Path, trusted_waypoints: &[Waypoint]) {
     metadata_cache_path.create_as_dir().unwrap();
 
     let mut cmd = Command::new(bin_path.as_path());
-    cmd.args(["aptos-db", "backup", "verify"]);
+    cmd.args(["libra2-db", "backup", "verify"]);
     trusted_waypoints.iter().for_each(|w| {
         cmd.arg("--trust-waypoint");
         cmd.arg(&w.to_string());
@@ -220,7 +220,7 @@ fn replay_verify(backup_path: &Path, trusted_waypoints: &[Waypoint]) {
     metadata_cache_path.create_as_dir().unwrap();
 
     let mut cmd = Command::new(bin_path.as_path());
-    cmd.args(["aptos-db", "replay-verify"]);
+    cmd.args(["libra2-db", "replay-verify"]);
     trusted_waypoints.iter().for_each(|w| {
         cmd.arg("--trust-waypoint");
         cmd.arg(&w.to_string());
@@ -303,7 +303,7 @@ fn get_backup_storage_state(
     let output = Command::new(bin_path)
         .current_dir(workspace_root())
         .args([
-            "aptos-db",
+            "libra2-db",
             "backup",
             "query",
             "backup-storage-state",
@@ -347,7 +347,7 @@ pub(crate) fn db_backup(
     let mut backup_coordinator = Command::new(bin_path.as_path())
         .current_dir(workspace_root())
         .args([
-            "aptos-db",
+            "libra2-db",
             "backup",
             "continuously",
             "--backup-service-address",
@@ -381,7 +381,7 @@ pub(crate) fn db_backup(
     let compaction = Command::new(bin_path.as_path())
         .current_dir(workspace_root())
         .args([
-            "aptos-db",
+            "libra2-db",
             "backup-maintenance",
             "compact",
             "--epoch-ending-file-compact-factor",
@@ -423,7 +423,7 @@ pub(crate) fn db_restore(
     metadata_cache_path.create_as_dir().unwrap();
 
     let mut cmd = Command::new(bin_path.as_path());
-    cmd.args(["aptos-db", "restore", "bootstrap-db"]);
+    cmd.args(["libra2-db", "restore", "bootstrap-db"]);
     trusted_waypoints.iter().for_each(|w| {
         cmd.arg("--trust-waypoint");
         cmd.arg(&w.to_string());

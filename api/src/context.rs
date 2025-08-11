@@ -21,11 +21,11 @@ use libra2_crypto::HashValue;
 use aptos_gas_schedule::{AptosGasParameters, FromOnChainGasSchedule};
 use libra2_logger::{error, info, Schema};
 use libra2_mempool::{MempoolClientRequest, MempoolClientSender, SubmissionStatus};
-use aptos_storage_interface::{
+use libra2_storage_interface::{
     state_store::state_view::db_state_view::{
         DbStateView, DbStateViewAtVersion, LatestDbStateCheckpointView,
     },
-    AptosDbError, DbReader, Order, MAX_REQUEST_LIMIT,
+    Libra2DbError, DbReader, Order, MAX_REQUEST_LIMIT,
 };
 use libra2_types::{
     access_path::{AccessPath, Path},
@@ -920,7 +920,7 @@ impl Context {
                     true,
                     ledger_version,
                 )
-                .map_err(|e| AptosDbError::Other(e.to_string()))
+                .map_err(|e| Libra2DbError::Other(e.to_string()))
         };
         let txns = txns_res
             .context("Failed to retrieve account transactions")

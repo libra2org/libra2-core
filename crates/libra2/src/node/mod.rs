@@ -19,7 +19,7 @@ use crate::{
         fetch_metadata::FetchMetadata,
     },
 };
-use aptos_backup_cli::{
+use libra2_backup_cli::{
     coordinators::restore::{RestoreCoordinator, RestoreCoordinatorOpt},
     storage::DBToolStorageOpt,
     utils::GlobalRestoreOpt,
@@ -1320,7 +1320,7 @@ impl CliCommand<()> for AnalyzeValidatorPerformance {
     }
 }
 
-/// Bootstrap AptosDB from a backup
+/// Bootstrap Libra2DB from a backup
 ///
 /// Enables users to load from a backup to catch their node's DB up to a known state.
 #[derive(Parser)]

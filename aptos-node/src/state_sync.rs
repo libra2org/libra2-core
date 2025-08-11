@@ -24,7 +24,7 @@ use libra2_state_sync_driver::{
     driver_factory::{DriverFactory, StateSyncRuntimes},
     metadata_storage::PersistentMetadataStorage,
 };
-use aptos_storage_interface::{DbReader, DbReaderWriter};
+use libra2_storage_interface::{DbReader, DbReaderWriter};
 use libra2_storage_service_client::StorageServiceClient;
 use libra2_storage_service_notifications::StorageServiceNotificationListener;
 use libra2_storage_service_server::{

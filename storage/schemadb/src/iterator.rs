@@ -62,7 +62,7 @@ where
 
     /// Seeks to the first key whose binary representation is equal to or greater than that of the
     /// `seek_key`.
-    pub fn seek<SK>(&mut self, seek_key: &SK) -> aptos_storage_interface::Result<()>
+    pub fn seek<SK>(&mut self, seek_key: &SK) -> libra2_storage_interface::Result<()>
     where
         SK: SeekKeyCodec<S>,
     {
@@ -79,7 +79,7 @@ where
     /// `seek_key`.
     ///
     /// See example in [`RocksDB doc`](https://github.com/facebook/rocksdb/wiki/SeekForPrev).
-    pub fn seek_for_prev<SK>(&mut self, seek_key: &SK) -> aptos_storage_interface::Result<()>
+    pub fn seek_for_prev<SK>(&mut self, seek_key: &SK) -> libra2_storage_interface::Result<()>
     where
         SK: SeekKeyCodec<S>,
     {
@@ -92,7 +92,7 @@ where
         Ok(())
     }
 
-    fn next_impl(&mut self) -> aptos_storage_interface::Result<Option<(S::Key, S::Value)>> {
+    fn next_impl(&mut self) -> libra2_storage_interface::Result<Option<(S::Key, S::Value)>> {
         let _timer = APTOS_SCHEMADB_ITER_LATENCY_SECONDS
             .with_label_values(&[S::COLUMN_FAMILY_NAME])
             .start_timer();
@@ -130,7 +130,7 @@ impl<S> Iterator for SchemaIterator<'_, S>
 where
     S: Schema,
 {
-    type Item = aptos_storage_interface::Result<(S::Key, S::Value)>;
+    type Item = libra2_storage_interface::Result<(S::Key, S::Value)>;
 
     fn next(&mut self) -> Option<Self::Item> {
         self.next_impl().transpose()

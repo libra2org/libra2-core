@@ -8,9 +8,9 @@ use libra2_config::config::{
     RocksdbConfigs, StorageDirPaths, BUFFERED_STATE_TARGET_ITEMS,
     DEFAULT_MAX_NUM_NODES_PER_LRU_CACHE_SHARD, NO_OP_STORAGE_PRUNER_CONFIG,
 };
-use aptos_db::AptosDB;
+use libra2_db::Libra2DB;
 use aptos_framework::natives::code::PackageMetadata;
-use aptos_storage_interface::DbReader;
+use libra2_storage_interface::DbReader;
 use libra2_types::{
     account_address::AccountAddress,
     state_store::{state_key::StateKey, state_value::StateValue},
@@ -24,7 +24,7 @@ pub struct DBDebuggerInterface(Arc<dyn DbReader>);
 impl DBDebuggerInterface {
     pub fn open<P: AsRef<Path> + Clone>(db_root_path: P) -> Result<Self> {
         Ok(Self(Arc::new(
-            AptosDB::open(
+            Libra2DB::open(
                 StorageDirPaths::from_path(db_root_path),
                 true,
                 NO_OP_STORAGE_PRUNER_CONFIG,

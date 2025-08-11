@@ -29,7 +29,7 @@ use libra2_event_notifications::{
 use libra2_jwk_consensus::{start_jwk_consensus_runtime, types::JWKConsensusMsg};
 use libra2_mempool::QuorumStoreRequest;
 use libra2_network::application::interface::{NetworkClient, NetworkServiceEvents};
-use aptos_storage_interface::DbReaderWriter;
+use libra2_storage_interface::DbReaderWriter;
 use libra2_validator_transaction_pool::VTxnPoolState;
 use futures::channel::mpsc::Sender;
 use std::sync::Arc;

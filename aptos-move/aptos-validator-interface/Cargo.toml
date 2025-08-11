@@ -16,10 +16,10 @@ rust-version = { workspace = true }
 anyhow = { workspace = true }
 libra2-api-types = { workspace = true }
 libra2-config = { workspace = true }
-aptos-db = { workspace = true }
+libra2-db = { workspace = true }
 aptos-framework = { workspace = true }
 libra2-rest-client = { workspace = true }
-aptos-storage-interface = { workspace = true }
+libra2-storage-interface = { workspace = true }
 libra2-types = { workspace = true }
 async-recursion = { workspace = true }
 async-trait = { workspace = true }

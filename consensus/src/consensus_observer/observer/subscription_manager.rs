@@ -23,7 +23,7 @@ use libra2_config::{
 use libra2_infallible::Mutex;
 use libra2_logger::{info, warn};
 use libra2_network::application::{interface::NetworkClient, metadata::PeerMetadata};
-use aptos_storage_interface::DbReader;
+use libra2_storage_interface::DbReader;
 use libra2_time_service::TimeService;
 use itertools::Itertools;
 use std::{collections::HashMap, sync::Arc};
@@ -452,7 +452,7 @@ mod test {
     mock! {
         pub DatabaseReader {}
         impl DbReader for DatabaseReader {
-            fn get_latest_ledger_info_version(&self) -> aptos_storage_interface::Result<Version>;
+            fn get_latest_ledger_info_version(&self) -> libra2_storage_interface::Result<Version>;
         }
     }
 

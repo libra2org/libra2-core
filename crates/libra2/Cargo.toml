@@ -15,7 +15,7 @@ rust-version = { workspace = true }
 [dependencies]
 anyhow = { workspace = true }
 libra2-api-types = { workspace = true }
-aptos-backup-cli = { workspace = true }
+libra2-backup-cli = { workspace = true }
 libra2-bitvec = { workspace = true }
 libra2-build-info = { workspace = true }
 aptos-cached-packages = { workspace = true }
@@ -42,7 +42,7 @@ libra2-node = { workspace = true }
 aptos-node = { workspace = true }
 libra2-rest-client = { workspace = true }
 libra2-sdk = { workspace = true }
-aptos-storage-interface = { workspace = true }
+libra2-storage-interface = { workspace = true }
 libra2-telemetry = { workspace = true }
 libra2-temppath = { workspace = true }
 libra2-types = { workspace = true }

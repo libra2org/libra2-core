@@ -13,7 +13,7 @@ pub mod utils;
 
 use crate::db::INDEX_DB_NAME;
 use libra2_config::config::RocksdbConfig;
-use aptos_db_indexer_schemas::{
+use libra2_db_indexer_schemas::{
     metadata::{MetadataKey, MetadataValue},
     schema::{
         column_families, indexer_metadata::IndexerMetadataSchema, table_info::TableInfoSchema,
@@ -21,11 +21,11 @@ use aptos_db_indexer_schemas::{
 };
 use libra2_logger::warn;
 use aptos_resource_viewer::{AnnotatedMoveValue, AptosValueAnnotator};
-use aptos_rocksdb_options::gen_rocksdb_options;
-use aptos_schemadb::{batch::SchemaBatch, DB};
-use aptos_storage_interface::{
+use libra2_rocksdb_options::gen_rocksdb_options;
+use libra2_schemadb::{batch::SchemaBatch, DB};
+use libra2_storage_interface::{
     db_ensure, db_other_bail, state_store::state_view::db_state_view::DbStateViewAtVersion,
-    AptosDbError, DbReader, Result,
+    Libra2DbError, DbReader, Result,
 };
 use libra2_types::{
     access_path::Path,

@@ -7,13 +7,13 @@ use crate::{
 };
 use aptos_api::context::Context;
 use libra2_config::config::{NodeConfig, TableInfoServiceMode};
-use aptos_db_indexer::{
+use libra2_db_indexer::{
     db_indexer::{DBIndexer, InternalIndexerDB},
     db_ops::open_db,
     db_v2::IndexerAsyncV2,
 };
 use libra2_mempool::MempoolClientSender;
-use aptos_storage_interface::DbReaderWriter;
+use libra2_storage_interface::DbReaderWriter;
 use libra2_types::{chain_id::ChainId, transaction::Version};
 use std::{sync::Arc, time::Instant};
 use tokio::{runtime::Runtime, sync::watch::Receiver as WatchReceiver};

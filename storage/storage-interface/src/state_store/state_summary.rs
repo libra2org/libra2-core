@@ -12,7 +12,7 @@ use crate::{
 use anyhow::Result;
 use libra2_crypto::{hash::CORRUPTION_SENTINEL, HashValue};
 use libra2_metrics_core::TimerHelper;
-use aptos_scratchpad::{ProofRead, SparseMerkleTree};
+use libra2_scratchpad::{ProofRead, SparseMerkleTree};
 use libra2_types::{proof::SparseMerkleProofExt, transaction::Version};
 use derive_more::Deref;
 use itertools::Itertools;

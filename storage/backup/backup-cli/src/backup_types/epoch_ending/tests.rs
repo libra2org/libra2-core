@@ -16,10 +16,10 @@ use crate::{
         RocksdbOpt, TrustedWaypointOpt,
     },
 };
-use aptos_backup_service::start_backup_service;
+use libra2_backup_service::start_backup_service;
 use libra2_config::utils::get_available_port;
-use aptos_db::AptosDB;
-use aptos_storage_interface::DbReader;
+use libra2_db::Libra2DB;
+use libra2_storage_interface::DbReader;
 use libra2_temppath::TempPath;
 use libra2_types::{
     aggregate_signature::AggregateSignature,
@@ -108,7 +108,7 @@ fn end_to_end() {
         .map(|li| li.ledger_info().next_block_epoch())
         .unwrap_or(0);
 
-    let tgt_db = AptosDB::new_for_test(&tgt_db_dir);
+    let tgt_db = Libra2DB::new_for_test(&tgt_db_dir);
     assert_eq!(
         tgt_db
             .get_epoch_ending_ledger_infos(0, target_version_next_block_epoch)

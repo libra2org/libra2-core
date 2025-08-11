@@ -6,7 +6,7 @@ use anyhow::Result;
 use libra2_bitvec::BitVec;
 use libra2_logger::error;
 use libra2_rest_client::VersionedNewBlockEvent;
-use aptos_storage_interface::{DbReader, Order};
+use libra2_storage_interface::{DbReader, Order};
 use libra2_types::{
     account_address::AccountAddress,
     account_config::{new_block_event_key, NewBlockEvent},
@@ -308,15 +308,15 @@ pub struct AnalyzeValidators {}
 
 impl AnalyzeValidators {
     /// Fetch all events from a single epoch from DB.
-    pub fn fetch_epoch(epoch: u64, aptos_db: &dyn DbReader) -> Result<Vec<VersionedNewBlockEvent>> {
+    pub fn fetch_epoch(epoch: u64, libra2_db: &dyn DbReader) -> Result<Vec<VersionedNewBlockEvent>> {
         let batch = 100;
 
         let mut cursor = u64::MAX;
         let mut result: Vec<VersionedNewBlockEvent> = vec![];
-        let ledger_version = aptos_db.get_latest_ledger_info()?.ledger_info().version();
+        let ledger_version = libra2_db.get_latest_ledger_info()?.ledger_info().version();
 
         loop {
-            let raw_events = aptos_db.get_events(
+            let raw_events = libra2_db.get_events(
                 &new_block_event_key(),
                 cursor,
                 Order::Descending,

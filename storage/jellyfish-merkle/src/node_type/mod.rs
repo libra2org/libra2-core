@@ -15,7 +15,7 @@ mod node_type_test;
 
 use crate::{
     get_hash,
-    metrics::{APTOS_JELLYFISH_INTERNAL_ENCODED_BYTES, APTOS_JELLYFISH_LEAF_ENCODED_BYTES},
+    metrics::{LIBRA2_JELLYFISH_INTERNAL_ENCODED_BYTES, LIBRA2_JELLYFISH_LEAF_ENCODED_BYTES},
     Key, TreeReader,
 };
 use anyhow::{ensure, Context, Result};
@@ -833,12 +833,12 @@ where
             Node::Internal(internal_node) => {
                 out.push(NodeTag::Internal as u8);
                 internal_node.serialize(&mut out)?;
-                APTOS_JELLYFISH_INTERNAL_ENCODED_BYTES.inc_by(out.len() as u64);
+                LIBRA2_JELLYFISH_INTERNAL_ENCODED_BYTES.inc_by(out.len() as u64);
             },
             Node::Leaf(leaf_node) => {
                 out.push(NodeTag::Leaf as u8);
                 out.extend(bcs::to_bytes(&leaf_node)?);
-                APTOS_JELLYFISH_LEAF_ENCODED_BYTES.inc_by(out.len() as u64);
+                LIBRA2_JELLYFISH_LEAF_ENCODED_BYTES.inc_by(out.len() as u64);
             },
             Node::Null => {
                 out.push(NodeTag::Null as u8);

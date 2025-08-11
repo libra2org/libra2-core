@@ -5,16 +5,16 @@
 /// At the end of the migration to migrate table info mapping
 /// from storage critical path to indexer, the other file will be removed
 /// and this file will be moved to /ecosystem/indexer-grpc/indexer-grpc-table-info.
-use aptos_db_indexer_schemas::{
+use libra2_db_indexer_schemas::{
     metadata::{MetadataKey, MetadataValue},
     schema::{indexer_metadata::IndexerMetadataSchema, table_info::TableInfoSchema},
 };
 use libra2_logger::{info, sample, sample::SampleRate};
 use aptos_resource_viewer::{AnnotatedMoveValue, AptosValueAnnotator};
-use aptos_schemadb::{batch::SchemaBatch, DB};
-use aptos_storage_interface::{
+use libra2_schemadb::{batch::SchemaBatch, DB};
+use libra2_storage_interface::{
     db_other_bail as bail, state_store::state_view::db_state_view::DbStateViewAtVersion,
-    AptosDbError, DbReader, Result,
+    Libra2DbError, DbReader, Result,
 };
 use libra2_types::{
     access_path::Path,

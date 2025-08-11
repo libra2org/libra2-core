@@ -16,14 +16,14 @@ anyhow = { workspace = true }
 aptos-api = { workspace = true }
 libra2-api-types = { workspace = true }
 libra2-config = { workspace = true }
-aptos-db-indexer  = { workspace = true }
+libra2-db-indexer  = { workspace = true }
 aptos-indexer-grpc-fullnode = { workspace = true }
 aptos-indexer-grpc-utils = { workspace = true }
 libra2-logger = { workspace = true }
 libra2-mempool = { workspace = true }
 libra2-metrics-core = { workspace = true }
 libra2-runtimes = { workspace = true }
-aptos-storage-interface = { workspace = true }
+libra2-storage-interface = { workspace = true }
 libra2-types = { workspace = true }
 flate2 = { workspace = true }
 futures = { workspace = true }

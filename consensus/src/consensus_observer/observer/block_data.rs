@@ -26,7 +26,7 @@ use libra2_consensus_types::{
 use aptos_executor_types::state_compute_result::StateComputeResult;
 use libra2_infallible::Mutex;
 use libra2_logger::{info, warn};
-use aptos_storage_interface::DbReader;
+use libra2_storage_interface::DbReader;
 use libra2_types::{
     block_info::{BlockInfo, Round},
     epoch_state::EpochState,

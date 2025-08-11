@@ -10,9 +10,9 @@ use libra2_config::{
     },
     utils::get_genesis_txn,
 };
-use aptos_db::AptosDB;
+use libra2_db::Libra2DB;
 use aptos_executor::db_bootstrapper::{generate_waypoint, maybe_bootstrap};
-use aptos_storage_interface::DbReaderWriter;
+use libra2_storage_interface::DbReaderWriter;
 use libra2_types::{
     jwks::{jwk::JWK, patch::IssuerJWK},
     keyless::{
@@ -94,7 +94,7 @@ pub(crate) fn bootstrap_with_genesis(
     rocksdb_configs.state_merkle_db_config.max_open_files = -1;
     rocksdb_configs.enable_storage_sharding = enable_storage_sharding;
     let (_db, db_rw) = DbReaderWriter::wrap(
-        AptosDB::open(
+        Libra2DB::open(
             StorageDirPaths::from_path(db_dir),
             false, /* readonly */
             NO_OP_STORAGE_PRUNER_CONFIG,

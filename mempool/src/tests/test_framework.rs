@@ -44,14 +44,14 @@ use libra2_network::{
     },
     ProtocolId,
 };
-use aptos_storage_interface::mock::MockDbReaderWriter;
+use libra2_storage_interface::mock::MockDbReaderWriter;
 use libra2_types::{
     account_address::AccountAddress,
     mempool_status::MempoolStatusCode,
     on_chain_config::{InMemoryOnChainConfig, OnChainConfigPayload},
     transaction::{ReplayProtector, SignedTransaction},
 };
-use aptos_vm_validator::mocks::mock_vm_validator::MockVMValidator;
+use libra2_vm_validator::mocks::mock_vm_validator::MockVMValidator;
 use futures::{channel::oneshot, SinkExt};
 use maplit::btreemap;
 use std::{collections::HashMap, hash::Hash, sync::Arc};

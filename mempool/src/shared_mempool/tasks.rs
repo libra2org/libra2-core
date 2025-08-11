@@ -28,7 +28,7 @@ use libra2_logger::prelude::*;
 use libra2_mempool_notifications::CommittedTransaction;
 use libra2_metrics_core::HistogramTimer;
 use libra2_network::application::interface::NetworkClientInterface;
-use aptos_storage_interface::state_store::state_view::db_state_view::LatestDbStateCheckpointView;
+use libra2_storage_interface::state_store::state_view::db_state_view::LatestDbStateCheckpointView;
 use libra2_types::{
     account_address::AccountAddress,
     mempool_status::{MempoolStatus, MempoolStatusCode},
@@ -36,7 +36,7 @@ use libra2_types::{
     transaction::{ReplayProtector, SignedTransaction},
     vm_status::{DiscardedVMStatus, StatusCode},
 };
-use aptos_vm_validator::vm_validator::{get_account_sequence_number, TransactionValidation};
+use libra2_vm_validator::vm_validator::{get_account_sequence_number, TransactionValidation};
 use futures::{channel::oneshot, stream::FuturesUnordered};
 use rayon::prelude::*;
 use std::{

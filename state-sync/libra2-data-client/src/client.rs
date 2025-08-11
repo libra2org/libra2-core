@@ -30,7 +30,7 @@ use libra2_network::{
     application::{interface::NetworkClient, storage::PeersAndMetadata},
     protocols::network::RpcError,
 };
-use aptos_storage_interface::DbReader;
+use libra2_storage_interface::DbReader;
 use libra2_storage_service_client::StorageServiceClient;
 use libra2_storage_service_types::{
     requests::{

@@ -1,7 +1,7 @@
 [package]
-name = "aptos-experimental-hexy"
-description = "Aptos Hexy"
-version = "0.1.0"
+name = "libra2-experimental-hexy"
+description = "Libra2 Hexy"
+version = "0.1.1"
 
 # Workspace inherited keys
 authors = { workspace = true }
@@ -15,7 +15,7 @@ rust-version = { workspace = true }
 [dependencies]
 anyhow = { workspace = true }
 libra2-crypto = { workspace = true }
-aptos-experimental-layered-map = { workspace = true }
+libra2-experimental-layered-map = { workspace = true }
 libra2-infallible = { workspace = true }
 libra2-metrics-core = { workspace = true }
 itertools = { workspace = true }

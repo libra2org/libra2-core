@@ -16,9 +16,9 @@ use libra2_network::{
     application::{interface::NetworkClient, storage::PeersAndMetadata},
     protocols::wire::handshake::v1::ProtocolId::MempoolDirectSend,
 };
-use aptos_storage_interface::mock::MockDbReaderWriter;
+use libra2_storage_interface::mock::MockDbReaderWriter;
 use libra2_types::transaction::SignedTransaction;
-use aptos_vm_validator::mocks::mock_vm_validator::MockVMValidator;
+use libra2_vm_validator::mocks::mock_vm_validator::MockVMValidator;
 use proptest::{
     arbitrary::any,
     prelude::*,

@@ -14,7 +14,7 @@ use libra2_consensus_types::{
 };
 use libra2_crypto::HashValue;
 use libra2_infallible::Mutex;
-use aptos_storage_interface::DbReader;
+use libra2_storage_interface::DbReader;
 use libra2_types::{
     aggregate_signature::AggregateSignature,
     epoch_change::EpochChangeProof,
@@ -240,7 +240,7 @@ impl PersistentLivenessStorage for MockStorage {
         Ok(EpochChangeProof::new(vec![lis], false))
     }
 
-    fn aptos_db(&self) -> Arc<dyn DbReader> {
+    fn libra2_db(&self) -> Arc<dyn DbReader> {
         unimplemented!()
     }
 
@@ -314,7 +314,7 @@ impl PersistentLivenessStorage for EmptyStorage {
         Ok(EpochChangeProof::new(vec![], false))
     }
 
-    fn aptos_db(&self) -> Arc<dyn DbReader> {
+    fn libra2_db(&self) -> Arc<dyn DbReader> {
         unimplemented!()
     }
 

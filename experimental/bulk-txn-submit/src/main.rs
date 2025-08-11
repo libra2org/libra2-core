@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use anyhow::{Context, Result};
-use aptos_experimental_bulk_txn_submit::{
+use libra2_experimental_bulk_txn_submit::{
     coordinator::{
         create_sample_addresses, execute_return_worker_funds, execute_submit,
         CreateSampleAddresses, SanitizeAddresses, SubmitArgs,

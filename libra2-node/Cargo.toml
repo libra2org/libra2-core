@@ -16,7 +16,7 @@ rust-version = { workspace = true }
 anyhow = { workspace = true }
 libra2-admin-service = { workspace = true }
 aptos-api = { workspace = true }
-aptos-backup-service = { workspace = true }
+libra2-backup-service = { workspace = true }
 libra2-build-info = { workspace = true }
 aptos-cached-packages = { workspace = true }
 libra2-channels = { workspace = true }
@@ -27,8 +27,8 @@ libra2-crash-handler = { workspace = true }
 libra2-crypto = { workspace = true }
 libra2-data-client = { workspace = true }
 libra2-data-streaming-service = { workspace = true }
-aptos-db = { workspace = true }
-aptos-db-indexer = { workspace = true }
+libra2-db = { workspace = true }
+libra2-db-indexer = { workspace = true }
 libra2-dkg-runtime = { workspace = true }
 libra2-event-notifications = { workspace = true }
 aptos-executor = { workspace = true }
@@ -52,7 +52,7 @@ libra2-peer-monitoring-service-server = { workspace = true }
 libra2-peer-monitoring-service-types = { workspace = true }
 libra2-runtimes = { workspace = true }
 libra2-state-sync-driver = { workspace = true }
-aptos-storage-interface = { workspace = true }
+libra2-storage-interface = { workspace = true }
 libra2-storage-service-client = { workspace = true }
 libra2-storage-service-notifications = { workspace = true }
 libra2-storage-service-server = { workspace = true }
@@ -94,7 +94,7 @@ rstack-self = { workspace = true }
 [features]
 assert-private-keys-not-cloneable = ["libra2-crypto/assert-private-keys-not-cloneable"]
 check-vm-features = []
-consensus-only-perf-test = ["aptos-executor/consensus-only-perf-test", "libra2-mempool/consensus-only-perf-test", "aptos-db/consensus-only-perf-test"]
+consensus-only-perf-test = ["aptos-executor/consensus-only-perf-test", "libra2-mempool/consensus-only-perf-test", "libra2-db/consensus-only-perf-test"]
 default = []
 failpoints = ["fail/failpoints", "libra2-consensus/failpoints", "aptos-executor/failpoints", "libra2-mempool/failpoints", "aptos-api/failpoints", "libra2-config/failpoints"]
 indexer = ["aptos-indexer"]

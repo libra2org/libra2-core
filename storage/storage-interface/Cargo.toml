@@ -1,7 +1,7 @@
 [package]
-name = "aptos-storage-interface"
-description = "Aptos storage interface"
-version = "0.1.0"
+name = "libra2-storage-interface"
+description = "Libra2 storage interface"
+version = "0.1.1"
 
 # Workspace inherited keys
 authors = { workspace = true }
@@ -15,10 +15,10 @@ rust-version = { workspace = true }
 [dependencies]
 anyhow = { workspace = true }
 libra2-crypto = { workspace = true }
-aptos-experimental-layered-map = { workspace = true }
+libra2-experimental-layered-map = { workspace = true }
 libra2-logger = { workspace = true }
 libra2-metrics-core = { workspace = true }
-aptos-scratchpad = { workspace = true }
+libra2-scratchpad = { workspace = true }
 libra2-secure-net = { workspace = true }
 libra2-types = { workspace = true }
 arr_macro = { workspace = true }

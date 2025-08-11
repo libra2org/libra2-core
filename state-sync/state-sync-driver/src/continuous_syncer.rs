@@ -20,7 +20,7 @@ use libra2_data_streaming_service::{
 };
 use libra2_infallible::Mutex;
 use libra2_logger::{prelude::*, sample, sample::SampleRate};
-use aptos_storage_interface::DbReader;
+use libra2_storage_interface::DbReader;
 use libra2_types::{
     ledger_info::LedgerInfoWithSignatures,
     transaction::{TransactionListWithProofV2, TransactionOutputListWithProofV2, Version},

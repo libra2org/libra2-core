@@ -20,13 +20,13 @@ libra2-crypto = { workspace = true }
 libra2-drop-helper = { workspace = true }
 aptos-executor-service = { workspace = true }
 aptos-executor-types = { workspace = true }
-aptos-experimental-runtimes = { workspace = true }
+libra2-experimental-runtimes = { workspace = true }
 aptos-indexer-grpc-table-info = { workspace = true }
 libra2-infallible = { workspace = true }
 libra2-logger = { workspace = true }
 libra2-metrics-core = { workspace = true }
 libra2-sdk = { workspace = true }
-aptos-storage-interface = { workspace = true }
+libra2-storage-interface = { workspace = true }
 libra2-types = { workspace = true }
 aptos-vm = { workspace = true }
 bcs = { workspace = true }
@@ -41,10 +41,10 @@ serde = { workspace = true }
 [dev-dependencies]
 aptos-cached-packages = { workspace = true }
 libra2-config = { workspace = true }
-aptos-db = { workspace = true }
-aptos-db-indexer = { workspace = true, features = ["fuzzing"] }
+libra2-db = { workspace = true }
+libra2-db-indexer = { workspace = true, features = ["fuzzing"] }
 aptos-executor-test-helpers = { workspace = true }
-aptos-storage-interface = { workspace = true }
+libra2-storage-interface = { workspace = true }
 libra2-temppath = { workspace = true }
 aptos-transaction-simulation = { workspace = true }
 libra2-types = { workspace = true, features = ["testing"] }
@@ -56,7 +56,7 @@ rand = { workspace = true }
 
 [features]
 default = []
-fuzzing = ["libra2-consensus-types/fuzzing", "libra2-crypto/fuzzing", "libra2-types/fuzzing", "aptos-storage-interface/fuzzing"]
+fuzzing = ["libra2-consensus-types/fuzzing", "libra2-crypto/fuzzing", "libra2-types/fuzzing", "libra2-storage-interface/fuzzing"]
 failpoints = ["fail/failpoints", "aptos-vm/failpoints"]
 consensus-only-perf-test = []
 

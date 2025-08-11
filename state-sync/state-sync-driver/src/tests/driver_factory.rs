@@ -12,7 +12,7 @@ use libra2_config::{
 use libra2_consensus_notifications::new_consensus_notifier_listener_pair;
 use libra2_data_client::client::Libra2DataClient;
 use libra2_data_streaming_service::streaming_client::new_streaming_service_client_listener_pair;
-use aptos_db::AptosDB;
+use libra2_db::Libra2DB;
 use libra2_event_notifications::EventSubscriptionService;
 use aptos_executor::chunk_executor::ChunkExecutor;
 use aptos_executor_test_helpers::bootstrap_genesis;
@@ -20,7 +20,7 @@ use libra2_genesis::test_utils::test_config;
 use libra2_infallible::RwLock;
 use libra2_mempool_notifications::new_mempool_notifier_listener_pair;
 use libra2_network::application::{interface::NetworkClient, storage::PeersAndMetadata};
-use aptos_storage_interface::DbReaderWriter;
+use libra2_storage_interface::DbReaderWriter;
 use libra2_storage_service_client::StorageServiceClient;
 use libra2_temppath::TempPath;
 use libra2_time_service::TimeService;
@@ -32,7 +32,7 @@ use std::{collections::HashMap, sync::Arc};
 fn test_new_initialized_configs() {
     // Create a test database
     let tmp_dir = TempPath::new();
-    let db = AptosDB::open(
+    let db = Libra2DB::open(
         StorageDirPaths::from_path(&tmp_dir),
         false,
         NO_OP_STORAGE_PRUNER_CONFIG,

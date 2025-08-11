@@ -1,7 +1,7 @@
 [package]
-name = "aptos-backup-cli"
+name = "libra2-backup-cli"
 description = "Backup CLI"
-version = "0.1.0"
+version = "0.1.1"
 
 # Workspace inherited keys
 authors = { workspace = true }
@@ -14,22 +14,22 @@ rust-version = { workspace = true }
 
 [dependencies]
 anyhow = { workspace = true }
-aptos-backup-service = { workspace = true }
+libra2-backup-service = { workspace = true }
 libra2-config = { workspace = true }
 libra2-crypto = { workspace = true }
-aptos-db = { workspace = true }
-aptos-db-indexer-schemas = { workspace = true }
+libra2-db = { workspace = true }
+libra2-db-indexer-schemas = { workspace = true }
 aptos-executor = { workspace = true }
 aptos-executor-test-helpers = { workspace = true }
 aptos-executor-types = { workspace = true }
 aptos-indexer-grpc-table-info = { workspace = true }
 libra2-infallible = { workspace = true }
-aptos-jellyfish-merkle = { workspace = true }
+libra2-jellyfish-merkle = { workspace = true }
 libra2-logger = { workspace = true }
 libra2-metrics-core = { workspace = true }
 libra2-proptest-helpers = { workspace = true }
 libra2-push-metrics = { workspace = true }
-aptos-storage-interface = { workspace = true }
+libra2-storage-interface = { workspace = true }
 libra2-temppath = { workspace = true }
 libra2-types = { workspace = true }
 aptos-vm = { workspace = true }
@@ -59,15 +59,15 @@ tokio-stream = { workspace = true, features = ["fs"] }
 tokio-util = { workspace = true }
 
 [dev-dependencies]
-aptos-backup-service = { workspace = true }
+libra2-backup-service = { workspace = true }
 libra2-config = { workspace = true }
-aptos-db = { workspace = true }
+libra2-db = { workspace = true }
 aptos-executor-test-helpers = { workspace = true }
 libra2-proptest-helpers = { workspace = true }
-aptos-storage-interface = { workspace = true }
+libra2-storage-interface = { workspace = true }
 proptest = { workspace = true }
 warp = { workspace = true }
 
 [features]
 testing = []
-fuzzing = ["aptos-db/fuzzing"]
+fuzzing = ["libra2-db/fuzzing"]

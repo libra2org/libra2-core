@@ -40,7 +40,7 @@ libra2-metrics-core = { workspace = true }
 aptos-moving-average = { workspace = true }
 aptos-protos = { workspace = true }
 libra2-runtimes = { workspace = true }
-aptos-storage-interface = { workspace = true }
+libra2-storage-interface = { workspace = true }
 libra2-types = { workspace = true }
 
 move-core-types = { workspace = true }
@@ -52,7 +52,7 @@ regex = { workspace = true }
 
 aptos-api-test-context = { workspace = true }
 libra2-crypto = { workspace = true }
-aptos-db = { workspace = true }
+libra2-db = { workspace = true }
 aptos-executor = { workspace = true }
 aptos-executor-types = { workspace = true }
 aptos-framework = { workspace = true }
@@ -65,4 +65,4 @@ libra2-sdk = { workspace = true }
 libra2-secure-storage = { workspace = true }
 libra2-temppath = { workspace = true }
 aptos-vm = { workspace = true }
-aptos-vm-validator = { workspace = true }
+libra2-vm-validator = { workspace = true }

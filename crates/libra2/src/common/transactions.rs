@@ -30,6 +30,7 @@ use aptos_vm_types::output::VMOutput;
 use clap::Parser;
 use move_core_types::vm_status::VMStatus;
 pub use move_package::*;
+use rand::rngs::OsRng;
 use std::{
     fmt::Display,
     time::{SystemTime, UNIX_EPOCH},
@@ -203,7 +204,8 @@ impl TxnOptions {
             .sequence_number(sequence_number)
             .expiration_timestamp_secs(expiration_time_secs);
         if self.replay_protection_type == ReplayProtectionType::Nonce {
-            txn_builder = txn_builder.upgrade_payload(true, true);
+            let mut rng = rand::rngs::OsRng;
+            txn_builder = txn_builder.upgrade_payload(&mut rng, true, true);
         }
         let unsigned_transaction = txn_builder.build();
 

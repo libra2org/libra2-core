@@ -12,7 +12,7 @@ use libra2_consensus::{
 };
 use libra2_consensus_notifications::ConsensusNotifier;
 use libra2_data_client::client::Libra2DataClient;
-use aptos_db_indexer::{db_indexer::InternalIndexerDB, indexer_reader::IndexerReaders};
+use libra2_db_indexer::{db_indexer::InternalIndexerDB, indexer_reader::IndexerReaders};
 use libra2_event_notifications::{DbBackedOnChainConfig, ReconfigNotificationListener};
 use aptos_indexer_grpc_fullnode::runtime::bootstrap as bootstrap_indexer_grpc;
 use aptos_indexer_grpc_table_info::runtime::{
@@ -30,7 +30,7 @@ use libra2_peer_monitoring_service_server::{
     PeerMonitoringServiceServer,
 };
 use libra2_peer_monitoring_service_types::PeerMonitoringServiceMessage;
-use aptos_storage_interface::{DbReader, DbReaderWriter};
+use libra2_storage_interface::{DbReader, DbReaderWriter};
 use libra2_time_service::TimeService;
 use libra2_types::{
     chain_id::ChainId, indexer::indexer_db_reader::IndexerReader, transaction::Version,

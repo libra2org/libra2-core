@@ -29,11 +29,11 @@ libra2-network = { workspace = true }
 libra2-peer-monitoring-service-types = { workspace = true }
 libra2-runtimes = { workspace = true }
 libra2-short-hex-str = { workspace = true }
-aptos-storage-interface = { workspace = true }
+libra2-storage-interface = { workspace = true }
 libra2-time-service = { workspace = true }
 libra2-transaction-filters = { workspace = true }
 libra2-types = { workspace = true }
-aptos-vm-validator = { workspace = true }
+libra2-vm-validator = { workspace = true }
 bcs = { workspace = true }
 fail = { workspace = true }
 futures = { workspace = true }
@@ -54,7 +54,7 @@ libra2-compression = { workspace = true }
 libra2-config = { workspace = true }
 libra2-id-generator = { workspace = true }
 libra2-network = { workspace = true, features = ["fuzzing"] }
-aptos-storage-interface = { workspace = true, features = ["fuzzing"] }
+libra2-storage-interface = { workspace = true, features = ["fuzzing"] }
 libra2-time-service = { workspace = true, features = ["testing"] }
 libra2-transaction-filters = { workspace = true, features = ["fuzzing"] }
 enum_dispatch = { workspace = true }
@@ -62,6 +62,6 @@ proptest = { workspace = true }
 
 [features]
 default = []
-failpoints = ["fail/failpoints", "aptos-vm-validator/failpoints"]
-fuzzing = ["proptest", "libra2-types/fuzzing", "aptos-storage-interface/fuzzing", "libra2-config/fuzzing"]
+failpoints = ["fail/failpoints", "libra2-vm-validator/failpoints"]
+fuzzing = ["proptest", "libra2-types/fuzzing", "libra2-storage-interface/fuzzing", "libra2-config/fuzzing"]
 consensus-only-perf-test = []

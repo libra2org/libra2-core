@@ -25,12 +25,12 @@ use crate::{
     },
 };
 use anyhow::{anyhow, ensure, Result};
-use aptos_db::backup::restore_handler::RestoreHandler;
+use libra2_db::backup::restore_handler::RestoreHandler;
 use aptos_executor::chunk_executor::ChunkExecutor;
 use aptos_executor_types::{ChunkExecutorTrait, TransactionReplayer, VerifyExecutionMode};
 use libra2_logger::prelude::*;
 use libra2_metrics_core::TimerHelper;
-use aptos_storage_interface::DbReaderWriter;
+use libra2_storage_interface::DbReaderWriter;
 use libra2_types::{
     contract_event::ContractEvent,
     ledger_info::LedgerInfoWithSignatures,
@@ -658,7 +658,7 @@ impl TransactionRestoreBatchController {
         let (first_version, _) = self.replay_from_version.unwrap();
         restore_handler.reset_state_store();
         let replay_start = Instant::now();
-        let db = DbReaderWriter::from_arc(Arc::clone(&restore_handler.aptosdb));
+        let db = DbReaderWriter::from_arc(Arc::clone(&restore_handler.libra2db));
         let chunk_replayer = Arc::new(ChunkExecutor::<AptosVMBlockExecutor>::new(db));
         let ledger_update_stream = txns_to_execute_stream
             .try_chunks(BATCH_SIZE)

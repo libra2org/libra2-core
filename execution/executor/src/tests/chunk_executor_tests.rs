@@ -14,9 +14,9 @@ use crate::{
     },
 };
 use libra2_crypto::HashValue;
-use aptos_db::AptosDB;
+use libra2_db::Libra2DB;
 use aptos_executor_types::{BlockExecutorTrait, ChunkExecutorTrait};
-use aptos_storage_interface::DbReaderWriter;
+use libra2_storage_interface::DbReaderWriter;
 use libra2_types::{
     ledger_info::LedgerInfoWithSignatures,
     test_helpers::transaction_test_helpers::{block, TEST_BLOCK_EXECUTOR_ONCHAIN_CONFIG},
@@ -34,7 +34,7 @@ impl TestExecutor {
     pub fn new() -> TestExecutor {
         let path = libra2_temppath::TempPath::new();
         path.create_as_dir().unwrap();
-        let db = DbReaderWriter::new(AptosDB::new_for_test(path.path()));
+        let db = DbReaderWriter::new(Libra2DB::new_for_test(path.path()));
         let genesis = aptos_vm_genesis::test_genesis_transaction();
         let waypoint = generate_waypoint::<MockVM>(&db, &genesis).unwrap();
         maybe_bootstrap::<MockVM>(&db, &genesis, waypoint).unwrap();

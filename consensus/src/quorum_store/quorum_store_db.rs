@@ -11,7 +11,7 @@ use crate::{
 use anyhow::Result;
 use libra2_crypto::HashValue;
 use libra2_logger::prelude::*;
-use aptos_schemadb::{
+use libra2_schemadb::{
     batch::{SchemaBatch, WriteBatch},
     schema::Schema,
     Options, DB,
