@@ -17,7 +17,7 @@ use libra2_consensus_notifications::ConsensusNotificationListener;
 use libra2_data_client::client::Libra2DataClient;
 use libra2_data_streaming_service::streaming_client::StreamingServiceClient;
 use libra2_event_notifications::{EventNotificationSender, EventSubscriptionService};
-use aptos_executor_types::ChunkExecutorTrait;
+use libra2_executor_types::ChunkExecutorTrait;
 use libra2_infallible::Mutex;
 use libra2_mempool_notifications::MempoolNotificationSender;
 use libra2_storage_interface::DbReaderWriter;

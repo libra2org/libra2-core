@@ -12,7 +12,7 @@ use anyhow::Result;
 use libra2_config::config::BlockTransactionFilterConfig;
 use libra2_consensus_notifications::ConsensusNotificationSender;
 use libra2_consensus_types::common::Round;
-use aptos_executor_types::BlockExecutorTrait;
+use libra2_executor_types::BlockExecutorTrait;
 use libra2_infallible::RwLock;
 use libra2_logger::prelude::*;
 use libra2_types::{

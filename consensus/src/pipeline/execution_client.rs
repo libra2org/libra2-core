@@ -36,7 +36,7 @@ use libra2_consensus_types::{
     wrapped_ledger_info::WrappedLedgerInfo,
 };
 use libra2_crypto::bls12381::PrivateKey;
-use aptos_executor_types::ExecutorResult;
+use libra2_executor_types::ExecutorResult;
 use libra2_infallible::RwLock;
 use libra2_logger::prelude::*;
 use libra2_network::{application::interface::NetworkClient, protocols::network::Event};

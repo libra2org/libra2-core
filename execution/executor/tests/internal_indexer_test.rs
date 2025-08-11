@@ -4,10 +4,10 @@
 use aptos_cached_packages::aptos_stdlib;
 use libra2_db::Libra2DB;
 use libra2_db_indexer::db_indexer::DBIndexer;
-use aptos_executor_test_helpers::{
+use libra2_executor_test_helpers::{
     gen_block_id, gen_ledger_info_with_sigs, integration_test_impl::create_db_and_executor,
 };
-use aptos_executor_types::BlockExecutorTrait;
+use libra2_executor_types::BlockExecutorTrait;
 use aptos_indexer_grpc_table_info::internal_indexer_db_service::InternalIndexerDBService;
 use libra2_sdk::{
     transaction_builder::TransactionFactory,

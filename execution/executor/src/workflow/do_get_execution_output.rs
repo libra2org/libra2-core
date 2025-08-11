@@ -10,11 +10,11 @@ use aptos_block_executor::txn_provider::default::DefaultTxnProvider;
 #[cfg(feature = "consensus-only-perf-test")]
 use aptos_block_executor::txn_provider::TxnProvider;
 use libra2_crypto::HashValue;
-use aptos_executor_service::{
+use libra2_executor_service::{
     local_executor_helper::SHARDED_BLOCK_EXECUTOR,
     remote_executor_client::{get_remote_addresses, REMOTE_SHARDED_BLOCK_EXECUTOR},
 };
-use aptos_executor_types::{
+use libra2_executor_types::{
     execution_output::ExecutionOutput,
     planned::Planned,
     should_forward_to_subscription_service,

@@ -163,6 +163,6 @@ impl MainnetGenesisInfo {
             None,
         )?;
         let db_rw = DbReaderWriter::new(libra2db);
-        aptos_executor::db_bootstrapper::generate_waypoint::<AptosVMBlockExecutor>(&db_rw, genesis)
+        libra2_executor::db_bootstrapper::generate_waypoint::<AptosVMBlockExecutor>(&db_rw, genesis)
     }
 }

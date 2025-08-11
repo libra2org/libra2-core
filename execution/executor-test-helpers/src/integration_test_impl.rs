@@ -8,8 +8,8 @@ use aptos_cached_packages::aptos_stdlib;
 use libra2_config::config::DEFAULT_MAX_NUM_NODES_PER_LRU_CACHE_SHARD;
 use libra2_consensus_types::block::Block;
 use libra2_db::Libra2DB;
-use aptos_executor::block_executor::BlockExecutor;
-use aptos_executor_types::BlockExecutorTrait;
+use libra2_executor::block_executor::BlockExecutor;
+use libra2_executor_types::BlockExecutorTrait;
 use libra2_sdk::{
     move_types::account_address::AccountAddress,
     transaction_builder::TransactionFactory,

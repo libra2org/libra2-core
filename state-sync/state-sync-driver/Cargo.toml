@@ -20,7 +20,7 @@ libra2-crypto = { workspace = true }
 libra2-data-client = { workspace = true }
 libra2-data-streaming-service = { workspace = true }
 libra2-event-notifications = { workspace = true }
-aptos-executor-types = { workspace = true }
+libra2-executor-types = { workspace = true }
 libra2-infallible = { workspace = true }
 libra2-logger = { workspace = true }
 libra2-mempool-notifications = { workspace = true }
@@ -45,8 +45,8 @@ anyhow = { workspace = true }
 libra2-channels = { workspace = true }
 libra2-crypto = { workspace = true }
 libra2-db = { workspace = true }
-aptos-executor = { workspace = true }
-aptos-executor-test-helpers = { workspace = true }
+libra2-executor = { workspace = true }
+libra2-executor-test-helpers = { workspace = true }
 libra2-genesis = { workspace = true, features = ["testing"] }
 libra2-network = { workspace = true }
 libra2-storage-service-client = { workspace = true }

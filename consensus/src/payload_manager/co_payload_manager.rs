@@ -16,7 +16,7 @@ use libra2_consensus_types::{
     common::{Author, Payload, Round},
 };
 use libra2_crypto::HashValue;
-use aptos_executor_types::{ExecutorError::InternalError, *};
+use libra2_executor_types::{ExecutorError::InternalError, *};
 use libra2_infallible::Mutex;
 use libra2_types::transaction::SignedTransaction;
 use async_trait::async_trait;

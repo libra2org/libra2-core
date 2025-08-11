@@ -29,7 +29,7 @@ const RELEVANT_FILE_PATHS_FOR_EXECUTION_PERFORMANCE_TESTS: [&str; 5] = [
     ".github/workflows/execution-performance.yaml",
     ".github/workflows/workflow-run-execution-performance.yaml",
     "aptos-move/e2e-benchmark",
-    "execution/aptos-executor-benchmark",
+    "execution/libra2-executor-benchmark",
     "testsuite/single_node_performance.py",
 ];
 const RELEVANT_FILE_PATHS_FOR_FRAMEWORK_UPGRADE_TESTS: [&str; 4] = [
@@ -42,7 +42,7 @@ const RELEVANT_FILE_PATHS_FOR_FRAMEWORK_UPGRADE_TESTS: [&str; 4] = [
 // Relevant packages to monitor when deciding to run the targeted tests
 const RELEVANT_PACKAGES_FOR_COMPILER_V2: [&str; 2] = ["aptos-framework", "e2e-move-tests"];
 const RELEVANT_PACKAGES_FOR_EXECUTION_PERFORMANCE_TESTS: [&str; 2] =
-    ["aptos-executor-benchmark", "aptos-move-e2e-benchmark"];
+    ["libra2-executor-benchmark", "aptos-move-e2e-benchmark"];
 const RELEVANT_PACKAGES_FOR_FRAMEWORK_UPGRADE_TESTS: [&str; 2] =
     ["aptos-framework", "aptos-release-builder"];
 
@@ -515,7 +515,7 @@ fn output_changed_files(changed_files: Utf8Paths0) -> anyhow::Result<()> {
 
 #[derive(Parser, Debug, Clone)]
 #[clap(author, version)]
-pub struct AptosCargoCli {
+pub struct Libra2CargoCli {
     #[command(subcommand)]
     cmd: AptosCargoCommand,
     #[command(flatten)]
@@ -524,7 +524,7 @@ pub struct AptosCargoCli {
     pub verbose: clap_verbosity_flag::Verbosity,
 }
 
-impl AptosCargoCli {
+impl Libra2CargoCli {
     pub fn execute(&self) -> anyhow::Result<()> {
         self.cmd.execute(&self.package_args)
     }
@@ -543,7 +543,7 @@ mod tests {
         // Verify that no changes are detected
         let changed_file_paths = Utf8Paths0::from_bytes(b"developer-docs-site/").unwrap();
         let affected_package_paths =
-            vec!["file:///home/aptos-core/crates/test-crate#test-crate".into()];
+            vec!["file:///home/libra2-core/crates/test-crate#test-crate".into()];
         let relevant_changes_detected = detect_relevant_changes(
             relevant_file_paths.clone(),
             relevant_package_names.clone(),
@@ -565,7 +565,7 @@ mod tests {
 
         // Verify that package changes are detected correctly
         let affected_package_paths =
-            vec!["file:///home/aptos-core/crates/aptos-node#aptos-node".into()];
+            vec!["file:///home/libra2-core/crates/aptos-node#aptos-node".into()];
         let relevant_changes_detected = detect_relevant_changes(
             relevant_file_paths.clone(),
             relevant_package_names.clone(),
@@ -577,7 +577,7 @@ mod tests {
         // Verify that both file and package changes are detected correctly
         let changed_file_path = Utf8Paths0::from_bytes(b"Cargo.lock").unwrap();
         let affected_package_paths =
-            vec!["file:///home/aptos-core/crates/e2e-move-tests#e2e-move-tests".into()];
+            vec!["file:///home/libra2-core/crates/e2e-move-tests#e2e-move-tests".into()];
         let relevant_changes_detected = detect_relevant_changes(
             relevant_file_paths.clone(),
             relevant_package_names.clone(),
@@ -642,10 +642,10 @@ mod tests {
 
         // Verify that no changes are detected
         let affected_package_paths = vec![
-            "file:///home/aptos-core/aptos-mode/tests/e2e-move-tests#test-crate",
-            "file:///home/aptos-core/crates/test-crate#other-test-crate",
-            "file:///home/aptos-core/crates/other-crate#other-crate",
-            "file:///home/aptos-core/aptos-node#other-node-crate",
+            "file:///home/libra2-core/aptos-mode/tests/e2e-move-tests#test-crate",
+            "file:///home/libra2-core/crates/test-crate#other-test-crate",
+            "file:///home/libra2-core/crates/other-crate#other-crate",
+            "file:///home/libra2-core/aptos-node#other-node-crate",
         ];
         for affected_package_path in affected_package_paths {
             // Verify that no changes are detected
@@ -660,8 +660,8 @@ mod tests {
 
         // Verify that package changes are detected correctly
         let affected_package_paths = vec![
-            "file:///home/aptos-core/crates/aptos-node#aptos-node",
-            "file:///home/aptos-core/crates/e2e-move-tests#e2e-move-tests",
+            "file:///home/libra2-core/crates/aptos-node#aptos-node",
+            "file:///home/libra2-core/crates/e2e-move-tests#e2e-move-tests",
         ];
         for affected_package_path in affected_package_paths {
             // Verify changes are detected
@@ -680,7 +680,7 @@ mod tests {
         // Create a fully qualified test package path
         let package_name = "test-package-name".to_string();
         let package_path = format!(
-            "file:///home/aptos-core/devtools/aptos-cargo-cli#{}",
+            "file:///home/libra2-core/devtools/libra2-cargo-cli#{}",
             package_name
         );
 
@@ -698,7 +698,7 @@ mod tests {
     #[should_panic(expected = "Failed to extract package name from path")]
     fn test_get_package_name_from_path_empty() {
         // Create a test package path with an empty package name
-        let package_path = "file:///home/aptos-core/devtools/aptos-cargo-cli#";
+        let package_path = "file:///home/libra2-core/devtools/libra2-cargo-cli#";
 
         // Extract the package name from the path (this should panic)
         get_package_name_from_path(package_path);
@@ -708,7 +708,7 @@ mod tests {
     #[should_panic(expected = "Package path missing delimiter")]
     fn test_get_package_name_from_path_missing_delimiter() {
         // Create a test package path without a package name
-        let package_path = "file:///home/aptos-core/devtools/aptos-cargo-cli";
+        let package_path = "file:///home/libra2-core/devtools/libra2-cargo-cli";
 
         // Extract the package name from the path (this should panic)
         get_package_name_from_path(package_path);

@@ -19,8 +19,8 @@ aptos-cached-packages = { workspace = true }
 libra2-config = { workspace = true }
 libra2-crypto = { workspace = true }
 libra2-db = { workspace = true, features = ["fuzzing"] }
-aptos-executor = { workspace = true }
-aptos-executor-types = { workspace = true }
+libra2-executor = { workspace = true }
+libra2-executor-types = { workspace = true }
 aptos-framework = { workspace = true }
 libra2-genesis = { workspace = true }
 aptos-indexer-grpc-table-info = { workspace = true }

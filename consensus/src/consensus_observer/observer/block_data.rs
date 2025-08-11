@@ -23,7 +23,7 @@ use libra2_consensus_types::{
     pipelined_block::{PipelineFutures, PipelinedBlock},
     wrapped_ledger_info::WrappedLedgerInfo,
 };
-use aptos_executor_types::state_compute_result::StateComputeResult;
+use libra2_executor_types::state_compute_result::StateComputeResult;
 use libra2_infallible::Mutex;
 use libra2_logger::{info, warn};
 use libra2_storage_interface::DbReader;

@@ -1,7 +1,7 @@
 // Copyright © Aptos Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-use aptos_cargo_cli::{AptosCargoCommand, SelectedPackageArgs};
+use libra2_cargo_cli::{AptosCargoCommand, SelectedPackageArgs};
 use clap::Parser;
 use std::process::exit;
 

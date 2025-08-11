@@ -8,7 +8,7 @@ use libra2_consensus_types::{
     block::Block,
     common::{Author, Payload},
 };
-use aptos_executor_types::*;
+use libra2_executor_types::*;
 use libra2_types::transaction::SignedTransaction;
 use async_trait::async_trait;
 

@@ -7,14 +7,14 @@
 use aptos_cached_packages::aptos_stdlib;
 use libra2_crypto::{ed25519::Ed25519PrivateKey, HashValue, PrivateKey, Uniform};
 use libra2_db::Libra2DB;
-use aptos_executor::{
+use libra2_executor::{
     block_executor::BlockExecutor,
     db_bootstrapper::{generate_waypoint, maybe_bootstrap},
 };
-use aptos_executor_test_helpers::{
+use libra2_executor_test_helpers::{
     bootstrap_genesis, gen_ledger_info_with_sigs, get_test_signed_transaction,
 };
-use aptos_executor_types::BlockExecutorTrait;
+use libra2_executor_types::BlockExecutorTrait;
 use libra2_storage_interface::{
     state_store::state_view::db_state_view::LatestDbStateCheckpointView, DbReaderWriter,
 };

@@ -56,7 +56,7 @@ impl StatelessPipeline for ExecutionSchedulePhase {
             None => {
                 return ExecutionWaitRequest {
                     block_id: HashValue::zero(),
-                    fut: Box::pin(async { Err(aptos_executor_types::ExecutorError::EmptyBlocks) }),
+                    fut: Box::pin(async { Err(libra2_executor_types::ExecutorError::EmptyBlocks) }),
                 }
             },
         };

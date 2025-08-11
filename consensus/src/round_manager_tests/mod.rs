@@ -51,7 +51,7 @@ use libra2_consensus_types::{
     wrapped_ledger_info::WrappedLedgerInfo,
 };
 use libra2_crypto::HashValue;
-use aptos_executor_types::ExecutorResult;
+use libra2_executor_types::ExecutorResult;
 use libra2_infallible::Mutex;
 use libra2_logger::prelude::info;
 use libra2_network::{

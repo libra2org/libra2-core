@@ -22,7 +22,7 @@ use crate::{
 };
 use libra2_config::config::{NodeConfig, PrunerConfig, NO_OP_STORAGE_PRUNER_CONFIG};
 use libra2_db::Libra2DB;
-use aptos_executor::block_executor::BlockExecutor;
+use libra2_executor::block_executor::BlockExecutor;
 use libra2_jellyfish_merkle::metrics::{
     LIBRA2_JELLYFISH_INTERNAL_ENCODED_BYTES, LIBRA2_JELLYFISH_LEAF_ENCODED_BYTES,
 };
@@ -155,7 +155,7 @@ where
             if matches!(transaction_type, CoinTransfer { non_conflicting, .. } if *non_conflicting)
             {
                 // In case of non-conflicting coin transfer,
-                // `aptos_executor_benchmark::transaction_generator::TransactionGenerator` needs to hold
+                // `libra2_executor_benchmark::transaction_generator::TransactionGenerator` needs to hold
                 // at least `block_size` number of accounts, all as signer only.
                 num_accounts_to_load = block_size;
                 if transactions_per_sender > 1 {
@@ -647,8 +647,8 @@ mod tests {
     };
     use libra2_config::config::NO_OP_STORAGE_PRUNER_CONFIG;
     use libra2_crypto::HashValue;
-    use aptos_executor::block_executor::BlockExecutor;
-    use aptos_executor_types::BlockExecutorTrait;
+    use libra2_executor::block_executor::BlockExecutor;
+    use libra2_executor_types::BlockExecutorTrait;
     use libra2_sdk::{transaction_builder::aptos_stdlib, types::LocalAccount};
     use libra2_temppath::TempPath;
     use libra2_transaction_generator_lib::WorkflowProgress;

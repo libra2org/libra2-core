@@ -1,7 +1,7 @@
 [package]
-name = "aptos-executor"
-description = "Aptos executor"
-version = "0.1.0"
+name = "libra2-executor"
+description = "Libra2 executor"
+version = "0.1.1"
 
 # Workspace inherited keys
 authors = { workspace = true }
@@ -18,8 +18,8 @@ aptos-block-executor = { workspace = true }
 libra2-consensus-types = { workspace = true }
 libra2-crypto = { workspace = true }
 libra2-drop-helper = { workspace = true }
-aptos-executor-service = { workspace = true }
-aptos-executor-types = { workspace = true }
+libra2-executor-service = { workspace = true }
+libra2-executor-types = { workspace = true }
 libra2-experimental-runtimes = { workspace = true }
 aptos-indexer-grpc-table-info = { workspace = true }
 libra2-infallible = { workspace = true }
@@ -43,7 +43,7 @@ aptos-cached-packages = { workspace = true }
 libra2-config = { workspace = true }
 libra2-db = { workspace = true }
 libra2-db-indexer = { workspace = true, features = ["fuzzing"] }
-aptos-executor-test-helpers = { workspace = true }
+libra2-executor-test-helpers = { workspace = true }
 libra2-storage-interface = { workspace = true }
 libra2-temppath = { workspace = true }
 aptos-transaction-simulation = { workspace = true }
