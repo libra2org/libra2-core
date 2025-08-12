@@ -14,13 +14,13 @@ rust-version = { workspace = true }
 
 [dependencies]
 anyhow = { workspace = true }
-aptos = { workspace = true, features = ["fuzzing"] }
+libra2 = { workspace = true, features = ["fuzzing"] }
 libra2-config = { workspace = true }
 aptos-forge = { workspace = true }
 libra2-global-constants = { workspace = true }
 libra2-keygen = { workspace = true }
 libra2-logger = { workspace = true }
-aptos-release-builder = { workspace = true }
+libra2-release-builder = { workspace = true }
 libra2-rest-client = { workspace = true }
 libra2-runtimes = { workspace = true }
 libra2-sdk = { workspace = true }

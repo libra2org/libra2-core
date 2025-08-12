@@ -25,7 +25,7 @@ use libra2_db::{
     },
 };
 use libra2_db_indexer_schemas::metadata::StateSnapshotProgress;
-use aptos_indexer_grpc_table_info::internal_indexer_db_service::InternalIndexerDBService;
+use libra2_indexer_grpc_table_info::internal_indexer_db_service::InternalIndexerDBService;
 use libra2_infallible::duration_since_epoch;
 use libra2_jellyfish_merkle::{NodeBatch, TreeWriter};
 use libra2_logger::info;
@@ -391,7 +391,7 @@ pub struct ConcurrentDataRequestsOpt {}
 
 #[derive(Clone, Copy, Default, Parser)]
 pub struct ReplayConcurrencyLevelOpt {
-    /// AptosVM::set_concurrency_level_once() is called with this
+    /// Libra2VM::set_concurrency_level_once() is called with this
     #[clap(
         long,
         help = "concurrency_level used by the transaction executor, applicable when replaying transactions \

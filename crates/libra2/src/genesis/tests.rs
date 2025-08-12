@@ -30,7 +30,7 @@ use libra2_genesis::{
 use libra2_keygen::KeyGen;
 use libra2_temppath::TempPath;
 use libra2_types::{account_address::AccountAddress, chain_id::ChainId};
-use aptos_vm_genesis::{AccountBalance, TestValidator};
+use libra2_vm_genesis::{AccountBalance, TestValidator};
 use std::{
     collections::HashMap,
     path::{Path, PathBuf},
@@ -254,7 +254,7 @@ async fn setup_git_dir(
 
 /// Add framework to git directory
 fn add_framework_to_dir(git_dir: &Path) {
-    aptos_cached_packages::head_release_bundle()
+    libra2_cached_packages::head_release_bundle()
         .write(git_dir.join(FRAMEWORK_NAME))
         .unwrap()
 }

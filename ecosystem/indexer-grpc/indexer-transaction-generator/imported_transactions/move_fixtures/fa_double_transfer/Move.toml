@@ -1,9 +1,9 @@
 [package]
 name = "fa_double_transfer"
-version = "1.0.0"
+version = "1.0.1"
 authors = []
 
 [addresses]
 
 [dependencies]
-AptosFramework = { local = "../../../../../../aptos-move/framework/aptos-framework" }
+Libra2Framework = { local = "../../../../../../libra2-move/framework/libra2-framework" }

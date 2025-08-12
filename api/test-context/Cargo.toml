@@ -15,23 +15,23 @@ rust-version = { workspace = true }
 [dependencies]
 aptos-api = { workspace = true }
 libra2-api-types = { workspace = true }
-aptos-cached-packages = { workspace = true }
+libra2-cached-packages = { workspace = true }
 libra2-config = { workspace = true }
 libra2-crypto = { workspace = true }
 libra2-db = { workspace = true, features = ["fuzzing"] }
 libra2-executor = { workspace = true }
 libra2-executor-types = { workspace = true }
-aptos-framework = { workspace = true }
+libra2-framework = { workspace = true }
 libra2-genesis = { workspace = true }
-aptos-indexer-grpc-table-info = { workspace = true }
+libra2-indexer-grpc-table-info = { workspace = true }
 libra2-mempool = { workspace = true, features = ["fuzzing"] }
 libra2-mempool-notifications = { workspace = true }
 libra2-sdk = { workspace = true }
 libra2-storage-interface = { workspace = true }
 libra2-temppath = { workspace = true }
 libra2-types = { workspace = true }
-aptos-vm = { workspace = true }
-aptos-vm-logging = { workspace = true }
+libra2-vm = { workspace = true }
+libra2-vm-logging = { workspace = true }
 libra2-vm-validator = { workspace = true }
 bcs = { workspace = true }
 bytes = { workspace = true }

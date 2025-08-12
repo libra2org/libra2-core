@@ -6,7 +6,7 @@ use crate::{
     move_tool::IncludedArtifacts,
 };
 use anyhow::bail;
-use aptos_framework::{BuildOptions, BuiltPackage};
+use libra2_framework::{BuildOptions, BuiltPackage};
 use async_trait::async_trait;
 use clap::Parser;
 use move_compiler_v2::Experiment;

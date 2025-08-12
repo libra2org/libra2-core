@@ -23,7 +23,7 @@ use crate::{
 use anyhow::Context as AnyhowContext;
 use libra2_api_types::{
     transaction::TransactionSummary, verify_function_identifier, verify_module_identifier, Address,
-    AptosError, AptosErrorCode, AsConverter, EncodeSubmissionRequest, GasEstimation,
+    Libra2Error, Libra2ErrorCode, AsConverter, EncodeSubmissionRequest, GasEstimation,
     GasEstimationBcs, HashValue, HexEncodedBytes, LedgerInfo, MoveType, PendingTransaction,
     SubmitTransactionRequest, Transaction, TransactionData, TransactionOnChainData,
     TransactionsBatchSingleSubmissionFailure, TransactionsBatchSubmissionResult, UserTransaction,
@@ -40,9 +40,9 @@ use libra2_types::{
         TransactionPayload, TransactionPayloadInner,
     },
     vm_status::StatusCode,
-    AptosCoinType, CoinType,
+    Libra2CoinType, CoinType,
 };
-use aptos_vm::{AptosSimulationVM, AptosVM};
+use libra2_vm::{Libra2SimulationVM, Libra2VM};
 use move_core_types::{ident_str, language_storage::ModuleId, vm_status::VMStatus};
 use poem_openapi::{
     param::{Path, Query},
@@ -448,7 +448,7 @@ impl TransactionsApi {
             .map_err(|err| {
                 SubmitTransactionError::bad_request_with_code_no_info(
                     err,
-                    AptosErrorCode::InvalidInput,
+                    Libra2ErrorCode::InvalidInput,
                 )
             })?;
         fail_point_poem("endpoint_submit_transaction")?;
@@ -501,7 +501,7 @@ impl TransactionsApi {
             .map_err(|err| {
                 SubmitTransactionError::bad_request_with_code_no_info(
                     err,
-                    AptosErrorCode::InvalidInput,
+                    Libra2ErrorCode::InvalidInput,
                 )
             })?;
         fail_point_poem("endpoint_submit_batch_transactions")?;
@@ -519,7 +519,7 @@ impl TransactionsApi {
                     signed_transactions_batch.len(),
                     self.context.max_submit_transaction_batch_size(),
                 ),
-                AptosErrorCode::InvalidInput,
+                Libra2ErrorCode::InvalidInput,
                 &ledger_info,
             ));
         }
@@ -565,7 +565,7 @@ impl TransactionsApi {
             .map_err(|err| {
                 SubmitTransactionError::bad_request_with_code_no_info(
                     err,
-                    AptosErrorCode::InvalidInput,
+                    Libra2ErrorCode::InvalidInput,
                 )
             })?;
         fail_point_poem("endpoint_simulate_transaction")?;
@@ -590,7 +590,7 @@ impl TransactionsApi {
             {
                 return Err(SubmitTransactionError::forbidden_with_code(
                     "Transaction not allowed by simulation filter",
-                    AptosErrorCode::InvalidInput,
+                    Libra2ErrorCode::InvalidInput,
                     &ledger_info,
                 ));
             }
@@ -629,14 +629,14 @@ impl TransactionsApi {
                     .map_err(|err| {
                         SubmitTransactionError::bad_request_with_code_no_info(
                             err,
-                            AptosErrorCode::InvalidInput,
+                            Libra2ErrorCode::InvalidInput,
                         )
                     })?;
-                let output = AptosVM::execute_view_function(
+                let output = Libra2VM::execute_view_function(
                     &state_view,
                     ModuleId::new(AccountAddress::ONE, ident_str!("coin").into()),
                     ident_str!("balance").into(),
-                    vec![AptosCoinType::type_tag()],
+                    vec![Libra2CoinType::type_tag()],
                     vec![signed_transaction.sender().to_vec()],
                     context.node_config.api.max_gas_view_function,
                 );
@@ -645,7 +645,7 @@ impl TransactionsApi {
                         convert_view_function_error(&status, &state_view, &context);
                     SubmitTransactionError::bad_request_with_optional_vm_status_and_ledger_info(
                         anyhow::anyhow!(err_string),
-                        AptosErrorCode::InvalidInput,
+                        Libra2ErrorCode::InvalidInput,
                         vm_error_code,
                         Some(&ledger_info),
                     )
@@ -653,7 +653,7 @@ impl TransactionsApi {
                 let balance: u64 = bcs::from_bytes(&values[0]).map_err(|err| {
                     SubmitTransactionError::bad_request_with_code_no_info(
                         err,
-                        AptosErrorCode::InvalidInput,
+                        Libra2ErrorCode::InvalidInput,
                     )
                 })?;
 
@@ -729,7 +729,7 @@ impl TransactionsApi {
             .verify()
             .context("'UserTransactionRequest' invalid")
             .map_err(|err| {
-                BasicError::bad_request_with_code_no_info(err, AptosErrorCode::InvalidInput)
+                BasicError::bad_request_with_code_no_info(err, Libra2ErrorCode::InvalidInput)
             })?;
         fail_point_poem("endpoint_encode_submission")?;
         if !self.context.node_config.api.encode_submission_enabled {
@@ -827,7 +827,7 @@ impl TransactionsApi {
             .map_err(|err| {
                 BasicErrorWith404::internal_with_code(
                     err,
-                    AptosErrorCode::InternalError,
+                    Libra2ErrorCode::InternalError,
                     &latest_ledger_info,
                 )
             })?;
@@ -880,7 +880,7 @@ impl TransactionsApi {
                 .map_err(|err| {
                     BasicErrorWith404::internal_with_code(
                         err,
-                        AptosErrorCode::InternalError,
+                        Libra2ErrorCode::InternalError,
                         &latest_ledger_info,
                     )
                 })?
@@ -926,7 +926,7 @@ impl TransactionsApi {
             .map_err(|err| {
                 BasicErrorWith404::internal_with_code(
                     err,
-                    AptosErrorCode::InternalError,
+                    Libra2ErrorCode::InternalError,
                     &latest_ledger_info,
                 )
             })?
@@ -952,7 +952,7 @@ impl TransactionsApi {
             .map_err(|err| {
                 BasicErrorWith404::internal_with_code(
                     err,
-                    AptosErrorCode::InternalError,
+                    Libra2ErrorCode::InternalError,
                     &ledger_info,
                 )
             })?;
@@ -992,7 +992,7 @@ impl TransactionsApi {
                             .map_err(|err| {
                                 BasicErrorWith404::internal_with_code(
                                     err,
-                                    AptosErrorCode::InternalError,
+                                    Libra2ErrorCode::InternalError,
                                     ledger_info,
                                 )
                             })?
@@ -1004,7 +1004,7 @@ impl TransactionsApi {
                         .map_err(|err| {
                             BasicErrorWith404::internal_with_code(
                                 err,
-                                AptosErrorCode::InternalError,
+                                Libra2ErrorCode::InternalError,
                                 ledger_info,
                             )
                         })?,
@@ -1155,7 +1155,7 @@ impl TransactionsApi {
         if script.code().is_empty() {
             return Err(SubmitTransactionError::bad_request_with_code(
                 "Script payload bytecode must not be empty",
-                AptosErrorCode::InvalidInput,
+                Libra2ErrorCode::InvalidInput,
                 ledger_info,
             ));
         }
@@ -1167,7 +1167,7 @@ impl TransactionsApi {
                 .map_err(|err| {
                     SubmitTransactionError::bad_request_with_code(
                         err,
-                        AptosErrorCode::InvalidInput,
+                        Libra2ErrorCode::InvalidInput,
                         ledger_info,
                     )
                 })?;
@@ -1191,7 +1191,7 @@ impl TransactionsApi {
                         .map_err(|err| {
                             SubmitTransactionError::bad_request_with_code(
                                 err,
-                                AptosErrorCode::InvalidInput,
+                                Libra2ErrorCode::InvalidInput,
                                 ledger_info,
                             )
                         })?;
@@ -1224,7 +1224,7 @@ impl TransactionsApi {
                     TransactionPayload::ModuleBundle(_) => {
                         return Err(SubmitTransactionError::bad_request_with_code(
                             "Module bundle payload has been removed",
-                            AptosErrorCode::InvalidInput,
+                            Libra2ErrorCode::InvalidInput,
                             ledger_info,
                         ))
                     },
@@ -1237,7 +1237,7 @@ impl TransactionsApi {
                             if extra_config.is_multisig() {
                                 return Err(SubmitTransactionError::bad_request_with_code(
                                     "Script transaction payload must not be a multisig transaction",
-                                    AptosErrorCode::InvalidInput,
+                                    Libra2ErrorCode::InvalidInput,
                                     ledger_info,
                                 ));
                             }
@@ -1252,7 +1252,7 @@ impl TransactionsApi {
                             if !extra_config.is_multisig() {
                                 return Err(SubmitTransactionError::bad_request_with_code(
                                     "Empty transaction payload must be a multisig transaction",
-                                    AptosErrorCode::InvalidInput,
+                                    Libra2ErrorCode::InvalidInput,
                                     ledger_info,
                                 ));
                             }
@@ -1272,7 +1272,7 @@ impl TransactionsApi {
                 .map_err(|err| {
                     SubmitTransactionError::bad_request_with_code(
                         err,
-                        AptosErrorCode::InvalidInput,
+                        Libra2ErrorCode::InvalidInput,
                         ledger_info,
                     )
                 }),
@@ -1290,7 +1290,7 @@ impl TransactionsApi {
             .map_err(|err| {
                 SubmitTransactionError::bad_request_with_code(
                     err,
-                    AptosErrorCode::InvalidInput,
+                    Libra2ErrorCode::InvalidInput,
                     ledger_info,
                 )
             })?;
@@ -1300,7 +1300,7 @@ impl TransactionsApi {
             .map_err(|err| {
                 SubmitTransactionError::bad_request_with_code(
                     err,
-                    AptosErrorCode::InvalidInput,
+                    Libra2ErrorCode::InvalidInput,
                     ledger_info,
                 )
             })?;
@@ -1311,7 +1311,7 @@ impl TransactionsApi {
                 .map_err(|err| {
                     SubmitTransactionError::bad_request_with_code(
                         err,
-                        AptosErrorCode::InvalidInput,
+                        Libra2ErrorCode::InvalidInput,
                         ledger_info,
                     )
                 })?;
@@ -1332,7 +1332,7 @@ impl TransactionsApi {
                     .map_err(|err| {
                         SubmitTransactionError::bad_request_with_code(
                             err,
-                            AptosErrorCode::InvalidInput,
+                            Libra2ErrorCode::InvalidInput,
                             ledger_info,
                         )
                     })?;
@@ -1350,7 +1350,7 @@ impl TransactionsApi {
                         .map_err(|err| {
                             SubmitTransactionError::bad_request_with_code(
                                 err,
-                                AptosErrorCode::InvalidInput,
+                                Libra2ErrorCode::InvalidInput,
                                 ledger_info,
                             )
                         })
@@ -1360,57 +1360,57 @@ impl TransactionsApi {
     }
 
     /// Submits a single transaction, and converts mempool codes to errors
-    async fn create_internal(&self, txn: SignedTransaction) -> Result<(), AptosError> {
+    async fn create_internal(&self, txn: SignedTransaction) -> Result<(), Libra2Error> {
         let (mempool_status, vm_status_opt) = self
             .context
             .submit_transaction(txn)
             .await
             .context("Mempool failed to initially evaluate submitted transaction")
             .map_err(|err| {
-                libra2_api_types::AptosError::new_with_error_code(err, AptosErrorCode::InternalError)
+                libra2_api_types::Libra2Error::new_with_error_code(err, Libra2ErrorCode::InternalError)
             })?;
         match mempool_status.code {
             MempoolStatusCode::Accepted => Ok(()),
             MempoolStatusCode::MempoolIsFull | MempoolStatusCode::TooManyTransactions => {
-                Err(AptosError::new_with_error_code(
+                Err(Libra2Error::new_with_error_code(
                     &mempool_status.message,
-                    AptosErrorCode::MempoolIsFull,
+                    Libra2ErrorCode::MempoolIsFull,
                 ))
             },
             MempoolStatusCode::VmError => {
                 if let Some(status) = vm_status_opt {
-                    Err(AptosError::new_with_vm_status(
+                    Err(Libra2Error::new_with_vm_status(
                         format!(
                             "Invalid transaction: Type: {:?} Code: {:?}",
                             status.status_type(),
                             status
                         ),
-                        AptosErrorCode::VmError,
+                        Libra2ErrorCode::VmError,
                         status,
                     ))
                 } else {
-                    Err(AptosError::new_with_vm_status(
+                    Err(Libra2Error::new_with_vm_status(
                         "Invalid transaction: unknown",
-                        AptosErrorCode::VmError,
+                        Libra2ErrorCode::VmError,
                         StatusCode::UNKNOWN_STATUS,
                     ))
                 }
             },
-            MempoolStatusCode::InvalidSeqNumber => Err(AptosError::new_with_error_code(
+            MempoolStatusCode::InvalidSeqNumber => Err(Libra2Error::new_with_error_code(
                 mempool_status.message,
-                AptosErrorCode::SequenceNumberTooOld,
+                Libra2ErrorCode::SequenceNumberTooOld,
             )),
-            MempoolStatusCode::InvalidUpdate => Err(AptosError::new_with_error_code(
+            MempoolStatusCode::InvalidUpdate => Err(Libra2Error::new_with_error_code(
                 mempool_status.message,
-                AptosErrorCode::InvalidTransactionUpdate,
+                Libra2ErrorCode::InvalidTransactionUpdate,
             )),
-            MempoolStatusCode::UnknownStatus => Err(AptosError::new_with_error_code(
+            MempoolStatusCode::UnknownStatus => Err(Libra2Error::new_with_error_code(
                 format!("Transaction was rejected with status {}", mempool_status,),
-                AptosErrorCode::InternalError,
+                Libra2ErrorCode::InternalError,
             )),
-            MempoolStatusCode::RejectedByFilter => Err(AptosError::new_with_error_code(
+            MempoolStatusCode::RejectedByFilter => Err(Libra2Error::new_with_error_code(
                 mempool_status.message,
-                AptosErrorCode::RejectedByFilter,
+                Libra2ErrorCode::RejectedByFilter,
             )),
         }
     }
@@ -1432,7 +1432,7 @@ impl TransactionsApi {
                         .map_err(|e| {
                             SubmitTransactionError::internal_with_code(
                                 e,
-                                AptosErrorCode::InternalError,
+                                Libra2ErrorCode::InternalError,
                                 ledger_info,
                             )
                         })?;
@@ -1444,7 +1444,7 @@ impl TransactionsApi {
                             .context("Failed to build PendingTransaction from mempool response, even though it said the request was accepted")
                             .map_err(|err| SubmitTransactionError::internal_with_code(
                                 err,
-                                AptosErrorCode::InternalError,
+                                Libra2ErrorCode::InternalError,
                                 ledger_info,
                             ))?;
                     SubmitTransactionResponse::try_from_json((
@@ -1463,15 +1463,15 @@ impl TransactionsApi {
                 )),
             },
             Err(error) => match error.error_code {
-                AptosErrorCode::InternalError => Err(
+                Libra2ErrorCode::InternalError => Err(
                     SubmitTransactionError::internal_from_aptos_error(error, ledger_info),
                 ),
-                AptosErrorCode::VmError
-                | AptosErrorCode::SequenceNumberTooOld
-                | AptosErrorCode::InvalidTransactionUpdate => Err(
+                Libra2ErrorCode::VmError
+                | Libra2ErrorCode::SequenceNumberTooOld
+                | Libra2ErrorCode::InvalidTransactionUpdate => Err(
                     SubmitTransactionError::bad_request_from_aptos_error(error, ledger_info),
                 ),
-                AptosErrorCode::MempoolIsFull => Err(
+                Libra2ErrorCode::MempoolIsFull => Err(
                     SubmitTransactionError::insufficient_storage_from_aptos_error(
                         error,
                         ledger_info,
@@ -1539,7 +1539,7 @@ impl TransactionsApi {
         if txn.verify_signature().is_ok() {
             return Err(SubmitTransactionError::bad_request_with_code(
                 "Simulated transactions must not have a valid signature",
-                AptosErrorCode::InvalidInput,
+                Libra2ErrorCode::InvalidInput,
                 &ledger_info,
             ));
         }
@@ -1547,7 +1547,7 @@ impl TransactionsApi {
         // Simulate transaction
         let state_view = self.context.latest_state_view_poem(&ledger_info)?;
         let (vm_status, output) =
-            AptosSimulationVM::create_vm_and_simulate_signed_transaction(&txn, &state_view);
+            Libra2SimulationVM::create_vm_and_simulate_signed_transaction(&txn, &state_view);
         let version = ledger_info.version();
 
         // Ensure that all known statuses return their values in the output (even if they aren't supposed to)
@@ -1665,7 +1665,7 @@ impl TransactionsApi {
                         _ => {
                             return Err(SubmitTransactionError::internal_with_code(
                                 "Simulation transaction resulted in a non-UserTransaction",
-                                AptosErrorCode::InternalError,
+                                Libra2ErrorCode::InternalError,
                                 &ledger_info,
                             ))
                         },
@@ -1695,7 +1695,7 @@ impl TransactionsApi {
         if accept_type == &AcceptType::Bcs {
             return Err(BasicError::bad_request_with_code_no_info(
                 "BCS is not supported for encode submission",
-                AptosErrorCode::BcsNotSupported,
+                Libra2ErrorCode::BcsNotSupported,
             ));
         }
 
@@ -1706,7 +1706,7 @@ impl TransactionsApi {
             .try_into_raw_transaction_poem(request.transaction, self.context.chain_id())
             .context("The given transaction is invalid")
             .map_err(|err| {
-                BasicError::bad_request_with_code(err, AptosErrorCode::InvalidInput, &ledger_info)
+                BasicError::bad_request_with_code(err, Libra2ErrorCode::InvalidInput, &ledger_info)
             })?;
 
         let raw_message = match request.secondary_signers {
@@ -1721,7 +1721,7 @@ impl TransactionsApi {
             )
             .context("Invalid transaction to generate signing message")
             .map_err(|err| {
-                BasicError::bad_request_with_code(err, AptosErrorCode::InvalidInput, &ledger_info)
+                BasicError::bad_request_with_code(err, Libra2ErrorCode::InvalidInput, &ledger_info)
             })?,
             None => raw_txn
                 .signing_message()
@@ -1729,7 +1729,7 @@ impl TransactionsApi {
                 .map_err(|err| {
                     BasicError::bad_request_with_code(
                         err,
-                        AptosErrorCode::InvalidInput,
+                        Libra2ErrorCode::InvalidInput,
                         &ledger_info,
                     )
                 })?,

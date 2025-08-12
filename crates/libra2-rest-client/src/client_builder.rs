@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
-    get_version_path_with_base, Client, DEFAULT_VERSION_PATH_BASE, X_APTOS_SDK_HEADER_VALUE,
+    get_version_path_with_base, Client, DEFAULT_VERSION_PATH_BASE, X_LIBRA2_SDK_HEADER_VALUE,
 };
 use anyhow::Result;
 use libra2_api_types::X_APTOS_CLIENT;
@@ -13,20 +13,20 @@ use reqwest::{
 use std::{env, str::FromStr, time::Duration};
 use url::Url;
 
-pub enum AptosBaseUrl {
+pub enum Libra2BaseUrl {
     Mainnet,
     Devnet,
     Testnet,
     Custom(Url),
 }
 
-impl AptosBaseUrl {
+impl Libra2BaseUrl {
     pub fn to_url(&self) -> Url {
         match self {
-            AptosBaseUrl::Mainnet => Url::from_str("https://api.mainnet.aptoslabs.com").unwrap(),
-            AptosBaseUrl::Devnet => Url::from_str("https://api.devnet.aptoslabs.com").unwrap(),
-            AptosBaseUrl::Testnet => Url::from_str("https://api.testnet.aptoslabs.com").unwrap(),
-            AptosBaseUrl::Custom(url) => url.to_owned(),
+            Libra2BaseUrl::Mainnet => Url::from_str("https://api.mainnet.aptoslabs.com").unwrap(),
+            Libra2BaseUrl::Devnet => Url::from_str("https://api.devnet.aptoslabs.com").unwrap(),
+            Libra2BaseUrl::Testnet => Url::from_str("https://api.testnet.aptoslabs.com").unwrap(),
+            Libra2BaseUrl::Custom(url) => url.to_owned(),
         }
     }
 }
@@ -40,11 +40,11 @@ pub struct ClientBuilder {
 }
 
 impl ClientBuilder {
-    pub fn new(aptos_base_url: AptosBaseUrl) -> Self {
+    pub fn new(aptos_base_url: Libra2BaseUrl) -> Self {
         let mut headers = HeaderMap::new();
         headers.insert(
             X_APTOS_CLIENT,
-            HeaderValue::from_static(X_APTOS_SDK_HEADER_VALUE),
+            HeaderValue::from_static(X_LIBRA2_SDK_HEADER_VALUE),
         );
 
         let mut client_builder = Self {

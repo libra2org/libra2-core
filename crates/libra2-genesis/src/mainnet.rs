@@ -7,7 +7,7 @@ use libra2_config::config::{
     DEFAULT_MAX_NUM_NODES_PER_LRU_CACHE_SHARD, NO_OP_STORAGE_PRUNER_CONFIG,
 };
 use libra2_db::Libra2DB;
-use aptos_framework::ReleaseBundle;
+use libra2_framework::ReleaseBundle;
 use libra2_storage_interface::DbReaderWriter;
 use libra2_temppath::TempPath;
 use libra2_types::{
@@ -16,8 +16,8 @@ use libra2_types::{
     transaction::Transaction,
     waypoint::Waypoint,
 };
-use aptos_vm::aptos_vm::AptosVMBlockExecutor;
-use aptos_vm_genesis::{AccountBalance, EmployeePool, ValidatorWithCommissionRate};
+use libra2_vm::libra2_vm::Libra2VMBlockExecutor;
+use libra2_vm_genesis::{AccountBalance, EmployeePool, ValidatorWithCommissionRate};
 
 /// Holder object for all pieces needed to generate a genesis transaction
 #[derive(Clone)]
@@ -120,13 +120,13 @@ impl MainnetGenesisInfo {
     }
 
     fn generate_genesis_txn(&self) -> Transaction {
-        aptos_vm_genesis::encode_aptos_mainnet_genesis_transaction(
+        libra2_vm_genesis::encode_aptos_mainnet_genesis_transaction(
             &self.accounts,
             &self.employee_vesting_accounts,
             &self.validators,
             &self.framework,
             self.chain_id,
-            &aptos_vm_genesis::GenesisConfiguration {
+            &libra2_vm_genesis::GenesisConfiguration {
                 allow_new_validators: true,
                 is_test: false,
                 epoch_duration_secs: self.epoch_duration_secs,
@@ -163,6 +163,6 @@ impl MainnetGenesisInfo {
             None,
         )?;
         let db_rw = DbReaderWriter::new(libra2db);
-        libra2_executor::db_bootstrapper::generate_waypoint::<AptosVMBlockExecutor>(&db_rw, genesis)
+        libra2_executor::db_bootstrapper::generate_waypoint::<Libra2VMBlockExecutor>(&db_rw, genesis)
     }
 }

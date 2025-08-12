@@ -1,10 +1,10 @@
 // Copyright © Aptos Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-use aptos_framework::extended_checks;
-use aptos_gas_schedule::{MiscGasParameters, NativeGasParameters, LATEST_GAS_FEATURE_VERSION};
+use libra2_framework::extended_checks;
+use libra2_gas_schedule::{MiscGasParameters, NativeGasParameters, LATEST_GAS_FEATURE_VERSION};
 use libra2_types::on_chain_config::{Features, TimedFeaturesBuilder};
-use aptos_vm::natives;
+use libra2_vm::natives;
 use move_vm_runtime::native_functions::NativeFunctionTable;
 
 // move_stdlib has the testing feature enabled to include debug native functions
@@ -17,7 +17,7 @@ pub fn libra2_debug_natives(
     extended_checks::configure_extended_checks_for_unit_test();
     // Return all natives -- build with the 'testing' feature, therefore containing
     // debug related functions.
-    natives::aptos_natives(
+    natives::libra2_natives(
         LATEST_GAS_FEATURE_VERSION,
         native_gas_parameters,
         misc_gas_params,

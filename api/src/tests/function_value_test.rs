@@ -29,7 +29,7 @@ async fn test_function_values(use_txn_payload_v2_format: bool, use_orderless_tra
     let named_addresses = vec![("account".to_string(), account_addr)];
     let txn = futures::executor::block_on(async move {
         let path = PathBuf::from(std::env!("CARGO_MANIFEST_DIR"))
-            .join("../aptos-move/move-examples/function_values/calculator");
+            .join("../libra2-move/move-examples/function_values/calculator");
         TestContext::build_package_with_latest_language(path, named_addresses)
     });
     context.publish_package(&mut account, txn).await;

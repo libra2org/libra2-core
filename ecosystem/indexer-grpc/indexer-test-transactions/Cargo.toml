@@ -1,7 +1,7 @@
 [package]
-name = "aptos-indexer-test-transactions"
+name = "libra2-indexer-test-transactions"
 description = "Indexer integration testing framework."
-version = "1.0.0"
+version = "1.0.1"
 
 # Workspace inherited keys
 authors = { workspace = true }
@@ -13,5 +13,5 @@ repository = { workspace = true }
 rust-version = { workspace = true }
 
 [dev-dependencies]
-aptos-protos = { workspace = true }
+libra2-protos = { workspace = true }
 serde_json = { workspace = true }

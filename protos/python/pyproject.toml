@@ -1,14 +1,14 @@
 [tool.poetry]
-name = "aptos-protos"
+name = "libra2-protos"
 version = "1.1.2"
-description = "Code generated from protobuf definitions for the Aptos tech stack"
-authors = ["Aptos Labs <opensource@aptoslabs.com>"]
+description = "Code generated from protobuf definitions for the Libra2 tech stack"
+authors = ["Libra2 Team <info@libra2.org>"]
 license = "Apache-2.0"
 readme = "README.md"
-repository = "https://github.com/aptos-labs/aptos-core"
-homepage = "https://github.com/aptos-labs/aptos-core/tree/main/protos/python"
-keywords = ["web3", "aptos", "blockchain", "indexer"]
-packages = [{include = "aptos_protos"}]
+repository = "https://github.com/libra2org/libra2-core"
+homepage = "https://github.com/libra2org/libra2-core/tree/main/protos/python"
+keywords = ["web3", "libra2", "blockchain", "indexer"]
+packages = [{include = "libra2_protos"}]
 
 [tool.poe.tasks]
 generate = "./generate.sh"

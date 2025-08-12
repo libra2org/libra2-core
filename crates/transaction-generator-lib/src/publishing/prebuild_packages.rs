@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use anyhow::{anyhow, bail};
-use aptos_framework::{natives::code::PackageMetadata, BuildOptions, BuiltPackage};
+use libra2_framework::{natives::code::PackageMetadata, BuildOptions, BuiltPackage};
 use libra2_sdk::bcs;
 use move_package::source_package::std_lib::StdVersion;
 use serde::{Deserialize, Serialize};
@@ -20,7 +20,7 @@ fn get_local_framework_path() -> String {
     PathBuf::from(env!("CARGO_MANIFEST_DIR"))
         .parent()
         .and_then(|p| p.parent())
-        .map(|p| p.join("aptos-move").join("framework"))
+        .map(|p| p.join("libra2-move").join("framework"))
         .expect("framework path")
         .to_string_lossy()
         .to_string()

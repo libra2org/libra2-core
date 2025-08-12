@@ -5,7 +5,7 @@
 
 use anyhow::Result;
 use aptos_forge::AptosPublicInfo;
-use aptos_framework::{BuildOptions, BuiltPackage};
+use libra2_framework::{BuildOptions, BuiltPackage};
 use libra2_sdk::transaction_builder::TransactionFactory;
 use std::path::PathBuf;
 
@@ -17,7 +17,7 @@ pub async fn publish_package(
     let package = BuiltPackage::build(move_dir, BuildOptions::default())?;
     let blobs = package.extract_code();
     let metadata = package.extract_metadata()?;
-    let payload = aptos_cached_packages::aptos_stdlib::code_publish_package_txn(
+    let payload = libra2_cached_packages::libra2_stdlib::code_publish_package_txn(
         bcs::to_bytes(&metadata).expect("PackageMetadata has BCS"),
         blobs,
     );

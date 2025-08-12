@@ -2,12 +2,12 @@
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
-use aptos::test::CliTestFramework;
+use libra2::test::CliTestFramework;
 use libra2_config::{config::NodeConfig, keys::ConfigKey, utils::get_available_port};
 use libra2_crypto::ed25519::Ed25519PrivateKey;
 use libra2_faucet_core::server::{FunderKeyEnum, RunConfig};
 use aptos_forge::{ActiveNodesGuard, Factory, LocalFactory, LocalSwarm, Node};
-use aptos_framework::ReleaseBundle;
+use libra2_framework::ReleaseBundle;
 use libra2_genesis::builder::{InitConfigFn, InitGenesisConfigFn, InitGenesisStakeFn};
 use libra2_infallible::Mutex;
 use libra2_logger::prelude::*;
@@ -50,12 +50,12 @@ impl SwarmBuilder {
     }
 
     pub fn with_aptos(mut self) -> Self {
-        self.genesis_framework = Some(aptos_cached_packages::head_release_bundle().clone());
+        self.genesis_framework = Some(libra2_cached_packages::head_release_bundle().clone());
         self
     }
 
     pub fn with_aptos_testnet(mut self) -> Self {
-        self.genesis_framework = Some(aptos_framework::testnet_release_bundle().clone());
+        self.genesis_framework = Some(libra2_framework::testnet_release_bundle().clone());
         self
     }
 

@@ -5,7 +5,7 @@ use crate::{
     smoke_test_environment::SwarmBuilder,
     utils::{create_and_fund_account, MAX_CATCH_UP_WAIT_SECS},
 };
-use aptos::{
+use libra2::{
     account::create::DEFAULT_FUNDED_COINS,
     common::types::TransactionSummary,
     node::analyze::{
@@ -15,7 +15,7 @@ use aptos::{
     test::{CliTestFramework, ValidatorPerformance},
 };
 use libra2_bitvec::BitVec;
-use aptos_cached_packages::aptos_stdlib;
+use libra2_cached_packages::libra2_stdlib;
 use libra2_crypto::{bls12381, ed25519::Ed25519PrivateKey, x25519, ValidCryptoMaterialStringExt};
 use aptos_forge::{reconfig, wait_for_all_nodes_to_catchup, LocalSwarm, NodeExt, Swarm, SwarmExt};
 use libra2_genesis::config::HostAndPort;
@@ -293,10 +293,10 @@ async fn test_onchain_config_change() {
     let update_consensus_config_script = format!(
         r#"
     script {{
-        use aptos_framework::aptos_governance;
-        use aptos_framework::consensus_config;
+        use libra2_framework::libra2_governance;
+        use libra2_framework::consensus_config;
         fun main(core_resources: &signer) {{
-            let framework_signer = aptos_governance::get_signer_testnet_only(core_resources, @0000000000000000000000000000000000000000000000000000000000000001);
+            let framework_signer = libra2_governance::get_signer_testnet_only(core_resources, @0000000000000000000000000000000000000000000000000000000000000001);
             let config_bytes = {};
             consensus_config::set(&framework_signer, config_bytes);
         }}
@@ -407,10 +407,10 @@ async fn test_onchain_shuffling_change() {
     let update_execution_config_script = format!(
         r#"
     script {{
-        use aptos_framework::aptos_governance;
-        use aptos_framework::execution_config;
+        use libra2_framework::libra2_governance;
+        use libra2_framework::execution_config;
         fun main(core_resources: &signer) {{
-            let framework_signer = aptos_governance::get_signer_testnet_only(core_resources, @0000000000000000000000000000000000000000000000000000000000000001);
+            let framework_signer = libra2_governance::get_signer_testnet_only(core_resources, @0000000000000000000000000000000000000000000000000000000000000001);
             let config_bytes = {};
             execution_config::set(&framework_signer, config_bytes);
         }}
@@ -461,7 +461,7 @@ async fn assert_reordering(swarm: &mut dyn Swarm, expected_reordering: bool) {
 
         for _ in 0..5 {
             let txn = account.sign_with_transaction_builder(
-                transaction_factory.payload(aptos_stdlib::aptos_coin_transfer(dst.address(), 10)),
+                transaction_factory.payload(libra2_stdlib::libra2_coin_transfer(dst.address(), 10)),
             );
             txns.push(txn);
         }

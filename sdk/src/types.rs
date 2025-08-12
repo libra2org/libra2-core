@@ -48,7 +48,7 @@ use std::{
     time::{Duration, SystemTime, UNIX_EPOCH},
 };
 
-pub const APTOS_COIN_TYPE_STR: &str = "0x1::aptos_coin::AptosCoin";
+pub const APTOS_COIN_TYPE_STR: &str = "0x1::libra2_coin::Libra2Coin";
 lazy_static! {
     pub static ref APT_METADATA_ADDRESS: AccountAddress = {
         let mut addr = [0u8; 32];
@@ -1229,13 +1229,13 @@ mod tests {
     use super::*;
     use crate::coin_client::CoinClient;
     use libra2_crypto::ed25519::Ed25519PrivateKey;
-    use libra2_rest_client::{AptosBaseUrl, FaucetClient};
+    use libra2_rest_client::{Libra2BaseUrl, FaucetClient};
     use reqwest::Url;
 
     #[test]
     fn test_recover_account_from_derive_path() {
         // Same constants in test cases of TypeScript
-        // https://github.com/aptos-labs/aptos-core/blob/main/ecosystem/typescript/sdk/src/aptos_account.test.ts
+        // https://github.com/aptos-labs/aptos-core/blob/main/ecosystem/typescript/sdk/src/libra2_account.test.ts
         let derive_path = "m/44'/637'/0'/0'/0'";
         let mnemonic_phrase =
             "shoot island position soft burden budget tooth cruel issue economy destroy above";
@@ -1276,7 +1276,7 @@ mod tests {
     #[ignore]
     #[tokio::test]
     async fn test_derive_keyless_account() {
-        let libra2_rest_client = Client::builder(AptosBaseUrl::Devnet).build();
+        let libra2_rest_client = Client::builder(Libra2BaseUrl::Devnet).build();
         // This JWT is taken from https://github.com/aptos-labs/aptos-ts-sdk/blob/f644e61beb70e69dfd489e75287c67b527385135/tests/e2e/api/keyless.test.ts#L11
         // As is the ephemeralKeyPair
         // This ephemeralKeyPair expires December 29, 2024.

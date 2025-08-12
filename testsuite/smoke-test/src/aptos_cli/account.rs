@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::smoke_test_environment::SwarmBuilder;
-use aptos::{account::create::DEFAULT_FUNDED_COINS, common::types::GasOptions};
+use libra2::{account::create::DEFAULT_FUNDED_COINS, common::types::GasOptions};
 use libra2_crypto::{PrivateKey, ValidCryptoMaterialStringExt};
 use libra2_keygen::KeyGen;
 

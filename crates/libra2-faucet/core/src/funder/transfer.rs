@@ -16,8 +16,8 @@ use anyhow::{Context, Result};
 use libra2_logger::info;
 use libra2_sdk::{
     crypto::{ed25519::Ed25519PrivateKey, PrivateKey},
-    rest_client::{AptosBaseUrl, Client},
-    transaction_builder::{aptos_stdlib, TransactionFactory},
+    rest_client::{Libra2BaseUrl, Client},
+    transaction_builder::{libra2_stdlib, TransactionFactory},
     types::{
         account_address::AccountAddress,
         chain_id::ChainId,
@@ -157,7 +157,7 @@ impl TransferFunder {
     /// the entire time because it uses cookies, ensuring we're talking to the same
     /// node behind the LB every time.
     pub fn get_api_client(&self) -> Client {
-        let mut builder = Client::builder(AptosBaseUrl::Custom(self.node_url.clone()));
+        let mut builder = Client::builder(Libra2BaseUrl::Custom(self.node_url.clone()));
 
         if let Some(api_key) = self.node_api_key.clone() {
             builder = builder.api_key(&api_key).expect("Failed to set API key");
@@ -300,7 +300,7 @@ impl FunderTrait for TransferFunder {
             let txn = self
                 .execute_transaction(
                     &client,
-                    aptos_stdlib::aptos_account_transfer(receiver_address, amount),
+                    libra2_stdlib::libra2_account_transfer(receiver_address, amount),
                     &receiver_address,
                 )
                 .await?;

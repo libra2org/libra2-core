@@ -3,14 +3,14 @@
 
 use crate::common::types::{CliError, CliTypedResult};
 use libra2_crypto::HashValue;
-use aptos_gas_profiling::FrameName;
+use libra2_gas_profiling::FrameName;
 use libra2_move_debugger::libra2_debugger::Libra2Debugger;
 use libra2_types::transaction::SignedTransaction;
-use aptos_vm::{data_cache::AsMoveResolver, AptosVM};
-use aptos_vm_environment::environment::AptosEnvironment;
-use aptos_vm_logging::log_schema::AdapterLogSchema;
-use aptos_vm_types::{
-    module_and_script_storage::AsAptosCodeStorage, output::VMOutput, resolver::StateStorageView,
+use libra2_vm::{data_cache::AsMoveResolver, Libra2VM};
+use libra2_vm_environment::environment::Libra2Environment;
+use libra2_vm_logging::log_schema::AdapterLogSchema;
+use libra2_vm_types::{
+    module_and_script_storage::AsLibra2CodeStorage, output::VMOutput, resolver::StateStorageView,
 };
 use move_core_types::vm_status::VMStatus;
 use std::{path::Path, time::Instant};
@@ -22,12 +22,12 @@ pub fn run_transaction_using_debugger(
     _hash: HashValue,
 ) -> CliTypedResult<(VMStatus, VMOutput)> {
     let state_view = debugger.state_view_at_version(version);
-    let env = AptosEnvironment::new(&state_view);
-    let vm = AptosVM::new(&env, &state_view);
+    let env = Libra2Environment::new(&state_view);
+    let vm = Libra2VM::new(&env, &state_view);
     let log_context = AdapterLogSchema::new(state_view.id(), 0);
 
     let resolver = state_view.as_move_resolver();
-    let code_storage = state_view.as_aptos_code_storage(&env);
+    let code_storage = state_view.as_libra2_code_storage(&env);
 
     let (vm_status, vm_output) =
         vm.execute_user_transaction(&resolver, &code_storage, &transaction, &log_context);
@@ -42,12 +42,12 @@ pub fn benchmark_transaction_using_debugger(
     _hash: HashValue,
 ) -> CliTypedResult<(VMStatus, VMOutput)> {
     let state_view = debugger.state_view_at_version(version);
-    let env = AptosEnvironment::new(&state_view);
-    let vm = AptosVM::new(&env, &state_view);
+    let env = Libra2Environment::new(&state_view);
+    let vm = Libra2VM::new(&env, &state_view);
     let log_context = AdapterLogSchema::new(state_view.id(), 0);
 
     let resolver = state_view.as_move_resolver();
-    let code_storage = state_view.as_aptos_code_storage(&env);
+    let code_storage = state_view.as_libra2_code_storage(&env);
     let (vm_status, vm_output) =
         vm.execute_user_transaction(&resolver, &code_storage, &transaction, &log_context);
 
@@ -58,8 +58,8 @@ pub fn benchmark_transaction_using_debugger(
         for _i in 0..n {
             // Create a new VM each time so to include code loading as part of the
             // total running time.
-            let vm = AptosVM::new(&env, &state_view);
-            let code_storage = state_view.as_aptos_code_storage(&env);
+            let vm = Libra2VM::new(&env, &state_view);
+            let code_storage = state_view.as_libra2_code_storage(&env);
             let log_context = AdapterLogSchema::new(state_view.id(), 0);
 
             let t1 = Instant::now();

@@ -1,0 +1,10 @@
+[package]
+name = "ConfidentialAssetExample"
+version = "1.0.0"
+
+[dependencies]
+Libra2Framework = { local = "../../framework/libra2-framework" }
+AptosExperimental = { local = "../../framework/libra2-experimental" }
+
+[addresses]
+confidential_asset_example = "_"

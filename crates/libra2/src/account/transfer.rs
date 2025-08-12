@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::common::types::{CliCommand, CliTypedResult, TransactionOptions};
-use aptos_cached_packages::aptos_stdlib;
+use libra2_cached_packages::libra2_stdlib;
 use libra2_rest_client::{
     libra2_api_types::{HashValue, WriteResource, WriteSetChange},
     Transaction,
@@ -39,7 +39,7 @@ impl CliCommand<TransferSummary> for TransferCoins {
 
     async fn execute(self) -> CliTypedResult<TransferSummary> {
         self.txn_options
-            .submit_transaction(aptos_stdlib::aptos_account_transfer(
+            .submit_transaction(libra2_stdlib::libra2_account_transfer(
                 self.account,
                 self.amount,
             ))
@@ -48,7 +48,7 @@ impl CliCommand<TransferSummary> for TransferCoins {
     }
 }
 
-const SUPPORTED_COINS: [&str; 1] = ["0x1::coin::CoinStore<0x1::aptos_coin::AptosCoin>"];
+const SUPPORTED_COINS: [&str; 1] = ["0x1::coin::CoinStore<0x1::libra2_coin::Libra2Coin>"];
 
 /// A shortened transaction output
 #[derive(Clone, Debug, Serialize)]

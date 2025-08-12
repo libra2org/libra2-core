@@ -9,7 +9,7 @@ use crate::{
     ApiTags,
 };
 use anyhow::Context as AnyhowContext;
-use libra2_api_types::AptosErrorCode;
+use libra2_api_types::Libra2ErrorCode;
 use poem_openapi::{
     param::Query,
     payload::{Html, Json},
@@ -44,7 +44,7 @@ pub struct HealthCheckSuccess {
 impl HealthCheckSuccess {
     pub fn new() -> Self {
         Self {
-            message: "aptos-node:ok".to_string(),
+            message: "libra2-node:ok".to_string(),
         }
     }
 }
@@ -151,7 +151,7 @@ impl BasicApi {
                 .map_err(|err| {
                     HealthCheckError::internal_with_code(
                         err,
-                        AptosErrorCode::InternalError,
+                        Libra2ErrorCode::InternalError,
                         &ledger_info,
                     )
                 })?;
@@ -159,7 +159,7 @@ impl BasicApi {
             if ledger_timestamp < skew_threshold {
                 return Err(HealthCheckError::service_unavailable_with_code(
                     format!("The latest ledger info timestamp is {:?}, which is beyond the allowed skew ({}s).", ledger_timestamp, max_skew),
-                    AptosErrorCode::HealthCheckFailed,
+                    Libra2ErrorCode::HealthCheckFailed,
                     &ledger_info,
                 ));
             }

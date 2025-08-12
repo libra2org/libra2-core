@@ -28,9 +28,9 @@ use crate::{
     },
     CliCommand, CliResult,
 };
-use libra2_api_types::AptosErrorCode;
+use libra2_api_types::Libra2ErrorCode;
 use libra2_crypto::HashValue;
-use aptos_framework::{
+use libra2_framework::{
     chunked_publish::{
         chunk_package_and_create_payloads, large_packages_cleanup_staging_area, PublishType,
     },
@@ -40,12 +40,12 @@ use aptos_framework::{
     prover::ProverOptions,
     BuildOptions, BuiltPackage,
 };
-use aptos_gas_schedule::{MiscGasParameters, NativeGasParameters};
+use libra2_gas_schedule::{MiscGasParameters, NativeGasParameters};
 use libra2_move_debugger::libra2_debugger::Libra2Debugger;
 use libra2_rest_client::{
     libra2_api_types::{EntryFunctionId, HexEncodedBytes, IdentifierWrapper, MoveModuleId},
     error::RestError,
-    AptosBaseUrl, Client,
+    Libra2BaseUrl, Client,
 };
 use libra2_types::{
     account_address::{create_resource_address, AccountAddress},
@@ -55,7 +55,7 @@ use libra2_types::{
         ReplayProtector, Transaction, TransactionArgument, TransactionPayload, TransactionStatus,
     },
 };
-use aptos_vm::data_cache::AsMoveResolver;
+use libra2_vm::data_cache::AsMoveResolver;
 use async_trait::async_trait;
 use clap::{Parser, Subcommand, ValueEnum};
 use colored::Colorize;
@@ -90,7 +90,7 @@ mod show;
 pub mod stored_package;
 
 const HELLO_BLOCKCHAIN_EXAMPLE: &str = include_str!(
-    "../../../../aptos-move/move-examples/hello_blockchain/sources/hello_blockchain.move"
+    "../../../../libra2-move/move-examples/hello_blockchain/sources/hello_blockchain.move"
 );
 
 /// Tool for Move smart contract related operations
@@ -208,9 +208,9 @@ impl FrameworkPackageArgs {
         addresses: BTreeMap<String, ManifestNamedAddress>,
         prompt_options: PromptOptions,
     ) -> CliTypedResult<()> {
-        const APTOS_FRAMEWORK: &str = "AptosFramework";
-        const APTOS_GIT_PATH: &str = "https://github.com/aptos-labs/aptos-framework.git";
-        const SUBDIR_PATH: &str = "aptos-framework";
+        const APTOS_FRAMEWORK: &str = "Libra2Framework";
+        const APTOS_GIT_PATH: &str = "https://github.com/libra2org/libra2-framework.git";
+        const SUBDIR_PATH: &str = "libra2-framework";
         const DEFAULT_BRANCH: &str = "mainnet";
 
         let move_toml = package_dir.join(SourcePackageLayout::Manifest.path());
@@ -977,19 +977,19 @@ fn create_package_publication_data(
 
     let payload = match publish_type {
         PublishType::AccountDeploy => {
-            aptos_cached_packages::aptos_stdlib::code_publish_package_txn(
+            libra2_cached_packages::libra2_stdlib::code_publish_package_txn(
                 metadata_serialized.clone(),
                 compiled_units.clone(),
             )
         },
         PublishType::ObjectDeploy => {
-            aptos_cached_packages::aptos_stdlib::object_code_deployment_publish(
+            libra2_cached_packages::libra2_stdlib::object_code_deployment_publish(
                 metadata_serialized.clone(),
                 compiled_units.clone(),
             )
         },
         PublishType::ObjectUpgrade => {
-            aptos_cached_packages::aptos_stdlib::object_code_deployment_upgrade(
+            libra2_cached_packages::libra2_stdlib::object_code_deployment_upgrade(
                 metadata_serialized.clone(),
                 compiled_units.clone(),
                 object_address.expect("Object address must be provided for upgrading object code."),
@@ -1734,7 +1734,7 @@ async fn is_staging_area_empty(
             None => Ok(true),     // TODO: determine which case this is
         },
         Err(RestError::Api(aptos_error_response))
-            if aptos_error_response.error.error_code == AptosErrorCode::ResourceNotFound =>
+            if aptos_error_response.error.error_code == Libra2ErrorCode::ResourceNotFound =>
         {
             Ok(true) // The resource doesn't exist
         },
@@ -1848,7 +1848,7 @@ impl CliCommand<TransactionSummary> for CreateResourceAccountAndPublishPackage {
         );
         prompt_yes_with_override(&message, txn_options.prompt_options)?;
 
-        let payload = aptos_cached_packages::aptos_stdlib::resource_account_create_resource_account_and_publish_package(
+        let payload = libra2_cached_packages::libra2_stdlib::resource_account_create_resource_account_and_publish_package(
             seed,
             bcs::to_bytes(&metadata).expect("PackageMetadata has BCS"),
             compiled_units,
@@ -2310,7 +2310,7 @@ impl CliCommand<TransactionSummary> for Replay {
         };
 
         // Build the client
-        let client = Client::builder(AptosBaseUrl::Custom(
+        let client = Client::builder(Libra2BaseUrl::Custom(
             Url::parse(rest_endpoint)
                 .map_err(|_err| CliError::UnableToParse("url", rest_endpoint.to_string()))?,
         ));

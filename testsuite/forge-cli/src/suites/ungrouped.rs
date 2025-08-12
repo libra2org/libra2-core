@@ -13,7 +13,7 @@ use super::{
     },
 };
 use anyhow::Result;
-use aptos_cached_packages::aptos_stdlib;
+use libra2_cached_packages::libra2_stdlib;
 use libra2_config::config::{ConsensusConfig, MempoolConfig, NodeConfig};
 use aptos_forge::{
     args::TransactionTypeArg,
@@ -169,7 +169,7 @@ pub static RELIABLE_REAL_ENV_PROGRESS_THRESHOLD: Lazy<StateProgressThreshold> =
 pub fn run_forever() -> ForgeConfig {
     ForgeConfig::default()
         .add_admin_test(GetMetadata)
-        .with_genesis_module_bundle(aptos_cached_packages::head_release_bundle().clone())
+        .with_genesis_module_bundle(libra2_cached_packages::head_release_bundle().clone())
         .add_aptos_test(RunForever)
 }
 
@@ -180,7 +180,7 @@ pub fn local_test_suite() -> ForgeConfig {
         .add_admin_test(GetMetadata)
         .add_network_test(RestartValidator)
         .add_network_test(EmitTransaction)
-        .with_genesis_module_bundle(aptos_cached_packages::head_release_bundle().clone())
+        .with_genesis_module_bundle(libra2_cached_packages::head_release_bundle().clone())
 }
 
 pub fn k8s_test_suite() -> ForgeConfig {
@@ -1086,7 +1086,7 @@ impl AptosTest for TransferCoins {
 
         let transfer_txn = payer.sign_with_transaction_builder(
             ctx.aptos_transaction_factory()
-                .payload(aptos_stdlib::aptos_coin_transfer(payee.address(), 10)),
+                .payload(libra2_stdlib::libra2_coin_transfer(payee.address(), 10)),
         );
         client.submit_and_wait(&transfer_txn).await?;
         check_account_balance(&client, payee.address(), 10).await?;

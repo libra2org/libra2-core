@@ -6,7 +6,7 @@
 mod mock_vm_test;
 
 use anyhow::Result;
-use aptos_block_executor::txn_provider::{default::DefaultTxnProvider, TxnProvider};
+use libra2_block_executor::txn_provider::{default::DefaultTxnProvider, TxnProvider};
 use libra2_crypto::{ed25519::Ed25519PrivateKey, PrivateKey, Uniform};
 use libra2_types::{
     account_address::AccountAddress,
@@ -30,7 +30,7 @@ use libra2_types::{
     vm_status::{StatusCode, VMStatus},
     write_set::{WriteOp, WriteSet, WriteSetMut},
 };
-use aptos_vm::{
+use libra2_vm::{
     sharded_block_executor::{executor_client::ExecutorClient, ShardedBlockExecutor},
     VMBlockExecutor,
 };

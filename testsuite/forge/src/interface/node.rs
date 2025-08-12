@@ -6,7 +6,7 @@ use crate::{Result, Version};
 use anyhow::anyhow;
 use libra2_config::{config::NodeConfig, network_id::NetworkId};
 use libra2_inspection_service::inspection_client::InspectionClient;
-use libra2_rest_client::{AptosBaseUrl, Client as RestClient};
+use libra2_rest_client::{Libra2BaseUrl, Client as RestClient};
 use libra2_sdk::types::PeerId;
 use std::{
     collections::HashMap,
@@ -155,7 +155,7 @@ pub trait NodeExt: Node {
 
     /// Return REST API client of this Node
     fn rest_client_with_timeout(&self, timeout: Duration) -> RestClient {
-        RestClient::builder(AptosBaseUrl::Custom(self.rest_api_endpoint()))
+        RestClient::builder(Libra2BaseUrl::Custom(self.rest_api_endpoint()))
             .timeout(timeout)
             .build()
     }

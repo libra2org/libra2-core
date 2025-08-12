@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use super::native_config::NATIVE_EXECUTOR_POOL;
-use aptos_block_executor::{
+use libra2_block_executor::{
     counters::BLOCK_EXECUTOR_INNER_EXECUTE_BLOCK, txn_provider::default::DefaultTxnProvider,
 };
 use libra2_types::{
@@ -17,16 +17,16 @@ use libra2_types::{
     },
     vm_status::VMStatus,
 };
-use aptos_vm::{AptosVM, VMBlockExecutor};
-use aptos_vm_environment::environment::AptosEnvironment;
-use aptos_vm_logging::log_schema::AdapterLogSchema;
-use aptos_vm_types::module_and_script_storage::AsAptosCodeStorage;
+use libra2_vm::{Libra2VM, VMBlockExecutor};
+use libra2_vm_environment::environment::Libra2Environment;
+use libra2_vm_logging::log_schema::AdapterLogSchema;
+use libra2_vm_types::module_and_script_storage::AsLibra2CodeStorage;
 use rayon::iter::{IndexedParallelIterator, IntoParallelRefIterator, ParallelIterator};
 use std::collections::BTreeMap;
 
-pub struct AptosVMParallelUncoordinatedBlockExecutor;
+pub struct Libra2VMParallelUncoordinatedBlockExecutor;
 
-impl VMBlockExecutor for AptosVMParallelUncoordinatedBlockExecutor {
+impl VMBlockExecutor for Libra2VMParallelUncoordinatedBlockExecutor {
     fn new() -> Self {
         Self
     }
@@ -42,8 +42,8 @@ impl VMBlockExecutor for AptosVMParallelUncoordinatedBlockExecutor {
 
         // let features = Features::fetch_config(&state_view).unwrap_or_default();
 
-        let env = AptosEnvironment::new(state_view);
-        let vm = AptosVM::new(&env, state_view);
+        let env = Libra2Environment::new(state_view);
+        let vm = Libra2VM::new(&env, state_view);
 
         let block_epilogue_txn = Transaction::block_epilogue_v0(
             transaction_slice_metadata
@@ -60,7 +60,7 @@ impl VMBlockExecutor for AptosVMParallelUncoordinatedBlockExecutor {
                 .enumerate()
                 .map(|(txn_idx, txn)| {
                     let log_context = AdapterLogSchema::new(state_view.id(), txn_idx);
-                    let code_storage = state_view.as_aptos_code_storage(&env);
+                    let code_storage = state_view.as_libra2_code_storage(&env);
 
                     vm.execute_single_transaction(
                         txn,

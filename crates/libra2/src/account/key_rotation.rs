@@ -7,7 +7,7 @@ use crate::common::types::{
     ExtractEd25519PublicKey, HardwareWalletOptions, ParseEd25519PrivateKey, ProfileConfig,
     ProfileOptions, PublicKeyInputOptions, RestOptions, TransactionOptions, TransactionSummary,
 };
-use aptos_cached_packages::aptos_stdlib;
+use libra2_cached_packages::libra2_stdlib;
 use libra2_crypto::{
     ed25519::{Ed25519PrivateKey, Ed25519PublicKey},
     encoding_type::EncodingType,
@@ -250,7 +250,7 @@ impl CliCommand<RotateSummary> for RotateKey {
         };
         let txn_summary = self
             .txn_options
-            .submit_transaction(aptos_stdlib::account_rotate_authentication_key(
+            .submit_transaction(libra2_stdlib::account_rotate_authentication_key(
                 0,
                 current_public_key.to_bytes().to_vec(),
                 0,

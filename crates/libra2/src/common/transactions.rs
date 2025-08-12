@@ -26,11 +26,11 @@ use libra2_types::{
         ReplayProtector, SignedTransaction, TransactionPayload, TransactionStatus,
     },
 };
-use aptos_vm_types::output::VMOutput;
+use libra2_vm_types::output::VMOutput;
 use clap::Parser;
 use move_core_types::vm_status::VMStatus;
 pub use move_package::*;
-use rand::rngs::OsRng;
+//use rand::rngs::OsRng;
 use std::{
     fmt::Display,
     time::{SystemTime, UNIX_EPOCH},

@@ -6,7 +6,7 @@ use crate::{
     aptos_cli::validator::generate_blob, smoke_test_environment::SwarmBuilder,
     utils::get_current_version,
 };
-use aptos::test::CliTestFramework;
+use libra2::test::CliTestFramework;
 use aptos_forge::{NodeExt, Swarm, SwarmExt};
 use libra2_rest_client::Client;
 use libra2_types::on_chain_config::{
@@ -37,7 +37,7 @@ async fn fallback_test() {
 
     client
         .set_failpoint(
-            "aptos_vm::vm_wrapper::execute_transaction".to_string(),
+            "libra2_vm::vm_wrapper::execute_transaction".to_string(),
             "100%return".to_string(),
         )
         .await
@@ -53,7 +53,7 @@ async fn fallback_test() {
 
     client
         .set_failpoint(
-            "aptos_vm::vm_wrapper::execute_transaction".to_string(),
+            "libra2_vm::vm_wrapper::execute_transaction".to_string(),
             "0%return".to_string(),
         )
         .await
@@ -78,13 +78,13 @@ async fn update_execution_config(
     let update_execution_config_script = format!(
         r#"
     script {{
-        use aptos_framework::aptos_governance;
-        use aptos_framework::execution_config;
+        use libra2_framework::libra2_governance;
+        use libra2_framework::execution_config;
         fun main(core_resources: &signer) {{
-            let framework_signer = aptos_governance::get_signer_testnet_only(core_resources, @0000000000000000000000000000000000000000000000000000000000000001);
+            let framework_signer = libra2_governance::get_signer_testnet_only(core_resources, @0000000000000000000000000000000000000000000000000000000000000001);
             let config_bytes = {};
             execution_config::set_for_next_epoch(&framework_signer, config_bytes);
-            aptos_governance::force_end_epoch(&framework_signer);
+            libra2_governance::force_end_epoch(&framework_signer);
         }}
     }}
     "#,

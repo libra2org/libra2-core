@@ -54,5 +54,5 @@ order-book-balanced-matches80-pct50-markets	1	VM	6	0.986	1.034	5512.4
 order-book-balanced-size-skewed80-pct50-markets	1	VM	6	0.963	1.105	4209.5
 no_commit_apt-fa-transfer	1	VM	6	0.994	1.006	27893.4
 no_commit_apt-fa-transfer	1	NativeVM	6	0.995	1.049	48614.4
-no_commit_apt-fa-transfer	1	AptosVMSpeculative	6	0.997	1.002	1136.7
+no_commit_apt-fa-transfer	1	Libra2VMSpeculative	6	0.997	1.002	1136.7
 no_commit_apt-fa-transfer	1	NativeSpeculative	6	0.994	1.015	97401.9

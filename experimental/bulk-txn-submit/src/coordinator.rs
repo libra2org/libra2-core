@@ -12,11 +12,11 @@ use libra2_logger::{error, info, sample, sample::SampleRate, warn};
 use libra2_sdk::{
     move_types::account_address::AccountAddress,
     rest_client::{
-        libra2_api_types::{AptosError, AptosErrorCode, TransactionOnChainData},
-        error::{AptosErrorResponse, RestError},
+        libra2_api_types::{Libra2Error, Libra2ErrorCode, TransactionOnChainData},
+        error::{Libra2ErrorResponse, RestError},
         Client,
     },
-    transaction_builder::{aptos_stdlib, TransactionFactory},
+    transaction_builder::{libra2_stdlib, TransactionFactory},
     types::LocalAccount,
 };
 use libra2_transaction_emitter_lib::{
@@ -241,7 +241,7 @@ pub async fn execute_return_worker_funds(
             if balance > txn_factory_ref.get_max_gas_amount() * txn_factory_ref.get_gas_unit_price()
             {
                 let txn = account.sign_with_transaction_builder(txn_factory_ref.payload(
-                    aptos_stdlib::aptos_coin_transfer(
+                    libra2_stdlib::libra2_coin_transfer(
                         coin_source_account.address(),
                         balance
                             - txn_factory_ref.get_max_gas_amount()
@@ -653,10 +653,10 @@ async fn submit_work_txns<T, B: SignedTransactionBuilder<T>>(
                                         warn!("Rollback txn status: {:?}", res.into_inner())
                                     );
                                 },
-                                Err(RestError::Api(AptosErrorResponse {
+                                Err(RestError::Api(Libra2ErrorResponse {
                                     error:
-                                        AptosError {
-                                            error_code: AptosErrorCode::TransactionNotFound,
+                                        Libra2Error {
+                                            error_code: Libra2ErrorCode::TransactionNotFound,
                                             ..
                                         },
                                     ..

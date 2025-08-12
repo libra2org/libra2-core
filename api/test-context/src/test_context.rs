@@ -7,7 +7,7 @@ use libra2_api_types::{
     mime_types, HexEncodedBytes, TransactionOnChainData, X_APTOS_CHAIN_ID,
     X_LIBRA2_LEDGER_TIMESTAMP, X_LIBRA2_LEDGER_VERSION,
 };
-use aptos_cached_packages::aptos_stdlib;
+use libra2_cached_packages::libra2_stdlib;
 use libra2_config::{
     config::{
         NodeConfig, RocksdbConfigs, StorageDirPaths, BUFFERED_STATE_TARGET_ITEMS_FOR_TEST,
@@ -19,8 +19,8 @@ use libra2_crypto::{ed25519::Ed25519PrivateKey, hash::HashValue, SigningKey};
 use libra2_db::Libra2DB;
 use libra2_executor::{block_executor::BlockExecutor, db_bootstrapper};
 use libra2_executor_types::BlockExecutorTrait;
-use aptos_framework::{BuildOptions, BuiltPackage};
-use aptos_indexer_grpc_table_info::internal_indexer_db_service::MockInternalIndexerDBService;
+use libra2_framework::{BuildOptions, BuiltPackage};
+use libra2_indexer_grpc_table_info::internal_indexer_db_service::MockInternalIndexerDBService;
 use libra2_mempool::mocks::MockSharedMempool;
 use libra2_mempool_notifications::MempoolNotificationSender;
 use libra2_sdk::{
@@ -50,7 +50,7 @@ use libra2_types::{
         TransactionPayload, TransactionStatus, Version,
     },
 };
-use aptos_vm::aptos_vm::AptosVMBlockExecutor;
+use libra2_vm::libra2_vm::Libra2VMBlockExecutor;
 use libra2_vm_validator::vm_validator::PooledVMValidator;
 use bytes::Bytes;
 use hyper::{HeaderMap, Response};
@@ -129,14 +129,14 @@ pub fn new_test_context_inner(
 ) -> TestContext {
     // Speculative logging uses a global variable and when many instances use it together, they
     // panic, so we disable this to run tests.
-    aptos_vm_logging::disable_speculative_logging();
+    libra2_vm_logging::disable_speculative_logging();
     let tmp_dir = TempPath::new();
     tmp_dir.create_as_dir().unwrap();
 
     let mut rng = ::rand::rngs::StdRng::from_seed([0u8; 32]);
     let builder = libra2_genesis::builder::Builder::new(
         tmp_dir.path(),
-        aptos_cached_packages::head_release_bundle().clone(),
+        libra2_cached_packages::head_release_bundle().clone(),
     )
     .unwrap()
     .with_init_genesis_config(Some(Arc::new(|genesis_config| {
@@ -186,7 +186,7 @@ pub fn new_test_context_inner(
         }
         DbReaderWriter::wrap(libra2_db)
     };
-    let ret = db_bootstrapper::maybe_bootstrap::<AptosVMBlockExecutor>(
+    let ret = db_bootstrapper::maybe_bootstrap::<Libra2VMBlockExecutor>(
         &db_rw,
         &genesis,
         genesis_waypoint,
@@ -226,7 +226,7 @@ pub fn new_test_context_inner(
         rng,
         root_key,
         validator_owner,
-        Box::new(BlockExecutor::<AptosVMBlockExecutor>::new(db_rw)),
+        Box::new(BlockExecutor::<Libra2VMBlockExecutor>::new(db_rw)),
         mempool,
         db,
         test_name,
@@ -400,10 +400,10 @@ impl TestContext {
         // This function executes the following script as the root account:
         // script {
         //   fun main(root: &signer, feature: u64) {
-        //     let aptos_framework = aptos_framework::aptos_governance::get_signer_testnet_only(root, @0x1);
-        //     std::features::change_feature_flags_for_next_epoch(&aptos_framework, vector[feature], vector[]);
-        //     aptos_framework::aptos_governance::reconfigure(&aptos_framework);
-        //     std::features::on_new_epoch(&aptos_framework);
+        //     let libra2_framework = libra2_framework::libra2_governance::get_signer_testnet_only(root, @0x1);
+        //     std::features::change_feature_flags_for_next_epoch(&libra2_framework, vector[feature], vector[]);
+        //     libra2_framework::libra2_governance::reconfigure(&libra2_framework);
+        //     std::features::on_new_epoch(&libra2_framework);
         //   }
         // }
         let mut root = self.root_account().await;
@@ -420,10 +420,10 @@ impl TestContext {
         // This function executes the following script as the root account:
         // script {
         //   fun main(root: &signer, feature: u64) {
-        //     let aptos_framework = aptos_framework::aptos_governance::get_signer_testnet_only(root, @0x1);
-        //     std::features::change_feature_flags_for_next_epoch(&aptos_framework, vector[], vector[feature]);
-        //     aptos_framework::aptos_governance::reconfigure(&aptos_framework);
-        //     std::features::on_new_epoch(&aptos_framework);
+        //     let libra2_framework = libra2_framework::libra2_governance::get_signer_testnet_only(root, @0x1);
+        //     std::features::change_feature_flags_for_next_epoch(&libra2_framework, vector[], vector[feature]);
+        //     libra2_framework::libra2_governance::reconfigure(&libra2_framework);
+        //     std::features::on_new_epoch(&libra2_framework);
         //   }
         // }
         let mut root = self.root_account().await;
@@ -482,12 +482,12 @@ impl TestContext {
     pub async fn api_create_account(&mut self) -> LocalAccount {
         let root = &mut self.root_account().await;
         let account = self.gen_account();
-        self.api_execute_aptos_account_transfer(root, account.address(), TRANSFER_AMOUNT)
+        self.api_execute_libra2_account_transfer(root, account.address(), TRANSFER_AMOUNT)
             .await;
         account
     }
 
-    pub async fn api_execute_aptos_account_transfer(
+    pub async fn api_execute_libra2_account_transfer(
         &mut self,
         sender: &mut LocalAccount,
         receiver: AccountAddress,
@@ -495,7 +495,7 @@ impl TestContext {
     ) {
         self.api_execute_entry_function(
             sender,
-            "0x1::aptos_account::transfer",
+            "0x1::libra2_account::transfer",
             json!([]),
             json!([receiver.to_hex_literal(), amount.to_string()]),
         )
@@ -856,7 +856,7 @@ impl TestContext {
         let code = package.extract_code();
         let metadata = package.extract_metadata().unwrap();
 
-        aptos_stdlib::code_publish_package_txn(bcs::to_bytes(&metadata).unwrap(), code)
+        libra2_stdlib::code_publish_package_txn(bcs::to_bytes(&metadata).unwrap(), code)
     }
 
     pub async fn publish_package(
@@ -967,7 +967,7 @@ impl TestContext {
                 account,
                 "0x1",
                 "coin",
-                "CoinStore<0x1::aptos_coin::AptosCoin>",
+                "CoinStore<0x1::libra2_coin::Libra2Coin>",
             )
             .await;
         let coin = coin_balance_option.map(|x| {

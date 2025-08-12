@@ -7,7 +7,7 @@ use crate::{
     listener::{EmptyPackageCacheListener, PackageCacheListener},
 };
 use anyhow::{bail, Result};
-use aptos_framework::natives::code::PackageRegistry;
+use libra2_framework::natives::code::PackageRegistry;
 use futures::future;
 use git2::{
     build::RepoBuilder, FetchOptions, ObjectType, Oid, RemoteCallbacks, Repository, TreeWalkResult,

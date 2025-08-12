@@ -2,8 +2,8 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::smoke_test_environment::SwarmBuilder;
-use aptos::move_tool::MemberId;
-use aptos_cached_packages::aptos_stdlib;
+use libra2::move_tool::MemberId;
+use libra2_cached_packages::libra2_stdlib;
 use libra2_crypto::SigningKey;
 use aptos_forge::Swarm;
 use libra2_types::function_info::FunctionInfo;
@@ -54,12 +54,12 @@ async fn test_permissioned_delegation() {
         r#"
     script {{
     use aptos_std::ed25519;
-    use aptos_framework::coin;
-    use aptos_framework::permissioned_delegation;
-    use aptos_framework::primary_fungible_store;
-    use aptos_framework::transaction_validation;
+    use libra2_framework::coin;
+    use libra2_framework::permissioned_delegation;
+    use libra2_framework::primary_fungible_store;
+    use libra2_framework::transaction_validation;
     fun main(sender: &signer) {{
-        coin::migrate_to_fungible_store<aptos_framework::aptos_coin::AptosCoin>(sender);
+        coin::migrate_to_fungible_store<libra2_framework::libra2_coin::Libra2Coin>(sender);
         let key = permissioned_delegation::gen_ed25519_key(ed25519::new_unvalidated_public_key_from_bytes(x"{}"));
         let permissioned_signer = permissioned_delegation::add_permissioned_handle(sender, key, std::option::none(), {});
         primary_fungible_store::grant_apt_permission(sender, &permissioned_signer, 1000000000); // 10 apt
@@ -104,7 +104,7 @@ async fn test_permissioned_delegation() {
         vec![],
         None,
         info.transaction_factory()
-            .payload(aptos_stdlib::aptos_account_fungible_transfer_only(
+            .payload(libra2_stdlib::libra2_account_fungible_transfer_only(
                 account2.address(),
                 100000000,
             )),
@@ -116,7 +116,7 @@ async fn test_permissioned_delegation() {
         vec![],
         None,
         info.transaction_factory()
-            .payload(aptos_stdlib::aptos_account_fungible_transfer_only(
+            .payload(libra2_stdlib::libra2_account_fungible_transfer_only(
                 account2.address(),
                 200000000,
             )),
@@ -128,7 +128,7 @@ async fn test_permissioned_delegation() {
         vec![],
         None,
         info.transaction_factory()
-            .payload(aptos_stdlib::aptos_account_fungible_transfer_only(
+            .payload(libra2_stdlib::libra2_account_fungible_transfer_only(
                 account2.address(),
                 200000000,
             ))
@@ -140,7 +140,7 @@ async fn test_permissioned_delegation() {
         vec![],
         None,
         info.transaction_factory()
-            .payload(aptos_stdlib::aptos_account_fungible_transfer_only(
+            .payload(libra2_stdlib::libra2_account_fungible_transfer_only(
                 account2.address(),
                 700000001,
             ))
@@ -152,7 +152,7 @@ async fn test_permissioned_delegation() {
         vec![],
         None,
         info.transaction_factory()
-            .payload(aptos_stdlib::aptos_account_fungible_transfer_only(
+            .payload(libra2_stdlib::libra2_account_fungible_transfer_only(
                 account2.address(),
                 700000000,
             ))

@@ -103,7 +103,7 @@ MOVE_CRATES="\
 
 # This is a list of crates for integration testing.
 MOVE_CRATES_INTEGRATION_TEST="\
-  -p aptos-transactional-test-harness \
+  -p libra2-transactional-test-harness \
   -p bytecode-verifier-tests \
   -p bytecode-verifier-transactional-tests \
   -p move-cli \
@@ -114,15 +114,15 @@ MOVE_CRATES_INTEGRATION_TEST="\
   -p move-transactional-test-runner \
   -p move-unit-test \
   -p move-vm-transactional-tests \
-  -p aptos-move-stdlib\
+  -p libra2-move-stdlib\
   -p move-abigen\
   -p move-docgen\
   -p move-stdlib\
   -p move-table-extension\
   -p move-vm-integration-tests\
-  -p aptos-move-examples\
+  -p libra2-move-examples\
   -p e2e-move-tests\
-  -p aptos-framework\
+  -p libra2-framework\
   -p aptos-api\
 "
 
@@ -153,7 +153,7 @@ if [ ! -z "$GEN_ARTIFACTS" ]; then
     # Add hoc treatment
     (
         cd $BASE
-        cargo build $CARGO_OP_PARAMS -p aptos-cached-packages
+        cargo build $CARGO_OP_PARAMS -p libra2-cached-packages
     )
 fi
 

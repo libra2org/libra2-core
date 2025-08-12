@@ -14,10 +14,10 @@ rust-version = { workspace = true }
 
 [dependencies]
 anyhow = { workspace = true }
-aptos = { workspace = true, features = ["fuzzing"] }
+libra2 = { workspace = true, features = ["fuzzing"] }
 libra2-api-types = { workspace = true }
 libra2-bitvec = { path = "../../crates/libra2-bitvec" }
-aptos-cached-packages = { workspace = true }
+libra2-cached-packages = { workspace = true }
 libra2-config = { workspace = true, features = ["smoke-test"] }
 libra2-consensus = { workspace = true }
 libra2-crypto = { workspace = true }
@@ -26,16 +26,16 @@ libra2-db-indexer-schemas = { workspace = true }
 libra2-dkg = { workspace = true }
 libra2-faucet-core = { workspace = true }
 aptos-forge = { workspace = true }
-aptos-framework = { workspace = true }
-aptos-gas-algebra = { workspace = true }
-aptos-gas-schedule = { workspace = true, features = ["testing"] }
+libra2-framework = { workspace = true }
+libra2-gas-algebra = { workspace = true }
+libra2-gas-schedule = { workspace = true, features = ["testing"] }
 libra2-global-constants = { workspace = true }
 aptos-indexer = { workspace = true }
-aptos-indexer-grpc-table-info = { workspace = true }
+libra2-indexer-grpc-table-info = { workspace = true }
 libra2-inspection-service = { workspace = true }
 libra2-keygen = { workspace = true }
 libra2-move-debugger = { workspace = true }
-aptos-release-builder = { workspace = true }
+libra2-release-builder = { workspace = true }
 libra2-rest-client = { workspace = true }
 libra2-rosetta = { workspace = true }
 libra2-schemadb = { workspace = true }
@@ -44,7 +44,7 @@ libra2-storage-interface = { workspace = true }
 libra2-temppath = { workspace = true }
 libra2-transaction-filters = { workspace = true }
 libra2-types = { workspace = true }
-aptos-vm = { workspace = true }
+libra2-vm = { workspace = true }
 bcs = { workspace = true }
 diesel = { workspace = true, features = [
     "chrono",

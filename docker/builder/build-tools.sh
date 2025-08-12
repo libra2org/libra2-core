@@ -15,7 +15,7 @@ cargo build --locked --profile=$PROFILE \
     -p libra2-backup-cli \
     -p libra2-faucet-service \
     -p aptos-fn-check-client \
-    -p aptos-node-checker \
+    -p libra2-node-checker \
     -p libra2-openapi-spec-generator \
     -p libra2-telemetry-service \
     -p libra2-keyless-pepper-service \
@@ -28,7 +28,7 @@ cargo build --locked --profile=$PROFILE \
 BINS=(
     aptos
     libra2-faucet-service
-    aptos-node-checker
+    libra2-node-checker
     libra2-openapi-spec-generator
     libra2-telemetry-service
     libra2-keyless-pepper-service
@@ -46,4 +46,4 @@ done
 
 # Build the Aptos Move framework and place it in dist. It can be found afterwards in the current directory.
 echo "Building the Aptos Move framework..."
-(cd dist && cargo run --locked --profile=$PROFILE --package aptos-framework -- release)
+(cd dist && cargo run --locked --profile=$PROFILE --package libra2-framework -- release)

@@ -37,7 +37,7 @@ async fn test_gen_object(use_txn_payload_v2_format: bool, use_orderless_transact
     let named_addresses = vec![("hero".to_string(), user_addr)];
     let txn = futures::executor::block_on(async move {
         let path = PathBuf::from(std::env!("CARGO_MANIFEST_DIR"))
-            .join("../aptos-move/move-examples/token_objects/hero");
+            .join("../libra2-move/move-examples/token_objects/hero");
         TestContext::build_package(path, named_addresses)
     });
     context.publish_package(&mut user, txn).await;

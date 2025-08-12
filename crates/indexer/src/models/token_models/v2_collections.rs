@@ -125,7 +125,7 @@ impl CollectionV2 {
                     );
                 }
 
-                // Getting collection mutability config from AptosCollection
+                // Getting collection mutability config from Libra2Collection
                 let collection = metadata.aptos_collection.as_ref();
                 if let Some(collection) = collection {
                     mutable_description = Some(collection.mutable_description);

@@ -18,7 +18,7 @@ libra2-admin-service = { workspace = true }
 aptos-api = { workspace = true }
 libra2-backup-service = { workspace = true }
 libra2-build-info = { workspace = true }
-aptos-cached-packages = { workspace = true }
+libra2-cached-packages = { workspace = true }
 libra2-channels = { workspace = true }
 libra2-config = { workspace = true }
 libra2-consensus = { workspace = true }
@@ -32,11 +32,11 @@ libra2-db-indexer = { workspace = true }
 libra2-dkg-runtime = { workspace = true }
 libra2-event-notifications = { workspace = true }
 libra2-executor = { workspace = true }
-aptos-framework = { workspace = true }
+libra2-framework = { workspace = true }
 libra2-genesis = { workspace = true }
 aptos-indexer = { workspace = true, optional = true }
-aptos-indexer-grpc-fullnode = { workspace = true }
-aptos-indexer-grpc-table-info = { workspace = true }
+libra2-indexer-grpc-fullnode = { workspace = true }
+libra2-indexer-grpc-table-info = { workspace = true }
 libra2-infallible = { workspace = true }
 libra2-inspection-service = { workspace = true }
 libra2-jwk-consensus = { workspace = true }
@@ -63,8 +63,8 @@ libra2-time-service = { workspace = true }
 # libra2-types = { workspace = true }
 libra2-types = { workspace = true }
 libra2-validator-transaction-pool = { workspace = true }
-aptos-vm = { workspace = true }
-aptos-vm-environment = { workspace = true }
+libra2-vm = { workspace = true }
+libra2-vm-environment = { workspace = true }
 bcs = { workspace = true }
 clap = { workspace = true }
 either = { workspace = true }

@@ -48,7 +48,7 @@ libra2-time-service = { workspace = true }
 libra2-transaction-filters = { workspace = true }
 libra2-types = { workspace = true }
 libra2-validator-transaction-pool = { workspace = true }
-aptos-vm = { workspace = true }
+libra2-vm = { workspace = true }
 async-trait = { workspace = true }
 bcs = { workspace = true }
 byteorder = { workspace = true }
@@ -87,7 +87,7 @@ tokio-retry = { workspace = true }
 tokio-stream = { workspace = true }
 
 [dev-dependencies]
-aptos-cached-packages = { workspace = true }
+libra2-cached-packages = { workspace = true }
 libra2-config = { workspace = true, features = ["fuzzing"] }
 libra2-consensus-types = { workspace = true, features = ["fuzzing"] }
 libra2-executor-test-helpers = { workspace = true }
@@ -98,7 +98,7 @@ libra2-network = { workspace = true, features = ["fuzzing"] }
 libra2-safety-rules = { workspace = true, features = ["testing"] }
 libra2-transaction-filters = { workspace = true, features = ["fuzzing"] }
 libra2-types = { workspace = true, features = ["testing"] }
-aptos-vm = { workspace = true, features = ["fuzzing"] }
+libra2-vm = { workspace = true, features = ["fuzzing"] }
 libra2-vm-validator = { workspace = true }
 claims = { workspace = true }
 mockall = { workspace = true }

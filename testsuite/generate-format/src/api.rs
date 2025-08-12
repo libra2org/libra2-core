@@ -23,7 +23,7 @@ use libra2_types::{
     },
     validator_txn::ValidatorTransaction,
     vm_status::AbortLocation,
-    write_set, AptosCoinType,
+    write_set, Libra2CoinType,
 };
 use move_core_types::language_storage;
 use rand::{rngs::StdRng, SeedableRng};
@@ -136,7 +136,7 @@ pub fn get_registry() -> Result<Registry> {
     tracer.trace_type::<libra2_api_types::TransactionOnChainData>(&samples)?;
 
     // output types
-    tracer.trace_type::<CoinStoreResource<AptosCoinType>>(&samples)?;
+    tracer.trace_type::<CoinStoreResource<Libra2CoinType>>(&samples)?;
 
     // aliases within StructTag
     tracer.ignore_aliases("StructTag", &["type_params"])?;

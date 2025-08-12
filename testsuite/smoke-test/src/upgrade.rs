@@ -2,14 +2,14 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
-    aptos::move_test_helpers, smoke_test_environment::SwarmBuilder,
+    libra2::move_test_helpers, smoke_test_environment::SwarmBuilder,
     utils::check_create_mint_transfer, workspace_builder, workspace_builder::workspace_root,
 };
 use libra2_crypto::ValidCryptoMaterialStringExt;
 use aptos_forge::Swarm;
-use aptos_gas_algebra::GasQuantity;
-use aptos_gas_schedule::{AptosGasParameters, InitialGasSchedule, ToOnChainGasSchedule};
-use aptos_release_builder::{
+use libra2_gas_algebra::GasQuantity;
+use libra2_gas_schedule::{Libra2GasParameters, InitialGasSchedule, ToOnChainGasSchedule};
+use libra2_release_builder::{
     components::{
         feature_flags::{FeatureFlag, Features},
         framework::FrameworkReleaseConfig,
@@ -50,13 +50,13 @@ async fn test_upgrade_flow() {
 
     // Bump the limit in gas schedule
     // TODO: Replace this logic with aptos-gas
-    let mut gas_parameters = AptosGasParameters::initial();
+    let mut gas_parameters = Libra2GasParameters::initial();
     gas_parameters.vm.txn.max_transaction_size_in_bytes = GasQuantity::new(100_000_000);
 
     let gas_schedule = libra2_types::on_chain_config::GasScheduleV2 {
-        feature_version: aptos_gas_schedule::LATEST_GAS_FEATURE_VERSION,
+        feature_version: libra2_gas_schedule::LATEST_GAS_FEATURE_VERSION,
         entries: gas_parameters
-            .to_on_chain_gas_schedule(aptos_gas_schedule::LATEST_GAS_FEATURE_VERSION),
+            .to_on_chain_gas_schedule(libra2_gas_schedule::LATEST_GAS_FEATURE_VERSION),
     };
 
     let (_, update_gas_script) =
@@ -73,9 +73,9 @@ async fn test_upgrade_flow() {
     let framework_path = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
         .join("..")
         .join("..")
-        .join("aptos-move")
+        .join("libra2-move")
         .join("framework")
-        .join("aptos-framework");
+        .join("libra2-framework");
 
     assert!(Command::new(aptos_cli.as_path())
         .current_dir(workspace_root())
@@ -105,7 +105,7 @@ async fn test_upgrade_flow() {
     let upgrade_scripts_folder = TempPath::new();
     upgrade_scripts_folder.create_as_dir().unwrap();
 
-    let config = aptos_release_builder::ReleaseConfig {
+    let config = libra2_release_builder::ReleaseConfig {
         name: "Default".to_string(),
         remote_endpoint: None,
         proposals: vec![
@@ -169,9 +169,9 @@ async fn test_upgrade_flow() {
     let framework_path = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
         .join("..")
         .join("..")
-        .join("aptos-move")
+        .join("libra2-move")
         .join("framework")
-        .join("aptos-framework");
+        .join("libra2-framework");
 
     for path in scripts.iter() {
         assert!(Command::new(aptos_cli.as_path())
@@ -234,7 +234,7 @@ async fn test_release_validate_tool_multi_step() {
         }))
         .build_with_cli(2)
         .await;
-    let config = aptos_release_builder::ReleaseConfig::default();
+    let config = libra2_release_builder::ReleaseConfig::default();
 
     let root_key = TempPath::new();
     root_key.create_as_file().unwrap();
@@ -247,7 +247,7 @@ async fn test_release_validate_tool_multi_step() {
     )
     .unwrap();
 
-    let network_config = aptos_release_builder::validate::NetworkConfig {
+    let network_config = libra2_release_builder::validate::NetworkConfig {
         endpoint: url::Url::parse(&env.chain_info().rest_api_url).unwrap(),
         root_key_path,
         validator_account: env.validators().last().unwrap().peer_id(),
@@ -264,7 +264,7 @@ async fn test_release_validate_tool_multi_step() {
 
     network_config.mint_to_validator(None).await.unwrap();
 
-    aptos_release_builder::validate::validate_config(config, network_config, None)
+    libra2_release_builder::validate::validate_config(config, network_config, None)
         .await
         .unwrap();
 

@@ -17,9 +17,9 @@ anyhow = { workspace = true }
 libra2-logger = { workspace = true }
 libra2-storage-interface = { workspace = true }
 libra2-types = { workspace = true }
-aptos-vm = { workspace = true }
-aptos-vm-environment = { workspace = true }
-aptos-vm-logging = { workspace = true }
+libra2-vm = { workspace = true }
+libra2-vm-environment = { workspace = true }
+libra2-vm-logging = { workspace = true }
 fail = { workspace = true }
 move-binary-format = { workspace = true }
 move-core-types = { workspace = true }
@@ -28,14 +28,14 @@ move-vm-types = { workspace = true }
 rand = { workspace = true }
 
 [dev-dependencies]
-aptos-cached-packages = { workspace = true }
+libra2-cached-packages = { workspace = true }
 libra2-crypto = { workspace = true }
 libra2-db = { workspace = true }
 libra2-executor-test-helpers = { workspace = true }
-aptos-gas-schedule = { workspace = true, features = ["testing"] } 
+libra2-gas-schedule = { workspace = true, features = ["testing"] } 
 libra2-temppath = { workspace = true }
 libra2-types = { workspace = true, features = ["testing"] }
-aptos-vm-genesis = { workspace = true }
+libra2-vm-genesis = { workspace = true }
 move-vm-types = { workspace = true, features = ["testing"] }
 rand = { workspace = true }
 

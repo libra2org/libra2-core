@@ -1,6 +1,6 @@
 [package]
-name = "aptos-indexer-grpc-in-memory-cache-benchmark"
-version = "0.1.0"
+name = "libra2-indexer-grpc-in-memory-cache-benchmark"
+version = "0.1.2"
 
 # Workspace inherited keys
 authors = { workspace = true }
@@ -13,8 +13,8 @@ rust-version = { workspace = true }
 
 [dependencies]
 anyhow = { workspace = true }
-aptos-indexer-grpc-utils = { workspace = true }
-aptos-protos = { workspace = true }
+libra2-indexer-grpc-utils = { workspace = true }
+libra2-protos = { workspace = true }
 futures = { workspace = true }
 lazy_static = { workspace = true }
 once_cell = { workspace = true }

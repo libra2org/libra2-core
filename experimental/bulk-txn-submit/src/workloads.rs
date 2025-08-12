@@ -6,7 +6,7 @@ use anyhow::{anyhow, Result};
 use libra2_sdk::{
     move_types::account_address::AccountAddress,
     rest_client::libra2_api_types::TransactionOnChainData,
-    transaction_builder::{aptos_stdlib, TransactionFactory},
+    transaction_builder::{libra2_stdlib, TransactionFactory},
     types::{
         serde_helper::bcs_utils::bcs_size_of_byte_array,
         transaction::{SignedTransaction, TransactionPayload},
@@ -136,7 +136,7 @@ impl SignedTransactionBuilder<AccountAddress> for TransferAptSignedTransactionBu
         txn_factory: &TransactionFactory,
     ) -> SignedTransaction {
         account.sign_with_transaction_builder(txn_factory.payload(
-            aptos_stdlib::aptos_coin_transfer(*data, self.amount_to_send),
+            libra2_stdlib::libra2_coin_transfer(*data, self.amount_to_send),
         ))
     }
 
@@ -171,7 +171,7 @@ impl SignedTransactionBuilder<AccountAddress> for CreateAndTransferAptSignedTran
         txn_factory: &TransactionFactory,
     ) -> SignedTransaction {
         account.sign_with_transaction_builder(txn_factory.payload(
-            aptos_stdlib::aptos_account_transfer(*data, self.amount_to_send),
+            libra2_stdlib::libra2_account_transfer(*data, self.amount_to_send),
         ))
     }
 

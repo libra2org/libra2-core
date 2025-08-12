@@ -5,7 +5,7 @@
 mod admin;
 pub use admin::*;
 mod aptos;
-pub use self::aptos::*;
+pub use self::libra2::*;
 mod network;
 pub use network::*;
 mod test;
@@ -21,7 +21,7 @@ pub use node::*;
 mod chain_info;
 pub mod prometheus_metrics;
 
-use aptos_framework::ReleaseBundle;
+use libra2_framework::ReleaseBundle;
 pub use chain_info::*;
 
 /// A wrapper around a usize in order to represent an opaque version of a Node.

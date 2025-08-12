@@ -5,12 +5,12 @@
 use super::{new_test_context, new_test_context_with_orderless_flags};
 use aptos_api_test_context::{current_function_name, find_value, TestContext};
 use libra2_api_types::{MoveModuleBytecode, MoveResource, MoveStructTag, StateKeyWrapper};
-use aptos_cached_packages::aptos_stdlib;
+use libra2_cached_packages::libra2_stdlib;
 use libra2_sdk::types::APTOS_COIN_TYPE_STR;
 use libra2_types::{
     account_config::{primary_apt_store, ObjectCoreResource},
     transaction::{EntryFunction, TransactionPayload},
-    AptosCoinType, CoinType,
+    Libra2CoinType, CoinType,
 };
 use move_core_types::{
     account_address::AccountAddress,
@@ -266,10 +266,10 @@ async fn test_account_auto_creation() {
     let root_account = context.root_account().await;
     let account = context.gen_account();
     let txn1 = root_account.sign_with_transaction_builder(context.transaction_factory().payload(
-        aptos_stdlib::coin_migrate_to_fungible_store(AptosCoinType::type_tag()),
+        libra2_stdlib::coin_migrate_to_fungible_store(Libra2CoinType::type_tag()),
     ));
     let txn2 = root_account.sign_with_transaction_builder(context.transaction_factory().payload(
-        aptos_stdlib::aptos_account_fungible_transfer_only(account.address(), 10_000_000_000),
+        libra2_stdlib::libra2_account_fungible_transfer_only(account.address(), 10_000_000_000),
     ));
     context
         .commit_block(&vec![txn1.clone(), txn2.clone()])
@@ -277,7 +277,7 @@ async fn test_account_auto_creation() {
     let txn = account.sign_with_transaction_builder(
         context
             .transaction_factory()
-            .payload(aptos_stdlib::aptos_account_fungible_transfer_only(
+            .payload(libra2_stdlib::libra2_account_fungible_transfer_only(
                 root_account.address(),
                 1,
             ))
@@ -315,8 +315,8 @@ async fn test_get_account_balance(
     let txn = root_account.sign_with_transaction_builder(
         context
             .transaction_factory()
-            .payload(aptos_stdlib::coin_migrate_to_fungible_store(
-                AptosCoinType::type_tag(),
+            .payload(libra2_stdlib::coin_migrate_to_fungible_store(
+                Libra2CoinType::type_tag(),
             ))
             .expiration_timestamp_secs(context.get_expiration_time())
             .upgrade_payload(
@@ -379,7 +379,7 @@ async fn test_get_account_balance(
 async fn test_get_account_modules_by_ledger_version_with_context(mut context: TestContext) {
     let initial_ledger_version = u64::from(context.get_latest_ledger_info().ledger_version);
     let payload =
-        aptos_stdlib::publish_module_source("test_module", "module 0xa550c18::test_module {}");
+        libra2_stdlib::publish_module_source("test_module", "module 0xa550c18::test_module {}");
 
     let root_account = context.root_account().await;
     let txn = root_account.sign_with_transaction_builder(
@@ -477,7 +477,7 @@ async fn account_resource_created_only_by_seq_number_based_txns(
     let named_addresses = vec![("event".to_string(), user_addr)];
     let txn = futures::executor::block_on(async move {
         let path = PathBuf::from(std::env!("CARGO_MANIFEST_DIR"))
-            .join("../aptos-move/move-examples/event");
+            .join("../libra2-move/move-examples/event");
         TestContext::build_package(path, named_addresses)
     });
     context.publish_package(&mut user, txn).await;

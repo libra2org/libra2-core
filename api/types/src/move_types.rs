@@ -4,7 +4,7 @@
 
 use crate::{Address, Bytecode, IdentifierWrapper, VerifyInput, VerifyInputWithRecursion};
 use anyhow::{bail, format_err};
-use aptos_resource_viewer::{
+use libra2_resource_viewer::{
     AnnotatedMoveClosure, AnnotatedMoveStruct, AnnotatedMoveValue, RawMoveStruct,
 };
 use libra2_types::{account_config::CORE_CODE_ADDRESS, event::EventKey, transaction::Module};
@@ -1491,7 +1491,7 @@ mod tests {
         test_serialize_deserialize(
             MoveModuleId {
                 address: "0x1".parse().unwrap(),
-                name: "Aptos".parse().unwrap(),
+                name: "Libra2".parse().unwrap(),
             },
             json!("0x1::Aptos"),
         );
@@ -1543,7 +1543,7 @@ mod tests {
             EntryFunctionId {
                 module: MoveModuleId {
                     address: "0x1".parse().unwrap(),
-                    name: "Aptos".parse().unwrap(),
+                    name: "Libra2".parse().unwrap(),
                 },
                 name: "Add".parse().unwrap(),
             },

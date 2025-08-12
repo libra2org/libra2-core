@@ -4,10 +4,10 @@
 // SPDX-License-Identifier: Apache-2.0
 
 mod utils;
-use aptos_language_e2e_tests::executor::FakeExecutor;
-use aptos_transaction_simulation::GENESIS_CHANGE_SET_HEAD;
+use libra2_language_e2e_tests::executor::FakeExecutor;
+use libra2_transaction_simulation::GENESIS_CHANGE_SET_HEAD;
 use libra2_types::{chain_id::ChainId, write_set::WriteSet};
-use aptos_vm::AptosVM;
+use libra2_vm::Libra2VM;
 use fuzzer::{ExecVariant, RunnableState};
 use libfuzzer_sys::{fuzz_target, Corpus};
 use move_binary_format::{
@@ -103,7 +103,7 @@ fn run_case(mut input: RunnableState) -> Result<(), Corpus> {
         packages.push(cur)
     }
 
-    AptosVM::set_concurrency_level_once(FUZZER_CONCURRENCY_LEVEL);
+    Libra2VM::set_concurrency_level_once(FUZZER_CONCURRENCY_LEVEL);
     let mut vm = FakeExecutor::from_genesis_with_existing_thread_pool(
         &VM,
         ChainId::mainnet(),

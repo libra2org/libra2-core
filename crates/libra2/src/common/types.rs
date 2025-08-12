@@ -27,7 +27,7 @@ use libra2_crypto::{
     encoding_type::{EncodingError, EncodingType},
     x25519, PrivateKey, ValidCryptoMaterialStringExt,
 };
-use aptos_framework::chunked_publish::{
+use libra2_framework::chunked_publish::{
     default_large_packages_module_address, CHUNK_SIZE_IN_BYTES,
 };
 use libra2_global_constants::adjust_gas_headroom;
@@ -37,7 +37,7 @@ use libra2_move_debugger::libra2_debugger::Libra2Debugger;
 use libra2_rest_client::{
     libra2_api_types::{EntryFunctionId, HashValue, MoveType, ViewRequest},
     error::RestError,
-    AptosBaseUrl, Client, Transaction,
+    Libra2BaseUrl, Client, Transaction,
 };
 use libra2_sdk::{
     transaction_builder::TransactionFactory,
@@ -51,7 +51,7 @@ use libra2_types::{
         TransactionStatus,
     },
 };
-use aptos_vm_types::output::VMOutput;
+use libra2_vm_types::output::VMOutput;
 use async_trait::async_trait;
 use clap::{Parser, ValueEnum};
 use hex::FromHexError;
@@ -1143,7 +1143,7 @@ impl RestOptions {
     }
 
     pub fn client(&self, profile: &ProfileOptions) -> CliTypedResult<Client> {
-        let mut client = Client::builder(AptosBaseUrl::Custom(self.url(profile)?))
+        let mut client = Client::builder(Libra2BaseUrl::Custom(self.url(profile)?))
             .timeout(Duration::from_secs(self.connection_timeout_secs))
             .header(libra2_api_types::X_APTOS_CLIENT, X_APTOS_CLIENT_VALUE)?;
         if let Some(node_api_key) = &self.node_api_key {

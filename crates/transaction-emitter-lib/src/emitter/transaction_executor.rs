@@ -4,7 +4,7 @@
 use super::FETCH_ACCOUNT_RETRY_POLICY;
 use anyhow::{Context, Result};
 use libra2_logger::{sample, sample::SampleRate};
-use libra2_rest_client::{libra2_api_types::AptosErrorCode, error::RestError, Client as RestClient};
+use libra2_rest_client::{libra2_api_types::Libra2ErrorCode, error::RestError, Client as RestClient};
 use libra2_sdk::{
     move_types::account_address::AccountAddress, types::transaction::SignedTransaction,
 };
@@ -291,7 +291,7 @@ pub async fn query_sequence_number_with_client(
 
 fn is_account_not_found(error: &RestError) -> bool {
     match error {
-        RestError::Api(error) => matches!(error.error.error_code, AptosErrorCode::AccountNotFound),
+        RestError::Api(error) => matches!(error.error.error_code, Libra2ErrorCode::AccountNotFound),
         _ => false,
     }
 }
@@ -308,7 +308,7 @@ impl ReliableTransactionSubmitter for RestApiReliableTransactionSubmitter {
                 |error: &RestError| match error {
                     RestError::Api(error) => !matches!(
                         error.error.error_code,
-                        AptosErrorCode::AccountNotFound | AptosErrorCode::InvalidInput
+                        Libra2ErrorCode::AccountNotFound | Libra2ErrorCode::InvalidInput
                     ),
                     RestError::Unknown(_) => false,
                     _ => true,

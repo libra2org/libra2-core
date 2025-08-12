@@ -21,7 +21,7 @@ use libra2_types::{
     on_chain_config::OnChainConfig,
     transaction::{Transaction, Version, WriteSetPayload},
 };
-use aptos_vm::aptos_vm::AptosVMBlockExecutor;
+use libra2_vm::libra2_vm::Libra2VMBlockExecutor;
 use claims::{assert_lt, assert_matches, assert_ok};
 use futures::{FutureExt, StreamExt};
 use move_core_types::language_storage::TypeTag;
@@ -555,7 +555,7 @@ fn create_event_subscription_service() -> EventSubscriptionService {
 
 fn create_database() -> Arc<RwLock<DbReaderWriter>> {
     // Generate a genesis change set
-    let (genesis, _) = aptos_vm_genesis::test_genesis_change_set_and_validators(Some(1));
+    let (genesis, _) = libra2_vm_genesis::test_genesis_change_set_and_validators(Some(1));
 
     // Create test aptos database
     let db_path = libra2_temppath::TempPath::new();
@@ -564,7 +564,7 @@ fn create_database() -> Arc<RwLock<DbReaderWriter>> {
 
     // Bootstrap the genesis transaction
     let genesis_txn = Transaction::GenesisTransaction(WriteSetPayload::Direct(genesis));
-    assert_ok!(bootstrap_genesis::<AptosVMBlockExecutor>(
+    assert_ok!(bootstrap_genesis::<Libra2VMBlockExecutor>(
         &db_rw,
         &genesis_txn
     ));

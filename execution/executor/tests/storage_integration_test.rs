@@ -2,7 +2,7 @@
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
-use aptos_cached_packages::aptos_stdlib;
+use libra2_cached_packages::libra2_stdlib;
 use libra2_crypto::{hash::CryptoHash, PrivateKey};
 use libra2_executor_test_helpers::{
     gen_block_id, gen_ledger_info_with_sigs, get_test_signed_transaction,
@@ -31,7 +31,7 @@ use std::sync::Arc;
 fn test_genesis() {
     let path = libra2_temppath::TempPath::new();
     path.create_as_dir().unwrap();
-    let genesis = aptos_vm_genesis::test_genesis_transaction();
+    let genesis = libra2_vm_genesis::test_genesis_transaction();
     let (_, db, _executor, waypoint) = create_db_and_executor(path.path(), &genesis, false);
 
     let trusted_state = TrustedState::from_epoch_waypoint(waypoint);
@@ -43,7 +43,7 @@ fn test_genesis() {
 
     let account_resource_path =
         StateKey::resource_typed::<AccountResource>(&CORE_CODE_ADDRESS).unwrap();
-    let (aptos_framework_account_resource, state_proof) = db
+    let (libra2_framework_account_resource, state_proof) = db
         .reader
         .get_state_value_with_proof_by_version(&account_resource_path, 0)
         .unwrap();
@@ -60,7 +60,7 @@ fn test_genesis() {
         .verify(
             txn_info.state_checkpoint_hash().unwrap(),
             account_resource_path.hash(),
-            aptos_framework_account_resource.as_ref(),
+            libra2_framework_account_resource.as_ref(),
         )
         .unwrap();
 }
@@ -73,8 +73,8 @@ fn test_reconfiguration() {
 
     let path = libra2_temppath::TempPath::new();
     path.create_as_dir().unwrap();
-    let (genesis, validators) = aptos_vm_genesis::test_genesis_change_set_and_validators(Some(1));
-    let genesis_key = &aptos_vm_genesis::GENESIS_KEYPAIR.0;
+    let (genesis, validators) = libra2_vm_genesis::test_genesis_change_set_and_validators(Some(1));
+    let genesis_key = &libra2_vm_genesis::GENESIS_KEYPAIR.0;
     let genesis_txn = Transaction::GenesisTransaction(WriteSetPayload::Direct(genesis));
     let (_, db, executor, _waypoint) = create_db_and_executor(path.path(), &genesis_txn, false);
     let parent_block_id = executor.committed_block_id();
@@ -111,7 +111,7 @@ fn test_reconfiguration() {
         /* sequence_number = */ 0,
         genesis_key.clone(),
         genesis_key.public_key(),
-        Some(aptos_stdlib::aptos_coin_mint(validator_account, 1_000_000)),
+        Some(libra2_stdlib::libra2_coin_mint(validator_account, 1_000_000)),
     );
     // txn2 = a dummy block prologue to bump the timer.
     let txn2 = Transaction::BlockMetadata(BlockMetadata::new(
@@ -130,7 +130,7 @@ fn test_reconfiguration() {
         /* sequence_number = */ 1,
         genesis_key.clone(),
         genesis_key.public_key(),
-        Some(aptos_stdlib::version_set_for_next_epoch(42)),
+        Some(libra2_stdlib::version_set_for_next_epoch(42)),
     );
 
     let txn4 = get_test_signed_transaction(
@@ -138,7 +138,7 @@ fn test_reconfiguration() {
         2,
         genesis_key.clone(),
         genesis_key.public_key(),
-        Some(aptos_stdlib::aptos_governance_force_end_epoch_test_only()),
+        Some(libra2_stdlib::libra2_governance_force_end_epoch_test_only()),
     );
 
     let txn_block = into_signature_verified_block(vec![txn1, txn2, txn3, txn4]);

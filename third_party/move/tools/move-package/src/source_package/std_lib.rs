@@ -12,16 +12,16 @@ use std::{fmt::Display, path::PathBuf};
 
 /// Represents a standard library.
 pub enum StdLib {
-    AptosTokenObjects,
-    AptosToken,
-    AptosFramework,
+    Libra2TokenObjects,
+    Libra2Token,
+    Libra2Framework,
     AptosStdlib,
     MoveStdlib,
 }
 
 impl StdLib {
     /// The well-known git URL for the standard library.
-    const STD_GIT_URL: &'static str = "https://github.com/aptos-labs/aptos-framework.git";
+    const STD_GIT_URL: &'static str = "https://github.com/libra2org/libra2-framework.git";
 
     /// Returns the dependency for the standard library with the given version.
     pub fn dependency(&self, version: &StdVersion) -> Dependency {
@@ -56,9 +56,9 @@ impl StdLib {
     /// Returns the name of the standard library.
     pub fn as_str(&self) -> &'static str {
         match self {
-            StdLib::AptosToken => "AptosToken",
-            StdLib::AptosTokenObjects => "AptosTokenObjects",
-            StdLib::AptosFramework => "AptosFramework",
+            StdLib::Libra2Token => "Libra2Token",
+            StdLib::Libra2TokenObjects => "Libra2TokenObjects",
+            StdLib::Libra2Framework => "Libra2Framework",
             StdLib::AptosStdlib => "AptosStdlib",
             StdLib::MoveStdlib => "MoveStdlib",
         }
@@ -67,9 +67,9 @@ impl StdLib {
     /// Returns the standard library from the given package name, or `None` if the package name is not a standard library.
     pub fn from_package_name(package_name: Symbol) -> Option<StdLib> {
         match package_name.as_str() {
-            "AptosToken" => Some(StdLib::AptosToken),
-            "AptosTokenObjects" => Some(StdLib::AptosTokenObjects),
-            "AptosFramework" => Some(StdLib::AptosFramework),
+            "Libra2Token" => Some(StdLib::Libra2Token),
+            "Libra2TokenObjects" => Some(StdLib::Libra2TokenObjects),
+            "Libra2Framework" => Some(StdLib::Libra2Framework),
             "AptosStdlib" => Some(StdLib::AptosStdlib),
             "MoveStdlib" => Some(StdLib::MoveStdlib),
             _ => None,
@@ -79,10 +79,10 @@ impl StdLib {
     /// Returns the subdirectory of the standard library in the git repository.
     fn sub_dir(&self) -> &'static str {
         match self {
-            StdLib::AptosToken => "aptos-token",
-            StdLib::AptosTokenObjects => "aptos-token-objects",
-            StdLib::AptosFramework => "aptos-framework",
-            StdLib::AptosStdlib => "aptos-stdlib",
+            StdLib::Libra2Token => "libra2-token",
+            StdLib::Libra2TokenObjects => "libra2-token-objects",
+            StdLib::Libra2Framework => "libra2-framework",
+            StdLib::AptosStdlib => "libra2-stdlib",
             StdLib::MoveStdlib => "move-stdlib",
         }
     }

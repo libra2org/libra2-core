@@ -10,7 +10,7 @@ use crate::{
     Swarm, SwarmExt, TestReport,
 };
 use anyhow::{bail, Context};
-use aptos::node::analyze::{analyze_validators::AnalyzeValidators, fetch_metadata::FetchMetadata};
+use libra2::node::analyze::{analyze_validators::AnalyzeValidators, fetch_metadata::FetchMetadata};
 use libra2_logger::info as libra2_logger_info;
 use libra2_transaction_emitter_lib::{TxnStats, TxnStatsRate};
 use log::info;

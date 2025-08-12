@@ -40,7 +40,7 @@ use libra2_types::{
     },
     write_set::{WriteOp, WriteSet, WriteSetMut},
 };
-use aptos_vm::VMBlockExecutor;
+use libra2_vm::VMBlockExecutor;
 use itertools::Itertools;
 use mock_vm::{
     encode_mint_transaction, encode_reconfiguration_transaction, encode_transfer_transaction,
@@ -87,7 +87,7 @@ impl TestExecutor {
         let path = libra2_temppath::TempPath::new();
         path.create_as_dir().unwrap();
         let db = DbReaderWriter::new(Libra2DB::new_for_test(path.path()));
-        let genesis = aptos_vm_genesis::test_genesis_transaction();
+        let genesis = libra2_vm_genesis::test_genesis_transaction();
         let waypoint = generate_waypoint::<MockVM>(&db, &genesis).unwrap();
         maybe_bootstrap::<MockVM>(&db, &genesis, waypoint).unwrap();
         let executor = BlockExecutor::new(db.clone());

@@ -53,7 +53,7 @@ pub enum AptosLedgerError {
 
     /// Error when communicating with Aptos app on Ledger
     #[error("Error - {0}")]
-    AptosError(AptosLedgerStatusCode),
+    Libra2Error(AptosLedgerStatusCode),
 
     /// Unexpected error, the `Option<u16>` is the retcode received from ledger transport
     #[error("Unexpected Error: {0} (StatusCode {1:?})")]
@@ -259,7 +259,7 @@ pub fn get_app_version() -> Result<Version, AptosLedgerError> {
                 })
             } else {
                 let error_code = AptosLedgerStatusCode::map_status_code(response.retcode());
-                Err(AptosLedgerError::AptosError(error_code))
+                Err(AptosLedgerError::Libra2Error(error_code))
             }
         },
         Err(err) => Err(AptosLedgerError::from(err)),
@@ -287,7 +287,7 @@ pub fn get_app_name() -> Result<String, AptosLedgerError> {
                 Ok(app_name.to_string())
             } else {
                 let error_code = AptosLedgerStatusCode::map_status_code(response.retcode());
-                Err(AptosLedgerError::AptosError(error_code))
+                Err(AptosLedgerError::Libra2Error(error_code))
             }
         },
         Err(err) => Err(AptosLedgerError::from(err)),
@@ -357,7 +357,7 @@ pub fn fetch_batch_accounts(
                     accounts.insert(path, account);
                 } else {
                     let error_code = AptosLedgerStatusCode::map_status_code(response.retcode());
-                    return Err(AptosLedgerError::AptosError(error_code));
+                    return Err(AptosLedgerError::Libra2Error(error_code));
                 }
             },
             Err(err) => return Err(AptosLedgerError::from(err)),
@@ -412,7 +412,7 @@ pub fn get_public_key(path: &str, display: bool) -> Result<Ed25519PublicKey, Apt
                 }
             } else {
                 let error_code = AptosLedgerStatusCode::map_status_code(response.retcode());
-                Err(AptosLedgerError::AptosError(error_code))
+                Err(AptosLedgerError::Libra2Error(error_code))
             }
         },
         Err(err) => Err(AptosLedgerError::from(err)),
@@ -471,7 +471,7 @@ pub fn sign_message(path: &str, raw_message: &[u8]) -> Result<Ed25519Signature, 
                     }
                 } else {
                     let error_code = AptosLedgerStatusCode::map_status_code(response.retcode());
-                    return Err(AptosLedgerError::AptosError(error_code));
+                    return Err(AptosLedgerError::Libra2Error(error_code));
                 }
             },
             Err(err) => return Err(AptosLedgerError::from(err)),

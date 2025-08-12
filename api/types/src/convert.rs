@@ -19,7 +19,7 @@ use crate::{
 use anyhow::{bail, ensure, format_err, Context as AnyhowContext, Result};
 use libra2_crypto::{hash::CryptoHash, HashValue};
 use libra2_logger::{sample, sample::SampleRate};
-use aptos_resource_viewer::AptosValueAnnotator;
+use libra2_resource_viewer::AptosValueAnnotator;
 use libra2_storage_interface::DbReader;
 use libra2_types::{
     access_path::{AccessPath, Path},

@@ -18,7 +18,7 @@ use libra2_types::{
     block_executor::partitioner::ExecutableBlock,
     transaction::{Transaction, TransactionPayload, Version},
 };
-use aptos_vm::VMBlockExecutor;
+use libra2_vm::VMBlockExecutor;
 use derivative::Derivative;
 use move_core_types::language_storage::StructTag;
 use std::{

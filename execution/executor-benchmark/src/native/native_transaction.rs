@@ -49,7 +49,7 @@ impl NativeTransaction {
                             f.module().name().as_str(),
                             f.function().as_str(),
                         ) {
-                            (AccountAddress::ONE, "aptos_account", "fungible_transfer_only") => {
+                            (AccountAddress::ONE, "libra2_account", "fungible_transfer_only") => {
                                 Self::FaTransfer {
                                     sender: user_txn.sender(),
                                     sequence_number: user_txn.sequence_number(),
@@ -65,7 +65,7 @@ impl NativeTransaction {
                                 fail_on_recipient_account_existing: false,
                                 fail_on_recipient_account_missing: true,
                             },
-                            (AccountAddress::ONE, "aptos_account", "transfer") => Self::Transfer {
+                            (AccountAddress::ONE, "libra2_account", "transfer") => Self::Transfer {
                                 sender: user_txn.sender(),
                                 sequence_number: user_txn.sequence_number(),
                                 recipient: bcs::from_bytes(&f.args()[0]).unwrap(),
@@ -73,7 +73,7 @@ impl NativeTransaction {
                                 fail_on_recipient_account_existing: false,
                                 fail_on_recipient_account_missing: false,
                             },
-                            (AccountAddress::ONE, "aptos_account", "create_account") => {
+                            (AccountAddress::ONE, "libra2_account", "create_account") => {
                                 Self::Transfer {
                                     sender: user_txn.sender(),
                                     sequence_number: user_txn.sequence_number(),
@@ -83,7 +83,7 @@ impl NativeTransaction {
                                     fail_on_recipient_account_missing: false,
                                 }
                             },
-                            (AccountAddress::ONE, "aptos_account", "batch_transfer") => {
+                            (AccountAddress::ONE, "libra2_account", "batch_transfer") => {
                                 Self::BatchTransfer {
                                     sender: user_txn.sender(),
                                     sequence_number: user_txn.sequence_number(),

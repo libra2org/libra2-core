@@ -3,7 +3,7 @@
 
 use crate::indexer_api::confirm_metadata_applied;
 use anyhow::{anyhow, Context, Result};
-use aptos_protos::indexer::v1::GetTransactionsRequest;
+use libra2_protos::indexer::v1::GetTransactionsRequest;
 use diesel::{ExpressionMethods, OptionalExtension, QueryDsl};
 use diesel_async::{pg::AsyncPgConnection, AsyncConnection, RunQueryDsl};
 use futures::StreamExt;
@@ -56,7 +56,7 @@ impl HealthChecker {
                 Ok(())
             },
             HealthChecker::DataServiceGrpc(url) => {
-                let mut client = aptos_indexer_grpc_utils::create_data_service_grpc_client(
+                let mut client = libra2_indexer_grpc_utils::create_data_service_grpc_client(
                     url.clone(),
                     Some(Duration::from_secs(5)),
                 )

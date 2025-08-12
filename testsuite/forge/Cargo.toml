@@ -15,12 +15,12 @@ rust-version = { workspace = true }
 [dependencies]
 again = { workspace = true }
 anyhow = { workspace = true, features = ["backtrace"] }
-aptos = { workspace = true }
-aptos-cached-packages = { workspace = true }
+libra2 = { workspace = true }
+libra2-cached-packages = { workspace = true }
 libra2-cli-common = { workspace = true }
 libra2-config = { workspace = true }
 libra2-db = { workspace = true }
-aptos-framework = { workspace = true }
+libra2-framework = { workspace = true }
 libra2-genesis = { workspace = true }
 libra2-global-constants = { workspace = true }
 libra2-infallible = { workspace = true }

@@ -6,7 +6,7 @@ use crate::pipeline::{CommitBlockMessage, LedgerUpdateMessage};
 use libra2_executor::block_executor::BlockExecutor;
 use libra2_executor_types::BlockExecutorTrait;
 use libra2_infallible::Mutex;
-use aptos_vm::VMBlockExecutor;
+use libra2_vm::VMBlockExecutor;
 use move_core_types::language_storage::StructTag;
 use std::{
     collections::BTreeMap,

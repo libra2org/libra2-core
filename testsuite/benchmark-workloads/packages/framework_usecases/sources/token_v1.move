@@ -3,9 +3,9 @@ module 0xABCD::token_v1 {
     use std::signer;
     use std::string::{Self, String};
     use std::vector;
-    use aptos_token::token::{Self, Token, TokenId, TokenDataId};
+    use libra2_token::token::{Self, Token, TokenId, TokenDataId};
     use aptos_std::table::{Self, Table};
-    use aptos_framework::account;
+    use libra2_framework::account;
     use std::option::{Self, Option};
     use aptos_std::string_utils::{to_string};
 

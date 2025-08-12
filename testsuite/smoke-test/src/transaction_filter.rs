@@ -5,7 +5,7 @@ use crate::{
     smoke_test_environment::SwarmBuilder,
     utils::{create_test_accounts, execute_transactions},
 };
-use aptos_cached_packages::aptos_stdlib;
+use libra2_cached_packages::libra2_stdlib;
 use libra2_config::config::{
     BatchTransactionFilterConfig, BlockTransactionFilterConfig, NodeConfig, TransactionFilterConfig,
 };
@@ -196,7 +196,7 @@ async fn create_signed_transaction_from_sender(
     // Create the unsigned transaction
     let unsigned_txn = aptos_public_info
         .transaction_factory()
-        .payload(aptos_stdlib::aptos_coin_transfer(receiver.address(), 100))
+        .payload(libra2_stdlib::libra2_coin_transfer(receiver.address(), 100))
         .sender(sender_address)
         .sequence_number(sequence_number)
         .max_gas_amount(1_000_000)

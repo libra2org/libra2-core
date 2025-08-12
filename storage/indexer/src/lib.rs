@@ -20,7 +20,7 @@ use libra2_db_indexer_schemas::{
     },
 };
 use libra2_logger::warn;
-use aptos_resource_viewer::{AnnotatedMoveValue, AptosValueAnnotator};
+use libra2_resource_viewer::{AnnotatedMoveValue, AptosValueAnnotator};
 use libra2_rocksdb_options::gen_rocksdb_options;
 use libra2_schemadb::{batch::SchemaBatch, DB};
 use libra2_storage_interface::{

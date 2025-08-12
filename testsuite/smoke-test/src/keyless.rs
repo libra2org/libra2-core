@@ -2,8 +2,8 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{smoke_test_environment::SwarmBuilder, utils::get_on_chain_resource};
-use aptos::{common::types::GasOptions, test::CliTestFramework};
-use aptos_cached_packages::aptos_stdlib;
+use libra2::{common::types::GasOptions, test::CliTestFramework};
+use libra2_cached_packages::libra2_stdlib;
 use libra2_crypto::{
     ed25519::Ed25519PrivateKey, poseidon_bn254::keyless::fr_to_bytes_le, PrivateKey, SigningKey,
 };
@@ -263,10 +263,10 @@ async fn federated_keyless_scenario(
         };
         let script = r#"
 script {
-    use aptos_framework::jwks;
-    use aptos_framework::aptos_governance;
+    use libra2_framework::jwks;
+    use libra2_framework::libra2_governance;
     fun main(core_resources: &signer) {
-        let framework = aptos_governance::get_signer_testnet_only(core_resources, @0x1);
+        let framework = libra2_governance::get_signer_testnet_only(core_resources, @0x1);
         jwks::set_patches(&framework, vector[]);
     }
 }
@@ -288,7 +288,7 @@ script {
         let script = format!(
             r#"
 script {{
-    use aptos_framework::jwks;
+    use libra2_framework::jwks;
     use std::string::utf8;
     fun main(account: &signer) {{
         let iss = b"{}";
@@ -375,7 +375,7 @@ script {{
 
     let txn_builder = info
         .transaction_factory()
-        .payload(aptos_stdlib::aptos_coin_transfer(
+        .payload(libra2_stdlib::libra2_coin_transfer(
             recipient.address(),
             1_000_000,
         ));
@@ -482,7 +482,7 @@ async fn test_keyless_groth16_verifies_using_rust_sdk() {
 
     let builder = info
         .transaction_factory()
-        .payload(aptos_stdlib::aptos_coin_transfer(recipient.address(), 100));
+        .payload(libra2_stdlib::libra2_coin_transfer(recipient.address(), 100));
     let signed_txn = account.sign_with_transaction_builder(builder);
 
     remove_training_wheels(&mut cli, &mut info, root_idx).await;
@@ -547,7 +547,7 @@ async fn test_keyless_groth16_verifies_using_rust_sdk_from_jwt() {
 
     let builder = info
         .transaction_factory()
-        .payload(aptos_stdlib::aptos_coin_transfer(recipient.address(), 100));
+        .payload(libra2_stdlib::libra2_coin_transfer(recipient.address(), 100));
     let signed_txn = account.sign_with_transaction_builder(builder);
 
     remove_training_wheels(&mut cli, &mut info, root_idx).await;
@@ -658,7 +658,7 @@ async fn sign_transaction_any_keyless_pk(
 
     let raw_txn = info
         .transaction_factory()
-        .payload(aptos_stdlib::aptos_coin_transfer(
+        .payload(libra2_stdlib::libra2_coin_transfer(
             recipient.address(),
             1_000_000,
         ))
@@ -833,13 +833,13 @@ pub(crate) async fn remove_training_wheels(
     let script = format!(
         r#"
 script {{
-use aptos_framework::{};
-use aptos_framework::aptos_governance;
+use libra2_framework::{};
+use libra2_framework::libra2_governance;
 use std::option;
 fun main(core_resources: &signer) {{
-    let framework_signer = aptos_governance::get_signer_testnet_only(core_resources, @0x1);
+    let framework_signer = libra2_governance::get_signer_testnet_only(core_resources, @0x1);
     {}::update_training_wheels_for_next_epoch(&framework_signer, option::none());
-    aptos_governance::force_end_epoch(&framework_signer);
+    libra2_governance::force_end_epoch(&framework_signer);
 }}
 }}
 "#,
@@ -933,13 +933,13 @@ pub(crate) async fn spawn_network_and_execute_gov_proposals(
     let script = format!(
         r#"
 script {{
-use aptos_framework::jwks;
-use aptos_framework::{};
-use aptos_framework::aptos_governance;
+use libra2_framework::jwks;
+use libra2_framework::{};
+use libra2_framework::libra2_governance;
 use std::string::utf8;
 use std::option;
 fun main(core_resources: &signer) {{
-    let framework_signer = aptos_governance::get_signer_testnet_only(core_resources, @0000000000000000000000000000000000000000000000000000000000000001);
+    let framework_signer = libra2_governance::get_signer_testnet_only(core_resources, @0000000000000000000000000000000000000000000000000000000000000001);
     let jwk_0 = jwks::new_rsa_jwk(
         utf8(b"{}"),
         utf8(b"{}"),
@@ -954,7 +954,7 @@ fun main(core_resources: &signer) {{
 
     {}::update_max_exp_horizon_for_next_epoch(&framework_signer, {});
     {}::update_training_wheels_for_next_epoch(&framework_signer, option::some(x"{}"));
-    aptos_governance::force_end_epoch(&framework_signer);
+    libra2_governance::force_end_epoch(&framework_signer);
 }}
 }}
 "#,
@@ -1019,13 +1019,13 @@ fn get_rotate_vk_governance_script(vk: &Groth16VerificationKey) -> String {
     let script = format!(
         r#"
 script {{
-    use aptos_framework::{};
-    use aptos_framework::aptos_governance;
+    use libra2_framework::{};
+    use libra2_framework::libra2_governance;
     fun main(core_resources: &signer) {{
-        let framework_signer = aptos_governance::get_signer_testnet_only(core_resources, @0x1);
+        let framework_signer = libra2_governance::get_signer_testnet_only(core_resources, @0x1);
         let vk = {}::new_groth16_verification_key(x"{}", x"{}", x"{}", x"{}", vector[x"{}", x"{}"]);
         {}::set_groth16_verification_key_for_next_epoch(&framework_signer, vk);
-        aptos_governance::force_end_epoch(&framework_signer);
+        libra2_governance::force_end_epoch(&framework_signer);
     }}
 }}
 "#,

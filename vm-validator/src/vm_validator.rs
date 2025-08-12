@@ -18,9 +18,9 @@ use libra2_types::{
     transaction::{SignedTransaction, VMValidatorResult},
     vm::modules::AptosModuleExtension,
 };
-use aptos_vm::AptosVM;
-use aptos_vm_environment::environment::AptosEnvironment;
-use aptos_vm_logging::log_schema::AdapterLogSchema;
+use libra2_vm::Libra2VM;
+use libra2_vm_environment::environment::Libra2Environment;
+use libra2_vm_logging::log_schema::AdapterLogSchema;
 use fail::fail_point;
 use move_binary_format::{
     errors::{Location, PartialVMError, VMResult},
@@ -40,7 +40,7 @@ use std::sync::{Arc, Mutex};
 mod vm_validator_test;
 
 pub trait TransactionValidation: Send + Sync + Clone {
-    type ValidationInstance: aptos_vm::VMValidator;
+    type ValidationInstance: libra2_vm::VMValidator;
 
     /// Validate a txn from client
     fn validate_transaction(&self, _txn: SignedTransaction) -> Result<VMValidatorResult>;
@@ -59,7 +59,7 @@ struct ValidationState<S> {
     /// The raw snapshot of the state used for validation.
     state_view: S,
     /// Stores configs needed for execution.
-    environment: AptosEnvironment,
+    environment: Libra2Environment,
     /// Versioned cache for deserialized and verified Move modules. The versioning allows to detect
     /// when the version of the code is no longer up-to-date (a newer version has been committed to
     /// the state view) and update the cache accordingly.
@@ -74,7 +74,7 @@ impl<S: StateView> ValidationState<S> {
             AdapterLogSchema::new(state_view.id(), 0),
             "Validation environment and module cache created"
         );
-        let environment = AptosEnvironment::new(&state_view);
+        let environment = Libra2Environment::new(&state_view);
         Self {
             state_view,
             environment,
@@ -92,7 +92,7 @@ impl<S: StateView> ValidationState<S> {
     /// state view snapshot.
     fn reset_all(&mut self, state_view: S) {
         self.state_view = state_view;
-        self.environment = AptosEnvironment::new(&self.state_view);
+        self.environment = Libra2Environment::new(&self.state_view);
         self.module_cache = UnsyncModuleCache::empty();
     }
 }
@@ -313,7 +313,7 @@ impl PooledVMValidator {
 }
 
 impl TransactionValidation for PooledVMValidator {
-    type ValidationInstance = AptosVM;
+    type ValidationInstance = Libra2VM;
 
     fn validate_transaction(&self, txn: SignedTransaction) -> Result<VMValidatorResult> {
         let vm_validator = self.get_next_vm();
@@ -326,8 +326,8 @@ impl TransactionValidation for PooledVMValidator {
 
         let vm_validator_locked = vm_validator.lock().unwrap();
 
-        use aptos_vm::VMValidator;
-        let vm = AptosVM::new(
+        use libra2_vm::VMValidator;
+        let vm = Libra2VM::new(
             &vm_validator_locked.state.environment,
             &vm_validator_locked.state.state_view,
         );

@@ -8,8 +8,8 @@ use anyhow::{Context, Result};
 use libra2_logger::info;
 use libra2_sdk::{
     crypto::ed25519::Ed25519PublicKey,
-    rest_client::{AptosBaseUrl, Client},
-    transaction_builder::{aptos_stdlib, TransactionFactory},
+    rest_client::{Libra2BaseUrl, Client},
+    transaction_builder::{libra2_stdlib, TransactionFactory},
     types::{
         account_address::AccountAddress,
         chain_id::ChainId,
@@ -26,7 +26,7 @@ use std::collections::HashMap;
 use tokio::sync::RwLock;
 
 static MINTER_SCRIPT: &[u8] = include_bytes!(
-    "../../../../../aptos-move/move-examples/scripts/minter/build/Minter/bytecode_scripts/main.mv"
+    "../../../../../libra2-move/move-examples/scripts/minter/build/Minter/bytecode_scripts/main.mv"
 );
 
 use super::common::{
@@ -182,7 +182,7 @@ impl MintFunder {
             let faucet_account = self.faucet_account.write().await;
             client
                 .submit_and_wait(&faucet_account.sign_with_transaction_builder(
-                    transaction_factory.payload(aptos_stdlib::aptos_coin_delegate_mint_capability(
+                    transaction_factory.payload(libra2_stdlib::libra2_coin_delegate_mint_capability(
                         delegated_account.address(),
                     )),
                 ))
@@ -193,7 +193,7 @@ impl MintFunder {
         // Claim the capability!
         client
             .submit_and_wait(&delegated_account.sign_with_transaction_builder(
-                transaction_factory.payload(aptos_stdlib::aptos_coin_claim_mint_capability()),
+                transaction_factory.payload(libra2_stdlib::libra2_coin_claim_mint_capability()),
             ))
             .await
             .context("Failed to claim the minting capability")?;
@@ -212,7 +212,7 @@ impl MintFunder {
     /// the entire time because it uses cookies, ensuring we're talking to the same
     /// node behind the LB every time.
     pub fn get_api_client(&self) -> Client {
-        let mut builder = Client::builder(AptosBaseUrl::Custom(self.node_url.clone()));
+        let mut builder = Client::builder(Libra2BaseUrl::Custom(self.node_url.clone()));
 
         if let Some(api_key) = self.node_api_key.clone() {
             builder = builder.api_key(&api_key).expect("Failed to set API key");

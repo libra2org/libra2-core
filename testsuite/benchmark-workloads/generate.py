@@ -12,9 +12,9 @@ ROOT = pathlib.Path(__file__).absolute().parents[2]
 # Paths are relative to the root of the aptos-core repository.
 PACKAGES = [
     "testsuite/benchmark-workloads/packages",
-    "aptos-move/move-examples/token_objects/ambassador",
-    "aptos-move/move-examples/aggregator_examples",
-    "aptos-move/move-examples/bcs-stream"
+    "libra2-move/move-examples/token_objects/ambassador",
+    "libra2-move/move-examples/aggregator_examples",
+    "libra2-move/move-examples/bcs-stream"
 ]
 # Specifies directories for experimental packages (will be compiled with latest, possibly unstable) language version.
 # Paths are relative to the root of the aptos-core repository.

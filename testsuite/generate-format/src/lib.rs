@@ -45,7 +45,7 @@ impl Corpus {
     pub fn get_registry(self) -> Registry {
         let result = match self {
             Corpus::API => api::get_registry(),
-            Corpus::Aptos => aptos::get_registry(),
+            Corpus::Aptos => libra2::get_registry(),
             Corpus::Consensus => consensus::get_registry(),
             Corpus::Network => network::get_registry(),
             Corpus::MoveABI => move_abi::get_registry(),
@@ -62,7 +62,7 @@ impl Corpus {
     pub fn output_file(self) -> Option<&'static str> {
         match self {
             Corpus::API => api::output_file(),
-            Corpus::Aptos => aptos::output_file(),
+            Corpus::Aptos => libra2::output_file(),
             Corpus::Consensus => consensus::output_file(),
             Corpus::Network => network::output_file(),
             Corpus::MoveABI => move_abi::output_file(),
@@ -74,7 +74,7 @@ impl Display for Corpus {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         f.write_str(match self {
             Corpus::API => "API",
-            Corpus::Aptos => "Aptos",
+            Corpus::Aptos => "Libra2",
             Corpus::Consensus => "Consensus",
             Corpus::Network => "Network",
             Corpus::MoveABI => "MoveABI",

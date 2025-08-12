@@ -716,10 +716,10 @@ impl Options {
             options.backend.z3_trace_file = Some(format!("{}.z3log", fun_name));
         }
 
-        if matches.get_flag("aptos") {
+        if matches.get_flag("libra2") {
             options.backend.custom_natives = Some(CustomNativeOptions {
                 template_bytes: include_bytes!(
-                    "../../../../aptos-move/framework/src/aptos-natives.bpl"
+                    "../../../../libra2-move/framework/src/libra2-natives.bpl"
                 )
                 .to_vec(),
                 module_instance_names: options::custom_native_options(),

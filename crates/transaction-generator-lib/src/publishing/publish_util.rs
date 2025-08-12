@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use super::entry_point_trait::PreBuiltPackages;
-use aptos_framework::{
+use libra2_framework::{
     chunked_publish::{
         chunk_package_and_create_payloads, default_large_packages_module_address, PublishType,
         CHUNK_SIZE_IN_BYTES,
@@ -12,14 +12,14 @@ use aptos_framework::{
 use libra2_sdk::{
     bcs,
     move_types::{identifier::Identifier, language_storage::ModuleId},
-    transaction_builder::aptos_stdlib,
+    transaction_builder::libra2_stdlib,
     types::{
         account_address::AccountAddress,
         chain_id::ChainId,
         transaction::{Script, TransactionPayload},
         vm::module_metadata::{
-            get_metadata_from_compiled_code, KnownAttribute, APTOS_METADATA_KEY,
-            APTOS_METADATA_KEY_V1,
+            get_metadata_from_compiled_code, KnownAttribute, LIBRA2_METADATA_KEY,
+            LIBRA2_METADATA_KEY_V1,
         },
     },
 };
@@ -217,7 +217,7 @@ impl Package {
                 CHUNK_SIZE_IN_BYTES,
             )
         } else {
-            vec![aptos_stdlib::code_publish_package_txn(
+            vec![libra2_stdlib::code_publish_package_txn(
                 metadata_serialized,
                 code,
             )]
@@ -301,8 +301,8 @@ fn update(
                 });
             let mut count = 0;
             new_module.metadata.iter_mut().for_each(|metadata_holder| {
-                if metadata_holder.key == APTOS_METADATA_KEY_V1
-                    || metadata_holder.key == APTOS_METADATA_KEY
+                if metadata_holder.key == LIBRA2_METADATA_KEY_V1
+                    || metadata_holder.key == LIBRA2_METADATA_KEY
                 {
                     metadata_holder.value =
                         bcs::to_bytes(&metadata).expect("Metadata must serialize");

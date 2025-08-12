@@ -12,7 +12,7 @@ VERSION_IN_RELEASE_TAG_REGEX = r"v(\d+)\.(\d+)\.(\d+)$"
 
 
 def get_release_number_from_release_tag(release_tag: str) -> str:
-    """Get the release number from the release tag. The release tag looks like aptos-node-vX.Y.Z"""
+    """Get the release number from the release tag. The release tag looks like libra2-node-vX.Y.Z"""
     result = re.search(VERSION_IN_RELEASE_TAG_REGEX, release_tag)
     if not result:
         print(f"Release tag {release_tag} does not match the expected format")

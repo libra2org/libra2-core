@@ -1,7 +1,7 @@
 [package]
-name = "aptos-indexer-grpc-v2-file-store-backfiller"
+name = "libra2-indexer-grpc-v2-file-store-backfiller"
 description = "Indexer gRPC v2 file store backfiller from fullnode."
-version = "1.0.0"
+version = "1.0.1"
 
 # Workspace inherited keys
 authors = { workspace = true }
@@ -14,9 +14,9 @@ rust-version = { workspace = true }
 
 [dependencies]
 anyhow = { workspace = true }
-aptos-indexer-grpc-server-framework = { workspace = true }
-aptos-indexer-grpc-utils = { workspace = true }
-aptos-protos = { workspace = true }
+libra2-indexer-grpc-server-framework = { workspace = true }
+libra2-indexer-grpc-utils = { workspace = true }
+libra2-protos = { workspace = true }
 async-trait = { workspace = true }
 clap = { workspace = true }
 futures = { workspace = true }

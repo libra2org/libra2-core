@@ -22,7 +22,7 @@ use libra2_crypto::{
     ed25519::{Ed25519PrivateKey, Ed25519PublicKey},
     PrivateKey,
 };
-use aptos_framework::ReleaseBundle;
+use libra2_framework::ReleaseBundle;
 use libra2_keygen::KeyGen;
 use libra2_logger::prelude::*;
 use libra2_types::{
@@ -36,7 +36,7 @@ use libra2_types::{
     transaction::Transaction,
     waypoint::Waypoint,
 };
-use aptos_vm_genesis::default_gas_schedule;
+use libra2_vm_genesis::default_gas_schedule;
 use rand::Rng;
 use serde::{de::DeserializeOwned, Serialize};
 use std::{

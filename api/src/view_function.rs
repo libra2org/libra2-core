@@ -14,12 +14,12 @@ use crate::{
 };
 use anyhow::Context as anyhowContext;
 use libra2_api_types::{
-    AptosErrorCode, AsConverter, MoveValue, ViewFunction, ViewRequest, MAX_RECURSIVE_TYPES_ALLOWED,
+    Libra2ErrorCode, AsConverter, MoveValue, ViewFunction, ViewRequest, MAX_RECURSIVE_TYPES_ALLOWED,
     U64,
 };
 use libra2_bcs_utils::serialize_uleb128;
 use libra2_types::{state_store::StateView, transaction::ViewFunctionError, vm_status::StatusCode};
-use aptos_vm::AptosVM;
+use libra2_vm::Libra2VM;
 use itertools::Itertools;
 use move_core_types::language_storage::TypeTag;
 use poem_openapi::{param::Query, payload::Json, ApiRequest, OpenApi};
@@ -107,7 +107,7 @@ fn view_request(
         .map_err(|err| {
             BasicErrorWith404::bad_request_with_code(
                 err,
-                AptosErrorCode::InternalError,
+                Libra2ErrorCode::InternalError,
                 &ledger_info,
             )
         })?;
@@ -119,7 +119,7 @@ fn view_request(
             .map_err(|err| {
                 BasicErrorWith404::bad_request_with_code(
                     err,
-                    AptosErrorCode::InvalidInput,
+                    Libra2ErrorCode::InvalidInput,
                     &ledger_info,
                 )
             })?,
@@ -129,7 +129,7 @@ fn view_request(
                 .map_err(|err| {
                     BasicErrorWith404::bad_request_with_code(
                         err,
-                        AptosErrorCode::InvalidInput,
+                        Libra2ErrorCode::InvalidInput,
                         &ledger_info,
                     )
                 })?
@@ -147,11 +147,11 @@ fn view_request(
                 "Function {}::{} is not allowed",
                 view_function.module, view_function.function
             ),
-            AptosErrorCode::InvalidInput,
+            Libra2ErrorCode::InvalidInput,
         ));
     }
 
-    let output = AptosVM::execute_view_function(
+    let output = Libra2VM::execute_view_function(
         &state_view,
         view_function.module.clone(),
         view_function.function.clone(),
@@ -165,7 +165,7 @@ fn view_request(
             convert_view_function_error(&status, &state_view, &context);
         BasicErrorWith404::bad_request_with_optional_vm_status_and_ledger_info(
             anyhow::anyhow!(err_string),
-            AptosErrorCode::InvalidInput,
+            Libra2ErrorCode::InvalidInput,
             vm_error_code,
             Some(&ledger_info),
         )
@@ -181,7 +181,7 @@ fn view_request(
             serialize_uleb128(&mut length, num_vals as u64).map_err(|err| {
                 BasicErrorWith404::internal_with_code(
                     err,
-                    AptosErrorCode::InternalError,
+                    Libra2ErrorCode::InternalError,
                     &ledger_info,
                 )
             })?;
@@ -204,7 +204,7 @@ fn view_request(
                 .map_err(|err| {
                     BasicErrorWith404::bad_request_with_code(
                         err,
-                        AptosErrorCode::InternalError,
+                        Libra2ErrorCode::InternalError,
                         &ledger_info,
                     )
                 })?;
@@ -221,7 +221,7 @@ fn view_request(
                 .map_err(|err| {
                     BasicErrorWith404::bad_request_with_code(
                         err,
-                        AptosErrorCode::InternalError,
+                        Libra2ErrorCode::InternalError,
                         &ledger_info,
                     )
                 })?;

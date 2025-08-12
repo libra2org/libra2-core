@@ -5,7 +5,7 @@ use crate::{
     common::types::{CliCommand, CliError, CliResult, CliTypedResult, MovePackageOptions},
     move_tool::fix_bytecode_version,
 };
-use aptos_framework::extended_checks;
+use libra2_framework::extended_checks;
 use async_trait::async_trait;
 use clap::{Parser, Subcommand};
 use legacy_move_compiler::compiled_unit::{CompiledUnit, NamedCompiledModule};

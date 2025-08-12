@@ -149,14 +149,14 @@ export function joinTagSegments(...segments) {
 }
 
 export function assertTagMatchesSourceVersion(imageTag) {
-  const config = toml.parse(fs.readFileSync("aptos-node/Cargo.toml"));
+  const config = toml.parse(fs.readFileSync("libra2-node/Cargo.toml"));
   const configVersion = config.package.version;
   if (!doesTagMatchConfig(imageTag, configVersion)) {
     reportError(`image tag does not match cargo version: ${imageTag} !== ${configVersion}`, { throwOnFailure: true });
   }
 }
 
-const APTOS_RELEASE_REGEX = /aptos-node-v(\d+\.\d+\.\d+)/;
+const APTOS_RELEASE_REGEX = /libra2-node-v(\d+\.\d+\.\d+)/;
 
 function doesTagMatchConfig(imageTag, configVersion) {
   if (!APTOS_RELEASE_REGEX.test(imageTag)) {

@@ -140,7 +140,7 @@ impl CliCommand<String> for Decompile {
 
 #[derive(Debug, Clone, Serialize, Deserialize, Default)]
 struct BytecodeMetadata {
-    aptos_metadata: Option<RuntimeModuleMetadataV1>,
+    libra2_metadata: Option<RuntimeModuleMetadataV1>,
     bytecode_version: u32,
     compilation_metadata: CompilationMetadata,
 }
@@ -240,7 +240,7 @@ impl BytecodeCommand {
                 serde_json::to_string_pretty(&v1_metadata).expect("expect compilation metadata")
             };
             BytecodeMetadata {
-                aptos_metadata: get_metadata_from_compiled_code(&script),
+                libra2_metadata: get_metadata_from_compiled_code(&script),
                 bytecode_version: script.version,
                 compilation_metadata: get_compilation_metadata(&script).unwrap_or(v1_metadata),
             }
@@ -248,7 +248,7 @@ impl BytecodeCommand {
             let module = CompiledModule::deserialize(&bytecode_bytes)
                 .context("Module blob can't be deserialized")?;
             BytecodeMetadata {
-                aptos_metadata: get_metadata_from_compiled_code(&module),
+                libra2_metadata: get_metadata_from_compiled_code(&module),
                 bytecode_version: module.version,
                 compilation_metadata: get_compilation_metadata(&module).unwrap_or(v1_metadata),
             }

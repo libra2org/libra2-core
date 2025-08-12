@@ -3,8 +3,8 @@
 // Copyright © Aptos Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-use aptos_language_e2e_tests::{account::Account, executor::FakeExecutor};
-use aptos_transaction_simulation::GENESIS_CHANGE_SET_HEAD;
+use libra2_language_e2e_tests::{account::Account, executor::FakeExecutor};
+use libra2_transaction_simulation::GENESIS_CHANGE_SET_HEAD;
 use libra2_types::{
     chain_id::ChainId,
     on_chain_config::Features,
@@ -14,8 +14,8 @@ use libra2_types::{
     },
     write_set::WriteSet,
 };
-use aptos_vm::AptosVM;
-use aptos_vm_environment::{prod_configs, prod_configs::LATEST_GAS_FEATURE_VERSION};
+use libra2_vm::Libra2VM;
+use libra2_vm_environment::{prod_configs, prod_configs::LATEST_GAS_FEATURE_VERSION};
 use libfuzzer_sys::{fuzz_target, Corpus};
 use move_binary_format::{
     access::ModuleAccess,
@@ -186,7 +186,7 @@ fn run_case(mut input: RunnableState) -> Result<(), Corpus> {
         packages.push(cur)
     }
 
-    AptosVM::set_concurrency_level_once(FUZZER_CONCURRENCY_LEVEL);
+    Libra2VM::set_concurrency_level_once(FUZZER_CONCURRENCY_LEVEL);
     let mut vm = FakeExecutor::from_genesis_with_existing_thread_pool(
         &VM_WRITE_SET,
         ChainId::mainnet(),

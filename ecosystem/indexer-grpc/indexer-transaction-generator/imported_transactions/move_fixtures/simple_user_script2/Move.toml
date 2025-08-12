@@ -1,15 +1,15 @@
 [package]
 name = "test_case"
-version = "1.0.0"
+version = "1.0.1"
 authors = []
 
 [addresses]
 
 [dev-addresses]
 
-[dependencies.AptosFramework]
-git = "https://github.com/aptos-labs/aptos-framework.git"
+[dependencies.Libra2Framework]
+git = "https://github.com/libra2org/libra2-framework.git"
 rev = "mainnet"
-subdir = "aptos-framework"
+subdir = "libra2-framework"
 
 [dev-dependencies]

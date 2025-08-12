@@ -12,7 +12,7 @@ use libra2_config::{
     keys::ConfigKey,
     network_id::NetworkId,
 };
-use aptos_framework::ReleaseBundle;
+use libra2_framework::ReleaseBundle;
 use libra2_genesis::builder::{
     FullnodeNodeConfig, InitConfigFn, InitGenesisConfigFn, InitGenesisStakeFn,
 };
@@ -136,7 +136,7 @@ impl LocalSwarm {
             libra2_genesis::builder::Builder::new(
                 &dir_actual,
                 genesis_framework
-                    .unwrap_or_else(|| aptos_cached_packages::head_release_bundle().clone()),
+                    .unwrap_or_else(|| libra2_cached_packages::head_release_bundle().clone()),
             )?
             .with_num_validators(number_of_validators)
             .with_init_config(Some(Arc::new(move |index, config, base| {

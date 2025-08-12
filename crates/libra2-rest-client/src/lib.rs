@@ -4,10 +4,10 @@
 
 extern crate core;
 
-pub mod aptos;
+pub mod libra2;
 pub mod error;
 pub mod faucet;
-use error::AptosErrorResponse;
+use error::Libra2ErrorResponse;
 pub use faucet::FaucetClient;
 pub mod response;
 pub use response::Response;
@@ -15,8 +15,8 @@ pub mod client_builder;
 pub mod state;
 pub mod types;
 
-pub use crate::client_builder::{AptosBaseUrl, ClientBuilder};
-use crate::{aptos::AptosVersion, error::RestError};
+pub use crate::client_builder::{Libra2BaseUrl, ClientBuilder};
+use crate::{libra2::Libra2Version, error::RestError};
 use anyhow::{anyhow, Result};
 pub use libra2_api_types::{
     self, IndexResponseBcs, MoveModuleBytecode, PendingTransaction, Transaction,
@@ -24,7 +24,7 @@ pub use libra2_api_types::{
 use libra2_api_types::{
     deserialize_from_string,
     mime_types::{BCS, BCS_SIGNED_TRANSACTION, BCS_VIEW_FUNCTION, JSON},
-    AptosError, AptosErrorCode, BcsBlock, Block, GasEstimation, HexEncodedBytes, IndexResponse,
+    Libra2Error, Libra2ErrorCode, BcsBlock, Block, GasEstimation, HexEncodedBytes, IndexResponse,
     MoveModuleId, TransactionData, TransactionOnChainData, TransactionsBatchSubmissionResult,
     UserTransaction, VersionedEvent, ViewFunction, ViewRequest,
 };
@@ -64,9 +64,9 @@ static DEFAULT_INTERVAL_DURATION: Duration = Duration::from_millis(DEFAULT_INTER
 const DEFAULT_MAX_SERVER_LAG_WAIT_DURATION: Duration = Duration::from_secs(60);
 const RESOURCES_PER_CALL_PAGINATION: u64 = 9999;
 const MODULES_PER_CALL_PAGINATION: u64 = 1000;
-const X_APTOS_SDK_HEADER_VALUE: &str = concat!("aptos-rust-sdk/", env!("CARGO_PKG_VERSION"));
+const X_LIBRA2_SDK_HEADER_VALUE: &str = concat!("libra2-rust-sdk/", env!("CARGO_PKG_VERSION"));
 
-type AptosResult<T> = Result<T, RestError>;
+type Libra2Result<T> = Result<T, RestError>;
 
 #[derive(Deserialize)]
 pub struct Table {
@@ -128,12 +128,12 @@ struct ProverResponse {
 }
 
 impl Client {
-    pub fn builder(aptos_base_url: AptosBaseUrl) -> ClientBuilder {
+    pub fn builder(aptos_base_url: Libra2BaseUrl) -> ClientBuilder {
         ClientBuilder::new(aptos_base_url)
     }
 
     pub fn new(base_url: Url) -> Self {
-        Self::builder(AptosBaseUrl::Custom(base_url)).build()
+        Self::builder(Libra2BaseUrl::Custom(base_url)).build()
     }
 
     pub fn path_prefix_string(&self) -> String {
@@ -145,7 +145,7 @@ impl Client {
 
     /// Set a different version path base, e.g. "v1/" See
     /// DEFAULT_VERSION_PATH_BASE for the default value.
-    pub fn version_path_base(mut self, version_path_base: String) -> AptosResult<Self> {
+    pub fn version_path_base(mut self, version_path_base: String) -> Libra2Result<Self> {
         if !version_path_base.ends_with('/') {
             return Err(anyhow!("version_path_base must end with '/', e.g. 'v1/'").into());
         }
@@ -153,7 +153,7 @@ impl Client {
         Ok(self)
     }
 
-    pub fn build_path(&self, path: &str) -> AptosResult<Url> {
+    pub fn build_path(&self, path: &str) -> Libra2Result<Url> {
         Ok(self.base_url.join(&self.version_path_base)?.join(path)?)
     }
 
@@ -165,8 +165,8 @@ impl Client {
         self.base_url.join("keyless/pepper/v0/fetch").unwrap()
     }
 
-    pub async fn get_aptos_version(&self) -> AptosResult<Response<AptosVersion>> {
-        self.get_resource::<AptosVersion>(CORE_CODE_ADDRESS, "0x1::version::Version")
+    pub async fn get_aptos_version(&self) -> Libra2Result<Response<Libra2Version>> {
+        self.get_resource::<Libra2Version>(CORE_CODE_ADDRESS, "0x1::version::Version")
             .await
     }
 
@@ -174,7 +174,7 @@ impl Client {
         &self,
         height: u64,
         with_transactions: bool,
-    ) -> AptosResult<Response<Block>> {
+    ) -> Libra2Result<Response<Block>> {
         self.get(self.build_path(&format!(
             "blocks/by_height/{}?with_transactions={}",
             height, with_transactions
@@ -186,7 +186,7 @@ impl Client {
         &self,
         height: u64,
         with_transactions: bool,
-    ) -> AptosResult<Response<BcsBlock>> {
+    ) -> Libra2Result<Response<BcsBlock>> {
         let url = self.build_path(&format!(
             "blocks/by_height/{}?with_transactions={}",
             height, with_transactions
@@ -203,7 +203,7 @@ impl Client {
         &self,
         height: u64,
         page_size: u16,
-    ) -> AptosResult<Response<BcsBlock>> {
+    ) -> Libra2Result<Response<BcsBlock>> {
         let (mut block, state) = self
             .get_block_by_height_bcs(height, true)
             .await?
@@ -247,7 +247,7 @@ impl Client {
         &self,
         version: u64,
         with_transactions: bool,
-    ) -> AptosResult<Response<Block>> {
+    ) -> Libra2Result<Response<Block>> {
         self.get(self.build_path(&format!(
             "blocks/by_version/{}?with_transactions={}",
             version, with_transactions
@@ -259,7 +259,7 @@ impl Client {
         &self,
         height: u64,
         with_transactions: bool,
-    ) -> AptosResult<Response<BcsBlock>> {
+    ) -> Libra2Result<Response<BcsBlock>> {
         let url = self.build_path(&format!(
             "blocks/by_version/{}?with_transactions={}",
             height, with_transactions
@@ -272,7 +272,7 @@ impl Client {
         &self,
         address_key: AccountAddress,
         must_exist: bool,
-    ) -> AptosResult<Response<AccountAddress>> {
+    ) -> Libra2Result<Response<AccountAddress>> {
         let originating_address_table: Response<OriginatingAddress> = self
             .get_account_resource_bcs(CORE_CODE_ADDRESS, "0x1::account::OriginatingAddress")
             .await?;
@@ -290,10 +290,10 @@ impl Client {
             .await
         {
             Ok(inner) => Ok(inner),
-            Err(RestError::Api(AptosErrorResponse {
+            Err(RestError::Api(Libra2ErrorResponse {
                 error:
-                    AptosError {
-                        error_code: AptosErrorCode::TableItemNotFound,
+                    Libra2Error {
+                        error_code: Libra2ErrorCode::TableItemNotFound,
                         ..
                     },
                 ..
@@ -318,14 +318,14 @@ impl Client {
 
     /// Gets the balance of a specific asset type for an account.
     /// The `asset_type` parameter can be either:
-    /// * A coin type (e.g. "0x1::aptos_coin::AptosCoin")
+    /// * A coin type (e.g. "0x1::libra2_coin::Libra2Coin")
     /// * A fungible asset metadata address (e.g. "0xa")
     /// For more details, see: https://aptos.dev/en/build/apis/fullnode-rest-api-reference#tag/accounts/GET/accounts/{address}/balance/{asset_type}
     pub async fn get_account_balance(
         &self,
         address: AccountAddress,
         asset_type: &str,
-    ) -> AptosResult<Response<u64>> {
+    ) -> Libra2Result<Response<u64>> {
         let url = self.build_path(&format!(
             "accounts/{}/balance/{}",
             address.to_hex(),
@@ -343,7 +343,7 @@ impl Client {
         address: AccountAddress,
         coin_type: &str,
         version: Option<u64>,
-    ) -> AptosResult<Response<u64>> {
+    ) -> Libra2Result<Response<u64>> {
         let resp: Response<Vec<u64>> = self
             .view_bcs(
                 &ViewFunction {
@@ -371,31 +371,31 @@ impl Client {
         &self,
         address: AccountAddress,
         version: u64,
-    ) -> AptosResult<Response<u64>> {
-        self.view_account_balance_bcs_impl(address, "0x1::aptos_coin::AptosCoin", Some(version))
+    ) -> Libra2Result<Response<u64>> {
+        self.view_account_balance_bcs_impl(address, "0x1::libra2_coin::Libra2Coin", Some(version))
             .await
     }
 
     pub async fn view_apt_account_balance(
         &self,
         address: AccountAddress,
-    ) -> AptosResult<Response<u64>> {
-        self.view_account_balance_bcs_impl(address, "0x1::aptos_coin::AptosCoin", None)
+    ) -> Libra2Result<Response<u64>> {
+        self.view_account_balance_bcs_impl(address, "0x1::libra2_coin::Libra2Coin", None)
             .await
     }
 
-    pub async fn get_index(&self) -> AptosResult<Response<IndexResponse>> {
+    pub async fn get_index(&self) -> Libra2Result<Response<IndexResponse>> {
         self.get(self.build_path("")?).await
     }
 
-    pub async fn get_index_bcs(&self) -> AptosResult<Response<IndexResponseBcs>> {
+    pub async fn get_index_bcs(&self) -> Libra2Result<Response<IndexResponseBcs>> {
         let url = self.build_path("")?;
         let response = self.get_bcs(url).await?;
         Ok(response.and_then(|inner| bcs::from_bytes(&inner))?)
     }
 
     // TODO: Remove this, just use `get_index`: https://github.com/aptos-labs/aptos-core/issues/5597.
-    pub async fn get_ledger_information(&self) -> AptosResult<Response<State>> {
+    pub async fn get_ledger_information(&self) -> Libra2Result<Response<State>> {
         let response = self.get_index_bcs().await?.map(|r| State {
             chain_id: r.chain_id,
             epoch: r.epoch.into(),
@@ -418,7 +418,7 @@ impl Client {
         &self,
         request: &ViewRequest,
         version: Option<u64>,
-    ) -> AptosResult<Response<Vec<serde_json::Value>>> {
+    ) -> Libra2Result<Response<Vec<serde_json::Value>>> {
         let request = serde_json::to_string(request)?;
         let mut url = self.build_path("view")?;
         if let Some(version) = version {
@@ -440,7 +440,7 @@ impl Client {
         &self,
         request: &ViewFunction,
         version: Option<u64>,
-    ) -> AptosResult<Response<T>> {
+    ) -> Libra2Result<Response<T>> {
         let txn_payload = bcs::to_bytes(request)?;
         let mut url = self.build_path("view")?;
         if let Some(version) = version {
@@ -464,7 +464,7 @@ impl Client {
         &self,
         request: &ViewFunction,
         version: Option<u64>,
-    ) -> AptosResult<Response<Vec<serde_json::Value>>> {
+    ) -> Libra2Result<Response<Vec<serde_json::Value>>> {
         let txn_payload = bcs::to_bytes(request)?;
         let mut url = self.build_path("view")?;
         if let Some(version) = version {
@@ -486,7 +486,7 @@ impl Client {
     pub async fn simulate(
         &self,
         txn: &SignedTransaction,
-    ) -> AptosResult<Response<Vec<UserTransaction>>> {
+    ) -> Libra2Result<Response<Vec<UserTransaction>>> {
         let txn_payload = bcs::to_bytes(txn)?;
         let url = self.build_path("transactions/simulate")?;
 
@@ -506,7 +506,7 @@ impl Client {
         txn: &SignedTransaction,
         estimate_max_gas_amount: bool,
         estimate_max_gas_unit_price: bool,
-    ) -> AptosResult<Response<Vec<UserTransaction>>> {
+    ) -> Libra2Result<Response<Vec<UserTransaction>>> {
         let txn_payload = bcs::to_bytes(txn)?;
 
         let url = self.build_path(&format!(
@@ -528,7 +528,7 @@ impl Client {
     pub async fn simulate_bcs(
         &self,
         txn: &SignedTransaction,
-    ) -> AptosResult<Response<TransactionOnChainData>> {
+    ) -> Libra2Result<Response<TransactionOnChainData>> {
         let txn_payload = bcs::to_bytes(txn)?;
         let url = self.build_path("transactions/simulate")?;
 
@@ -550,7 +550,7 @@ impl Client {
         txn: &SignedTransaction,
         estimate_max_gas_amount: bool,
         estimate_max_gas_unit_price: bool,
-    ) -> AptosResult<Response<TransactionOnChainData>> {
+    ) -> Libra2Result<Response<TransactionOnChainData>> {
         let txn_payload = bcs::to_bytes(txn)?;
         let url = self.build_path(&format!(
             "transactions/simulate?estimate_max_gas_amount={}&estimate_gas_unit_price={}",
@@ -573,7 +573,7 @@ impl Client {
     pub async fn submit(
         &self,
         txn: &SignedTransaction,
-    ) -> AptosResult<Response<PendingTransaction>> {
+    ) -> Libra2Result<Response<PendingTransaction>> {
         let txn_payload = bcs::to_bytes(txn)?;
         let url = self.build_path("transactions")?;
 
@@ -607,7 +607,7 @@ impl Client {
         Ok(())
     }
 
-    pub async fn submit_bcs(&self, txn: &SignedTransaction) -> AptosResult<Response<()>> {
+    pub async fn submit_bcs(&self, txn: &SignedTransaction) -> Libra2Result<Response<()>> {
         let txn_payload = bcs::to_bytes(txn)?;
         let url = self.build_path("transactions")?;
 
@@ -627,7 +627,7 @@ impl Client {
     pub async fn submit_batch(
         &self,
         txns: &[SignedTransaction],
-    ) -> AptosResult<Response<TransactionsBatchSubmissionResult>> {
+    ) -> Libra2Result<Response<TransactionsBatchSubmissionResult>> {
         let txn_payload = bcs::to_bytes(&txns.to_vec())?;
         let url = self.build_path("transactions/batch")?;
 
@@ -644,7 +644,7 @@ impl Client {
     pub async fn submit_batch_bcs(
         &self,
         txns: &[SignedTransaction],
-    ) -> AptosResult<Response<TransactionsBatchSubmissionResult>> {
+    ) -> Libra2Result<Response<TransactionsBatchSubmissionResult>> {
         let txn_payload = bcs::to_bytes(&txns.to_vec())?;
         let url = self.build_path("transactions/batch")?;
 
@@ -664,7 +664,7 @@ impl Client {
     pub async fn submit_and_wait(
         &self,
         txn: &SignedTransaction,
-    ) -> AptosResult<Response<Transaction>> {
+    ) -> Libra2Result<Response<Transaction>> {
         self.submit(txn).await?;
         self.wait_for_signed_transaction(txn).await
     }
@@ -672,7 +672,7 @@ impl Client {
     pub async fn submit_and_wait_bcs(
         &self,
         txn: &SignedTransaction,
-    ) -> AptosResult<Response<TransactionOnChainData>> {
+    ) -> Libra2Result<Response<TransactionOnChainData>> {
         self.submit_bcs(txn).await?;
         self.wait_for_signed_transaction_bcs(txn).await
     }
@@ -680,7 +680,7 @@ impl Client {
     pub async fn wait_for_transaction(
         &self,
         pending_transaction: &PendingTransaction,
-    ) -> AptosResult<Response<Transaction>> {
+    ) -> Libra2Result<Response<Transaction>> {
         self.wait_for_transaction_by_hash(
             pending_transaction.hash.into(),
             *pending_transaction
@@ -696,7 +696,7 @@ impl Client {
     pub async fn wait_for_transaction_bcs(
         &self,
         pending_transaction: &PendingTransaction,
-    ) -> AptosResult<Response<TransactionOnChainData>> {
+    ) -> Libra2Result<Response<TransactionOnChainData>> {
         self.wait_for_transaction_by_hash_bcs(
             pending_transaction.hash.into(),
             *pending_transaction
@@ -712,7 +712,7 @@ impl Client {
     pub async fn wait_for_signed_transaction(
         &self,
         transaction: &SignedTransaction,
-    ) -> AptosResult<Response<Transaction>> {
+    ) -> Libra2Result<Response<Transaction>> {
         let expiration_timestamp = transaction.expiration_timestamp_secs();
         self.wait_for_transaction_by_hash(
             transaction.committed_hash(),
@@ -726,7 +726,7 @@ impl Client {
     pub async fn wait_for_signed_transaction_bcs(
         &self,
         transaction: &SignedTransaction,
-    ) -> AptosResult<Response<TransactionOnChainData>> {
+    ) -> Libra2Result<Response<TransactionOnChainData>> {
         let expiration_timestamp = transaction.expiration_timestamp_secs();
         self.wait_for_transaction_by_hash_bcs(
             transaction.committed_hash(),
@@ -756,10 +756,10 @@ impl Client {
 
         timeout_from_call: Option<Duration>,
         fetch: F,
-    ) -> AptosResult<Response<T>>
+    ) -> Libra2Result<Response<T>>
     where
         F: Fn(HashValue) -> Fut,
-        Fut: Future<Output = AptosResult<WaitForTransactionResult<T>>>,
+        Fut: Future<Output = Libra2Result<WaitForTransactionResult<T>>>,
     {
         // TODO: make this configurable
         const DEFAULT_DELAY: Duration = Duration::from_millis(500);
@@ -877,7 +877,7 @@ impl Client {
         expiration_timestamp_secs: u64,
         max_server_lag_wait: Option<Duration>,
         timeout_from_call: Option<Duration>,
-    ) -> AptosResult<Response<Transaction>> {
+    ) -> Libra2Result<Response<Transaction>> {
         self.wait_for_transaction_by_hash_inner(
             hash,
             expiration_timestamp_secs,
@@ -918,7 +918,7 @@ impl Client {
         expiration_timestamp_secs: u64,
         max_server_lag_wait: Option<Duration>,
         timeout_from_call: Option<Duration>,
-    ) -> AptosResult<Response<TransactionOnChainData>> {
+    ) -> Libra2Result<Response<TransactionOnChainData>> {
         self.wait_for_transaction_by_hash_inner(
             hash,
             expiration_timestamp_secs,
@@ -982,7 +982,7 @@ impl Client {
         &self,
         start: Option<u64>,
         limit: Option<u16>,
-    ) -> AptosResult<Response<Vec<Transaction>>> {
+    ) -> Libra2Result<Response<Vec<Transaction>>> {
         let url = self.build_path("transactions")?;
 
         let mut request = self.inner.get(url);
@@ -1003,7 +1003,7 @@ impl Client {
         &self,
         start: Option<u64>,
         limit: Option<u16>,
-    ) -> AptosResult<Response<Vec<TransactionOnChainData>>> {
+    ) -> Libra2Result<Response<Vec<TransactionOnChainData>>> {
         let url = self.build_path("transactions")?;
         let response = self.get_bcs_with_page(url, start, limit).await?;
         Ok(response.and_then(|inner| bcs::from_bytes(&inner))?)
@@ -1012,7 +1012,7 @@ impl Client {
     pub async fn get_transaction_by_hash(
         &self,
         hash: HashValue,
-    ) -> AptosResult<Response<Transaction>> {
+    ) -> Libra2Result<Response<Transaction>> {
         self.json(self.get_transaction_by_hash_inner(hash).await?)
             .await
     }
@@ -1020,7 +1020,7 @@ impl Client {
     pub async fn get_transaction_by_hash_bcs(
         &self,
         hash: HashValue,
-    ) -> AptosResult<Response<TransactionData>> {
+    ) -> Libra2Result<Response<TransactionData>> {
         let response = self.get_transaction_by_hash_bcs_inner(hash).await?;
         let response = self.check_and_parse_bcs_response(response).await?;
         Ok(response.and_then(|inner| bcs::from_bytes(&inner))?)
@@ -1029,7 +1029,7 @@ impl Client {
     pub async fn get_transaction_by_hash_bcs_inner(
         &self,
         hash: HashValue,
-    ) -> AptosResult<reqwest::Response> {
+    ) -> Libra2Result<reqwest::Response> {
         let url = self.build_path(&format!("transactions/by_hash/{}", hash.to_hex_literal()))?;
         let response = self.inner.get(url).header(ACCEPT, BCS).send().await?;
         Ok(response)
@@ -1038,7 +1038,7 @@ impl Client {
     async fn get_transaction_by_hash_inner(
         &self,
         hash: HashValue,
-    ) -> AptosResult<reqwest::Response> {
+    ) -> Libra2Result<reqwest::Response> {
         let url = self.build_path(&format!("transactions/by_hash/{}", hash.to_hex_literal()))?;
         Ok(self.inner.get(url).send().await?)
     }
@@ -1046,7 +1046,7 @@ impl Client {
     pub async fn get_transaction_by_version(
         &self,
         version: u64,
-    ) -> AptosResult<Response<Transaction>> {
+    ) -> Libra2Result<Response<Transaction>> {
         self.json(self.get_transaction_by_version_inner(version).await?)
             .await
     }
@@ -1054,7 +1054,7 @@ impl Client {
     pub async fn get_transaction_by_version_bcs(
         &self,
         version: u64,
-    ) -> AptosResult<Response<TransactionData>> {
+    ) -> Libra2Result<Response<TransactionData>> {
         let url = self.build_path(&format!("transactions/by_version/{}", version))?;
         let response = self.get_bcs(url).await?;
         Ok(response.and_then(|inner| bcs::from_bytes(&inner))?)
@@ -1063,7 +1063,7 @@ impl Client {
     async fn get_transaction_by_version_inner(
         &self,
         version: u64,
-    ) -> AptosResult<reqwest::Response> {
+    ) -> Libra2Result<reqwest::Response> {
         let url = self.build_path(&format!("transactions/by_version/{}", version))?;
         Ok(self.inner.get(url).send().await?)
     }
@@ -1073,7 +1073,7 @@ impl Client {
         address: AccountAddress,
         start: Option<u64>,
         limit: Option<u64>,
-    ) -> AptosResult<Response<Vec<Transaction>>> {
+    ) -> Libra2Result<Response<Vec<Transaction>>> {
         let url = self.build_path(&format!("accounts/{}/transactions", address.to_hex()))?;
 
         let mut request = self.inner.get(url);
@@ -1095,7 +1095,7 @@ impl Client {
         address: AccountAddress,
         start: Option<u64>,
         limit: Option<u16>,
-    ) -> AptosResult<Response<Vec<TransactionOnChainData>>> {
+    ) -> Libra2Result<Response<Vec<TransactionOnChainData>>> {
         let url = self.build_path(&format!("accounts/{}/transactions", address.to_hex()))?;
         let response = self.get_bcs_with_page(url, start, limit).await?;
         Ok(response.and_then(|inner| bcs::from_bytes(&inner))?)
@@ -1104,7 +1104,7 @@ impl Client {
     pub async fn get_account_resources(
         &self,
         address: AccountAddress,
-    ) -> AptosResult<Response<Vec<Resource>>> {
+    ) -> Libra2Result<Response<Vec<Resource>>> {
         self.paginate_with_cursor(
             &format!("accounts/{}/resources", address.to_hex()),
             RESOURCES_PER_CALL_PAGINATION,
@@ -1116,7 +1116,7 @@ impl Client {
     pub async fn get_account_resources_bcs(
         &self,
         address: AccountAddress,
-    ) -> AptosResult<Response<BTreeMap<StructTag, Vec<u8>>>> {
+    ) -> Libra2Result<Response<BTreeMap<StructTag, Vec<u8>>>> {
         self.paginate_with_cursor_bcs(
             &format!("accounts/{}/resources", address.to_hex()),
             RESOURCES_PER_CALL_PAGINATION,
@@ -1129,7 +1129,7 @@ impl Client {
         &self,
         address: AccountAddress,
         version: u64,
-    ) -> AptosResult<Response<Vec<Resource>>> {
+    ) -> Libra2Result<Response<Vec<Resource>>> {
         self.paginate_with_cursor(
             &format!("accounts/{}/resources", address.to_hex()),
             RESOURCES_PER_CALL_PAGINATION,
@@ -1142,7 +1142,7 @@ impl Client {
         &self,
         address: AccountAddress,
         version: u64,
-    ) -> AptosResult<Response<BTreeMap<StructTag, Vec<u8>>>> {
+    ) -> Libra2Result<Response<BTreeMap<StructTag, Vec<u8>>>> {
         self.paginate_with_cursor_bcs(
             &format!("accounts/{}/resources", address.to_hex()),
             RESOURCES_PER_CALL_PAGINATION,
@@ -1155,7 +1155,7 @@ impl Client {
         &self,
         address: AccountAddress,
         resource_type: &str,
-    ) -> AptosResult<Response<T>> {
+    ) -> Libra2Result<Response<T>> {
         let resp = self.get_account_resource(address, resource_type).await?;
         resp.and_then(|conf| {
             if let Some(res) = conf {
@@ -1176,7 +1176,7 @@ impl Client {
         &self,
         address: AccountAddress,
         resource_type: &str,
-    ) -> AptosResult<Response<Option<Resource>>> {
+    ) -> Libra2Result<Response<Option<Resource>>> {
         let url = self.build_path(&format!(
             "accounts/{}/resource/{}",
             address.to_hex(),
@@ -1196,7 +1196,7 @@ impl Client {
         &self,
         address: AccountAddress,
         resource_type: &str,
-    ) -> AptosResult<Response<T>> {
+    ) -> Libra2Result<Response<T>> {
         let url = self.build_path(&format!(
             "accounts/{}/resource/{}",
             address.to_hex(),
@@ -1211,7 +1211,7 @@ impl Client {
         address: AccountAddress,
         resource_type: &str,
         version: u64,
-    ) -> AptosResult<Response<T>> {
+    ) -> Libra2Result<Response<T>> {
         let url = self.build_path(&format!(
             "accounts/{}/resource/{}?ledger_version={}",
             address.to_hex(),
@@ -1228,7 +1228,7 @@ impl Client {
         address: AccountAddress,
         resource_type: &str,
         version: u64,
-    ) -> AptosResult<Response<Vec<u8>>> {
+    ) -> Libra2Result<Response<Vec<u8>>> {
         let url = self.build_path(&format!(
             "accounts/{}/resource/{}?ledger_version={}",
             address.to_hex(),
@@ -1244,7 +1244,7 @@ impl Client {
         &self,
         address: AccountAddress,
         resource_type: &str,
-    ) -> AptosResult<Response<Vec<u8>>> {
+    ) -> Libra2Result<Response<Vec<u8>>> {
         let url = self.build_path(&format!(
             "accounts/{}/resource/{}",
             address.to_hex(),
@@ -1260,7 +1260,7 @@ impl Client {
         address: AccountAddress,
         resource_type: &str,
         version: u64,
-    ) -> AptosResult<Response<Option<Resource>>> {
+    ) -> Libra2Result<Response<Option<Resource>>> {
         let url = self.build_path(&format!(
             "accounts/{}/resource/{}?ledger_version={}",
             address.to_hex(),
@@ -1275,7 +1275,7 @@ impl Client {
     pub async fn get_account_modules(
         &self,
         address: AccountAddress,
-    ) -> AptosResult<Response<Vec<MoveModuleBytecode>>> {
+    ) -> Libra2Result<Response<Vec<MoveModuleBytecode>>> {
         self.paginate_with_cursor(
             &format!("accounts/{}/modules", address.to_hex()),
             MODULES_PER_CALL_PAGINATION,
@@ -1287,7 +1287,7 @@ impl Client {
     pub async fn get_account_modules_bcs(
         &self,
         address: AccountAddress,
-    ) -> AptosResult<Response<BTreeMap<MoveModuleId, Vec<u8>>>> {
+    ) -> Libra2Result<Response<BTreeMap<MoveModuleId, Vec<u8>>>> {
         self.paginate_with_cursor_bcs(
             &format!("accounts/{}/modules", address.to_hex()),
             MODULES_PER_CALL_PAGINATION,
@@ -1300,7 +1300,7 @@ impl Client {
         &self,
         address: AccountAddress,
         module_name: &str,
-    ) -> AptosResult<Response<MoveModuleBytecode>> {
+    ) -> Libra2Result<Response<MoveModuleBytecode>> {
         let url = self.build_path(&format!(
             "accounts/{}/module/{}",
             address.to_hex(),
@@ -1313,7 +1313,7 @@ impl Client {
         &self,
         address: AccountAddress,
         module_name: &str,
-    ) -> AptosResult<Response<bytes::Bytes>> {
+    ) -> Libra2Result<Response<bytes::Bytes>> {
         let url = self.build_path(&format!(
             "accounts/{}/module/{}",
             address.to_hex(),
@@ -1327,7 +1327,7 @@ impl Client {
         address: AccountAddress,
         module_name: &str,
         version: u64,
-    ) -> AptosResult<Response<bytes::Bytes>> {
+    ) -> Libra2Result<Response<bytes::Bytes>> {
         let url = self.build_path(&format!(
             "accounts/{}/module/{}?ledger_version={}",
             address.to_hex(),
@@ -1344,7 +1344,7 @@ impl Client {
         field_name: &str,
         start: Option<u64>,
         limit: Option<u16>,
-    ) -> AptosResult<Response<Vec<VersionedEvent>>> {
+    ) -> Libra2Result<Response<Vec<VersionedEvent>>> {
         let url = self.build_path(&format!(
             "accounts/{}/events/{}/{}",
             address.to_hex_literal(),
@@ -1367,14 +1367,14 @@ impl Client {
     pub async fn get_account_sequence_number(
         &self,
         address: AccountAddress,
-    ) -> AptosResult<Response<u64>> {
+    ) -> Libra2Result<Response<u64>> {
         let res = self.get_account_bcs(address).await;
 
         match res {
             Ok(account) => account.and_then(|account| Ok(account.sequence_number())),
             Err(error) => match error {
                 RestError::Api(error) => {
-                    if matches!(error.error.error_code, AptosErrorCode::AccountNotFound) {
+                    if matches!(error.error.error_code, Libra2ErrorCode::AccountNotFound) {
                         if let Some(state) = error.state {
                             Ok(Response::new(0, state))
                         } else {
@@ -1397,7 +1397,7 @@ impl Client {
         field_name: &str,
         start: Option<u64>,
         limit: Option<u16>,
-    ) -> AptosResult<Response<Vec<EventWithVersion>>> {
+    ) -> Libra2Result<Response<Vec<EventWithVersion>>> {
         let url = self.build_path(&format!(
             "accounts/{}/events/{}/{}",
             address.to_hex_literal(),
@@ -1466,7 +1466,7 @@ impl Client {
         key_type: &str,
         value_type: &str,
         key: K,
-    ) -> AptosResult<Response<Value>> {
+    ) -> Libra2Result<Response<Value>> {
         let url = self.build_path(&format!("tables/{}/item", table_handle))?;
         let data = json!({
             "key_type": key_type,
@@ -1485,7 +1485,7 @@ impl Client {
         value_type: &str,
         key: K,
         version: u64,
-    ) -> AptosResult<Response<Value>> {
+    ) -> Libra2Result<Response<Value>> {
         let url = self.build_path(&format!(
             "tables/{}/item?ledger_version={}",
             table_handle, version
@@ -1506,7 +1506,7 @@ impl Client {
         key_type: &str,
         value_type: &str,
         key: K,
-    ) -> AptosResult<Response<T>> {
+    ) -> Libra2Result<Response<T>> {
         let url = self.build_path(&format!("tables/{}/item", table_handle))?;
         let data = json!({
             "key_type": key_type,
@@ -1525,7 +1525,7 @@ impl Client {
         value_type: &str,
         key: K,
         version: u64,
-    ) -> AptosResult<Response<T>> {
+    ) -> Libra2Result<Response<T>> {
         let url = self.build_path(&format!(
             "tables/{}/item?ledger_version={}",
             table_handle, version
@@ -1545,7 +1545,7 @@ impl Client {
         table_handle: AccountAddress,
         key: &[u8],
         version: u64,
-    ) -> AptosResult<Response<Vec<u8>>> {
+    ) -> Libra2Result<Response<Vec<u8>>> {
         let url = self.build_path(&format!(
             "tables/{}/raw_item?ledger_version={}",
             table_handle, version
@@ -1562,7 +1562,7 @@ impl Client {
         &self,
         state_key: &StateKey,
         version: u64,
-    ) -> AptosResult<Response<Vec<u8>>> {
+    ) -> Libra2Result<Response<Vec<u8>>> {
         let url = self.build_path(&format!(
             "experimental/state_values/raw?ledger_version={}",
             version
@@ -1575,7 +1575,7 @@ impl Client {
         Ok(response.map(|inner| inner.to_vec()))
     }
 
-    pub async fn get_account(&self, address: AccountAddress) -> AptosResult<Response<Account>> {
+    pub async fn get_account(&self, address: AccountAddress) -> Libra2Result<Response<Account>> {
         let url = self.build_path(&format!("accounts/{}", address.to_hex()))?;
         let response = self.inner.get(url).send().await?;
         self.json(response).await
@@ -1584,7 +1584,7 @@ impl Client {
     pub async fn get_account_bcs(
         &self,
         address: AccountAddress,
-    ) -> AptosResult<Response<AccountResource>> {
+    ) -> Libra2Result<Response<AccountResource>> {
         let url = self.build_path(&format!("accounts/{}", address.to_hex()))?;
         let response = self.get_bcs(url).await?;
         Ok(response.and_then(|inner| bcs::from_bytes(&inner))?)
@@ -1596,7 +1596,7 @@ impl Client {
         start_version: Option<u64>,
         end_version: Option<u64>,
         limit: Option<u16>,
-    ) -> AptosResult<Response<Vec<IndexedTransactionSummary>>> {
+    ) -> Libra2Result<Response<Vec<IndexedTransactionSummary>>> {
         let url = self.build_path(&format!(
             "accounts/{}/transaction_summaries",
             address.to_hex()
@@ -1620,13 +1620,13 @@ impl Client {
         Ok(response.and_then(|inner| bcs::from_bytes(&inner))?)
     }
 
-    pub async fn estimate_gas_price(&self) -> AptosResult<Response<GasEstimation>> {
+    pub async fn estimate_gas_price(&self) -> Libra2Result<Response<GasEstimation>> {
         let url = self.build_path("estimate_gas_price")?;
         let response = self.inner.get(url).send().await?;
         self.json(response).await
     }
 
-    pub async fn set_failpoint(&self, name: String, actions: String) -> AptosResult<String> {
+    pub async fn set_failpoint(&self, name: String, actions: String) -> Libra2Result<String> {
         let mut base = self.build_path("set_failpoint")?;
         let url = base
             .query_pairs_mut()
@@ -1648,7 +1648,7 @@ impl Client {
     async fn check_response(
         &self,
         response: reqwest::Response,
-    ) -> AptosResult<(reqwest::Response, State)> {
+    ) -> Libra2Result<(reqwest::Response, State)> {
         if !response.status().is_success() {
             Err(parse_error(response).await)
         } else {
@@ -1661,13 +1661,13 @@ impl Client {
     async fn json<T: serde::de::DeserializeOwned>(
         &self,
         response: reqwest::Response,
-    ) -> AptosResult<Response<T>> {
+    ) -> Libra2Result<Response<T>> {
         let (response, state) = self.check_response(response).await?;
         let json = response.json().await.map_err(anyhow::Error::from)?;
         Ok(Response::new(json, state))
     }
 
-    pub async fn health_check(&self, seconds: u64) -> AptosResult<()> {
+    pub async fn health_check(&self, seconds: u64) -> Libra2Result<()> {
         let url = self.build_path("-/healthy")?;
         let response = self
             .inner
@@ -1683,16 +1683,16 @@ impl Client {
         }
     }
 
-    async fn get<T: DeserializeOwned>(&self, url: Url) -> AptosResult<Response<T>> {
+    async fn get<T: DeserializeOwned>(&self, url: Url) -> Libra2Result<Response<T>> {
         self.json(self.inner.get(url).send().await?).await
     }
 
-    async fn get_bcs(&self, url: Url) -> AptosResult<Response<bytes::Bytes>> {
+    async fn get_bcs(&self, url: Url) -> Libra2Result<Response<bytes::Bytes>> {
         let response = self.inner.get(url).header(ACCEPT, BCS).send().await?;
         self.check_and_parse_bcs_response(response).await
     }
 
-    pub async fn make_prover_request(&self, req: ProverRequest) -> AptosResult<ZeroKnowledgeSig> {
+    pub async fn make_prover_request(&self, req: ProverRequest) -> Libra2Result<ZeroKnowledgeSig> {
         let response: ProverResponse = self
             .post_json_no_state(self.get_prover_url(), serde_json::to_value(req.clone())?)
             .await?;
@@ -1710,7 +1710,7 @@ impl Client {
         })
     }
 
-    pub async fn make_pepper_request(&self, req: PepperRequest) -> AptosResult<Pepper> {
+    pub async fn make_pepper_request(&self, req: PepperRequest) -> Libra2Result<Pepper> {
         let response: PepperResponse = self
             .post_json_no_state(self.get_pepper_url(), serde_json::to_value(req.clone())?)
             .await?;
@@ -1724,7 +1724,7 @@ impl Client {
         &self,
         url: Url,
         data: serde_json::Value,
-    ) -> AptosResult<T> {
+    ) -> Libra2Result<T> {
         let response = self
             .inner
             .post(url)
@@ -1743,7 +1743,7 @@ impl Client {
         &self,
         url: Url,
         data: serde_json::Value,
-    ) -> AptosResult<Response<bytes::Bytes>> {
+    ) -> Libra2Result<Response<bytes::Bytes>> {
         let response = self
             .inner
             .post(url)
@@ -1759,7 +1759,7 @@ impl Client {
         url: Url,
         start: Option<u64>,
         limit: Option<u16>,
-    ) -> AptosResult<Response<bytes::Bytes>> {
+    ) -> Libra2Result<Response<bytes::Bytes>> {
         let mut request = self.inner.get(url).header(ACCEPT, BCS);
         if let Some(start) = start {
             request = request.query(&[("start", start)])
@@ -1776,7 +1776,7 @@ impl Client {
     async fn check_and_parse_bcs_response(
         &self,
         response: reqwest::Response,
-    ) -> AptosResult<Response<bytes::Bytes>> {
+    ) -> Libra2Result<Response<bytes::Bytes>> {
         let (response, state) = self.check_response(response).await?;
         Ok(Response::new(response.bytes().await?, state))
     }
@@ -1786,11 +1786,11 @@ impl Client {
         initial_interval: Option<Duration>,
         should_retry: RetryFun,
         function: F,
-    ) -> AptosResult<T>
+    ) -> Libra2Result<T>
     where
         F: Fn() -> Fut,
-        RetryFun: Fn(StatusCode, Option<AptosError>) -> bool,
-        Fut: Future<Output = AptosResult<T>>,
+        RetryFun: Fn(StatusCode, Option<Libra2Error>) -> bool,
+        Fut: Future<Output = Libra2Result<T>>,
     {
         let total_wait = total_wait.unwrap_or(DEFAULT_MAX_WAIT_DURATION);
         let mut backoff = initial_interval.unwrap_or(DEFAULT_INTERVAL_DURATION);
@@ -1841,7 +1841,7 @@ impl Client {
         limit_per_request: u64,
         ledger_version: Option<u64>,
         cursor: &Option<String>,
-    ) -> AptosResult<Url> {
+    ) -> Libra2Result<Url> {
         let mut path = format!("{}?limit={}", base, limit_per_request);
         if let Some(ledger_version) = ledger_version {
             path = format!("{}&ledger_version={}", path, ledger_version);
@@ -1863,7 +1863,7 @@ impl Client {
         base_path: &str,
         limit_per_request: u64,
         ledger_version: Option<u64>,
-    ) -> AptosResult<Response<Vec<T>>> {
+    ) -> Libra2Result<Response<Vec<T>>> {
         let mut result = Vec::new();
         let mut cursor: Option<String> = None;
 
@@ -1896,7 +1896,7 @@ impl Client {
         base_path: &str,
         limit_per_request: u64,
         ledger_version: Option<u64>,
-    ) -> AptosResult<Response<BTreeMap<T, Vec<u8>>>> {
+    ) -> Libra2Result<Response<BTreeMap<T, Vec<u8>>>> {
         let mut result = BTreeMap::new();
         let mut cursor: Option<String> = None;
 
@@ -1940,11 +1940,11 @@ pub fn get_version_path_with_base(base_url: Url) -> String {
     }
 }
 
-pub fn retriable_with_404(status_code: StatusCode, aptos_error: Option<AptosError>) -> bool {
+pub fn retriable_with_404(status_code: StatusCode, aptos_error: Option<Libra2Error>) -> bool {
     retriable(status_code, aptos_error) | matches!(status_code, StatusCode::NOT_FOUND)
 }
 
-pub fn retriable(status_code: StatusCode, _aptos_error: Option<AptosError>) -> bool {
+pub fn retriable(status_code: StatusCode, _aptos_error: Option<Libra2Error>) -> bool {
     matches!(
         status_code,
         StatusCode::TOO_MANY_REQUESTS
@@ -1976,7 +1976,7 @@ pub struct VersionedNewBlockEvent {
     pub sequence_number: u64,
 }
 
-fn parse_state(response: &reqwest::Response) -> AptosResult<State> {
+fn parse_state(response: &reqwest::Response) -> Libra2Result<State> {
     Ok(State::from_headers(response.headers())?)
 }
 

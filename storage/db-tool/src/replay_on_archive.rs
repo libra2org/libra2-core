@@ -4,7 +4,7 @@
 
 use anyhow::{bail, Error, Ok, Result};
 use libra2_backup_cli::utils::{ReplayConcurrencyLevelOpt, RocksdbOpt};
-use aptos_block_executor::txn_provider::default::DefaultTxnProvider;
+use libra2_block_executor::txn_provider::default::DefaultTxnProvider;
 use libra2_config::config::{
     StorageDirPaths, BUFFERED_STATE_TARGET_ITEMS, DEFAULT_MAX_NUM_NODES_PER_LRU_CACHE_SHARD,
     NO_OP_STORAGE_PRUNER_CONFIG,
@@ -22,7 +22,7 @@ use libra2_types::{
     },
     write_set::WriteSet,
 };
-use aptos_vm::{aptos_vm::AptosVMBlockExecutor, AptosVM, VMBlockExecutor};
+use libra2_vm::{libra2_vm::Libra2VMBlockExecutor, Libra2VM, VMBlockExecutor};
 use clap::Parser;
 use rayon::iter::{IntoParallelRefIterator, ParallelIterator};
 use std::{
@@ -195,7 +195,7 @@ impl Verifier {
             return Ok(vec![]);
         }
 
-        AptosVM::set_concurrency_level_once(self.replay_concurrency_level);
+        Libra2VM::set_concurrency_level_once(self.replay_concurrency_level);
         let task_size = self.limit / self.concurrent_replay as u64;
         let ranges: Vec<(u64, u64)> = (0..self.concurrent_replay)
             .map(|i| {
@@ -348,7 +348,7 @@ impl Verifier {
                 .map(|info| AuxiliaryInfo::new(*info, None))
                 .collect(),
         );
-        let executed_outputs = AptosVMBlockExecutor::new().execute_block_no_limit(
+        let executed_outputs = Libra2VMBlockExecutor::new().execute_block_no_limit(
             &txns_provider,
             &self
                 .arc_db

@@ -23,7 +23,7 @@ use libra2_admin_service::AdminService;
 use aptos_api::bootstrap as bootstrap_api;
 use libra2_build_info::build_information;
 use libra2_config::config::{merge_node_config, NodeConfig, PersistableConfig};
-use aptos_framework::ReleaseBundle;
+use libra2_framework::ReleaseBundle;
 use libra2_genesis::builder::GenesisConfiguration;
 use libra2_logger::{prelude::*, telemetry_log_writer::TelemetryLog, Level, LoggerFilterUpdater};
 use libra2_state_sync_driver::driver_factory::StateSyncRuntimes;
@@ -144,7 +144,7 @@ impl Libra2NodeArgs {
             let genesis_framework = if let Some(path) = self.genesis_framework {
                 ReleaseBundle::read(path).unwrap()
             } else {
-                aptos_cached_packages::head_release_bundle().clone()
+                libra2_cached_packages::head_release_bundle().clone()
             };
 
             // Create a seeded RNG, setup the test environment and start the node

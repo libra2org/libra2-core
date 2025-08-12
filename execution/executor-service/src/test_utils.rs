@@ -1,11 +1,11 @@
 // Copyright © Aptos Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-use aptos_block_executor::txn_provider::default::DefaultTxnProvider;
+use libra2_block_executor::txn_provider::default::DefaultTxnProvider;
 use libra2_block_partitioner::{v2::config::PartitionerV2Config, PartitionerConfig};
 use libra2_keygen::KeyGen;
-use aptos_language_e2e_tests::common_transactions::peer_to_peer_txn;
-use aptos_transaction_simulation::{
+use libra2_language_e2e_tests::common_transactions::peer_to_peer_txn;
+use libra2_transaction_simulation::{
     Account, AccountData, InMemoryStateStore, SimulationStateStore,
 };
 use libra2_types::{
@@ -20,8 +20,8 @@ use libra2_types::{
         TransactionOutput,
     },
 };
-use aptos_vm::{
-    aptos_vm::AptosVMBlockExecutor,
+use libra2_vm::{
+    libra2_vm::Libra2VMBlockExecutor,
     sharded_block_executor::{executor_client::ExecutorClient, ShardedBlockExecutor},
     VMBlockExecutor,
 };
@@ -149,7 +149,7 @@ pub fn test_sharded_block_executor_no_conflict<E: ExecutorClient<InMemoryStateSt
             .map(|t| t.into_txn())
             .collect();
     let txn_provider = DefaultTxnProvider::new_without_info(txns);
-    let unsharded_txn_output = AptosVMBlockExecutor::new()
+    let unsharded_txn_output = Libra2VMBlockExecutor::new()
         .execute_block_no_limit(&txn_provider, &state_store)
         .unwrap();
     compare_txn_outputs(unsharded_txn_output, sharded_txn_output);
@@ -205,7 +205,7 @@ pub fn sharded_block_executor_with_conflict<E: ExecutorClient<InMemoryStateStore
         .unwrap();
 
     let txn_provider = DefaultTxnProvider::new_without_info(execution_ordered_txns);
-    let unsharded_txn_output = AptosVMBlockExecutor::new()
+    let unsharded_txn_output = Libra2VMBlockExecutor::new()
         .execute_block_no_limit(&txn_provider, &state_store)
         .unwrap();
     compare_txn_outputs(unsharded_txn_output, sharded_txn_output);

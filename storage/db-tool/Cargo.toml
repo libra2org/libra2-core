@@ -14,7 +14,7 @@ rust-version = { workspace = true }
 [dependencies]
 anyhow = { workspace = true }
 libra2-backup-cli = { workspace = true }
-aptos-block-executor = { workspace = true }
+libra2-block-executor = { workspace = true }
 libra2-config = { workspace = true }
 libra2-db = { workspace = true, features = ["db-debugger"] }
 libra2-db-indexer = { workspace = true }
@@ -24,7 +24,7 @@ libra2-logger = { workspace = true }
 libra2-storage-interface = { workspace = true }
 libra2-temppath = { workspace = true }
 libra2-types = { workspace = true }
-aptos-vm = { workspace = true }
+libra2-vm = { workspace = true }
 bcs = { workspace = true }
 clap = { workspace = true }
 itertools = { workspace = true }
@@ -36,4 +36,4 @@ tokio = { workspace = true }
 libra2-backup-cli = { workspace = true, features = ["testing"] }
 libra2-backup-service = { workspace = true }
 libra2-executor-test-helpers = { workspace = true }
-aptos-indexer-grpc-table-info = { workspace = true }
+libra2-indexer-grpc-table-info = { workspace = true }

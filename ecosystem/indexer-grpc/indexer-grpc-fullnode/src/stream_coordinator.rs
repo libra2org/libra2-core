@@ -8,13 +8,13 @@ use crate::{
 };
 use aptos_api::context::Context;
 use libra2_api_types::{AsConverter, Transaction as APITransaction, TransactionOnChainData};
-use aptos_indexer_grpc_utils::{
+use libra2_indexer_grpc_utils::{
     chunk_transactions,
     constants::MESSAGE_SIZE_LIMIT,
     counters::{log_grpc_step_fullnode, IndexerGrpcStep},
 };
 use libra2_logger::{error, info, sample, sample::SampleRate};
-use aptos_protos::{
+use libra2_protos::{
     internal::fullnode::v1::{
         transactions_from_node_response, TransactionsFromNodeResponse, TransactionsOutput,
     },

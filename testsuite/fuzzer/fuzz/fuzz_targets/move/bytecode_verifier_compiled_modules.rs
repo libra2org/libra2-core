@@ -4,7 +4,7 @@
 
 #![no_main]
 use libra2_types::on_chain_config::Features;
-use aptos_vm_environment::{prod_configs, prod_configs::LATEST_GAS_FEATURE_VERSION};
+use libra2_vm_environment::{prod_configs, prod_configs::LATEST_GAS_FEATURE_VERSION};
 use libfuzzer_sys::{fuzz_target, Corpus};
 use move_binary_format::errors::VMError;
 use move_core_types::vm_status::StatusType;

@@ -20,8 +20,8 @@ use crate::{
 };
 use anyhow::{anyhow, Result};
 use libra2_api_types::{HexEncodedBytes, U64};
-use aptos_cached_packages::aptos_stdlib::EntryFunctionCall;
-use aptos_framework::{BuildOptions, BuiltPackage};
+use libra2_cached_packages::libra2_stdlib::EntryFunctionCall;
+use libra2_framework::{BuildOptions, BuiltPackage};
 use libra2_logger::error;
 use libra2_rest_client::Client;
 use libra2_sdk::{bcs, types::LocalAccount};
@@ -156,7 +156,7 @@ async fn check_account_data(client: &Client, account: AccountAddress) -> Result<
 
 async fn build_module(address: AccountAddress) -> Result<BuiltPackage, TestFailure> {
     // get file to compile
-    let move_dir = PathBuf::from("./aptos-move/move-examples/hello_blockchain");
+    let move_dir = PathBuf::from("./libra2-move/move-examples/hello_blockchain");
 
     // insert address
     let mut named_addresses: BTreeMap<String, AccountAddress> = BTreeMap::new();

@@ -3,7 +3,7 @@
 #![allow(unused)]
 
 pub use super::prebuilt_packages::PreBuiltPackagesImpl;
-use aptos_framework::natives::code::{MoveOption, PackageMetadata};
+use libra2_framework::natives::code::{MoveOption, PackageMetadata};
 use libra2_sdk::{
     bcs,
     move_types::{

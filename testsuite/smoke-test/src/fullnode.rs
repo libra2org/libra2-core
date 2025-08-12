@@ -8,14 +8,14 @@ use crate::{
     utils::{create_test_accounts, execute_transactions, MAX_HEALTHY_WAIT_SECS},
 };
 use anyhow::bail;
-use aptos_cached_packages::aptos_stdlib;
+use libra2_cached_packages::libra2_stdlib;
 use libra2_config::config::{BootstrappingMode, NodeConfig, OverrideNodeConfig};
 use libra2_db_indexer_schemas::{
     metadata::MetadataKey,
     schema::{indexer_metadata::InternalIndexerMetadataSchema, state_keys::StateKeysSchema},
 };
 use aptos_forge::{NodeExt, Result, Swarm, SwarmExt};
-use aptos_indexer_grpc_table_info::internal_indexer_db_service::InternalIndexerDBService;
+use libra2_indexer_grpc_table_info::internal_indexer_db_service::InternalIndexerDBService;
 use libra2_rest_client::Client as RestClient;
 use libra2_schemadb::DB;
 use libra2_types::{account_address::AccountAddress, state_store::state_key::StateKey};
@@ -77,7 +77,7 @@ async fn test_indexer() {
         .unwrap();
 
     let txn = account1.sign_with_transaction_builder(
-        factory.payload(aptos_stdlib::aptos_coin_transfer(account2.address(), 10)),
+        factory.payload(libra2_stdlib::libra2_coin_transfer(account2.address(), 10)),
     );
 
     client.submit_and_wait(&txn).await.unwrap();
@@ -95,7 +95,7 @@ async fn wait_for_account_balance(client: &RestClient, address: AccountAddress) 
     let start = std::time::Instant::now();
     while start.elapsed() < DEFAULT_WAIT_TIMEOUT {
         if client
-            .get_account_balance(address, "0x1::aptos_coin::AptosCoin")
+            .get_account_balance(address, "0x1::libra2_coin::Libra2Coin")
             .await
             .unwrap()
             .into_inner()

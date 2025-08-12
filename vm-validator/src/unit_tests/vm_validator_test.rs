@@ -3,10 +3,10 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::vm_validator::{get_account_sequence_number, PooledVMValidator, TransactionValidation};
-use aptos_cached_packages::aptos_stdlib;
+use libra2_cached_packages::libra2_stdlib;
 use libra2_crypto::{ed25519::Ed25519PrivateKey, PrivateKey, Uniform};
 use libra2_db::Libra2DB;
-use aptos_gas_schedule::{InitialGasSchedule, TransactionGasParameters};
+use libra2_gas_schedule::{InitialGasSchedule, TransactionGasParameters};
 use libra2_storage_interface::{
     state_store::state_view::db_state_view::LatestDbStateCheckpointView, DbReaderWriter,
 };
@@ -17,7 +17,7 @@ use libra2_types::{
     transaction::{Script, TransactionPayload},
     vm_status::StatusCode,
 };
-use aptos_vm::aptos_vm::AptosVMBlockExecutor;
+use libra2_vm::libra2_vm::Libra2VMBlockExecutor;
 use move_core_types::{account_address::AccountAddress, gas_algebra::GasQuantity};
 use rand::SeedableRng;
 
@@ -33,9 +33,9 @@ impl TestValidator {
         let _db_path = libra2_temppath::TempPath::new();
         _db_path.create_as_dir().unwrap();
         let (db, db_rw) = DbReaderWriter::wrap(Libra2DB::new_for_test(_db_path.path()));
-        libra2_executor_test_helpers::bootstrap_genesis::<AptosVMBlockExecutor>(
+        libra2_executor_test_helpers::bootstrap_genesis::<Libra2VMBlockExecutor>(
             &db_rw,
-            &aptos_vm_genesis::test_genesis_transaction(),
+            &libra2_vm_genesis::test_genesis_transaction(),
         )
         .expect("Db-bootstrapper should not fail.");
 
@@ -68,7 +68,7 @@ impl std::ops::Deref for TestValidator {
 // * SEQUENCE_NUMBER_TOO_NEW -- This error is filtered out when running validation; it is only
 //   testable when running the executor.
 // * INSUFFICIENT_BALANCE_FOR_TRANSACTION_FEE -- This is tested in verify_txn.rs.
-// * SENDING_ACCOUNT_FROZEN: Tested in functional-tests/tests/aptos_account/freezing.move.
+// * SENDING_ACCOUNT_FROZEN: Tested in functional-tests/tests/libra2_account/freezing.move.
 // * Errors arising from deserializing the code -- these are tested in
 //   - move-language/move/language/move-binary-format/src/unit_tests/deserializer_tests.rs
 //   - move-language/move/language/move-binary-format/tests/serializer_tests.rs
@@ -82,12 +82,12 @@ fn test_validate_transaction() {
     let vm_validator = TestValidator::new();
 
     let address = account_config::aptos_test_root_address();
-    let program = aptos_stdlib::aptos_coin_mint(address, 100);
+    let program = libra2_stdlib::libra2_coin_mint(address, 100);
     let transaction = transaction_test_helpers::get_test_signed_txn(
         address,
         1,
-        &aptos_vm_genesis::GENESIS_KEYPAIR.0,
-        aptos_vm_genesis::GENESIS_KEYPAIR.1.clone(),
+        &libra2_vm_genesis::GENESIS_KEYPAIR.0,
+        libra2_vm_genesis::GENESIS_KEYPAIR.1.clone(),
         Some(program),
     );
     let ret = vm_validator.validate_transaction(transaction).unwrap();
@@ -103,12 +103,12 @@ fn test_validate_invalid_signature() {
     // Submit with an account using an different private/public keypair
 
     let address = account_config::aptos_test_root_address();
-    let program = aptos_stdlib::aptos_coin_transfer(address, 100);
+    let program = libra2_stdlib::libra2_coin_transfer(address, 100);
     let transaction = transaction_test_helpers::get_test_unchecked_txn(
         address,
         1,
         &other_private_key,
-        aptos_vm_genesis::GENESIS_KEYPAIR.1.clone(),
+        libra2_vm_genesis::GENESIS_KEYPAIR.1.clone(),
         program,
     );
     let ret = vm_validator.validate_transaction(transaction).unwrap();
@@ -123,8 +123,8 @@ fn test_validate_known_script_too_large_args() {
     let transaction = transaction_test_helpers::get_test_signed_transaction(
         address,
         1,
-        &aptos_vm_genesis::GENESIS_KEYPAIR.0,
-        aptos_vm_genesis::GENESIS_KEYPAIR.1.clone(),
+        &libra2_vm_genesis::GENESIS_KEYPAIR.0,
+        libra2_vm_genesis::GENESIS_KEYPAIR.1.clone(),
         Some(TransactionPayload::Script(Script::new(
             vec![42; MAX_TRANSACTION_SIZE_IN_BYTES as usize],
             vec![],
@@ -153,8 +153,8 @@ fn test_validate_max_gas_units_above_max() {
     let transaction = transaction_test_helpers::get_test_signed_transaction(
         address,
         1,
-        &aptos_vm_genesis::GENESIS_KEYPAIR.0,
-        aptos_vm_genesis::GENESIS_KEYPAIR.1.clone(),
+        &libra2_vm_genesis::GENESIS_KEYPAIR.0,
+        libra2_vm_genesis::GENESIS_KEYPAIR.1.clone(),
         None,
         0,
         0,              /* max gas price */
@@ -184,8 +184,8 @@ fn test_validate_max_gas_units_below_min() {
     let transaction = transaction_test_helpers::get_test_signed_transaction(
         address,
         1,
-        &aptos_vm_genesis::GENESIS_KEYPAIR.0,
-        aptos_vm_genesis::GENESIS_KEYPAIR.1.clone(),
+        &libra2_vm_genesis::GENESIS_KEYPAIR.0,
+        libra2_vm_genesis::GENESIS_KEYPAIR.1.clone(),
         Some(TransactionPayload::Script(Script::new(
             vec![42; u64::from(txn_bytes) as usize],
             vec![],
@@ -236,8 +236,8 @@ fn test_validate_max_gas_price_above_bounds() {
     let transaction = transaction_test_helpers::get_test_signed_transaction(
         address,
         1,
-        &aptos_vm_genesis::GENESIS_KEYPAIR.0,
-        aptos_vm_genesis::GENESIS_KEYPAIR.1.clone(),
+        &libra2_vm_genesis::GENESIS_KEYPAIR.0,
+        libra2_vm_genesis::GENESIS_KEYPAIR.1.clone(),
         None,
         0,
         u64::MAX, /* max gas price */
@@ -258,12 +258,12 @@ fn test_validate_max_gas_price_below_bounds() {
     let vm_validator = TestValidator::new();
 
     let address = account_config::aptos_test_root_address();
-    let program = aptos_stdlib::aptos_coin_transfer(address, 100);
+    let program = libra2_stdlib::libra2_coin_transfer(address, 100);
     let transaction = transaction_test_helpers::get_test_signed_transaction(
         address,
         1,
-        &aptos_vm_genesis::GENESIS_KEYPAIR.0,
-        aptos_vm_genesis::GENESIS_KEYPAIR.1.clone(),
+        &libra2_vm_genesis::GENESIS_KEYPAIR.0,
+        libra2_vm_genesis::GENESIS_KEYPAIR.1.clone(),
         Some(program),
         // Initial Time was set to 0 with a TTL 86400 secs.
         40000,
@@ -287,7 +287,7 @@ fn test_validate_invalid_auth_key() {
     // Submit with an account using an different private/public keypair
 
     let address = account_config::aptos_test_root_address();
-    let program = aptos_stdlib::aptos_coin_transfer(address, 100);
+    let program = libra2_stdlib::libra2_coin_transfer(address, 100);
     let transaction = transaction_test_helpers::get_test_signed_txn(
         address,
         0,
@@ -305,12 +305,12 @@ fn test_validate_account_doesnt_exist() {
 
     let address = account_config::aptos_test_root_address();
     let random_account_addr = account_address::AccountAddress::random();
-    let program = aptos_stdlib::aptos_coin_transfer(address, 100);
+    let program = libra2_stdlib::libra2_coin_transfer(address, 100);
     let transaction = transaction_test_helpers::get_test_signed_transaction(
         random_account_addr,
         1,
-        &aptos_vm_genesis::GENESIS_KEYPAIR.0,
-        aptos_vm_genesis::GENESIS_KEYPAIR.1.clone(),
+        &libra2_vm_genesis::GENESIS_KEYPAIR.0,
+        libra2_vm_genesis::GENESIS_KEYPAIR.1.clone(),
         Some(program),
         u64::MAX,
         1, /* max gas price */
@@ -325,12 +325,12 @@ fn test_validate_sequence_number_too_new() {
     let vm_validator = TestValidator::new();
 
     let address = account_config::aptos_test_root_address();
-    let program = aptos_stdlib::aptos_coin_transfer(address, 100);
+    let program = libra2_stdlib::libra2_coin_transfer(address, 100);
     let transaction = transaction_test_helpers::get_test_signed_txn(
         address,
         1,
-        &aptos_vm_genesis::GENESIS_KEYPAIR.0,
-        aptos_vm_genesis::GENESIS_KEYPAIR.1.clone(),
+        &libra2_vm_genesis::GENESIS_KEYPAIR.0,
+        libra2_vm_genesis::GENESIS_KEYPAIR.1.clone(),
         Some(program),
     );
     let ret = vm_validator.validate_transaction(transaction).unwrap();
@@ -342,12 +342,12 @@ fn test_validate_invalid_arguments() {
     let vm_validator = TestValidator::new();
 
     let address = account_config::aptos_test_root_address();
-    let program = aptos_stdlib::aptos_coin_transfer(address, 100);
+    let program = libra2_stdlib::libra2_coin_transfer(address, 100);
     let transaction = transaction_test_helpers::get_test_signed_txn(
         address,
         1,
-        &aptos_vm_genesis::GENESIS_KEYPAIR.0,
-        aptos_vm_genesis::GENESIS_KEYPAIR.1.clone(),
+        &libra2_vm_genesis::GENESIS_KEYPAIR.0,
+        libra2_vm_genesis::GENESIS_KEYPAIR.1.clone(),
         Some(program),
     );
     let _ret = vm_validator.validate_transaction(transaction).unwrap();
@@ -363,8 +363,8 @@ fn test_validate_expiration_time() {
     let transaction = transaction_test_helpers::get_test_signed_transaction(
         address,
         1, /* sequence_number */
-        &aptos_vm_genesis::GENESIS_KEYPAIR.0,
-        aptos_vm_genesis::GENESIS_KEYPAIR.1.clone(),
+        &libra2_vm_genesis::GENESIS_KEYPAIR.0,
+        libra2_vm_genesis::GENESIS_KEYPAIR.1.clone(),
         None, /* script */
         0,    /* expiration_time */
         0,    /* gas_unit_price */
@@ -382,8 +382,8 @@ fn test_validate_chain_id() {
     let transaction = transaction_test_helpers::get_test_txn_with_chain_id(
         address,
         0, /* sequence_number */
-        &aptos_vm_genesis::GENESIS_KEYPAIR.0,
-        aptos_vm_genesis::GENESIS_KEYPAIR.1.clone(),
+        &libra2_vm_genesis::GENESIS_KEYPAIR.0,
+        libra2_vm_genesis::GENESIS_KEYPAIR.1.clone(),
         // all tests use ChainId::test() for chain_id, so pick something different
         ChainId::new(ChainId::test().id() + 1),
     );

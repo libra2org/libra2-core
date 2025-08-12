@@ -14,7 +14,7 @@ export PYTHONWARNINGS="ignore"
 
 PROTO_DIR=../proto
 WORKING_DIR=`mktemp -d`
-OUT_DIR=./aptos_protos
+OUT_DIR=./libra2_protos
 
 # Save __init__.py
 mv $OUT_DIR/__init__.py $WORKING_DIR/__init__.py
@@ -31,10 +31,10 @@ python -m grpc_tools.protoc \
     --python_out $OUT_DIR \
     --pyi_out $OUT_DIR \
     --grpc_python_out $OUT_DIR \
-    $PROTO_DIR/aptos/indexer/v1/raw_data.proto \
-    $PROTO_DIR/aptos/internal/fullnode/v1/fullnode_data.proto \
-    $PROTO_DIR/aptos/transaction/v1/transaction.proto \
-    $PROTO_DIR/aptos/util/timestamp/timestamp.proto
+    $PROTO_DIR/libra2/indexer/v1/raw_data.proto \
+    $PROTO_DIR/libra2/internal/fullnode/v1/fullnode_data.proto \
+    $PROTO_DIR/libra2/transaction/v1/transaction.proto \
+    $PROTO_DIR/libra2/util/timestamp/timestamp.proto
 
 # Restore __init__.py
 mv $WORKING_DIR/__init__.py $OUT_DIR/__init__.py

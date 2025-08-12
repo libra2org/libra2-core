@@ -251,7 +251,7 @@ struct RawDependency {
     rev: Option<String>,
     subdir: Option<String>,
 
-    aptos: Option<String>,
+    libra2: Option<String>,
     address: Option<String>,
 }
 

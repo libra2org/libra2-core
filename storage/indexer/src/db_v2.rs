@@ -10,7 +10,7 @@ use libra2_db_indexer_schemas::{
     schema::{indexer_metadata::IndexerMetadataSchema, table_info::TableInfoSchema},
 };
 use libra2_logger::{info, sample, sample::SampleRate};
-use aptos_resource_viewer::{AnnotatedMoveValue, AptosValueAnnotator};
+use libra2_resource_viewer::{AnnotatedMoveValue, AptosValueAnnotator};
 use libra2_schemadb::{batch::SchemaBatch, DB};
 use libra2_storage_interface::{
     db_other_bail as bail, state_store::state_view::db_state_view::DbStateViewAtVersion,

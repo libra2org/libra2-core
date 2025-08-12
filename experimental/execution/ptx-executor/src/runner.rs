@@ -19,10 +19,10 @@ use libra2_types::{
     transaction::signature_verified_transaction::SignatureVerifiedTransaction,
     write_set::TransactionWrite,
 };
-use aptos_vm::AptosVM;
-use aptos_vm_environment::environment::AptosEnvironment;
-use aptos_vm_logging::log_schema::AdapterLogSchema;
-use aptos_vm_types::module_and_script_storage::AsAptosCodeStorage;
+use libra2_vm::Libra2VM;
+use libra2_vm_environment::environment::Libra2Environment;
+use libra2_vm_logging::log_schema::AdapterLogSchema;
+use libra2_vm_types::module_and_script_storage::AsLibra2CodeStorage;
 use rayon::Scope;
 use std::sync::mpsc::{channel, Receiver, Sender};
 
@@ -235,10 +235,10 @@ impl<'scope, 'view: 'scope, BaseView: StateView + Sync> Worker<'view, BaseView> 
         let _timer = PER_WORKER_TIMER.timer_with(&[&idx, "block_total"]);
         // Share a VM in the same thread.
         // TODO(ptx): maybe warm up vm like done in AptosExecutorTask
-        let env = AptosEnvironment::new(&self.base_view);
+        let env = Libra2Environment::new(&self.base_view);
         let vm = {
             let _timer = PER_WORKER_TIMER.timer_with(&[&idx, "vm_init"]);
-            AptosVM::new(&env, &self.base_view)
+            Libra2VM::new(&env, &self.base_view)
         };
 
         loop {
@@ -263,7 +263,7 @@ impl<'scope, 'view: 'scope, BaseView: StateView + Sync> Worker<'view, BaseView> 
                         OverlayedStateView::new_with_overlay(self.base_view, dependencies);
                     let log_context = AdapterLogSchema::new(self.base_view.id(), txn_idx);
 
-                    let code_storage = state_view.as_aptos_code_storage(&env);
+                    let code_storage = state_view.as_libra2_code_storage(&env);
                     let vm_output = {
                         let _vm = PER_WORKER_TIMER.timer_with(&[&idx, "run_txn_vm"]);
                         vm.execute_single_transaction(

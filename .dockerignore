@@ -20,11 +20,11 @@
 !**/*.mpb
 !**/*.errmap
 !config/src/config/test_data
-!aptos-move/aptos-gas-profiling/templates/
-!aptos-move/aptos-release-builder/data/*.yaml
-!aptos-move/aptos-release-builder/data/proposals/*
-!aptos-move/framework/
-!aptos-move/move-examples/hello_blockchain/
+!libra2-move/libra2-gas-profiling/templates/
+!libra2-move/libra2-release-builder/data/*.yaml
+!libra2-move/libra2-release-builder/data/proposals/*
+!libra2-move/framework/
+!libra2-move/move-examples/hello_blockchain/
 !crates/aptos/src/move_tool/*.bpl
 !crates/libra2-localnet/src/hasura_metadata.json
 !crates/libra2-faucet/doc/
@@ -35,7 +35,7 @@
 !ecosystem/nft-metadata-crawler/migrations/**/*.sql
 !rust-toolchain.toml
 !scripts/
-!terraform/helm/aptos-node/
+!terraform/helm/libra2-node/
 !terraform/helm/genesis/
 !testsuite/forge/src/backend/k8s/
 !third_party/move/move-prover/boogie-backend/**/*.bpl

@@ -14,8 +14,8 @@ rust-version = { workspace = true }
 
 [dependencies]
 anyhow = { workspace = true }
-aptos-aggregator = { workspace = true }
-aptos-block-executor = { workspace = true }
+libra2-aggregator = { workspace = true }
+libra2-block-executor = { workspace = true }
 libra2-block-partitioner = { workspace = true }
 libra2-config = { workspace = true }
 libra2-crypto = { workspace = true }
@@ -30,7 +30,7 @@ libra2-infallible = { workspace = true }
 libra2-jellyfish-merkle = { workspace = true }
 libra2-logger = { workspace = true }
 libra2-metrics-core = { workspace = true }
-aptos-mvhashmap = { workspace = true }
+libra2-mvhashmap = { workspace = true }
 libra2-node-resource-metrics = { workspace = true }
 libra2-push-metrics =  { workspace = true }
 libra2-sdk = { workspace = true }
@@ -38,10 +38,10 @@ libra2-storage-interface = { workspace = true }
 libra2-transaction-generator-lib = { workspace = true }
 libra2-transaction-workloads-lib = { workspace = true }
 libra2-types = { workspace = true }
-aptos-vm = { workspace = true }
-aptos-vm-environment = { workspace = true }
-aptos-vm-logging = { workspace = true }
-aptos-vm-types = { workspace = true }
+libra2-vm = { workspace = true }
+libra2-vm-environment = { workspace = true }
+libra2-vm-logging = { workspace = true }
+libra2-vm-types = { workspace = true }
 async-trait = { workspace = true }
 bcs = { workspace = true }
 bytes = { workspace = true }

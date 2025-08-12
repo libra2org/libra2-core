@@ -302,7 +302,7 @@ TESTS = [
         waived=True,
     )
     for executor_sharding, executor_types in [
-        (False, ["VM", "NativeVM", "AptosVMSpeculative", "NativeSpeculative"]),
+        (False, ["VM", "NativeVM", "Libra2VMSpeculative", "NativeSpeculative"]),
         # executor sharding doesn't support FA for now.
         (True, [] if FA_MIGRATION_COMPLETE else ["VM", "NativeVM"])
     ]
@@ -330,7 +330,7 @@ TESTS = [
     )
     for sequential in [True, False]
     for executor_sharding, executor_types in [
-        (False, ["VM", "NativeVM", "AptosVMSpeculative", "NativeSpeculative", "NativeValueCacheSpeculative", "NativeNoStorageSpeculative"]),
+        (False, ["VM", "NativeVM", "Libra2VMSpeculative", "NativeSpeculative", "NativeValueCacheSpeculative", "NativeNoStorageSpeculative"]),
         # executor sharding doesn't support FA for now.
         (True, [] if FA_MIGRATION_COMPLETE else ["VM", "NativeVM"])
     ]
@@ -637,12 +637,12 @@ warnings = []
 with tempfile.TemporaryDirectory() as tmpdirname:
     move_e2e_benchmark_failed = False
     if not SKIP_MOVE_E2E:
-        execute_command(f"cargo build {BUILD_FLAG} --package aptos-move-e2e-benchmark")
+        execute_command(f"cargo build {BUILD_FLAG} --package libra2-move-e2e-benchmark")
         move_e2e_flags = (
             "--only-landblocking" if SELECTED_FLOW == Flow.LAND_BLOCKING else ""
         )
         try:
-            execute_command(f"RUST_BACKTRACE=1 {BUILD_FOLDER}/aptos-move-e2e-benchmark")
+            execute_command(f"RUST_BACKTRACE=1 {BUILD_FOLDER}/libra2-move-e2e-benchmark")
         except:
             # for land-blocking (i.e. on PR), fail immediately, for speedy response.
             # Otherwise run all tests, and fail in the end.
@@ -674,7 +674,7 @@ with tempfile.TemporaryDirectory() as tmpdirname:
 
     execute_command(f"cargo build {BUILD_FLAG} --package libra2-executor-benchmark")
     print(f"Warmup - creating DB with {NUM_ACCOUNTS} accounts")
-    create_db_command = f"PUSH_METRICS_NAMESPACE=benchmark-create-db RUST_BACKTRACE=1 {BUILD_FOLDER}/libra2-executor-benchmark --block-executor-type aptos-vm-with-block-stm --block-size {MAX_BLOCK_SIZE} --execution-threads {NUMBER_OF_EXECUTION_THREADS} {DB_CONFIG_FLAGS} {DB_PRUNER_FLAGS} create-db {FEATURE_FLAGS} --data-dir {tmpdirname}/db --num-accounts {NUM_ACCOUNTS}"
+    create_db_command = f"PUSH_METRICS_NAMESPACE=benchmark-create-db RUST_BACKTRACE=1 {BUILD_FOLDER}/libra2-executor-benchmark --block-executor-type libra2-vm-with-block-stm --block-size {MAX_BLOCK_SIZE} --execution-threads {NUMBER_OF_EXECUTION_THREADS} {DB_CONFIG_FLAGS} {DB_PRUNER_FLAGS} create-db {FEATURE_FLAGS} --data-dir {tmpdirname}/db --num-accounts {NUM_ACCOUNTS}"
     output = execute_command(create_db_command)
 
     results = []
@@ -774,11 +774,11 @@ with tempfile.TemporaryDirectory() as tmpdirname:
         )
 
         if test.key.executor_type == "VM":
-            executor_type_str = "--block-executor-type aptos-vm-with-block-stm"
+            executor_type_str = "--block-executor-type libra2-vm-with-block-stm"
         elif test.key.executor_type == "NativeVM":
             executor_type_str = "--block-executor-type native-vm-with-block-stm"
-        elif test.key.executor_type == "AptosVMSpeculative":
-            executor_type_str = "--block-executor-type aptos-vm-parallel-uncoordinated"
+        elif test.key.executor_type == "Libra2VMSpeculative":
+            executor_type_str = "--block-executor-type libra2-vm-parallel-uncoordinated"
         elif test.key.executor_type == "NativeSpeculative":
             executor_type_str = "--block-executor-type native-parallel-uncoordinated"
         elif test.key.executor_type == "NativeValueCacheSpeculative":

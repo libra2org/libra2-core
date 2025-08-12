@@ -17,7 +17,7 @@ cargo run -p aptos-forge-cli -- --suite "run_forever" --num-validators 4 --num-v
 
 Run local NHC:
 ```
-cargo run -p aptos-node-checker -- server run --baseline-node-config-paths ~/a/internal-ops/infra/apps/node-checker/configs/ait3_vfn.yaml --listen-address 0.0.0.0
+cargo run -p libra2-node-checker -- server run --baseline-node-config-paths ~/a/internal-ops/infra/apps/node-checker/configs/ait3_vfn.yaml --listen-address 0.0.0.0
 ```
 
 Run the tool:

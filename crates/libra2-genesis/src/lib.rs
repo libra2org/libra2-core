@@ -18,7 +18,7 @@ use libra2_config::config::{
 };
 use libra2_crypto::ed25519::Ed25519PublicKey;
 use libra2_db::Libra2DB;
-use aptos_framework::ReleaseBundle;
+use libra2_framework::ReleaseBundle;
 use libra2_storage_interface::DbReaderWriter;
 use libra2_temppath::TempPath;
 use libra2_types::{
@@ -32,8 +32,8 @@ use libra2_types::{
     transaction::Transaction,
     waypoint::Waypoint,
 };
-use aptos_vm::aptos_vm::AptosVMBlockExecutor;
-use aptos_vm_genesis::Validator;
+use libra2_vm::libra2_vm::Libra2VMBlockExecutor;
+use libra2_vm_genesis::Validator;
 use std::convert::TryInto;
 
 /// Holder object for all pieces needed to generate a genesis transaction
@@ -134,12 +134,12 @@ impl GenesisInfo {
     }
 
     fn generate_genesis_txn(&self) -> Transaction {
-        aptos_vm_genesis::encode_genesis_transaction(
+        libra2_vm_genesis::encode_genesis_transaction(
             self.root_key.clone(),
             &self.validators,
             &self.framework,
             self.chain_id,
-            &aptos_vm_genesis::GenesisConfiguration {
+            &libra2_vm_genesis::GenesisConfiguration {
                 allow_new_validators: self.allow_new_validators,
                 epoch_duration_secs: self.epoch_duration_secs,
                 is_test: true,
@@ -179,6 +179,6 @@ impl GenesisInfo {
             None,
         )?;
         let db_rw = DbReaderWriter::new(libra2db);
-        libra2_executor::db_bootstrapper::generate_waypoint::<AptosVMBlockExecutor>(&db_rw, genesis)
+        libra2_executor::db_bootstrapper::generate_waypoint::<Libra2VMBlockExecutor>(&db_rw, genesis)
     }
 }
