@@ -107,7 +107,7 @@
       "targets": [
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
-          "expr": "sum by (role_type, network_id) (aptos_connections{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", network_id=~\"$network_id\", role_type=~\"$role_type\", direction=\"inbound\"})",
+          "expr": "sum by (role_type, network_id) (libra2_connections{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", network_id=~\"$network_id\", role_type=~\"$role_type\", direction=\"inbound\"})",
           "legendFormat": "{{role_type}}-{{network_id}}",
           "refId": "A"
         }
@@ -233,7 +233,7 @@
       "targets": [
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
-          "expr": "rate(aptos_connections_rejected{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", network_id=~\"$network_id\", role_type=~\"$role_type\", direction=\"inbound\"}[1m])",
+          "expr": "rate(libra2_connections_rejected{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", network_id=~\"$network_id\", role_type=~\"$role_type\", direction=\"inbound\"}[1m])",
           "legendFormat": "{{role_type}}-{{network_id}}",
           "refId": "A"
         }

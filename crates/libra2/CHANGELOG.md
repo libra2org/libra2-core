@@ -41,7 +41,7 @@ All notable changes to the Libra2 CLI will be captured in this file. This projec
 - Add CLI outputs and on-disk storage to be stored in AIP-80 format.  Will allow for legacy formats to be taken in as well
 
 ## [7.0.0]
-- Compiler v1 is now deprecated. It is now removed from the Aptos CLI.
+- Compiler v1 is now deprecated. It is now removed from the Libra2 CLI.
 - Added a new option `aptos move compile --fail-on-warning` which fails the compilation if any warnings are found.
 - We now default to running extended checks when compiling test code (this was previously only done with the option `--check-test-code`, but this is no longer available). However, these checks can be now be skipped with `--skip-checks-on-test-code`.
 - Add network to show profiles.
@@ -57,7 +57,7 @@ All notable changes to the Libra2 CLI will be captured in this file. This projec
 stdin, which triggers a graceful shutdown when received.
 
 ## [6.1.0]
-- Remove FFI support from Aptos CLI.
+- Remove FFI support from Libra2 CLI.
 - Various compiler bug fixes.
 - Fix for coverage tool crash in the presence of inline functions.
 

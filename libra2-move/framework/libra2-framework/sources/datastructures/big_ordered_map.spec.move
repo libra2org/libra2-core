@@ -1,4 +1,4 @@
-spec aptos_std::big_ordered_map {
+spec libra2_std::big_ordered_map {
 
     spec BigOrderedMap {
         pragma intrinsic = map,

@@ -1,7 +1,7 @@
 // Copyright © Aptos Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-use crate::endpoints::{AptosTapError, AptosTapErrorCode};
+use crate::endpoints::{Libra2TapError, Libra2TapErrorCode};
 use anyhow::Result;
 use firebase_token::JwkAuth;
 use poem::http::{header::AUTHORIZATION, HeaderMap};
@@ -38,25 +38,25 @@ impl FirebaseJwtVerifier {
     /// and well-formed, we extract the token from the Authorization header and verify
     /// it with Firebase. If the token is invalid, we reject them. If it is valid, we
     /// return the UID (from the sub field).
-    pub async fn validate_jwt(&self, headers: Arc<HeaderMap>) -> Result<String, AptosTapError> {
+    pub async fn validate_jwt(&self, headers: Arc<HeaderMap>) -> Result<String, Libra2TapError> {
         let auth_token = jwt_sub(headers)?;
 
         let verify = self.jwt_verifier.verify::<JwtClaims>(&auth_token);
         let token_data = match verify.await {
             Some(token_data) => token_data,
             None => {
-                return Err(AptosTapError::new(
+                return Err(Libra2TapError::new(
                     "Failed to verify JWT token".to_string(),
-                    AptosTapErrorCode::AuthTokenInvalid,
+                    Libra2TapErrorCode::AuthTokenInvalid,
                 ));
             },
         };
         let claims = token_data.claims;
 
         if !claims.email_verified {
-            return Err(AptosTapError::new(
+            return Err(Libra2TapError::new(
                 "The JWT token is not verified".to_string(),
-                AptosTapErrorCode::AuthTokenInvalid,
+                Libra2TapErrorCode::AuthTokenInvalid,
             ));
         }
 
@@ -66,25 +66,25 @@ impl FirebaseJwtVerifier {
 
 /// Returns the sub field from a JWT if it is present (the Firebase UID).
 /// The X_IS_JWT_HEADER must be present and the value must be "true".
-pub fn jwt_sub(headers: Arc<HeaderMap>) -> Result<String, AptosTapError> {
+pub fn jwt_sub(headers: Arc<HeaderMap>) -> Result<String, Libra2TapError> {
     let is_jwt = headers
         .get(X_IS_JWT_HEADER)
         .and_then(|v| v.to_str().ok())
         .map(|v| v.eq_ignore_ascii_case("true"))
         .ok_or_else(|| {
-            AptosTapError::new(
+            Libra2TapError::new(
                 format!(
                     "The {} header must be present and set to 'true'",
                     X_IS_JWT_HEADER
                 ),
-                AptosTapErrorCode::AuthTokenInvalid,
+                Libra2TapErrorCode::AuthTokenInvalid,
             )
         })?;
 
     if !is_jwt {
-        return Err(AptosTapError::new(
+        return Err(Libra2TapError::new(
             format!("The {} header must be set to 'true'", X_IS_JWT_HEADER),
-            AptosTapErrorCode::AuthTokenInvalid,
+            Libra2TapErrorCode::AuthTokenInvalid,
         ));
     }
 
@@ -94,9 +94,9 @@ pub fn jwt_sub(headers: Arc<HeaderMap>) -> Result<String, AptosTapError> {
         .and_then(|v| v.split_whitespace().nth(1))
     {
         Some(auth_token) => Ok(auth_token.to_string()),
-        None => Err(AptosTapError::new(
+        None => Err(Libra2TapError::new(
             "Either the Authorization header is missing or it is not in the form of 'Bearer <token>'".to_string(),
-            AptosTapErrorCode::AuthTokenInvalid,
+            Libra2TapErrorCode::AuthTokenInvalid,
         )),
     }
 }

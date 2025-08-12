@@ -8,7 +8,7 @@ use super::{
     FunderHealthMessage, FunderTrait,
 };
 use crate::{
-    endpoints::{AptosTapError, AptosTapErrorCode, RejectionReason, RejectionReasonCode},
+    endpoints::{Libra2TapError, Libra2TapErrorCode, RejectionReason, RejectionReasonCode},
     funder::common::update_sequence_numbers,
     middleware::TRANSFER_FUNDER_ACCOUNT_BALANCE,
 };
@@ -172,7 +172,7 @@ impl TransferFunder {
         builder.build()
     }
 
-    async fn get_gas_unit_price(&self) -> Result<u64, AptosTapError> {
+    async fn get_gas_unit_price(&self) -> Result<u64, Libra2TapError> {
         match self.gas_unit_price_override {
             Some(gas_unit_price) => Ok(gas_unit_price),
             None => self
@@ -180,7 +180,7 @@ impl TransferFunder {
                 .get_gas_unit_price()
                 .await
                 .map_err(|e| {
-                    AptosTapError::new_with_error_code(e, AptosTapErrorCode::AptosApiError)
+                    Libra2TapError::new_with_error_code(e, Libra2TapErrorCode::Libra2ApiError)
                 }),
         }
     }
@@ -193,7 +193,7 @@ impl TransferFunder {
         payload: TransactionPayload,
         // Only used for logging.
         receiver_address: &AccountAddress,
-    ) -> Result<SignedTransaction, AptosTapError> {
+    ) -> Result<SignedTransaction, Libra2TapError> {
         // Build a transaction factory using the gas unit price from the
         // GasUnitPriceManager. This mostly ensures that we will build a
         // transaction with a gas unit price that will be accepted.
@@ -220,17 +220,17 @@ impl TransferFunder {
         .await
     }
 
-    async fn is_healthy_as_result(&self) -> Result<(), AptosTapError> {
+    async fn is_healthy_as_result(&self) -> Result<(), Libra2TapError> {
         let funder_health = self.is_healthy().await;
         if !funder_health.can_process_requests {
-            return Err(AptosTapError::new(
+            return Err(Libra2TapError::new(
                 format!(
                     "Tap TransferFunder is not able to handle requests right now: {}",
                     funder_health
                         .message
                         .unwrap_or_else(|| "no message".to_string()),
                 ),
-                AptosTapErrorCode::FunderAccountProblem,
+                Libra2TapErrorCode::FunderAccountProblem,
             ));
         }
         Ok(())
@@ -255,7 +255,7 @@ impl FunderTrait for TransferFunder {
         receiver_address: AccountAddress,
         check_only: bool,
         did_bypass_checkers: bool,
-    ) -> Result<Vec<SignedTransaction>, AptosTapError> {
+    ) -> Result<Vec<SignedTransaction>, Libra2TapError> {
         // Confirm the funder has sufficient balance, return a 500 if not. This
         // will only happen briefly, soon after we get into this state the LB
         // will deregister this instance based on the health check responses
@@ -281,9 +281,9 @@ impl FunderTrait for TransferFunder {
         // When updating the sequence numbers, we expect that the receiver sequence
         // number should be None, because the account should not exist yet.
         if receiver_seq_num.is_some() {
-            return Err(AptosTapError::new(
+            return Err(Libra2TapError::new(
                 "Account ineligible".to_string(),
-                AptosTapErrorCode::Rejected,
+                Libra2TapErrorCode::Rejected,
             )
             .rejection_reasons(vec![RejectionReason::new(
                 format!("Account {} already exists", receiver_address),

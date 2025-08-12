@@ -1,6 +1,6 @@
 #[test_only]
-module aptos_std::math64_tests {
-    use aptos_std::math64;
+module libra2_std::math64_tests {
+    use libra2_std::math64;
 
     #[test]
     fun test_nested_mul_div() {

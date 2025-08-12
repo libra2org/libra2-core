@@ -2,7 +2,7 @@ spec libra2_framework::transaction_fee {
     /// <high-level-req>
     /// No.: 1
     /// Requirement: Given the blockchain is in an operating state, it guarantees that the Aptos framework signer may burn
-    /// Aptos coins.
+    /// Libra2 coins.
     /// Criticality: Critical
     /// Implementation: The Libra2CoinCapabilities structure is defined in this module and it stores burn capability to
     /// burn the gas fees.
@@ -56,7 +56,7 @@ spec libra2_framework::transaction_fee {
         pragma verify = false;
 
         pragma aborts_if_is_strict;
-        // property 1: Given the blockchain is in an operating state, it guarantees that the Aptos framework signer may burn Aptos coins.
+        // property 1: Given the blockchain is in an operating state, it guarantees that the Aptos framework signer may burn Libra2 coins.
         /// [high-level-req-1]
         invariant [suspendable] chain_status::is_operating() ==> exists<Libra2CoinCapabilities>(@libra2_framework) || exists<AptosFABurnCapabilities>(@libra2_framework);
     }
@@ -72,7 +72,7 @@ spec libra2_framework::transaction_fee {
 
     /// `Libra2CoinCapabilities` should be exists.
     spec burn_fee(account: address, fee: u64) {
-        use aptos_std::type_info;
+        use libra2_std::type_info;
         use libra2_framework::optional_aggregator;
         use libra2_framework::coin;
         use libra2_framework::coin::{CoinInfo, CoinStore};
@@ -115,7 +115,7 @@ spec libra2_framework::transaction_fee {
     }
 
     spec mint_and_refund(account: address, refund: u64) {
-        use aptos_std::type_info;
+        use libra2_std::type_info;
         use libra2_framework::libra2_coin::Libra2Coin;
         use libra2_framework::coin::{CoinInfo, CoinStore};
         use libra2_framework::coin;

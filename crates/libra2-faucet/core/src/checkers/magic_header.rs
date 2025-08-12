@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use super::{CheckerData, CheckerTrait};
-use crate::endpoints::{AptosTapError, RejectionReason, RejectionReasonCode};
+use crate::endpoints::{Libra2TapError, RejectionReason, RejectionReasonCode};
 use anyhow::Result;
 use async_trait::async_trait;
 use serde::{Deserialize, Serialize};
@@ -29,7 +29,7 @@ impl CheckerTrait for MagicHeaderChecker {
         &self,
         data: CheckerData,
         _dry_run: bool,
-    ) -> Result<Vec<RejectionReason>, AptosTapError> {
+    ) -> Result<Vec<RejectionReason>, Libra2TapError> {
         let header_value = match data.headers.get(&self.config.magic_header_key) {
             Some(header_value) => header_value,
             None => {

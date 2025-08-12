@@ -7,7 +7,7 @@
 
 use super::{CheckerData, CheckerTrait};
 use crate::endpoints::{
-    AptosTapError, AptosTapErrorCode, RejectionReason, RejectionReasonCode, CAPTCHA_KEY,
+    Libra2TapError, Libra2TapErrorCode, RejectionReason, RejectionReasonCode, CAPTCHA_KEY,
     CAPTCHA_VALUE,
 };
 use anyhow::{bail, Context, Result};
@@ -51,12 +51,12 @@ impl CheckerTrait for TapCaptchaChecker {
         &self,
         data: CheckerData,
         _dry_run: bool,
-    ) -> Result<Vec<RejectionReason>, AptosTapError> {
+    ) -> Result<Vec<RejectionReason>, Libra2TapError> {
         let captcha_key = match data.headers.get(CAPTCHA_KEY) {
             Some(header_value) => match header_value
                 .to_str()
                 .map_err(|e| {
-                    AptosTapError::new_with_error_code(e, AptosTapErrorCode::InvalidRequest)
+                    Libra2TapError::new_with_error_code(e, Libra2TapErrorCode::InvalidRequest)
                 })?
                 .parse::<u32>()
             {
@@ -78,7 +78,7 @@ impl CheckerTrait for TapCaptchaChecker {
 
         let captcha_value = match data.headers.get(CAPTCHA_VALUE) {
             Some(header_value) => header_value.to_str().map_err(|e| {
-                AptosTapError::new_with_error_code(e, AptosTapErrorCode::InvalidRequest)
+                Libra2TapError::new_with_error_code(e, Libra2TapErrorCode::InvalidRequest)
             })?,
             None => {
                 return Ok(vec![RejectionReason::new(

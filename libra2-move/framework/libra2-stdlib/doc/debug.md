@@ -112,7 +112,7 @@ Module providing debug functionality.
 
 
 <pre><code>inline <b>fun</b> <a href="debug.md#0x1_debug_format">format</a>&lt;T&gt;(x: &T): String {
-    aptos_std::string_utils::debug_string(x)
+    libra2_std::string_utils::debug_string(x)
 }
 </code></pre>
 

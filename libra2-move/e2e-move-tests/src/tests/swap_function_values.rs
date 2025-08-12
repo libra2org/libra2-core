@@ -35,7 +35,7 @@ fn swap_function_values() {
     "#;
     builder.add_source("swap_function_values.move", source);
     builder.add_local_dep(
-        "AptosStdlib",
+        "Libra2Stdlib",
         &common::framework_dir_path("libra2-stdlib").to_string_lossy(),
     );
     let path = builder.write_to_temp().unwrap();

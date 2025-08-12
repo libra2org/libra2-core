@@ -255,150 +255,6 @@ pub enum EntryFunctionCall {
 
     AccountAbstractionRemoveDispatchableAuthenticator {},
 
-    /// Batch version of APT transfer.
-    Libra2AccountBatchTransfer {
-        recipients: Vec<AccountAddress>,
-        amounts: Vec<u64>,
-    },
-
-    /// Batch version of transfer_coins.
-    Libra2AccountBatchTransferCoins {
-        coin_type: TypeTag,
-        recipients: Vec<AccountAddress>,
-        amounts: Vec<u64>,
-    },
-
-    /// Basic account creation methods.
-    Libra2AccountCreateAccount {
-        auth_key: AccountAddress,
-    },
-
-    /// APT Primary Fungible Store specific specialized functions,
-    /// Utilized internally once migration of APT to FungibleAsset is complete.
-    /// Convenient function to transfer APT to a recipient account that might not exist.
-    /// This would create the recipient APT PFS first, which also registers it to receive APT, before transferring.
-    /// TODO: once migration is complete, rename to just "transfer_only" and make it an entry function (for cheapest way
-    /// to transfer APT) - if we want to allow APT PFS without account itself
-    Libra2AccountFungibleTransferOnly {
-        to: AccountAddress,
-        amount: u64,
-    },
-
-    /// Set whether `account` can receive direct transfers of coins that they have not explicitly registered to receive.
-    Libra2AccountSetAllowDirectCoinTransfers {
-        allow: bool,
-    },
-
-    /// Convenient function to transfer APT to a recipient account that might not exist.
-    /// This would create the recipient account first, which also registers it to receive APT, before transferring.
-    Libra2AccountTransfer {
-        to: AccountAddress,
-        amount: u64,
-    },
-
-    /// Convenient function to transfer a custom CoinType to a recipient account that might not exist.
-    /// This would create the recipient account first and register it to receive the CoinType, before transferring.
-    Libra2AccountTransferCoins {
-        coin_type: TypeTag,
-        to: AccountAddress,
-        amount: u64,
-    },
-
-    /// Only callable in tests and testnets where the core resources account exists.
-    /// Claim the delegated mint capability and destroy the delegated token.
-    Libra2CoinClaimMintCapability {},
-
-    /// Only callable in tests and testnets where the core resources account exists.
-    /// Create delegated token for the address so the account could claim MintCapability later.
-    Libra2CoinDelegateMintCapability {
-        to: AccountAddress,
-    },
-
-    /// Only callable in tests and testnets where the core resources account exists.
-    /// Create new coins and deposit them into dst_addr's account.
-    Libra2CoinMint {
-        dst_addr: AccountAddress,
-        amount: u64,
-    },
-
-    Libra2GovernanceAddApprovedScriptHashScript {
-        proposal_id: u64,
-    },
-
-    /// Batch vote on proposal with proposal_id and specified voting power from multiple stake_pools.
-    Libra2GovernanceBatchPartialVote {
-        stake_pools: Vec<AccountAddress>,
-        proposal_id: u64,
-        voting_power: u64,
-        should_pass: bool,
-    },
-
-    /// Vote on proposal with proposal_id and all voting power from multiple stake_pools.
-    Libra2GovernanceBatchVote {
-        stake_pools: Vec<AccountAddress>,
-        proposal_id: u64,
-        should_pass: bool,
-    },
-
-    /// Create a single-step proposal with the backing `stake_pool`.
-    /// @param execution_hash Required. This is the hash of the resolution script. When the proposal is resolved,
-    /// only the exact script with matching hash can be successfully executed.
-    Libra2GovernanceCreateProposal {
-        stake_pool: AccountAddress,
-        execution_hash: Vec<u8>,
-        metadata_location: Vec<u8>,
-        metadata_hash: Vec<u8>,
-    },
-
-    /// Create a single-step or multi-step proposal with the backing `stake_pool`.
-    /// @param execution_hash Required. This is the hash of the resolution script. When the proposal is resolved,
-    /// only the exact script with matching hash can be successfully executed.
-    Libra2GovernanceCreateProposalV2 {
-        stake_pool: AccountAddress,
-        execution_hash: Vec<u8>,
-        metadata_location: Vec<u8>,
-        metadata_hash: Vec<u8>,
-        is_multi_step_proposal: bool,
-    },
-
-    /// Change epoch immediately.
-    /// If `RECONFIGURE_WITH_DKG` is enabled and we are in the middle of a DKG,
-    /// stop waiting for DKG and enter the new epoch without randomness.
-    ///
-    /// WARNING: currently only used by tests. In most cases you should use `reconfigure()` instead.
-    /// TODO: migrate these tests to be aware of async reconfiguration.
-    Libra2GovernanceForceEndEpoch {},
-
-    /// `force_end_epoch()` equivalent but only called in testnet,
-    /// where the core resources account exists and has been granted power to mint Aptos coins.
-    Libra2GovernanceForceEndEpochTestOnly {},
-
-    /// Vote on proposal with `proposal_id` and specified voting power from `stake_pool`.
-    Libra2GovernancePartialVote {
-        stake_pool: AccountAddress,
-        proposal_id: u64,
-        voting_power: u64,
-        should_pass: bool,
-    },
-
-    /// Manually reconfigure. Called at the end of a governance txn that alters on-chain configs.
-    ///
-    /// WARNING: this function always ensures a reconfiguration starts, but when the reconfiguration finishes depends.
-    /// - If feature `RECONFIGURE_WITH_DKG` is disabled, it finishes immediately.
-    ///   - At the end of the calling transaction, we will be in a new epoch.
-    /// - If feature `RECONFIGURE_WITH_DKG` is enabled, it starts DKG, and the new epoch will start in a block prologue after DKG finishes.
-    ///
-    /// This behavior affects when an update of an on-chain config (e.g. `ConsensusConfig`, `Features`) takes effect,
-    /// since such updates are applied whenever we enter an new epoch.
-    Libra2GovernanceReconfigure {},
-
-    /// Vote on proposal with `proposal_id` and all voting power from `stake_pool`.
-    Libra2GovernanceVote {
-        stake_pool: AccountAddress,
-        proposal_id: u64,
-        should_pass: bool,
-    },
-
     /// Same as `publish_package` but as an entry function which can be called as a transaction. Because
     /// of current restrictions for txn parameters, the metadata needs to be passed in serialized form.
     CodePublishPackageTxn {
@@ -618,6 +474,150 @@ pub enum EntryFunctionCall {
         n_vec: Vec<Vec<u8>>,
     },
 
+    /// Batch version of APT transfer.
+    Libra2AccountBatchTransfer {
+        recipients: Vec<AccountAddress>,
+        amounts: Vec<u64>,
+    },
+
+    /// Batch version of transfer_coins.
+    Libra2AccountBatchTransferCoins {
+        coin_type: TypeTag,
+        recipients: Vec<AccountAddress>,
+        amounts: Vec<u64>,
+    },
+
+    /// Basic account creation methods.
+    Libra2AccountCreateAccount {
+        auth_key: AccountAddress,
+    },
+
+    /// APT Primary Fungible Store specific specialized functions,
+    /// Utilized internally once migration of APT to FungibleAsset is complete.
+    /// Convenient function to transfer APT to a recipient account that might not exist.
+    /// This would create the recipient APT PFS first, which also registers it to receive APT, before transferring.
+    /// TODO: once migration is complete, rename to just "transfer_only" and make it an entry function (for cheapest way
+    /// to transfer APT) - if we want to allow APT PFS without account itself
+    Libra2AccountFungibleTransferOnly {
+        to: AccountAddress,
+        amount: u64,
+    },
+
+    /// Set whether `account` can receive direct transfers of coins that they have not explicitly registered to receive.
+    Libra2AccountSetAllowDirectCoinTransfers {
+        allow: bool,
+    },
+
+    /// Convenient function to transfer APT to a recipient account that might not exist.
+    /// This would create the recipient account first, which also registers it to receive APT, before transferring.
+    Libra2AccountTransfer {
+        to: AccountAddress,
+        amount: u64,
+    },
+
+    /// Convenient function to transfer a custom CoinType to a recipient account that might not exist.
+    /// This would create the recipient account first and register it to receive the CoinType, before transferring.
+    Libra2AccountTransferCoins {
+        coin_type: TypeTag,
+        to: AccountAddress,
+        amount: u64,
+    },
+
+    /// Only callable in tests and testnets where the core resources account exists.
+    /// Claim the delegated mint capability and destroy the delegated token.
+    Libra2CoinClaimMintCapability {},
+
+    /// Only callable in tests and testnets where the core resources account exists.
+    /// Create delegated token for the address so the account could claim MintCapability later.
+    Libra2CoinDelegateMintCapability {
+        to: AccountAddress,
+    },
+
+    /// Only callable in tests and testnets where the core resources account exists.
+    /// Create new coins and deposit them into dst_addr's account.
+    Libra2CoinMint {
+        dst_addr: AccountAddress,
+        amount: u64,
+    },
+
+    Libra2GovernanceAddApprovedScriptHashScript {
+        proposal_id: u64,
+    },
+
+    /// Batch vote on proposal with proposal_id and specified voting power from multiple stake_pools.
+    Libra2GovernanceBatchPartialVote {
+        stake_pools: Vec<AccountAddress>,
+        proposal_id: u64,
+        voting_power: u64,
+        should_pass: bool,
+    },
+
+    /// Vote on proposal with proposal_id and all voting power from multiple stake_pools.
+    Libra2GovernanceBatchVote {
+        stake_pools: Vec<AccountAddress>,
+        proposal_id: u64,
+        should_pass: bool,
+    },
+
+    /// Create a single-step proposal with the backing `stake_pool`.
+    /// @param execution_hash Required. This is the hash of the resolution script. When the proposal is resolved,
+    /// only the exact script with matching hash can be successfully executed.
+    Libra2GovernanceCreateProposal {
+        stake_pool: AccountAddress,
+        execution_hash: Vec<u8>,
+        metadata_location: Vec<u8>,
+        metadata_hash: Vec<u8>,
+    },
+
+    /// Create a single-step or multi-step proposal with the backing `stake_pool`.
+    /// @param execution_hash Required. This is the hash of the resolution script. When the proposal is resolved,
+    /// only the exact script with matching hash can be successfully executed.
+    Libra2GovernanceCreateProposalV2 {
+        stake_pool: AccountAddress,
+        execution_hash: Vec<u8>,
+        metadata_location: Vec<u8>,
+        metadata_hash: Vec<u8>,
+        is_multi_step_proposal: bool,
+    },
+
+    /// Change epoch immediately.
+    /// If `RECONFIGURE_WITH_DKG` is enabled and we are in the middle of a DKG,
+    /// stop waiting for DKG and enter the new epoch without randomness.
+    ///
+    /// WARNING: currently only used by tests. In most cases you should use `reconfigure()` instead.
+    /// TODO: migrate these tests to be aware of async reconfiguration.
+    Libra2GovernanceForceEndEpoch {},
+
+    /// `force_end_epoch()` equivalent but only called in testnet,
+    /// where the core resources account exists and has been granted power to mint Libra2 coins.
+    Libra2GovernanceForceEndEpochTestOnly {},
+
+    /// Vote on proposal with `proposal_id` and specified voting power from `stake_pool`.
+    Libra2GovernancePartialVote {
+        stake_pool: AccountAddress,
+        proposal_id: u64,
+        voting_power: u64,
+        should_pass: bool,
+    },
+
+    /// Manually reconfigure. Called at the end of a governance txn that alters on-chain configs.
+    ///
+    /// WARNING: this function always ensures a reconfiguration starts, but when the reconfiguration finishes depends.
+    /// - If feature `RECONFIGURE_WITH_DKG` is disabled, it finishes immediately.
+    ///   - At the end of the calling transaction, we will be in a new epoch.
+    /// - If feature `RECONFIGURE_WITH_DKG` is enabled, it starts DKG, and the new epoch will start in a block prologue after DKG finishes.
+    ///
+    /// This behavior affects when an update of an on-chain config (e.g. `ConsensusConfig`, `Features`) takes effect,
+    /// since such updates are applied whenever we enter an new epoch.
+    Libra2GovernanceReconfigure {},
+
+    /// Vote on proposal with `proposal_id` and all voting power from `stake_pool`.
+    Libra2GovernanceVote {
+        stake_pool: AccountAddress,
+        proposal_id: u64,
+        should_pass: bool,
+    },
+
     /// Withdraw an `amount` of coin `CoinType` from `account` and burn it.
     ManagedCoinBurn {
         coin_type: TypeTag,
@@ -629,7 +629,7 @@ pub enum EntryFunctionCall {
         coin_type: TypeTag,
     },
 
-    /// Initialize new coin `CoinType` in Aptos Blockchain.
+    /// Initialize new coin `CoinType` in Libra2 Blockchain.
     /// Mint and Burn Capabilities will be stored under `account` in `Capabilities` resource.
     ManagedCoinInitialize {
         coin_type: TypeTag,
@@ -1384,90 +1384,6 @@ impl EntryFunctionCall {
             AccountAbstractionRemoveDispatchableAuthenticator {} => {
                 account_abstraction_remove_dispatchable_authenticator()
             },
-            Libra2AccountBatchTransfer {
-                recipients,
-                amounts,
-            } => libra2_account_batch_transfer(recipients, amounts),
-            Libra2AccountBatchTransferCoins {
-                coin_type,
-                recipients,
-                amounts,
-            } => libra2_account_batch_transfer_coins(coin_type, recipients, amounts),
-            Libra2AccountCreateAccount { auth_key } => libra2_account_create_account(auth_key),
-            Libra2AccountFungibleTransferOnly { to, amount } => {
-                libra2_account_fungible_transfer_only(to, amount)
-            },
-            Libra2AccountSetAllowDirectCoinTransfers { allow } => {
-                libra2_account_set_allow_direct_coin_transfers(allow)
-            },
-            Libra2AccountTransfer { to, amount } => libra2_account_transfer(to, amount),
-            Libra2AccountTransferCoins {
-                coin_type,
-                to,
-                amount,
-            } => libra2_account_transfer_coins(coin_type, to, amount),
-            Libra2CoinClaimMintCapability {} => libra2_coin_claim_mint_capability(),
-            Libra2CoinDelegateMintCapability { to } => libra2_coin_delegate_mint_capability(to),
-            Libra2CoinMint { dst_addr, amount } => libra2_coin_mint(dst_addr, amount),
-            Libra2GovernanceAddApprovedScriptHashScript { proposal_id } => {
-                libra2_governance_add_approved_script_hash_script(proposal_id)
-            },
-            Libra2GovernanceBatchPartialVote {
-                stake_pools,
-                proposal_id,
-                voting_power,
-                should_pass,
-            } => libra2_governance_batch_partial_vote(
-                stake_pools,
-                proposal_id,
-                voting_power,
-                should_pass,
-            ),
-            Libra2GovernanceBatchVote {
-                stake_pools,
-                proposal_id,
-                should_pass,
-            } => libra2_governance_batch_vote(stake_pools, proposal_id, should_pass),
-            Libra2GovernanceCreateProposal {
-                stake_pool,
-                execution_hash,
-                metadata_location,
-                metadata_hash,
-            } => libra2_governance_create_proposal(
-                stake_pool,
-                execution_hash,
-                metadata_location,
-                metadata_hash,
-            ),
-            Libra2GovernanceCreateProposalV2 {
-                stake_pool,
-                execution_hash,
-                metadata_location,
-                metadata_hash,
-                is_multi_step_proposal,
-            } => libra2_governance_create_proposal_v2(
-                stake_pool,
-                execution_hash,
-                metadata_location,
-                metadata_hash,
-                is_multi_step_proposal,
-            ),
-            Libra2GovernanceForceEndEpoch {} => libra2_governance_force_end_epoch(),
-            Libra2GovernanceForceEndEpochTestOnly {} => {
-                libra2_governance_force_end_epoch_test_only()
-            },
-            Libra2GovernancePartialVote {
-                stake_pool,
-                proposal_id,
-                voting_power,
-                should_pass,
-            } => libra2_governance_partial_vote(stake_pool, proposal_id, voting_power, should_pass),
-            Libra2GovernanceReconfigure {} => libra2_governance_reconfigure(),
-            Libra2GovernanceVote {
-                stake_pool,
-                proposal_id,
-                should_pass,
-            } => libra2_governance_vote(stake_pool, proposal_id, should_pass),
             CodePublishPackageTxn {
                 metadata_serialized,
                 code,
@@ -1571,6 +1487,90 @@ impl EntryFunctionCall {
                 e_vec,
                 n_vec,
             } => jwks_update_federated_jwk_set(iss, kid_vec, alg_vec, e_vec, n_vec),
+            Libra2AccountBatchTransfer {
+                recipients,
+                amounts,
+            } => libra2_account_batch_transfer(recipients, amounts),
+            Libra2AccountBatchTransferCoins {
+                coin_type,
+                recipients,
+                amounts,
+            } => libra2_account_batch_transfer_coins(coin_type, recipients, amounts),
+            Libra2AccountCreateAccount { auth_key } => libra2_account_create_account(auth_key),
+            Libra2AccountFungibleTransferOnly { to, amount } => {
+                libra2_account_fungible_transfer_only(to, amount)
+            },
+            Libra2AccountSetAllowDirectCoinTransfers { allow } => {
+                libra2_account_set_allow_direct_coin_transfers(allow)
+            },
+            Libra2AccountTransfer { to, amount } => libra2_account_transfer(to, amount),
+            Libra2AccountTransferCoins {
+                coin_type,
+                to,
+                amount,
+            } => libra2_account_transfer_coins(coin_type, to, amount),
+            Libra2CoinClaimMintCapability {} => libra2_coin_claim_mint_capability(),
+            Libra2CoinDelegateMintCapability { to } => libra2_coin_delegate_mint_capability(to),
+            Libra2CoinMint { dst_addr, amount } => libra2_coin_mint(dst_addr, amount),
+            Libra2GovernanceAddApprovedScriptHashScript { proposal_id } => {
+                libra2_governance_add_approved_script_hash_script(proposal_id)
+            },
+            Libra2GovernanceBatchPartialVote {
+                stake_pools,
+                proposal_id,
+                voting_power,
+                should_pass,
+            } => libra2_governance_batch_partial_vote(
+                stake_pools,
+                proposal_id,
+                voting_power,
+                should_pass,
+            ),
+            Libra2GovernanceBatchVote {
+                stake_pools,
+                proposal_id,
+                should_pass,
+            } => libra2_governance_batch_vote(stake_pools, proposal_id, should_pass),
+            Libra2GovernanceCreateProposal {
+                stake_pool,
+                execution_hash,
+                metadata_location,
+                metadata_hash,
+            } => libra2_governance_create_proposal(
+                stake_pool,
+                execution_hash,
+                metadata_location,
+                metadata_hash,
+            ),
+            Libra2GovernanceCreateProposalV2 {
+                stake_pool,
+                execution_hash,
+                metadata_location,
+                metadata_hash,
+                is_multi_step_proposal,
+            } => libra2_governance_create_proposal_v2(
+                stake_pool,
+                execution_hash,
+                metadata_location,
+                metadata_hash,
+                is_multi_step_proposal,
+            ),
+            Libra2GovernanceForceEndEpoch {} => libra2_governance_force_end_epoch(),
+            Libra2GovernanceForceEndEpochTestOnly {} => {
+                libra2_governance_force_end_epoch_test_only()
+            },
+            Libra2GovernancePartialVote {
+                stake_pool,
+                proposal_id,
+                voting_power,
+                should_pass,
+            } => libra2_governance_partial_vote(stake_pool, proposal_id, voting_power, should_pass),
+            Libra2GovernanceReconfigure {} => libra2_governance_reconfigure(),
+            Libra2GovernanceVote {
+                stake_pool,
+                proposal_id,
+                should_pass,
+            } => libra2_governance_vote(stake_pool, proposal_id, should_pass),
             ManagedCoinBurn { coin_type, amount } => managed_coin_burn(coin_type, amount),
             ManagedCoinDestroyCaps { coin_type } => managed_coin_destroy_caps(coin_type),
             ManagedCoinInitialize {
@@ -2516,434 +2516,6 @@ pub fn account_abstraction_remove_dispatchable_authenticator() -> TransactionPay
     ))
 }
 
-/// Batch version of APT transfer.
-pub fn libra2_account_batch_transfer(
-    recipients: Vec<AccountAddress>,
-    amounts: Vec<u64>,
-) -> TransactionPayload {
-    TransactionPayload::EntryFunction(EntryFunction::new(
-        ModuleId::new(
-            AccountAddress::new([
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 1,
-            ]),
-            ident_str!("libra2_account").to_owned(),
-        ),
-        ident_str!("batch_transfer").to_owned(),
-        vec![],
-        vec![
-            bcs::to_bytes(&recipients).unwrap(),
-            bcs::to_bytes(&amounts).unwrap(),
-        ],
-    ))
-}
-
-/// Batch version of transfer_coins.
-pub fn libra2_account_batch_transfer_coins(
-    coin_type: TypeTag,
-    recipients: Vec<AccountAddress>,
-    amounts: Vec<u64>,
-) -> TransactionPayload {
-    TransactionPayload::EntryFunction(EntryFunction::new(
-        ModuleId::new(
-            AccountAddress::new([
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 1,
-            ]),
-            ident_str!("libra2_account").to_owned(),
-        ),
-        ident_str!("batch_transfer_coins").to_owned(),
-        vec![coin_type],
-        vec![
-            bcs::to_bytes(&recipients).unwrap(),
-            bcs::to_bytes(&amounts).unwrap(),
-        ],
-    ))
-}
-
-/// Basic account creation methods.
-pub fn libra2_account_create_account(auth_key: AccountAddress) -> TransactionPayload {
-    TransactionPayload::EntryFunction(EntryFunction::new(
-        ModuleId::new(
-            AccountAddress::new([
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 1,
-            ]),
-            ident_str!("libra2_account").to_owned(),
-        ),
-        ident_str!("create_account").to_owned(),
-        vec![],
-        vec![bcs::to_bytes(&auth_key).unwrap()],
-    ))
-}
-
-/// APT Primary Fungible Store specific specialized functions,
-/// Utilized internally once migration of APT to FungibleAsset is complete.
-/// Convenient function to transfer APT to a recipient account that might not exist.
-/// This would create the recipient APT PFS first, which also registers it to receive APT, before transferring.
-/// TODO: once migration is complete, rename to just "transfer_only" and make it an entry function (for cheapest way
-/// to transfer APT) - if we want to allow APT PFS without account itself
-pub fn libra2_account_fungible_transfer_only(
-    to: AccountAddress,
-    amount: u64,
-) -> TransactionPayload {
-    TransactionPayload::EntryFunction(EntryFunction::new(
-        ModuleId::new(
-            AccountAddress::new([
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 1,
-            ]),
-            ident_str!("libra2_account").to_owned(),
-        ),
-        ident_str!("fungible_transfer_only").to_owned(),
-        vec![],
-        vec![bcs::to_bytes(&to).unwrap(), bcs::to_bytes(&amount).unwrap()],
-    ))
-}
-
-/// Set whether `account` can receive direct transfers of coins that they have not explicitly registered to receive.
-pub fn libra2_account_set_allow_direct_coin_transfers(allow: bool) -> TransactionPayload {
-    TransactionPayload::EntryFunction(EntryFunction::new(
-        ModuleId::new(
-            AccountAddress::new([
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 1,
-            ]),
-            ident_str!("libra2_account").to_owned(),
-        ),
-        ident_str!("set_allow_direct_coin_transfers").to_owned(),
-        vec![],
-        vec![bcs::to_bytes(&allow).unwrap()],
-    ))
-}
-
-/// Convenient function to transfer APT to a recipient account that might not exist.
-/// This would create the recipient account first, which also registers it to receive APT, before transferring.
-pub fn libra2_account_transfer(to: AccountAddress, amount: u64) -> TransactionPayload {
-    TransactionPayload::EntryFunction(EntryFunction::new(
-        ModuleId::new(
-            AccountAddress::new([
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 1,
-            ]),
-            ident_str!("libra2_account").to_owned(),
-        ),
-        ident_str!("transfer").to_owned(),
-        vec![],
-        vec![bcs::to_bytes(&to).unwrap(), bcs::to_bytes(&amount).unwrap()],
-    ))
-}
-
-/// Convenient function to transfer a custom CoinType to a recipient account that might not exist.
-/// This would create the recipient account first and register it to receive the CoinType, before transferring.
-pub fn libra2_account_transfer_coins(
-    coin_type: TypeTag,
-    to: AccountAddress,
-    amount: u64,
-) -> TransactionPayload {
-    TransactionPayload::EntryFunction(EntryFunction::new(
-        ModuleId::new(
-            AccountAddress::new([
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 1,
-            ]),
-            ident_str!("libra2_account").to_owned(),
-        ),
-        ident_str!("transfer_coins").to_owned(),
-        vec![coin_type],
-        vec![bcs::to_bytes(&to).unwrap(), bcs::to_bytes(&amount).unwrap()],
-    ))
-}
-
-/// Only callable in tests and testnets where the core resources account exists.
-/// Claim the delegated mint capability and destroy the delegated token.
-pub fn libra2_coin_claim_mint_capability() -> TransactionPayload {
-    TransactionPayload::EntryFunction(EntryFunction::new(
-        ModuleId::new(
-            AccountAddress::new([
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 1,
-            ]),
-            ident_str!("libra2_coin").to_owned(),
-        ),
-        ident_str!("claim_mint_capability").to_owned(),
-        vec![],
-        vec![],
-    ))
-}
-
-/// Only callable in tests and testnets where the core resources account exists.
-/// Create delegated token for the address so the account could claim MintCapability later.
-pub fn libra2_coin_delegate_mint_capability(to: AccountAddress) -> TransactionPayload {
-    TransactionPayload::EntryFunction(EntryFunction::new(
-        ModuleId::new(
-            AccountAddress::new([
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 1,
-            ]),
-            ident_str!("libra2_coin").to_owned(),
-        ),
-        ident_str!("delegate_mint_capability").to_owned(),
-        vec![],
-        vec![bcs::to_bytes(&to).unwrap()],
-    ))
-}
-
-/// Only callable in tests and testnets where the core resources account exists.
-/// Create new coins and deposit them into dst_addr's account.
-pub fn libra2_coin_mint(dst_addr: AccountAddress, amount: u64) -> TransactionPayload {
-    TransactionPayload::EntryFunction(EntryFunction::new(
-        ModuleId::new(
-            AccountAddress::new([
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 1,
-            ]),
-            ident_str!("libra2_coin").to_owned(),
-        ),
-        ident_str!("mint").to_owned(),
-        vec![],
-        vec![
-            bcs::to_bytes(&dst_addr).unwrap(),
-            bcs::to_bytes(&amount).unwrap(),
-        ],
-    ))
-}
-
-pub fn libra2_governance_add_approved_script_hash_script(proposal_id: u64) -> TransactionPayload {
-    TransactionPayload::EntryFunction(EntryFunction::new(
-        ModuleId::new(
-            AccountAddress::new([
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 1,
-            ]),
-            ident_str!("libra2_governance").to_owned(),
-        ),
-        ident_str!("add_approved_script_hash_script").to_owned(),
-        vec![],
-        vec![bcs::to_bytes(&proposal_id).unwrap()],
-    ))
-}
-
-/// Batch vote on proposal with proposal_id and specified voting power from multiple stake_pools.
-pub fn libra2_governance_batch_partial_vote(
-    stake_pools: Vec<AccountAddress>,
-    proposal_id: u64,
-    voting_power: u64,
-    should_pass: bool,
-) -> TransactionPayload {
-    TransactionPayload::EntryFunction(EntryFunction::new(
-        ModuleId::new(
-            AccountAddress::new([
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 1,
-            ]),
-            ident_str!("libra2_governance").to_owned(),
-        ),
-        ident_str!("batch_partial_vote").to_owned(),
-        vec![],
-        vec![
-            bcs::to_bytes(&stake_pools).unwrap(),
-            bcs::to_bytes(&proposal_id).unwrap(),
-            bcs::to_bytes(&voting_power).unwrap(),
-            bcs::to_bytes(&should_pass).unwrap(),
-        ],
-    ))
-}
-
-/// Vote on proposal with proposal_id and all voting power from multiple stake_pools.
-pub fn libra2_governance_batch_vote(
-    stake_pools: Vec<AccountAddress>,
-    proposal_id: u64,
-    should_pass: bool,
-) -> TransactionPayload {
-    TransactionPayload::EntryFunction(EntryFunction::new(
-        ModuleId::new(
-            AccountAddress::new([
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 1,
-            ]),
-            ident_str!("libra2_governance").to_owned(),
-        ),
-        ident_str!("batch_vote").to_owned(),
-        vec![],
-        vec![
-            bcs::to_bytes(&stake_pools).unwrap(),
-            bcs::to_bytes(&proposal_id).unwrap(),
-            bcs::to_bytes(&should_pass).unwrap(),
-        ],
-    ))
-}
-
-/// Create a single-step proposal with the backing `stake_pool`.
-/// @param execution_hash Required. This is the hash of the resolution script. When the proposal is resolved,
-/// only the exact script with matching hash can be successfully executed.
-pub fn libra2_governance_create_proposal(
-    stake_pool: AccountAddress,
-    execution_hash: Vec<u8>,
-    metadata_location: Vec<u8>,
-    metadata_hash: Vec<u8>,
-) -> TransactionPayload {
-    TransactionPayload::EntryFunction(EntryFunction::new(
-        ModuleId::new(
-            AccountAddress::new([
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 1,
-            ]),
-            ident_str!("libra2_governance").to_owned(),
-        ),
-        ident_str!("create_proposal").to_owned(),
-        vec![],
-        vec![
-            bcs::to_bytes(&stake_pool).unwrap(),
-            bcs::to_bytes(&execution_hash).unwrap(),
-            bcs::to_bytes(&metadata_location).unwrap(),
-            bcs::to_bytes(&metadata_hash).unwrap(),
-        ],
-    ))
-}
-
-/// Create a single-step or multi-step proposal with the backing `stake_pool`.
-/// @param execution_hash Required. This is the hash of the resolution script. When the proposal is resolved,
-/// only the exact script with matching hash can be successfully executed.
-pub fn libra2_governance_create_proposal_v2(
-    stake_pool: AccountAddress,
-    execution_hash: Vec<u8>,
-    metadata_location: Vec<u8>,
-    metadata_hash: Vec<u8>,
-    is_multi_step_proposal: bool,
-) -> TransactionPayload {
-    TransactionPayload::EntryFunction(EntryFunction::new(
-        ModuleId::new(
-            AccountAddress::new([
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 1,
-            ]),
-            ident_str!("libra2_governance").to_owned(),
-        ),
-        ident_str!("create_proposal_v2").to_owned(),
-        vec![],
-        vec![
-            bcs::to_bytes(&stake_pool).unwrap(),
-            bcs::to_bytes(&execution_hash).unwrap(),
-            bcs::to_bytes(&metadata_location).unwrap(),
-            bcs::to_bytes(&metadata_hash).unwrap(),
-            bcs::to_bytes(&is_multi_step_proposal).unwrap(),
-        ],
-    ))
-}
-
-/// Change epoch immediately.
-/// If `RECONFIGURE_WITH_DKG` is enabled and we are in the middle of a DKG,
-/// stop waiting for DKG and enter the new epoch without randomness.
-///
-/// WARNING: currently only used by tests. In most cases you should use `reconfigure()` instead.
-/// TODO: migrate these tests to be aware of async reconfiguration.
-pub fn libra2_governance_force_end_epoch() -> TransactionPayload {
-    TransactionPayload::EntryFunction(EntryFunction::new(
-        ModuleId::new(
-            AccountAddress::new([
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 1,
-            ]),
-            ident_str!("libra2_governance").to_owned(),
-        ),
-        ident_str!("force_end_epoch").to_owned(),
-        vec![],
-        vec![],
-    ))
-}
-
-/// `force_end_epoch()` equivalent but only called in testnet,
-/// where the core resources account exists and has been granted power to mint Aptos coins.
-pub fn libra2_governance_force_end_epoch_test_only() -> TransactionPayload {
-    TransactionPayload::EntryFunction(EntryFunction::new(
-        ModuleId::new(
-            AccountAddress::new([
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 1,
-            ]),
-            ident_str!("libra2_governance").to_owned(),
-        ),
-        ident_str!("force_end_epoch_test_only").to_owned(),
-        vec![],
-        vec![],
-    ))
-}
-
-/// Vote on proposal with `proposal_id` and specified voting power from `stake_pool`.
-pub fn libra2_governance_partial_vote(
-    stake_pool: AccountAddress,
-    proposal_id: u64,
-    voting_power: u64,
-    should_pass: bool,
-) -> TransactionPayload {
-    TransactionPayload::EntryFunction(EntryFunction::new(
-        ModuleId::new(
-            AccountAddress::new([
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 1,
-            ]),
-            ident_str!("libra2_governance").to_owned(),
-        ),
-        ident_str!("partial_vote").to_owned(),
-        vec![],
-        vec![
-            bcs::to_bytes(&stake_pool).unwrap(),
-            bcs::to_bytes(&proposal_id).unwrap(),
-            bcs::to_bytes(&voting_power).unwrap(),
-            bcs::to_bytes(&should_pass).unwrap(),
-        ],
-    ))
-}
-
-/// Manually reconfigure. Called at the end of a governance txn that alters on-chain configs.
-///
-/// WARNING: this function always ensures a reconfiguration starts, but when the reconfiguration finishes depends.
-/// - If feature `RECONFIGURE_WITH_DKG` is disabled, it finishes immediately.
-///   - At the end of the calling transaction, we will be in a new epoch.
-/// - If feature `RECONFIGURE_WITH_DKG` is enabled, it starts DKG, and the new epoch will start in a block prologue after DKG finishes.
-///
-/// This behavior affects when an update of an on-chain config (e.g. `ConsensusConfig`, `Features`) takes effect,
-/// since such updates are applied whenever we enter an new epoch.
-pub fn libra2_governance_reconfigure() -> TransactionPayload {
-    TransactionPayload::EntryFunction(EntryFunction::new(
-        ModuleId::new(
-            AccountAddress::new([
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 1,
-            ]),
-            ident_str!("libra2_governance").to_owned(),
-        ),
-        ident_str!("reconfigure").to_owned(),
-        vec![],
-        vec![],
-    ))
-}
-
-/// Vote on proposal with `proposal_id` and all voting power from `stake_pool`.
-pub fn libra2_governance_vote(
-    stake_pool: AccountAddress,
-    proposal_id: u64,
-    should_pass: bool,
-) -> TransactionPayload {
-    TransactionPayload::EntryFunction(EntryFunction::new(
-        ModuleId::new(
-            AccountAddress::new([
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 1,
-            ]),
-            ident_str!("libra2_governance").to_owned(),
-        ),
-        ident_str!("vote").to_owned(),
-        vec![],
-        vec![
-            bcs::to_bytes(&stake_pool).unwrap(),
-            bcs::to_bytes(&proposal_id).unwrap(),
-            bcs::to_bytes(&should_pass).unwrap(),
-        ],
-    ))
-}
-
 /// Same as `publish_package` but as an entry function which can be called as a transaction. Because
 /// of current restrictions for txn parameters, the metadata needs to be passed in serialized form.
 pub fn code_publish_package_txn(
@@ -3527,6 +3099,434 @@ pub fn jwks_update_federated_jwk_set(
     ))
 }
 
+/// Batch version of APT transfer.
+pub fn libra2_account_batch_transfer(
+    recipients: Vec<AccountAddress>,
+    amounts: Vec<u64>,
+) -> TransactionPayload {
+    TransactionPayload::EntryFunction(EntryFunction::new(
+        ModuleId::new(
+            AccountAddress::new([
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 1,
+            ]),
+            ident_str!("libra2_account").to_owned(),
+        ),
+        ident_str!("batch_transfer").to_owned(),
+        vec![],
+        vec![
+            bcs::to_bytes(&recipients).unwrap(),
+            bcs::to_bytes(&amounts).unwrap(),
+        ],
+    ))
+}
+
+/// Batch version of transfer_coins.
+pub fn libra2_account_batch_transfer_coins(
+    coin_type: TypeTag,
+    recipients: Vec<AccountAddress>,
+    amounts: Vec<u64>,
+) -> TransactionPayload {
+    TransactionPayload::EntryFunction(EntryFunction::new(
+        ModuleId::new(
+            AccountAddress::new([
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 1,
+            ]),
+            ident_str!("libra2_account").to_owned(),
+        ),
+        ident_str!("batch_transfer_coins").to_owned(),
+        vec![coin_type],
+        vec![
+            bcs::to_bytes(&recipients).unwrap(),
+            bcs::to_bytes(&amounts).unwrap(),
+        ],
+    ))
+}
+
+/// Basic account creation methods.
+pub fn libra2_account_create_account(auth_key: AccountAddress) -> TransactionPayload {
+    TransactionPayload::EntryFunction(EntryFunction::new(
+        ModuleId::new(
+            AccountAddress::new([
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 1,
+            ]),
+            ident_str!("libra2_account").to_owned(),
+        ),
+        ident_str!("create_account").to_owned(),
+        vec![],
+        vec![bcs::to_bytes(&auth_key).unwrap()],
+    ))
+}
+
+/// APT Primary Fungible Store specific specialized functions,
+/// Utilized internally once migration of APT to FungibleAsset is complete.
+/// Convenient function to transfer APT to a recipient account that might not exist.
+/// This would create the recipient APT PFS first, which also registers it to receive APT, before transferring.
+/// TODO: once migration is complete, rename to just "transfer_only" and make it an entry function (for cheapest way
+/// to transfer APT) - if we want to allow APT PFS without account itself
+pub fn libra2_account_fungible_transfer_only(
+    to: AccountAddress,
+    amount: u64,
+) -> TransactionPayload {
+    TransactionPayload::EntryFunction(EntryFunction::new(
+        ModuleId::new(
+            AccountAddress::new([
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 1,
+            ]),
+            ident_str!("libra2_account").to_owned(),
+        ),
+        ident_str!("fungible_transfer_only").to_owned(),
+        vec![],
+        vec![bcs::to_bytes(&to).unwrap(), bcs::to_bytes(&amount).unwrap()],
+    ))
+}
+
+/// Set whether `account` can receive direct transfers of coins that they have not explicitly registered to receive.
+pub fn libra2_account_set_allow_direct_coin_transfers(allow: bool) -> TransactionPayload {
+    TransactionPayload::EntryFunction(EntryFunction::new(
+        ModuleId::new(
+            AccountAddress::new([
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 1,
+            ]),
+            ident_str!("libra2_account").to_owned(),
+        ),
+        ident_str!("set_allow_direct_coin_transfers").to_owned(),
+        vec![],
+        vec![bcs::to_bytes(&allow).unwrap()],
+    ))
+}
+
+/// Convenient function to transfer APT to a recipient account that might not exist.
+/// This would create the recipient account first, which also registers it to receive APT, before transferring.
+pub fn libra2_account_transfer(to: AccountAddress, amount: u64) -> TransactionPayload {
+    TransactionPayload::EntryFunction(EntryFunction::new(
+        ModuleId::new(
+            AccountAddress::new([
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 1,
+            ]),
+            ident_str!("libra2_account").to_owned(),
+        ),
+        ident_str!("transfer").to_owned(),
+        vec![],
+        vec![bcs::to_bytes(&to).unwrap(), bcs::to_bytes(&amount).unwrap()],
+    ))
+}
+
+/// Convenient function to transfer a custom CoinType to a recipient account that might not exist.
+/// This would create the recipient account first and register it to receive the CoinType, before transferring.
+pub fn libra2_account_transfer_coins(
+    coin_type: TypeTag,
+    to: AccountAddress,
+    amount: u64,
+) -> TransactionPayload {
+    TransactionPayload::EntryFunction(EntryFunction::new(
+        ModuleId::new(
+            AccountAddress::new([
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 1,
+            ]),
+            ident_str!("libra2_account").to_owned(),
+        ),
+        ident_str!("transfer_coins").to_owned(),
+        vec![coin_type],
+        vec![bcs::to_bytes(&to).unwrap(), bcs::to_bytes(&amount).unwrap()],
+    ))
+}
+
+/// Only callable in tests and testnets where the core resources account exists.
+/// Claim the delegated mint capability and destroy the delegated token.
+pub fn libra2_coin_claim_mint_capability() -> TransactionPayload {
+    TransactionPayload::EntryFunction(EntryFunction::new(
+        ModuleId::new(
+            AccountAddress::new([
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 1,
+            ]),
+            ident_str!("libra2_coin").to_owned(),
+        ),
+        ident_str!("claim_mint_capability").to_owned(),
+        vec![],
+        vec![],
+    ))
+}
+
+/// Only callable in tests and testnets where the core resources account exists.
+/// Create delegated token for the address so the account could claim MintCapability later.
+pub fn libra2_coin_delegate_mint_capability(to: AccountAddress) -> TransactionPayload {
+    TransactionPayload::EntryFunction(EntryFunction::new(
+        ModuleId::new(
+            AccountAddress::new([
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 1,
+            ]),
+            ident_str!("libra2_coin").to_owned(),
+        ),
+        ident_str!("delegate_mint_capability").to_owned(),
+        vec![],
+        vec![bcs::to_bytes(&to).unwrap()],
+    ))
+}
+
+/// Only callable in tests and testnets where the core resources account exists.
+/// Create new coins and deposit them into dst_addr's account.
+pub fn libra2_coin_mint(dst_addr: AccountAddress, amount: u64) -> TransactionPayload {
+    TransactionPayload::EntryFunction(EntryFunction::new(
+        ModuleId::new(
+            AccountAddress::new([
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 1,
+            ]),
+            ident_str!("libra2_coin").to_owned(),
+        ),
+        ident_str!("mint").to_owned(),
+        vec![],
+        vec![
+            bcs::to_bytes(&dst_addr).unwrap(),
+            bcs::to_bytes(&amount).unwrap(),
+        ],
+    ))
+}
+
+pub fn libra2_governance_add_approved_script_hash_script(proposal_id: u64) -> TransactionPayload {
+    TransactionPayload::EntryFunction(EntryFunction::new(
+        ModuleId::new(
+            AccountAddress::new([
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 1,
+            ]),
+            ident_str!("libra2_governance").to_owned(),
+        ),
+        ident_str!("add_approved_script_hash_script").to_owned(),
+        vec![],
+        vec![bcs::to_bytes(&proposal_id).unwrap()],
+    ))
+}
+
+/// Batch vote on proposal with proposal_id and specified voting power from multiple stake_pools.
+pub fn libra2_governance_batch_partial_vote(
+    stake_pools: Vec<AccountAddress>,
+    proposal_id: u64,
+    voting_power: u64,
+    should_pass: bool,
+) -> TransactionPayload {
+    TransactionPayload::EntryFunction(EntryFunction::new(
+        ModuleId::new(
+            AccountAddress::new([
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 1,
+            ]),
+            ident_str!("libra2_governance").to_owned(),
+        ),
+        ident_str!("batch_partial_vote").to_owned(),
+        vec![],
+        vec![
+            bcs::to_bytes(&stake_pools).unwrap(),
+            bcs::to_bytes(&proposal_id).unwrap(),
+            bcs::to_bytes(&voting_power).unwrap(),
+            bcs::to_bytes(&should_pass).unwrap(),
+        ],
+    ))
+}
+
+/// Vote on proposal with proposal_id and all voting power from multiple stake_pools.
+pub fn libra2_governance_batch_vote(
+    stake_pools: Vec<AccountAddress>,
+    proposal_id: u64,
+    should_pass: bool,
+) -> TransactionPayload {
+    TransactionPayload::EntryFunction(EntryFunction::new(
+        ModuleId::new(
+            AccountAddress::new([
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 1,
+            ]),
+            ident_str!("libra2_governance").to_owned(),
+        ),
+        ident_str!("batch_vote").to_owned(),
+        vec![],
+        vec![
+            bcs::to_bytes(&stake_pools).unwrap(),
+            bcs::to_bytes(&proposal_id).unwrap(),
+            bcs::to_bytes(&should_pass).unwrap(),
+        ],
+    ))
+}
+
+/// Create a single-step proposal with the backing `stake_pool`.
+/// @param execution_hash Required. This is the hash of the resolution script. When the proposal is resolved,
+/// only the exact script with matching hash can be successfully executed.
+pub fn libra2_governance_create_proposal(
+    stake_pool: AccountAddress,
+    execution_hash: Vec<u8>,
+    metadata_location: Vec<u8>,
+    metadata_hash: Vec<u8>,
+) -> TransactionPayload {
+    TransactionPayload::EntryFunction(EntryFunction::new(
+        ModuleId::new(
+            AccountAddress::new([
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 1,
+            ]),
+            ident_str!("libra2_governance").to_owned(),
+        ),
+        ident_str!("create_proposal").to_owned(),
+        vec![],
+        vec![
+            bcs::to_bytes(&stake_pool).unwrap(),
+            bcs::to_bytes(&execution_hash).unwrap(),
+            bcs::to_bytes(&metadata_location).unwrap(),
+            bcs::to_bytes(&metadata_hash).unwrap(),
+        ],
+    ))
+}
+
+/// Create a single-step or multi-step proposal with the backing `stake_pool`.
+/// @param execution_hash Required. This is the hash of the resolution script. When the proposal is resolved,
+/// only the exact script with matching hash can be successfully executed.
+pub fn libra2_governance_create_proposal_v2(
+    stake_pool: AccountAddress,
+    execution_hash: Vec<u8>,
+    metadata_location: Vec<u8>,
+    metadata_hash: Vec<u8>,
+    is_multi_step_proposal: bool,
+) -> TransactionPayload {
+    TransactionPayload::EntryFunction(EntryFunction::new(
+        ModuleId::new(
+            AccountAddress::new([
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 1,
+            ]),
+            ident_str!("libra2_governance").to_owned(),
+        ),
+        ident_str!("create_proposal_v2").to_owned(),
+        vec![],
+        vec![
+            bcs::to_bytes(&stake_pool).unwrap(),
+            bcs::to_bytes(&execution_hash).unwrap(),
+            bcs::to_bytes(&metadata_location).unwrap(),
+            bcs::to_bytes(&metadata_hash).unwrap(),
+            bcs::to_bytes(&is_multi_step_proposal).unwrap(),
+        ],
+    ))
+}
+
+/// Change epoch immediately.
+/// If `RECONFIGURE_WITH_DKG` is enabled and we are in the middle of a DKG,
+/// stop waiting for DKG and enter the new epoch without randomness.
+///
+/// WARNING: currently only used by tests. In most cases you should use `reconfigure()` instead.
+/// TODO: migrate these tests to be aware of async reconfiguration.
+pub fn libra2_governance_force_end_epoch() -> TransactionPayload {
+    TransactionPayload::EntryFunction(EntryFunction::new(
+        ModuleId::new(
+            AccountAddress::new([
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 1,
+            ]),
+            ident_str!("libra2_governance").to_owned(),
+        ),
+        ident_str!("force_end_epoch").to_owned(),
+        vec![],
+        vec![],
+    ))
+}
+
+/// `force_end_epoch()` equivalent but only called in testnet,
+/// where the core resources account exists and has been granted power to mint Libra2 coins.
+pub fn libra2_governance_force_end_epoch_test_only() -> TransactionPayload {
+    TransactionPayload::EntryFunction(EntryFunction::new(
+        ModuleId::new(
+            AccountAddress::new([
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 1,
+            ]),
+            ident_str!("libra2_governance").to_owned(),
+        ),
+        ident_str!("force_end_epoch_test_only").to_owned(),
+        vec![],
+        vec![],
+    ))
+}
+
+/// Vote on proposal with `proposal_id` and specified voting power from `stake_pool`.
+pub fn libra2_governance_partial_vote(
+    stake_pool: AccountAddress,
+    proposal_id: u64,
+    voting_power: u64,
+    should_pass: bool,
+) -> TransactionPayload {
+    TransactionPayload::EntryFunction(EntryFunction::new(
+        ModuleId::new(
+            AccountAddress::new([
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 1,
+            ]),
+            ident_str!("libra2_governance").to_owned(),
+        ),
+        ident_str!("partial_vote").to_owned(),
+        vec![],
+        vec![
+            bcs::to_bytes(&stake_pool).unwrap(),
+            bcs::to_bytes(&proposal_id).unwrap(),
+            bcs::to_bytes(&voting_power).unwrap(),
+            bcs::to_bytes(&should_pass).unwrap(),
+        ],
+    ))
+}
+
+/// Manually reconfigure. Called at the end of a governance txn that alters on-chain configs.
+///
+/// WARNING: this function always ensures a reconfiguration starts, but when the reconfiguration finishes depends.
+/// - If feature `RECONFIGURE_WITH_DKG` is disabled, it finishes immediately.
+///   - At the end of the calling transaction, we will be in a new epoch.
+/// - If feature `RECONFIGURE_WITH_DKG` is enabled, it starts DKG, and the new epoch will start in a block prologue after DKG finishes.
+///
+/// This behavior affects when an update of an on-chain config (e.g. `ConsensusConfig`, `Features`) takes effect,
+/// since such updates are applied whenever we enter an new epoch.
+pub fn libra2_governance_reconfigure() -> TransactionPayload {
+    TransactionPayload::EntryFunction(EntryFunction::new(
+        ModuleId::new(
+            AccountAddress::new([
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 1,
+            ]),
+            ident_str!("libra2_governance").to_owned(),
+        ),
+        ident_str!("reconfigure").to_owned(),
+        vec![],
+        vec![],
+    ))
+}
+
+/// Vote on proposal with `proposal_id` and all voting power from `stake_pool`.
+pub fn libra2_governance_vote(
+    stake_pool: AccountAddress,
+    proposal_id: u64,
+    should_pass: bool,
+) -> TransactionPayload {
+    TransactionPayload::EntryFunction(EntryFunction::new(
+        ModuleId::new(
+            AccountAddress::new([
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 1,
+            ]),
+            ident_str!("libra2_governance").to_owned(),
+        ),
+        ident_str!("vote").to_owned(),
+        vec![],
+        vec![
+            bcs::to_bytes(&stake_pool).unwrap(),
+            bcs::to_bytes(&proposal_id).unwrap(),
+            bcs::to_bytes(&should_pass).unwrap(),
+        ],
+    ))
+}
+
 /// Withdraw an `amount` of coin `CoinType` from `account` and burn it.
 pub fn managed_coin_burn(coin_type: TypeTag, amount: u64) -> TransactionPayload {
     TransactionPayload::EntryFunction(EntryFunction::new(
@@ -3559,7 +3559,7 @@ pub fn managed_coin_destroy_caps(coin_type: TypeTag) -> TransactionPayload {
     ))
 }
 
-/// Initialize new coin `CoinType` in Aptos Blockchain.
+/// Initialize new coin `CoinType` in Libra2 Blockchain.
 /// Mint and Burn Capabilities will be stored under `account` in `Capabilities` resource.
 pub fn managed_coin_initialize(
     coin_type: TypeTag,
@@ -5785,259 +5785,6 @@ mod decoder {
         }
     }
 
-    pub fn libra2_account_batch_transfer(
-        payload: &TransactionPayload,
-    ) -> Option<EntryFunctionCall> {
-        if let TransactionPayload::EntryFunction(script) = payload {
-            Some(EntryFunctionCall::Libra2AccountBatchTransfer {
-                recipients: bcs::from_bytes(script.args().get(0)?).ok()?,
-                amounts: bcs::from_bytes(script.args().get(1)?).ok()?,
-            })
-        } else {
-            None
-        }
-    }
-
-    pub fn libra2_account_batch_transfer_coins(
-        payload: &TransactionPayload,
-    ) -> Option<EntryFunctionCall> {
-        if let TransactionPayload::EntryFunction(script) = payload {
-            Some(EntryFunctionCall::Libra2AccountBatchTransferCoins {
-                coin_type: script.ty_args().get(0)?.clone(),
-                recipients: bcs::from_bytes(script.args().get(0)?).ok()?,
-                amounts: bcs::from_bytes(script.args().get(1)?).ok()?,
-            })
-        } else {
-            None
-        }
-    }
-
-    pub fn libra2_account_create_account(
-        payload: &TransactionPayload,
-    ) -> Option<EntryFunctionCall> {
-        if let TransactionPayload::EntryFunction(script) = payload {
-            Some(EntryFunctionCall::Libra2AccountCreateAccount {
-                auth_key: bcs::from_bytes(script.args().get(0)?).ok()?,
-            })
-        } else {
-            None
-        }
-    }
-
-    pub fn libra2_account_fungible_transfer_only(
-        payload: &TransactionPayload,
-    ) -> Option<EntryFunctionCall> {
-        if let TransactionPayload::EntryFunction(script) = payload {
-            Some(EntryFunctionCall::Libra2AccountFungibleTransferOnly {
-                to: bcs::from_bytes(script.args().get(0)?).ok()?,
-                amount: bcs::from_bytes(script.args().get(1)?).ok()?,
-            })
-        } else {
-            None
-        }
-    }
-
-    pub fn libra2_account_set_allow_direct_coin_transfers(
-        payload: &TransactionPayload,
-    ) -> Option<EntryFunctionCall> {
-        if let TransactionPayload::EntryFunction(script) = payload {
-            Some(
-                EntryFunctionCall::Libra2AccountSetAllowDirectCoinTransfers {
-                    allow: bcs::from_bytes(script.args().get(0)?).ok()?,
-                },
-            )
-        } else {
-            None
-        }
-    }
-
-    pub fn libra2_account_transfer(payload: &TransactionPayload) -> Option<EntryFunctionCall> {
-        if let TransactionPayload::EntryFunction(script) = payload {
-            Some(EntryFunctionCall::Libra2AccountTransfer {
-                to: bcs::from_bytes(script.args().get(0)?).ok()?,
-                amount: bcs::from_bytes(script.args().get(1)?).ok()?,
-            })
-        } else {
-            None
-        }
-    }
-
-    pub fn libra2_account_transfer_coins(
-        payload: &TransactionPayload,
-    ) -> Option<EntryFunctionCall> {
-        if let TransactionPayload::EntryFunction(script) = payload {
-            Some(EntryFunctionCall::Libra2AccountTransferCoins {
-                coin_type: script.ty_args().get(0)?.clone(),
-                to: bcs::from_bytes(script.args().get(0)?).ok()?,
-                amount: bcs::from_bytes(script.args().get(1)?).ok()?,
-            })
-        } else {
-            None
-        }
-    }
-
-    pub fn libra2_coin_claim_mint_capability(
-        payload: &TransactionPayload,
-    ) -> Option<EntryFunctionCall> {
-        if let TransactionPayload::EntryFunction(_script) = payload {
-            Some(EntryFunctionCall::Libra2CoinClaimMintCapability {})
-        } else {
-            None
-        }
-    }
-
-    pub fn libra2_coin_delegate_mint_capability(
-        payload: &TransactionPayload,
-    ) -> Option<EntryFunctionCall> {
-        if let TransactionPayload::EntryFunction(script) = payload {
-            Some(EntryFunctionCall::Libra2CoinDelegateMintCapability {
-                to: bcs::from_bytes(script.args().get(0)?).ok()?,
-            })
-        } else {
-            None
-        }
-    }
-
-    pub fn libra2_coin_mint(payload: &TransactionPayload) -> Option<EntryFunctionCall> {
-        if let TransactionPayload::EntryFunction(script) = payload {
-            Some(EntryFunctionCall::Libra2CoinMint {
-                dst_addr: bcs::from_bytes(script.args().get(0)?).ok()?,
-                amount: bcs::from_bytes(script.args().get(1)?).ok()?,
-            })
-        } else {
-            None
-        }
-    }
-
-    pub fn libra2_governance_add_approved_script_hash_script(
-        payload: &TransactionPayload,
-    ) -> Option<EntryFunctionCall> {
-        if let TransactionPayload::EntryFunction(script) = payload {
-            Some(
-                EntryFunctionCall::Libra2GovernanceAddApprovedScriptHashScript {
-                    proposal_id: bcs::from_bytes(script.args().get(0)?).ok()?,
-                },
-            )
-        } else {
-            None
-        }
-    }
-
-    pub fn libra2_governance_batch_partial_vote(
-        payload: &TransactionPayload,
-    ) -> Option<EntryFunctionCall> {
-        if let TransactionPayload::EntryFunction(script) = payload {
-            Some(EntryFunctionCall::Libra2GovernanceBatchPartialVote {
-                stake_pools: bcs::from_bytes(script.args().get(0)?).ok()?,
-                proposal_id: bcs::from_bytes(script.args().get(1)?).ok()?,
-                voting_power: bcs::from_bytes(script.args().get(2)?).ok()?,
-                should_pass: bcs::from_bytes(script.args().get(3)?).ok()?,
-            })
-        } else {
-            None
-        }
-    }
-
-    pub fn libra2_governance_batch_vote(payload: &TransactionPayload) -> Option<EntryFunctionCall> {
-        if let TransactionPayload::EntryFunction(script) = payload {
-            Some(EntryFunctionCall::Libra2GovernanceBatchVote {
-                stake_pools: bcs::from_bytes(script.args().get(0)?).ok()?,
-                proposal_id: bcs::from_bytes(script.args().get(1)?).ok()?,
-                should_pass: bcs::from_bytes(script.args().get(2)?).ok()?,
-            })
-        } else {
-            None
-        }
-    }
-
-    pub fn libra2_governance_create_proposal(
-        payload: &TransactionPayload,
-    ) -> Option<EntryFunctionCall> {
-        if let TransactionPayload::EntryFunction(script) = payload {
-            Some(EntryFunctionCall::Libra2GovernanceCreateProposal {
-                stake_pool: bcs::from_bytes(script.args().get(0)?).ok()?,
-                execution_hash: bcs::from_bytes(script.args().get(1)?).ok()?,
-                metadata_location: bcs::from_bytes(script.args().get(2)?).ok()?,
-                metadata_hash: bcs::from_bytes(script.args().get(3)?).ok()?,
-            })
-        } else {
-            None
-        }
-    }
-
-    pub fn libra2_governance_create_proposal_v2(
-        payload: &TransactionPayload,
-    ) -> Option<EntryFunctionCall> {
-        if let TransactionPayload::EntryFunction(script) = payload {
-            Some(EntryFunctionCall::Libra2GovernanceCreateProposalV2 {
-                stake_pool: bcs::from_bytes(script.args().get(0)?).ok()?,
-                execution_hash: bcs::from_bytes(script.args().get(1)?).ok()?,
-                metadata_location: bcs::from_bytes(script.args().get(2)?).ok()?,
-                metadata_hash: bcs::from_bytes(script.args().get(3)?).ok()?,
-                is_multi_step_proposal: bcs::from_bytes(script.args().get(4)?).ok()?,
-            })
-        } else {
-            None
-        }
-    }
-
-    pub fn libra2_governance_force_end_epoch(
-        payload: &TransactionPayload,
-    ) -> Option<EntryFunctionCall> {
-        if let TransactionPayload::EntryFunction(_script) = payload {
-            Some(EntryFunctionCall::Libra2GovernanceForceEndEpoch {})
-        } else {
-            None
-        }
-    }
-
-    pub fn libra2_governance_force_end_epoch_test_only(
-        payload: &TransactionPayload,
-    ) -> Option<EntryFunctionCall> {
-        if let TransactionPayload::EntryFunction(_script) = payload {
-            Some(EntryFunctionCall::Libra2GovernanceForceEndEpochTestOnly {})
-        } else {
-            None
-        }
-    }
-
-    pub fn libra2_governance_partial_vote(
-        payload: &TransactionPayload,
-    ) -> Option<EntryFunctionCall> {
-        if let TransactionPayload::EntryFunction(script) = payload {
-            Some(EntryFunctionCall::Libra2GovernancePartialVote {
-                stake_pool: bcs::from_bytes(script.args().get(0)?).ok()?,
-                proposal_id: bcs::from_bytes(script.args().get(1)?).ok()?,
-                voting_power: bcs::from_bytes(script.args().get(2)?).ok()?,
-                should_pass: bcs::from_bytes(script.args().get(3)?).ok()?,
-            })
-        } else {
-            None
-        }
-    }
-
-    pub fn libra2_governance_reconfigure(
-        payload: &TransactionPayload,
-    ) -> Option<EntryFunctionCall> {
-        if let TransactionPayload::EntryFunction(_script) = payload {
-            Some(EntryFunctionCall::Libra2GovernanceReconfigure {})
-        } else {
-            None
-        }
-    }
-
-    pub fn libra2_governance_vote(payload: &TransactionPayload) -> Option<EntryFunctionCall> {
-        if let TransactionPayload::EntryFunction(script) = payload {
-            Some(EntryFunctionCall::Libra2GovernanceVote {
-                stake_pool: bcs::from_bytes(script.args().get(0)?).ok()?,
-                proposal_id: bcs::from_bytes(script.args().get(1)?).ok()?,
-                should_pass: bcs::from_bytes(script.args().get(2)?).ok()?,
-            })
-        } else {
-            None
-        }
-    }
-
     pub fn code_publish_package_txn(payload: &TransactionPayload) -> Option<EntryFunctionCall> {
         if let TransactionPayload::EntryFunction(script) = payload {
             Some(EntryFunctionCall::CodePublishPackageTxn {
@@ -6359,6 +6106,259 @@ mod decoder {
                 alg_vec: bcs::from_bytes(script.args().get(2)?).ok()?,
                 e_vec: bcs::from_bytes(script.args().get(3)?).ok()?,
                 n_vec: bcs::from_bytes(script.args().get(4)?).ok()?,
+            })
+        } else {
+            None
+        }
+    }
+
+    pub fn libra2_account_batch_transfer(
+        payload: &TransactionPayload,
+    ) -> Option<EntryFunctionCall> {
+        if let TransactionPayload::EntryFunction(script) = payload {
+            Some(EntryFunctionCall::Libra2AccountBatchTransfer {
+                recipients: bcs::from_bytes(script.args().get(0)?).ok()?,
+                amounts: bcs::from_bytes(script.args().get(1)?).ok()?,
+            })
+        } else {
+            None
+        }
+    }
+
+    pub fn libra2_account_batch_transfer_coins(
+        payload: &TransactionPayload,
+    ) -> Option<EntryFunctionCall> {
+        if let TransactionPayload::EntryFunction(script) = payload {
+            Some(EntryFunctionCall::Libra2AccountBatchTransferCoins {
+                coin_type: script.ty_args().get(0)?.clone(),
+                recipients: bcs::from_bytes(script.args().get(0)?).ok()?,
+                amounts: bcs::from_bytes(script.args().get(1)?).ok()?,
+            })
+        } else {
+            None
+        }
+    }
+
+    pub fn libra2_account_create_account(
+        payload: &TransactionPayload,
+    ) -> Option<EntryFunctionCall> {
+        if let TransactionPayload::EntryFunction(script) = payload {
+            Some(EntryFunctionCall::Libra2AccountCreateAccount {
+                auth_key: bcs::from_bytes(script.args().get(0)?).ok()?,
+            })
+        } else {
+            None
+        }
+    }
+
+    pub fn libra2_account_fungible_transfer_only(
+        payload: &TransactionPayload,
+    ) -> Option<EntryFunctionCall> {
+        if let TransactionPayload::EntryFunction(script) = payload {
+            Some(EntryFunctionCall::Libra2AccountFungibleTransferOnly {
+                to: bcs::from_bytes(script.args().get(0)?).ok()?,
+                amount: bcs::from_bytes(script.args().get(1)?).ok()?,
+            })
+        } else {
+            None
+        }
+    }
+
+    pub fn libra2_account_set_allow_direct_coin_transfers(
+        payload: &TransactionPayload,
+    ) -> Option<EntryFunctionCall> {
+        if let TransactionPayload::EntryFunction(script) = payload {
+            Some(
+                EntryFunctionCall::Libra2AccountSetAllowDirectCoinTransfers {
+                    allow: bcs::from_bytes(script.args().get(0)?).ok()?,
+                },
+            )
+        } else {
+            None
+        }
+    }
+
+    pub fn libra2_account_transfer(payload: &TransactionPayload) -> Option<EntryFunctionCall> {
+        if let TransactionPayload::EntryFunction(script) = payload {
+            Some(EntryFunctionCall::Libra2AccountTransfer {
+                to: bcs::from_bytes(script.args().get(0)?).ok()?,
+                amount: bcs::from_bytes(script.args().get(1)?).ok()?,
+            })
+        } else {
+            None
+        }
+    }
+
+    pub fn libra2_account_transfer_coins(
+        payload: &TransactionPayload,
+    ) -> Option<EntryFunctionCall> {
+        if let TransactionPayload::EntryFunction(script) = payload {
+            Some(EntryFunctionCall::Libra2AccountTransferCoins {
+                coin_type: script.ty_args().get(0)?.clone(),
+                to: bcs::from_bytes(script.args().get(0)?).ok()?,
+                amount: bcs::from_bytes(script.args().get(1)?).ok()?,
+            })
+        } else {
+            None
+        }
+    }
+
+    pub fn libra2_coin_claim_mint_capability(
+        payload: &TransactionPayload,
+    ) -> Option<EntryFunctionCall> {
+        if let TransactionPayload::EntryFunction(_script) = payload {
+            Some(EntryFunctionCall::Libra2CoinClaimMintCapability {})
+        } else {
+            None
+        }
+    }
+
+    pub fn libra2_coin_delegate_mint_capability(
+        payload: &TransactionPayload,
+    ) -> Option<EntryFunctionCall> {
+        if let TransactionPayload::EntryFunction(script) = payload {
+            Some(EntryFunctionCall::Libra2CoinDelegateMintCapability {
+                to: bcs::from_bytes(script.args().get(0)?).ok()?,
+            })
+        } else {
+            None
+        }
+    }
+
+    pub fn libra2_coin_mint(payload: &TransactionPayload) -> Option<EntryFunctionCall> {
+        if let TransactionPayload::EntryFunction(script) = payload {
+            Some(EntryFunctionCall::Libra2CoinMint {
+                dst_addr: bcs::from_bytes(script.args().get(0)?).ok()?,
+                amount: bcs::from_bytes(script.args().get(1)?).ok()?,
+            })
+        } else {
+            None
+        }
+    }
+
+    pub fn libra2_governance_add_approved_script_hash_script(
+        payload: &TransactionPayload,
+    ) -> Option<EntryFunctionCall> {
+        if let TransactionPayload::EntryFunction(script) = payload {
+            Some(
+                EntryFunctionCall::Libra2GovernanceAddApprovedScriptHashScript {
+                    proposal_id: bcs::from_bytes(script.args().get(0)?).ok()?,
+                },
+            )
+        } else {
+            None
+        }
+    }
+
+    pub fn libra2_governance_batch_partial_vote(
+        payload: &TransactionPayload,
+    ) -> Option<EntryFunctionCall> {
+        if let TransactionPayload::EntryFunction(script) = payload {
+            Some(EntryFunctionCall::Libra2GovernanceBatchPartialVote {
+                stake_pools: bcs::from_bytes(script.args().get(0)?).ok()?,
+                proposal_id: bcs::from_bytes(script.args().get(1)?).ok()?,
+                voting_power: bcs::from_bytes(script.args().get(2)?).ok()?,
+                should_pass: bcs::from_bytes(script.args().get(3)?).ok()?,
+            })
+        } else {
+            None
+        }
+    }
+
+    pub fn libra2_governance_batch_vote(payload: &TransactionPayload) -> Option<EntryFunctionCall> {
+        if let TransactionPayload::EntryFunction(script) = payload {
+            Some(EntryFunctionCall::Libra2GovernanceBatchVote {
+                stake_pools: bcs::from_bytes(script.args().get(0)?).ok()?,
+                proposal_id: bcs::from_bytes(script.args().get(1)?).ok()?,
+                should_pass: bcs::from_bytes(script.args().get(2)?).ok()?,
+            })
+        } else {
+            None
+        }
+    }
+
+    pub fn libra2_governance_create_proposal(
+        payload: &TransactionPayload,
+    ) -> Option<EntryFunctionCall> {
+        if let TransactionPayload::EntryFunction(script) = payload {
+            Some(EntryFunctionCall::Libra2GovernanceCreateProposal {
+                stake_pool: bcs::from_bytes(script.args().get(0)?).ok()?,
+                execution_hash: bcs::from_bytes(script.args().get(1)?).ok()?,
+                metadata_location: bcs::from_bytes(script.args().get(2)?).ok()?,
+                metadata_hash: bcs::from_bytes(script.args().get(3)?).ok()?,
+            })
+        } else {
+            None
+        }
+    }
+
+    pub fn libra2_governance_create_proposal_v2(
+        payload: &TransactionPayload,
+    ) -> Option<EntryFunctionCall> {
+        if let TransactionPayload::EntryFunction(script) = payload {
+            Some(EntryFunctionCall::Libra2GovernanceCreateProposalV2 {
+                stake_pool: bcs::from_bytes(script.args().get(0)?).ok()?,
+                execution_hash: bcs::from_bytes(script.args().get(1)?).ok()?,
+                metadata_location: bcs::from_bytes(script.args().get(2)?).ok()?,
+                metadata_hash: bcs::from_bytes(script.args().get(3)?).ok()?,
+                is_multi_step_proposal: bcs::from_bytes(script.args().get(4)?).ok()?,
+            })
+        } else {
+            None
+        }
+    }
+
+    pub fn libra2_governance_force_end_epoch(
+        payload: &TransactionPayload,
+    ) -> Option<EntryFunctionCall> {
+        if let TransactionPayload::EntryFunction(_script) = payload {
+            Some(EntryFunctionCall::Libra2GovernanceForceEndEpoch {})
+        } else {
+            None
+        }
+    }
+
+    pub fn libra2_governance_force_end_epoch_test_only(
+        payload: &TransactionPayload,
+    ) -> Option<EntryFunctionCall> {
+        if let TransactionPayload::EntryFunction(_script) = payload {
+            Some(EntryFunctionCall::Libra2GovernanceForceEndEpochTestOnly {})
+        } else {
+            None
+        }
+    }
+
+    pub fn libra2_governance_partial_vote(
+        payload: &TransactionPayload,
+    ) -> Option<EntryFunctionCall> {
+        if let TransactionPayload::EntryFunction(script) = payload {
+            Some(EntryFunctionCall::Libra2GovernancePartialVote {
+                stake_pool: bcs::from_bytes(script.args().get(0)?).ok()?,
+                proposal_id: bcs::from_bytes(script.args().get(1)?).ok()?,
+                voting_power: bcs::from_bytes(script.args().get(2)?).ok()?,
+                should_pass: bcs::from_bytes(script.args().get(3)?).ok()?,
+            })
+        } else {
+            None
+        }
+    }
+
+    pub fn libra2_governance_reconfigure(
+        payload: &TransactionPayload,
+    ) -> Option<EntryFunctionCall> {
+        if let TransactionPayload::EntryFunction(_script) = payload {
+            Some(EntryFunctionCall::Libra2GovernanceReconfigure {})
+        } else {
+            None
+        }
+    }
+
+    pub fn libra2_governance_vote(payload: &TransactionPayload) -> Option<EntryFunctionCall> {
+        if let TransactionPayload::EntryFunction(script) = payload {
+            Some(EntryFunctionCall::Libra2GovernanceVote {
+                stake_pool: bcs::from_bytes(script.args().get(0)?).ok()?,
+                proposal_id: bcs::from_bytes(script.args().get(1)?).ok()?,
+                should_pass: bcs::from_bytes(script.args().get(2)?).ok()?,
             })
         } else {
             None
@@ -7626,86 +7626,6 @@ static SCRIPT_FUNCTION_DECODER_MAP: once_cell::sync::Lazy<EntryFunctionDecoderMa
             Box::new(decoder::account_abstraction_remove_dispatchable_authenticator),
         );
         map.insert(
-            "libra2_account_batch_transfer".to_string(),
-            Box::new(decoder::libra2_account_batch_transfer),
-        );
-        map.insert(
-            "libra2_account_batch_transfer_coins".to_string(),
-            Box::new(decoder::libra2_account_batch_transfer_coins),
-        );
-        map.insert(
-            "libra2_account_create_account".to_string(),
-            Box::new(decoder::libra2_account_create_account),
-        );
-        map.insert(
-            "libra2_account_fungible_transfer_only".to_string(),
-            Box::new(decoder::libra2_account_fungible_transfer_only),
-        );
-        map.insert(
-            "libra2_account_set_allow_direct_coin_transfers".to_string(),
-            Box::new(decoder::libra2_account_set_allow_direct_coin_transfers),
-        );
-        map.insert(
-            "libra2_account_transfer".to_string(),
-            Box::new(decoder::libra2_account_transfer),
-        );
-        map.insert(
-            "libra2_account_transfer_coins".to_string(),
-            Box::new(decoder::libra2_account_transfer_coins),
-        );
-        map.insert(
-            "libra2_coin_claim_mint_capability".to_string(),
-            Box::new(decoder::libra2_coin_claim_mint_capability),
-        );
-        map.insert(
-            "libra2_coin_delegate_mint_capability".to_string(),
-            Box::new(decoder::libra2_coin_delegate_mint_capability),
-        );
-        map.insert(
-            "libra2_coin_mint".to_string(),
-            Box::new(decoder::libra2_coin_mint),
-        );
-        map.insert(
-            "libra2_governance_add_approved_script_hash_script".to_string(),
-            Box::new(decoder::libra2_governance_add_approved_script_hash_script),
-        );
-        map.insert(
-            "libra2_governance_batch_partial_vote".to_string(),
-            Box::new(decoder::libra2_governance_batch_partial_vote),
-        );
-        map.insert(
-            "libra2_governance_batch_vote".to_string(),
-            Box::new(decoder::libra2_governance_batch_vote),
-        );
-        map.insert(
-            "libra2_governance_create_proposal".to_string(),
-            Box::new(decoder::libra2_governance_create_proposal),
-        );
-        map.insert(
-            "libra2_governance_create_proposal_v2".to_string(),
-            Box::new(decoder::libra2_governance_create_proposal_v2),
-        );
-        map.insert(
-            "libra2_governance_force_end_epoch".to_string(),
-            Box::new(decoder::libra2_governance_force_end_epoch),
-        );
-        map.insert(
-            "libra2_governance_force_end_epoch_test_only".to_string(),
-            Box::new(decoder::libra2_governance_force_end_epoch_test_only),
-        );
-        map.insert(
-            "libra2_governance_partial_vote".to_string(),
-            Box::new(decoder::libra2_governance_partial_vote),
-        );
-        map.insert(
-            "libra2_governance_reconfigure".to_string(),
-            Box::new(decoder::libra2_governance_reconfigure),
-        );
-        map.insert(
-            "libra2_governance_vote".to_string(),
-            Box::new(decoder::libra2_governance_vote),
-        );
-        map.insert(
             "code_publish_package_txn".to_string(),
             Box::new(decoder::code_publish_package_txn),
         );
@@ -7812,6 +7732,86 @@ static SCRIPT_FUNCTION_DECODER_MAP: once_cell::sync::Lazy<EntryFunctionDecoderMa
         map.insert(
             "jwks_update_federated_jwk_set".to_string(),
             Box::new(decoder::jwks_update_federated_jwk_set),
+        );
+        map.insert(
+            "libra2_account_batch_transfer".to_string(),
+            Box::new(decoder::libra2_account_batch_transfer),
+        );
+        map.insert(
+            "libra2_account_batch_transfer_coins".to_string(),
+            Box::new(decoder::libra2_account_batch_transfer_coins),
+        );
+        map.insert(
+            "libra2_account_create_account".to_string(),
+            Box::new(decoder::libra2_account_create_account),
+        );
+        map.insert(
+            "libra2_account_fungible_transfer_only".to_string(),
+            Box::new(decoder::libra2_account_fungible_transfer_only),
+        );
+        map.insert(
+            "libra2_account_set_allow_direct_coin_transfers".to_string(),
+            Box::new(decoder::libra2_account_set_allow_direct_coin_transfers),
+        );
+        map.insert(
+            "libra2_account_transfer".to_string(),
+            Box::new(decoder::libra2_account_transfer),
+        );
+        map.insert(
+            "libra2_account_transfer_coins".to_string(),
+            Box::new(decoder::libra2_account_transfer_coins),
+        );
+        map.insert(
+            "libra2_coin_claim_mint_capability".to_string(),
+            Box::new(decoder::libra2_coin_claim_mint_capability),
+        );
+        map.insert(
+            "libra2_coin_delegate_mint_capability".to_string(),
+            Box::new(decoder::libra2_coin_delegate_mint_capability),
+        );
+        map.insert(
+            "libra2_coin_mint".to_string(),
+            Box::new(decoder::libra2_coin_mint),
+        );
+        map.insert(
+            "libra2_governance_add_approved_script_hash_script".to_string(),
+            Box::new(decoder::libra2_governance_add_approved_script_hash_script),
+        );
+        map.insert(
+            "libra2_governance_batch_partial_vote".to_string(),
+            Box::new(decoder::libra2_governance_batch_partial_vote),
+        );
+        map.insert(
+            "libra2_governance_batch_vote".to_string(),
+            Box::new(decoder::libra2_governance_batch_vote),
+        );
+        map.insert(
+            "libra2_governance_create_proposal".to_string(),
+            Box::new(decoder::libra2_governance_create_proposal),
+        );
+        map.insert(
+            "libra2_governance_create_proposal_v2".to_string(),
+            Box::new(decoder::libra2_governance_create_proposal_v2),
+        );
+        map.insert(
+            "libra2_governance_force_end_epoch".to_string(),
+            Box::new(decoder::libra2_governance_force_end_epoch),
+        );
+        map.insert(
+            "libra2_governance_force_end_epoch_test_only".to_string(),
+            Box::new(decoder::libra2_governance_force_end_epoch_test_only),
+        );
+        map.insert(
+            "libra2_governance_partial_vote".to_string(),
+            Box::new(decoder::libra2_governance_partial_vote),
+        );
+        map.insert(
+            "libra2_governance_reconfigure".to_string(),
+            Box::new(decoder::libra2_governance_reconfigure),
+        );
+        map.insert(
+            "libra2_governance_vote".to_string(),
+            Box::new(decoder::libra2_governance_vote),
         );
         map.insert(
             "managed_coin_burn".to_string(),

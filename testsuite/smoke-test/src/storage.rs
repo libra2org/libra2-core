@@ -13,7 +13,7 @@ use crate::{
 };
 use anyhow::{bail, Result};
 use libra2_backup_cli::metadata::view::BackupStorageState;
-use aptos_forge::{reconfig, AptosPublicInfo, Node, NodeExt, Swarm, SwarmExt};
+use libra2_forge::{reconfig, Libra2PublicInfo, Node, NodeExt, Swarm, SwarmExt};
 use libra2_logger::info;
 use libra2_temppath::TempPath;
 use libra2_types::{transaction::Version, waypoint::Waypoint};
@@ -39,7 +39,7 @@ async fn test_db_restore() {
     workspace_builder::get_bin("libra2-debugger");
     info!("---------- 1. pre-building finished.");
 
-    let mut swarm = SwarmBuilder::new_local(4).with_aptos().build().await;
+    let mut swarm = SwarmBuilder::new_local(4).with_libra2().build().await;
     info!("---------- 1.1 swarm built, sending some transactions.");
     let validator_peer_ids = swarm.validators().map(|v| v.peer_id()).collect::<Vec<_>>();
     let client_1 = swarm
@@ -328,7 +328,7 @@ pub(crate) fn db_backup(
     state_snapshot_interval_epochs: usize,
     trusted_waypoints: &[Waypoint],
 ) -> (TempPath, Version) {
-    info!("---------- running aptos db tool backup");
+    info!("---------- running libra2 db tool backup");
     let now = Instant::now();
     let bin_path = workspace_builder::get_bin("libra2-debugger");
     let metadata_cache_path1 = TempPath::new();
@@ -454,7 +454,7 @@ pub(crate) fn db_restore(
     info!("Backup restored in {} seconds.", now.elapsed().as_secs());
 }
 
-async fn do_transfer_or_reconfig(info: &mut AptosPublicInfo) -> Result<()> {
+async fn do_transfer_or_reconfig(info: &mut Libra2PublicInfo) -> Result<()> {
     const LOTS_MONEY: u64 = 100_000_000;
     let r = rand::random::<u64>() % 10;
     if r < 3 {
@@ -481,7 +481,7 @@ async fn do_transfer_or_reconfig(info: &mut AptosPublicInfo) -> Result<()> {
     Ok(())
 }
 
-async fn do_transfers_and_reconfigs(mut info: AptosPublicInfo, quit_flag: Arc<AtomicBool>) {
+async fn do_transfers_and_reconfigs(mut info: Libra2PublicInfo, quit_flag: Arc<AtomicBool>) {
     // loop until aborted
     while !quit_flag.load(Ordering::Acquire) {
         do_transfer_or_reconfig(&mut info).await.unwrap();
@@ -493,7 +493,7 @@ async fn test_db_restart() {
     ::libra2_logger::Logger::new().init();
 
     info!("{LINE} Test started.");
-    let mut swarm = SwarmBuilder::new_local(4).with_aptos().build().await;
+    let mut swarm = SwarmBuilder::new_local(4).with_libra2().build().await;
     swarm.wait_all_alive(Duration::from_secs(60)).await.unwrap();
     swarm
         .wait_for_all_nodes_to_catchup(Duration::from_secs(MAX_CATCH_UP_WAIT_SECS))
@@ -505,7 +505,7 @@ async fn test_db_restart() {
     let non_restarting_validator_id = restarting_validator_ids.pop().unwrap();
     let non_restarting_validator = swarm.validator(non_restarting_validator_id).unwrap();
     let chain_info = swarm.chain_info();
-    let mut pub_chain_info = AptosPublicInfo::new(
+    let mut pub_chain_info = Libra2PublicInfo::new(
         chain_info.chain_id(),
         non_restarting_validator
             .inspection_service_endpoint()

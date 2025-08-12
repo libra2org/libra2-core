@@ -7,7 +7,7 @@ use libra2_cached_packages::libra2_stdlib;
 use libra2_crypto::{
     ed25519::Ed25519PrivateKey, poseidon_bn254::keyless::fr_to_bytes_le, PrivateKey, SigningKey,
 };
-use aptos_forge::{AptosPublicInfo, LocalSwarm, NodeExt, Swarm, SwarmExt};
+use libra2_forge::{Libra2PublicInfo, LocalSwarm, NodeExt, Swarm, SwarmExt};
 use libra2_logger::{debug, info};
 use libra2_rest_client::Client;
 use libra2_sdk::types::{
@@ -53,7 +53,7 @@ async fn test_keyless_oidc_txn_verifies() {
 
     info!("Submit OpenID transaction");
     let result = swarm
-        .aptos_public_info()
+        .libra2_public_info()
         .client()
         .submit_without_deserializing_response(&signed_txn)
         .await;
@@ -66,7 +66,7 @@ async fn test_keyless_oidc_txn_verifies() {
 #[tokio::test]
 async fn test_keyless_rotate_vk() {
     let (tw_sk, config, jwk, swarm, mut cli, root_idx) = setup_local_net().await;
-    let mut info = swarm.aptos_public_info();
+    let mut info = swarm.libra2_public_info();
 
     let (old_sig, old_pk) = get_sample_groth16_sig_and_pk();
     let signed_txn = sign_transaction(
@@ -144,7 +144,7 @@ async fn test_keyless_rotate_vk() {
 #[tokio::test]
 async fn test_keyless_secure_test_jwk_initialized_at_genesis() {
     let (swarm, _cli, _faucet) = SwarmBuilder::new_local(1)
-        .with_aptos()
+        .with_libra2()
         .build_with_cli(0)
         .await;
     let client = swarm.validators().next().unwrap().rest_client();
@@ -178,7 +178,7 @@ async fn test_keyless_oidc_txn_with_bad_jwt_sig() {
         },
     }
 
-    let mut info = swarm.aptos_public_info();
+    let mut info = swarm.libra2_public_info();
     let signed_txn = sign_transaction(&mut info, sig, pk, &jwk, &config, Some(&tw_sk), 1).await;
 
     info!("Submit OpenID transaction with bad JWT signature");
@@ -199,7 +199,7 @@ async fn test_keyless_oidc_txn_with_expired_epk() {
 
     sig.exp_date_secs = 1; // This should fail the verification since the expiration date is way in the past
 
-    let mut info = swarm.aptos_public_info();
+    let mut info = swarm.libra2_public_info();
     let signed_txn = sign_transaction(&mut info, sig, pk, &jwk, &config, Some(&tw_sk), 1).await;
 
     info!("Submit OpenID transaction with expired EPK");
@@ -219,7 +219,7 @@ async fn test_keyless_groth16_verifies() {
 
     info!("Submit keyless Groth16 transaction");
     let result = swarm
-        .aptos_public_info()
+        .libra2_public_info()
         .client()
         .submit_without_deserializing_response(&signed_txn)
         .await;
@@ -319,7 +319,7 @@ script {{
         assert_eq!(Some(true), txn_result.unwrap().success);
     }
 
-    let mut info = swarm.aptos_public_info();
+    let mut info = swarm.libra2_public_info();
 
     let esk = EphemeralPrivateKey::Ed25519 {
         inner_private_key: get_sample_esk(),
@@ -383,7 +383,7 @@ script {{
     let signed_txn = local_account.sign_with_transaction_builder(txn_builder);
 
     let result = swarm
-        .aptos_public_info()
+        .libra2_public_info()
         .client()
         .submit_without_deserializing_response(&signed_txn)
         .await;
@@ -398,7 +398,7 @@ async fn test_keyless_no_extra_field_groth16_verifies() {
 
     info!("Submit keyless Groth16 transaction");
     let result = swarm
-        .aptos_public_info()
+        .libra2_public_info()
         .client()
         .submit_without_deserializing_response(&signed_txn)
         .await;
@@ -413,7 +413,7 @@ async fn test_keyless_no_training_wheels_groth16_verifies() {
     let (_tw_sk, config, jwk, swarm, mut cli, root_idx) = setup_local_net().await;
     let (sig, pk) = get_sample_groth16_sig_and_pk();
 
-    let mut info = swarm.aptos_public_info();
+    let mut info = swarm.libra2_public_info();
 
     remove_training_wheels(&mut cli, &mut info, root_idx).await;
 
@@ -449,7 +449,7 @@ async fn test_keyless_groth16_verifies_using_rust_sdk() {
     )
     .unwrap();
 
-    let mut info = swarm.aptos_public_info();
+    let mut info = swarm.libra2_public_info();
     let keyless_account = KeylessAccount::new(
         &get_sample_iss(),
         &get_sample_aud(),
@@ -489,7 +489,7 @@ async fn test_keyless_groth16_verifies_using_rust_sdk() {
 
     info!("Submit keyless Groth16 transaction");
     let result = swarm
-        .aptos_public_info()
+        .libra2_public_info()
         .client()
         .submit_without_deserializing_response(&signed_txn)
         .await;
@@ -517,7 +517,7 @@ async fn test_keyless_groth16_verifies_using_rust_sdk_from_jwt() {
     )
     .unwrap();
 
-    let mut info = swarm.aptos_public_info();
+    let mut info = swarm.libra2_public_info();
     let keyless_account = KeylessAccount::new_from_jwt(
         &get_sample_jwt_token(),
         ephemeral_key_pair,
@@ -554,7 +554,7 @@ async fn test_keyless_groth16_verifies_using_rust_sdk_from_jwt() {
 
     info!("Submit keyless Groth16 transaction");
     let result = swarm
-        .aptos_public_info()
+        .libra2_public_info()
         .client()
         .submit_without_deserializing_response(&signed_txn)
         .await;
@@ -569,7 +569,7 @@ async fn test_keyless_groth16_with_mauled_proof() {
     let (tw_sk, config, jwk, swarm, _, _) = setup_local_net().await;
     let (sig, pk) = get_sample_groth16_sig_and_pk();
 
-    let mut info = swarm.aptos_public_info();
+    let mut info = swarm.libra2_public_info();
     let signed_txn = sign_transaction(&mut info, sig, pk, &jwk, &config, Some(&tw_sk), 1).await;
     let signed_txn = maul_groth16_zkp_signature(signed_txn);
 
@@ -589,7 +589,7 @@ async fn test_keyless_groth16_with_bad_tw_signature() {
     let (_tw_sk, config, jwk, swarm, _, _) = setup_local_net().await;
     let (sig, pk) = get_sample_groth16_sig_and_pk();
 
-    let mut info = swarm.aptos_public_info();
+    let mut info = swarm.libra2_public_info();
 
     // using the sample ESK rather than the TW SK to get a bad training wheels signature
     let signed_txn = sign_transaction(
@@ -617,7 +617,7 @@ async fn test_keyless_groth16_with_bad_tw_signature() {
 }
 
 async fn sign_transaction_any_keyless_pk(
-    info: &mut AptosPublicInfo,
+    info: &mut Libra2PublicInfo,
     mut sig: KeylessSignature,
     any_keyless_pk: AnyKeylessPublicKey,
     jwk: &RSA_JWK,
@@ -718,7 +718,7 @@ async fn sign_transaction_any_keyless_pk(
 }
 
 async fn sign_transaction(
-    info: &mut AptosPublicInfo,
+    info: &mut Libra2PublicInfo,
     sig: KeylessSignature,
     pk: KeylessPublicKey,
     jwk: &RSA_JWK,
@@ -770,7 +770,7 @@ async fn get_transaction(
 
     let (sig, pk) = get_pk_and_sig_func();
 
-    let mut info = swarm.aptos_public_info();
+    let mut info = swarm.libra2_public_info();
     let signed_txn = sign_transaction(
         &mut info,
         sig.clone(),
@@ -816,7 +816,7 @@ async fn setup_local_net_inner(
             }
             conf.initial_features_override = Some(features);
         }))
-        .with_aptos()
+        .with_libra2()
         .build_with_cli(0)
         .await;
 
@@ -827,7 +827,7 @@ async fn setup_local_net_inner(
 
 pub(crate) async fn remove_training_wheels(
     cli: &mut CliTestFramework,
-    info: &mut AptosPublicInfo,
+    info: &mut Libra2PublicInfo,
     root_idx: usize,
 ) {
     let script = format!(
@@ -897,7 +897,7 @@ pub(crate) async fn spawn_network_and_execute_gov_proposals(
         .unwrap();
     debug!("txn_summary={:?}", txn_summary);
 
-    let mut info = swarm.aptos_public_info();
+    let mut info = swarm.libra2_public_info();
 
     // Increment sequence number since we installed the VK
     info.root_account().increment_sequence_number();
@@ -1046,7 +1046,7 @@ script {{
 
 async fn rotate_vk_by_governance(
     cli: &mut CliTestFramework,
-    info: &mut AptosPublicInfo,
+    info: &mut Libra2PublicInfo,
     vk: &Groth16VerificationKey,
     root_idx: usize,
 ) {

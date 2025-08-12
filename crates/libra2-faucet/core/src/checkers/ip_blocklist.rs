@@ -4,7 +4,7 @@
 use super::{CheckerData, CheckerTrait};
 use crate::{
     common::{IpRangeManager, IpRangeManagerConfig},
-    endpoints::{AptosTapError, RejectionReason, RejectionReasonCode},
+    endpoints::{Libra2TapError, RejectionReason, RejectionReasonCode},
 };
 use anyhow::Result;
 use async_trait::async_trait;
@@ -28,7 +28,7 @@ impl CheckerTrait for IpBlocklistChecker {
         &self,
         data: CheckerData,
         _dry_run: bool,
-    ) -> Result<Vec<RejectionReason>, AptosTapError> {
+    ) -> Result<Vec<RejectionReason>, Libra2TapError> {
         match &data.source_ip {
             IpAddr::V4(source_ip) => {
                 if self.manager.ipv4_list.contains(source_ip) {

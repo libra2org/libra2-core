@@ -36,7 +36,7 @@ impl_poem_type!(
         )),
         format = Some("hex"),
         description = Some(indoc! {"
-            A hex encoded 32 byte Aptos account address.
+            A hex encoded 32 byte Libra2 account address.
 
             This is represented in a string as a 64 character hex string, sometimes
             shortened by stripping leading 0s, and adding a 0x.
@@ -55,7 +55,7 @@ impl_poem_type!(
         )),
         format = Some("hex"),
         description = Some(indoc! {"
-            A hex encoded 32 byte Aptos account address or a struct tag.
+            A hex encoded 32 byte Libra2 account address or a struct tag.
 
             This is represented in a string as a 64 character hex string, sometimes
             shortened by stripping leading 0s, and adding a 0x or
@@ -181,7 +181,7 @@ impl_poem_type!(
 
             Move `u64`, `u128` and `u256` type value is serialized into `string`.
 
-            Move `address` type value (32 byte Aptos account address) is serialized into a HexEncodedBytes string.
+            Move `address` type value (32 byte Libra2 account address) is serialized into a HexEncodedBytes string.
             For example:
               - `0x1`
               - `0x1668f6be25668c1a17cd8caf6b8d2f25`

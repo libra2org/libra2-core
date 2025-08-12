@@ -1,7 +1,7 @@
 // Copyright © Aptos Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-//! This crate defines all the gas parameters utilized by the Aptos VM & native functions.
+//! This crate defines all the gas parameters utilized by the Libra2 VM & native functions.
 //! It also provides traits for conversion between different representations.
 //!
 //! To define a new gas parameter, simply add a new entry to the appropriate file in the

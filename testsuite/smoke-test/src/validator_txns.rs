@@ -5,7 +5,7 @@ use crate::{
     smoke_test_environment::SwarmBuilder,
     utils::{get_current_consensus_config, get_current_version},
 };
-use aptos_forge::{NodeExt, SwarmExt};
+use libra2_forge::{NodeExt, SwarmExt};
 use libra2_logger::{debug, info};
 use libra2_rest_client::Client;
 use libra2_types::on_chain_config::OnChainRandomnessConfig;
@@ -26,7 +26,7 @@ async fn dummy_validator_txns() {
             conf.consensus_config.enable_validator_txns();
             conf.randomness_config_override = Some(OnChainRandomnessConfig::default_enabled());
         }))
-        .with_aptos()
+        .with_libra2()
         .build()
         .await;
 
@@ -51,8 +51,8 @@ async fn dummy_validator_txns() {
             )
         })
         .collect::<Vec<_>>();
-    let aptos_results = join_all(tasks).await;
-    println!("aptos_results={:?}", aptos_results);
+    let libra2_results = join_all(tasks).await;
+    println!("libra2_results={:?}", libra2_results);
 
     let version_milestone_0 = get_current_version(&validator_clients[0]).await;
     let version_milestone_1 = version_milestone_0 + 10;

@@ -200,7 +200,7 @@ async fn construction_derive(
     check_network(request.network_identifier, &server_context)?;
 
     // The input must be an Ed25519 Public key and will only derive the Address for the original
-    // Aptos Ed25519 authentication scheme
+    // Libra2 Ed25519 authentication scheme
     let public_key: Ed25519PublicKey =
         decode_key(&request.public_key.hex_bytes, "Ed25519PublicKey")?;
     let address = AuthenticationKey::ed25519(&public_key).account_address();
@@ -304,7 +304,7 @@ async fn fill_in_operator(
 
 /// Simulates a transaction for gas estimation purposes
 ///
-/// Only the original Ed25519 accounts on Aptos are supported
+/// Only the original Ed25519 accounts on Libra2 are supported
 ///
 /// Will only simulate if it does not have max gas amount
 ///

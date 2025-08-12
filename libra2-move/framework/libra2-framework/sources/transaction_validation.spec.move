@@ -445,7 +445,7 @@ spec libra2_framework::transaction_validation {
 
     spec schema EpilogueGasPayerAbortsIf {
         use std::option;
-        use aptos_std::type_info;
+        use libra2_std::type_info;
         use libra2_framework::account::{Account};
         use libra2_framework::libra2_coin::{Libra2Coin};
         use libra2_framework::coin;

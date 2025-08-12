@@ -13,7 +13,7 @@ echo "CARGO_TARGET_DIR: $CARGO_TARGET_DIR"
 
 PACKAGES=(
     libra2-node
-    aptos-forge-cli
+    libra2-forge-cli
 )
 
 # We have to do these separately because we need to avoid feature unification

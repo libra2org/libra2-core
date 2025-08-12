@@ -23,9 +23,9 @@ full_node_networks:
   {{- end }}
 
   # be backwards compatible with the old seeds config
-  {{- if (get $.Values.aptos_chains $.Values.chain.name).seeds}}
+  {{- if (get $.Values.libra2_chains $.Values.chain.name).seeds}}
   seeds:
-    {{- (get $.Values.aptos_chains $.Values.chain.name).seeds | default dict | toYaml | nindent 6 }}
+    {{- (get $.Values.libra2_chains $.Values.chain.name).seeds | default dict | toYaml | nindent 6 }}
   {{- else }}
   {{ with .seeds }}
   seeds:

@@ -6,7 +6,7 @@ use super::{
     realistic_environment::wrap_with_realistic_env, ungrouped::changing_working_quorum_test_helper,
 };
 use crate::TestCommand;
-use aptos_forge::{
+use libra2_forge::{
     success_criteria::{LatencyType, StateProgressThreshold, SuccessCriteria},
     EmitJobMode, EmitJobRequest, ForgeConfig,
 };
@@ -14,7 +14,7 @@ use libra2_sdk::types::on_chain_config::{
     BlockGasLimitType, ConsensusAlgorithmConfig, DagConsensusConfigV1, OnChainConsensusConfig,
     OnChainExecutionConfig, TransactionShufflerType, ValidatorTxnConfig, DEFAULT_WINDOW_SIZE,
 };
-use aptos_testcases::{
+use libra2_testcases::{
     consensus_reliability_tests::ChangingWorkingQuorumTest,
     dag_onchain_enable_test::DagOnChainEnableTest, two_traffics_test::TwoTrafficsTest,
 };

@@ -4,7 +4,7 @@
 
 use super::new_test_context;
 use crate::tests::new_test_context_with_orderless_flags;
-use aptos_api_test_context::{current_function_name, TestContext};
+use libra2_api_test_context::{current_function_name, TestContext};
 use percent_encoding::{utf8_percent_encode, NON_ALPHANUMERIC};
 use rstest::rstest;
 use serde_json::json;

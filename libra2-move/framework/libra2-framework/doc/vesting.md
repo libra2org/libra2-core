@@ -169,8 +169,8 @@ withdrawable, admin can call admin_withdraw to withdraw all funds to the vesting
 <b>use</b> <a href="event.md#0x1_event">0x1::event</a>;
 <b>use</b> <a href="../../libra2-stdlib/../move-stdlib/doc/features.md#0x1_features">0x1::features</a>;
 <b>use</b> <a href="../../libra2-stdlib/../move-stdlib/doc/fixed_point32.md#0x1_fixed_point32">0x1::fixed_point32</a>;
-<b>use</b> <a href="aptos_account.md#0x1_libra2_account">0x1::libra2_account</a>;
-<b>use</b> <a href="aptos_coin.md#0x1_libra2_coin">0x1::libra2_coin</a>;
+<b>use</b> <a href="libra2_account.md#0x1_libra2_account">0x1::libra2_account</a>;
+<b>use</b> <a href="libra2_coin.md#0x1_libra2_coin">0x1::libra2_coin</a>;
 <b>use</b> <a href="../../libra2-stdlib/doc/math64.md#0x1_math64">0x1::math64</a>;
 <b>use</b> <a href="permissioned_signer.md#0x1_permissioned_signer">0x1::permissioned_signer</a>;
 <b>use</b> <a href="../../libra2-stdlib/doc/pool_u64.md#0x1_pool_u64">0x1::pool_u64</a>;
@@ -2236,7 +2236,7 @@ Create a vesting schedule with the given schedule of distributions, a vesting st
 Create a vesting contract with a given configurations.
 
 
-<pre><code><b>public</b> <b>fun</b> <a href="vesting.md#0x1_vesting_create_vesting_contract">create_vesting_contract</a>(admin: &<a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, shareholders: &<a href="../../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<b>address</b>&gt;, buy_ins: <a href="../../libra2-stdlib/doc/simple_map.md#0x1_simple_map_SimpleMap">simple_map::SimpleMap</a>&lt;<b>address</b>, <a href="coin.md#0x1_coin_Coin">coin::Coin</a>&lt;<a href="aptos_coin.md#0x1_libra2_coin_Libra2Coin">libra2_coin::Libra2Coin</a>&gt;&gt;, vesting_schedule: <a href="vesting.md#0x1_vesting_VestingSchedule">vesting::VestingSchedule</a>, withdrawal_address: <b>address</b>, operator: <b>address</b>, voter: <b>address</b>, commission_percentage: u64, contract_creation_seed: <a href="../../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt;): <b>address</b>
+<pre><code><b>public</b> <b>fun</b> <a href="vesting.md#0x1_vesting_create_vesting_contract">create_vesting_contract</a>(admin: &<a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, shareholders: &<a href="../../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<b>address</b>&gt;, buy_ins: <a href="../../libra2-stdlib/doc/simple_map.md#0x1_simple_map_SimpleMap">simple_map::SimpleMap</a>&lt;<b>address</b>, <a href="coin.md#0x1_coin_Coin">coin::Coin</a>&lt;<a href="libra2_coin.md#0x1_libra2_coin_Libra2Coin">libra2_coin::Libra2Coin</a>&gt;&gt;, vesting_schedule: <a href="vesting.md#0x1_vesting_VestingSchedule">vesting::VestingSchedule</a>, withdrawal_address: <b>address</b>, operator: <b>address</b>, voter: <b>address</b>, commission_percentage: u64, contract_creation_seed: <a href="../../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt;): <b>address</b>
 </code></pre>
 
 
@@ -2576,12 +2576,12 @@ Distribute any withdrawable stake from the stake pool.
         <b>let</b> amount = <a href="../../libra2-stdlib/doc/pool_u64.md#0x1_pool_u64_shares_to_amount_with_total_coins">pool_u64::shares_to_amount_with_total_coins</a>(grant_pool, shares, total_distribution_amount);
         <b>let</b> share_of_coins = <a href="coin.md#0x1_coin_extract">coin::extract</a>(&<b>mut</b> coins, amount);
         <b>let</b> recipient_address = <a href="vesting.md#0x1_vesting_get_beneficiary">get_beneficiary</a>(vesting_contract, shareholder);
-        <a href="aptos_account.md#0x1_libra2_account_deposit_coins">libra2_account::deposit_coins</a>(recipient_address, share_of_coins);
+        <a href="libra2_account.md#0x1_libra2_account_deposit_coins">libra2_account::deposit_coins</a>(recipient_address, share_of_coins);
     });
 
     // Send <a href="../../libra2-stdlib/doc/any.md#0x1_any">any</a> remaining "dust" (leftover due <b>to</b> rounding <a href="../../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error">error</a>) <b>to</b> the withdrawal <b>address</b>.
     <b>if</b> (<a href="coin.md#0x1_coin_value">coin::value</a>(&coins) &gt; 0) {
-        <a href="aptos_account.md#0x1_libra2_account_deposit_coins">libra2_account::deposit_coins</a>(vesting_contract.withdrawal_address, coins);
+        <a href="libra2_account.md#0x1_libra2_account_deposit_coins">libra2_account::deposit_coins</a>(vesting_contract.withdrawal_address, coins);
     } <b>else</b> {
         <a href="coin.md#0x1_coin_destroy_zero">coin::destroy_zero</a>(coins);
     };
@@ -2730,7 +2730,7 @@ has already been terminated.
         <a href="coin.md#0x1_coin_destroy_zero">coin::destroy_zero</a>(coins);
         <b>return</b>
     };
-    <a href="aptos_account.md#0x1_libra2_account_deposit_coins">libra2_account::deposit_coins</a>(vesting_contract.withdrawal_address, coins);
+    <a href="libra2_account.md#0x1_libra2_account_deposit_coins">libra2_account::deposit_coins</a>(vesting_contract.withdrawal_address, coins);
 
     <b>if</b> (std::features::module_event_migration_enabled()) {
         emit(
@@ -3426,7 +3426,7 @@ This address should be deterministic for the same admin and vesting contract cre
 
 
 
-<pre><code><b>fun</b> <a href="vesting.md#0x1_vesting_withdraw_stake">withdraw_stake</a>(vesting_contract: &<a href="vesting.md#0x1_vesting_VestingContract">vesting::VestingContract</a>, contract_address: <b>address</b>): <a href="coin.md#0x1_coin_Coin">coin::Coin</a>&lt;<a href="aptos_coin.md#0x1_libra2_coin_Libra2Coin">libra2_coin::Libra2Coin</a>&gt;
+<pre><code><b>fun</b> <a href="vesting.md#0x1_vesting_withdraw_stake">withdraw_stake</a>(vesting_contract: &<a href="vesting.md#0x1_vesting_VestingContract">vesting::VestingContract</a>, contract_address: <b>address</b>): <a href="coin.md#0x1_coin_Coin">coin::Coin</a>&lt;<a href="libra2_coin.md#0x1_libra2_coin_Libra2Coin">libra2_coin::Libra2Coin</a>&gt;
 </code></pre>
 
 
@@ -3939,7 +3939,7 @@ This address should be deterministic for the same admin and vesting contract cre
 ### Function `create_vesting_contract`
 
 
-<pre><code><b>public</b> <b>fun</b> <a href="vesting.md#0x1_vesting_create_vesting_contract">create_vesting_contract</a>(admin: &<a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, shareholders: &<a href="../../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<b>address</b>&gt;, buy_ins: <a href="../../libra2-stdlib/doc/simple_map.md#0x1_simple_map_SimpleMap">simple_map::SimpleMap</a>&lt;<b>address</b>, <a href="coin.md#0x1_coin_Coin">coin::Coin</a>&lt;<a href="aptos_coin.md#0x1_libra2_coin_Libra2Coin">libra2_coin::Libra2Coin</a>&gt;&gt;, vesting_schedule: <a href="vesting.md#0x1_vesting_VestingSchedule">vesting::VestingSchedule</a>, withdrawal_address: <b>address</b>, operator: <b>address</b>, voter: <b>address</b>, commission_percentage: u64, contract_creation_seed: <a href="../../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt;): <b>address</b>
+<pre><code><b>public</b> <b>fun</b> <a href="vesting.md#0x1_vesting_create_vesting_contract">create_vesting_contract</a>(admin: &<a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, shareholders: &<a href="../../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<b>address</b>&gt;, buy_ins: <a href="../../libra2-stdlib/doc/simple_map.md#0x1_simple_map_SimpleMap">simple_map::SimpleMap</a>&lt;<b>address</b>, <a href="coin.md#0x1_coin_Coin">coin::Coin</a>&lt;<a href="libra2_coin.md#0x1_libra2_coin_Libra2Coin">libra2_coin::Libra2Coin</a>&gt;&gt;, vesting_schedule: <a href="vesting.md#0x1_vesting_VestingSchedule">vesting::VestingSchedule</a>, withdrawal_address: <b>address</b>, operator: <b>address</b>, voter: <b>address</b>, commission_percentage: u64, contract_creation_seed: <a href="../../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt;): <b>address</b>
 </code></pre>
 
 
@@ -4417,7 +4417,7 @@ This address should be deterministic for the same admin and vesting contract cre
 <b>include</b> <b>if</b> (ea) <a href="account.md#0x1_account_CreateResourceAccountAbortsIf">account::CreateResourceAccountAbortsIf</a> <b>else</b> <a href="account.md#0x1_account_CreateAccountAbortsIf">account::CreateAccountAbortsIf</a> {addr: resource_addr};
 <b>let</b> acc = <b>global</b>&lt;<a href="account.md#0x1_account_Account">account::Account</a>&gt;(resource_addr);
 <b>let</b> <b>post</b> post_acc = <b>global</b>&lt;<a href="account.md#0x1_account_Account">account::Account</a>&gt;(resource_addr);
-<b>aborts_if</b> !<b>exists</b>&lt;<a href="coin.md#0x1_coin_CoinStore">coin::CoinStore</a>&lt;Libra2Coin&gt;&gt;(resource_addr) && !aptos_std::type_info::spec_is_struct&lt;Libra2Coin&gt;();
+<b>aborts_if</b> !<b>exists</b>&lt;<a href="coin.md#0x1_coin_CoinStore">coin::CoinStore</a>&lt;Libra2Coin&gt;&gt;(resource_addr) && !libra2_std::type_info::spec_is_struct&lt;Libra2Coin&gt;();
 <b>aborts_if</b> !<b>exists</b>&lt;<a href="coin.md#0x1_coin_CoinStore">coin::CoinStore</a>&lt;Libra2Coin&gt;&gt;(resource_addr) && ea && acc.guid_creation_num + 2 &gt; MAX_U64;
 <b>aborts_if</b> !<b>exists</b>&lt;<a href="coin.md#0x1_coin_CoinStore">coin::CoinStore</a>&lt;Libra2Coin&gt;&gt;(resource_addr) && ea && acc.guid_creation_num + 2 &gt;= <a href="account.md#0x1_account_MAX_GUID_CREATION_NUM">account::MAX_GUID_CREATION_NUM</a>;
 <b>ensures</b> <b>exists</b>&lt;<a href="account.md#0x1_account_Account">account::Account</a>&gt;(resource_addr) && post_acc.authentication_key == <a href="account.md#0x1_account_ZERO_AUTH_KEY">account::ZERO_AUTH_KEY</a> &&
@@ -4520,7 +4520,7 @@ This address should be deterministic for the same admin and vesting contract cre
 ### Function `withdraw_stake`
 
 
-<pre><code><b>fun</b> <a href="vesting.md#0x1_vesting_withdraw_stake">withdraw_stake</a>(vesting_contract: &<a href="vesting.md#0x1_vesting_VestingContract">vesting::VestingContract</a>, contract_address: <b>address</b>): <a href="coin.md#0x1_coin_Coin">coin::Coin</a>&lt;<a href="aptos_coin.md#0x1_libra2_coin_Libra2Coin">libra2_coin::Libra2Coin</a>&gt;
+<pre><code><b>fun</b> <a href="vesting.md#0x1_vesting_withdraw_stake">withdraw_stake</a>(vesting_contract: &<a href="vesting.md#0x1_vesting_VestingContract">vesting::VestingContract</a>, contract_address: <b>address</b>): <a href="coin.md#0x1_coin_Coin">coin::Coin</a>&lt;<a href="libra2_coin.md#0x1_libra2_coin_Libra2Coin">libra2_coin::Libra2Coin</a>&gt;
 </code></pre>
 
 

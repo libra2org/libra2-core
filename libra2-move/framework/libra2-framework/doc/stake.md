@@ -183,7 +183,7 @@ or if their stake drops below the min required, they would get removed at the en
 <b>use</b> <a href="event.md#0x1_event">0x1::event</a>;
 <b>use</b> <a href="../../libra2-stdlib/../move-stdlib/doc/features.md#0x1_features">0x1::features</a>;
 <b>use</b> <a href="../../libra2-stdlib/doc/fixed_point64.md#0x1_fixed_point64">0x1::fixed_point64</a>;
-<b>use</b> <a href="aptos_coin.md#0x1_libra2_coin">0x1::libra2_coin</a>;
+<b>use</b> <a href="libra2_coin.md#0x1_libra2_coin">0x1::libra2_coin</a>;
 <b>use</b> <a href="../../libra2-stdlib/doc/math64.md#0x1_math64">0x1::math64</a>;
 <b>use</b> <a href="../../libra2-stdlib/../move-stdlib/doc/option.md#0x1_option">0x1::option</a>;
 <b>use</b> <a href="permissioned_signer.md#0x1_permissioned_signer">0x1::permissioned_signer</a>;
@@ -257,25 +257,25 @@ Changes in stake for an inactive validator:
 
 <dl>
 <dt>
-<code>active: <a href="coin.md#0x1_coin_Coin">coin::Coin</a>&lt;<a href="aptos_coin.md#0x1_libra2_coin_Libra2Coin">libra2_coin::Libra2Coin</a>&gt;</code>
+<code>active: <a href="coin.md#0x1_coin_Coin">coin::Coin</a>&lt;<a href="libra2_coin.md#0x1_libra2_coin_Libra2Coin">libra2_coin::Libra2Coin</a>&gt;</code>
 </dt>
 <dd>
 
 </dd>
 <dt>
-<code>inactive: <a href="coin.md#0x1_coin_Coin">coin::Coin</a>&lt;<a href="aptos_coin.md#0x1_libra2_coin_Libra2Coin">libra2_coin::Libra2Coin</a>&gt;</code>
+<code>inactive: <a href="coin.md#0x1_coin_Coin">coin::Coin</a>&lt;<a href="libra2_coin.md#0x1_libra2_coin_Libra2Coin">libra2_coin::Libra2Coin</a>&gt;</code>
 </dt>
 <dd>
 
 </dd>
 <dt>
-<code>pending_active: <a href="coin.md#0x1_coin_Coin">coin::Coin</a>&lt;<a href="aptos_coin.md#0x1_libra2_coin_Libra2Coin">libra2_coin::Libra2Coin</a>&gt;</code>
+<code>pending_active: <a href="coin.md#0x1_coin_Coin">coin::Coin</a>&lt;<a href="libra2_coin.md#0x1_libra2_coin_Libra2Coin">libra2_coin::Libra2Coin</a>&gt;</code>
 </dt>
 <dd>
 
 </dd>
 <dt>
-<code>pending_inactive: <a href="coin.md#0x1_coin_Coin">coin::Coin</a>&lt;<a href="aptos_coin.md#0x1_libra2_coin_Libra2Coin">libra2_coin::Libra2Coin</a>&gt;</code>
+<code>pending_inactive: <a href="coin.md#0x1_coin_Coin">coin::Coin</a>&lt;<a href="libra2_coin.md#0x1_libra2_coin_Libra2Coin">libra2_coin::Libra2Coin</a>&gt;</code>
 </dt>
 <dd>
 
@@ -603,7 +603,7 @@ This allows the Stake module to mint rewards to stakers.
 
 <dl>
 <dt>
-<code>mint_cap: <a href="coin.md#0x1_coin_MintCapability">coin::MintCapability</a>&lt;<a href="aptos_coin.md#0x1_libra2_coin_Libra2Coin">libra2_coin::Libra2Coin</a>&gt;</code>
+<code>mint_cap: <a href="coin.md#0x1_coin_MintCapability">coin::MintCapability</a>&lt;<a href="libra2_coin.md#0x1_libra2_coin_Libra2Coin">libra2_coin::Libra2Coin</a>&gt;</code>
 </dt>
 <dd>
 
@@ -1560,7 +1560,7 @@ DEPRECATED
 
 <dl>
 <dt>
-<code>fees_table: <a href="../../libra2-stdlib/doc/table.md#0x1_table_Table">table::Table</a>&lt;<b>address</b>, <a href="coin.md#0x1_coin_Coin">coin::Coin</a>&lt;<a href="aptos_coin.md#0x1_libra2_coin_Libra2Coin">libra2_coin::Libra2Coin</a>&gt;&gt;</code>
+<code>fees_table: <a href="../../libra2-stdlib/doc/table.md#0x1_table_Table">table::Table</a>&lt;<b>address</b>, <a href="coin.md#0x1_coin_Coin">coin::Coin</a>&lt;<a href="libra2_coin.md#0x1_libra2_coin_Libra2Coin">libra2_coin::Libra2Coin</a>&gt;&gt;</code>
 </dt>
 <dd>
 
@@ -2489,7 +2489,7 @@ This is only called during Genesis, which is where MintCapability<Libra2Coin> ca
 Beyond genesis, no one can create Libra2Coin mint/burn capabilities.
 
 
-<pre><code><b>public</b>(<b>friend</b>) <b>fun</b> <a href="stake.md#0x1_stake_store_libra2_coin_mint_cap">store_libra2_coin_mint_cap</a>(libra2_framework: &<a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, mint_cap: <a href="coin.md#0x1_coin_MintCapability">coin::MintCapability</a>&lt;<a href="aptos_coin.md#0x1_libra2_coin_Libra2Coin">libra2_coin::Libra2Coin</a>&gt;)
+<pre><code><b>public</b>(<b>friend</b>) <b>fun</b> <a href="stake.md#0x1_stake_store_libra2_coin_mint_cap">store_libra2_coin_mint_cap</a>(libra2_framework: &<a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, mint_cap: <a href="coin.md#0x1_coin_MintCapability">coin::MintCapability</a>&lt;<a href="libra2_coin.md#0x1_libra2_coin_Libra2Coin">libra2_coin::Libra2Coin</a>&gt;)
 </code></pre>
 
 
@@ -3045,7 +3045,7 @@ Add <code>amount</code> of coins from the <code><a href="account.md#0x1_account"
 Add <code>coins</code> into <code>pool_address</code>. this requires the corresponding <code>owner_cap</code> to be passed in.
 
 
-<pre><code><b>public</b> <b>fun</b> <a href="stake.md#0x1_stake_add_stake_with_cap">add_stake_with_cap</a>(owner_cap: &<a href="stake.md#0x1_stake_OwnerCapability">stake::OwnerCapability</a>, coins: <a href="coin.md#0x1_coin_Coin">coin::Coin</a>&lt;<a href="aptos_coin.md#0x1_libra2_coin_Libra2Coin">libra2_coin::Libra2Coin</a>&gt;)
+<pre><code><b>public</b> <b>fun</b> <a href="stake.md#0x1_stake_add_stake_with_cap">add_stake_with_cap</a>(owner_cap: &<a href="stake.md#0x1_stake_OwnerCapability">stake::OwnerCapability</a>, coins: <a href="coin.md#0x1_coin_Coin">coin::Coin</a>&lt;<a href="libra2_coin.md#0x1_libra2_coin_Libra2Coin">libra2_coin::Libra2Coin</a>&gt;)
 </code></pre>
 
 
@@ -3638,7 +3638,7 @@ Withdraw from <code><a href="account.md#0x1_account">account</a></code>'s inacti
 Withdraw from <code>pool_address</code>'s inactive stake with the corresponding <code>owner_cap</code>.
 
 
-<pre><code><b>public</b> <b>fun</b> <a href="stake.md#0x1_stake_withdraw_with_cap">withdraw_with_cap</a>(owner_cap: &<a href="stake.md#0x1_stake_OwnerCapability">stake::OwnerCapability</a>, withdraw_amount: u64): <a href="coin.md#0x1_coin_Coin">coin::Coin</a>&lt;<a href="aptos_coin.md#0x1_libra2_coin_Libra2Coin">libra2_coin::Libra2Coin</a>&gt;
+<pre><code><b>public</b> <b>fun</b> <a href="stake.md#0x1_stake_withdraw_with_cap">withdraw_with_cap</a>(owner_cap: &<a href="stake.md#0x1_stake_OwnerCapability">stake::OwnerCapability</a>, withdraw_amount: u64): <a href="coin.md#0x1_coin_Coin">coin::Coin</a>&lt;<a href="libra2_coin.md#0x1_libra2_coin_Libra2Coin">libra2_coin::Libra2Coin</a>&gt;
 </code></pre>
 
 
@@ -4489,7 +4489,7 @@ Calculate the rewards amount.
 Mint rewards corresponding to current epoch's <code><a href="stake.md#0x1_stake">stake</a></code> and <code>num_successful_votes</code>.
 
 
-<pre><code><b>fun</b> <a href="stake.md#0x1_stake_distribute_rewards">distribute_rewards</a>(<a href="stake.md#0x1_stake">stake</a>: &<b>mut</b> <a href="coin.md#0x1_coin_Coin">coin::Coin</a>&lt;<a href="aptos_coin.md#0x1_libra2_coin_Libra2Coin">libra2_coin::Libra2Coin</a>&gt;, num_successful_proposals: u64, num_total_proposals: u64, rewards_rate: u64, rewards_rate_denominator: u64): u64
+<pre><code><b>fun</b> <a href="stake.md#0x1_stake_distribute_rewards">distribute_rewards</a>(<a href="stake.md#0x1_stake">stake</a>: &<b>mut</b> <a href="coin.md#0x1_coin_Coin">coin::Coin</a>&lt;<a href="libra2_coin.md#0x1_libra2_coin_Libra2Coin">libra2_coin::Libra2Coin</a>&gt;, num_successful_proposals: u64, num_total_proposals: u64, rewards_rate: u64, rewards_rate_denominator: u64): u64
 </code></pre>
 
 
@@ -5326,7 +5326,7 @@ Returns validator's next epoch voting power, including pending_active, active, a
 ### Function `add_stake_with_cap`
 
 
-<pre><code><b>public</b> <b>fun</b> <a href="stake.md#0x1_stake_add_stake_with_cap">add_stake_with_cap</a>(owner_cap: &<a href="stake.md#0x1_stake_OwnerCapability">stake::OwnerCapability</a>, coins: <a href="coin.md#0x1_coin_Coin">coin::Coin</a>&lt;<a href="aptos_coin.md#0x1_libra2_coin_Libra2Coin">libra2_coin::Libra2Coin</a>&gt;)
+<pre><code><b>public</b> <b>fun</b> <a href="stake.md#0x1_stake_add_stake_with_cap">add_stake_with_cap</a>(owner_cap: &<a href="stake.md#0x1_stake_OwnerCapability">stake::OwnerCapability</a>, coins: <a href="coin.md#0x1_coin_Coin">coin::Coin</a>&lt;<a href="libra2_coin.md#0x1_libra2_coin_Libra2Coin">libra2_coin::Libra2Coin</a>&gt;)
 </code></pre>
 
 
@@ -5360,7 +5360,7 @@ Returns validator's next epoch voting power, including pending_active, active, a
 <b>let</b> pre_stake_pool = <b>global</b>&lt;<a href="stake.md#0x1_stake_StakePool">StakePool</a>&gt;(pool_address);
 <b>let</b> <b>post</b> stake_pool = <b>global</b>&lt;<a href="stake.md#0x1_stake_StakePool">StakePool</a>&gt;(pool_address);
 <b>modifies</b> <b>global</b>&lt;<a href="stake.md#0x1_stake_StakePool">StakePool</a>&gt;(pool_address);
-<b>let</b> min_amount = aptos_std::math64::min(amount, pre_stake_pool.pending_inactive.value);
+<b>let</b> min_amount = libra2_std::math64::min(amount, pre_stake_pool.pending_inactive.value);
 <b>ensures</b> stake_pool.pending_inactive.value == pre_stake_pool.pending_inactive.value - min_amount;
 <b>ensures</b> stake_pool.active.value == pre_stake_pool.active.value + min_amount;
 </code></pre>
@@ -5530,7 +5530,7 @@ Returns validator's next epoch voting power, including pending_active, active, a
 <b>aborts_if</b> amount != 0 && !<b>exists</b>&lt;<a href="stake.md#0x1_stake_StakePool">StakePool</a>&gt;(pool_address);
 <b>modifies</b> <b>global</b>&lt;<a href="stake.md#0x1_stake_StakePool">StakePool</a>&gt;(pool_address);
 <b>include</b> <a href="stake.md#0x1_stake_StakedValueNochange">StakedValueNochange</a>;
-<b>let</b> min_amount = aptos_std::math64::min(amount,pre_stake_pool.active.value);
+<b>let</b> min_amount = libra2_std::math64::min(amount,pre_stake_pool.active.value);
 <b>ensures</b> stake_pool.active.value == pre_stake_pool.active.value - min_amount;
 <b>ensures</b> stake_pool.pending_inactive.value == pre_stake_pool.pending_inactive.value + min_amount;
 </code></pre>
@@ -5988,13 +5988,13 @@ Returns validator's next epoch voting power, including pending_active, active, a
        <b>if</b> (epoch_rewards_rate.value == 0) {
            0
        } <b>else</b> {
-           <b>let</b> denominator_0 = aptos_std::fixed_point64::spec_divide_u128(<a href="staking_config.md#0x1_staking_config_MAX_REWARDS_RATE">staking_config::MAX_REWARDS_RATE</a>, epoch_rewards_rate);
+           <b>let</b> denominator_0 = libra2_std::fixed_point64::spec_divide_u128(<a href="staking_config.md#0x1_staking_config_MAX_REWARDS_RATE">staking_config::MAX_REWARDS_RATE</a>, epoch_rewards_rate);
            <b>let</b> denominator = <b>if</b> (denominator_0 &gt; <a href="stake.md#0x1_stake_MAX_U64">MAX_U64</a>) {
                <a href="stake.md#0x1_stake_MAX_U64">MAX_U64</a>
            } <b>else</b> {
                denominator_0
            };
-           <b>let</b> nominator = aptos_std::fixed_point64::spec_multiply_u128(denominator, epoch_rewards_rate);
+           <b>let</b> nominator = libra2_std::fixed_point64::spec_multiply_u128(denominator, epoch_rewards_rate);
            nominator
        }
    } <b>else</b> {
@@ -6015,7 +6015,7 @@ Returns validator's next epoch voting power, including pending_active, active, a
        <b>if</b> (epoch_rewards_rate.value == 0) {
            1
        } <b>else</b> {
-           <b>let</b> denominator_0 = aptos_std::fixed_point64::spec_divide_u128(<a href="staking_config.md#0x1_staking_config_MAX_REWARDS_RATE">staking_config::MAX_REWARDS_RATE</a>, epoch_rewards_rate);
+           <b>let</b> denominator_0 = libra2_std::fixed_point64::spec_divide_u128(<a href="staking_config.md#0x1_staking_config_MAX_REWARDS_RATE">staking_config::MAX_REWARDS_RATE</a>, epoch_rewards_rate);
            <b>let</b> denominator = <b>if</b> (denominator_0 &gt; <a href="stake.md#0x1_stake_MAX_U64">MAX_U64</a>) {
                <a href="stake.md#0x1_stake_MAX_U64">MAX_U64</a>
            } <b>else</b> {
@@ -6206,7 +6206,7 @@ Returns validator's next epoch voting power, including pending_active, active, a
 ### Function `distribute_rewards`
 
 
-<pre><code><b>fun</b> <a href="stake.md#0x1_stake_distribute_rewards">distribute_rewards</a>(<a href="stake.md#0x1_stake">stake</a>: &<b>mut</b> <a href="coin.md#0x1_coin_Coin">coin::Coin</a>&lt;<a href="aptos_coin.md#0x1_libra2_coin_Libra2Coin">libra2_coin::Libra2Coin</a>&gt;, num_successful_proposals: u64, num_total_proposals: u64, rewards_rate: u64, rewards_rate_denominator: u64): u64
+<pre><code><b>fun</b> <a href="stake.md#0x1_stake_distribute_rewards">distribute_rewards</a>(<a href="stake.md#0x1_stake">stake</a>: &<b>mut</b> <a href="coin.md#0x1_coin_Coin">coin::Coin</a>&lt;<a href="libra2_coin.md#0x1_libra2_coin_Libra2Coin">libra2_coin::Libra2Coin</a>&gt;, num_successful_proposals: u64, num_total_proposals: u64, rewards_rate: u64, rewards_rate_denominator: u64): u64
 </code></pre>
 
 

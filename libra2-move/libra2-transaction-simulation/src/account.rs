@@ -2,7 +2,7 @@
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
-//! Test infrastructure for modeling Aptos accounts.
+//! Test infrastructure for modeling Libra2 accounts.
 //! Ported from the old `e2e-tests` crate.
 
 use libra2_crypto::ed25519::*;
@@ -81,10 +81,10 @@ impl AccountPublicKey {
  * Account
  *
  **************************************************************************************************/
-/// Details about a Aptos account.
+/// Details about a Libra2 account.
 ///
 /// Tests will typically create a set of `Account` instances to run transactions on. This type
-/// encodes the logic to operate on and verify operations on any Aptos account.
+/// encodes the logic to operate on and verify operations on any Libra2 account.
 ///
 /// TODO: This is pleistocene-age code must be brought up to speed, since our accounts are not just Ed25519-based.
 #[derive(Debug, Clone, Eq, PartialEq)]
@@ -183,10 +183,10 @@ impl Account {
 
     /// Creates a new account representing the aptos root account in memory.
     ///
-    /// The address will be [`aptos_test_root_address`][account_config::aptos_test_root_address], and
+    /// The address will be [`libra2_test_root_address`][account_config::libra2_test_root_address], and
     /// the account will use [`GENESIS_KEYPAIR`][static@GENESIS_KEYPAIR] as its keypair.
     pub fn new_aptos_root() -> Self {
-        Self::new_genesis_account(account_config::aptos_test_root_address())
+        Self::new_genesis_account(account_config::libra2_test_root_address())
     }
 
     /// Returns the address of the account. This is a hash of the public key the account was created

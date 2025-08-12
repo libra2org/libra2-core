@@ -2,13 +2,13 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use super::{
-    errors::{AptosTapError, AptosTapErrorResponse},
+    errors::{Libra2TapError, Libra2TapErrorResponse},
     ApiTags,
 };
 use crate::{
     bypasser::{Bypasser, BypasserTrait},
     checkers::{Checker, CheckerData, CheckerTrait, CompleteData},
-    endpoints::AptosTapErrorCode,
+    endpoints::Libra2TapErrorCode,
     firebase_jwt::jwt_sub,
     funder::{Funder, FunderTrait},
     helpers::{get_current_time_secs, transaction_hashes},
@@ -113,7 +113,7 @@ impl FundApi {
         source_ip: RealIp,
         // Same thing, this uses FromRequest.
         header_map: &HeaderMap,
-    ) -> poem::Result<Json<FundResponse>, AptosTapErrorResponse> {
+    ) -> poem::Result<Json<FundResponse>, Libra2TapErrorResponse> {
         let txns = self
             .components
             .fund_inner(fund_request.0, source_ip, header_map, false)
@@ -143,7 +143,7 @@ impl FundApi {
         source_ip: RealIp,
         // Same thing, this uses FromRequest.
         header_map: &HeaderMap,
-    ) -> poem::Result<(), AptosTapErrorResponse> {
+    ) -> poem::Result<(), Libra2TapErrorResponse> {
         let (checker_data, bypass, _semaphore_permit) = self
             .components
             .preprocess_request(&fund_request.0, source_ip, header_map, true)
@@ -198,14 +198,14 @@ impl FundApiComponents {
         source_ip: RealIp,
         header_map: &HeaderMap,
         dry_run: bool,
-    ) -> poem::Result<(CheckerData, bool, Option<SemaphorePermit>), AptosTapError> {
+    ) -> poem::Result<(CheckerData, bool, Option<SemaphorePermit>), Libra2TapError> {
         let permit = match &self.concurrent_requests_semaphore {
             Some(semaphore) => match semaphore.try_acquire() {
                 Ok(permit) => Some(permit),
                 Err(_) => {
-                    return Err(AptosTapError::new(
+                    return Err(Libra2TapError::new(
                         "Server overloaded, please try again later".to_string(),
-                        AptosTapErrorCode::ServerOverloaded,
+                        Libra2TapErrorCode::ServerOverloaded,
                     ))
                 },
             },
@@ -215,9 +215,9 @@ impl FundApiComponents {
         let source_ip = match source_ip.0 {
             Some(ip) => ip,
             None => {
-                return Err(AptosTapError::new(
+                return Err(Libra2TapError::new(
                     "No source IP found in the request".to_string(),
-                    AptosTapErrorCode::SourceIpMissing,
+                    Libra2TapErrorCode::SourceIpMissing,
                 ))
             },
         };
@@ -225,9 +225,9 @@ impl FundApiComponents {
         let receiver = match fund_request.receiver() {
             Some(receiver) => receiver,
             None => {
-                return Err(AptosTapError::new(
+                return Err(Libra2TapError::new(
                     "Account address, auth key, or pub key must be provided and valid".to_string(),
-                    AptosTapErrorCode::InvalidRequest,
+                    Libra2TapErrorCode::InvalidRequest,
                 ))
             },
         };
@@ -245,7 +245,7 @@ impl FundApiComponents {
                 .request_can_bypass(checker_data.clone())
                 .await
                 .map_err(|e| {
-                    AptosTapError::new_with_error_code(e, AptosTapErrorCode::BypasserError)
+                    Libra2TapError::new_with_error_code(e, Libra2TapErrorCode::BypasserError)
                 })?
             {
                 info!(
@@ -260,7 +260,7 @@ impl FundApiComponents {
         let mut rejection_reasons = Vec::new();
         for checker in &self.checkers {
             rejection_reasons.extend(checker.check(checker_data.clone(), dry_run).await.map_err(
-                |e| AptosTapError::new_with_error_code(e, AptosTapErrorCode::CheckerError),
+                |e| Libra2TapError::new_with_error_code(e, Libra2TapErrorCode::CheckerError),
             )?);
             if !rejection_reasons.is_empty() && self.return_rejections_early {
                 break;
@@ -268,9 +268,9 @@ impl FundApiComponents {
         }
 
         if !rejection_reasons.is_empty() {
-            return Err(AptosTapError::new(
+            return Err(Libra2TapError::new(
                 format!("Request rejected by {} checkers", rejection_reasons.len()),
-                AptosTapErrorCode::Rejected,
+                Libra2TapErrorCode::Rejected,
             )
             .rejection_reasons(rejection_reasons));
         }
@@ -287,7 +287,7 @@ impl FundApiComponents {
         // Same thing, this uses FromRequest.
         header_map: &HeaderMap,
         dry_run: bool,
-    ) -> poem::Result<Vec<SignedTransaction>, AptosTapError> {
+    ) -> poem::Result<Vec<SignedTransaction>, Libra2TapError> {
         let (checker_data, bypass, _semaphore_permit) = self
             .preprocess_request(&fund_request, source_ip, header_map, dry_run)
             .await?;
@@ -330,7 +330,7 @@ impl FundApiComponents {
             };
             for checker in &self.checkers {
                 checker.complete(complete_data.clone()).await.map_err(|e| {
-                    AptosTapError::new_with_error_code(e, AptosTapErrorCode::CheckerError)
+                    Libra2TapError::new_with_error_code(e, Libra2TapErrorCode::CheckerError)
                 })?;
             }
         }
@@ -381,7 +381,7 @@ pub async fn mint(
     // Same thing, this uses FromRequest.
     header_map: &HeaderMap,
 ) -> poem::Result<MintResponse> {
-    // We take the AptosTapError and convert it into an anyhow error with just the
+    // We take the Libra2TapError and convert it into an anyhow error with just the
     // message so this endpoint returns a plaintext response like the faucet does.
     // We still return the intended status code though, but not any headers that
     // the /mint endpoint would, e.g. Retry-After.

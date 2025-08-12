@@ -4,11 +4,11 @@
 
 use super::ungrouped::changing_working_quorum_test_helper;
 use libra2_config::config::{BootstrappingMode, ContinuousSyncingMode, StateSyncConfig};
-use aptos_forge::{
+use libra2_forge::{
     args::TransactionTypeArg, success_criteria::SuccessCriteria, EmitJobMode, EmitJobRequest,
     ForgeConfig,
 };
-use aptos_testcases::{
+use libra2_testcases::{
     consensus_reliability_tests::ChangingWorkingQuorumTest,
     state_sync_performance::{
         StateSyncFullnodeFastSyncPerformance, StateSyncFullnodePerformance,

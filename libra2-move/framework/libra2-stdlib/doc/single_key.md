@@ -164,7 +164,7 @@ It is used to represent public keys for the Ed25519, SECP256K1, WebAuthn, and Ke
 
 <a id="0x1_single_key_SIGNATURE_SCHEME_ID"></a>
 
-The identifier of the Single Key signature scheme, which is used when deriving Aptos authentication keys by hashing
+The identifier of the Single Key signature scheme, which is used when deriving Libra2 authentication keys by hashing
 it together with an Single Key public key.
 
 

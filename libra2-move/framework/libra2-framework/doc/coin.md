@@ -1449,7 +1449,7 @@ Create APT pairing by passing <code>Libra2Coin</code>.
 
 
 <pre><code>inline <b>fun</b> <a href="coin.md#0x1_coin_is_apt">is_apt</a>&lt;CoinType&gt;(): bool {
-    <a href="../../libra2-stdlib/doc/type_info.md#0x1_type_info_type_name">type_info::type_name</a>&lt;CoinType&gt;() == <a href="../../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_utf8">string::utf8</a>(b"<a href="aptos_coin.md#0x1_libra2_coin_Libra2Coin">0x1::libra2_coin::Libra2Coin</a>")
+    <a href="../../libra2-stdlib/doc/type_info.md#0x1_type_info_type_name">type_info::type_name</a>&lt;CoinType&gt;() == <a href="../../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_utf8">string::utf8</a>(b"<a href="libra2_coin.md#0x1_libra2_coin_Libra2Coin">0x1::libra2_coin::Libra2Coin</a>")
 }
 </code></pre>
 

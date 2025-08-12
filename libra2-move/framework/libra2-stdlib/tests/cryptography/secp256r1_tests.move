@@ -1,6 +1,6 @@
 #[test_only]
-module aptos_std::secp256r1_tests {
-    use aptos_std::secp256r1;
+module libra2_std::secp256r1_tests {
+    use libra2_std::secp256r1;
 
     #[test]
     #[expected_failure(abort_code = 0x10001, location = secp256r1)]

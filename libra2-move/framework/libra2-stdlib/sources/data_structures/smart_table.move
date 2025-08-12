@@ -7,15 +7,15 @@
 ///
 /// DEPRECATED: since it's implementation is inneficient, it
 /// has been deprecated in favor of `big_ordered_map.move`.
-module aptos_std::smart_table {
+module libra2_std::smart_table {
     use std::error;
     use std::vector;
-    use aptos_std::aptos_hash::sip_hash_from_value;
-    use aptos_std::table_with_length::{Self, TableWithLength};
-    use aptos_std::type_info::size_of_val;
-    use aptos_std::math64::max;
-    use aptos_std::simple_map::SimpleMap;
-    use aptos_std::simple_map;
+    use libra2_std::aptos_hash::sip_hash_from_value;
+    use libra2_std::table_with_length::{Self, TableWithLength};
+    use libra2_std::type_info::size_of_val;
+    use libra2_std::math64::max;
+    use libra2_std::simple_map::SimpleMap;
+    use libra2_std::simple_map;
     use std::option::{Self, Option};
 
     /// Key not found in the smart table

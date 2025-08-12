@@ -11,7 +11,7 @@ use crate::{
     },
     smoke_test_environment::SwarmBuilder,
 };
-use aptos_forge::{NodeExt, Swarm, SwarmExt};
+use libra2_forge::{NodeExt, Swarm, SwarmExt};
 use libra2_logger::{debug, info};
 use libra2_types::{
     jwks::{
@@ -31,7 +31,7 @@ async fn jwk_consensus_basic() {
 
     let (swarm, mut cli, _faucet) = SwarmBuilder::new_local(4)
         .with_num_fullnodes(1)
-        .with_aptos()
+        .with_libra2()
         .with_init_genesis_config(Arc::new(move |conf| {
             conf.epoch_duration_secs = epoch_duration_secs;
         }))

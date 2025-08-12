@@ -405,12 +405,12 @@ fn generate_compiled_blob(
 }
 
 fn compile_aptos_packages(
-    aptos_commons_path: &Path,
+    libra2_commons_path: &Path,
     compiled_package_map: &mut HashMap<PackageInfo, HashMap<ModuleId, Vec<u8>>>,
     v2_flag: bool,
 ) -> anyhow::Result<()> {
     for package in APTOS_PACKAGES {
-        let root_package_dir = aptos_commons_path.join(get_aptos_dir(package).unwrap());
+        let root_package_dir = libra2_commons_path.join(get_aptos_dir(package).unwrap());
         let compiler_version = if v2_flag {
             Some(CompilerVersion::latest_stable())
         } else {

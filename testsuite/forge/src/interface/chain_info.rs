@@ -2,7 +2,7 @@
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
-use crate::AptosPublicInfo;
+use crate::Libra2PublicInfo;
 use anyhow::Result;
 use libra2_rest_client::Client as RestClient;
 use libra2_sdk::{
@@ -63,8 +63,8 @@ impl ChainInfo {
         TransactionFactory::new(self.chain_id())
     }
 
-    pub fn into_aptos_public_info(self) -> AptosPublicInfo {
-        AptosPublicInfo::new(
+    pub fn into_libra2_public_info(self) -> Libra2PublicInfo {
+        Libra2PublicInfo::new(
             self.chain_id,
             self.inspection_service_url.clone(),
             self.rest_api_url.clone(),

@@ -7,7 +7,7 @@ This module enables the deserialization of BCS-formatted byte arrays into Move p
 Deserialization Strategies:
 - Per-Byte Deserialization: Employed for most types to ensure lower gas consumption, this method processes each byte
 individually to match the length and type requirements of target Move types.
-- Exception: For the <code>deserialize_address</code> function, the function-based approach from <code>aptos_std::from_bcs</code> is used
+- Exception: For the <code>deserialize_address</code> function, the function-based approach from <code>libra2_std::from_bcs</code> is used
 due to type constraints, even though it is generally more gas-intensive.
 - This can be optimized further by introducing native vector slices.
 Application:
@@ -220,7 +220,7 @@ Deserializes a <code>bool</code> value from the stream.
 
 Deserializes an <code><b>address</b></code> value from the stream.
 32-byte <code><b>address</b></code> values are serialized using little-endian byte order.
-This function utilizes the <code>to_address</code> function from the <code>aptos_std::from_bcs</code> module,
+This function utilizes the <code>to_address</code> function from the <code>libra2_std::from_bcs</code> module,
 because the Move type system does not permit per-byte referencing of addresses.
 
 

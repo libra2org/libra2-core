@@ -45,9 +45,9 @@
 <b>use</b> <a href="execution_config.md#0x1_execution_config">0x1::execution_config</a>;
 <b>use</b> <a href="../../libra2-stdlib/../move-stdlib/doc/fixed_point32.md#0x1_fixed_point32">0x1::fixed_point32</a>;
 <b>use</b> <a href="gas_schedule.md#0x1_gas_schedule">0x1::gas_schedule</a>;
-<b>use</b> <a href="aptos_account.md#0x1_libra2_account">0x1::libra2_account</a>;
-<b>use</b> <a href="aptos_coin.md#0x1_libra2_coin">0x1::libra2_coin</a>;
-<b>use</b> <a href="aptos_governance.md#0x1_libra2_governance">0x1::libra2_governance</a>;
+<b>use</b> <a href="libra2_account.md#0x1_libra2_account">0x1::libra2_account</a>;
+<b>use</b> <a href="libra2_coin.md#0x1_libra2_coin">0x1::libra2_coin</a>;
+<b>use</b> <a href="libra2_governance.md#0x1_libra2_governance">0x1::libra2_governance</a>;
 <b>use</b> <a href="nonce_validation.md#0x1_nonce_validation">0x1::nonce_validation</a>;
 <b>use</b> <a href="reconfiguration.md#0x1_reconfiguration">0x1::reconfiguration</a>;
 <b>use</b> <a href="../../libra2-stdlib/doc/simple_map.md#0x1_simple_map">0x1::simple_map</a>;
@@ -327,14 +327,14 @@ Genesis step 1: Initialize aptos framework account and core modules on chain.
         b"epilogue",
     );
     // Give the decentralized on-chain governance control over the core framework <a href="account.md#0x1_account">account</a>.
-    <a href="aptos_governance.md#0x1_libra2_governance_store_signer_cap">libra2_governance::store_signer_cap</a>(&libra2_framework_account, @libra2_framework, libra2_framework_signer_cap);
+    <a href="libra2_governance.md#0x1_libra2_governance_store_signer_cap">libra2_governance::store_signer_cap</a>(&libra2_framework_account, @libra2_framework, libra2_framework_signer_cap);
 
     // put reserved framework reserved accounts under aptos governance
     <b>let</b> framework_reserved_addresses = <a href="../../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<b>address</b>&gt;[@0x2, @0x3, @0x4, @0x5, @0x6, @0x7, @0x8, @0x9, @0xa];
     <b>while</b> (!<a href="../../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector_is_empty">vector::is_empty</a>(&framework_reserved_addresses)) {
         <b>let</b> <b>address</b> = <a href="../../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector_pop_back">vector::pop_back</a>&lt;<b>address</b>&gt;(&<b>mut</b> framework_reserved_addresses);
         <b>let</b> (_, framework_signer_cap) = <a href="account.md#0x1_account_create_framework_reserved_account">account::create_framework_reserved_account</a>(<b>address</b>);
-        <a href="aptos_governance.md#0x1_libra2_governance_store_signer_cap">libra2_governance::store_signer_cap</a>(&libra2_framework_account, <b>address</b>, framework_signer_cap);
+        <a href="libra2_governance.md#0x1_libra2_governance_store_signer_cap">libra2_governance::store_signer_cap</a>(&libra2_framework_account, <b>address</b>, framework_signer_cap);
     };
 
     <a href="consensus_config.md#0x1_consensus_config_initialize">consensus_config::initialize</a>(&libra2_framework_account, <a href="consensus_config.md#0x1_consensus_config">consensus_config</a>);
@@ -375,7 +375,7 @@ Genesis step 1: Initialize aptos framework account and core modules on chain.
 
 ## Function `initialize_libra2_coin`
 
-Genesis step 2: Initialize Aptos coin.
+Genesis step 2: Initialize Libra2 coin.
 
 
 <pre><code><b>fun</b> <a href="genesis.md#0x1_genesis_initialize_libra2_coin">initialize_libra2_coin</a>(libra2_framework: &<a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>)
@@ -388,7 +388,7 @@ Genesis step 2: Initialize Aptos coin.
 
 
 <pre><code><b>fun</b> <a href="genesis.md#0x1_genesis_initialize_libra2_coin">initialize_libra2_coin</a>(libra2_framework: &<a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>) {
-    <b>let</b> (burn_cap, mint_cap) = <a href="aptos_coin.md#0x1_libra2_coin_initialize">libra2_coin::initialize</a>(libra2_framework);
+    <b>let</b> (burn_cap, mint_cap) = <a href="libra2_coin.md#0x1_libra2_coin_initialize">libra2_coin::initialize</a>(libra2_framework);
 
     <a href="coin.md#0x1_coin_create_coin_conversion_map">coin::create_coin_conversion_map</a>(libra2_framework);
     <a href="coin.md#0x1_coin_create_pairing">coin::create_pairing</a>&lt;Libra2Coin&gt;(libra2_framework);
@@ -426,7 +426,7 @@ Only called for testnets and e2e tests.
     libra2_framework: &<a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>,
     core_resources_auth_key: <a href="../../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt;,
 ) {
-    <b>let</b> (burn_cap, mint_cap) = <a href="aptos_coin.md#0x1_libra2_coin_initialize">libra2_coin::initialize</a>(libra2_framework);
+    <b>let</b> (burn_cap, mint_cap) = <a href="libra2_coin.md#0x1_libra2_coin_initialize">libra2_coin::initialize</a>(libra2_framework);
 
     <a href="coin.md#0x1_coin_create_coin_conversion_map">coin::create_coin_conversion_map</a>(libra2_framework);
     <a href="coin.md#0x1_coin_create_pairing">coin::create_pairing</a>&lt;Libra2Coin&gt;(libra2_framework);
@@ -440,8 +440,8 @@ Only called for testnets and e2e tests.
 
     <b>let</b> core_resources = <a href="account.md#0x1_account_create_account">account::create_account</a>(@core_resources);
     <a href="account.md#0x1_account_rotate_authentication_key_internal">account::rotate_authentication_key_internal</a>(&core_resources, core_resources_auth_key);
-    <a href="aptos_account.md#0x1_libra2_account_register_apt">libra2_account::register_apt</a>(&core_resources); // registers APT store
-    <a href="aptos_coin.md#0x1_libra2_coin_configure_accounts_for_test">libra2_coin::configure_accounts_for_test</a>(libra2_framework, &core_resources, mint_cap);
+    <a href="libra2_account.md#0x1_libra2_account_register_apt">libra2_account::register_apt</a>(&core_resources); // registers APT store
+    <a href="libra2_coin.md#0x1_libra2_coin_configure_accounts_for_test">libra2_coin::configure_accounts_for_test</a>(libra2_framework, &core_resources, mint_cap);
 }
 </code></pre>
 
@@ -513,7 +513,7 @@ If it exists, it just returns the signer.
 
     <b>if</b> (<a href="coin.md#0x1_coin_balance">coin::balance</a>&lt;Libra2Coin&gt;(account_address) == 0) {
         <a href="coin.md#0x1_coin_register">coin::register</a>&lt;Libra2Coin&gt;(&<a href="account.md#0x1_account">account</a>);
-        <a href="aptos_coin.md#0x1_libra2_coin_mint">libra2_coin::mint</a>(libra2_framework, account_address, balance);
+        <a href="libra2_coin.md#0x1_libra2_coin_mint">libra2_coin::mint</a>(libra2_framework, account_address, balance);
     };
     <a href="account.md#0x1_account">account</a>
 }
@@ -658,7 +658,7 @@ If it exists, it just returns the signer.
 
     // Destroy the aptos framework <a href="account.md#0x1_account">account</a>'s ability <b>to</b> mint coins now that we're done <b>with</b> setting up the initial
     // validators.
-    <a href="aptos_coin.md#0x1_libra2_coin_destroy_mint_cap">libra2_coin::destroy_mint_cap</a>(libra2_framework);
+    <a href="libra2_coin.md#0x1_libra2_coin_destroy_mint_cap">libra2_coin::destroy_mint_cap</a>(libra2_framework);
 
     <a href="stake.md#0x1_stake_on_new_epoch">stake::on_new_epoch</a>();
 }
@@ -866,7 +866,7 @@ The last step of genesis.
 
 <tr>
 <td>3</td>
-<td>The Aptos coin should be initialized during genesis and only the Aptos framework account should own the mint and burn capabilities for the APT token.</td>
+<td>The Libra2 coin should be initialized during genesis and only the Aptos framework account should own the mint and burn capabilities for the APT token.</td>
 <td>Critical</td>
 <td>Both mint and burn capabilities are wrapped inside the stake::Libra2CoinCapabilities and transaction_fee::Libra2CoinCapabilities resources which are stored under the aptos framework account.</td>
 <td>Formally verified via <a href="#high-level-req-3">initialize_libra2_coin</a>.</td>
@@ -937,7 +937,7 @@ The last step of genesis.
 <b>ensures</b> <b>exists</b>&lt;<a href="account.md#0x1_account_Account">account::Account</a>&gt;(@0x9);
 <b>ensures</b> <b>exists</b>&lt;<a href="account.md#0x1_account_Account">account::Account</a>&gt;(@0xa);
 // This enforces <a id="high-level-req-1" href="#high-level-req">high-level requirement 1</a>:
-<b>ensures</b> <b>exists</b>&lt;<a href="aptos_governance.md#0x1_libra2_governance_GovernanceResponsbility">libra2_governance::GovernanceResponsbility</a>&gt;(@libra2_framework);
+<b>ensures</b> <b>exists</b>&lt;<a href="libra2_governance.md#0x1_libra2_governance_GovernanceResponsbility">libra2_governance::GovernanceResponsbility</a>&gt;(@libra2_framework);
 <b>ensures</b> <b>exists</b>&lt;<a href="consensus_config.md#0x1_consensus_config_ConsensusConfig">consensus_config::ConsensusConfig</a>&gt;(@libra2_framework);
 <b>ensures</b> <b>exists</b>&lt;<a href="execution_config.md#0x1_execution_config_ExecutionConfig">execution_config::ExecutionConfig</a>&gt;(@libra2_framework);
 <b>ensures</b> <b>exists</b>&lt;<a href="version.md#0x1_version_Version">version::Version</a>&gt;(@libra2_framework);
@@ -995,7 +995,7 @@ The last step of genesis.
 <b>include</b> <a href="stake.md#0x1_stake_ResourceRequirement">stake::ResourceRequirement</a>;
 <b>include</b> <a href="stake.md#0x1_stake_GetReconfigStartTimeRequirement">stake::GetReconfigStartTimeRequirement</a>;
 <b>include</b> <a href="genesis.md#0x1_genesis_CompareTimeRequires">CompareTimeRequires</a>;
-<b>include</b> <a href="aptos_coin.md#0x1_libra2_coin_ExistsLibra2Coin">libra2_coin::ExistsLibra2Coin</a>;
+<b>include</b> <a href="libra2_coin.md#0x1_libra2_coin_ExistsLibra2Coin">libra2_coin::ExistsLibra2Coin</a>;
 </code></pre>
 
 
@@ -1015,7 +1015,7 @@ The last step of genesis.
 <b>include</b> <a href="stake.md#0x1_stake_ResourceRequirement">stake::ResourceRequirement</a>;
 <b>include</b> <a href="stake.md#0x1_stake_GetReconfigStartTimeRequirement">stake::GetReconfigStartTimeRequirement</a>;
 <b>include</b> <a href="genesis.md#0x1_genesis_CompareTimeRequires">CompareTimeRequires</a>;
-<b>include</b> <a href="aptos_coin.md#0x1_libra2_coin_ExistsLibra2Coin">libra2_coin::ExistsLibra2Coin</a>;
+<b>include</b> <a href="libra2_coin.md#0x1_libra2_coin_ExistsLibra2Coin">libra2_coin::ExistsLibra2Coin</a>;
 </code></pre>
 
 

@@ -103,7 +103,7 @@
             {
               "datasource": { "type": "prometheus", "uid": "${Datasource}" },
               "editorMode": "code",
-              "expr": "sum by (kubernetes_pod_name, role_type, network_id) (aptos_connections{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", network_id=~\"$network_id\", role_type=~\"$role_type\", kubernetes_pod_name=~\"$kubernetes_pod_name\"})\n",
+              "expr": "sum by (kubernetes_pod_name, role_type, network_id) (libra2_connections{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", network_id=~\"$network_id\", role_type=~\"$role_type\", kubernetes_pod_name=~\"$kubernetes_pod_name\"})\n",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "{{kubernetes_pod_name}}-{{role_type}}-{{network_id}}",
@@ -169,7 +169,7 @@
             {
               "datasource": { "type": "prometheus", "uid": "${Datasource}" },
               "editorMode": "code",
-              "expr": "sum by (kubernetes_pod_name, role_type, network_id) (aptos_connections{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", network_id=~\"$network_id\", role_type=~\"$role_type\", kubernetes_pod_name=~\"$kubernetes_pod_name\", direction=\"inbound\"})",
+              "expr": "sum by (kubernetes_pod_name, role_type, network_id) (libra2_connections{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", network_id=~\"$network_id\", role_type=~\"$role_type\", kubernetes_pod_name=~\"$kubernetes_pod_name\", direction=\"inbound\"})",
               "legendFormat": "{{kubernetes_pod_name}}-{{role_type}}-{{network_id}}",
               "range": true,
               "refId": "A"
@@ -233,7 +233,7 @@
             {
               "datasource": { "type": "prometheus", "uid": "${Datasource}" },
               "editorMode": "code",
-              "expr": "sum by (kubernetes_pod_name, role_type, network_id)(aptos_connections{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", network_id=~\"$network_id\", role_type=~\"$role_type\", kubernetes_pod_name=~\"$kubernetes_pod_name\", direction=\"outbound\"})",
+              "expr": "sum by (kubernetes_pod_name, role_type, network_id)(libra2_connections{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", network_id=~\"$network_id\", role_type=~\"$role_type\", kubernetes_pod_name=~\"$kubernetes_pod_name\", direction=\"outbound\"})",
               "legendFormat": "{{kubernetes_pod_name}}-{{role_type}}-{{network_id}}",
               "range": true,
               "refId": "A"
@@ -297,7 +297,7 @@
             {
               "datasource": { "type": "prometheus", "uid": "${Datasource}" },
               "editorMode": "code",
-              "expr": "rate(aptos_connections_rejected{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", network_id=~\"$network_id\", role_type=~\"$role_type\", kubernetes_pod_name=~\"$kubernetes_pod_name\"})[1m]",
+              "expr": "rate(libra2_connections_rejected{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", network_id=~\"$network_id\", role_type=~\"$role_type\", kubernetes_pod_name=~\"$kubernetes_pod_name\"})[1m]",
               "hide": false,
               "legendFormat": "{{kubernetes_pod_name}}-{{role_type}}-{{network_id}}-{{direction}}",
               "range": true,

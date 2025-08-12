@@ -1,14 +1,14 @@
 /// This module implements Single Key representations of public keys.
 /// It is used to represent public keys for the Ed25519, SECP256K1, WebAuthn, and Keyless schemes in a unified way.
 
-module aptos_std::single_key {
-    use aptos_std::bcs_stream::{Self, deserialize_u8};
-    use aptos_std::ed25519;
-    use aptos_std::keyless;
-    use aptos_std::secp256k1;
-    use aptos_std::secp256r1;
-    use aptos_std::bcs;
-    use aptos_std::federated_keyless;
+module libra2_std::single_key {
+    use libra2_std::bcs_stream::{Self, deserialize_u8};
+    use libra2_std::ed25519;
+    use libra2_std::keyless;
+    use libra2_std::secp256k1;
+    use libra2_std::secp256r1;
+    use libra2_std::bcs;
+    use libra2_std::federated_keyless;
     use std::error;
     use std::hash;
 
@@ -25,7 +25,7 @@ module aptos_std::single_key {
     // Constants
     //
 
-    /// The identifier of the Single Key signature scheme, which is used when deriving Aptos authentication keys by hashing
+    /// The identifier of the Single Key signature scheme, which is used when deriving Libra2 authentication keys by hashing
     /// it together with an Single Key public key.
     const SIGNATURE_SCHEME_ID: u8 = 2;
 

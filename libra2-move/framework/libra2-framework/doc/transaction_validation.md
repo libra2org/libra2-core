@@ -70,8 +70,8 @@
 <b>use</b> <a href="create_signer.md#0x1_create_signer">0x1::create_signer</a>;
 <b>use</b> <a href="../../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error">0x1::error</a>;
 <b>use</b> <a href="../../libra2-stdlib/../move-stdlib/doc/features.md#0x1_features">0x1::features</a>;
-<b>use</b> <a href="aptos_account.md#0x1_libra2_account">0x1::libra2_account</a>;
-<b>use</b> <a href="aptos_coin.md#0x1_libra2_coin">0x1::libra2_coin</a>;
+<b>use</b> <a href="libra2_account.md#0x1_libra2_account">0x1::libra2_account</a>;
+<b>use</b> <a href="libra2_coin.md#0x1_libra2_coin">0x1::libra2_coin</a>;
 <b>use</b> <a href="nonce_validation.md#0x1_nonce_validation">0x1::nonce_validation</a>;
 <b>use</b> <a href="../../libra2-stdlib/../move-stdlib/doc/option.md#0x1_option">0x1::option</a>;
 <b>use</b> <a href="permissioned_signer.md#0x1_permissioned_signer">0x1::permissioned_signer</a>;
@@ -606,7 +606,7 @@ Only called during genesis to initialize system resources for this module.
         );
         <b>if</b> (<a href="../../libra2-stdlib/../move-stdlib/doc/features.md#0x1_features_operations_default_to_fa_apt_store_enabled">features::operations_default_to_fa_apt_store_enabled</a>()) {
             <b>assert</b>!(
-                <a href="aptos_account.md#0x1_libra2_account_is_fungible_balance_at_least">libra2_account::is_fungible_balance_at_least</a>(gas_payer_address, max_transaction_fee),
+                <a href="libra2_account.md#0x1_libra2_account_is_fungible_balance_at_least">libra2_account::is_fungible_balance_at_least</a>(gas_payer_address, max_transaction_fee),
                 <a href="../../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_invalid_argument">error::invalid_argument</a>(<a href="transaction_validation.md#0x1_transaction_validation_PROLOGUE_ECANT_PAY_GAS_DEPOSIT">PROLOGUE_ECANT_PAY_GAS_DEPOSIT</a>)
             );
         } <b>else</b> {
@@ -1260,7 +1260,7 @@ Called by the Adapter
     <b>if</b> (!<a href="transaction_validation.md#0x1_transaction_validation_skip_gas_payment">skip_gas_payment</a>(is_simulation, gas_payer)) {
         <b>if</b> (<a href="../../libra2-stdlib/../move-stdlib/doc/features.md#0x1_features_operations_default_to_fa_apt_store_enabled">features::operations_default_to_fa_apt_store_enabled</a>()) {
             <b>assert</b>!(
-                <a href="aptos_account.md#0x1_libra2_account_is_fungible_balance_at_least">libra2_account::is_fungible_balance_at_least</a>(gas_payer, transaction_fee_amount),
+                <a href="libra2_account.md#0x1_libra2_account_is_fungible_balance_at_least">libra2_account::is_fungible_balance_at_least</a>(gas_payer, transaction_fee_amount),
                 <a href="../../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_out_of_range">error::out_of_range</a>(<a href="transaction_validation.md#0x1_transaction_validation_PROLOGUE_ECANT_PAY_GAS_DEPOSIT">PROLOGUE_ECANT_PAY_GAS_DEPOSIT</a>),
             );
         } <b>else</b> {
@@ -1633,7 +1633,7 @@ If there is no fee_payer, fee_payer = sender
     )) {
         <b>if</b> (<a href="../../libra2-stdlib/../move-stdlib/doc/features.md#0x1_features_operations_default_to_fa_apt_store_enabled">features::operations_default_to_fa_apt_store_enabled</a>()) {
             <b>assert</b>!(
-                <a href="aptos_account.md#0x1_libra2_account_is_fungible_balance_at_least">libra2_account::is_fungible_balance_at_least</a>(gas_payer_address, transaction_fee_amount),
+                <a href="libra2_account.md#0x1_libra2_account_is_fungible_balance_at_least">libra2_account::is_fungible_balance_at_least</a>(gas_payer_address, transaction_fee_amount),
                 <a href="../../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_out_of_range">error::out_of_range</a>(<a href="transaction_validation.md#0x1_transaction_validation_PROLOGUE_ECANT_PAY_GAS_DEPOSIT">PROLOGUE_ECANT_PAY_GAS_DEPOSIT</a>),
             );
         } <b>else</b> {

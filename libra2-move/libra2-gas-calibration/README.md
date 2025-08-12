@@ -1,11 +1,11 @@
 ---
 id: libra2-gas-calibration
-title: Aptos Automated Gas Calibration
+title: Libra2 Automated Gas Calibration
 ---
 
-## Aptos Automated Gas Calibration
+## Libra2 Automated Gas Calibration
 
-The Aptos Automated Gas Calibration is a tool that lets anyone write Move Samples (or also Move IR) to calibrate the gas parameters for Native Functions (and also Move bytecode instructions). 
+The Libra2 Automated Gas Calibration is a tool that lets anyone write Move Samples (or also Move IR) to calibrate the gas parameters for Native Functions (and also Move bytecode instructions). 
 
 ### Terminology:
 

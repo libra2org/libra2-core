@@ -98,7 +98,7 @@ module.resource_signer_cap = option::some(resource_signer_cap);
 <b>use</b> <a href="code.md#0x1_code">0x1::code</a>;
 <b>use</b> <a href="coin.md#0x1_coin">0x1::coin</a>;
 <b>use</b> <a href="../../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error">0x1::error</a>;
-<b>use</b> <a href="aptos_coin.md#0x1_libra2_coin">0x1::libra2_coin</a>;
+<b>use</b> <a href="libra2_coin.md#0x1_libra2_coin">0x1::libra2_coin</a>;
 <b>use</b> <a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">0x1::signer</a>;
 <b>use</b> <a href="../../libra2-stdlib/doc/simple_map.md#0x1_simple_map">0x1::simple_map</a>;
 <b>use</b> <a href="../../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">0x1::vector</a>;
@@ -411,7 +411,7 @@ the SignerCapability.
 
 <tr>
 <td>3</td>
-<td>The resource account is registered for the Aptos coin.</td>
+<td>The resource account is registered for the Libra2 coin.</td>
 <td>High</td>
 <td>The create_resource_account_and_fund ensures the newly created resource account is registered to receive the Libra2Coin.</td>
 <td>Formally verified via <a href="#high-level-req-3">create_resource_account_and_fund</a>.</td>
@@ -507,8 +507,8 @@ the SignerCapability.
 <b>let</b> source_addr = <a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer_address_of">signer::address_of</a>(origin);
 <b>let</b> resource_addr = <a href="account.md#0x1_account_spec_create_resource_address">account::spec_create_resource_address</a>(source_addr, seed);
 <b>let</b> coin_store_resource = <b>global</b>&lt;<a href="coin.md#0x1_coin_CoinStore">coin::CoinStore</a>&lt;Libra2Coin&gt;&gt;(resource_addr);
-<b>include</b> <a href="aptos_account.md#0x1_libra2_account_WithdrawAbortsIf">libra2_account::WithdrawAbortsIf</a>&lt;Libra2Coin&gt;{from: origin, amount: fund_amount};
-<b>include</b> <a href="aptos_account.md#0x1_libra2_account_GuidAbortsIf">libra2_account::GuidAbortsIf</a>&lt;Libra2Coin&gt;{<b>to</b>: resource_addr};
+<b>include</b> <a href="libra2_account.md#0x1_libra2_account_WithdrawAbortsIf">libra2_account::WithdrawAbortsIf</a>&lt;Libra2Coin&gt;{from: origin, amount: fund_amount};
+<b>include</b> <a href="libra2_account.md#0x1_libra2_account_GuidAbortsIf">libra2_account::GuidAbortsIf</a>&lt;Libra2Coin&gt;{<b>to</b>: resource_addr};
 <b>include</b> <a href="resource_account.md#0x1_resource_account_RotateAccountAuthenticationKeyAndStoreCapabilityAbortsIfWithoutAccountLimit">RotateAccountAuthenticationKeyAndStoreCapabilityAbortsIfWithoutAccountLimit</a>;
 // This enforces <a id="high-level-req-3" href="#high-level-req">high-level requirement 3</a>:
 <b>ensures</b> <b>exists</b>&lt;libra2_framework::coin::CoinStore&lt;Libra2Coin&gt;&gt;(resource_addr);

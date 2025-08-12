@@ -1,4 +1,4 @@
-module aptos_std::big_ordered_map_usage_examples {
+module libra2_std::big_ordered_map_usage_examples {
     use libra2_framework::big_ordered_map;
 
     #[test]

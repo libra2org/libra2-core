@@ -4,7 +4,7 @@
 //! This API is for the in-house TapCaptchaChecker, it doesn't do anything for
 //! the GoogleCaptchaChecker.
 
-use super::{errors::AptosTapErrorResponse, ApiTags, AptosTapError, AptosTapErrorCode};
+use super::{errors::Libra2TapErrorResponse, ApiTags, Libra2TapError, Libra2TapErrorCode};
 use crate::checkers::CaptchaManager;
 use futures::lock::Mutex;
 use poem::Result;
@@ -37,11 +37,11 @@ impl CaptchaApi {
         response_header(name = "CAPTCHA_KEY", ty = "u32", description = "Captcha key"),
         tag = "ApiTags::Captcha"
     )]
-    async fn request_captcha(&self) -> Result<Response<Binary<Vec<u8>>>, AptosTapErrorResponse> {
+    async fn request_captcha(&self) -> Result<Response<Binary<Vec<u8>>>, Libra2TapErrorResponse> {
         if !self.enabled {
-            return Err(AptosTapError::new(
+            return Err(Libra2TapError::new(
                 "The CaptchaChecker is not enabled".to_string(),
-                AptosTapErrorCode::EndpointNotEnabled,
+                Libra2TapErrorCode::EndpointNotEnabled,
             )
             .into());
         }
@@ -50,7 +50,7 @@ impl CaptchaApi {
             Ok((key, image)) => (key, image),
             Err(e) => {
                 return Err(
-                    AptosTapError::new_with_error_code(e, AptosTapErrorCode::CheckerError).into(),
+                    Libra2TapError::new_with_error_code(e, Libra2TapErrorCode::CheckerError).into(),
                 );
             },
         };

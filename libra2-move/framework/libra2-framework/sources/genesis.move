@@ -3,7 +3,7 @@ module libra2_framework::genesis {
     use std::fixed_point32;
     use std::vector;
 
-    use aptos_std::simple_map;
+    use libra2_std::simple_map;
 
     use libra2_framework::account;
     use libra2_framework::aggregator_factory;
@@ -134,7 +134,7 @@ module libra2_framework::genesis {
         nonce_validation::initialize(&libra2_framework_account);
     }
 
-    /// Genesis step 2: Initialize Aptos coin.
+    /// Genesis step 2: Initialize Libra2 coin.
     fun initialize_libra2_coin(libra2_framework: &signer) {
         let (burn_cap, mint_cap) = libra2_coin::initialize(libra2_framework);
 

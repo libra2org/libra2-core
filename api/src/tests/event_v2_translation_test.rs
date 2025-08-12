@@ -4,7 +4,7 @@
 
 use super::new_test_context;
 use crate::tests::new_test_context_with_orderless_flags;
-use aptos_api_test_context::{current_function_name, TestContext};
+use libra2_api_test_context::{current_function_name, TestContext};
 use libra2_crypto::{ed25519::Ed25519PrivateKey, SigningKey, ValidCryptoMaterial};
 use libra2_sdk::types::LocalAccount;
 use libra2_types::account_config::RotationProofChallenge;

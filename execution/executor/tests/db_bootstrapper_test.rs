@@ -22,7 +22,7 @@ use libra2_temppath::TempPath;
 use libra2_types::{
     account_address::AccountAddress,
     account_config::{
-        aptos_test_root_address, new_block_event_key, primary_apt_store, FungibleStoreResource,
+        libra2_test_root_address, new_block_event_key, primary_apt_store, FungibleStoreResource,
         NewBlockEvent, ObjectGroupResource, NEW_EPOCH_EVENT_V2_MOVE_TYPE_TAG,
     },
     contract_event::ContractEvent,
@@ -131,7 +131,7 @@ fn get_libra2_coin_mint_transaction(
     amount: u64,
 ) -> Transaction {
     get_test_signed_transaction(
-        aptos_test_root_address(),
+        libra2_test_root_address(),
         /* sequence_number = */ aptos_root_seq_num,
         aptos_root_key.clone(),
         aptos_root_key.public_key(),
@@ -146,7 +146,7 @@ fn get_account_transaction(
     _account_key: &Ed25519PrivateKey,
 ) -> Transaction {
     get_test_signed_transaction(
-        aptos_test_root_address(),
+        libra2_test_root_address(),
         /* sequence_number = */ aptos_root_seq_num,
         aptos_root_key.clone(),
         aptos_root_key.public_key(),

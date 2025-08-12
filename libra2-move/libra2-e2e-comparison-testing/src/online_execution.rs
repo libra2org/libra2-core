@@ -122,17 +122,17 @@ impl OnlineExecutor {
         let compilation_cache = Arc::new(Mutex::new(CompilationCache::default()));
         let index_writer = Arc::new(Mutex::new(IndexWriter::new(&self.current_dir)));
 
-        let aptos_commons_path = self.current_dir.join(APTOS_COMMONS);
+        let libra2_commons_path = self.current_dir.join(APTOS_COMMONS);
         if self.execution_mode.is_v1_or_compare() {
             compile_aptos_packages(
-                &aptos_commons_path,
+                &libra2_commons_path,
                 &mut compilation_cache.lock().unwrap().compiled_package_cache_v1,
                 false,
             )?;
         }
         if self.execution_mode.is_v2_or_compare() {
             compile_aptos_packages(
-                &aptos_commons_path,
+                &libra2_commons_path,
                 &mut compilation_cache.lock().unwrap().compiled_package_cache_v2,
                 true,
             )?;

@@ -1,4 +1,4 @@
-spec aptos_std::math64 {
+spec libra2_std::math64 {
 
     spec max(a: u64, b: u64): u64 {
         aborts_if false;

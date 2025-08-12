@@ -31,7 +31,7 @@ pub enum Command {
     Oneoff(OneoffBackupOpt),
     #[clap(
         about = "Run the backup coordinator which backs up blockchain data continuously off \
-    a Aptos Node."
+    a Libra2 Node."
     )]
     Continuously(CoordinatorRunOpt),
     #[clap(

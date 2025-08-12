@@ -12,7 +12,7 @@ use libra2::{
     common::types::{GasOptions, TransactionSummary},
     test::CliTestFramework,
 };
-use aptos_forge::{NodeExt, Swarm, SwarmExt};
+use libra2_forge::{NodeExt, Swarm, SwarmExt};
 use libra2_logger::{debug, info};
 use libra2_rest_client::Client;
 use libra2_types::{
@@ -101,7 +101,7 @@ async fn get_patched_jwks(rest_client: &Client) -> PatchedJWKs {
 #[tokio::test]
 async fn jwk_patching() {
     let (swarm, mut cli, _faucet) = SwarmBuilder::new_local(4)
-        .with_aptos()
+        .with_libra2()
         .build_with_cli(0)
         .await;
     let client = swarm.validators().next().unwrap().rest_client();

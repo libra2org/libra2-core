@@ -1,15 +1,15 @@
 /// This module implements the Keyless authentication scheme.
 
-module aptos_std::keyless {
-    use aptos_std::bcs_stream::{Self, deserialize_u8};
+module libra2_std::keyless {
+    use libra2_std::bcs_stream::{Self, deserialize_u8};
     use std::error;
     use std::string::{Self, String};
-    friend aptos_std::federated_keyless;
+    friend libra2_std::federated_keyless;
 
     #[test_only]
-    friend aptos_std::keyless_tests;
+    friend libra2_std::keyless_tests;
     #[test_only]
-    friend aptos_std::federated_keyless_tests;
+    friend libra2_std::federated_keyless_tests;
 
     // Error codes
     //

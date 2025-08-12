@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Aptos Node API",
-    "description": "The Aptos Node API is a RESTful API for client applications to interact with the Aptos blockchain.",
+    "title": "Libra2 Node API",
+    "description": "The Libra2 Node API is a RESTful API for client applications to interact with the Aptos blockchain.",
     "version": "1.2.0",
     "contact": {
       "name": "Aptos Labs",
@@ -3999,7 +3999,7 @@
               "$ref": "#/components/schemas/Address"
             },
             "in": "path",
-            "description": "Hex-encoded 32 byte Aptos account, with or without a `0x` prefix, for\nwhich events are queried. This refers to the account that events were\nemitted to, not the account hosting the move module that emits that\nevent type.",
+            "description": "Hex-encoded 32 byte Libra2 account, with or without a `0x` prefix, for\nwhich events are queried. This refers to the account that events were\nemitted to, not the account hosting the move module that emits that\nevent type.",
             "required": true,
             "deprecated": false,
             "explode": true
@@ -4616,7 +4616,7 @@
               "$ref": "#/components/schemas/Address"
             },
             "in": "path",
-            "description": "Hex-encoded 32 byte Aptos account, with or without a `0x` prefix, for\nwhich events are queried. This refers to the account that events were\nemitted to, not the account hosting the move module that emits that\nevent type.",
+            "description": "Hex-encoded 32 byte Libra2 account, with or without a `0x` prefix, for\nwhich events are queried. This refers to the account that events were\nemitted to, not the account hosting the move module that emits that\nevent type.",
             "required": true,
             "deprecated": false,
             "explode": true
@@ -15379,12 +15379,12 @@
       "Address": {
         "type": "string",
         "format": "hex",
-        "description": "A hex encoded 32 byte Aptos account address.\n\nThis is represented in a string as a 64 character hex string, sometimes\nshortened by stripping leading 0s, and adding a 0x.\n\nFor example, address 0x0000000000000000000000000000000000000000000000000000000000000001 is represented as 0x1.\n",
+        "description": "A hex encoded 32 byte Libra2 account address.\n\nThis is represented in a string as a 64 character hex string, sometimes\nshortened by stripping leading 0s, and adding a 0x.\n\nFor example, address 0x0000000000000000000000000000000000000000000000000000000000000001 is represented as 0x1.\n",
         "example": "0x88fbd33f54e1126269769780feb24480428179f552e2313fbe571b72e62a1ca1"
       },
       "Libra2Error": {
         "type": "object",
-        "description": "This is the generic struct we use for all API errors, it contains a string\nmessage and an Aptos API specific error code.",
+        "description": "This is the generic struct we use for all API errors, it contains a string\nmessage and an Libra2 API specific error code.",
         "required": [
           "message",
           "error_code"
@@ -15435,7 +15435,7 @@
       "AssetType": {
         "type": "string",
         "format": "hex",
-        "description": "A hex encoded 32 byte Aptos account address or a struct tag.\n\nThis is represented in a string as a 64 character hex string, sometimes\nshortened by stripping leading 0s, and adding a 0x or\nFormat: `{address}::{module name}::{struct name}`\n",
+        "description": "A hex encoded 32 byte Libra2 account address or a struct tag.\n\nThis is represented in a string as a 64 character hex string, sometimes\nshortened by stripping leading 0s, and adding a 0x or\nFormat: `{address}::{module name}::{struct name}`\n",
         "example": "0x1::libra2_coin::Libra2Coin"
       },
       "Block": {
@@ -16775,7 +16775,7 @@
       },
       "MoveStructValue": {
         "type": "object",
-        "description": "This is a JSON representation of some data within an account resource. More specifically,\nit is a map of strings to arbitrary JSON values / objects, where the keys are top level\nfields within the given resource.\n\nTo clarify, you might query for 0x1::account::Account and see the example data.\n\nMove `bool` type value is serialized into `boolean`.\n\nMove `u8`, `u16` and `u32` type value is serialized into `integer`.\n\nMove `u64`, `u128` and `u256` type value is serialized into `string`.\n\nMove `address` type value (32 byte Aptos account address) is serialized into a HexEncodedBytes string.\nFor example:\n  - `0x1`\n  - `0x1668f6be25668c1a17cd8caf6b8d2f25`\n\nMove `vector` type value is serialized into `array`, except `vector<u8>` which is serialized into a\nHexEncodedBytes string with `0x` prefix.\nFor example:\n  - `vector<u64>{255, 255}` => `[\"255\", \"255\"]`\n  - `vector<u8>{255, 255}` => `0xffff`\n\nMove `struct` type value is serialized into `object` that looks like this (except some Move stdlib types, see the following section):\n  ```json\n  {\n    field1_name: field1_value,\n    field2_name: field2_value,\n    ......\n  }\n  ```\n\nFor example:\n  `{ \"created\": \"0xa550c18\", \"role_id\": \"0\" }`\n\n**Special serialization for Move stdlib types**:\n  - [0x1::string::String](https://github.com/aptos-labs/aptos-core/blob/main/third_party/move/move-stdlib/docs/ascii.md)\n    is serialized into `string`. For example, struct value `0x1::string::String{bytes: b\"Hello World!\"}`\n    is serialized as `\"Hello World!\"` in JSON.\n",
+        "description": "This is a JSON representation of some data within an account resource. More specifically,\nit is a map of strings to arbitrary JSON values / objects, where the keys are top level\nfields within the given resource.\n\nTo clarify, you might query for 0x1::account::Account and see the example data.\n\nMove `bool` type value is serialized into `boolean`.\n\nMove `u8`, `u16` and `u32` type value is serialized into `integer`.\n\nMove `u64`, `u128` and `u256` type value is serialized into `string`.\n\nMove `address` type value (32 byte Libra2 account address) is serialized into a HexEncodedBytes string.\nFor example:\n  - `0x1`\n  - `0x1668f6be25668c1a17cd8caf6b8d2f25`\n\nMove `vector` type value is serialized into `array`, except `vector<u8>` which is serialized into a\nHexEncodedBytes string with `0x` prefix.\nFor example:\n  - `vector<u64>{255, 255}` => `[\"255\", \"255\"]`\n  - `vector<u8>{255, 255}` => `0xffff`\n\nMove `struct` type value is serialized into `object` that looks like this (except some Move stdlib types, see the following section):\n  ```json\n  {\n    field1_name: field1_value,\n    field2_name: field2_value,\n    ......\n  }\n  ```\n\nFor example:\n  `{ \"created\": \"0xa550c18\", \"role_id\": \"0\" }`\n\n**Special serialization for Move stdlib types**:\n  - [0x1::string::String](https://github.com/aptos-labs/aptos-core/blob/main/third_party/move/move-stdlib/docs/ascii.md)\n    is serialized into `string`. For example, struct value `0x1::string::String{bytes: b\"Hello World!\"}`\n    is serialized as `\"Hello World!\"` in JSON.\n",
         "example": {
           "authentication_key": "0x0000000000000000000000000000000000000000000000000000000000000001",
           "coin_register_events": {

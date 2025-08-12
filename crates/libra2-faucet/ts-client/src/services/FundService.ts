@@ -1,7 +1,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { AptosTapError } from '../models/AptosTapError';
+import type { Libra2TapError } from '../models/Libra2TapError';
 import type { FundRequest } from '../models/FundRequest';
 import type { FundResponse } from '../models/FundResponse';
 
@@ -19,14 +19,14 @@ export class FundService {
      * hood (e.g. minting vs transferring) and have different funding semantics
      * (e.g. whether it will fund an account if it already exists).
      * @returns FundResponse
-     * @returns AptosTapError
+     * @returns Libra2TapError
      * @throws ApiError
      */
     public fund({
         requestBody,
     }: {
         requestBody: FundRequest,
-    }): CancelablePromise<FundResponse | AptosTapError> {
+    }): CancelablePromise<FundResponse | Libra2TapError> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/fund',
@@ -42,14 +42,14 @@ export class FundService {
      * storage. If the request is valid it returns an empty 200. If it is invalid
      * it returns a 400 or 403 with an explanation in the response body.
      * @returns any
-     * @returns AptosTapError
+     * @returns Libra2TapError
      * @throws ApiError
      */
     public isEligible({
         requestBody,
     }: {
         requestBody: FundRequest,
-    }): CancelablePromise<any | AptosTapError> {
+    }): CancelablePromise<any | Libra2TapError> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/is_eligible',

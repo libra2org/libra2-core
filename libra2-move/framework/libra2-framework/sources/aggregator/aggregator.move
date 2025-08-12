@@ -8,7 +8,7 @@
 /// dependency.
 /// However, reading the aggregator value (i.e. calling `read(X)`) is an expensive
 /// operation and should be avoided as much as possible because it reduces the
-/// parallelism. Moreover, **aggregators can only be created by Aptos Framework (0x1)
+/// parallelism. Moreover, **aggregators can only be created by Libra2 Framework (0x1)
 /// at the moment.**
 module libra2_framework::aggregator {
 

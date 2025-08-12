@@ -1,2 +1,2 @@
-spec aptos_std::ristretto255_pedersen {
+spec libra2_std::ristretto255_pedersen {
 }

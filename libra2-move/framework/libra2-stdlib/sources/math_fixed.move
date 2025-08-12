@@ -1,9 +1,9 @@
 /// Standard math utilities missing in the Move Language.
-module aptos_std::math_fixed {
+module libra2_std::math_fixed {
     use std::fixed_point32;
     use std::fixed_point32::FixedPoint32;
-    use aptos_std::math128;
-    use aptos_std::math64;
+    use libra2_std::math128;
+    use libra2_std::math64;
 
     /// Abort code on overflow
     const EOVERFLOW_EXP: u64 = 1;

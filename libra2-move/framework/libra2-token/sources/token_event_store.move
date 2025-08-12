@@ -5,7 +5,7 @@ module libra2_token::token_event_store {
     use libra2_framework::event::{Self, EventHandle};
     use libra2_framework::account;
     use std::option::Option;
-    use aptos_std::any::Any;
+    use libra2_std::any::Any;
     use std::option;
     use libra2_token::property_map::PropertyValue;
 

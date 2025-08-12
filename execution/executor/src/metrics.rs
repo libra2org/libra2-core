@@ -106,7 +106,7 @@ pub static UPDATE_LEDGER: Lazy<Histogram> = Lazy::new(|| {
 pub static CHUNK_OTHER_TIMERS: Lazy<HistogramVec> = Lazy::new(|| {
     register_histogram_vec!(
         // metric name
-        "aptos_chunk_executor_other_seconds",
+        "libra2_chunk_executor_other_seconds",
         // metric description
         "The time spent in seconds of others in chunk executor.",
         &["name"],

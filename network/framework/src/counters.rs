@@ -47,7 +47,7 @@ pub const DESERIALIZATION_LABEL: &str = "deserialization";
 
 pub static APTOS_CONNECTIONS: Lazy<IntGaugeVec> = Lazy::new(|| {
     register_int_gauge_vec!(
-        "aptos_connections",
+        "libra2_connections",
         "Number of current connections and their direction",
         &["role_type", "network_id", "peer_id", "direction"]
     )
@@ -65,7 +65,7 @@ pub fn connections(network_context: &NetworkContext, origin: ConnectionOrigin) -
 
 pub static APTOS_CONNECTIONS_REJECTED: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_connections_rejected",
+        "libra2_connections_rejected",
         "Number of connections rejected per interface",
         &["role_type", "network_id", "peer_id", "direction"]
     )

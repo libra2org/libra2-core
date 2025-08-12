@@ -11,7 +11,7 @@ run local and remote Aptos swarms (i.e., networks of validators and validator fu
 example, to deploy a local validator swarm, run:
 
 ```
-cargo run -p aptos-forge-cli -- --suite "run_forever" --num-validators 4 test local-swarm
+cargo run -p libra2-forge-cli -- --suite "run_forever" --num-validators 4 test local-swarm
 ```
 
 This will start a local network of 4 validators, each running in their own process. The
@@ -64,22 +64,22 @@ As an alternative to using the faucet service, you may use the faucet CLI direct
 cargo run -p libra2-faucet-cli -- --amount 10 --accounts <account_address> --key <private_key>
 ```
 
-:::tip Faucet and Aptos CLI
+:::tip Faucet and Libra2 CLI
 See more on how the faucet works in the [README](https://github.com/aptos-labs/aptos-core/tree/main/crates/libra2-faucet).
 
-Also see how to use the [Aptos CLI](../cli-tools/aptos-cli/use-cli/use-aptos-cli.md#account-examples) with an existing faucet.
+Also see how to use the [Libra2 CLI](../cli-tools/aptos-cli/use-cli/use-aptos-cli.md#account-examples) with an existing faucet.
 :::
 
 ## Validator fullnodes
 
 To also run validator fullnodes inside the network, use the `--num-validator-fullnodes` flag, e.g.,:
 ```
-cargo run -p aptos-forge-cli -- --suite "run_forever" --num-validators 3 --num-validator-fullnodes 1 test local-swarm
+cargo run -p libra2-forge-cli -- --suite "run_forever" --num-validators 3 --num-validator-fullnodes 1 test local-swarm
 ```
 
 ## Additional usage
 
 To see all tool usage options, run:
 ```
-cargo run -p aptos-forge-cli --help
+cargo run -p libra2-forge-cli --help
 ```

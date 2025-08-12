@@ -1,6 +1,6 @@
 module 0xbeef::very_nested_structure {
-    use aptos_std::table;
-    use aptos_std::table::Table;
+    use libra2_std::table;
+    use libra2_std::table::Table;
     use std::vector;
     use std::error;
     use std::signer;

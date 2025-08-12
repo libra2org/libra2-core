@@ -2,7 +2,7 @@
 module confidential_asset_example::transfer_example {
     use std::signer;
     use std::string::utf8;
-    use aptos_std::debug::print;
+    use libra2_std::debug::print;
     use libra2_framework::fungible_asset::Metadata;
     use libra2_framework::object::Object;
 

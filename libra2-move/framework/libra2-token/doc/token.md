@@ -305,7 +305,7 @@ globally unique identifier of tokendata
 <code>collection: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a></code>
 </dt>
 <dd>
- The name of collection; this is unique under the same account, eg: "Aptos Animal Collection"
+ The name of collection; this is unique under the same account, eg: "Libra2 Animal Collection"
 </dd>
 <dt>
 <code>name: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a></code>
@@ -369,7 +369,7 @@ The shared TokenData by tokens with different property_version
 <code>name: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a></code>
 </dt>
 <dd>
- The name of the token, which should be unique within the collection; the length of name should be smaller than 128, characters, eg: "Aptos Animal #1234"
+ The name of the token, which should be unique within the collection; the length of name should be smaller than 128, characters, eg: "Libra2 Animal #1234"
 </dd>
 <dt>
 <code>description: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a></code>

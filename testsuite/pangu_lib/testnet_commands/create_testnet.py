@@ -61,7 +61,7 @@ class CreateArgs:
         str
     ]  # workspace to create the validator keys & genesis artifacts. Will use a tempfile if not provided
     framework_path: str  # path to the compiled move framework #TODO make this more customizable
-    aptos_cli_path: str  # path to aptos cli
+    libra2_cli_path: str  # path to aptos cli
     dry_run: bool  # whether it is a dry run or not
     name: str  # the namespace to create the testnet
 
@@ -479,7 +479,7 @@ async def generate_genesis(
     # Run genesis
     system_context.shell.run(
         [
-            args.aptos_cli_path,
+            args.libra2_cli_path,
             "genesis",
             "generate-genesis",
             "--local-repository-dir",
@@ -558,7 +558,7 @@ async def generate_keys_and_configuration(
     # Generate validator keys
     await system_context.shell.gen_run(
         [
-            args.aptos_cli_path,
+            args.libra2_cli_path,
             "genesis",
             "generate-keys",
             "--output-dir",
@@ -571,7 +571,7 @@ async def generate_keys_and_configuration(
     # Generate validator identities
     await system_context.shell.gen_run(
         [
-            args.aptos_cli_path,
+            args.libra2_cli_path,
             "genesis",
             "set-validator-configuration",
             "--owner-public-identity-file",

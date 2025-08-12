@@ -1,8 +1,8 @@
 /// This module implements MultiKey type of public key.
 /// A MultiKey public key is a collection of single key public keys and a number representing the number of signatures required to authenticate a transaction.
 /// Unlike MultiEd25519, the individual single keys can be of different schemes.
-module aptos_std::multi_key {
-    use aptos_std::single_key;
+module libra2_std::multi_key {
+    use libra2_std::single_key;
     use std::hash;
     use std::error;
     use std::bcs_stream;
@@ -27,7 +27,7 @@ module aptos_std::multi_key {
     // Constants
     //
 
-    /// The identifier of the MultiEd25519 signature scheme, which is used when deriving Aptos authentication keys by hashing
+    /// The identifier of the MultiEd25519 signature scheme, which is used when deriving Libra2 authentication keys by hashing
     /// it together with an MultiEd25519 public key.
     const SIGNATURE_SCHEME_ID: u8 = 3;
 

@@ -5,7 +5,7 @@
 #![allow(clippy::field_reassign_with_default)]
 
 use anyhow::{bail, format_err, Context, Result};
-use aptos_forge::{config::ForgeConfig, Options, *};
+use libra2_forge::{config::ForgeConfig, Options, *};
 use libra2_logger::Level;
 use clap::{Parser, Subcommand};
 use futures::{future, FutureExt};

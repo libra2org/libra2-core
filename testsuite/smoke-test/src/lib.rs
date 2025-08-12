@@ -7,9 +7,9 @@ extern crate core;
 #[cfg(test)]
 mod account_abstraction;
 #[cfg(test)]
-mod aptos;
+mod libra2;
 #[cfg(test)]
-mod aptos_cli;
+mod libra2_cli;
 #[cfg(test)]
 mod client;
 #[cfg(test)]

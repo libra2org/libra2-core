@@ -4,7 +4,7 @@
 # Module `0x1::aggregator_factory`
 
 This module provides foundations to create aggregators. Currently only
-Aptos Framework (0x1) can create them, so this module helps to wrap
+Libra2 Framework (0x1) can create them, so this module helps to wrap
 the constructor of <code>Aggregator</code> struct so that only a system account
 can initialize one. In the future, this might change and aggregators
 can be enabled for the public.
@@ -38,7 +38,7 @@ can be enabled for the public.
 ## Resource `AggregatorFactory`
 
 Creates new aggregators. Used to control the numbers of aggregators in the
-system and who can create them. At the moment, only Aptos Framework (0x1)
+system and who can create them. At the moment, only Libra2 Framework (0x1)
 account can.
 
 
@@ -178,7 +178,7 @@ to allow any signer to call.
 <pre><code><b>public</b> <b>fun</b> <a href="aggregator_factory.md#0x1_aggregator_factory_create_aggregator">create_aggregator</a>(<a href="account.md#0x1_account">account</a>: &<a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, limit: u128): Aggregator <b>acquires</b> <a href="aggregator_factory.md#0x1_aggregator_factory_AggregatorFactory">AggregatorFactory</a> {
     // deprecated. Currently used only in libra2-<b>move</b>/e2e-<b>move</b>-tests/src/tests/<a href="aggregator.md#0x1_aggregator">aggregator</a>.data/pack/sources/aggregator_test.<b>move</b>
 
-    // Only Aptos Framework (0x1) <a href="account.md#0x1_account">account</a> can call this for now.
+    // Only Libra2 Framework (0x1) <a href="account.md#0x1_account">account</a> can call this for now.
     <a href="system_addresses.md#0x1_system_addresses_assert_libra2_framework">system_addresses::assert_libra2_framework</a>(<a href="account.md#0x1_account">account</a>);
     <b>assert</b>!(
         limit == <a href="aggregator_factory.md#0x1_aggregator_factory_MAX_U128">MAX_U128</a>,
@@ -241,7 +241,7 @@ Returns a new aggregator.
 
 <tr>
 <td>2</td>
-<td>To create a new aggregator instance, the aggregator factory must already be initialized and exist under the Aptos account.</td>
+<td>To create a new aggregator instance, the aggregator factory must already be initialized and exist under the Libra2 account.</td>
 <td>High</td>
 <td>The create_aggregator_internal function asserts that AggregatorFactory exists for the Aptos account.</td>
 <td>Formally verified via <a href="#high-level-req-2">CreateAggregatorInternalAbortsIf</a>.</td>

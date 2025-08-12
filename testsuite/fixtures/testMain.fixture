@@ -1,5 +1,5 @@
-Looking for cluster aptos-forge-big-1 in cloud AWS
-Found cluster: Cloud.AWS/us-west-2/aptos-forge-big-1
+Looking for cluster libra2-forge-big-1 in cloud AWS
+Found cluster: Cloud.AWS/us-west-2/libra2-forge-big-1
 Checking if image exists in GCP: aptos/validator-testing:banana
 Using the following image tags:
 	forge:  banana

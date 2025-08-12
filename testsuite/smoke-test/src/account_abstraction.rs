@@ -4,7 +4,7 @@
 use crate::smoke_test_environment::SwarmBuilder;
 use libra2_cached_packages::libra2_stdlib;
 use libra2_crypto::SigningKey;
-use aptos_forge::Swarm;
+use libra2_forge::Swarm;
 use libra2_sdk::types::{AccountKey, LocalAccount};
 use libra2_types::function_info::FunctionInfo;
 use ethers::{
@@ -92,8 +92,8 @@ fn bytes_to_base58(bytes: &[u8]) -> String {
 
 #[tokio::test(flavor = "multi_thread", worker_threads = 1)]
 async fn test_solana_derivable_account() {
-    let swarm = SwarmBuilder::new_local(1).with_aptos().build().await;
-    let mut info = swarm.aptos_public_info();
+    let swarm = SwarmBuilder::new_local(1).with_libra2().build().await;
+    let mut info = swarm.libra2_public_info();
 
     let function_info = FunctionInfo::new(
         AccountAddress::ONE,
@@ -103,7 +103,7 @@ async fn test_solana_derivable_account() {
 
     let account_key = AccountKey::generate(&mut thread_rng());
     let base58_public_key = bytes_to_base58(&account_key.public_key().to_bytes());
-    let domain = "aptos.com";
+    let domain = "libra2.org";
     let account_identity = bcs::to_bytes(&SIWSAbstractPublicKey {
         base58_public_key: base58_public_key.clone(),
         domain: domain.to_string(),
@@ -154,8 +154,8 @@ async fn test_solana_derivable_account() {
 
 #[tokio::test(flavor = "multi_thread", worker_threads = 1)]
 async fn test_ethereum_derivable_account() {
-    let swarm = SwarmBuilder::new_local(1).with_aptos().build().await;
-    let mut info = swarm.aptos_public_info();
+    let swarm = SwarmBuilder::new_local(1).with_libra2().build().await;
+    let mut info = swarm.libra2_public_info();
 
     let function_info = FunctionInfo::new(
         AccountAddress::ONE,
@@ -168,7 +168,7 @@ async fn test_ethereum_derivable_account() {
     let address: Address = wallet.address();
     let address_str = format!("0x{}", hex::encode(address.as_bytes()));
 
-    let domain = "aptos.com";
+    let domain = "libra2.org";
     let account_identity = bcs::to_bytes(&SIWEAbstractPublicKey {
         ethereum_address: address_str.as_bytes().to_vec(),
         domain: domain.as_bytes().to_vec(),

@@ -22,7 +22,7 @@ pub enum GasUnit {}
 /// Unit of the Aptos network's native coin.
 pub enum APT {}
 
-/// Alternative unit of the Aptos network's native coin. 1 Octa = 10^-8 Aptos coins.
+/// Alternative unit of the Aptos network's native coin. 1 Octa = 10^-8 Libra2 coins.
 pub enum Octa {}
 
 pub type Gas = GasQuantity<GasUnit>;

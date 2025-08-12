@@ -77,7 +77,7 @@ impl SafeNativeBuilder {
 
     /// Transforms a raw native function into a closure that can be used inside the Move VM.
     ///
-    /// The closure will have access to the common Aptos configurations (features, gas params etc.),
+    /// The closure will have access to the common Libra2 configurations (features, gas params etc.),
     /// allowing the client to use [`SafeNativeContext`] instead of Move VM's [`NativeContext`].
     pub fn make_native<F>(&self, native: F) -> NativeFunction
     where

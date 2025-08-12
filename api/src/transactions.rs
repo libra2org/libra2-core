@@ -1464,20 +1464,20 @@ impl TransactionsApi {
             },
             Err(error) => match error.error_code {
                 Libra2ErrorCode::InternalError => Err(
-                    SubmitTransactionError::internal_from_aptos_error(error, ledger_info),
+                    SubmitTransactionError::internal_from_libra2_error(error, ledger_info),
                 ),
                 Libra2ErrorCode::VmError
                 | Libra2ErrorCode::SequenceNumberTooOld
                 | Libra2ErrorCode::InvalidTransactionUpdate => Err(
-                    SubmitTransactionError::bad_request_from_aptos_error(error, ledger_info),
+                    SubmitTransactionError::bad_request_from_libra2_error(error, ledger_info),
                 ),
                 Libra2ErrorCode::MempoolIsFull => Err(
-                    SubmitTransactionError::insufficient_storage_from_aptos_error(
+                    SubmitTransactionError::insufficient_storage_from_libra2_error(
                         error,
                         ledger_info,
                     ),
                 ),
-                _ => Err(SubmitTransactionError::internal_from_aptos_error(
+                _ => Err(SubmitTransactionError::internal_from_libra2_error(
                     error,
                     ledger_info,
                 )),

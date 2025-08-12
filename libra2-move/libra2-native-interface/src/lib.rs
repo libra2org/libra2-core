@@ -1,7 +1,7 @@
 // Copyright © Aptos Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-//! This crate defines interfaces that enable the extension of the Aptos VM with native functions.
+//! This crate defines interfaces that enable the extension of the Libra2 VM with native functions.
 //!
 //! Native functions provide the ability to incorporate semantics that cannot be expressed in
 //! normal Move programs.

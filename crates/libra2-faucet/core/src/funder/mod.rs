@@ -11,7 +11,7 @@ pub use self::{
     mint::MintFunderConfig,
 };
 use self::{fake::FakeFunderConfig, transfer::TransferFunderConfig};
-use crate::endpoints::AptosTapError;
+use crate::endpoints::Libra2TapError;
 use anyhow::{Context, Result};
 use libra2_sdk::types::{account_address::AccountAddress, transaction::SignedTransaction};
 use async_trait::async_trait;
@@ -40,7 +40,7 @@ pub trait FunderTrait: Sync + Send + 'static {
         check_only: bool,
         // True if a Bypasser let this request bypass the Checkers.
         did_bypass_checkers: bool,
-    ) -> Result<Vec<SignedTransaction>, AptosTapError>;
+    ) -> Result<Vec<SignedTransaction>, Libra2TapError>;
 
     /// Given a requested amount and any configuration internal to this funder,
     /// determine the amount that can be funded.

@@ -13,11 +13,11 @@
 /// 6. A redeems 500 shares. Each share is worth 6000 / 1500 = 4. A receives 2000 coins. Pool has 4000 coins and 1000
 /// shares left.
 ///
-module aptos_std::pool_u64 {
-    use aptos_std::simple_map::{Self, SimpleMap};
+module libra2_std::pool_u64 {
+    use libra2_std::simple_map::{Self, SimpleMap};
     use std::error;
     use std::vector;
-    use aptos_std::math64;
+    use libra2_std::math64;
 
     /// Shareholder not present in pool.
     const ESHAREHOLDER_NOT_FOUND: u64 = 1;

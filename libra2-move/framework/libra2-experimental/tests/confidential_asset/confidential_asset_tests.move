@@ -4,7 +4,7 @@ module libra2_experimental::confidential_asset_tests {
     use std::option;
     use std::signer;
     use std::string::utf8;
-    use aptos_std::ristretto255::Scalar;
+    use libra2_std::ristretto255::Scalar;
     use libra2_framework::account;
     use libra2_framework::chain_id;
     use libra2_framework::coin;

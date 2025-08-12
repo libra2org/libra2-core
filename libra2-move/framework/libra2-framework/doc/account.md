@@ -2771,7 +2771,7 @@ involves the use of a cryptographic hash operation and should be use thoughtfull
 ## Function `create_resource_account`
 
 A resource account is used to manage resources independent of an account managed by a user.
-In Aptos a resource account is created based upon the sha3 256 of the source's address and additional seed data.
+In Libra2 a resource account is created based upon the sha3 256 of the source's address and additional seed data.
 A resource account can only be created once, this is designated by setting the
 <code>Account::signer_capability_offer::for</code> to the address of the resource account. While an entity may call
 <code>create_account</code> to attempt to claim an account ahead of the creation of a resource account, if found Aptos will
@@ -3271,7 +3271,7 @@ Ensure that the account exists at the end of the call.
 
 Check if the bytes of the new address is 32.
 The Account does not exist under the new address before creating the account.
-Limit the new account address is not @vm_reserved / @libra2_framework / @aptos_toke.
+Limit the new account address is not @vm_reserved / @libra2_framework / @libra2_toke.
 
 
 <pre><code><b>include</b> <a href="account.md#0x1_account_CreateAccountAbortsIf">CreateAccountAbortsIf</a> {addr: new_address};

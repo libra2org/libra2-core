@@ -5,8 +5,8 @@ module libra2_experimental::clearinghouse_test {
     use std::signer;
     use std::string;
     use std::vector;
-    use aptos_std::table;
-    use aptos_std::table::Table;
+    use libra2_std::table;
+    use libra2_std::table::Table;
     use libra2_experimental::order_book_types::OrderIdType;
     use libra2_experimental::market_types::{
         SettleTradeResult,

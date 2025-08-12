@@ -118,7 +118,7 @@ pub struct Dependency {
     ///       during execution on-chain.
     version: Option<Version>,
 
-    /// Location of the dependency: local, git, or aptos (on-chain).
+    /// Location of the dependency: local, git, or libra2 (on-chain).
     location: PackageLocation,
 }
 
@@ -142,12 +142,12 @@ pub enum PackageLocation {
     /// Refers to a package published on-chain.
     ///
     // TODO: The current design is tentative. There are issues we plan to resolve later:
-    //       - Leaky abstraction -- can we still want to maintain clear Move/Aptos separation?
+    //       - Leaky abstraction -- can we still want to maintain clear Move/Libra2 separation?
     //       - Replacing `String` w/ more specific data structures
     //         - `node_url`: Should accept both URL and known network names (e.g. "mainnet")
     //         - `package_addr`: May accept both numerical and named addresses
-    Aptos {
-        /// URL to the Aptos full-node connected to the network where the package is published.
+    Libra2 {
+        /// URL to the Libra2 full-node connected to the network where the package is published.
         node_url: String,
 
         /// Address of the published package.
@@ -277,9 +277,9 @@ impl<'de> Deserialize<'de> for Dependency {
         error_on_unneeded_fields!(rev, git);
         error_on_unneeded_fields!(subdir, git);
 
-        error_on_unneeded_fields!(address, aptos);
+        error_on_unneeded_fields!(address, libra2);
 
-        let location = match (raw.local, raw.git, raw.aptos) {
+        let location = match (raw.local, raw.git, raw.libra2) {
             (Some(path), None, None) => PackageLocation::Local { path },
             (None, Some(url), None) => PackageLocation::Git {
                 url,
@@ -287,13 +287,13 @@ impl<'de> Deserialize<'de> for Dependency {
                 subdir: raw.subdir,
             },
             (None, None, Some(node_url)) => match raw.address {
-                Some(package_addr) => PackageLocation::Aptos {
+                Some(package_addr) => PackageLocation::Libra2 {
                     node_url,
                     package_addr,
                 },
                 None => {
                     return Err(serde::de::Error::custom(
-                        "missing field \"address\" for aptos dependency",
+                        "missing field \"address\" for libra2 dependency",
                     ))
                 },
             },
@@ -356,11 +356,11 @@ impl Dependency {
                 raw.rev = rev;
                 raw.subdir = subdir;
             },
-            PackageLocation::Aptos {
+            PackageLocation::Libra2 {
                 node_url,
                 package_addr,
             } => {
-                raw.aptos = Some(node_url);
+                raw.libra2 = Some(node_url);
                 raw.address = Some(package_addr);
             },
         }

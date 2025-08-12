@@ -192,7 +192,7 @@ static NAMED_ADDRESSES: Lazy<BTreeMap<String, NumericalAddress>> = Lazy::new(|| 
     let ten = NumericalAddress::parse_str("0xA").unwrap();
     let resources = NumericalAddress::parse_str("0xA550C18").unwrap();
     result.insert("std".to_owned(), one);
-    result.insert("aptos_std".to_owned(), one);
+    result.insert("libra2_std".to_owned(), one);
     result.insert("libra2_framework".to_owned(), one);
     result.insert("libra2_token".to_owned(), three);
     result.insert("libra2_token_objects".to_owned(), four);

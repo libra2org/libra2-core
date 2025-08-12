@@ -5,7 +5,7 @@ use crate::utils;
 use anyhow::{anyhow, ensure, Result};
 use libra2_crypto::{compat::Sha3_256, Uniform};
 use libra2_dkg::weighted_vuf::traits::WeightedVUF;
-use aptos_forge::LocalSwarm;
+use libra2_forge::LocalSwarm;
 use libra2_logger::info;
 use libra2_rest_client::Client;
 use libra2_types::{
@@ -260,7 +260,7 @@ fn script_to_enable_main_logic() -> String {
 script {
     use libra2_framework::libra2_governance;
     use libra2_framework::randomness_config;
-    use aptos_std::fixed_point64;
+    use libra2_std::fixed_point64;
 
     fun main(core_resources: &signer) {
         let framework_signer = libra2_governance::get_signer_testnet_only(core_resources, @0x1);

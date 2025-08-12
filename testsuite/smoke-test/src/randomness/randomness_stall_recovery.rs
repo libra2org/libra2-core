@@ -7,7 +7,7 @@ use crate::{
 };
 use libra2::common::types::GasOptions;
 use libra2_config::config::{OverrideNodeConfig, PersistableConfig};
-use aptos_forge::{NodeExt, Swarm, SwarmExt};
+use libra2_forge::{NodeExt, Swarm, SwarmExt};
 use libra2_logger::{debug, info};
 use libra2_types::{on_chain_config::OnChainRandomnessConfig, randomness::PerBlockRandomness};
 use std::{
@@ -24,7 +24,7 @@ async fn randomness_stall_recovery() {
 
     let (mut swarm, mut cli, _faucet) = SwarmBuilder::new_local(4)
         .with_num_fullnodes(0) //TODO: revert back to 1 after invalid version bug is fixed
-        .with_aptos()
+        .with_libra2()
         .with_init_config(Arc::new(|_, conf, _| {
             conf.api.failpoints_enabled = true;
         }))

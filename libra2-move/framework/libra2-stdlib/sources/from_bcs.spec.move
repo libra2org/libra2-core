@@ -1,4 +1,4 @@
-spec aptos_std::from_bcs {
+spec libra2_std::from_bcs {
     // ----------------------------------
     // Uninterpreted functions and axioms
     // ----------------------------------

@@ -175,7 +175,7 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: "${{ format('aptos-cli-v{0}', inputs.release_version) }}"
           prerelease: false
-          title: "${{ format('Aptos CLI Release v{0}', inputs.release_version) }}"
+          title: "${{ format('Libra2 CLI Release v{0}', inputs.release_version) }}"
           files: |
             aptos-cli-*.zip
 

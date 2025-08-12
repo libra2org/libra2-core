@@ -1,7 +1,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { AptosTapError } from '../models/AptosTapError';
+import type { Libra2TapError } from '../models/Libra2TapError';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
@@ -17,10 +17,10 @@ export class CaptchaService {
      * header that you must include in the call to `/fund`. This endpoint is
      * only relevant if the CaptchaChecker is enabled.
      * @returns binary
-     * @returns AptosTapError
+     * @returns Libra2TapError
      * @throws ApiError
      */
-    public requestCaptcha(): CancelablePromise<Blob | AptosTapError> {
+    public requestCaptcha(): CancelablePromise<Blob | Libra2TapError> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/request_captcha',

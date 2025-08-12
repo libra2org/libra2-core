@@ -13,7 +13,7 @@ on:
       release_title:
         type: string
         required: false
-        description: 'Name of the release, e.g. "Aptos Node Release v1.2.3":'
+        description: 'Name of the release, e.g. "Libra2 Node Release v1.2.3":'
 
 jobs:
   release-libra2-node:

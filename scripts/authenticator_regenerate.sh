@@ -31,8 +31,8 @@ cd $repodir
 
 (
   echo
-  echo "Regenerating Aptos Node APIs (in `pwd`)"
-  # Aptos Node API
+  echo "Regenerating Libra2 Node APIs (in `pwd`)"
+  # Libra2 Node API
   cargo run -p libra2-openapi-spec-generator -- -f yaml -o api/doc/spec.yaml
   cargo run -p libra2-openapi-spec-generator -- -f json -o api/doc/spec.json
 )

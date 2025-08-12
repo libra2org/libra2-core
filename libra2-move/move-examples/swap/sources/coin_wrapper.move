@@ -22,9 +22,9 @@ module swap::coin_wrapper {
     use libra2_framework::fungible_asset::{Self, BurnRef, FungibleAsset, Metadata, MintRef};
     use libra2_framework::object::{Self, Object};
     use libra2_framework::primary_fungible_store;
-    use aptos_std::smart_table::{Self, SmartTable};
-    use aptos_std::string_utils;
-    use aptos_std::type_info;
+    use libra2_std::smart_table::{Self, SmartTable};
+    use libra2_std::string_utils;
+    use libra2_std::type_info;
     use std::string::{Self, String};
     use std::option;
     use std::signer;
@@ -47,7 +47,7 @@ module swap::coin_wrapper {
 
     /// The resource stored in the main resource account to track all the fungible asset wrappers.
     /// This main resource account will also be the one holding all the deposited coins, each of which in a separate
-    /// CoinStore<CoinType> resource. See coin.move in the Aptos Framework for more details.
+    /// CoinStore<CoinType> resource. See coin.move in the Libra2 Framework for more details.
     struct WrapperAccount has key {
         // The signer cap used to withdraw deposited coins from the main resource account during unwrapping so the
         // coins can be returned to the end users.

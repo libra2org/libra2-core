@@ -1,5 +1,5 @@
 /// This module provides foundations to create aggregators. Currently only
-/// Aptos Framework (0x1) can create them, so this module helps to wrap
+/// Libra2 Framework (0x1) can create them, so this module helps to wrap
 /// the constructor of `Aggregator` struct so that only a system account
 /// can initialize one. In the future, this might change and aggregators
 /// can be enabled for the public.
@@ -8,7 +8,7 @@ module libra2_framework::aggregator_factory {
 
     use libra2_framework::system_addresses;
     use libra2_framework::aggregator::Aggregator;
-    use aptos_std::table::{Self, Table};
+    use libra2_std::table::{Self, Table};
 
     friend libra2_framework::genesis;
     friend libra2_framework::optional_aggregator;
@@ -22,7 +22,7 @@ module libra2_framework::aggregator_factory {
     const MAX_U128: u128 = 340282366920938463463374607431768211455;
 
     /// Creates new aggregators. Used to control the numbers of aggregators in the
-    /// system and who can create them. At the moment, only Aptos Framework (0x1)
+    /// system and who can create them. At the moment, only Libra2 Framework (0x1)
     /// account can.
     struct AggregatorFactory has key {
         phantom_table: Table<address, u128>,
@@ -54,7 +54,7 @@ module libra2_framework::aggregator_factory {
     public fun create_aggregator(account: &signer, limit: u128): Aggregator acquires AggregatorFactory {
         // deprecated. Currently used only in libra2-move/e2e-move-tests/src/tests/aggregator.data/pack/sources/aggregator_test.move
 
-        // Only Aptos Framework (0x1) account can call this for now.
+        // Only Libra2 Framework (0x1) account can call this for now.
         system_addresses::assert_libra2_framework(account);
         assert!(
             limit == MAX_U128,

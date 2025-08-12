@@ -3,7 +3,7 @@
 
 use crate::{LoadDestination, NetworkLoadTest};
 use anyhow::{anyhow, bail, Context};
-use aptos_forge::{
+use libra2_forge::{
     test_utils::consensus_utils::{
         test_consensus_fault_tolerance, FailPointFailureInjection, NodeState,
     },
@@ -92,7 +92,7 @@ impl NetworkLoadTest for ChangingWorkingQuorumTest {
             let swarm = swarm.read().await;
             (
                 swarm.get_validator_clients_with_names(),
-                swarm.aptos_public_info(),
+                swarm.libra2_public_info(),
             )
         };
         // Function that returns set of down nodes in a given cycle.

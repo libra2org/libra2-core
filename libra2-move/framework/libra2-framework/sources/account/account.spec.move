@@ -133,7 +133,7 @@ spec libra2_framework::account {
 
     /// Check if the bytes of the new address is 32.
     /// The Account does not exist under the new address before creating the account.
-    /// Limit the new account address is not @vm_reserved / @libra2_framework / @aptos_toke.
+    /// Limit the new account address is not @vm_reserved / @libra2_framework / @libra2_toke.
     spec create_account(new_address: address): signer {
         include CreateAccountAbortsIf {addr: new_address};
         aborts_if new_address == @vm_reserved || new_address == @libra2_framework || new_address == @libra2_token;

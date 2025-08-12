@@ -14,7 +14,7 @@ use libra2::{
     common::types::{CliError, CliTypedResult, GasOptions, TransactionSummary},
     move_tool::MemberId,
 };
-use aptos_forge::{Swarm, SwarmExt};
+use libra2_forge::{Swarm, SwarmExt};
 use libra2_logger::info;
 use libra2_types::on_chain_config::OnChainRandomnessConfig;
 use std::{str::FromStr, sync::Arc, time::Duration};
@@ -147,7 +147,7 @@ async fn common(params: TestParams) {
     let estimated_dkg_latency_secs = 30;
 
     let (swarm, mut cli, _faucet) = SwarmBuilder::new_local(1)
-        .with_aptos()
+        .with_libra2()
         .with_init_genesis_config(Arc::new(move |conf| {
             conf.epoch_duration_secs = epoch_duration_secs;
 

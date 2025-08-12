@@ -10,7 +10,7 @@ module libra2_token::token {
     use libra2_framework::account;
     use libra2_framework::event::{Self, EventHandle};
     use libra2_framework::timestamp;
-    use aptos_std::table::{Self, Table};
+    use libra2_std::table::{Self, Table};
     use libra2_token::property_map::{Self, PropertyMap, PropertyValue};
     use libra2_token::token_event_store;
 
@@ -177,7 +177,7 @@ module libra2_token::token {
     struct TokenDataId has copy, drop, store {
         /// The address of the creator, eg: 0xcafe
         creator: address,
-        /// The name of collection; this is unique under the same account, eg: "Aptos Animal Collection"
+        /// The name of collection; this is unique under the same account, eg: "Libra2 Animal Collection"
         collection: String,
         /// The name of the token; this is the same as the name field of TokenData
         name: String,
@@ -195,7 +195,7 @@ module libra2_token::token {
         uri: String,
         /// The denominator and numerator for calculating the royalty fee; it also contains payee account address for depositing the Royalty
         royalty: Royalty,
-        /// The name of the token, which should be unique within the collection; the length of name should be smaller than 128, characters, eg: "Aptos Animal #1234"
+        /// The name of the token, which should be unique within the collection; the length of name should be smaller than 128, characters, eg: "Libra2 Animal #1234"
         name: String,
         /// Describes this Token
         description: String,

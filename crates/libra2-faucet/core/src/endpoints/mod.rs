@@ -13,7 +13,7 @@ pub use api::build_openapi_service;
 pub use basic::BasicApi;
 pub use error_converter::convert_error;
 pub use errors::{
-    AptosTapError, AptosTapErrorCode, RejectionReason, RejectionReasonCode, USE_HELPFUL_ERRORS,
+    Libra2TapError, Libra2TapErrorCode, RejectionReason, RejectionReasonCode, USE_HELPFUL_ERRORS,
 };
 pub use fund::{mint, FundApi, FundApiComponents, FundRequest, FundResponse};
 use poem_openapi::Tags;

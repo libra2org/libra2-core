@@ -12,13 +12,13 @@ module libra2_framework::account {
     use libra2_framework::guid;
     use libra2_framework::permissioned_signer;
     use libra2_framework::system_addresses;
-    use aptos_std::ed25519;
-    use aptos_std::from_bcs;
-    use aptos_std::multi_ed25519;
-    use aptos_std::single_key;
-    use aptos_std::multi_key;
-    use aptos_std::table::{Self, Table};
-    use aptos_std::type_info::{Self, TypeInfo};
+    use libra2_std::ed25519;
+    use libra2_std::from_bcs;
+    use libra2_std::multi_ed25519;
+    use libra2_std::single_key;
+    use libra2_std::multi_key;
+    use libra2_std::table::{Self, Table};
+    use libra2_std::type_info::{Self, TypeInfo};
 
     friend libra2_framework::libra2_account;
     friend libra2_framework::coin;
@@ -1114,7 +1114,7 @@ module libra2_framework::account {
     }
 
     /// A resource account is used to manage resources independent of an account managed by a user.
-    /// In Aptos a resource account is created based upon the sha3 256 of the source's address and additional seed data.
+    /// In Libra2 a resource account is created based upon the sha3 256 of the source's address and additional seed data.
     /// A resource account can only be created once, this is designated by setting the
     /// `Account::signer_capability_offer::for` to the address of the resource account. While an entity may call
     /// `create_account` to attempt to claim an account ahead of the creation of a resource account, if found Aptos will

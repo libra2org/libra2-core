@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::txn_emitter::generate_traffic;
-use aptos_forge::{NodeExt, Swarm, TransactionType};
+use libra2_forge::{NodeExt, Swarm, TransactionType};
 use libra2_types::PeerId;
 use std::time::Duration;
 

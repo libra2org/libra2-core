@@ -26,7 +26,7 @@ use move_vm_types::{
     views::{TypeView, ValueView},
 };
 
-/// The official gas meter used inside the Aptos VM.
+/// The official gas meter used inside the Libra2 VM.
 /// It maintains an internal gas counter, measured in internal gas units, and carries an environment
 /// consisting all the gas parameters, which it can lookup when performing gas calculations.
 pub struct StandardGasMeter<A> {

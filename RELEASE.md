@@ -20,7 +20,7 @@
 All current development occurs on the `main` branch. All new feature developments have a feature flag to gate it off during development. Feature flags are turned on *after* the development is complete and passes Governance.
 
 ### devnet branch
-The `devnet` branch is created on the `main` branch every week. It is used to deploy devnet and allows the Aptos Community to explore the most recent changes to the Aptos node binary and Aptos framework. Follow along in our [#devnet-release](https://discord.com/channels/945856774056083548/956692649430093904) channel on [Discord](https://discord.gg/aptosnetwork).
+The `devnet` branch is created on the `main` branch every week. It is used to deploy devnet and allows the Libra2 Community to explore the most recent changes to the Aptos node binary and Aptos framework. Follow along in our [#devnet-release](https://discord.com/channels/945856774056083548/956692649430093904) channel on [Discord](https://discord.gg/aptosnetwork).
 
 ### aptos-release-v*X.Y* release branches
 These are release branches based on Aptos release planning timeline. They are created off
@@ -48,7 +48,7 @@ The aptos cli release tags are created to track the CLI versions for community t
 * [day 24] Proposals executed on-chain if passed voting.
 
 ## Release Announcement
-* Each of the network release will be announced on Aptos Network [Discord](https://discord.gg/aptosnetwork). Follow mainnet-release, testnet-release, devnet-release channel to get updates.
+* Each of the network release will be announced on Libra2 Network [Discord](https://discord.gg/aptosnetwork). Follow mainnet-release, testnet-release, devnet-release channel to get updates.
 * When a release is ready to deploy, a [Github release page](https://github.com/aptos-labs/aptos-core/releases) will be created in this repo as well. You can search for the most recent release version titled with "[Mainnet]" for production usage.
 
 ## How we test each release at Aptos

@@ -18,7 +18,7 @@ use libra2_gas_schedule::{
 };
 use libra2_types::{
     account_config::{
-        self, aptos_test_root_address, events::NewEpochEvent, CORE_CODE_ADDRESS,
+        self, libra2_test_root_address, events::NewEpochEvent, CORE_CODE_ADDRESS,
         EXPERIMENTAL_CODE_ADDRESS,
     },
     chain_id::ChainId,
@@ -1083,7 +1083,7 @@ fn allow_core_resources_to_set_version(
         VERSION_MODULE_NAME,
         "initialize_for_test",
         vec![],
-        serialize_values(&vec![MoveValue::Signer(aptos_test_root_address())]),
+        serialize_values(&vec![MoveValue::Signer(libra2_test_root_address())]),
     );
 }
 
@@ -1329,10 +1329,10 @@ pub fn test_genesis_change_set_and_validators(
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Validator {
-    /// The Aptos account address of the validator or the admin in the case of a commissioned or
+    /// The Libra2 account address of the validator or the admin in the case of a commissioned or
     /// vesting managed validator.
     pub owner_address: AccountAddress,
-    /// The Aptos account address of the validator's operator (same as `address` if the validator is
+    /// The Libra2 account address of the validator's operator (same as `address` if the validator is
     /// its own operator).
     pub operator_address: AccountAddress,
     pub voter_address: AccountAddress,

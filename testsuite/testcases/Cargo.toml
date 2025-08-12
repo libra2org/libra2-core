@@ -1,7 +1,7 @@
 [package]
-name = "aptos-testcases"
-description = "Aptos compatibility tests"
-version = "0.0.0"
+name = "libra2-testcases"
+description = "Libra2 compatibility tests"
+version = "0.0.1"
 
 # Workspace inherited keys
 authors = { workspace = true }
@@ -16,7 +16,7 @@ rust-version = { workspace = true }
 anyhow = { workspace = true }
 libra2 = { workspace = true, features = ["fuzzing"] }
 libra2-config = { workspace = true }
-aptos-forge = { workspace = true }
+libra2-forge = { workspace = true }
 libra2-global-constants = { workspace = true }
 libra2-keygen = { workspace = true }
 libra2-logger = { workspace = true }

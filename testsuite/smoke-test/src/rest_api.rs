@@ -3,13 +3,13 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
-    smoke_test_environment::{new_local_swarm_with_aptos, SwarmBuilder},
+    smoke_test_environment::{new_local_swarm_with_libra2, SwarmBuilder},
     txn_emitter::generate_traffic,
 };
 use libra2_cached_packages::libra2_stdlib;
 use libra2_config::config::GasEstimationConfig;
 use libra2_crypto::ed25519::Ed25519Signature;
-use aptos_forge::{LocalSwarm, NodeExt, Swarm, TransactionType};
+use libra2_forge::{LocalSwarm, NodeExt, Swarm, TransactionType};
 use libra2_global_constants::{DEFAULT_BUCKETS, GAS_UNIT_PRICE};
 use libra2_rest_client::{
     libra2_api_types::{MoveModuleId, TransactionData, ViewFunction, ViewRequest},
@@ -30,8 +30,8 @@ use std::{convert::TryFrom, str::FromStr, sync::Arc, time::Duration};
 
 #[tokio::test]
 async fn test_get_index() {
-    let swarm = new_local_swarm_with_aptos(1).await;
-    let info = swarm.aptos_public_info();
+    let swarm = new_local_swarm_with_libra2(1).await;
+    let info = swarm.libra2_public_info();
 
     let resp = reqwest::get(info.url().to_owned()).await.unwrap();
     assert_eq!(reqwest::StatusCode::OK, resp.status());
@@ -40,13 +40,13 @@ async fn test_get_index() {
 #[tokio::test]
 async fn test_basic_client() {
     let swarm = SwarmBuilder::new_local(1)
-        .with_aptos()
+        .with_libra2()
         .with_init_config(Arc::new(|_, conf, _| {
             conf.indexer_db_config.enable_statekeys = true;
         }))
         .build()
         .await;
-    let mut info = swarm.aptos_public_info();
+    let mut info = swarm.libra2_public_info();
 
     info.client().get_ledger_information().await.unwrap();
 
@@ -253,7 +253,7 @@ async fn test_gas_estimation_gas_used_limit() {
 #[tokio::test]
 async fn test_bcs() {
     let swarm = SwarmBuilder::new_local(1)
-        .with_aptos()
+        .with_libra2()
         .with_init_config(Arc::new(|_, conf, _| {
             conf.indexer_db_config.enable_statekeys = true;
             conf.indexer_db_config.enable_transaction = true;
@@ -261,7 +261,7 @@ async fn test_bcs() {
         }))
         .build()
         .await;
-    let mut info = swarm.aptos_public_info();
+    let mut info = swarm.libra2_public_info();
 
     // Create accounts
     let mut local_account = info
@@ -562,8 +562,8 @@ async fn test_bcs() {
 
 #[tokio::test]
 async fn test_view_function() {
-    let swarm = new_local_swarm_with_aptos(1).await;
-    let info = swarm.aptos_public_info();
+    let swarm = new_local_swarm_with_libra2(1).await;
+    let info = swarm.libra2_public_info();
     let client: &Client = info.client();
 
     let address = AccountAddress::ONE;

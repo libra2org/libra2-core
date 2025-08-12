@@ -24,7 +24,7 @@ static PATH_BIN_RUN_LIBRA2_P2P: Lazy<PathBuf> = Lazy::new(|| {
 });
 
 fn run_aptos_p2p() -> Result<()> {
-    println!("Profiling Aptos VM...");
+    println!("Profiling Libra2 VM...");
 
     let genesis_blob = bcs::to_bytes(GENESIS_CHANGE_SET_HEAD.write_set())?;
 

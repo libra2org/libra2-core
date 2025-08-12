@@ -17,7 +17,7 @@ use libra2_storage_interface::DbReader;
 use libra2_temppath::TempPath;
 use libra2_types::{
     account_address::AccountAddress,
-    account_config::aptos_test_root_address,
+    account_config::libra2_test_root_address,
     block_metadata::BlockMetadata,
     chain_id::ChainId,
     state_store::state_key::{prefix::StateKeyPrefix, StateKey},
@@ -41,7 +41,7 @@ pub fn create_test_db() -> (Arc<Libra2DB>, LocalAccount) {
     let (genesis, validators) = libra2_vm_genesis::test_genesis_change_set_and_validators(Some(1));
     let genesis_txn = Transaction::GenesisTransaction(WriteSetPayload::Direct(genesis));
     let core_resources_account: LocalAccount = LocalAccount::new(
-        aptos_test_root_address(),
+        libra2_test_root_address(),
         AccountKey::from_private_key(libra2_vm_genesis::GENESIS_KEYPAIR.0.clone()),
         0,
     );

@@ -2,12 +2,12 @@
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
-use aptos_forge::{
+use libra2_forge::{
     forge_main,
     success_criteria::{StateProgressThreshold, SuccessCriteria},
     EmitJobMode, EmitJobRequest, ForgeConfig, InitialVersion, LocalFactory, Options, Result,
 };
-use aptos_testcases::performance_test::PerformanceBenchmark;
+use libra2_testcases::performance_test::PerformanceBenchmark;
 use std::num::NonZeroUsize;
 
 fn main() -> Result<()> {

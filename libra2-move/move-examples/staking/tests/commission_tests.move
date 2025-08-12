@@ -1,7 +1,7 @@
 #[test_only]
 module staking::commission_tests {
     use std::signer;
-    use aptos_std::math128;
+    use libra2_std::math128;
     use libra2_framework::account;
     use libra2_framework::libra2_account;
     use libra2_framework::libra2_coin;

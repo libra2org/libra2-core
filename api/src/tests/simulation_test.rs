@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::tests::new_test_context_with_orderless_flags;
-use aptos_api_test_context::{current_function_name, pretty, TestContext};
+use libra2_api_test_context::{current_function_name, pretty, TestContext};
 use libra2_crypto::ed25519::Ed25519Signature;
 use libra2_types::{
     account_address::AccountAddress,
@@ -16,7 +16,7 @@ use rstest::rstest;
 use serde_json::json;
 use std::path::PathBuf;
 
-async fn simulate_aptos_transfer(
+async fn simulate_libra2_transfer(
     context: &mut TestContext,
     use_valid_signature: bool,
     transfer_amount: u64,
@@ -92,7 +92,7 @@ async fn simulate_aptos_transfer(
     }
 }
 
-async fn simulate_aptos_transfer_bcs(
+async fn simulate_libra2_transfer_bcs(
     context: &mut TestContext,
     use_valid_signature: bool,
     transfer_amount: u64,
@@ -159,7 +159,7 @@ async fn test_simulate_transaction_with_valid_signature(
         use_txn_payload_v2_format,
         use_orderless_transactions,
     );
-    let resp = simulate_aptos_transfer(&mut context, true, SMALL_TRANSFER_AMOUNT, 400, false).await;
+    let resp = simulate_libra2_transfer(&mut context, true, SMALL_TRANSFER_AMOUNT, 400, false).await;
     context.check_golden_output(resp);
 }
 
@@ -181,7 +181,7 @@ async fn test_simulate_transaction_with_valid_signature_bcs(
         use_orderless_transactions,
     );
     let resp =
-        simulate_aptos_transfer_bcs(&mut context, true, SMALL_TRANSFER_AMOUNT, 400, false).await;
+        simulate_libra2_transfer_bcs(&mut context, true, SMALL_TRANSFER_AMOUNT, 400, false).await;
     context.check_golden_output(resp);
 }
 
@@ -203,10 +203,10 @@ async fn test_simulate_transaction_with_not_valid_signature(
         use_orderless_transactions,
     );
     let resp =
-        simulate_aptos_transfer_bcs(&mut context, false, SMALL_TRANSFER_AMOUNT, 200, true).await;
+        simulate_libra2_transfer_bcs(&mut context, false, SMALL_TRANSFER_AMOUNT, 200, true).await;
     assert!(resp[0]["success"].as_bool().is_some_and(|v| v));
 
-    let resp = simulate_aptos_transfer(&mut context, false, SMALL_TRANSFER_AMOUNT, 200, true).await;
+    let resp = simulate_libra2_transfer(&mut context, false, SMALL_TRANSFER_AMOUNT, 200, true).await;
     assert!(resp[0]["success"].as_bool().is_some_and(|v| v));
 }
 
@@ -228,10 +228,10 @@ async fn test_simulate_transaction_with_insufficient_balance(
         use_orderless_transactions,
     );
     let resp =
-        simulate_aptos_transfer_bcs(&mut context, false, LARGE_TRANSFER_AMOUNT, 200, true).await;
+        simulate_libra2_transfer_bcs(&mut context, false, LARGE_TRANSFER_AMOUNT, 200, true).await;
     assert!(!resp[0]["success"].as_bool().is_some_and(|v| v));
 
-    let resp = simulate_aptos_transfer(&mut context, false, LARGE_TRANSFER_AMOUNT, 200, true).await;
+    let resp = simulate_libra2_transfer(&mut context, false, LARGE_TRANSFER_AMOUNT, 200, true).await;
     assert!(!resp[0]["success"].as_bool().is_some_and(|v| v));
 }
 

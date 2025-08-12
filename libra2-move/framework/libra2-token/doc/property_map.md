@@ -1091,7 +1091,7 @@ to <code>prop.type</code>
 <b>aborts_if</b> !<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_spec_internal_check_utf8">string::spec_internal_check_utf8</a>(b"<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">0x1::string::String</a>");
 <b>let</b> prop = <a href="../../libra2-framework/../libra2-stdlib/doc/simple_map.md#0x1_simple_map_spec_get">simple_map::spec_get</a>(self.map, key);
 <b>aborts_if</b> prop.type != <a href="property_map.md#0x3_property_map_spec_utf8">spec_utf8</a>(b"<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">0x1::string::String</a>");
-<b>aborts_if</b> !aptos_std::from_bcs::deserializable&lt;String&gt;(prop.value);
+<b>aborts_if</b> !libra2_std::from_bcs::deserializable&lt;String&gt;(prop.value);
 </code></pre>
 
 
@@ -1123,7 +1123,7 @@ to <code>prop.type</code>
 <b>aborts_if</b> !<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_spec_internal_check_utf8">string::spec_internal_check_utf8</a>(str);
 <b>let</b> prop = <a href="../../libra2-framework/../libra2-stdlib/doc/simple_map.md#0x1_simple_map_spec_get">simple_map::spec_get</a>(self.map, key);
 <b>aborts_if</b> prop.type != <a href="property_map.md#0x3_property_map_spec_utf8">spec_utf8</a>(str);
-<b>aborts_if</b> !aptos_std::from_bcs::deserializable&lt;u8&gt;(prop.value);
+<b>aborts_if</b> !libra2_std::from_bcs::deserializable&lt;u8&gt;(prop.value);
 </code></pre>
 
 
@@ -1144,7 +1144,7 @@ to <code>prop.type</code>
 <b>aborts_if</b> !<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_spec_internal_check_utf8">string::spec_internal_check_utf8</a>(str);
 <b>let</b> prop = <a href="../../libra2-framework/../libra2-stdlib/doc/simple_map.md#0x1_simple_map_spec_get">simple_map::spec_get</a>(self.map, key);
 <b>aborts_if</b> prop.type != <a href="property_map.md#0x3_property_map_spec_utf8">spec_utf8</a>(str);
-<b>aborts_if</b> !aptos_std::from_bcs::deserializable&lt;u64&gt;(prop.value);
+<b>aborts_if</b> !libra2_std::from_bcs::deserializable&lt;u64&gt;(prop.value);
 </code></pre>
 
 
@@ -1165,7 +1165,7 @@ to <code>prop.type</code>
 <b>aborts_if</b> !<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_spec_internal_check_utf8">string::spec_internal_check_utf8</a>(str);
 <b>let</b> prop = <a href="../../libra2-framework/../libra2-stdlib/doc/simple_map.md#0x1_simple_map_spec_get">simple_map::spec_get</a>(self.map, key);
 <b>aborts_if</b> prop.type != <a href="property_map.md#0x3_property_map_spec_utf8">spec_utf8</a>(str);
-<b>aborts_if</b> !aptos_std::from_bcs::deserializable&lt;<b>address</b>&gt;(prop.value);
+<b>aborts_if</b> !libra2_std::from_bcs::deserializable&lt;<b>address</b>&gt;(prop.value);
 </code></pre>
 
 
@@ -1186,7 +1186,7 @@ to <code>prop.type</code>
 <b>aborts_if</b> !<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_spec_internal_check_utf8">string::spec_internal_check_utf8</a>(str);
 <b>let</b> prop = <a href="../../libra2-framework/../libra2-stdlib/doc/simple_map.md#0x1_simple_map_spec_get">simple_map::spec_get</a>(self.map, key);
 <b>aborts_if</b> prop.type != <a href="property_map.md#0x3_property_map_spec_utf8">spec_utf8</a>(str);
-<b>aborts_if</b> !aptos_std::from_bcs::deserializable&lt;u128&gt;(prop.value);
+<b>aborts_if</b> !libra2_std::from_bcs::deserializable&lt;u128&gt;(prop.value);
 </code></pre>
 
 
@@ -1207,7 +1207,7 @@ to <code>prop.type</code>
 <b>aborts_if</b> !<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_spec_internal_check_utf8">string::spec_internal_check_utf8</a>(str);
 <b>let</b> prop = <a href="../../libra2-framework/../libra2-stdlib/doc/simple_map.md#0x1_simple_map_spec_get">simple_map::spec_get</a>(self.map, key);
 <b>aborts_if</b> prop.type != <a href="property_map.md#0x3_property_map_spec_utf8">spec_utf8</a>(str);
-<b>aborts_if</b> !aptos_std::from_bcs::deserializable&lt;bool&gt;(prop.value);
+<b>aborts_if</b> !libra2_std::from_bcs::deserializable&lt;bool&gt;(prop.value);
 </code></pre>
 
 

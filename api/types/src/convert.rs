@@ -668,7 +668,7 @@ impl<'a, S: StateView> MoveConverter<'a, S> {
             } else {
                 u64::MAX
             },
-            self.try_into_aptos_core_transaction_payload(
+            self.try_into_libra2_core_transaction_payload(
                 payload,
                 replay_protection_nonce.map(|nonce| nonce.into()),
             )
@@ -680,7 +680,7 @@ impl<'a, S: StateView> MoveConverter<'a, S> {
         ))
     }
 
-    pub fn try_into_aptos_core_transaction_payload(
+    pub fn try_into_libra2_core_transaction_payload(
         &self,
         payload: TransactionPayload,
         nonce: Option<u64>,

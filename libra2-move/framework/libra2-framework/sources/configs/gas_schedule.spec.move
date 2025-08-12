@@ -100,7 +100,7 @@ spec libra2_framework::gas_schedule {
     }
 
     spec set_for_next_epoch_check_hash(libra2_framework: &signer, old_gas_schedule_hash: vector<u8>, new_gas_schedule_blob: vector<u8>) {
-        use aptos_std::aptos_hash;
+        use libra2_std::aptos_hash;
         use std::bcs;
         use std::features;
         use libra2_framework::util;

@@ -293,13 +293,13 @@ impl<'cfg, F: Factory> Forge<'cfg, F> {
             ))?;
 
             // Run AptosTests
-            for test in self.filter_tests(&self.tests.aptos_tests) {
-                let mut aptos_ctx = AptosContext::new(
+            for test in self.filter_tests(&self.tests.libra2_tests) {
+                let mut libra2_ctx = AptosContext::new(
                     CoreContext::from_rng(&mut rng),
-                    swarm.chain_info().into_aptos_public_info(),
+                    swarm.chain_info().into_libra2_public_info(),
                     &mut report,
                 );
-                let result = process_test_result(runtime.block_on(test.run(&mut aptos_ctx)));
+                let result = process_test_result(runtime.block_on(test.run(&mut libra2_ctx)));
                 report.report_text(result.to_string());
                 summary.handle_result(test.details(), result)?;
             }

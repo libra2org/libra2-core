@@ -1,6 +1,6 @@
 module 0x1::string_utils_test {
     use std::string;
-    use aptos_std::string_utils;
+    use libra2_std::string_utils;
 
     struct Test has copy, drop {
         x: u64,

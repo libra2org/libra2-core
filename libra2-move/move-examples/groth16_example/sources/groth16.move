@@ -4,7 +4,7 @@
 ///
 /// **WARNING:** This code has NOT been audited. If using it in a production system, proceed at your own risk.
 module groth16_example::groth16 {
-    use aptos_std::crypto_algebra::{Element, from_u64, multi_scalar_mul, eq, multi_pairing, upcast, pairing, add, zero};
+    use libra2_std::crypto_algebra::{Element, from_u64, multi_scalar_mul, eq, multi_pairing, upcast, pairing, add, zero};
 
     /// Proof verification as specified in the original paper,
     /// with the following input (in the original paper notations).
@@ -79,11 +79,11 @@ module groth16_example::groth16 {
     }
 
     #[test_only]
-    use aptos_std::crypto_algebra::{deserialize, enable_cryptography_algebra_natives};
+    use libra2_std::crypto_algebra::{deserialize, enable_cryptography_algebra_natives};
     #[test_only]
-    use aptos_std::bls12381_algebra::{Fr, FormatFrLsb, FormatG1Compr, FormatG2Compr, FormatFq12LscLsb, G1, G2, Gt, Fq12, FormatGt};
+    use libra2_std::bls12381_algebra::{Fr, FormatFrLsb, FormatG1Compr, FormatG2Compr, FormatFq12LscLsb, G1, G2, Gt, Fq12, FormatGt};
     #[test_only]
-    use aptos_std::bn254_algebra;
+    use libra2_std::bn254_algebra;
     #[test_only]
     use std::bcs;
     #[test_only]

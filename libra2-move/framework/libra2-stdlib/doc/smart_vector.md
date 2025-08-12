@@ -1182,7 +1182,7 @@ original vector.
     self: &<a href="smart_vector.md#0x1_smart_vector_SmartVector">SmartVector</a>&lt;T1&gt;,
     f: |&T1|T2
 ): <a href="smart_vector.md#0x1_smart_vector_SmartVector">SmartVector</a>&lt;T2&gt; {
-    <b>let</b> result = aptos_std::smart_vector::new&lt;T2&gt;();
+    <b>let</b> result = libra2_std::smart_vector::new&lt;T2&gt;();
     self.<a href="smart_vector.md#0x1_smart_vector_for_each_ref">for_each_ref</a>(|elem| result.<a href="smart_vector.md#0x1_smart_vector_push_back">push_back</a>(f(elem)));
     result
 }
@@ -1212,7 +1212,7 @@ Map the function over the Ts of the vector, producing a new vector.
     self: <a href="smart_vector.md#0x1_smart_vector_SmartVector">SmartVector</a>&lt;T1&gt;,
     f: |T1|T2
 ): <a href="smart_vector.md#0x1_smart_vector_SmartVector">SmartVector</a>&lt;T2&gt; {
-    <b>let</b> result = aptos_std::smart_vector::new&lt;T2&gt;();
+    <b>let</b> result = libra2_std::smart_vector::new&lt;T2&gt;();
     self.<a href="smart_vector.md#0x1_smart_vector_for_each">for_each</a>(|elem| result.<a href="smart_vector.md#0x1_smart_vector_push_back">push_back</a>(f(elem)));
     result
 }
@@ -1242,7 +1242,7 @@ Filter the vector using the boolean function, removing all Ts for which <code>p(
     self: <a href="smart_vector.md#0x1_smart_vector_SmartVector">SmartVector</a>&lt;T&gt;,
     p: |&T|bool
 ): <a href="smart_vector.md#0x1_smart_vector_SmartVector">SmartVector</a>&lt;T&gt; {
-    <b>let</b> result = aptos_std::smart_vector::new&lt;T&gt;();
+    <b>let</b> result = libra2_std::smart_vector::new&lt;T&gt;();
     self.<a href="smart_vector.md#0x1_smart_vector_for_each">for_each</a>(|elem| {
         <b>if</b> (p(&elem)) result.<a href="smart_vector.md#0x1_smart_vector_push_back">push_back</a>(elem);
     });
@@ -1417,7 +1417,7 @@ Map the function over the element pairs of the two vectors, producing a new vect
     // due <b>to</b> how inline functions work.
     <b>assert</b>!(self.<a href="smart_vector.md#0x1_smart_vector_length">length</a>() == v2.<a href="smart_vector.md#0x1_smart_vector_length">length</a>(), 0x20005);
 
-    <b>let</b> result = aptos_std::smart_vector::new&lt;NewT&gt;();
+    <b>let</b> result = libra2_std::smart_vector::new&lt;NewT&gt;();
     self.<a href="smart_vector.md#0x1_smart_vector_zip">zip</a>(v2, |e1, e2| result.<a href="smart_vector.md#0x1_smart_vector_push_back">push_back</a>(f(e1, e2)));
     result
 }
@@ -1453,7 +1453,7 @@ values without modifying the original vectors.
     // due <b>to</b> how inline functions work.
     <b>assert</b>!(self.<a href="smart_vector.md#0x1_smart_vector_length">length</a>() == v2.<a href="smart_vector.md#0x1_smart_vector_length">length</a>(), 0x20005);
 
-    <b>let</b> result = aptos_std::smart_vector::new&lt;NewT&gt;();
+    <b>let</b> result = libra2_std::smart_vector::new&lt;NewT&gt;();
     self.<a href="smart_vector.md#0x1_smart_vector_zip_ref">zip_ref</a>(v2, |e1, e2| result.<a href="smart_vector.md#0x1_smart_vector_push_back">push_back</a>(f(e1, e2)));
     result
 }

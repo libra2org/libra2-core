@@ -10,10 +10,10 @@
 //!
 //! Why have a separate CLI?
 //!
-//! We want users to use the Aptos CLI over the Rosetta CLI because of the added complexity of a
+//! We want users to use the Libra2 CLI over the Rosetta CLI because of the added complexity of a
 //! proxy server.  So, we split it out so general users aren't confused.
 //!
-//! TODO: Make Aptos CLI framework common among multiple CLIs
+//! TODO: Make Libra2 CLI framework common among multiple CLIs
 
 #![forbid(unsafe_code)]
 

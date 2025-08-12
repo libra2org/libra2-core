@@ -10,7 +10,7 @@ use crate::{
 };
 use libra2_config::config::{BootstrappingMode, NodeConfig, OverrideNodeConfig};
 use libra2_db::Libra2DB;
-use aptos_forge::{LocalNode, LocalSwarm, Node, NodeExt, Swarm};
+use libra2_forge::{LocalNode, LocalSwarm, Node, NodeExt, Swarm};
 use libra2_inspection_service::inspection_client::InspectionClient;
 use libra2_rest_client::Client as RestClient;
 use libra2_sdk::types::PeerId;
@@ -96,7 +96,7 @@ pub async fn stop_validator_and_delete_storage(
 pub async fn test_fullnode_fast_sync(epoch_changes: bool, use_consensus_observer: bool) {
     // Create a swarm with 2 validators
     let mut swarm = SwarmBuilder::new_local(2)
-        .with_aptos()
+        .with_libra2()
         .with_init_config(Arc::new(move |_, config, _| {
             config.state_sync.state_sync_driver.bootstrapping_mode =
                 BootstrappingMode::DownloadLatestStates;
@@ -233,20 +233,20 @@ async fn verify_pruning_metrics_after_fast_sync(
     // Fetch the pruning metrics from the node
     let state_merkle_pruner_version = node_inspection_client
         .get_node_metric_i64(
-            "aptos_pruner_versions{pruner_name=state_merkle_pruner,tag=min_readable}",
+            "libra2_pruner_versions{pruner_name=state_merkle_pruner,tag=min_readable}",
         )
         .await
         .unwrap()
         .unwrap();
     let epoch_snapshot_pruner_version = node_inspection_client
         .get_node_metric_i64(
-            "aptos_pruner_versions{pruner_name=epoch_snapshot_pruner,tag=min_readable}",
+            "libra2_pruner_versions{pruner_name=epoch_snapshot_pruner,tag=min_readable}",
         )
         .await
         .unwrap()
         .unwrap();
     let ledger_pruner_version = node_inspection_client
-        .get_node_metric_i64("aptos_pruner_versions{pruner_name=ledger_pruner,tag=min_readable}")
+        .get_node_metric_i64("libra2_pruner_versions{pruner_name=ledger_pruner,tag=min_readable}")
         .await
         .unwrap()
         .unwrap();

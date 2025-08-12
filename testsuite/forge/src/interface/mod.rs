@@ -4,7 +4,7 @@
 
 mod admin;
 pub use admin::*;
-mod aptos;
+mod libra2;
 pub use self::libra2::*;
 mod network;
 pub use network::*;

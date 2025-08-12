@@ -4,7 +4,7 @@
 use super::{
     new_test_context, new_test_context_with_config, new_test_context_with_orderless_flags,
 };
-use aptos_api_test_context::{current_function_name, TestContext};
+use libra2_api_test_context::{current_function_name, TestContext};
 use libra2_cached_packages::libra2_stdlib;
 use libra2_config::config::{NodeConfig, ViewFilter, ViewFunctionId};
 use libra2_types::account_address::AccountAddress;

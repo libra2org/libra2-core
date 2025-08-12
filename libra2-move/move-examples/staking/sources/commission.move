@@ -26,8 +26,8 @@ module staking::commission {
     use libra2_framework::coin;
     use libra2_framework::resource_account;
     use libra2_framework::timestamp;
-    use aptos_std::math128;
-    use aptos_std::math64;
+    use libra2_std::math128;
+    use libra2_std::math64;
     use staking::oracle;
     use std::signer;
     use libra2_framework::event;

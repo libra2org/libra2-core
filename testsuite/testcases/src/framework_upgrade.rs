@@ -3,7 +3,7 @@
 
 use crate::{batch_update, generate_traffic};
 use anyhow::bail;
-use aptos_forge::{
+use libra2_forge::{
     NetworkContextSynchronizer, NetworkTest, Result, SwarmExt, Test, DEFAULT_ROOT_PRIV_KEY,
     FORGE_KEY_SEED,
 };

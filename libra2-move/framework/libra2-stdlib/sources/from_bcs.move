@@ -1,16 +1,16 @@
 /// This module provides a number of functions to convert _primitive_ types from their representation in `std::bcs`
 /// to values. This is the opposite of `bcs::to_bytes`. Note that it is not safe to define a generic public `from_bytes`
 /// function because this can violate implicit struct invariants, therefore only primitive types are offered. If
-/// a general conversion back-and-force is needed, consider the `aptos_std::Any` type which preserves invariants.
+/// a general conversion back-and-force is needed, consider the `libra2_std::Any` type which preserves invariants.
 ///
 /// Example:
 /// ```
 /// use std::bcs;
-/// use aptos_std::from_bcs;
+/// use libra2_std::from_bcs;
 ///
 /// assert!(from_bcs::to_address(bcs::to_bytes(&@0xabcdef)) == @0xabcdef, 0);
 /// ```
-module aptos_std::from_bcs {
+module libra2_std::from_bcs {
     use std::string::{Self, String};
 
     /// UTF8 check failed in conversion from bytes to string
@@ -67,8 +67,8 @@ module aptos_std::from_bcs {
     ///
     /// Function would abort if T has signer in it.
     native friend fun from_bytes<T>(bytes: vector<u8>): T;
-    friend aptos_std::any;
-    friend aptos_std::copyable_any;
+    friend libra2_std::any;
+    friend libra2_std::copyable_any;
 
     #[test_only]
     use std::bcs;

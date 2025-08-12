@@ -15,7 +15,7 @@ use crate::{
     schema::{ledger_infos, processor_status},
 };
 use anyhow::{ensure, Context, Result};
-use aptos_api::context::Context as ApiContext;
+use libra2_api::context::Context as ApiContext;
 use libra2_logger::{debug, info};
 use chrono::ParseError;
 use diesel::{
@@ -310,7 +310,7 @@ mod test {
         models::transactions::TransactionQuery,
         processors::default_processor::DefaultTransactionProcessor,
     };
-    use aptos_api_test_context::new_test_context;
+    use libra2_api_test_context::new_test_context;
     use libra2_api_types::{LedgerInfo as APILedgerInfo, Transaction, U64};
     use libra2_config::config::NodeConfig;
     use diesel::RunQueryDsl;

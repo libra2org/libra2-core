@@ -3,7 +3,7 @@
 
 use crate::{create_emitter_and_request, LoadDestination, NetworkLoadTest};
 use anyhow::Context;
-use aptos_forge::{
+use libra2_forge::{
     args::TransactionTypeArg,
     emitter::NumAccountsMode,
     prometheus_metrics::{LatencyBreakdown, LatencyBreakdownSlice, MetricSamples},
@@ -383,7 +383,7 @@ impl NetworkTest for LoadVsPerfBenchmark {
             }
 
             // Note: uncomment below to perform reconfig during a test
-            // let mut aptos_info = ctx.swarm().aptos_public_info();
+            // let mut aptos_info = ctx.swarm().libra2_public_info();
             // runtime.block_on(aptos_info.reconfig());
         }
 

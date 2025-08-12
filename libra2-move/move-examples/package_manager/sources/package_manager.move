@@ -3,7 +3,7 @@
 /// account addresses so those can be easily accessed in other modules.
 ///
 /// The deployment flow is as follows:
-/// 1. Deploy the package, including this package_manager module, using the Aptos CLI command create-resource-and-publish-package
+/// 1. Deploy the package, including this package_manager module, using the Libra2 CLI command create-resource-and-publish-package
 /// with an appropriate seed. This will create a resource account and deploy the module. The deployer address also needs
 /// to be specified in Move.toml.
 /// 2. Make sure the created resource address is persisted in the Move.toml for future deployments and upgrades as the
@@ -21,7 +21,7 @@
 module package::package_manager {
     use libra2_framework::account::{Self, SignerCapability};
     use libra2_framework::resource_account;
-    use aptos_std::smart_table::{Self, SmartTable};
+    use libra2_std::smart_table::{Self, SmartTable};
     use std::string::String;
 
     /// Stores permission config such as SignerCapability for controlling the resource account.

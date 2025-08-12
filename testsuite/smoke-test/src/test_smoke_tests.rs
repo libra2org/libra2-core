@@ -6,7 +6,7 @@ use crate::{
     utils::{MAX_CONNECTIVITY_WAIT_SECS, MAX_HEALTHY_WAIT_SECS},
 };
 use libra2_config::config::{NodeConfig, OverrideNodeConfig};
-use aptos_forge::{NodeExt, Swarm};
+use libra2_forge::{NodeExt, Swarm};
 use std::{
     sync::Arc,
     time::{Duration, Instant},
@@ -19,7 +19,7 @@ use std::{
 #[tokio::test]
 async fn test_libra2_node_after_get_bin() {
     let mut swarm = SwarmBuilder::new_local(1)
-        .with_aptos()
+        .with_libra2()
         .with_init_config(Arc::new(|_, conf, _| {
             conf.api.failpoints_enabled = true;
         }))
@@ -29,7 +29,7 @@ async fn test_libra2_node_after_get_bin() {
     let validator_peer_ids = swarm.validators().map(|v| v.peer_id()).collect::<Vec<_>>();
 
     // Before #5308 this re-compiled libra2-node and caused a panic on the vfn.
-    let _aptos_cli = crate::workspace_builder::get_bin("aptos");
+    let _libra2_cli = crate::workspace_builder::get_bin("aptos");
 
     let validator = validator_peer_ids[0];
     let _vfn = swarm

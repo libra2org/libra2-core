@@ -304,97 +304,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "aptos-api"
-version = "0.2.0"
-dependencies = [
- "anyhow",
- "aptos-api-test-context",
- "bcs 0.1.4",
- "bytes",
- "fail",
- "futures",
- "hex",
- "itertools 0.13.0",
- "libra2-api-types",
- "libra2-bcs-utils",
- "libra2-build-info",
- "libra2-cached-packages",
- "libra2-config",
- "libra2-crypto",
- "libra2-framework",
- "libra2-gas-meter",
- "libra2-gas-schedule",
- "libra2-global-constants",
- "libra2-logger",
- "libra2-mempool",
- "libra2-metrics-core",
- "libra2-move-stdlib",
- "libra2-proptest-helpers",
- "libra2-runtimes",
- "libra2-sdk",
- "libra2-storage-interface",
- "libra2-transaction-filters",
- "libra2-types",
- "libra2-vm",
- "mime",
- "mini-moka",
- "move-core-types",
- "move-package",
- "num_cpus",
- "once_cell",
- "passkey-types",
- "paste",
- "percent-encoding",
- "poem",
- "poem-openapi",
- "proptest",
- "rand 0.7.3",
- "regex",
- "reqwest 0.11.27",
- "rstest",
- "serde",
- "serde_json",
- "tokio",
- "warp",
-]
-
-[[package]]
-name = "aptos-api-test-context"
-version = "0.2.0"
-dependencies = [
- "aptos-api",
- "bcs 0.1.4",
- "bytes",
- "goldenfile",
- "hyper 0.14.32",
- "libra2-api-types",
- "libra2-cached-packages",
- "libra2-config",
- "libra2-crypto",
- "libra2-db",
- "libra2-executor",
- "libra2-executor-types",
- "libra2-framework",
- "libra2-genesis",
- "libra2-indexer-grpc-table-info",
- "libra2-mempool",
- "libra2-mempool-notifications",
- "libra2-sdk",
- "libra2-storage-interface",
- "libra2-temppath",
- "libra2-types",
- "libra2-vm",
- "libra2-vm-logging",
- "libra2-vm-validator",
- "rand 0.7.3",
- "regex",
- "serde_json",
- "tokio",
- "warp",
- "warp-reverse-proxy",
-]
-
-[[package]]
 name = "aptos-fn-check-client"
 version = "0.1.0"
 dependencies = [
@@ -413,100 +322,10 @@ dependencies = [
 ]
 
 [[package]]
-name = "aptos-forge"
-version = "0.0.0"
-dependencies = [
- "again",
- "anyhow",
- "async-trait",
- "chrono",
- "clap 4.5.43",
- "either",
- "futures",
- "hex",
- "hyper 0.14.32",
- "itertools 0.13.0",
- "json-patch",
- "k8s-openapi",
- "kube",
- "libra2",
- "libra2-cached-packages",
- "libra2-cli-common",
- "libra2-config",
- "libra2-db",
- "libra2-framework",
- "libra2-genesis",
- "libra2-global-constants",
- "libra2-infallible",
- "libra2-inspection-service",
- "libra2-logger",
- "libra2-rest-client",
- "libra2-retrier",
- "libra2-runtimes",
- "libra2-sdk",
- "libra2-short-hex-str",
- "libra2-state-sync-driver",
- "libra2-transaction-emitter-lib",
- "libra2-transaction-generator-lib",
- "libra2-transaction-workloads-lib",
- "log",
- "num_cpus",
- "once_cell",
- "prometheus-http-query",
- "quick-junit",
- "rand 0.7.3",
- "regex",
- "reqwest 0.11.27",
- "serde",
- "serde_json",
- "serde_merge",
- "serde_yaml 0.8.26",
- "sugars",
- "tempfile",
- "termcolor",
- "thiserror 1.0.69",
- "tokio",
- "url",
- "uuid 1.17.0",
-]
-
-[[package]]
-name = "aptos-forge-cli"
-version = "0.0.0"
-dependencies = [
- "anyhow",
- "aptos-forge",
- "aptos-testcases",
- "async-trait",
- "chrono",
- "clap 4.5.43",
- "env_logger 0.10.2",
- "futures",
- "jemallocator",
- "libra2-cached-packages",
- "libra2-config",
- "libra2-global-constants",
- "libra2-logger",
- "libra2-rest-client",
- "libra2-sdk",
- "once_cell",
- "rand 0.7.3",
- "random_word",
- "reqwest 0.11.27",
- "serde_json",
- "serde_yaml 0.8.26",
- "sugars",
- "tokio",
- "url",
-]
-
-[[package]]
 name = "aptos-indexer"
 version = "0.0.2"
 dependencies = [
  "anyhow",
- "aptos-api",
- "aptos-api-test-context",
  "async-trait",
  "bcs 0.1.4",
  "bigdecimal",
@@ -516,6 +335,8 @@ dependencies = [
  "field_count",
  "futures",
  "hex",
+ "libra2-api",
+ "libra2-api-test-context",
  "libra2-api-types",
  "libra2-bitvec",
  "libra2-config",
@@ -664,36 +485,6 @@ dependencies = [
  "tokio",
  "tracing",
  "url",
-]
-
-[[package]]
-name = "aptos-testcases"
-version = "0.0.0"
-dependencies = [
- "anyhow",
- "aptos-forge",
- "assert_approx_eq",
- "async-trait",
- "bcs 0.1.4",
- "csv",
- "futures",
- "hex",
- "itertools 0.13.0",
- "libra2",
- "libra2-config",
- "libra2-global-constants",
- "libra2-keygen",
- "libra2-logger",
- "libra2-release-builder",
- "libra2-rest-client",
- "libra2-runtimes",
- "libra2-sdk",
- "libra2-temppath",
- "libra2-types",
- "log",
- "rand 0.7.3",
- "reqwest 0.11.27",
- "tokio",
 ]
 
 [[package]]
@@ -7378,6 +7169,97 @@ dependencies = [
 ]
 
 [[package]]
+name = "libra2-api"
+version = "0.2.1"
+dependencies = [
+ "anyhow",
+ "bcs 0.1.4",
+ "bytes",
+ "fail",
+ "futures",
+ "hex",
+ "itertools 0.13.0",
+ "libra2-api-test-context",
+ "libra2-api-types",
+ "libra2-bcs-utils",
+ "libra2-build-info",
+ "libra2-cached-packages",
+ "libra2-config",
+ "libra2-crypto",
+ "libra2-framework",
+ "libra2-gas-meter",
+ "libra2-gas-schedule",
+ "libra2-global-constants",
+ "libra2-logger",
+ "libra2-mempool",
+ "libra2-metrics-core",
+ "libra2-move-stdlib",
+ "libra2-proptest-helpers",
+ "libra2-runtimes",
+ "libra2-sdk",
+ "libra2-storage-interface",
+ "libra2-transaction-filters",
+ "libra2-types",
+ "libra2-vm",
+ "mime",
+ "mini-moka",
+ "move-core-types",
+ "move-package",
+ "num_cpus",
+ "once_cell",
+ "passkey-types",
+ "paste",
+ "percent-encoding",
+ "poem",
+ "poem-openapi",
+ "proptest",
+ "rand 0.7.3",
+ "regex",
+ "reqwest 0.11.27",
+ "rstest",
+ "serde",
+ "serde_json",
+ "tokio",
+ "warp",
+]
+
+[[package]]
+name = "libra2-api-test-context"
+version = "0.2.0"
+dependencies = [
+ "bcs 0.1.4",
+ "bytes",
+ "goldenfile",
+ "hyper 0.14.32",
+ "libra2-api",
+ "libra2-api-types",
+ "libra2-cached-packages",
+ "libra2-config",
+ "libra2-crypto",
+ "libra2-db",
+ "libra2-executor",
+ "libra2-executor-types",
+ "libra2-framework",
+ "libra2-genesis",
+ "libra2-indexer-grpc-table-info",
+ "libra2-mempool",
+ "libra2-mempool-notifications",
+ "libra2-sdk",
+ "libra2-storage-interface",
+ "libra2-temppath",
+ "libra2-types",
+ "libra2-vm",
+ "libra2-vm-logging",
+ "libra2-vm-validator",
+ "rand 0.7.3",
+ "regex",
+ "serde_json",
+ "tokio",
+ "warp",
+ "warp-reverse-proxy",
+]
+
+[[package]]
 name = "libra2-api-tester"
 version = "0.1.1"
 dependencies = [
@@ -8639,6 +8521,94 @@ dependencies = [
 ]
 
 [[package]]
+name = "libra2-forge"
+version = "0.0.0"
+dependencies = [
+ "again",
+ "anyhow",
+ "async-trait",
+ "chrono",
+ "clap 4.5.43",
+ "either",
+ "futures",
+ "hex",
+ "hyper 0.14.32",
+ "itertools 0.13.0",
+ "json-patch",
+ "k8s-openapi",
+ "kube",
+ "libra2",
+ "libra2-cached-packages",
+ "libra2-cli-common",
+ "libra2-config",
+ "libra2-db",
+ "libra2-framework",
+ "libra2-genesis",
+ "libra2-global-constants",
+ "libra2-infallible",
+ "libra2-inspection-service",
+ "libra2-logger",
+ "libra2-rest-client",
+ "libra2-retrier",
+ "libra2-runtimes",
+ "libra2-sdk",
+ "libra2-short-hex-str",
+ "libra2-state-sync-driver",
+ "libra2-transaction-emitter-lib",
+ "libra2-transaction-generator-lib",
+ "libra2-transaction-workloads-lib",
+ "log",
+ "num_cpus",
+ "once_cell",
+ "prometheus-http-query",
+ "quick-junit",
+ "rand 0.7.3",
+ "regex",
+ "reqwest 0.11.27",
+ "serde",
+ "serde_json",
+ "serde_merge",
+ "serde_yaml 0.8.26",
+ "sugars",
+ "tempfile",
+ "termcolor",
+ "thiserror 1.0.69",
+ "tokio",
+ "url",
+ "uuid 1.17.0",
+]
+
+[[package]]
+name = "libra2-forge-cli"
+version = "0.0.1"
+dependencies = [
+ "anyhow",
+ "async-trait",
+ "chrono",
+ "clap 4.5.43",
+ "env_logger 0.10.2",
+ "futures",
+ "jemallocator",
+ "libra2-cached-packages",
+ "libra2-config",
+ "libra2-forge",
+ "libra2-global-constants",
+ "libra2-logger",
+ "libra2-rest-client",
+ "libra2-sdk",
+ "libra2-testcases",
+ "once_cell",
+ "rand 0.7.3",
+ "random_word",
+ "reqwest 0.11.27",
+ "serde_json",
+ "serde_yaml 0.8.26",
+ "sugars",
+ "tokio",
+ "url",
+]
+
+[[package]]
 name = "libra2-framework"
 version = "0.1.1"
 dependencies = [
@@ -8997,8 +8967,6 @@ name = "libra2-indexer-grpc-fullnode"
 version = "1.0.1"
 dependencies = [
  "anyhow",
- "aptos-api",
- "aptos-api-test-context",
  "aptos-moving-average 0.1.0 (git+https://github.com/aptos-labs/aptos-indexer-processors.git?rev=62beedc881d1b76632318ceb186ee9065236468e)",
  "bcs 0.1.4",
  "bytes",
@@ -9008,6 +8976,8 @@ dependencies = [
  "hex",
  "hyper 0.14.32",
  "itertools 0.13.0",
+ "libra2-api",
+ "libra2-api-test-context",
  "libra2-api-types",
  "libra2-bitvec",
  "libra2-config",
@@ -9115,12 +9085,12 @@ name = "libra2-indexer-grpc-table-info"
 version = "1.0.1"
 dependencies = [
  "anyhow",
- "aptos-api",
  "flate2",
  "futures",
  "google-cloud-storage",
  "hyper 0.14.32",
  "itertools 0.13.0",
+ "libra2-api",
  "libra2-api-types",
  "libra2-config",
  "libra2-db-indexer",
@@ -9949,7 +9919,6 @@ name = "libra2-node"
 version = "0.0.0-main"
 dependencies = [
  "anyhow",
- "aptos-api",
  "aptos-indexer",
  "bcs 0.1.4",
  "clap 4.5.43",
@@ -9959,6 +9928,7 @@ dependencies = [
  "hex",
  "jemallocator",
  "libra2-admin-service",
+ "libra2-api",
  "libra2-backup-service",
  "libra2-build-info",
  "libra2-cached-packages",
@@ -10099,8 +10069,8 @@ name = "libra2-openapi-spec-generator"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "aptos-api",
  "clap 4.5.43",
+ "libra2-api",
  "libra2-config",
  "libra2-mempool",
  "libra2-storage-interface",
@@ -10837,10 +10807,10 @@ name = "libra2-telemetry"
 version = "0.1.1"
 dependencies = [
  "anyhow",
- "aptos-api",
  "flate2",
  "futures",
  "httpmock",
+ "libra2-api",
  "libra2-config",
  "libra2-consensus",
  "libra2-crypto",
@@ -10918,6 +10888,36 @@ version = "0.1.1"
 dependencies = [
  "hex",
  "rand 0.7.3",
+]
+
+[[package]]
+name = "libra2-testcases"
+version = "0.0.1"
+dependencies = [
+ "anyhow",
+ "assert_approx_eq",
+ "async-trait",
+ "bcs 0.1.4",
+ "csv",
+ "futures",
+ "hex",
+ "itertools 0.13.0",
+ "libra2",
+ "libra2-config",
+ "libra2-forge",
+ "libra2-global-constants",
+ "libra2-keygen",
+ "libra2-logger",
+ "libra2-release-builder",
+ "libra2-rest-client",
+ "libra2-runtimes",
+ "libra2-sdk",
+ "libra2-temppath",
+ "libra2-types",
+ "log",
+ "rand 0.7.3",
+ "reqwest 0.11.27",
+ "tokio",
 ]
 
 [[package]]
@@ -17292,10 +17292,9 @@ checksum = "b7c388c1b5e93756d0c740965c41e8822f866621d41acbdf6336a6a168f8840c"
 
 [[package]]
 name = "smoke-test"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "anyhow",
- "aptos-forge",
  "aptos-indexer",
  "base64 0.13.1",
  "bcs 0.1.4",
@@ -17319,6 +17318,7 @@ dependencies = [
  "libra2-db-indexer-schemas",
  "libra2-dkg",
  "libra2-faucet-core",
+ "libra2-forge",
  "libra2-framework",
  "libra2-gas-algebra",
  "libra2-gas-schedule",

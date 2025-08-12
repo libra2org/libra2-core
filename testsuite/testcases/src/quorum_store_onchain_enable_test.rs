@@ -4,7 +4,7 @@
 use crate::{generate_onchain_config_blob, NetworkLoadTest};
 use anyhow::Ok;
 use libra2::test::CliTestFramework;
-use aptos_forge::{NetworkContextSynchronizer, NetworkTest, NodeExt, SwarmExt, Test};
+use libra2_forge::{NetworkContextSynchronizer, NetworkTest, NodeExt, SwarmExt, Test};
 use libra2_sdk::bcs;
 use libra2_types::{
     account_config::CORE_CODE_ADDRESS,
@@ -28,8 +28,8 @@ impl Test for QuorumStoreOnChainEnableTest {
 impl NetworkLoadTest for QuorumStoreOnChainEnableTest {
     async fn test(
         &self,
-        swarm: Arc<tokio::sync::RwLock<Box<dyn aptos_forge::Swarm>>>,
-        _report: &mut aptos_forge::TestReport,
+        swarm: Arc<tokio::sync::RwLock<Box<dyn libra2_forge::Swarm>>>,
+        _report: &mut libra2_forge::TestReport,
         duration: std::time::Duration,
     ) -> anyhow::Result<()> {
         let faucet_endpoint: reqwest::Url = "http://localhost:8081".parse().unwrap();

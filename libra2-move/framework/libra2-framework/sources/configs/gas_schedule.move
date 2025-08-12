@@ -5,7 +5,7 @@ module libra2_framework::gas_schedule {
     use std::error;
     use std::string::String;
     use std::vector;
-    use aptos_std::aptos_hash;
+    use libra2_std::aptos_hash;
     use libra2_framework::chain_status;
     use libra2_framework::config_buffer;
 

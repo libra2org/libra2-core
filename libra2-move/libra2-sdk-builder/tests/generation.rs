@@ -10,7 +10,7 @@ use serde_reflection::Registry;
 use std::{io::Write, process::Command};
 use tempfile::tempdir;
 
-fn get_aptos_registry() -> Registry {
+fn get_libra2_registry() -> Registry {
     let path = "../../testsuite/generate-format/tests/staged/aptos.yaml";
     let content = std::fs::read_to_string(path).unwrap();
     serde_yaml::from_str::<Registry>(content.as_str()).unwrap()
@@ -19,7 +19,7 @@ fn get_aptos_registry() -> Registry {
 const EXPECTED_SCRIPT_FUN_OUTPUT: &str = "3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 8 84 101 115 116 67 111 105 110 8 116 114 97 110 115 102 101 114 0 2 32 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 34 34 34 34 34 34 34 34 34 34 34 34 34 34 34 34 8 135 214 18 0 0 0 0 0 \n";
 
 fn test_rust(abis: &[EntryABI], demo_file: &str, expected_output: &str) {
-    let mut registry = get_aptos_registry();
+    let mut registry = get_libra2_registry();
     buildgen::rust::replace_keywords(&mut registry);
     let dir = tempdir().unwrap();
 

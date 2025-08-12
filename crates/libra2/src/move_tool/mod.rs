@@ -1733,8 +1733,8 @@ async fn is_staging_area_empty(
             Some(_) => Ok(false), // StagingArea is not empty
             None => Ok(true),     // TODO: determine which case this is
         },
-        Err(RestError::Api(aptos_error_response))
-            if aptos_error_response.error.error_code == Libra2ErrorCode::ResourceNotFound =>
+        Err(RestError::Api(libra2_error_response))
+            if libra2_error_response.error.error_code == Libra2ErrorCode::ResourceNotFound =>
         {
             Ok(true) // The resource doesn't exist
         },

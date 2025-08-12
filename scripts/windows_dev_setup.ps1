@@ -25,7 +25,7 @@ $global:boogie_version = "BOOGIE_VERSION="
 
 function welcome_message {
     $message = "`nWelcome to Aptos!
-    `nThis script will download and install the necessary dependencies for Aptos Core based on your selection:
+    `nThis script will download and install the necessary dependencies for Libra2 Core based on your selection:
       * Install Aptos build tools: t
       * Install Move Prover tools: y`n
       Selection"
@@ -35,7 +35,7 @@ function welcome_message {
 
 function build_tools_message {
     $message = "`nYou selected option 't'.
-    `nThis script will download and install the following dependencies needed to build Aptos Core if not found on your system:
+    `nThis script will download and install the following dependencies needed to build Libra2 Core if not found on your system:
     * Rust (and necessary components)
       * rust-fmt
       * clippy

@@ -119,7 +119,7 @@ Represents the common fields to all tokens.
  Was populated until concurrent_token_v2_enabled feature flag was enabled.
 
  The name of the token, which should be unique within the collection; the length of name
- should be smaller than 128, characters, eg: "Aptos Animal #1234"
+ should be smaller than 128, characters, eg: "Libra2 Animal #1234"
 </dd>
 <dt>
 <code>uri: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a></code>
@@ -169,7 +169,7 @@ Started being populated once aggregator_v2_api_enabled was enabled.
 </dt>
 <dd>
  The name of the token, which should be unique within the collection; the length of name
- should be smaller than 128, characters, eg: "Aptos Animal #1234"
+ should be smaller than 128, characters, eg: "Libra2 Animal #1234"
 </dd>
 </dl>
 

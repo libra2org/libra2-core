@@ -1,6 +1,6 @@
 #[test_only]
-module aptos_std::single_key_tests {
-    use aptos_std::single_key;
+module libra2_std::single_key_tests {
+    use libra2_std::single_key;
 
     #[test]
     #[expected_failure(abort_code = 0x10002, location = single_key)]

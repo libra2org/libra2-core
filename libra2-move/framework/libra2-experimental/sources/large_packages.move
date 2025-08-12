@@ -11,7 +11,7 @@
 /// The above logic is currently implemented in the Python
 /// SDK: [`aptos-python-sdk`](https://github.com/aptos-labs/aptos-python-sdk/blob/main/libra2_sdk/package_publisher.py).
 ///
-/// Aptos CLI supports this as well with `--chunked-publish` flag:
+/// Libra2 CLI supports this as well with `--chunked-publish` flag:
 /// - `aptos move publish [OPTIONS] --chunked-publish`
 /// - `aptos move create-object-and-publish-package [OPTIONS] --address-name <ADDRESS_NAME> --chunked-publish`
 /// - `aptos move upgrade-object-package [OPTIONS] --address-name <ADDRESS_NAME> --chunked-publish`
@@ -46,7 +46,7 @@ module libra2_experimental::large_packages {
     use std::error;
     use std::signer;
     use std::vector;
-    use aptos_std::smart_table::{Self, SmartTable};
+    use libra2_std::smart_table::{Self, SmartTable};
 
     use libra2_framework::code::{Self, PackageRegistry};
     use libra2_framework::object::{Object};

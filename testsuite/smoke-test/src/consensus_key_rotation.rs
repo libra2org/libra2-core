@@ -6,7 +6,7 @@ use anyhow::bail;
 use libra2::common::types::GasOptions;
 use libra2_config::config::{OverrideNodeConfig, PersistableConfig};
 use libra2_crypto::{bls12381, Uniform};
-use aptos_forge::{NodeExt, Swarm, SwarmExt};
+use libra2_forge::{NodeExt, Swarm, SwarmExt};
 use libra2_logger::info;
 use libra2_rest_client::Client;
 use libra2_types::{
@@ -28,7 +28,7 @@ async fn consensus_key_rotation() {
     let epoch_duration_secs = 60;
     let n = 2;
     let (mut swarm, mut cli, _faucet) = SwarmBuilder::new_local(n)
-        .with_aptos()
+        .with_libra2()
         .with_init_genesis_config(Arc::new(move |conf| {
             conf.epoch_duration_secs = epoch_duration_secs;
 
@@ -121,7 +121,7 @@ async fn consensus_key_rotation() {
     info!("Update on-chain. Retry is needed in case randomness is enabled.");
     swarm
         .chain_info()
-        .into_aptos_public_info()
+        .into_libra2_public_info()
         .mint(operator_addr, 99999999999)
         .await
         .unwrap();

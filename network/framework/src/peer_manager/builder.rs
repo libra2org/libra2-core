@@ -262,15 +262,15 @@ impl PeerManagerBuilder {
             ),
         };
 
-        let mut aptos_tcp_transport = APTOS_TCP_TRANSPORT.clone();
+        let mut libra2_tcp_transport = APTOS_TCP_TRANSPORT.clone();
         let tcp_cfg = self.get_tcp_buffers_cfg();
-        aptos_tcp_transport.set_tcp_buffers(&tcp_cfg);
+        libra2_tcp_transport.set_tcp_buffers(&tcp_cfg);
 
         self.peer_manager = match self.listen_address.as_slice() {
             [Ip4(_), Tcp(_)] | [Ip6(_), Tcp(_)] => {
                 Some(TransportPeerManager::Tcp(self.build_with_transport(
                     Libra2NetTransport::new(
-                        aptos_tcp_transport,
+                        libra2_tcp_transport,
                         self.network_context,
                         self.time_service.clone(),
                         key,

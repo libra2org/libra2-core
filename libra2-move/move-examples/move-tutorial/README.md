@@ -27,7 +27,7 @@ Now let's get started!
 
 ## Step 0: Preparation
 
-You should obtain a copy of the content of the directory in which this `README.md` resides. One way to achieve this is to clone [the Aptos core repository](https://github.com/aptos-labs/aptos-core) and navigate to the [`libra2-move/move-examples/move-tutorial`](..) directory. Subsequently, we assume you have a local copy of this directory and all paths are relative to this. To check that you have the right contents, run the `cd` and `ls` commands below to ensure the `move-tutorial` directory has the relevant subdirectories:
+You should obtain a copy of the content of the directory in which this `README.md` resides. One way to achieve this is to clone [the Libra2 core repository](https://github.com/aptos-labs/aptos-core) and navigate to the [`libra2-move/move-examples/move-tutorial`](..) directory. Subsequently, we assume you have a local copy of this directory and all paths are relative to this. To check that you have the right contents, run the `cd` and `ls` commands below to ensure the `move-tutorial` directory has the relevant subdirectories:
 
 ```shell
 > cd move-tutorial
@@ -35,7 +35,7 @@ You should obtain a copy of the content of the directory in which this `README.m
 step_1 step_2 step_2_sol step_3 ...
 ```
 
-You also need a recent version of the [Aptos CLI](https://aptos.dev/tools/aptos-cli/install-cli/). This tutorial is written using the following version:
+You also need a recent version of the [Libra2 CLI](https://aptos.dev/tools/aptos-cli/install-cli/). This tutorial is written using the following version:
 
 ```shell
 > aptos --version

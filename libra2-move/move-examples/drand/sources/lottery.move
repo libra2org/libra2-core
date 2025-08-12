@@ -4,12 +4,12 @@
 /// **WARNING #1:** This example has not been audited and should thus NOT be relied upon as an authoritative guide on
 /// using `drand` randomness safely in Move.
 ///
-/// WARNING #2: This code makes a STRONG assumption that the Aptos clock and the drand clock are synchronized.
-/// In practice, the Aptos clock could be lagging behind. As an example, even though the current time is Friday, July
+/// WARNING #2: This code makes a STRONG assumption that the Libra2 clock and the drand clock are synchronized.
+/// In practice, the Libra2 clock could be lagging behind. As an example, even though the current time is Friday, July
 /// 14th, 2023, 7:34PM, from the perspective of the blockchain validators, the time could be Thursday, July 13th, 2023.
 /// (Exaggerating the difference, to make the point clearer.) Therefore, a drand round for noon at Friday would be
 /// incorrectly treated as a valid future drand round, even though that round has passed. It is therefore important that
-/// contracts account for any drift between the Aptos clock and the drand clock. In this example, this can be done by
+/// contracts account for any drift between the Libra2 clock and the drand clock. In this example, this can be done by
 /// increasing the MINIMUM_LOTTERY_DURATION_SECS to account for this drift.
 
 module drand::lottery {
@@ -22,7 +22,7 @@ module drand::lottery {
     use libra2_framework::timestamp;
     use libra2_framework::libra2_coin::Libra2Coin;
     use drand::drand;
-    //use aptos_std::debug;
+    //use libra2_std::debug;
 
     /// Error code code when someone tries to start a very "short" lottery where users might not have enough time
     /// to buy tickets.

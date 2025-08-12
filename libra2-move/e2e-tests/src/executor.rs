@@ -294,7 +294,7 @@ impl FakeExecutor {
     /// rate limits if executed repeatedly or in parallel.
     /// Providing an API key raises these limits significantly.
     ///
-    /// If you hit rate limits, you can create a free Aptos Build account and generate an API key:
+    /// If you hit rate limits, you can create a free Libra2 Build account and generate an API key:
     /// - https://build.aptoslabs.com/docs/start#api-quick-start
     pub fn from_remote_state_with_api_key(
         network_url: Libra2BaseUrl,
@@ -487,7 +487,7 @@ impl FakeExecutor {
         // The below will use the genesis keypair but that should be fine.
         let acc = Account::new_genesis_account(addr);
 
-        // Mint the account 10M Aptos coins (with 8 decimals).
+        // Mint the account 10M Libra2 coins (with 8 decimals).
         self.store_and_fund_account(acc, 1_000_000_000_000_000, 0)
     }
 
@@ -502,7 +502,7 @@ impl FakeExecutor {
         let use_concurrent_balance =
             features.is_enabled(FeatureFlag::DEFAULT_TO_CONCURRENT_FUNGIBLE_BALANCE);
 
-        // Mint the account 10M Aptos coins (with 8 decimals).
+        // Mint the account 10M Libra2 coins (with 8 decimals).
         let data = AccountData::with_account(
             account,
             balance,

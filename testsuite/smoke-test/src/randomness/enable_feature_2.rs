@@ -6,7 +6,7 @@ use crate::{
     smoke_test_environment::SwarmBuilder,
     utils::{get_current_consensus_config, get_on_chain_resource},
 };
-use aptos_forge::{Node, Swarm, SwarmExt};
+use libra2_forge::{Node, Swarm, SwarmExt};
 use libra2_logger::{debug, info};
 use libra2_types::{dkg::DKGState, on_chain_config::OnChainRandomnessConfig};
 use std::{sync::Arc, time::Duration};
@@ -19,7 +19,7 @@ async fn enable_feature_2() {
 
     let (swarm, mut cli, _faucet) = SwarmBuilder::new_local(4)
         .with_num_fullnodes(1)
-        .with_aptos()
+        .with_libra2()
         .with_init_genesis_config(Arc::new(move |conf| {
             conf.epoch_duration_secs = epoch_duration_secs;
             conf.allow_new_validators = true;
@@ -54,7 +54,7 @@ script {{
     use libra2_framework::libra2_governance;
     use libra2_framework::consensus_config;
     use libra2_framework::randomness_config;
-    use aptos_std::fixed_point64;
+    use libra2_std::fixed_point64;
 
     fun main(core_resources: &signer) {{
         let framework_signer = libra2_governance::get_signer_testnet_only(core_resources, @0x1);

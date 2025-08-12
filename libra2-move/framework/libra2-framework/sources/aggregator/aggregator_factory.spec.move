@@ -12,7 +12,7 @@ spec libra2_framework::aggregator_factory {
     ///
     /// No.: 2
     /// Requirement: To create a new aggregator instance, the aggregator factory must already be initialized and exist
-    /// under the Aptos account.
+    /// under the Libra2 account.
     /// Criticality: High
     /// Implementation: The create_aggregator_internal function asserts that AggregatorFactory exists for the Aptos
     /// account.

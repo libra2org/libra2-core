@@ -456,7 +456,7 @@ fn set_sender_address(
 // This will be removed after library attributes are cleaned up.
 // (See https://github.com/aptos-labs/aptos-core/issues/9410)
 fn module_is_in_aptos_libs(module_address: Option<Spanned<Address>>) -> bool {
-    const APTOS_STDLIB_NAME: &str = "aptos_std";
+    const APTOS_STDLIB_NAME: &str = "libra2_std";
     static APTOS_STDLIB_NUMERICAL_ADDRESS: Lazy<NumericalAddress> =
         Lazy::new(|| NumericalAddress::parse_str("0x1").unwrap());
     const APTOS_FRAMEWORK_NAME: &str = "libra2_framework";

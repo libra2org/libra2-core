@@ -27,9 +27,9 @@ module libra2_framework::ethereum_derivable_account {
     use libra2_framework::auth_data::AbstractionAuthData;
     use libra2_framework::common_account_abstractions_utils::{network_name, entry_function_name};
     use libra2_framework::base16::base16_utf8_to_vec_u8;
-    use aptos_std::secp256k1;
-    use aptos_std::option;
-    use aptos_std::aptos_hash;
+    use libra2_std::secp256k1;
+    use libra2_std::option;
+    use libra2_std::aptos_hash;
     use std::bcs_stream::{Self, deserialize_u8};
     use std::chain_id;
     use std::string_utils;

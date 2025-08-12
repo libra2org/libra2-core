@@ -18,7 +18,7 @@ use libra2_config::{
     config::{AdminServiceConfig, InitialSafetyRulesConfig, NodeConfig},
     network_id::NetworkId,
 };
-use aptos_forge::{
+use libra2_forge::{
     get_highest_synced_version, get_highest_synced_version_and_epoch,
     wait_for_all_nodes_to_catchup, LocalNode, LocalSwarm, Node, NodeExt, SwarmExt, Validator,
 };
@@ -44,22 +44,22 @@ use std::{
 /// The test does the following:
 /// 1. Start a 4 node validator network, including 2 VFNs.
 /// 2. Use consensus `sync_only` mode to force all nodes to stop at the same version (i.e., emulate a halt).
-/// 3. Use the aptos CLI to generate a genesis transaction that removes the last validator from the set.
+/// 3. Use the libra2 CLI to generate a genesis transaction that removes the last validator from the set.
 /// 4. Use the libra2-debugger to manually apply the genesis transaction to all remaining validators.
 /// 5. Verify that the network is able to resume consensus and that the last validator is no longer in the set.
 /// 6. Use the libra2-debugger to manually apply the genesis transaction to all VFNs.
 /// 7. Verify that the VFNs are able to sync with the rest of the network.
 async fn test_fullnode_genesis_transaction_flow() {
-    println!("0. Building the Aptos CLI and debugger!");
+    println!("0. Building the Libra2 CLI and debugger!");
     let libra2_debugger = workspace_builder::get_bin("libra2-debugger");
-    let aptos_cli = workspace_builder::get_bin("aptos");
+    let libra2_cli = workspace_builder::get_bin("libra2");
 
     println!("1. Starting a 4 node validator network with 2 VFNs!");
     let num_validators = 4;
     let num_fullnodes = 2;
     let (mut swarm, cli_test_framework, _) = SwarmBuilder::new_local(num_validators)
         .with_num_fullnodes(num_fullnodes)
-        .with_aptos()
+        .with_libra2()
         .build_with_cli(0)
         .await;
 
@@ -92,7 +92,7 @@ async fn test_fullnode_genesis_transaction_flow() {
 
     println!("5. Generating a genesis transaction that removes the last validator from the set!");
     let (genesis_blob_path, genesis_transaction) =
-        generate_genesis_transaction(&mut swarm, aptos_cli);
+        generate_genesis_transaction(&mut swarm, libra2_cli);
 
     println!("6. Applying the genesis transaction to the first validator!");
     let first_validator_config = swarm.validators_mut().next().unwrap().config().clone();
@@ -190,19 +190,19 @@ async fn test_fullnode_genesis_transaction_flow() {
 /// 1. Start a 5 node validator network.
 /// 2. Enable consensus `sync_only` mode for the last validator and verify that it can sync.
 /// 3. Use consensus `sync_only` mode to force all nodes to stop at the same version (i.e., emulate a halt).
-/// 4. Use the aptos CLI to generate a genesis transaction that removes the last validator from the set.
+/// 4. Use the libra2 CLI to generate a genesis transaction that removes the last validator from the set.
 /// 5. Use the libra2-debugger to manually apply the genesis transaction to all remaining validators.
 /// 6. Verify that the network is able to resume consensus and that the last validator is no longer in the set.
 /// 7. Verify that a failed validator node is able to db-restore and rejoin the network.
 async fn test_validator_genesis_transaction_and_db_restore_flow() {
-    println!("0. Building the Aptos CLI and debugger!");
+    println!("0. Building the Libra2 CLI and debugger!");
     let libra2_debugger = workspace_builder::get_bin("libra2-debugger");
-    let aptos_cli = workspace_builder::get_bin("aptos");
+    let libra2_cli = workspace_builder::get_bin("libra2");
 
     println!("1. Starting a 5 node validator network!");
     let num_validators = 5;
     let (mut swarm, cli_test_framework, _) = SwarmBuilder::new_local(num_validators)
-        .with_aptos()
+        .with_libra2()
         .build_with_cli(0)
         .await;
 
@@ -229,7 +229,7 @@ async fn test_validator_genesis_transaction_and_db_restore_flow() {
 
     println!("6. Generating a genesis transaction that removes the last validator from the set!");
     let (genesis_blob_path, genesis_transaction) =
-        generate_genesis_transaction(&mut swarm, aptos_cli);
+        generate_genesis_transaction(&mut swarm, libra2_cli);
 
     println!("7. Applying the genesis transaction to the first validator!");
     let first_validator_config = swarm.validators_mut().next().unwrap().config().clone();
@@ -423,7 +423,7 @@ pub(crate) async fn enable_sync_only_mode(num_nodes: usize, validator_node: &mut
 /// Generates a genesis write-set transaction that removes the last validator from the set
 fn generate_genesis_transaction(
     env: &mut LocalSwarm,
-    aptos_cli: PathBuf,
+    libra2_cli: PathBuf,
 ) -> (TempPath, Transaction) {
     // Get the address of the last validator
     let last_validator_address = env
@@ -471,7 +471,7 @@ fn generate_genesis_transaction(
     genesis_blob_path.create_as_file().unwrap();
 
     // Generate the genesis write-set transaction
-    Command::new(aptos_cli.as_path())
+    Command::new(libra2_cli.as_path())
         .current_dir(workspace_root())
         .args(&vec![
             "genesis",

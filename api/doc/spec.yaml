@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
-  title: Aptos Node API
-  description: The Aptos Node API is a RESTful API for client applications to interact with the Aptos blockchain.
+  title: Libra2 Node API
+  description: The Libra2 Node API is a RESTful API for client applications to interact with the Aptos blockchain.
   version: 1.2.0
   contact:
     name: Aptos Labs
@@ -2994,7 +2994,7 @@ paths:
           $ref: '#/components/schemas/Address'
         in: path
         description: |-
-          Hex-encoded 32 byte Aptos account, with or without a `0x` prefix, for
+          Hex-encoded 32 byte Libra2 account, with or without a `0x` prefix, for
           which events are queried. This refers to the account that events were
           emitted to, not the account hosting the move module that emits that
           event type.
@@ -3459,7 +3459,7 @@ paths:
           $ref: '#/components/schemas/Address'
         in: path
         description: |-
-          Hex-encoded 32 byte Aptos account, with or without a `0x` prefix, for
+          Hex-encoded 32 byte Libra2 account, with or without a `0x` prefix, for
           which events are queried. This refers to the account that events were
           emitted to, not the account hosting the move module that emits that
           event type.
@@ -11487,7 +11487,7 @@ components:
       type: string
       format: hex
       description: |
-        A hex encoded 32 byte Aptos account address.
+        A hex encoded 32 byte Libra2 account address.
 
         This is represented in a string as a 64 character hex string, sometimes
         shortened by stripping leading 0s, and adding a 0x.
@@ -11498,7 +11498,7 @@ components:
       type: object
       description: |-
         This is the generic struct we use for all API errors, it contains a string
-        message and an Aptos API specific error code.
+        message and an Libra2 API specific error code.
       required:
       - message
       - error_code
@@ -11544,7 +11544,7 @@ components:
       type: string
       format: hex
       description: |
-        A hex encoded 32 byte Aptos account address or a struct tag.
+        A hex encoded 32 byte Libra2 account address or a struct tag.
 
         This is represented in a string as a 64 character hex string, sometimes
         shortened by stripping leading 0s, and adding a 0x or
@@ -12553,7 +12553,7 @@ components:
 
         Move `u64`, `u128` and `u256` type value is serialized into `string`.
 
-        Move `address` type value (32 byte Aptos account address) is serialized into a HexEncodedBytes string.
+        Move `address` type value (32 byte Libra2 account address) is serialized into a HexEncodedBytes string.
         For example:
           - `0x1`
           - `0x1668f6be25668c1a17cd8caf6b8d2f25`

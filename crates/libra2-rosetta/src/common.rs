@@ -28,7 +28,7 @@ pub const BLOCKCHAIN: &str = "aptos";
 
 /// Checks the request network matches the server network
 ///
-/// These fields are passed in on every request, and basically prevents non-Aptos and matching chain-id
+/// These fields are passed in on every request, and basically prevents non-Libra2 and matching chain-id
 /// requests from going through and messing things up.
 pub fn check_network(
     network_identifier: NetworkIdentifier,

@@ -785,8 +785,8 @@ impl Client {
                     chain_timestamp_usecs = Some(state.timestamp_usecs);
                 },
                 Ok(WaitForTransactionResult::NotFound(error)) => {
-                    if let RestError::Api(aptos_error_response) = error {
-                        if let Some(state) = aptos_error_response.state {
+                    if let RestError::Api(libra2_error_response) = error {
+                        if let Some(state) = libra2_error_response.state {
                             if expiration_timestamp_secs <= state.timestamp_usecs / 1_000_000 {
                                 if reached_mempool {
                                     return Err(anyhow!("Used to be pending and now not found. Transaction expired. It is guaranteed it will not be committed on chain.").into());
@@ -1940,11 +1940,11 @@ pub fn get_version_path_with_base(base_url: Url) -> String {
     }
 }
 
-pub fn retriable_with_404(status_code: StatusCode, aptos_error: Option<Libra2Error>) -> bool {
-    retriable(status_code, aptos_error) | matches!(status_code, StatusCode::NOT_FOUND)
+pub fn retriable_with_404(status_code: StatusCode, libra2_error: Option<Libra2Error>) -> bool {
+    retriable(status_code, libra2_error) | matches!(status_code, StatusCode::NOT_FOUND)
 }
 
-pub fn retriable(status_code: StatusCode, _aptos_error: Option<Libra2Error>) -> bool {
+pub fn retriable(status_code: StatusCode, _libra2_error: Option<Libra2Error>) -> bool {
     matches!(
         status_code,
         StatusCode::TOO_MANY_REQUESTS

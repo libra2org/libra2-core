@@ -1,4 +1,4 @@
-# Aptos Configuration
+# Libra2 Configuration
 
 The configuration describes the operational details for a node
 (Validator or Full node) and provides the clients' information on how to

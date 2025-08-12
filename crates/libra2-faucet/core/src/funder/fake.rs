@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use super::FunderTrait;
-use crate::endpoints::AptosTapError;
+use crate::endpoints::Libra2TapError;
 use libra2_sdk::types::{account_address::AccountAddress, transaction::SignedTransaction};
 use async_trait::async_trait;
 use serde::{Deserialize, Serialize};
@@ -20,7 +20,7 @@ impl FunderTrait for FakeFunder {
         _receiver_address: AccountAddress,
         _check_only: bool,
         _did_bypass_checkers: bool,
-    ) -> Result<Vec<SignedTransaction>, AptosTapError> {
+    ) -> Result<Vec<SignedTransaction>, Libra2TapError> {
         Ok(vec![])
     }
 

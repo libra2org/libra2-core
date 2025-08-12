@@ -9,7 +9,7 @@
 
 
 <pre><code><b>use</b> <a href="../../libra2-framework/doc/account.md#0x1_account">0x1::account</a>;
-<b>use</b> <a href="../../libra2-framework/doc/aptos_account.md#0x1_libra2_account">0x1::libra2_account</a>;
+<b>use</b> <a href="../../libra2-framework/doc/libra2_account.md#0x1_libra2_account">0x1::libra2_account</a>;
 </code></pre>
 
 
@@ -36,7 +36,7 @@ and so actual costs of entry functions can be more precisely measured.
     source: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <b>to</b>: <b>address</b>, amount: u64
 ) {
     <a href="../../libra2-framework/doc/account.md#0x1_account_create_account_if_does_not_exist">account::create_account_if_does_not_exist</a>(<b>to</b>);
-    <a href="../../libra2-framework/doc/aptos_account.md#0x1_libra2_account_transfer">libra2_account::transfer</a>(source, <b>to</b>, amount);
+    <a href="../../libra2-framework/doc/libra2_account.md#0x1_libra2_account_transfer">libra2_account::transfer</a>(source, <b>to</b>, amount);
 }
 </code></pre>
 

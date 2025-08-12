@@ -67,7 +67,7 @@ async fn view_existing_account_balance() {
     // rate limits if executed repeatedly or in parallel.
     // Providing an API key raises these limits significantly.
     //
-    // If you hit rate limits, you can create a free Aptos Build account and generate an API key:
+    // If you hit rate limits, you can create a free Libra2 Build account and generate an API key:
     // - https://build.aptoslabs.com/docs/start#api-quick-start
     //
     // To use an API key here, switch to the alternative constructor:

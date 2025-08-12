@@ -26,7 +26,7 @@ use std::{
 };
 
 /// Output transaction builders in Rust for the given ABIs.
-/// If `local_types` is true, we generate a file suitable for the Aptos codebase itself
+/// If `local_types` is true, we generate a file suitable for the Libra2 codebase itself
 /// rather than using serde-generated, standalone definitions.
 pub fn output(out: &mut dyn Write, abis: &[EntryABI], local_types: bool) -> Result<()> {
     if abis.is_empty() {

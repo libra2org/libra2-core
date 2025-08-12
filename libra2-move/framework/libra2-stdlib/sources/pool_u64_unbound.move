@@ -13,10 +13,10 @@
 /// 6. A redeems 500 shares. Each share is worth 6000 / 1500 = 4. A receives 2000 coins. Pool has 4000 coins and 1000
 /// shares left.
 ///
-module aptos_std::pool_u64_unbound {
-    use aptos_std::table_with_length::{Self as table, TableWithLength as Table};
+module libra2_std::pool_u64_unbound {
+    use libra2_std::table_with_length::{Self as table, TableWithLength as Table};
     use std::error;
-    use aptos_std::math128;
+    use libra2_std::math128;
 
     /// Shareholder not present in pool.
     const ESHAREHOLDER_NOT_FOUND: u64 = 1;

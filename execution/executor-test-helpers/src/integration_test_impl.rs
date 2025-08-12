@@ -21,7 +21,7 @@ use libra2_storage_interface::{
 };
 use libra2_types::{
     account_config::{
-        aptos_test_root_address, primary_apt_store, AccountResource, FungibleStoreResource,
+        libra2_test_root_address, primary_apt_store, AccountResource, FungibleStoreResource,
         ObjectGroupResource,
     },
     block_metadata::BlockMetadata,
@@ -61,7 +61,7 @@ pub fn test_execution_with_storage_impl_inner(
     let genesis_txn = Transaction::GenesisTransaction(WriteSetPayload::Direct(genesis));
 
     let core_resources_account: LocalAccount = LocalAccount::new(
-        aptos_test_root_address(),
+        libra2_test_root_address(),
         AccountKey::from_private_key(libra2_vm_genesis::GENESIS_KEYPAIR.0.clone()),
         0,
     );

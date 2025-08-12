@@ -1,5 +1,5 @@
 /// Provides a framework for comparing two elements
-module aptos_std::comparator {
+module libra2_std::comparator {
     use std::bcs;
 
     const EQUAL: u8 = 0;

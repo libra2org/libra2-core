@@ -178,7 +178,7 @@ pub static VOTE_NIL_COUNT: Lazy<IntCounter> = Lazy::new(|| {
 /// Total voting power of validators in validator set
 pub static TOTAL_VOTING_POWER: Lazy<Gauge> = Lazy::new(|| {
     register_gauge!(
-        "aptos_total_voting_power",
+        "libra2_total_voting_power",
         "Total voting power of validators in validator set"
     )
     .unwrap()
@@ -274,7 +274,7 @@ pub static PROPOSER_COLLECTED_TIMEOUT_VOTING_POWER: Lazy<Counter> = Lazy::new(||
 /// Committed proposals map when using LeaderReputation as the ProposerElection
 pub static COMMITTED_PROPOSALS_IN_WINDOW: Lazy<IntGauge> = Lazy::new(|| {
     register_int_gauge!(
-        "aptos_committed_proposals_in_window",
+        "libra2_committed_proposals_in_window",
         "Total number committed proposals in the current reputation window",
     )
     .unwrap()
@@ -292,7 +292,7 @@ pub static FAILED_PROPOSALS_IN_WINDOW: Lazy<IntGauge> = Lazy::new(|| {
 /// Committed votes map when using LeaderReputation as the ProposerElection
 pub static COMMITTED_VOTES_IN_WINDOW: Lazy<IntGauge> = Lazy::new(|| {
     register_int_gauge!(
-        "aptos_committed_votes_in_window",
+        "libra2_committed_votes_in_window",
         "Total number of committed votes in the current reputation window",
     )
     .unwrap()
@@ -318,7 +318,7 @@ pub static CONSENSUS_WITHOLD_VOTE_BACKPRESSURE_TRIGGERED: Lazy<Histogram> = Lazy
 /// Counts when chain_health backoff is triggered
 pub static CHAIN_HEALTH_BACKOFF_TRIGGERED: Lazy<Histogram> = Lazy::new(|| {
     register_avg_counter(
-        "aptos_chain_health_backoff_triggered",
+        "libra2_chain_health_backoff_triggered",
         "Counts when chain_health backoff is triggered",
     )
 });
@@ -440,7 +440,7 @@ pub static PROPOSER_ESTIMATED_CALIBRATED_BLOCK_GAS: Lazy<Histogram> = Lazy::new(
 pub static CHAIN_HEALTH_REPUTATION_PARTICIPATING_VOTING_POWER_FRACTION: Lazy<Gauge> =
     Lazy::new(|| {
         register_gauge!(
-            "aptos_chain_health_participating_voting_power_fraction_last_reputation_rounds",
+            "libra2_chain_health_participating_voting_power_fraction_last_reputation_rounds",
             "Total voting power of validators in validator set"
         )
         .unwrap()
@@ -452,7 +452,7 @@ pub static CHAIN_HEALTH_WINDOW_SIZES: [usize; 4] = [10, 30, 100, 300];
 /// Current (with some delay) total voting power
 pub static CHAIN_HEALTH_TOTAL_VOTING_POWER: Lazy<Gauge> = Lazy::new(|| {
     register_gauge!(
-        "aptos_chain_health_total_voting_power",
+        "libra2_chain_health_total_voting_power",
         "Total voting power of validators in validator set"
     )
     .unwrap()
@@ -461,7 +461,7 @@ pub static CHAIN_HEALTH_TOTAL_VOTING_POWER: Lazy<Gauge> = Lazy::new(|| {
 /// Current (with some delay) total number of validators
 pub static CHAIN_HEALTH_TOTAL_NUM_VALIDATORS: Lazy<IntGauge> = Lazy::new(|| {
     register_int_gauge!(
-        "aptos_chain_health_total_num_validators",
+        "libra2_chain_health_total_num_validators",
         "Total number of validators in validator set"
     )
     .unwrap()
@@ -475,7 +475,7 @@ pub static CHAIN_HEALTH_PARTICIPATING_VOTING_POWER: Lazy<Vec<Gauge>> = Lazy::new
         .map(|i| {
             register_gauge!(
                 format!(
-                    "aptos_chain_health_participating_voting_power_last_{}_rounds",
+                    "libra2_chain_health_participating_voting_power_last_{}_rounds",
                     i
                 ),
                 "Current (with some delay) voting power that participated in consensus (voted or proposed) in the given window."
@@ -493,7 +493,7 @@ pub static CHAIN_HEALTH_PARTICIPATING_NUM_VALIDATORS: Lazy<Vec<IntGauge>> = Lazy
         .map(|i| {
             register_int_gauge!(
                 format!(
-                    "aptos_chain_health_participating_num_validators_last_{}_rounds",
+                    "libra2_chain_health_participating_num_validators_last_{}_rounds",
                     i
                 ),
                 "Current (with some delay) number of validators that participated in consensus (voted or proposed) in the given window."

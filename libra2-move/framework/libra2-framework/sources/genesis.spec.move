@@ -22,7 +22,7 @@ spec libra2_framework::genesis {
     /// Enforcement: Formally verified via [high-level-req-2](initialize).
     ///
     /// No.: 3
-    /// Requirement: The Aptos coin should be initialized during genesis and only the Aptos framework account should own
+    /// Requirement: The Libra2 coin should be initialized during genesis and only the Aptos framework account should own
     /// the mint and burn capabilities for the APT token.
     /// Criticality: Critical
     /// Implementation: Both mint and burn capabilities are wrapped inside the stake::Libra2CoinCapabilities and
@@ -99,7 +99,7 @@ spec libra2_framework::genesis {
     }
 
     spec initialize_libra2_coin {
-        // property 3: The Aptos coin should be initialized during genesis and only the Aptos framework account should
+        // property 3: The Libra2 coin should be initialized during genesis and only the Aptos framework account should
         // own the mint and burn capabilities for the APT token.
         /// [high-level-req-3]
         requires !exists<stake::Libra2CoinCapabilities>(@libra2_framework);

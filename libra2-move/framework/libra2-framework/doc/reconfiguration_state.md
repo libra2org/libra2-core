@@ -517,7 +517,7 @@ Abort if the current state is not "in progress".
 
 
 <pre><code><b>fun</b> <a href="reconfiguration_state.md#0x1_reconfiguration_state_spec_start_time_secs">spec_start_time_secs</a>(): u64 {
-   <b>use</b> aptos_std::from_bcs;
+   <b>use</b> libra2_std::from_bcs;
    <b>let</b> state = <b>global</b>&lt;<a href="reconfiguration_state.md#0x1_reconfiguration_state_State">State</a>&gt;(@libra2_framework);
    <a href="../../libra2-stdlib/doc/from_bcs.md#0x1_from_bcs_deserialize">from_bcs::deserialize</a>&lt;<a href="reconfiguration_state.md#0x1_reconfiguration_state_StateActive">StateActive</a>&gt;(state.variant.data).start_time_secs
 }

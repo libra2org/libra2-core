@@ -9,15 +9,15 @@ export { CancelablePromise, CancelError } from './core/CancelablePromise';
 export { OpenAPI } from './core/OpenAPI';
 export type { OpenAPIConfig } from './core/OpenAPI';
 
-export type { AptosTapError } from './models/AptosTapError';
-export { AptosTapErrorCode } from './models/AptosTapErrorCode';
+export type { Libra2TapError } from './models/Libra2TapError';
+export { Libra2TapErrorCode } from './models/Libra2TapErrorCode';
 export type { FundRequest } from './models/FundRequest';
 export type { FundResponse } from './models/FundResponse';
 export type { RejectionReason } from './models/RejectionReason';
 export { RejectionReasonCode } from './models/RejectionReasonCode';
 
-export { $AptosTapError } from './schemas/$AptosTapError';
-export { $AptosTapErrorCode } from './schemas/$AptosTapErrorCode';
+export { $Libra2TapError } from './schemas/$Libra2TapError';
+export { $Libra2TapErrorCode } from './schemas/$Libra2TapErrorCode';
 export { $FundRequest } from './schemas/$FundRequest';
 export { $FundResponse } from './schemas/$FundResponse';
 export { $RejectionReason } from './schemas/$RejectionReason';

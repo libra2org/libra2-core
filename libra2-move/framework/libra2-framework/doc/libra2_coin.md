@@ -192,7 +192,7 @@ Account does not have mint capability
 
 ## Function `initialize`
 
-Can only called during genesis to initialize the Aptos coin.
+Can only called during genesis to initialize the Libra2 coin.
 
 
 <pre><code><b>public</b>(<b>friend</b>) <b>fun</b> <a href="libra2_coin.md#0x1_libra2_coin_initialize">initialize</a>(libra2_framework: &<a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>): (<a href="coin.md#0x1_coin_BurnCapability">coin::BurnCapability</a>&lt;<a href="libra2_coin.md#0x1_libra2_coin_Libra2Coin">libra2_coin::Libra2Coin</a>&gt;, <a href="coin.md#0x1_coin_MintCapability">coin::MintCapability</a>&lt;<a href="libra2_coin.md#0x1_libra2_coin_Libra2Coin">libra2_coin::Libra2Coin</a>&gt;)
@@ -209,7 +209,7 @@ Can only called during genesis to initialize the Aptos coin.
 
     <b>let</b> (burn_cap, freeze_cap, mint_cap) = <a href="coin.md#0x1_coin_initialize_with_parallelizable_supply">coin::initialize_with_parallelizable_supply</a>&lt;<a href="libra2_coin.md#0x1_libra2_coin_Libra2Coin">Libra2Coin</a>&gt;(
         libra2_framework,
-        <a href="../../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_utf8">string::utf8</a>(b"Aptos Coin"),
+        <a href="../../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_utf8">string::utf8</a>(b"Libra2 Coin"),
         <a href="../../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_utf8">string::utf8</a>(b"APT"),
         8, // decimals
         <b>true</b>, // monitor_supply
@@ -533,7 +533,7 @@ Claim the delegated mint capability and destroy the delegated token.
 <b>aborts_if</b> <a href="permissioned_signer.md#0x1_permissioned_signer_spec_is_permissioned_signer">permissioned_signer::spec_is_permissioned_signer</a>(libra2_framework);
 <b>let</b> addr = <a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer_address_of">signer::address_of</a>(libra2_framework);
 <b>aborts_if</b> addr != @libra2_framework;
-<b>aborts_if</b> !<a href="../../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_spec_internal_check_utf8">string::spec_internal_check_utf8</a>(b"Aptos Coin");
+<b>aborts_if</b> !<a href="../../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_spec_internal_check_utf8">string::spec_internal_check_utf8</a>(b"Libra2 Coin");
 <b>aborts_if</b> !<a href="../../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_spec_internal_check_utf8">string::spec_internal_check_utf8</a>(b"APT");
 <b>aborts_if</b> <b>exists</b>&lt;<a href="libra2_coin.md#0x1_libra2_coin_MintCapStore">MintCapStore</a>&gt;(addr);
 <b>aborts_if</b> <b>exists</b>&lt;<a href="coin.md#0x1_coin_CoinInfo">coin::CoinInfo</a>&lt;<a href="libra2_coin.md#0x1_libra2_coin_Libra2Coin">Libra2Coin</a>&gt;&gt;(addr);

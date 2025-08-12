@@ -1,1 +1,1 @@
-# Aptos Node Testnet
+# Libra2 Node Testnet

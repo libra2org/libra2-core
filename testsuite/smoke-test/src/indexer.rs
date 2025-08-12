@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use libra2_cached_packages::libra2_stdlib::libra2_token_stdlib;
-use aptos_forge::{AptosPublicInfo, Result, Swarm};
+use libra2_forge::{Libra2PublicInfo, Result, Swarm};
 use aptos_indexer::{
     database::{new_db_pool, PgDbPool, PgPoolConnection},
     models::transactions::TransactionQuery,
@@ -32,7 +32,7 @@ pub fn setup_indexer() -> anyhow::Result<PgDbPool> {
     Ok(conn_pool)
 }
 
-pub async fn execute_nft_txns(creator: LocalAccount, info: &mut AptosPublicInfo) -> Result<()> {
+pub async fn execute_nft_txns(creator: LocalAccount, info: &mut Libra2PublicInfo) -> Result<()> {
     let collection_name = "collection name".to_owned().into_bytes();
     let token_name = "token name".to_owned().into_bytes();
     let collection_builder =
@@ -98,7 +98,7 @@ async fn test_old_indexer() {
     let conn_pool = setup_indexer().unwrap();
 
     let swarm = crate::smoke_test_environment::SwarmBuilder::new_local(1)
-        .with_aptos()
+        .with_libra2()
         .with_init_config(Arc::new(|_, config, _| {
             config.storage.enable_indexer = true;
 
@@ -110,7 +110,7 @@ async fn test_old_indexer() {
         .build()
         .await;
 
-    let mut info = swarm.aptos_public_info();
+    let mut info = swarm.libra2_public_info();
 
     let ledger = info
         .client()

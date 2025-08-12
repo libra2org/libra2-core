@@ -4,7 +4,7 @@
 use super::{CheckerData, CheckerTrait};
 use crate::{
     common::{ListManager, ListManagerConfig},
-    endpoints::{AptosTapError, RejectionReason, RejectionReasonCode},
+    endpoints::{Libra2TapError, RejectionReason, RejectionReasonCode},
 };
 use anyhow::Result;
 use libra2_logger::info;
@@ -32,7 +32,7 @@ impl CheckerTrait for RefererBlocklistChecker {
         &self,
         data: CheckerData,
         _dry_run: bool,
-    ) -> Result<Vec<RejectionReason>, AptosTapError> {
+    ) -> Result<Vec<RejectionReason>, Libra2TapError> {
         let referer = match data.headers.get(REFERER).and_then(|v| v.to_str().ok()) {
             Some(referer) => referer,
             None => return Ok(vec![]),

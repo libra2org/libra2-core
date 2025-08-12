@@ -1,6 +1,6 @@
-# Secure Coding for Aptos Core
+# Secure Coding for Libra2 Core
 
-These Rust Secure Coding Guidelines are essential for anyone contributing to Aptos, reflecting our security-first approach. As Aptos is built with a primary focus on security, these guidelines, derived and adapted from ANSSI's Secure Rust Guidelines, are integral to maintaining the high standards of safety and robustness in aptos-core. Aptos contributors are encouraged to thoroughly understand and apply these principles in their work.
+These Rust Secure Coding Guidelines are essential for anyone contributing to Aptos, reflecting our security-first approach. As Aptos is built with a primary focus on security, these guidelines, derived and adapted from ANSSI's Secure Rust Guidelines, are integral to maintaining the high standards of safety and robustness in aptos-core. Libra2 contributors are encouraged to thoroughly understand and apply these principles in their work.
 
 ## Development Environment
 
@@ -10,7 +10,7 @@ Utilize Rustup for managing Rust toolchains. However, keep in mind that, from a 
 
 ### Stable Toolchain
 
-Aptos Core leverages Rust stable toolchain to limit potential compiler, runtime, or tooling bugs, or potential supply chain attacks in nightly releases.
+Libra2 Core leverages Rust stable toolchain to limit potential compiler, runtime, or tooling bugs, or potential supply chain attacks in nightly releases.
 
 ### Cargo
 
@@ -105,7 +105,7 @@ In the majority of scenarios, manual implementation is unnecessary. In Rust, nea
 ### Comparison Traits
 
 Ensure the implementation of standard comparison traits respects documented invariants.
-In the context of implementing standard comparison traits (like Eq, PartialEq, Ord, PartialOrd in Rust), respecting documented invariants means that the implementation of these traits should adhere to the properties and expectations defined by those invariants. For instance, if an invariant states that an object's identity is determined by certain fields, comparisons (equality, greater than, less than, etc.) must only consider those fields and ignore others. This ensures consistency, predictability, and correctness in how objects are compared, sorted, or considered equal within the Aptos Core.
+In the context of implementing standard comparison traits (like Eq, PartialEq, Ord, PartialOrd in Rust), respecting documented invariants means that the implementation of these traits should adhere to the properties and expectations defined by those invariants. For instance, if an invariant states that an object's identity is determined by certain fields, comparisons (equality, greater than, less than, etc.) must only consider those fields and ignore others. This ensures consistency, predictability, and correctness in how objects are compared, sorted, or considered equal within the Libra2 Core.
 
 The ANSSI resource extensively covers the matter [References](#references).
 
@@ -156,11 +156,11 @@ Most memory leaks result in general product reliability problems. If an attacker
 
 ### Fuzzing
 
-Aptos contains harnesses for fuzzing crash-prone code like deserializers, using [`libFuzzer`](https://llvm.org/docs/LibFuzzer.html) through [`cargo fuzz`](https://rust-fuzz.github.io/book/cargo-fuzz.html). For more examples, see the `testsuite/fuzzer` directory where find detailed README.md.
+Libra2 contains harnesses for fuzzing crash-prone code like deserializers, using [`libFuzzer`](https://llvm.org/docs/LibFuzzer.html) through [`cargo fuzz`](https://rust-fuzz.github.io/book/cargo-fuzz.html). For more examples, see the `testsuite/fuzzer` directory where find detailed README.md.
 
 ## Conclusion
 
-These guidelines are a crucial element for anyone contributing to Aptos, reflecting our commitment to a security-first approach. By adhering to these guidelines, Aptos contributors play a vital role in maintaining the security and robustness of the Aptos network. As we work towards automating the enforcement of these standards, following these practices will help maintain and improve the overall integrity and resilience of the Aptos ecosystem. This ongoing effort ensures that Aptos continues to set a high bar for security and reliability.
+These guidelines are a crucial element for anyone contributing to Aptos, reflecting our commitment to a security-first approach. By adhering to these guidelines, Libra2 contributors play a vital role in maintaining the security and robustness of the Aptos network. As we work towards automating the enforcement of these standards, following these practices will help maintain and improve the overall integrity and resilience of the Aptos ecosystem. This ongoing effort ensures that Libra2 continues to set a high bar for security and reliability.
 
 ## References
 

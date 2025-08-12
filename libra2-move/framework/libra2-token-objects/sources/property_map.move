@@ -5,9 +5,9 @@ module libra2_token_objects::property_map {
     use std::bcs;
     use std::error;
     use std::string::{Self, String};
-    use aptos_std::from_bcs;
-    use aptos_std::simple_map::{Self, SimpleMap};
-    use aptos_std::type_info;
+    use libra2_std::from_bcs;
+    use libra2_std::simple_map::{Self, SimpleMap};
+    use libra2_std::type_info;
     use libra2_framework::object::{Self, ConstructorRef, Object, ExtendRef, ObjectCore};
 
     // Errors
@@ -560,7 +560,7 @@ module libra2_token_objects::property_map {
     }
 
     #[test(creator = @0x123)]
-    #[expected_failure(abort_code = 0x10001, location = aptos_std::from_bcs)]
+    #[expected_failure(abort_code = 0x10001, location = libra2_std::from_bcs)]
     fun test_invalid_init(creator: &signer) {
         let constructor_ref = object::create_named_object(creator, b"");
 
@@ -599,7 +599,7 @@ module libra2_token_objects::property_map {
     }
 
     #[test(creator = @0x123)]
-    #[expected_failure(abort_code = 0x10001, location = aptos_std::from_bcs)]
+    #[expected_failure(abort_code = 0x10001, location = libra2_std::from_bcs)]
     fun test_invalid_add(creator: &signer) acquires PropertyMap {
         let constructor_ref = object::create_named_object(creator, b"");
 
@@ -615,7 +615,7 @@ module libra2_token_objects::property_map {
     }
 
     #[test(creator = @0x123)]
-    #[expected_failure(abort_code = 0x10001, location = aptos_std::from_bcs)]
+    #[expected_failure(abort_code = 0x10001, location = libra2_std::from_bcs)]
     fun test_invalid_update(creator: &signer) acquires PropertyMap {
         let constructor_ref = object::create_named_object(creator, b"");
 

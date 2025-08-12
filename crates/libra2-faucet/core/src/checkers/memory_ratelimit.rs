@@ -3,7 +3,7 @@
 
 use super::{CheckerData, CheckerTrait, CompleteData};
 use crate::{
-    endpoints::{AptosTapError, RejectionReason, RejectionReasonCode},
+    endpoints::{Libra2TapError, RejectionReason, RejectionReasonCode},
     helpers::{days_since_tap_epoch, get_current_time_secs},
 };
 use async_trait::async_trait;
@@ -69,7 +69,7 @@ impl CheckerTrait for MemoryRatelimitChecker {
         &self,
         data: CheckerData,
         dry_run: bool,
-    ) -> Result<Vec<RejectionReason>, AptosTapError> {
+    ) -> Result<Vec<RejectionReason>, Libra2TapError> {
         self.clear_if_new_day().await;
 
         let mut ip_to_requests_today = self.ip_to_requests_today.lock().await;
@@ -90,7 +90,7 @@ impl CheckerTrait for MemoryRatelimitChecker {
         Ok(vec![])
     }
 
-    async fn complete(&self, data: CompleteData) -> Result<(), AptosTapError> {
+    async fn complete(&self, data: CompleteData) -> Result<(), Libra2TapError> {
         if data.response_is_500 {
             *self
                 .ip_to_requests_today

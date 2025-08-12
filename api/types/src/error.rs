@@ -8,7 +8,7 @@ use serde::{Deserialize, Serialize};
 use std::fmt::Formatter;
 
 /// This is the generic struct we use for all API errors, it contains a string
-/// message and an Aptos API specific error code.
+/// message and an Libra2 API specific error code.
 #[derive(Debug, Clone, Serialize, Deserialize, Object)]
 pub struct Libra2Error {
     /// A message describing the error

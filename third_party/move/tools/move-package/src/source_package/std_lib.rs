@@ -15,7 +15,7 @@ pub enum StdLib {
     Libra2TokenObjects,
     Libra2Token,
     Libra2Framework,
-    AptosStdlib,
+    Libra2Stdlib,
     MoveStdlib,
 }
 
@@ -59,7 +59,7 @@ impl StdLib {
             StdLib::Libra2Token => "Libra2Token",
             StdLib::Libra2TokenObjects => "Libra2TokenObjects",
             StdLib::Libra2Framework => "Libra2Framework",
-            StdLib::AptosStdlib => "AptosStdlib",
+            StdLib::Libra2Stdlib => "Libra2Stdlib",
             StdLib::MoveStdlib => "MoveStdlib",
         }
     }
@@ -70,7 +70,7 @@ impl StdLib {
             "Libra2Token" => Some(StdLib::Libra2Token),
             "Libra2TokenObjects" => Some(StdLib::Libra2TokenObjects),
             "Libra2Framework" => Some(StdLib::Libra2Framework),
-            "AptosStdlib" => Some(StdLib::AptosStdlib),
+            "Libra2Stdlib" => Some(StdLib::Libra2Stdlib),
             "MoveStdlib" => Some(StdLib::MoveStdlib),
             _ => None,
         }
@@ -82,7 +82,7 @@ impl StdLib {
             StdLib::Libra2Token => "libra2-token",
             StdLib::Libra2TokenObjects => "libra2-token-objects",
             StdLib::Libra2Framework => "libra2-framework",
-            StdLib::AptosStdlib => "libra2-stdlib",
+            StdLib::Libra2Stdlib => "libra2-stdlib",
             StdLib::MoveStdlib => "move-stdlib",
         }
     }

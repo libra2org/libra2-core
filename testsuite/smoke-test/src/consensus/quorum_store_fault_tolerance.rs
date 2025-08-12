@@ -7,7 +7,7 @@ use crate::{
     utils::update_consensus_config,
 };
 use libra2_consensus::QUORUM_STORE_DB_NAME;
-use aptos_forge::{
+use libra2_forge::{
     args::TransactionTypeArg, reconfig, wait_for_all_nodes_to_catchup, NodeExt, Swarm, SwarmExt,
 };
 use libra2_logger::info;
@@ -21,7 +21,7 @@ const MAX_WAIT_SECS: u64 = 60;
 #[tokio::test]
 async fn test_onchain_config_quorum_store_enabled_and_disabled() {
     let (mut swarm, mut cli, _faucet) = SwarmBuilder::new_local(4)
-        .with_aptos()
+        .with_libra2()
         // Start with V1
         .with_init_genesis_config(Arc::new(|genesis_config| {
             genesis_config.consensus_config =
@@ -101,7 +101,7 @@ async fn test_onchain_config_quorum_store_enabled_and_disabled() {
 #[tokio::test]
 async fn test_remote_batch_reads() {
     let mut swarm = SwarmBuilder::new_local(4)
-        .with_aptos()
+        .with_libra2()
         .with_init_config(Arc::new(|_, conf, _| {
             conf.api.failpoints_enabled = true;
         }))
@@ -142,7 +142,7 @@ async fn test_remote_batch_reads() {
 
 async fn test_batch_id_on_restart(do_wipe_db: bool) {
     let mut swarm = SwarmBuilder::new_local(4)
-        .with_aptos()
+        .with_libra2()
         // TODO: remove when quorum store becomes the in-code default
         .with_init_genesis_config(Arc::new(|genesis_config| {
             genesis_config.consensus_config =
@@ -239,7 +239,7 @@ async fn test_batch_id_on_restart_wiped_db() {
 #[tokio::test]
 async fn test_swarm_with_bad_non_qs_node() {
     let mut swarm = SwarmBuilder::new_local(4)
-        .with_aptos()
+        .with_libra2()
         .with_init_config(Arc::new(|_, conf, _| {
             conf.api.failpoints_enabled = true;
         }))

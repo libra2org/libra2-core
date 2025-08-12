@@ -1,6 +1,6 @@
-# Coding Guidelines for Aptos Core
+# Coding Guidelines for Libra2 Core
 
-This document describes the coding guidelines for the [Aptos Core](https://github.com/aptos-labs/aptos-core) Rust codebase. For the Move language, see the [Move Coding Conventions](https://aptos.dev/move/book/SUMMARY).
+This document describes the coding guidelines for the [Libra2 Core](https://github.com/aptos-labs/aptos-core) Rust codebase. For the Move language, see the [Move Coding Conventions](https://aptos.dev/move/book/SUMMARY).
 Secure coding guidance is provided in the [Aptos Rust Secure Coding Guidelines](./RUST_SECURE_CODING.md).
 
 ## Code formatting & Code analysis
@@ -44,7 +44,7 @@ struct Point {
 
 ### Terminology
 
-The Aptos codebase uses inclusive terminology (similar to other projects such as [the Linux kernel](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=49decddd39e5f6132ccd7d9fdc3d7c470b0061bb)). The terms below are recommended when appropriate.
+The Libra2 codebase uses inclusive terminology (similar to other projects such as [the Linux kernel](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=49decddd39e5f6132ccd7d9fdc3d7c470b0061bb)). The terms below are recommended when appropriate.
 
 - allowlist - a set of entities allowed access
 - blocklist - a set of entities that are blocked from access
@@ -68,7 +68,7 @@ Document the following for each function:
 
 ### README.md for top-level directories and other major components
 
-Each major component of Aptos Core needs to have a `README.md` file. Major components are:
+Each major component of Libra2 Core needs to have a `README.md` file. Major components are:
 
 - top-level directories (e.g. `aptos-core/network`, `aptos-core/language`)
 - the most important crates in the system (e.g. `vm-runtime`)
@@ -264,7 +264,7 @@ mod tests {
 
 _Property-based tests_
 
-Aptos contains [property-based tests](https://blog.jessitron.com/2013/04/25/property-based-testing-what-is-it/) written in Rust using the [`proptest` framework](https://github.com/AltSysrq/proptest). Property-based tests generate random test cases and assert that invariants, also called _properties_, hold for the code under test.
+Libra2 contains [property-based tests](https://blog.jessitron.com/2013/04/25/property-based-testing-what-is-it/) written in Rust using the [`proptest` framework](https://github.com/AltSysrq/proptest). Property-based tests generate random test cases and assert that invariants, also called _properties_, hold for the code under test.
 
 Some examples of properties tested in Aptos:
 
@@ -349,7 +349,7 @@ elements in another crate need to activate the "fuzzing" feature through the
 `[features]` section in their `Cargo.toml`. [Integration
 tests](https://doc.rust-lang.org/rust-by-example/testing/integration_testing.html)
 can neither rely on the `test` flag nor do they have a proper `Cargo.toml` for
-feature activation. In the Aptos codebase, we therefore recommend that
+feature activation. In the Libra2 codebase, we therefore recommend that
 _integration tests which depend on test-only code in their tested crate_ be
 extracted to their own test-only crate. See `language/move-binary-format/serializer_tests`
 for an example of such an extracted integration test.

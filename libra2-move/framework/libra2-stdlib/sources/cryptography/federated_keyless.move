@@ -1,12 +1,12 @@
 /// This module implements the Federated Keyless authentication scheme.
 
-module aptos_std::federated_keyless {
-    use aptos_std::bcs_stream;
-    use aptos_std::keyless;
-    use aptos_std::error;
+module libra2_std::federated_keyless {
+    use libra2_std::bcs_stream;
+    use libra2_std::keyless;
+    use libra2_std::error;
 
     #[test_only]
-    friend aptos_std::federated_keyless_tests;
+    friend libra2_std::federated_keyless_tests;
 
     //
     // Error codes

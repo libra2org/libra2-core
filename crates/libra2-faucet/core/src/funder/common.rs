@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
-    endpoints::{AptosTapError, AptosTapErrorCode},
+    endpoints::{Libra2TapError, Libra2TapErrorCode},
     middleware::NUM_OUTSTANDING_TRANSACTIONS,
 };
 use anyhow::{anyhow, Context, Result};
@@ -246,7 +246,7 @@ pub async fn update_sequence_numbers(
     receiver_address: AccountAddress,
     amount: u64,
     wait_for_outstanding_txns_secs: u64,
-) -> Result<(u64, Option<u64>), AptosTapError> {
+) -> Result<(u64, Option<u64>), Libra2TapError> {
     let (mut funder_seq, mut receiver_seq) =
         get_sequence_numbers(client, funder_account, receiver_address).await?;
     let our_funder_seq = {
@@ -333,7 +333,7 @@ async fn get_sequence_numbers(
     client: &Client,
     funder_account: &RwLock<LocalAccount>,
     receiver_address: AccountAddress,
-) -> Result<(u64, Option<u64>), AptosTapError> {
+) -> Result<(u64, Option<u64>), Libra2TapError> {
     let funder_address = funder_account.read().await.address();
     let f_request = client.get_account(funder_address);
     let r_request = client.get_account(receiver_address);
@@ -348,9 +348,9 @@ async fn get_sequence_numbers(
     let funder_seq_num = responses
         .remove(0)
         .map_err(|e| {
-            AptosTapError::new(
+            Libra2TapError::new(
                 format!("funder account {} not found: {:#}", funder_address, e),
-                AptosTapErrorCode::AccountDoesNotExist,
+                Libra2TapErrorCode::AccountDoesNotExist,
             )
         })?
         .inner()
@@ -366,7 +366,7 @@ pub async fn submit_transaction(
     signed_transaction: SignedTransaction,
     receiver_address: &AccountAddress,
     wait_for_transactions: bool,
-) -> Result<SignedTransaction, AptosTapError> {
+) -> Result<SignedTransaction, Libra2TapError> {
     let (result, event_on_success) = if wait_for_transactions {
         // If this fails, we assume it is the user's fault, e.g. because the
         // account already exists, but it is possible that the transaction
@@ -378,7 +378,7 @@ pub async fn submit_transaction(
                 .await
                 .map(|_| ())
                 .map_err(|e| {
-                    AptosTapError::new_with_error_code(e, AptosTapErrorCode::TransactionFailed)
+                    Libra2TapError::new_with_error_code(e, Libra2TapErrorCode::TransactionFailed)
                 }),
             "transaction_success",
         )
@@ -389,7 +389,7 @@ pub async fn submit_transaction(
                 .await
                 .map(|_| ())
                 .map_err(|e| {
-                    AptosTapError::new_with_error_code(e, AptosTapErrorCode::TransactionFailed)
+                    Libra2TapError::new_with_error_code(e, Libra2TapErrorCode::TransactionFailed)
                 }),
             "transaction_submitted",
         )

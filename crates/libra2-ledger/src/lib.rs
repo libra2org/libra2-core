@@ -3,7 +3,7 @@
 
 //! # libra2-ledger
 //!
-//! `libra2-ledger` provides convenience methods to communicate with the Aptos app on ledger
+//! `libra2-ledger` provides convenience methods to communicate with the Libra2 app on ledger
 
 #![deny(missing_docs)]
 
@@ -30,7 +30,7 @@ use thiserror::Error;
 /// 637 is the key for Aptos
 pub const DERIVATION_PATH: &str = "m/44'/637'/{index}'/0'/0'";
 
-const CLA_APTOS: u8 = 0x5B; // Aptos CLA Instruction class
+const CLA_APTOS: u8 = 0x5B; // Libra2 CLA Instruction class
 const INS_GET_VERSION: u8 = 0x03; // Get version instruction code
 const INS_GET_APP_NAME: u8 = 0x04; // Get app name instruction code
 const INS_GET_PUB_KEY: u8 = 0x05; // Get public key instruction code
@@ -51,7 +51,7 @@ pub enum AptosLedgerError {
     #[error("Device not found")]
     DeviceNotFound,
 
-    /// Error when communicating with Aptos app on Ledger
+    /// Error when communicating with Libra2 app on Ledger
     #[error("Error - {0}")]
     Libra2Error(AptosLedgerStatusCode),
 
@@ -234,7 +234,7 @@ pub fn validate_derivation_path(input: &str) -> bool {
     false
 }
 
-/// Returns the current version of the Aptos app on Ledger
+/// Returns the current version of the Libra2 app on Ledger
 pub fn get_app_version() -> Result<Version, AptosLedgerError> {
     // Open connection to ledger
     let transport = open_ledger_transport()?;
@@ -367,7 +367,7 @@ pub fn fetch_batch_accounts(
     Ok(accounts)
 }
 
-/// Returns the public key of your Aptos account in Ledger device at index 0
+/// Returns the public key of your Libra2 account in Ledger device at index 0
 ///
 /// # Arguments
 ///

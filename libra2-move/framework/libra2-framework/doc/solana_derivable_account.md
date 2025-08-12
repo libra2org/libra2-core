@@ -12,7 +12,7 @@ SIWS.
 
 Please confirm you explicitly initiated this request from <domain>. You are approving to execute transaction <entry_function_name> on Aptos blockchain (<network_name>).
 
-Nonce: <aptos_txn_digest>
+Nonce: <libra2_txn_digest>
 
 2. The abstract public key is a BCS serialized <code>SIWSAbstractPublicKey</code>.
 3. The abstract signature is a BCS serialized <code><a href="solana_derivable_account.md#0x1_solana_derivable_account_SIWSAbstractSignature">SIWSAbstractSignature</a></code>.

@@ -43,7 +43,7 @@ fn run_tests_for_pkg(path_to_pkg: impl Into<String>, use_latest_language: bool) 
         build_config.clone(),
         // TODO(Gas): double check if this is correct
         utc,
-        aptos_test_natives(),
+        libra2_test_natives(),
         libra2_test_feature_flags_genesis(),
         /* gas limit */ Some(100_000),
         /* cost_table */ None,
@@ -56,12 +56,12 @@ fn run_tests_for_pkg(path_to_pkg: impl Into<String>, use_latest_language: bool) 
 }
 
 /// TODO: per @vgao1996:
-/// - There should be only one ground truth of `aptos_test_natives`.
+/// - There should be only one ground truth of `libra2_test_natives`.
 ///   But rn it's defined here, in `move-examples` and in `framework-experimental`.
 /// - This function updates a global config (in `configure_extended_checks_for_unit_test`)
 ///   then returns a list natives. This pattern is confusing.
 /// More discussion: https://github.com/aptos-labs/aptos-core/pull/15997#discussion_r1994469668
-pub fn aptos_test_natives() -> NativeFunctionTable {
+pub fn libra2_test_natives() -> NativeFunctionTable {
     // By side effect, configure for unit tests
     natives::configure_for_unit_test();
     extended_checks::configure_extended_checks_for_unit_test();

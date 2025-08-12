@@ -3,4 +3,4 @@ name = "any_tests"
 version = "0.0.0"
 
 [dependencies]
-AptosStdlib = { local = "../../../../../framework/libra2-stdlib" }
+Libra2Stdlib = { local = "../../../../../framework/libra2-stdlib" }

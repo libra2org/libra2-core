@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
-    AptosPublicInfo, ChainInfo, FullNode, NodeExt, Result, SwarmChaos, Validator, Version,
+    Libra2PublicInfo, ChainInfo, FullNode, NodeExt, Result, SwarmChaos, Validator, Version,
 };
 use anyhow::{anyhow, bail};
 use libra2_config::{
@@ -94,14 +94,14 @@ pub trait Swarm: Sync + Send {
         timeout: Option<i64>,
     ) -> Result<Vec<Sample>>;
 
-    fn aptos_public_info(&self) -> AptosPublicInfo {
-        self.chain_info().into_aptos_public_info()
+    fn libra2_public_info(&self) -> Libra2PublicInfo {
+        self.chain_info().into_libra2_public_info()
     }
 
     fn chain_info_for_node(&mut self, idx: usize) -> ChainInfo;
 
-    fn aptos_public_info_for_node(&mut self, idx: usize) -> AptosPublicInfo {
-        self.chain_info_for_node(idx).into_aptos_public_info()
+    fn libra2_public_info_for_node(&mut self, idx: usize) -> Libra2PublicInfo {
+        self.chain_info_for_node(idx).into_libra2_public_info()
     }
 
     fn get_default_pfn_node_config(&self) -> NodeConfig;

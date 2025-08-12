@@ -21,15 +21,15 @@
 ///
 /// ### Account Address
 ///
-/// - An **account address** is the address of an Aptos account.
+/// - An **account address** is the address of an Libra2 account.
 /// - Account address refers to a specific destination on the Aptos network. The address dictates the destination and source of a specific amount of assets exchanged by two parties on the blockchain.
-/// - An Aptos address is a 64-character hex string, and sometimes it can be shortened by stripping leading 0s and prefixing `0x`. This makes a hex-encoded 32 byte Aptos account address.
+/// - An Libra2 address is a 64-character hex string, and sometimes it can be shortened by stripping leading 0s and prefixing `0x`. This makes a hex-encoded 32 byte Libra2 account address.
 ///
 /// See [Accounts](../concepts/accounts.md) for more information.
 ///
 /// ### API
 ///
-/// - An **Application Programming Interface (API)(** is a set of protocols and tools that allow users to interact with Aptos blockchain nodes and client networks via external applications. Aptos offers a REST API for this purpose. See the [Aptos API reference](https://aptos.dev/nodes/aptos-api-spec#/) documentation and [Use the Aptos API](../integration/fullnode-rest-api.md) for more details.
+/// - An **Application Programming Interface (API)(** is a set of protocols and tools that allow users to interact with Aptos blockchain nodes and client networks via external applications. Aptos offers a REST API for this purpose. See the [Libra2 API reference](https://aptos.dev/nodes/libra2-api-spec#/) documentation and [Use the Libra2 API](../integration/fullnode-rest-api.md) for more details.
 ///
 /// ### APT
 ///
@@ -44,13 +44,13 @@
 /// - **AptosBFT** is the Aptos protocol's BFT consensus algorithm.
 /// - AptosBFT is based on Jolteon.
 ///
-/// ### Aptos Blockchain
+/// ### Libra2 Blockchain
 ///
 /// - The **Aptos blockchain** is a ledger of immutable transactions agreed upon by the validators on the Aptos network (the network of validators).
 ///
-/// ### Aptos Name Service (ANS)
+/// ### Libra2 Name Service (ANS)
 ///
-/// - The **Aptos Name Service (ANS)** is a decentralized naming address service for the Aptos blockchain. An Aptos name is a human-readable *.apt* domain name that is used in place of a public key, for example *love.apt*.
+/// - The **Libra2 Name Service (ANS)** is a decentralized naming address service for the Aptos blockchain. An Aptos name is a human-readable *.apt* domain name that is used in place of a public key, for example *love.apt*.
 /// - This service also allows users to register subdomain names in addition to the registered domain. Find out more at: [Aptosnames.com](https://www.aptosnames.com/)
 ///
 /// ### Aptos-core
@@ -60,19 +60,19 @@
 /// * the Aptos blockchain itself, which generates and stores the immutable ledger of confirmed transactions and
 /// * the validation process, which implements the consensus algorithm to validate transactions and add them to the Aptos blockchain immutable ledger.
 ///
-/// ### Aptos Ecosystem
+/// ### Libra2 Ecosystem
 ///
-/// - **Aptos ecosystem** refers to various components of the Aptos blockchain network and their interactions.  The Aptos ecosystem includes the community, community-driven projects, and events. See [Contribute to the Aptos Ecosystem](../community/index.md) for all possible ways to join Aptos.
+/// - **Aptos ecosystem** refers to various components of the Aptos blockchain network and their interactions.  The Aptos ecosystem includes the community, community-driven projects, and events. See [Contribute to the Libra2 Ecosystem](../community/index.md) for all possible ways to join Aptos.
 ///
-/// ### Aptos Explorer
+/// ### Libra2 Explorer
 ///
-/// - The **[Aptos Explorer](https://explorer.aptoslabs.com/)** is an interface that helps users examine details of the Aptos blockchain, including account information, validators, and transactions.
-/// - The Aptos Explorer help users validate their work in Aptos wallets and other tools in the blockchain. Find more details at [Use the Aptos Explorer](../guides/explore-aptos.md).
+/// - The **[Libra2 Explorer](https://explorer.aptoslabs.com/)** is an interface that helps users examine details of the Aptos blockchain, including account information, validators, and transactions.
+/// - The Libra2 Explorer help users validate their work in Aptos wallets and other tools in the blockchain. Find more details at [Use the Libra2 Explorer](../guides/explore-aptos.md).
 ///
-/// ### Aptos Framework
-/// The **Aptos Framework** defines the public API for blockchain updates and the structure of on-chain data. It defines the business logic and access control for the three key pillars of Aptos functionality: payments, treasury, and on-chain governance. It is implemented as a set of modules written in the Move programming language and stored on-chain as Move bytecode.
+/// ### Libra2 Framework
+/// The **Libra2 Framework** defines the public API for blockchain updates and the structure of on-chain data. It defines the business logic and access control for the three key pillars of Aptos functionality: payments, treasury, and on-chain governance. It is implemented as a set of modules written in the Move programming language and stored on-chain as Move bytecode.
 ///
-/// ### Aptos Node
+/// ### Libra2 Node
 /// An **Aptos node** is a peer entity of the Aptos network that tracks the state of the Aptos blockchain. There are two types of Aptos nodes, [validators](#validator) and [fullnodes](#fullnode)).
 ///
 /// ### Aptos Protocol
@@ -113,7 +113,7 @@
 ///
 /// ### CLI
 ///
-/// - **Command line interface** refers to the Aptos CLI used for developing on the Aptos blockchain, operating nodes, and debugging issues. Find out more at [Use the Aptos CLI](../tools/aptos-cli-tool/use-aptos-cli.md).
+/// - **Command line interface** refers to the Libra2 CLI used for developing on the Aptos blockchain, operating nodes, and debugging issues. Find out more at [Use the Libra2 CLI](../tools/aptos-cli-tool/use-aptos-cli.md).
 ///
 /// ### Client
 ///
@@ -121,7 +121,7 @@
 ///
 /// ### Code labs
 ///
-/// - **Code labs and tutorials** depict various workflows - such as the use of the Aptos CLI in minting non-fungible tokens (NFTs) - in order for users to understand how the process works and employ related functions in their code. If users have the necessary funds in their accounts, they can follow the same code lab and tutorial steps used in devnet, testnet and mainnet networks.
+/// - **Code labs and tutorials** depict various workflows - such as the use of the Libra2 CLI in minting non-fungible tokens (NFTs) - in order for users to understand how the process works and employ related functions in their code. If users have the necessary funds in their accounts, they can follow the same code lab and tutorial steps used in devnet, testnet and mainnet networks.
 ///
 /// ### Consensus
 ///
@@ -182,7 +182,7 @@
 ///
 /// - **Faucet** is a service that mints APT on devnet and testnet. APT on these networks has no real world value, it is only for development purposes.
 /// - You can use the faucet in a few different ways:
-///   - With the [Aptos CLI](../tools/aptos-cli-tool/use-aptos-cli.md#fund-an-account-with-the-faucet).
+///   - With the [Libra2 CLI](../tools/aptos-cli-tool/use-aptos-cli.md#fund-an-account-with-the-faucet).
 ///   - Through a wallet, such as Petra, Martian, or Pontem. You can find a full list [here](https://github.com/aptos-foundation/ecosystem-projects#wallets).
 ///   - Using an SDK, for example by using the `FaucetClient` in the TypeScript SDK.
 ///   - With a direct HTTP request. Learn how to do this [here](guides/system-integrators-guide.md#calling-the-faucet-other-languages).

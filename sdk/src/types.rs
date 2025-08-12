@@ -662,7 +662,7 @@ impl HardwareWalletAccount {
     }
 
     /// Create a new account from a Ledger device.
-    /// This requires the Ledger device to be connected, unlocked and the Aptos app to be opened
+    /// This requires the Ledger device to be connected, unlocked and the Libra2 app to be opened
     pub fn from_ledger(
         derivation_path: String,
         sequence_number: u64,

@@ -2,14 +2,14 @@
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
-use crate::aptos_cli::validator::generate_blob;
+use crate::libra2_cli::validator::generate_blob;
 use libra2::test::CliTestFramework;
 use libra2_cached_packages::libra2_stdlib;
 use libra2_config::{
     config::{NodeConfig, Peer, PeerRole, HANDSHAKE_VERSION},
     network_id::NetworkId,
 };
-use aptos_forge::{reconfig, LocalSwarm, NodeExt, Swarm, SwarmExt};
+use libra2_forge::{reconfig, LocalSwarm, NodeExt, Swarm, SwarmExt};
 use libra2_rest_client::{Client as RestClient, Client};
 use libra2_sdk::{
     transaction_builder::TransactionFactory,
@@ -76,7 +76,7 @@ pub fn add_node_to_seeds(
 }
 
 pub async fn create_and_fund_account(swarm: &'_ mut dyn Swarm, amount: u64) -> LocalAccount {
-    let mut info = swarm.aptos_public_info();
+    let mut info = swarm.libra2_public_info();
     info.create_and_fund_user_account(amount).await.unwrap()
 }
 
@@ -120,7 +120,7 @@ pub async fn execute_transactions(
 
     // Always ensure that at least one reconfiguration transaction is executed
     if !execute_epoch_changes {
-        aptos_forge::reconfig(
+        libra2_forge::reconfig(
             client,
             &transaction_factory,
             swarm.chain_info().root_account,
@@ -212,7 +212,7 @@ pub async fn check_create_mint_transfer_node(swarm: &mut LocalSwarm, idx: usize)
 
     // Create account 0, mint 10 coins and check balance
     let transaction_factory = TransactionFactory::new(swarm.chain_id());
-    let mut info = swarm.aptos_public_info_for_node(idx);
+    let mut info = swarm.libra2_public_info_for_node(idx);
     let mut account_0 = info.create_and_fund_user_account(10).await.unwrap();
     assert_balance(&client, &account_0, 10).await;
 

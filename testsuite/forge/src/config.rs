@@ -16,7 +16,7 @@ use std::{num::NonZeroUsize, sync::Arc};
 pub struct ForgeConfig {
     suite_name: Option<String>,
 
-    pub aptos_tests: Vec<Box<dyn AptosTest>>,
+    pub libra2_tests: Vec<Box<dyn AptosTest>>,
     pub admin_tests: Vec<Box<dyn AdminTest>>,
     pub network_tests: Vec<Box<dyn NetworkTest>>,
 
@@ -65,8 +65,8 @@ impl ForgeConfig {
         Self::default()
     }
 
-    pub fn add_aptos_test<T: AptosTest + 'static>(mut self, aptos_test: T) -> Self {
-        self.aptos_tests.push(Box::new(aptos_test));
+    pub fn add_libra2_test<T: AptosTest + 'static>(mut self, libra2_test: T) -> Self {
+        self.libra2_tests.push(Box::new(libra2_test));
         self
     }
 
@@ -79,8 +79,8 @@ impl ForgeConfig {
         self
     }
 
-    pub fn with_aptos_tests(mut self, aptos_tests: Vec<Box<dyn AptosTest>>) -> Self {
-        self.aptos_tests = aptos_tests;
+    pub fn with_libra2_tests(mut self, libra2_tests: Vec<Box<dyn AptosTest>>) -> Self {
+        self.libra2_tests = libra2_tests;
         self
     }
 
@@ -300,7 +300,7 @@ impl ForgeConfig {
     }
 
     pub fn number_of_tests(&self) -> usize {
-        self.admin_tests.len() + self.network_tests.len() + self.aptos_tests.len()
+        self.admin_tests.len() + self.network_tests.len() + self.libra2_tests.len()
     }
 
     pub fn all_tests(&self) -> Vec<Box<AnyTestRef<'_>>> {
@@ -313,7 +313,7 @@ impl ForgeConfig {
                     .map(|t| Box::new(AnyTestRef::Network(t.as_ref()))),
             )
             .chain(
-                self.aptos_tests
+                self.libra2_tests
                     .iter()
                     .map(|t| Box::new(AnyTestRef::Aptos(t.as_ref()))),
             )
@@ -338,7 +338,7 @@ impl Default for ForgeConfig {
         };
         Self {
             suite_name: None,
-            aptos_tests: vec![],
+            libra2_tests: vec![],
             admin_tests: vec![],
             network_tests: vec![],
             initial_validator_count: NonZeroUsize::new(1).unwrap(),

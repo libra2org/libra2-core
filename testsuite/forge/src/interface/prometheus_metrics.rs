@@ -95,7 +95,7 @@ async fn fetch_metric_counter(
 pub async fn fetch_validator_error_metrics(
     swarm: Arc<tokio::sync::RwLock<Box<dyn Swarm>>>,
 ) -> anyhow::Result<i64> {
-    let error_query = r#"aptos_error_log_count{role=~"validator"}"#;
+    let error_query = r#"libra2_error_log_count{role=~"validator"}"#;
     fetch_metric_counter(swarm, error_query).await
 }
 
@@ -171,12 +171,12 @@ pub async fn fetch_latency_breakdown(
     let consensus_proposal_to_commit_query = r#"quantile(0.67, rate(libra2_consensus_block_tracing_sum{role=~"validator", stage="committed"}[1m]) / rate(libra2_consensus_block_tracing_count{role=~"validator", stage="committed"}[1m]))"#;
 
     let mempool_to_block_creation_query = r#"sum(
-        rate(aptos_core_mempool_txn_commit_latency_sum{
+        rate(libra2_core_mempool_txn_commit_latency_sum{
             role=~"validator",
             stage="commit_accepted_block"
         }[1m])
     ) / sum(
-        rate(aptos_core_mempool_txn_commit_latency_count{
+        rate(libra2_core_mempool_txn_commit_latency_count{
             role=~"validator",
             stage="commit_accepted_block"
         }[1m])
@@ -254,7 +254,7 @@ pub async fn fetch_latency_breakdown(
         let indexer_processor_latency_query =
             r#"max(indexer_processor_data_processed_latency_in_secs{})"#;
         let indexer_sdk_processor_latency_query =
-            "max(aptos_procsdk_step__processed_transaction_latency_secs{})";
+            "max(libra2_procsdk_step__processed_transaction_latency_secs{})";
 
         let indexer_fullnode_processed_batch_samples = swarm
             .query_range_metrics(

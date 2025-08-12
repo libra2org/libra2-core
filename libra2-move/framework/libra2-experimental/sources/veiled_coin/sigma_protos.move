@@ -99,9 +99,9 @@ module libra2_experimental::sigma_protos {
     use std::option::Option;
     use std::vector;
 
-    use aptos_std::ristretto255_elgamal as elgamal;
-    use aptos_std::ristretto255_pedersen as pedersen;
-    use aptos_std::ristretto255::{Self, RistrettoPoint, Scalar};
+    use libra2_std::ristretto255_elgamal as elgamal;
+    use libra2_std::ristretto255_pedersen as pedersen;
+    use libra2_std::ristretto255::{Self, RistrettoPoint, Scalar};
 
     use libra2_experimental::helpers::cut_vector;
 

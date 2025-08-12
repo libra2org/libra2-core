@@ -7,8 +7,8 @@
 /// This reduces the latency to submit a cancellation transaction from 500 ms to 0.
 module libra2_experimental::pre_cancellation_tracker {
     use std::signer;
-    use aptos_std::big_ordered_map;
-    use aptos_std::big_ordered_map::BigOrderedMap;
+    use libra2_std::big_ordered_map;
+    use libra2_std::big_ordered_map::BigOrderedMap;
     use libra2_experimental::order_book_types::{
         AccountClientOrderId,
         new_account_client_order_id
@@ -59,7 +59,7 @@ module libra2_experimental::pre_cancellation_tracker {
             // If the mapping exists, then we remove the order ID with its expiration time.
             tracker.expiration_with_order_ids.remove(&order_id_with_expiration);
         };
-        let current_time = aptos_std::timestamp::now_microseconds();
+        let current_time = libra2_std::timestamp::now_microseconds();
         let expiration_time = current_time + tracker.pre_cancellation_window_secs;
         let order_id_with_expiration = ExpirationAndOrderId {
             expiration_time,
@@ -78,7 +78,7 @@ module libra2_experimental::pre_cancellation_tracker {
         let account_order_id = new_account_client_order_id(account, client_order_id);
         let expiration_time_option = tracker.account_order_ids.get(&account_order_id);
         if (expiration_time_option.is_some()) {
-            let current_time = aptos_std::timestamp::now_seconds();
+            let current_time = libra2_std::timestamp::now_seconds();
             let expiration_time = expiration_time_option.destroy_some();
             if (current_time > expiration_time) {
                 // This is possible as garbage collection may not be able to garbage collect all expired orders
@@ -96,7 +96,7 @@ module libra2_experimental::pre_cancellation_tracker {
 
     public(package) fun garbage_collect(tracker: &mut PreCancellationTracker) {
         let i = 0;
-        let current_time = aptos_std::timestamp::now_seconds();
+        let current_time = libra2_std::timestamp::now_seconds();
         while (i < MAX_ORDERS_GARBAGE_COLLECTED_PER_CALL
             && !tracker.expiration_with_order_ids.is_empty()) {
             let (front_k, _) = tracker.expiration_with_order_ids.borrow_front();

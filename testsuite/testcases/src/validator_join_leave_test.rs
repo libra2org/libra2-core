@@ -3,7 +3,7 @@
 
 use crate::{LoadDestination, NetworkLoadTest};
 use libra2::{account::create::DEFAULT_FUNDED_COINS, test::CliTestFramework};
-use aptos_forge::{
+use libra2_forge::{
     reconfig, NetworkContext, NetworkContextSynchronizer, NetworkTest, NodeExt, Result, Swarm,
     SwarmExt, Test, TestReport, FORGE_KEY_SEED,
 };
@@ -64,7 +64,7 @@ impl NetworkLoadTest for ValidatorJoinLeaveTest {
         )
         .await;
 
-        let mut public_info = { swarm.read().await.chain_info().into_aptos_public_info() };
+        let mut public_info = { swarm.read().await.chain_info().into_libra2_public_info() };
 
         let mut validator_cli_indices = Vec::new();
 

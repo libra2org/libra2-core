@@ -193,7 +193,7 @@ Wrong number of bytes were given as input when deserializing an Ed25519 signatur
 
 <a id="0x1_multi_ed25519_SIGNATURE_SCHEME_ID"></a>
 
-The identifier of the MultiEd25519 signature scheme, which is used when deriving Aptos authentication keys by hashing
+The identifier of the MultiEd25519 signature scheme, which is used when deriving Libra2 authentication keys by hashing
 it together with an MultiEd25519 public key.
 
 

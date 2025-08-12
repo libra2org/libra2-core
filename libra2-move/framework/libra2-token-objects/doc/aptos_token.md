@@ -384,7 +384,7 @@ Create a new collection
         <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/option.md#0x1_option_none">option::none</a>()
     };
 
-    <b>let</b> aptos_collection = <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
+    <b>let</b> libra2_collection = <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
         mutator_ref,
         royalty_mutator_ref,
         mutable_description,
@@ -396,7 +396,7 @@ Create a new collection
         tokens_burnable_by_creator,
         tokens_freezable_by_creator,
     };
-    <b>move_to</b>(&object_signer, aptos_collection);
+    <b>move_to</b>(&object_signer, libra2_collection);
     <a href="../../libra2-framework/doc/object.md#0x1_object_object_from_constructor_ref">object::object_from_constructor_ref</a>(&constructor_ref)
 }
 </code></pre>
@@ -1589,12 +1589,12 @@ With an existing collection, directly mint a soul bound token into the recipient
     <a href="collection.md#0x4_collection">collection</a>: Object&lt;T&gt;,
     description: String,
 ) <b>acquires</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
-    <b>let</b> aptos_collection = <a href="aptos_token.md#0x4_libra2_token_authorized_borrow_collection">authorized_borrow_collection</a>(&<a href="collection.md#0x4_collection">collection</a>, creator);
+    <b>let</b> libra2_collection = <a href="aptos_token.md#0x4_libra2_token_authorized_borrow_collection">authorized_borrow_collection</a>(&<a href="collection.md#0x4_collection">collection</a>, creator);
     <b>assert</b>!(
-        aptos_collection.mutable_description,
+        libra2_collection.mutable_description,
         <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_permission_denied">error::permission_denied</a>(<a href="aptos_token.md#0x4_libra2_token_EFIELD_NOT_MUTABLE">EFIELD_NOT_MUTABLE</a>),
     );
-    <a href="collection.md#0x4_collection_set_description">collection::set_description</a>(aptos_collection.mutator_ref.<a href="aptos_token.md#0x4_libra2_token_borrow">borrow</a>(), description);
+    <a href="collection.md#0x4_collection_set_description">collection::set_description</a>(libra2_collection.mutator_ref.<a href="aptos_token.md#0x4_libra2_token_borrow">borrow</a>(), description);
 }
 </code></pre>
 
@@ -1622,12 +1622,12 @@ With an existing collection, directly mint a soul bound token into the recipient
     <a href="collection.md#0x4_collection">collection</a>: Object&lt;T&gt;,
     <a href="royalty.md#0x4_royalty">royalty</a>: <a href="royalty.md#0x4_royalty_Royalty">royalty::Royalty</a>,
 ) <b>acquires</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
-    <b>let</b> aptos_collection = <a href="aptos_token.md#0x4_libra2_token_authorized_borrow_collection">authorized_borrow_collection</a>(&<a href="collection.md#0x4_collection">collection</a>, creator);
+    <b>let</b> libra2_collection = <a href="aptos_token.md#0x4_libra2_token_authorized_borrow_collection">authorized_borrow_collection</a>(&<a href="collection.md#0x4_collection">collection</a>, creator);
     <b>assert</b>!(
-        aptos_collection.royalty_mutator_ref.is_some(),
+        libra2_collection.royalty_mutator_ref.is_some(),
         <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_permission_denied">error::permission_denied</a>(<a href="aptos_token.md#0x4_libra2_token_EFIELD_NOT_MUTABLE">EFIELD_NOT_MUTABLE</a>),
     );
-    <a href="royalty.md#0x4_royalty_update">royalty::update</a>(aptos_collection.royalty_mutator_ref.<a href="aptos_token.md#0x4_libra2_token_borrow">borrow</a>(), <a href="royalty.md#0x4_royalty">royalty</a>);
+    <a href="royalty.md#0x4_royalty_update">royalty::update</a>(libra2_collection.royalty_mutator_ref.<a href="aptos_token.md#0x4_libra2_token_borrow">borrow</a>(), <a href="royalty.md#0x4_royalty">royalty</a>);
 }
 </code></pre>
 
@@ -1686,12 +1686,12 @@ With an existing collection, directly mint a soul bound token into the recipient
     <a href="collection.md#0x4_collection">collection</a>: Object&lt;T&gt;,
     uri: String,
 ) <b>acquires</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
-    <b>let</b> aptos_collection = <a href="aptos_token.md#0x4_libra2_token_authorized_borrow_collection">authorized_borrow_collection</a>(&<a href="collection.md#0x4_collection">collection</a>, creator);
+    <b>let</b> libra2_collection = <a href="aptos_token.md#0x4_libra2_token_authorized_borrow_collection">authorized_borrow_collection</a>(&<a href="collection.md#0x4_collection">collection</a>, creator);
     <b>assert</b>!(
-        aptos_collection.mutable_uri,
+        libra2_collection.mutable_uri,
         <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_permission_denied">error::permission_denied</a>(<a href="aptos_token.md#0x4_libra2_token_EFIELD_NOT_MUTABLE">EFIELD_NOT_MUTABLE</a>),
     );
-    <a href="collection.md#0x4_collection_set_uri">collection::set_uri</a>(aptos_collection.mutator_ref.<a href="aptos_token.md#0x4_libra2_token_borrow">borrow</a>(), uri);
+    <a href="collection.md#0x4_collection_set_uri">collection::set_uri</a>(libra2_collection.mutator_ref.<a href="aptos_token.md#0x4_libra2_token_borrow">borrow</a>(), uri);
 }
 </code></pre>
 

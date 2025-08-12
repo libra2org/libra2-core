@@ -9,7 +9,7 @@
 /// the special multisig transaction flow. However, owners can create a transaction to change the auth key to match a
 /// private key off chain if so desired.
 ///
-/// Transactions need to be executed in order of creation, similar to transactions for a normal Aptos account (enforced
+/// Transactions need to be executed in order of creation, similar to transactions for a normal Libra2 account (enforced
 /// with account nonce).
 ///
 /// The flow is like below:
@@ -43,8 +43,8 @@ module libra2_framework::multisig_account {
     use libra2_framework::coin;
     use libra2_framework::event::{EventHandle, emit_event, emit};
     use libra2_framework::timestamp::now_seconds;
-    use aptos_std::simple_map::{Self, SimpleMap};
-    use aptos_std::table::{Self, Table};
+    use libra2_std::simple_map::{Self, SimpleMap};
+    use libra2_std::table::{Self, Table};
     use std::bcs::to_bytes;
     use std::error;
     use std::hash::sha3_256;
@@ -1532,9 +1532,9 @@ module libra2_framework::multisig_account {
     #[test_only]
     use libra2_framework::timestamp;
     #[test_only]
-    use aptos_std::from_bcs;
+    use libra2_std::from_bcs;
     #[test_only]
-    use aptos_std::multi_ed25519;
+    use libra2_std::multi_ed25519;
     #[test_only]
     use std::string::utf8;
     use std::features;

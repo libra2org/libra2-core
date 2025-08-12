@@ -468,7 +468,7 @@ async fn send_telemetry_event(
         events: vec![telemetry_event],
     };
     if telemetry_sender.is_none() {
-        // telemetry_sender is None for Aptos CLI.
+        // telemetry_sender is None for Libra2 CLI.
         spawn_event_sender_to_google_analytics(
             api_secret,
             measurement_id,

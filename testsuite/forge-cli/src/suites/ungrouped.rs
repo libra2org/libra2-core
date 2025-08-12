@@ -15,7 +15,7 @@ use super::{
 use anyhow::Result;
 use libra2_cached_packages::libra2_stdlib;
 use libra2_config::config::{ConsensusConfig, MempoolConfig, NodeConfig};
-use aptos_forge::{
+use libra2_forge::{
     args::TransactionTypeArg,
     emitter::NumAccountsMode,
     success_criteria::{
@@ -32,7 +32,7 @@ use libra2_sdk::{
     move_types::account_address::AccountAddress,
     types::on_chain_config::{OnChainConsensusConfig, OnChainExecutionConfig},
 };
-use aptos_testcases::{
+use libra2_testcases::{
     self,
     consensus_reliability_tests::ChangingWorkingQuorumTest,
     forge_setup_test::ForgeSetupTest,
@@ -170,13 +170,13 @@ pub fn run_forever() -> ForgeConfig {
     ForgeConfig::default()
         .add_admin_test(GetMetadata)
         .with_genesis_module_bundle(libra2_cached_packages::head_release_bundle().clone())
-        .add_aptos_test(RunForever)
+        .add_libra2_test(RunForever)
 }
 
 pub fn local_test_suite() -> ForgeConfig {
     ForgeConfig::default()
-        .add_aptos_test(FundAccount)
-        .add_aptos_test(TransferCoins)
+        .add_libra2_test(FundAccount)
+        .add_libra2_test(TransferCoins)
         .add_admin_test(GetMetadata)
         .add_network_test(RestartValidator)
         .add_network_test(EmitTransaction)
@@ -186,8 +186,8 @@ pub fn local_test_suite() -> ForgeConfig {
 pub fn k8s_test_suite() -> ForgeConfig {
     ForgeConfig::default()
         .with_initial_validator_count(NonZeroUsize::new(30).unwrap())
-        .add_aptos_test(FundAccount)
-        .add_aptos_test(TransferCoins)
+        .add_libra2_test(FundAccount)
+        .add_libra2_test(TransferCoins)
         .add_admin_test(GetMetadata)
         .add_network_test(EmitTransaction)
         .add_network_test(FrameworkUpgrade)
@@ -1085,7 +1085,7 @@ impl AptosTest for TransferCoins {
         check_account_balance(&client, payer.address(), 10000).await?;
 
         let transfer_txn = payer.sign_with_transaction_builder(
-            ctx.aptos_transaction_factory()
+            ctx.libra2_transaction_factory()
                 .payload(libra2_stdlib::libra2_coin_transfer(payee.address(), 10)),
         );
         client.submit_and_wait(&transfer_txn).await?;

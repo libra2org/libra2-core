@@ -1,14 +1,14 @@
 module libra2_framework::account_abstraction {
     use std::bcs;
     use std::hash;
-    use aptos_std::from_bcs;
+    use libra2_std::from_bcs;
 
     use std::error;
     use std::option::{Self, Option};
     use std::signer;
     use std::string::{Self, String};
-    use aptos_std::ordered_map::{Self, OrderedMap};
-    use aptos_std::big_ordered_map::{Self, BigOrderedMap};
+    use libra2_std::ordered_map::{Self, OrderedMap};
+    use libra2_std::big_ordered_map::{Self, BigOrderedMap};
     use libra2_framework::create_signer;
     use libra2_framework::event;
     use libra2_framework::features;

@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
-    smoke_test_environment::new_local_swarm_with_aptos,
+    smoke_test_environment::new_local_swarm_with_libra2,
     state_sync_utils::create_fullnode,
     utils::{create_test_accounts, execute_transactions, MAX_HEALTHY_WAIT_SECS},
 };
@@ -14,7 +14,7 @@ use libra2_db_indexer_schemas::{
     metadata::MetadataKey,
     schema::{indexer_metadata::InternalIndexerMetadataSchema, state_keys::StateKeysSchema},
 };
-use aptos_forge::{NodeExt, Result, Swarm, SwarmExt};
+use libra2_forge::{NodeExt, Result, Swarm, SwarmExt};
 use libra2_indexer_grpc_table_info::internal_indexer_db_service::InternalIndexerDBService;
 use libra2_rest_client::Client as RestClient;
 use libra2_schemadb::DB;
@@ -26,7 +26,7 @@ use std::{
 };
 #[tokio::test]
 async fn test_indexer() {
-    let mut swarm = new_local_swarm_with_aptos(1).await;
+    let mut swarm = new_local_swarm_with_libra2(1).await;
 
     let version = swarm.versions().max().unwrap();
     let fullnode_peer_id = swarm
@@ -53,10 +53,10 @@ async fn test_indexer() {
 
     let client = fullnode.rest_client();
 
-    let account1 = swarm.aptos_public_info().random_account();
-    let account2 = swarm.aptos_public_info().random_account();
+    let account1 = swarm.libra2_public_info().random_account();
+    let account2 = swarm.libra2_public_info().random_account();
 
-    let mut chain_info = swarm.chain_info().into_aptos_public_info();
+    let mut chain_info = swarm.chain_info().into_libra2_public_info();
     let factory = chain_info.transaction_factory();
     chain_info
         .create_user_account(account1.public_key())
@@ -118,7 +118,7 @@ fn enable_internal_indexer(node_config: &mut NodeConfig) {
 #[tokio::test]
 async fn test_internal_indexer_with_fast_sync() {
     // Create a swarm with 2 validators
-    let mut swarm = new_local_swarm_with_aptos(1).await;
+    let mut swarm = new_local_swarm_with_libra2(1).await;
 
     let validator_peer_id = swarm.validators().next().unwrap().peer_id();
     let validator_client = swarm.validator(validator_peer_id).unwrap().rest_client();

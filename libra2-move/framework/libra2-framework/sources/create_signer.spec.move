@@ -3,7 +3,7 @@ spec libra2_framework::create_signer {
 
     /// <high-level-req>
     /// No.: 1
-    /// Requirement: Obtaining a signer for an arbitrary account should only be available within the Aptos Framework.
+    /// Requirement: Obtaining a signer for an arbitrary account should only be available within the Libra2 Framework.
     /// Criticality: Critical
     /// Implementation: The create_signer::create_signer function only allows friend modules to retrieve the signer for
     /// an arbitrarily address.

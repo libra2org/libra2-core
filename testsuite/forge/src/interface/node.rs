@@ -219,7 +219,7 @@ pub trait NodeExt: Node {
         if let Some(direction) = direction {
             map.insert("direction".to_string(), direction.to_string());
         }
-        self.get_metric_with_fields_i64("aptos_connections", map)
+        self.get_metric_with_fields_i64("libra2_connections", map)
             .await
     }
 

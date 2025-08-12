@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use super::{FunderHealthMessage, FunderTrait};
-use crate::endpoints::{AptosTapError, AptosTapErrorCode};
+use crate::endpoints::{Libra2TapError, Libra2TapErrorCode};
 use anyhow::{Context, Result};
 use libra2_logger::info;
 use libra2_sdk::{
@@ -130,7 +130,7 @@ impl MintFunder {
         }
     }
 
-    async fn get_gas_unit_price(&self) -> Result<u64, AptosTapError> {
+    async fn get_gas_unit_price(&self) -> Result<u64, Libra2TapError> {
         match self.txn_config.gas_unit_price_override {
             Some(gas_unit_price) => Ok(gas_unit_price),
             None => self
@@ -138,12 +138,12 @@ impl MintFunder {
                 .get_gas_unit_price()
                 .await
                 .map_err(|e| {
-                    AptosTapError::new_with_error_code(e, AptosTapErrorCode::AptosApiError)
+                    Libra2TapError::new_with_error_code(e, Libra2TapErrorCode::Libra2ApiError)
                 }),
         }
     }
 
-    async fn get_transaction_factory(&self) -> Result<TransactionFactory, AptosTapError> {
+    async fn get_transaction_factory(&self) -> Result<TransactionFactory, Libra2TapError> {
         Ok(self
             .transaction_factory
             .clone()
@@ -234,7 +234,7 @@ impl MintFunder {
         receiver_address: AccountAddress,
         check_only: bool,
         wait_for_transactions: bool,
-    ) -> Result<Vec<SignedTransaction>, AptosTapError> {
+    ) -> Result<Vec<SignedTransaction>, Libra2TapError> {
         let (_faucet_seq, receiver_seq) = update_sequence_numbers(
             client,
             &self.faucet_account,
@@ -246,12 +246,12 @@ impl MintFunder {
         .await?;
 
         if receiver_seq.is_some() && amount == 0 {
-            return Err(AptosTapError::new(
+            return Err(Libra2TapError::new(
                 format!(
                     "Account {} already exists and amount asked for is 0",
                     receiver_address
                 ),
-                AptosTapErrorCode::InvalidRequest,
+                Libra2TapErrorCode::InvalidRequest,
             ));
         }
 
@@ -292,7 +292,7 @@ impl FunderTrait for MintFunder {
         receiver_address: AccountAddress,
         check_only: bool,
         did_bypass_checkers: bool,
-    ) -> Result<Vec<SignedTransaction>, AptosTapError> {
+    ) -> Result<Vec<SignedTransaction>, Libra2TapError> {
         let client = self.get_api_client();
         let amount = self.get_amount(amount, did_bypass_checkers);
         self.process(

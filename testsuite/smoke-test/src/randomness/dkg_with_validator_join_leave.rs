@@ -6,7 +6,7 @@ use crate::{
     smoke_test_environment::SwarmBuilder,
 };
 use libra2::test::CliTestFramework;
-use aptos_forge::{Node, Swarm};
+use libra2_forge::{Node, Swarm};
 use libra2_types::on_chain_config::OnChainRandomnessConfig;
 use std::sync::Arc;
 
@@ -18,7 +18,7 @@ async fn dkg_with_validator_join_leave() {
 
     let swarm = SwarmBuilder::new_local(7)
         .with_num_fullnodes(1)
-        .with_aptos()
+        .with_libra2()
         .with_init_genesis_config(Arc::new(move |conf| {
             conf.epoch_duration_secs = epoch_duration_secs;
             conf.allow_new_validators = true;
@@ -72,7 +72,7 @@ async fn dkg_with_validator_join_leave() {
     };
 
     println!("Give the victim some money so it can first send transactions.");
-    let mut public_info = swarm.chain_info().into_aptos_public_info();
+    let mut public_info = swarm.chain_info().into_libra2_public_info();
     public_info
         .mint(victim_validator_addr, 100000000000000)
         .await

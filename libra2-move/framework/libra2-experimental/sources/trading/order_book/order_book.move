@@ -38,7 +38,7 @@ module libra2_experimental::order_book {
         new_pending_order_book_index
     };
     #[test_only]
-    use aptos_std::crypto_algebra::order;
+    use libra2_std::crypto_algebra::order;
     #[test_only]
     use libra2_experimental::order_book_types::{
         new_order_id_type,

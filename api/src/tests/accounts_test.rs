@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use super::{new_test_context, new_test_context_with_orderless_flags};
-use aptos_api_test_context::{current_function_name, find_value, TestContext};
+use libra2_api_test_context::{current_function_name, find_value, TestContext};
 use libra2_api_types::{MoveModuleBytecode, MoveResource, MoveStructTag, StateKeyWrapper};
 use libra2_cached_packages::libra2_stdlib;
 use libra2_sdk::types::APTOS_COIN_TYPE_STR;

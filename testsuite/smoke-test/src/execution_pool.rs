@@ -6,7 +6,7 @@ use crate::{
     utils::{update_consensus_config, MAX_CATCH_UP_WAIT_SECS},
 };
 use libra2::test::CliTestFramework;
-use aptos_forge::{LocalSwarm, NodeExt, Swarm, SwarmExt};
+use libra2_forge::{LocalSwarm, NodeExt, Swarm, SwarmExt};
 use libra2_rest_client::Client;
 use libra2_types::on_chain_config::{
     ConsensusAlgorithmConfig, OnChainConsensusConfig, ValidatorTxnConfig,
@@ -68,7 +68,7 @@ async fn initialize_swarm_with_window(
                 window_size,
             };
         }))
-        .with_aptos()
+        .with_libra2()
         .build_with_cli(0)
         .await;
 

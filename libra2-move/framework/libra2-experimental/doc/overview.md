@@ -1,7 +1,7 @@
 
-<a id="@Aptos_Experimental_Framework_0"></a>
+<a id="@Libra2_Experimental_Framework_0"></a>
 
-# Aptos Experimental Framework
+# Libra2 Experimental Framework
 
 
 This is the reference documentation of the Aptos experimental framework.

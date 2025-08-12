@@ -184,7 +184,7 @@ This reduces the latency to submit a cancellation transaction from 500 ms to 0.
         // If the mapping <b>exists</b>, then we remove the order ID <b>with</b> its expiration time.
         tracker.expiration_with_order_ids.remove(&order_id_with_expiration);
     };
-    <b>let</b> current_time = aptos_std::timestamp::now_microseconds();
+    <b>let</b> current_time = libra2_std::timestamp::now_microseconds();
     <b>let</b> expiration_time = current_time + tracker.pre_cancellation_window_secs;
     <b>let</b> order_id_with_expiration = <a href="pre_cancellation_tracker.md#0x7_pre_cancellation_tracker_ExpirationAndOrderId">ExpirationAndOrderId</a> {
         expiration_time,
@@ -223,7 +223,7 @@ This reduces the latency to submit a cancellation transaction from 500 ms to 0.
     <b>let</b> account_order_id = new_account_client_order_id(<a href="../../libra2-framework/doc/account.md#0x1_account">account</a>, client_order_id);
     <b>let</b> expiration_time_option = tracker.account_order_ids.get(&account_order_id);
     <b>if</b> (expiration_time_option.is_some()) {
-        <b>let</b> current_time = aptos_std::timestamp::now_seconds();
+        <b>let</b> current_time = libra2_std::timestamp::now_seconds();
         <b>let</b> expiration_time = expiration_time_option.destroy_some();
         <b>if</b> (current_time &gt; expiration_time) {
             // This is possible <b>as</b> garbage collection may not be able <b>to</b> garbage collect all expired orders
@@ -261,7 +261,7 @@ This reduces the latency to submit a cancellation transaction from 500 ms to 0.
 
 <pre><code><b>public</b>(<b>package</b>) <b>fun</b> <a href="pre_cancellation_tracker.md#0x7_pre_cancellation_tracker_garbage_collect">garbage_collect</a>(tracker: &<b>mut</b> <a href="pre_cancellation_tracker.md#0x7_pre_cancellation_tracker_PreCancellationTracker">PreCancellationTracker</a>) {
     <b>let</b> i = 0;
-    <b>let</b> current_time = aptos_std::timestamp::now_seconds();
+    <b>let</b> current_time = libra2_std::timestamp::now_seconds();
     <b>while</b> (i &lt; <a href="pre_cancellation_tracker.md#0x7_pre_cancellation_tracker_MAX_ORDERS_GARBAGE_COLLECTED_PER_CALL">MAX_ORDERS_GARBAGE_COLLECTED_PER_CALL</a>
         && !tracker.expiration_with_order_ids.is_empty()) {
         <b>let</b> (front_k, _) = tracker.expiration_with_order_ids.borrow_front();

@@ -145,7 +145,7 @@ pub use verifier::view_function::determine_is_view;
 
 /// This trait describes the VM's validation interfaces.
 pub trait VMValidator {
-    /// Executes the prologue of the Aptos Account and verifies that the transaction is valid.
+    /// Executes the prologue of the Libra2 Account and verifies that the transaction is valid.
     fn validate_transaction(
         &self,
         transaction: SignedTransaction,

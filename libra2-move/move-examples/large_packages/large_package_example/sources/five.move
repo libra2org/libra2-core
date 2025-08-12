@@ -6,7 +6,7 @@
 /// import Tabs from '@theme/Tabs';
 /// import TabItem from '@theme/TabItem';
 ///
-/// # Integrate with the Aptos Blockchain
+/// # Integrate with the Libra2 Blockchain
 ///
 /// If you provide blockchain services to your customers and wish to add the Aptos blockchain to your platform, then this guide is for you. This system integrators guide will walk you through all you need to integrate the Aptos blockchain into your platform.
 ///
@@ -35,15 +35,15 @@
 /// 1. [Testnet](https://fullnode.testnet.aptoslabs.com/v1/spec#/) -- a shared resource for the community, data will be preserved, network configuration will mimic Mainnet.
 /// 1. [Mainnet](https://fullnode.mainnet.aptoslabs.com/v1/spec#/) -- a production network with real assets.
 ///
-/// See [Aptos Blockchain Networks](../nodes/networks.md) for full details on each environment.
+/// See [Libra2 Blockchain Networks](../nodes/networks.md) for full details on each environment.
 ///
 /// ### Run a localnet
 ///
 /// There are two options for running a localnet:
 /// * Directly [run a localnet](../nodes/local-testnet/run-a-local-testnet.md) using either the [Aptos-core source code](../nodes/local-testnet/run-a-local-testnet.md#using-the-aptos-core-source-code) or a [Docker image](../nodes/local-testnet/run-a-local-testnet.md#using-docker). These paths are useful for testing changes to the Aptos-core codebase or framework, or for building services on top of the Aptos blockchain, respectively.
-/// * [Install the Aptos CLI](../tools/install-cli/index.md) and 2) start a [local node with a faucet](../nodes/local-testnet/using-cli-to-run-a-local-testnet.md#starting-a-local-testnet-with-a-faucet). This path is useful for developing on the Aptos blockchain, debugging Move contracts, and testing node operations.
+/// * [Install the Libra2 CLI](../tools/install-cli/index.md) and 2) start a [local node with a faucet](../nodes/local-testnet/using-cli-to-run-a-local-testnet.md#starting-a-local-testnet-with-a-faucet). This path is useful for developing on the Aptos blockchain, debugging Move contracts, and testing node operations.
 ///
-/// Either of these methods will expose a [REST API service](../integration/fullnode-rest-api.md) at `http://127.0.0.1:8080` and a Faucet API service at `http://127.0.0.1:8000` for option 1 run a localnet or `http://127.0.0.1:8081` for option 2 install the Aptos CLI. The applications will output the location of the services.
+/// Either of these methods will expose a [REST API service](../integration/fullnode-rest-api.md) at `http://127.0.0.1:8080` and a Faucet API service at `http://127.0.0.1:8000` for option 1 run a localnet or `http://127.0.0.1:8081` for option 2 install the Libra2 CLI. The applications will output the location of the services.
 ///
 /// ### Production network access
 ///
@@ -79,7 +79,7 @@
 ///
 /// ### SDKs and tools
 ///
-/// Aptos currently provides three SDKs:
+/// Libra2 currently provides three SDKs:
 /// 1. [Typescript](../sdks/ts-sdk/index.md)
 /// 2. [Python](../sdks/python-sdk.md)
 /// 3. [Rust](../sdks/rust-sdk.md)
@@ -89,8 +89,8 @@
 /// ## Accounts on Aptos
 ///
 ///
-/// At creation, an [Aptos account](https://github.com/aptos-labs/aptos-core/blob/88c9aab3982c246f8aa75eb2caf8c8ab1dcab491/libra2-move/framework/libra2-framework/sources/account.move#L23) contains:
-/// * A [resource containing Aptos Coin](https://github.com/aptos-labs/aptos-core/blob/60751b5ed44984178c7163933da3d1b18ad80388/libra2-move/framework/libra2-framework/sources/coin.move#L50) and deposit and withdrawal of coins from that resource.
+/// At creation, an [Libra2 account](https://github.com/aptos-labs/aptos-core/blob/88c9aab3982c246f8aa75eb2caf8c8ab1dcab491/libra2-move/framework/libra2-framework/sources/account.move#L23) contains:
+/// * A [resource containing Libra2 Coin](https://github.com/aptos-labs/aptos-core/blob/60751b5ed44984178c7163933da3d1b18ad80388/libra2-move/framework/libra2-framework/sources/coin.move#L50) and deposit and withdrawal of coins from that resource.
 /// * An authentication key associated with their current public, private key(s).
 /// * A strictly increasing [sequence number](../concepts/accounts.md#account-sequence-number) that represents the account's next transaction's sequence number to prevent replay attacks.
 /// * A strictly increasing number that represents the next distinct GUID creation number.
@@ -108,7 +108,7 @@
 ///
 /// Aptos supports two methods for constructing transactions:
 ///
-/// - Using the Aptos client libraries to generate native BCS transactions.
+/// - Using the Libra2 client libraries to generate native BCS transactions.
 /// - Constructing JSON-encoded objects and interacting with the REST API to generate native transactions.
 ///
 /// The preferred approach is to directly generate native BCS transactions. Generating them via the REST API enables rapid development at the cost of trusting the fullnode to generate the transaction correctly.
@@ -128,7 +128,7 @@
 /// - An entry point (formerly known as script function)
 /// - A script (payload)
 ///
-/// Both [Python](https://github.com/aptos-labs/aptos-core/blob/3973311dac6bb9348bfc81cf983c2a1be11f1b48/ecosystem/python/sdk/libra2_sdk/client.py#L256) and [TypeScript](https://github.com/aptos-labs/aptos-core/blob/3973311dac6bb9348bfc81cf983c2a1be11f1b48/ecosystem/typescript/sdk/src/aptos_client.test.ts#L93) support the generation of transactions that target entry points. This guide points out many of those entry points, such as `libra2_account::transfer` and `libra2_account::create_account`.
+/// Both [Python](https://github.com/aptos-labs/aptos-core/blob/3973311dac6bb9348bfc81cf983c2a1be11f1b48/ecosystem/python/sdk/libra2_sdk/client.py#L256) and [TypeScript](https://github.com/aptos-labs/aptos-core/blob/3973311dac6bb9348bfc81cf983c2a1be11f1b48/ecosystem/typescript/sdk/src/libra2_client.test.ts#L93) support the generation of transactions that target entry points. This guide points out many of those entry points, such as `libra2_account::transfer` and `libra2_account::create_account`.
 ///
 /// Most basic operations on the Aptos blockchain should be available via entry point calls. While one could submit multiple transactions calling entry points in series, such operations benefit from being called atomically from a single transaction. A script payload transaction can call any public (entry) function defined within any module. Here's an example [Move script](https://github.com/aptos-labs/aptos-core/tree/main/libra2-move/move-examples/scripts/two_by_two_transfer) that uses a MultiAgent transaction to extract funds from two accounts and deposit them into two other accounts. This is a [Python example](https://github.com/aptos-labs/aptos-core/blob/main/ecosystem/python/sdk/examples/transfer-two-by-two.py) that uses the bytecode generated by compiling that script. Currently there is limited support for script payloads in TypeScript.
 ///
@@ -142,7 +142,7 @@
 /// To facilitate evaluation of transactions as well as gas estimation, Aptos supports a simulation API that does not require and should not contain valid signatures on transactions.
 ///
 ///
-/// Both the [Typescript SDK](https://github.com/aptos-labs/aptos-core/blob/9b85d41ed8ef4a61a9cd64f9de511654fcc02024/ecosystem/typescript/sdk/src/aptos_client.ts#L413) and [Python SDK](https://github.com/aptos-labs/aptos-core/blob/main/ecosystem/python/sdk/examples/simulate-transfer-coin.py) support the simulation API. Note the output and gas used may change based upon the state of the account. For gas estimations, we recommend that the maximum gas amount be larger than the amount quoted by this API.
+/// Both the [Typescript SDK](https://github.com/aptos-labs/aptos-core/blob/9b85d41ed8ef4a61a9cd64f9de511654fcc02024/ecosystem/typescript/sdk/src/libra2_client.ts#L413) and [Python SDK](https://github.com/aptos-labs/aptos-core/blob/main/ecosystem/python/sdk/examples/simulate-transfer-coin.py) support the simulation API. Note the output and gas used may change based upon the state of the account. For gas estimations, we recommend that the maximum gas amount be larger than the amount quoted by this API.
 ///
 /// ## Viewing current and historical state
 ///
@@ -171,11 +171,11 @@
 ///
 /// Aptos has a standard [Coin type](https://github.com/aptos-labs/aptos-core/blob/main/libra2-move/framework/libra2-framework/sources/coin.move). Different types of coins can be represented in this type through the use of distinct structs that represent the type parameter or generic for `Coin<T>`.
 ///
-/// Coins are stored within an account under the resource `CoinStore<T>`. At account creation, each user has the resource `CoinStore<0x1::libra2_coin::Libra2Coin>` or `CoinStore<Libra2Coin>`, for short. Within this resource is the Aptos coin: `Coin<Libra2Coin>`.
+/// Coins are stored within an account under the resource `CoinStore<T>`. At account creation, each user has the resource `CoinStore<0x1::libra2_coin::Libra2Coin>` or `CoinStore<Libra2Coin>`, for short. Within this resource is the Libra2 coin: `Coin<Libra2Coin>`.
 ///
 /// ### Transferring coins between users
 ///
-/// Coins can be transferred between users via the [`coin::transfer`](https://github.com/aptos-labs/aptos-core/blob/36a7c00b29a457469264187d8e44070b2d5391fe/libra2-move/framework/libra2-framework/sources/coin.move#L307) function for all coins and [`libra2_account::transfer`](https://github.com/aptos-labs/aptos-core/blob/88c9aab3982c246f8aa75eb2caf8c8ab1dcab491/libra2-move/framework/libra2-framework/sources/libra2_account.move#L18) for Aptos coins. The advantage of the latter function is that it creates the destination account if it does not exist.
+/// Coins can be transferred between users via the [`coin::transfer`](https://github.com/aptos-labs/aptos-core/blob/36a7c00b29a457469264187d8e44070b2d5391fe/libra2-move/framework/libra2-framework/sources/coin.move#L307) function for all coins and [`libra2_account::transfer`](https://github.com/aptos-labs/aptos-core/blob/88c9aab3982c246f8aa75eb2caf8c8ab1dcab491/libra2-move/framework/libra2-framework/sources/libra2_account.move#L18) for Libra2 coins. The advantage of the latter function is that it creates the destination account if it does not exist.
 ///
 /// :::caution
 /// It is important to note that if an account has not registered a `CoinStore<T>` for a given `T`, then any transfer of type `T` to that account will fail.
@@ -183,7 +183,7 @@
 ///
 /// ### Current balance for a coin
 ///
-/// The current balance for a `Coin<T>` where `T` is the Aptos coin is available at the account resources URL: `https://{rest_api_server}/accounts/{address}/resource/0x1::coin::CoinStore<0x1::libra2_coin::Libra2Coin>`. The balance is stored within `coin::amount`. The resource also contains the total number of deposit and withdraw events, and the `counter` value within `deposit_events` and `withdraw_events`, respectively.
+/// The current balance for a `Coin<T>` where `T` is the Libra2 coin is available at the account resources URL: `https://{rest_api_server}/accounts/{address}/resource/0x1::coin::CoinStore<0x1::libra2_coin::Libra2Coin>`. The balance is stored within `coin::amount`. The resource also contains the total number of deposit and withdraw events, and the `counter` value within `deposit_events` and `withdraw_events`, respectively.
 ///
 /// ```
 /// {

@@ -7,7 +7,7 @@
 ///
 /// DEPRECATED: since it's implementation is inneficient, it
 /// has been deprecated in favor of `ordered_map.move`.
-module aptos_std::simple_map {
+module libra2_std::simple_map {
     use std::error;
     use std::option;
     use std::vector;

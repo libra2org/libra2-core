@@ -5,7 +5,7 @@
 #[cfg(test)]
 mod tests {
     use crate::tests::new_test_context_with_orderless_flags;
-    use aptos_api_test_context::current_function_name;
+    use libra2_api_test_context::current_function_name;
     use libra2_crypto::{
         ed25519::Ed25519PrivateKey,
         secp256r1_ecdsa::{

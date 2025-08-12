@@ -187,7 +187,7 @@ class ForgeRunnerTests(unittest.TestCase):
                 "run",
                 "--cargo-arg",
                 "-p",
-                "aptos-forge-cli",
+                "libra2-forge-cli",
                 "--",
                 "--suite",
                 "banana",
@@ -699,12 +699,12 @@ class ForgeMainTests(unittest.TestCase, AssertFixtureMixin):
                 ),
                 FakeCommand(
                     "aws eks list-clusters",
-                    RunResult(0, b'{ "clusters": [ "aptos-forge-big-1" ] }'),
+                    RunResult(0, b'{ "clusters": [ "libra2-forge-big-1" ] }'),
                 ),
                 FakeCommand(
                     # NOTE: with multi-cloud support, we set the kubeconfig to ensure auth before continuing
                     # See changes in: https://github.com/aptos-labs/aptos-core/pull/6166
-                    "aws eks update-kubeconfig --name aptos-forge-big-1 --kubeconfig temp1",
+                    "aws eks update-kubeconfig --name libra2-forge-big-1 --kubeconfig temp1",
                     RunResult(0, b""),
                 ),
                 FakeCommand("git rev-parse HEAD~0", RunResult(0, b"banana")),
@@ -803,8 +803,8 @@ class ForgeMainTests(unittest.TestCase, AssertFixtureMixin):
                     "S3ForgeConfigBackend",
                     lambda *_: FakeConfigBackend(
                         {
-                            "enabled_clusters": ["aptos-forge-big-1"],
-                            "all_clusters": ["aptos-forge-big-1", "banana"],
+                            "enabled_clusters": ["libra2-forge-big-1"],
+                            "all_clusters": ["libra2-forge-big-1", "banana"],
                             "test_suites": {},
                         }
                     ),
@@ -823,7 +823,7 @@ class ForgeMainTests(unittest.TestCase, AssertFixtureMixin):
                     "--no-log-metadata",
                     "test",
                     "--forge-cluster-name",
-                    "aptos-forge-big-1",
+                    "libra2-forge-big-1",
                     "--forge-report",
                     "temp-report",
                     "--forge-pre-comment",
@@ -866,8 +866,8 @@ class TestListClusters(unittest.TestCase):
             AwsListClusterResult(
                 clusters=[
                     "banana-fake-1",
-                    "aptos-forge-banana-1",
-                    "aptos-forge-potato-2",
+                    "libra2-forge-banana-1",
+                    "libra2-forge-potato-2",
                 ]
             ),
         )
@@ -879,7 +879,7 @@ class TestListClusters(unittest.TestCase):
             ]
         )
         clusters = list(list_eks_clusters(shell).keys())
-        self.assertEqual(clusters, ["aptos-forge-banana-1", "aptos-forge-potato-2"])
+        self.assertEqual(clusters, ["libra2-forge-banana-1", "libra2-forge-potato-2"])
         shell.assert_commands(self)
 
     def testListClustersFails(self) -> None:
@@ -904,7 +904,7 @@ class GetForgeJobsTests(unittest.IsolatedAsyncioTestCase):
     maxDiff = None
 
     async def testGetAllForgeJobs(self) -> None:
-        fake_clusters = ["aptos-forge-banana", "aptos-forge-apple-2"]
+        fake_clusters = ["libra2-forge-banana", "libra2-forge-apple-2"]
 
         # The first set of test runner pods and their test pods
         fake_first_pods = GetPodsResult(
@@ -972,7 +972,7 @@ class GetForgeJobsTests(unittest.IsolatedAsyncioTestCase):
         shell = SpyShell(
             [
                 FakeCommand(
-                    "aws eks update-kubeconfig --name aptos-forge-banana --kubeconfig temp1",
+                    "aws eks update-kubeconfig --name libra2-forge-banana --kubeconfig temp1",
                     RunResult(0, b""),
                 ),
                 FakeCommand(
@@ -998,7 +998,7 @@ class GetForgeJobsTests(unittest.IsolatedAsyncioTestCase):
                     ),
                 ),
                 FakeCommand(
-                    "aws eks update-kubeconfig --name aptos-forge-apple-2 --kubeconfig temp2",
+                    "aws eks update-kubeconfig --name libra2-forge-apple-2 --kubeconfig temp2",
                     RunResult(0, b""),
                 ),
                 FakeCommand(
@@ -1035,7 +1035,7 @@ class GetForgeJobsTests(unittest.IsolatedAsyncioTestCase):
                 name="forge-first",
                 phase="Running",
                 cluster=ForgeCluster(
-                    name="aptos-forge-banana",
+                    name="libra2-forge-banana",
                     kubeconf="temp1",
                 ),
                 num_validators=2,
@@ -1044,7 +1044,7 @@ class GetForgeJobsTests(unittest.IsolatedAsyncioTestCase):
                 name="forge-failed",
                 phase="Failed",
                 cluster=ForgeCluster(
-                    name="aptos-forge-banana",
+                    name="libra2-forge-banana",
                     kubeconf="temp1",
                 ),
                 num_validators=2,
@@ -1054,7 +1054,7 @@ class GetForgeJobsTests(unittest.IsolatedAsyncioTestCase):
                 name="forge-second",
                 phase="Running",
                 cluster=ForgeCluster(
-                    name="aptos-forge-apple-2",
+                    name="libra2-forge-apple-2",
                     kubeconf="temp2",
                 ),
                 num_validators=1,
@@ -1064,7 +1064,7 @@ class GetForgeJobsTests(unittest.IsolatedAsyncioTestCase):
                 name="forge-succeeded",
                 phase="Succeeded",
                 cluster=ForgeCluster(
-                    name="aptos-forge-apple-2",
+                    name="libra2-forge-apple-2",
                     kubeconf="temp2",
                 ),
             ),

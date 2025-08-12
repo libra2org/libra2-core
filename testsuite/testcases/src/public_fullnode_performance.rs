@@ -8,7 +8,7 @@ use crate::{
 };
 use anyhow::Error;
 use libra2_config::config::{NodeConfig, OverrideNodeConfig};
-use aptos_forge::{
+use libra2_forge::{
     NetworkContext, NetworkContextSynchronizer, NetworkTest, OverrideNodeConfigFn, Result, Swarm,
     SwarmChaos, SwarmCpuStress, SwarmNetEm, Test,
 };

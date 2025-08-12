@@ -17,7 +17,7 @@ use libra2_storage_interface::{
 };
 use libra2_types::{
     account_address::AccountAddress,
-    account_config::{aptos_test_root_address, AccountResource},
+    account_config::{libra2_test_root_address, AccountResource},
     chain_id::ChainId,
     state_store::MoveResourceExt,
     transaction::{EntryFunction, Transaction, TransactionPayload},
@@ -251,9 +251,9 @@ impl TransactionGenerator {
 
     pub fn read_root_account(genesis_key: Ed25519PrivateKey, db: &DbReaderWriter) -> LocalAccount {
         LocalAccount::new(
-            aptos_test_root_address(),
+            libra2_test_root_address(),
             genesis_key,
-            get_sequence_number(aptos_test_root_address(), db.reader.clone()),
+            get_sequence_number(libra2_test_root_address(), db.reader.clone()),
         )
     }
 

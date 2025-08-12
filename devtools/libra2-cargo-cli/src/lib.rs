@@ -48,7 +48,7 @@ const RELEVANT_PACKAGES_FOR_FRAMEWORK_UPGRADE_TESTS: [&str; 2] =
 
 // The targeted unit test packages to ignore (these will be run separately, by other jobs)
 const TARGETED_UNIT_TEST_PACKAGES_TO_IGNORE: [&str; 3] =
-    ["aptos-testcases", "smoke-test", "aptos-keyless-circuit"];
+    ["libra2-testcases", "smoke-test", "libra2-keyless-circuit"];
 
 #[derive(Args, Clone, Debug)]
 #[command(disable_help_flag = true)]
@@ -176,27 +176,27 @@ impl AptosCargoCommand {
                 // First, start by calculating the affected packages.
                 let affected_package_paths = package_args.compute_target_packages()?;
 
-                // Check if the affected packages contains the Aptos CLI
+                // Check if the affected packages contains the Libra2 CLI
                 let mut cli_affected = false;
                 for package_path in affected_package_paths {
                     // Extract the package name from the full path
                     let package_name = get_package_name_from_path(&package_path);
 
-                    // Check if the package is the Aptos CLI
+                    // Check if the package is the Libra2 CLI
                     if package_name == APTOS_CLI_PACKAGE_NAME {
-                        cli_affected = true; // The Aptos CLI was affected
+                        cli_affected = true; // The Libra2 CLI was affected
                         break;
                     }
                 }
 
-                // If the Aptos CLI is affected, run the targeted CLI tests
+                // If the Libra2 CLI is affected, run the targeted CLI tests
                 if cli_affected {
                     println!("Running the targeted CLI tests...");
                     return run_targeted_cli_tests();
                 }
 
                 // Otherwise, skip the CLI tests
-                println!("Skipping CLI tests as the Aptos CLI package was not affected!");
+                println!("Skipping CLI tests as the Libra2 CLI package was not affected!");
                 Ok(())
             },
             AptosCargoCommand::TargetedCompilerV2Tests(_) => {

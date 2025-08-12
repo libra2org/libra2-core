@@ -1232,7 +1232,7 @@ def create_forge_command(
         forge_args.extend(
             [
                 "-p",
-                "aptos-forge-cli",
+                "libra2-forge-cli",
                 "--",
             ]
         )
@@ -1475,7 +1475,7 @@ def test(
         log.setLevel(logging.DEBUG)
 
     ### XXX: hack these arguments to force Forge to run with overrides
-    # forge_cluster_name = "aptos-forge-0"
+    # forge_cluster_name = "libra2-forge-0"
     # forge_enable_performance = "true"
 
     log.debug("Initializing backends...")
@@ -1493,7 +1493,7 @@ def test(
     log.debug("Finished sourcing configs")
 
     # XXX: manual override testing in CI
-    # forge_cluster_name = "aptos-forge-0"
+    # forge_cluster_name = "libra2-forge-0"
 
     # # for performance
     # forge_enable_performance = "true"

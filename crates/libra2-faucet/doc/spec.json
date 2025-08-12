@@ -112,7 +112,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AptosTapError"
+                  "$ref": "#/components/schemas/Libra2TapError"
                 }
               }
             },
@@ -172,7 +172,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AptosTapError"
+                  "$ref": "#/components/schemas/Libra2TapError"
                 }
               }
             },
@@ -216,7 +216,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AptosTapError"
+                  "$ref": "#/components/schemas/Libra2TapError"
                 }
               }
             },
@@ -237,7 +237,7 @@
   },
   "components": {
     "schemas": {
-      "AptosTapError": {
+      "Libra2TapError": {
         "type": "object",
         "description": "This is the generic struct we use for all API errors, it contains a string\nmessage and a service specific error code.",
         "required": [
@@ -254,7 +254,7 @@
           "error_code": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/AptosTapErrorCode"
+                "$ref": "#/components/schemas/Libra2TapErrorCode"
               },
               {
                 "description": "A code describing the error for programmatic use."
@@ -277,7 +277,7 @@
           }
         }
       },
-      "AptosTapErrorCode": {
+      "Libra2TapErrorCode": {
         "type": "string",
         "description": "These codes provide more granular error information beyond just the HTTP\nstatus code of the response.",
         "enum": [
@@ -288,7 +288,7 @@
           "SourceIpMissing",
           "TransactionFailed",
           "EndpointNotEnabled",
-          "AptosApiError",
+          "Libra2ApiError",
           "BypasserError",
           "CheckerError",
           "StorageError",

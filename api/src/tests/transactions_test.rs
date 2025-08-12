@@ -4,7 +4,7 @@
 
 use super::new_test_context;
 use crate::tests::{new_test_context_with_config, new_test_context_with_orderless_flags};
-use aptos_api_test_context::{assert_json, current_function_name, pretty, TestContext};
+use libra2_api_test_context::{assert_json, current_function_name, pretty, TestContext};
 use libra2_config::config::{GasEstimationStaticOverride, NodeConfig, TransactionFilterConfig};
 use libra2_crypto::{
     ed25519::{Ed25519PrivateKey, Ed25519Signature},
@@ -15,7 +15,7 @@ use libra2_sdk::types::{AccountKey, LocalAccount};
 use libra2_transaction_filters::transaction_filter::TransactionFilter;
 use libra2_types::{
     account_address::AccountAddress,
-    account_config::aptos_test_root_address,
+    account_config::libra2_test_root_address,
     transaction::{
         authenticator::{AuthenticationKey, TransactionAuthenticator},
         EntryFunction, ReplayProtector, Script, SignedTransaction,
@@ -2529,7 +2529,7 @@ async fn test_simulation_filter_allow_sender(
 
     // Allow the root sender only.
     let transaction_filter = TransactionFilter::empty()
-        .add_sender_filter(true, aptos_test_root_address())
+        .add_sender_filter(true, libra2_test_root_address())
         .add_all_filter(false);
     let transaction_filter_config = TransactionFilterConfig::new(true, transaction_filter);
     node_config.transaction_filters.api_filter = transaction_filter_config;

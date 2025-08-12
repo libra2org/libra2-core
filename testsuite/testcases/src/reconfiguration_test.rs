@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use anyhow::anyhow;
-use aptos_forge::{NetworkContextSynchronizer, NetworkTest, Result, Test};
+use libra2_forge::{NetworkContextSynchronizer, NetworkTest, Result, Test};
 use async_trait::async_trait;
 
 pub struct ReconfigurationTest;

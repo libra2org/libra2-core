@@ -20,7 +20,7 @@ fn fv_in_table() {
         &acc,
         r#"
         module 0x99::m {
-            use aptos_std::table;
+            use libra2_std::table;
             use std::signer;
 
             struct Container<T1: copy+drop, T2> has key { t: table::Table<T1, T2> }
@@ -168,7 +168,7 @@ fn fv_in_table_with_refs() {
         &acc,
         r#"
         module 0x99::m1 {
-            use aptos_std::table;
+            use libra2_std::table;
             use std::signer;
             use std::vector;
 
@@ -273,7 +273,7 @@ fn fv_in_table_with_captured_vars() {
         &acc,
         r#"
         module 0x99::m2 {
-            use aptos_std::table;
+            use libra2_std::table;
             use std::signer;
 
             struct Container<T1: copy+drop, T2> has key { t: table::Table<T1, T2> }
@@ -421,7 +421,7 @@ fn publish(h: &mut MoveHarness, account: &Account, source: &str) -> TransactionS
     let mut builder = PackageBuilder::new("Package");
     builder.add_source("m.move", source);
     builder.add_local_dep(
-        "AptosStdlib",
+        "Libra2Stdlib",
         &common::framework_dir_path("libra2-stdlib").to_string_lossy(),
     );
     builder.add_local_dep(

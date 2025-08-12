@@ -144,7 +144,7 @@ impl MoveHarness {
     /// rate limits if executed repeatedly or in parallel.
     /// Providing an API key raises these limits significantly.
     ///
-    /// If you hit rate limits, you can create a free Aptos Build account and generate an API key:
+    /// If you hit rate limits, you can create a free Libra2 Build account and generate an API key:
     /// - https://build.aptoslabs.com/docs/start#api-quick-start
     fn new_with_remote_state_impl(
         network_url: Libra2BaseUrl,
@@ -226,13 +226,13 @@ impl MoveHarness {
     pub fn new_account_with_balance_at(&mut self, addr: AccountAddress, balance: u64) -> Account {
         // The below will use the genesis keypair but that should be fine.
         let acc = Account::new_genesis_account(addr);
-        // Mint the account 10M Aptos coins (with 8 decimals).
+        // Mint the account 10M Libra2 coins (with 8 decimals).
         self.store_and_fund_account(&acc, balance, 10)
     }
 
     // Creates an account with a randomly generated address and key pair
     pub fn new_account_with_key_pair(&mut self) -> Account {
-        // Mint the account 10M Aptos coins (with 8 decimals).
+        // Mint the account 10M Libra2 coins (with 8 decimals).
         self.store_and_fund_account(&Account::new(), 1_000_000_000_000_000, 0)
     }
 

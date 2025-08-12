@@ -91,7 +91,7 @@ CREATE OPTIONS:
     - Default: **`False`**
     - Example: **`-dry-run true`**
 1. **`-aptos-cli-path`**:
-    - The path to the Aptos CLI if it is not in your $PATH variable.
+    - The path to the Libra2 CLI if it is not in your $PATH variable.
     - Default: **`aptos`**
     - Example: **`-aptos-cli-path /path/to/aptos`**
 2. **`-name`**:

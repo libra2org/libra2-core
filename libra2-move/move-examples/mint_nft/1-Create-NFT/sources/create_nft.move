@@ -30,7 +30,7 @@
     1-Create-NFT % aptos move publish --named-addresses mint_nft=a911e7374107ad434bbc5369289cf5855c3b1a2938a6bfce0776c1d296271cde
     Compiling, may take a little while to download git dependencies...
     INCLUDING DEPENDENCY Libra2Framework
-    INCLUDING DEPENDENCY AptosStdlib
+    INCLUDING DEPENDENCY Libra2Stdlib
     INCLUDING DEPENDENCY Libra2Token
     INCLUDING DEPENDENCY MoveStdlib
     BUILDING Examples
@@ -51,7 +51,7 @@
       }
     }
     */
-/// - 2.c Check the module we just published on the Aptos Explorer.
+/// - 2.c Check the module we just published on the Libra2 Explorer.
 /// Go to https://explorer.aptoslabs.com/. At the top right of the screen, select the network you used (devnet, testnet, etc.).
 /// Search for this transaction by putting the `transaction_hash` in the search box. (You'd need to run throught the above steps
 /// yourself, and search for the transaction using your own unique transaction hash.)

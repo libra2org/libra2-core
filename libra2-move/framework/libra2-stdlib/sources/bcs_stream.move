@@ -2,19 +2,19 @@
 /// Deserialization Strategies:
 /// - Per-Byte Deserialization: Employed for most types to ensure lower gas consumption, this method processes each byte
 ///   individually to match the length and type requirements of target Move types.
-/// - Exception: For the `deserialize_address` function, the function-based approach from `aptos_std::from_bcs` is used
+/// - Exception: For the `deserialize_address` function, the function-based approach from `libra2_std::from_bcs` is used
 ///   due to type constraints, even though it is generally more gas-intensive.
 /// - This can be optimized further by introducing native vector slices.
 /// Application:
 /// - This deserializer is particularly valuable for processing BCS serialized data within Move modules,
 ///   especially useful for systems requiring cross-chain message interpretation or off-chain data verification.
-module aptos_std::bcs_stream {
+module libra2_std::bcs_stream {
     use std::error;
     use std::vector;
     use std::option::{Self, Option};
     use std::string::{Self, String};
 
-    use aptos_std::from_bcs;
+    use libra2_std::from_bcs;
 
     /// The data does not fit the expected format.
     const EMALFORMED_DATA: u64 = 1;
@@ -88,7 +88,7 @@ module aptos_std::bcs_stream {
 
     /// Deserializes an `address` value from the stream.
     /// 32-byte `address` values are serialized using little-endian byte order.
-    /// This function utilizes the `to_address` function from the `aptos_std::from_bcs` module,
+    /// This function utilizes the `to_address` function from the `libra2_std::from_bcs` module,
     /// because the Move type system does not permit per-byte referencing of addresses.
     public fun deserialize_address(stream: &mut BCSStream): address {
         let data = &stream.data;

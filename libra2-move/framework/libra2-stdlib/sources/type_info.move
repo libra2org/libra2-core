@@ -1,4 +1,4 @@
-module aptos_std::type_info {
+module libra2_std::type_info {
     use std::bcs;
     use std::features;
     use std::string::String;
@@ -71,7 +71,7 @@ module aptos_std::type_info {
     }
 
     #[test_only]
-    use aptos_std::table::Table;
+    use libra2_std::table::Table;
 
     #[test_only]
     use std::vector;
@@ -79,7 +79,7 @@ module aptos_std::type_info {
     #[test]
     fun test_type_of() {
         let type_info = type_of<TypeInfo>();
-        assert!(type_info.account_address() == @aptos_std, 0);
+        assert!(type_info.account_address() == @libra2_std, 0);
         assert!(type_info.module_name() == b"type_info", 1);
         assert!(type_info.struct_name() == b"TypeInfo", 2);
     }
@@ -87,7 +87,7 @@ module aptos_std::type_info {
     #[test]
     fun test_type_of_with_type_arg() {
         let type_info = type_of<Table<String, String>>();
-        assert!(type_info.account_address() == @aptos_std, 0);
+        assert!(type_info.account_address() == @libra2_std, 0);
         assert!(type_info.module_name() == b"table", 1);
         assert!(type_info.struct_name() == b"Table<0x1::string::String, 0x1::string::String>", 2);
     }
@@ -135,7 +135,7 @@ module aptos_std::type_info {
         let module_name = type_info.module_name();
         let struct_name = type_info.struct_name();
         spec {
-            assert account_address == @aptos_std;
+            assert account_address == @libra2_std;
             assert module_name == b"type_info";
             assert struct_name == b"TypeInfo";
         };

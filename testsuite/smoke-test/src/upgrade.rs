@@ -6,7 +6,7 @@ use crate::{
     utils::check_create_mint_transfer, workspace_builder, workspace_builder::workspace_root,
 };
 use libra2_crypto::ValidCryptoMaterialStringExt;
-use aptos_forge::Swarm;
+use libra2_forge::Swarm;
 use libra2_gas_algebra::GasQuantity;
 use libra2_gas_schedule::{Libra2GasParameters, InitialGasSchedule, ToOnChainGasSchedule};
 use libra2_release_builder::{
@@ -28,28 +28,28 @@ use std::{fs, path::PathBuf, process::Command, sync::Arc};
 #[ignore]
 // TODO: currently fails when quorum store is enabled by hard-coding. Investigate why.
 #[tokio::test]
-/// This test verifies the flow of aptos framework upgrade process.
-/// i.e: The network will be alive after applying the new aptos framework release.
+/// This test verifies the flow of libra2 framework upgrade process.
+/// i.e: The network will be alive after applying the new libra2 framework release.
 async fn test_upgrade_flow() {
     // prebuild tools.
-    let aptos_cli = workspace_builder::get_bin("aptos");
+    let libra2_cli = workspace_builder::get_bin("libra2");
 
     let num_nodes = 5;
     let (mut env, _cli, _) = SwarmBuilder::new_local(num_nodes)
-        .with_aptos_testnet()
+        .with_libra2_testnet()
         .build_with_cli(0)
         .await;
 
-    let url = env.aptos_public_info().url().to_string();
+    let url = env.libra2_public_info().url().to_string();
     let private_key = env
-        .aptos_public_info()
+        .libra2_public_info()
         .root_account()
         .private_key()
         .to_encoded_string()
         .unwrap();
 
     // Bump the limit in gas schedule
-    // TODO: Replace this logic with aptos-gas
+    // TODO: Replace this logic with libra2-gas
     let mut gas_parameters = Libra2GasParameters::initial();
     gas_parameters.vm.txn.max_transaction_size_in_bytes = GasQuantity::new(100_000_000);
 
@@ -77,7 +77,7 @@ async fn test_upgrade_flow() {
         .join("framework")
         .join("libra2-framework");
 
-    assert!(Command::new(aptos_cli.as_path())
+    assert!(Command::new(libra2_cli.as_path())
         .current_dir(workspace_root())
         .args(&vec![
             "move",
@@ -98,7 +98,7 @@ async fn test_upgrade_flow() {
         .unwrap()
         .status
         .success());
-    env.aptos_public_info()
+    env.libra2_public_info()
         .root_account()
         .increment_sequence_number();
 
@@ -174,7 +174,7 @@ async fn test_upgrade_flow() {
         .join("libra2-framework");
 
     for path in scripts.iter() {
-        assert!(Command::new(aptos_cli.as_path())
+        assert!(Command::new(libra2_cli.as_path())
             .current_dir(workspace_root())
             .args(&vec![
                 "move",
@@ -196,7 +196,7 @@ async fn test_upgrade_flow() {
             .status
             .success());
 
-        env.aptos_public_info()
+        env.libra2_public_info()
             .root_account()
             .increment_sequence_number();
     }
@@ -205,9 +205,9 @@ async fn test_upgrade_flow() {
 
     // Test the module publishing workflow
     let base_dir = std::path::Path::new(env!("CARGO_MANIFEST_DIR"));
-    let base_path_v1 = base_dir.join("src/aptos/package_publish_modules_v1/");
+    let base_path_v1 = base_dir.join("src/libra2/package_publish_modules_v1/");
 
-    move_test_helpers::publish_package(&mut env.aptos_public_info(), base_path_v1)
+    move_test_helpers::publish_package(&mut env.libra2_public_info(), base_path_v1)
         .await
         .unwrap();
 
@@ -216,7 +216,7 @@ async fn test_upgrade_flow() {
 
 // This test is intentionally disabled because it's taking ~500s to execute right now.
 // The main reason is that compilation of scripts takes a bit too long, as the Move compiler will need
-// to repeatedly compile all the aptos framework pacakges as dependency
+// to repeatedly compile all the libra2 framework pacakges as dependency
 //
 #[ignore]
 #[tokio::test(flavor = "multi_thread")]
@@ -268,24 +268,24 @@ async fn test_release_validate_tool_multi_step() {
         .await
         .unwrap();
 
-    let root_account = env.aptos_public_info().root_account().address();
+    let root_account = env.libra2_public_info().root_account().address();
     // Test the module publishing workflow
     let sequence_number = env
-        .aptos_public_info()
+        .libra2_public_info()
         .client()
         .get_account(root_account)
         .await
         .unwrap()
         .inner()
         .sequence_number;
-    env.aptos_public_info()
+    env.libra2_public_info()
         .root_account()
         .set_sequence_number(sequence_number);
 
     let base_dir = std::path::Path::new(env!("CARGO_MANIFEST_DIR"));
-    let base_path_v1 = base_dir.join("src/aptos/package_publish_modules_v1/");
+    let base_path_v1 = base_dir.join("src/libra2/package_publish_modules_v1/");
 
-    move_test_helpers::publish_package(&mut env.aptos_public_info(), base_path_v1)
+    move_test_helpers::publish_package(&mut env.libra2_public_info(), base_path_v1)
         .await
         .unwrap();
 

@@ -6,7 +6,7 @@ use libra2::test::CliTestFramework;
 use libra2_config::{config::NodeConfig, keys::ConfigKey, utils::get_available_port};
 use libra2_crypto::ed25519::Ed25519PrivateKey;
 use libra2_faucet_core::server::{FunderKeyEnum, RunConfig};
-use aptos_forge::{ActiveNodesGuard, Factory, LocalFactory, LocalSwarm, Node};
+use libra2_forge::{ActiveNodesGuard, Factory, LocalFactory, LocalSwarm, Node};
 use libra2_framework::ReleaseBundle;
 use libra2_genesis::builder::{InitConfigFn, InitGenesisConfigFn, InitGenesisStakeFn};
 use libra2_infallible::Mutex;
@@ -49,12 +49,12 @@ impl SwarmBuilder {
         Self::new(true, num_validators)
     }
 
-    pub fn with_aptos(mut self) -> Self {
+    pub fn with_libra2(mut self) -> Self {
         self.genesis_framework = Some(libra2_cached_packages::head_release_bundle().clone());
         self
     }
 
-    pub fn with_aptos_testnet(mut self) -> Self {
+    pub fn with_libra2_testnet(mut self) -> Self {
         self.genesis_framework = Some(libra2_framework::testnet_release_bundle().clone());
         self
     }
@@ -175,9 +175,9 @@ impl SwarmBuilder {
 }
 
 // Gas is not enabled with this setup, it's enabled via forge instance.
-pub async fn new_local_swarm_with_aptos(num_validators: usize) -> LocalSwarm {
+pub async fn new_local_swarm_with_libra2(num_validators: usize) -> LocalSwarm {
     SwarmBuilder::new_local(num_validators)
-        .with_aptos()
+        .with_libra2()
         .build()
         .await
 }
@@ -185,7 +185,7 @@ pub async fn new_local_swarm_with_aptos(num_validators: usize) -> LocalSwarm {
 #[tokio::test]
 async fn test_prevent_starting_nodes_twice() {
     // Create a validator swarm of 1 validator node
-    let mut swarm = new_local_swarm_with_aptos(1).await;
+    let mut swarm = new_local_swarm_with_libra2(1).await;
 
     assert!(swarm.launch().await.is_err());
     let validator = swarm.validators_mut().next().unwrap();

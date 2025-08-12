@@ -88,7 +88,7 @@ pub trait GasAlgebra {
     fn inject_balance(&mut self, extra_balance: impl Into<Gas>) -> PartialVMResult<()>;
 }
 
-/// Trait representing a gas meter used inside the Aptos VM.
+/// Trait representing a gas meter used inside the Libra2 VM.
 ///
 /// It extends Move VM's `GasMeter` trait with a few Aptos-specific callbacks, along with
 /// some primitives that would allow gas meters to be composable.

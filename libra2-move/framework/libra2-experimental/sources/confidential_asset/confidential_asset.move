@@ -6,9 +6,9 @@ module libra2_experimental::confidential_asset {
     use std::option::Option;
     use std::signer;
     use std::vector;
-    use aptos_std::ristretto255::Self;
-    use aptos_std::ristretto255_bulletproofs::Self as bulletproofs;
-    use aptos_std::string_utils;
+    use libra2_std::ristretto255::Self;
+    use libra2_std::ristretto255_bulletproofs::Self as bulletproofs;
+    use libra2_std::string_utils;
     use libra2_framework::chain_id;
     use libra2_framework::coin;
     use libra2_framework::event;
@@ -29,7 +29,7 @@ module libra2_experimental::confidential_asset {
     use libra2_experimental::ristretto255_twisted_elgamal as twisted_elgamal;
 
     #[test_only]
-    use aptos_std::ristretto255::Scalar;
+    use libra2_std::ristretto255::Scalar;
 
     //
     // Errors

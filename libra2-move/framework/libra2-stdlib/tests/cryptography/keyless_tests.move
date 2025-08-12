@@ -1,6 +1,6 @@
 #[test_only]
-module aptos_std::keyless_tests {
-    use aptos_std::keyless;
+module libra2_std::keyless_tests {
+    use libra2_std::keyless;
     use std::string::{utf8};
     use std::bcs;
 

@@ -123,7 +123,7 @@ MOVE_CRATES_INTEGRATION_TEST="\
   -p libra2-move-examples\
   -p e2e-move-tests\
   -p libra2-framework\
-  -p aptos-api\
+  -p libra2-api\
 "
 
 if [ ! -z "$CHECK" ]; then

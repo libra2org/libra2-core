@@ -7,7 +7,7 @@ The official Rust SDK for Libra2.
 
 ## Usage
 
-This SDK provides all the necessary components for building on top of the Aptos Blockchain. Some of the important modules are:
+This SDK provides all the necessary components for building on top of the Libra2 Blockchain. Some of the important modules are:
 
 * `client` - Includes a [REST client](https://docs.libra2.org/nodes/libra2-api-spec#/) implementation
 * `crypto` - Types used for signing and verifying

@@ -110,22 +110,22 @@ impl Execution {
     }
 
     pub async fn execute_txns(&self, begin: Version, num_txns_to_execute: u64) -> Result<()> {
-        let aptos_commons_path = self.input_path.join(APTOS_COMMONS);
-        if !check_libra2_packages_availability(aptos_commons_path.clone()) {
+        let libra2_commons_path = self.input_path.join(APTOS_COMMONS);
+        if !check_libra2_packages_availability(libra2_commons_path.clone()) {
             return Err(anyhow::Error::msg("aptos packages are missing"));
         }
 
         let mut compiled_cache = CompilationCache::default();
         if self.execution_mode.is_v1_or_compare() {
             compile_aptos_packages(
-                &aptos_commons_path,
+                &libra2_commons_path,
                 &mut compiled_cache.compiled_package_cache_v1,
                 false,
             )?;
         }
         if self.execution_mode.is_v2_or_compare() {
             compile_aptos_packages(
-                &aptos_commons_path,
+                &libra2_commons_path,
                 &mut compiled_cache.compiled_package_cache_v2,
                 true,
             )?;

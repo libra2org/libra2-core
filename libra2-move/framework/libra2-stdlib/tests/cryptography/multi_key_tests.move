@@ -1,7 +1,7 @@
 #[test_only]
-module aptos_std::multi_key_tests {
-    use aptos_std::single_key;
-    use aptos_std::multi_key;
+module libra2_std::multi_key_tests {
+    use libra2_std::single_key;
+    use libra2_std::multi_key;
     use std::bcs;
     #[test]
     fun test_construct_multi_key() {

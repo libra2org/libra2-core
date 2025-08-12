@@ -149,7 +149,7 @@ module libra2_token_objects::libra2_token {
             option::none()
         };
 
-        let aptos_collection = Libra2Collection {
+        let libra2_collection = Libra2Collection {
             mutator_ref,
             royalty_mutator_ref,
             mutable_description,
@@ -161,7 +161,7 @@ module libra2_token_objects::libra2_token {
             tokens_burnable_by_creator,
             tokens_freezable_by_creator,
         };
-        move_to(&object_signer, aptos_collection);
+        move_to(&object_signer, libra2_collection);
         object::object_from_constructor_ref(&constructor_ref)
     }
 
@@ -622,12 +622,12 @@ module libra2_token_objects::libra2_token {
         collection: Object<T>,
         description: String,
     ) acquires Libra2Collection {
-        let aptos_collection = authorized_borrow_collection(&collection, creator);
+        let libra2_collection = authorized_borrow_collection(&collection, creator);
         assert!(
-            aptos_collection.mutable_description,
+            libra2_collection.mutable_description,
             error::permission_denied(EFIELD_NOT_MUTABLE),
         );
-        collection::set_description(aptos_collection.mutator_ref.borrow(), description);
+        collection::set_description(libra2_collection.mutator_ref.borrow(), description);
     }
 
     public fun set_collection_royalties<T: key>(
@@ -635,12 +635,12 @@ module libra2_token_objects::libra2_token {
         collection: Object<T>,
         royalty: royalty::Royalty,
     ) acquires Libra2Collection {
-        let aptos_collection = authorized_borrow_collection(&collection, creator);
+        let libra2_collection = authorized_borrow_collection(&collection, creator);
         assert!(
-            aptos_collection.royalty_mutator_ref.is_some(),
+            libra2_collection.royalty_mutator_ref.is_some(),
             error::permission_denied(EFIELD_NOT_MUTABLE),
         );
-        royalty::update(aptos_collection.royalty_mutator_ref.borrow(), royalty);
+        royalty::update(libra2_collection.royalty_mutator_ref.borrow(), royalty);
     }
 
     entry fun set_collection_royalties_call<T: key>(
@@ -659,12 +659,12 @@ module libra2_token_objects::libra2_token {
         collection: Object<T>,
         uri: String,
     ) acquires Libra2Collection {
-        let aptos_collection = authorized_borrow_collection(&collection, creator);
+        let libra2_collection = authorized_borrow_collection(&collection, creator);
         assert!(
-            aptos_collection.mutable_uri,
+            libra2_collection.mutable_uri,
             error::permission_denied(EFIELD_NOT_MUTABLE),
         );
-        collection::set_uri(aptos_collection.mutator_ref.borrow(), uri);
+        collection::set_uri(libra2_collection.mutator_ref.borrow(), uri);
     }
 
     // Tests

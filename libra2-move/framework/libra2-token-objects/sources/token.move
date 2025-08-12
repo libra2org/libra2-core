@@ -60,7 +60,7 @@ module libra2_token_objects::token {
         /// Was populated until concurrent_token_v2_enabled feature flag was enabled.
         ///
         /// The name of the token, which should be unique within the collection; the length of name
-        /// should be smaller than 128, characters, eg: "Aptos Animal #1234"
+        /// should be smaller than 128, characters, eg: "Libra2 Animal #1234"
         name: String,
         // DEPRECATED
         /// The Uniform Resource Identifier (uri) pointing to the JSON file stored in off-chain
@@ -77,7 +77,7 @@ module libra2_token_objects::token {
         /// Unique identifier within the collection, optional, 0 means unassigned
         index: AggregatorSnapshot<u64>,
         /// The name of the token, which should be unique within the collection; the length of name
-        /// should be smaller than 128, characters, eg: "Aptos Animal #1234"
+        /// should be smaller than 128, characters, eg: "Libra2 Animal #1234"
         name: DerivedStringSnapshot,
     }
 

@@ -1,6 +1,6 @@
 {
   "name": "libra2-node-checker-client",
-  "description": "Generated client for the Aptos Node Health Checker",
+  "description": "Generated client for the Libra2 Node Health Checker",
   "license": "Apache-2.0",
   "engines": {
     "node": ">=11.0.0"

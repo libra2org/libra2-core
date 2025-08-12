@@ -7,7 +7,7 @@
 ///
 /// Please confirm you explicitly initiated this request from <domain>. You are approving to execute transaction <entry_function_name> on Aptos blockchain (<network_name>).
 ///
-/// Nonce: <aptos_txn_digest>
+/// Nonce: <libra2_txn_digest>
 ///
 /// 2. The abstract public key is a BCS serialized `SIWSAbstractPublicKey`.
 /// 3. The abstract signature is a BCS serialized `SIWSAbstractSignature`.
@@ -19,7 +19,7 @@
 module libra2_framework::solana_derivable_account {
     use libra2_framework::auth_data::AbstractionAuthData;
     use libra2_framework::common_account_abstractions_utils::{network_name, entry_function_name};
-    use aptos_std::ed25519::{
+    use libra2_std::ed25519::{
         Self,
         new_signature_from_bytes,
         new_validated_public_key_from_bytes,

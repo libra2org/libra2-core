@@ -18,7 +18,7 @@ use libra2_faucet_metrics_server::{run_metrics_server, MetricsServerConfig};
 use libra2_logger::info;
 use libra2_sdk::{
     crypto::ed25519::Ed25519PrivateKey,
-    types::{account_config::aptos_test_root_address, chain_id::ChainId},
+    types::{account_config::libra2_test_root_address, chain_id::ChainId},
 };
 use clap::Parser;
 use futures::{channel::oneshot::Sender as OneShotSender, lock::Mutex};
@@ -242,7 +242,7 @@ impl RunConfig {
     }
 
     /// Call this function to build a RunConfig to run a faucet alongside a node API
-    /// run by the Aptos CLI.
+    /// run by the Libra2 CLI.
     pub fn build_for_cli(
         api_url: Url,
         listen_address: String,
@@ -287,7 +287,7 @@ impl RunConfig {
                     35,      // wait_for_outstanding_txns_secs
                     false,   // wait_for_transactions
                 ),
-                mint_account_address: Some(aptos_test_root_address()),
+                mint_account_address: Some(libra2_test_root_address()),
                 do_not_delegate,
             }),
             handler_config: HandlerConfig {
@@ -380,7 +380,7 @@ mod test {
     use super::*;
     use crate::{
         endpoints::{
-            AptosTapError, AptosTapErrorCode, FundRequest, FundResponse, RejectionReasonCode,
+            Libra2TapError, Libra2TapErrorCode, FundRequest, FundResponse, RejectionReasonCode,
         },
         helpers::get_current_time_secs,
     };
@@ -565,9 +565,9 @@ mod test {
             .header(CONTENT_TYPE, "application/json")
             .send()
             .await?;
-        let aptos_error = AptosTapError::parse_from_json_string(&response.text().await?)
+        let libra2_error = Libra2TapError::parse_from_json_string(&response.text().await?)
             .expect("Failed to read response as Libra2Error");
-        assert!(!aptos_error.rejection_reasons.is_empty());
+        assert!(!libra2_error.rejection_reasons.is_empty());
 
         // Assert that a request that passes all the configured checkers passes.
         unwrap_reqwest_result(
@@ -591,9 +591,9 @@ mod test {
             .header("what_wallet_my_guy", "some_other_wallet")
             .send()
             .await?;
-        let aptos_error = AptosTapError::parse_from_json_string(&response.text().await?)
+        let libra2_error = Libra2TapError::parse_from_json_string(&response.text().await?)
             .expect("Failed to read response as Libra2Error");
-        let rejection_reason_codes: HashSet<RejectionReasonCode> = aptos_error
+        let rejection_reason_codes: HashSet<RejectionReasonCode> = libra2_error
             .rejection_reasons
             .into_iter()
             .map(|r| r.get_code())
@@ -609,9 +609,9 @@ mod test {
             .header(REFERER, "https://mysite.com")
             .send()
             .await?;
-        let aptos_error = AptosTapError::parse_from_json_string(&response.text().await?)
+        let libra2_error = Libra2TapError::parse_from_json_string(&response.text().await?)
             .expect("Failed to read response as Libra2Error");
-        let rejection_reason_codes: HashSet<RejectionReasonCode> = aptos_error
+        let rejection_reason_codes: HashSet<RejectionReasonCode> = libra2_error
             .rejection_reasons
             .into_iter()
             .map(|r| r.get_code())
@@ -680,9 +680,9 @@ mod test {
             .send()
             .await?;
         assert_eq!(response.status(), reqwest::StatusCode::TOO_MANY_REQUESTS);
-        let aptos_error = AptosTapError::parse_from_json_string(&response.text().await?)
+        let libra2_error = Libra2TapError::parse_from_json_string(&response.text().await?)
             .expect("Failed to read response as Libra2Error");
-        let rejection_reason_codes: HashSet<RejectionReasonCode> = aptos_error
+        let rejection_reason_codes: HashSet<RejectionReasonCode> = libra2_error
             .rejection_reasons
             .into_iter()
             .map(|r| r.get_code())
@@ -774,11 +774,11 @@ mod test {
             .send()
             .await?;
         assert_eq!(response.status(), reqwest::StatusCode::SERVICE_UNAVAILABLE);
-        let aptos_error = AptosTapError::parse_from_json_string(&response.text().await?)
+        let libra2_error = Libra2TapError::parse_from_json_string(&response.text().await?)
             .expect("Failed to read response as Libra2Error");
         assert_eq!(
-            aptos_error.error_code,
-            AptosTapErrorCode::FunderAccountProblem
+            libra2_error.error_code,
+            Libra2TapErrorCode::FunderAccountProblem
         );
 
         Ok(())

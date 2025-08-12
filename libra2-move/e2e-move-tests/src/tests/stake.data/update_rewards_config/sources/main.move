@@ -1,7 +1,7 @@
 script {
     use libra2_framework::libra2_governance;
     use libra2_framework::staking_config;
-    use aptos_std::fixed_point64;
+    use libra2_std::fixed_point64;
 
     fun main(core_resources: &signer) {
         let framework_signer = libra2_governance::get_signer_testnet_only(core_resources, @libra2_framework);

@@ -146,7 +146,7 @@ impl Checker for MinimumPeersChecker {
 // Helpers.
 //////////////////////////////////////////////////////////////////////////////
 
-const METRIC: &str = "aptos_connections";
+const METRIC: &str = "libra2_connections";
 
 static INBOUND_LABEL: Lazy<Label> = Lazy::new(|| Label {
     key: "direction",

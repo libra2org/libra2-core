@@ -1,4 +1,4 @@
-spec aptos_std::crypto_algebra {
+spec libra2_std::crypto_algebra {
 
     spec handles_from_elements<S>(elements: &vector<Element<S>>): vector<u64> {
         aborts_if false;

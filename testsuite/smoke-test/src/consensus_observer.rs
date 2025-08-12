@@ -11,7 +11,7 @@ use libra2_config::{
     config::{NodeConfig, OverrideNodeConfig, PeerRole},
     network_id::NetworkId,
 };
-use aptos_forge::{LocalNode, NodeExt, Swarm};
+use libra2_forge::{LocalNode, NodeExt, Swarm};
 use libra2_types::on_chain_config::{
     ConsensusAlgorithmConfig, OnChainConsensusConfig, ValidatorTxnConfig, DEFAULT_WINDOW_SIZE,
 };
@@ -33,7 +33,7 @@ async fn test_consensus_observer_fast_sync_no_epoch_changes() {
 async fn test_consensus_observer_fullnode_restart() {
     // Create a swarm of 1 validator with consensus observer enabled
     let mut swarm = SwarmBuilder::new_local(1)
-        .with_aptos()
+        .with_libra2()
         .with_init_config(Arc::new(|_, config, _| {
             enable_consensus_observer(true, config);
         }))
@@ -53,7 +53,7 @@ async fn test_consensus_observer_fullnode_restart() {
 async fn test_consensus_observer_fullnode_restart_wipe() {
     // Create a swarm of 1 validator with consensus observer enabled
     let mut swarm = SwarmBuilder::new_local(1)
-        .with_aptos()
+        .with_libra2()
         .with_init_config(Arc::new(|_, config, _| {
             enable_consensus_observer(true, config);
         }))
@@ -78,7 +78,7 @@ async fn test_consensus_observer_fullnode_sync() {
     // Create a swarm of 1 validator and VFN with consensus observer enabled
     let mut swarm = SwarmBuilder::new_local(1)
         .with_num_fullnodes(1)
-        .with_aptos()
+        .with_libra2()
         .with_init_config(Arc::new(|_, config, _| {
             enable_consensus_observer(true, config);
         }))
@@ -112,7 +112,7 @@ async fn test_consensus_observer_fullnode_sync_disable_quorum_store() {
     // Create a swarm of 1 validator and VFN with quorum store disabled
     let mut swarm = SwarmBuilder::new_local(1)
         .with_num_fullnodes(1)
-        .with_aptos()
+        .with_libra2()
         .with_init_config(Arc::new(|_, config, _| {
             enable_consensus_observer(true, config);
         }))
@@ -153,7 +153,7 @@ async fn test_consensus_observer_fullnode_sync_disconnected() {
     // Create a swarm of 3 validators and VFNs with consensus observer enabled
     let mut swarm = SwarmBuilder::new_local(3)
         .with_num_fullnodes(3)
-        .with_aptos()
+        .with_libra2()
         .with_init_config(Arc::new(|_, config, _| {
             enable_consensus_observer(true, config);
         }))
@@ -212,7 +212,7 @@ async fn test_consensus_observer_fullnode_sync_multiple_nodes() {
     // Create a swarm of 3 validators and VFNs with consensus observer enabled
     let mut swarm = SwarmBuilder::new_local(3)
         .with_num_fullnodes(3)
-        .with_aptos()
+        .with_libra2()
         .with_init_config(Arc::new(|_, config, _| {
             enable_consensus_observer(true, config);
         }))
@@ -246,7 +246,7 @@ async fn test_consensus_observer_public_fullnode_sync() {
     // Create a swarm of 2 validators and 1 VFN with consensus observer enabled
     let mut swarm = SwarmBuilder::new_local(2)
         .with_num_fullnodes(1)
-        .with_aptos()
+        .with_libra2()
         .with_init_config(Arc::new(|_, config, _| {
             enable_consensus_observer(true, config);
         }))
@@ -317,7 +317,7 @@ async fn test_validator_restart(clear_storage: bool) {
     // Create a swarm of 4 validators and 1 VFN with consensus observer enabled
     let mut swarm = SwarmBuilder::new_local(4)
         .with_num_fullnodes(1)
-        .with_aptos()
+        .with_libra2()
         .with_init_config(Arc::new(|_, config, _| {
             enable_consensus_observer(true, config);
         }))

@@ -3,7 +3,7 @@
 
 use super::{CheckerData, CheckerTrait, CompleteData};
 use crate::{
-    endpoints::{AptosTapError, AptosTapErrorCode, RejectionReason, RejectionReasonCode},
+    endpoints::{Libra2TapError, Libra2TapErrorCode, RejectionReason, RejectionReasonCode},
     firebase_jwt::{FirebaseJwtVerifier, FirebaseJwtVerifierConfig},
     helpers::{days_since_tap_epoch, get_current_time_secs, seconds_until_next_day},
 };
@@ -41,7 +41,7 @@ impl RatelimitKeyProvider {
     /// address. If the faucet is configured to ratelimit by JWT, we verify the JWT
     /// first. If it is valid, this will be the user's Firebase UID (taken from the
     /// JWT's `sub` field).
-    pub async fn ratelimit_key_value(&self, data: &CheckerData) -> Result<String, AptosTapError> {
+    pub async fn ratelimit_key_value(&self, data: &CheckerData) -> Result<String, Libra2TapError> {
         match self {
             RatelimitKeyProvider::Ip => Ok(data.source_ip.to_string()),
             RatelimitKeyProvider::Jwt(jwt_verifier) => {
@@ -173,11 +173,11 @@ impl RedisRatelimitChecker {
         })
     }
 
-    pub async fn get_redis_connection(&self) -> Result<Connection, AptosTapError> {
+    pub async fn get_redis_connection(&self) -> Result<Connection, Libra2TapError> {
         self.db_pool.get().await.map_err(|e| {
-            AptosTapError::new_with_error_code(
+            Libra2TapError::new_with_error_code(
                 format!("Failed to connect to redis storage: {}", e),
-                AptosTapErrorCode::StorageError,
+                Libra2TapErrorCode::StorageError,
             )
         })
     }
@@ -227,11 +227,11 @@ impl CheckerTrait for RedisRatelimitChecker {
         &self,
         data: CheckerData,
         dry_run: bool,
-    ) -> Result<Vec<RejectionReason>, AptosTapError> {
+    ) -> Result<Vec<RejectionReason>, Libra2TapError> {
         let mut conn = self
             .get_redis_connection()
             .await
-            .map_err(|e| AptosTapError::new_with_error_code(e, AptosTapErrorCode::StorageError))?;
+            .map_err(|e| Libra2TapError::new_with_error_code(e, Libra2TapErrorCode::StorageError))?;
 
         // Generate a key corresponding to this identifier and the current day.
         let key_prefix = self.ratelimit_key_provider.ratelimit_key_prefix();
@@ -245,9 +245,9 @@ impl CheckerTrait for RedisRatelimitChecker {
         // Get the value for the key, indicating how many non-500 requests we have
         // serviced for it today.
         let limit_value: Option<i64> = conn.get(&key).await.map_err(|e| {
-            AptosTapError::new_with_error_code(
+            Libra2TapError::new_with_error_code(
                 format!("Failed to get value for redis key {}: {}", key, e),
-                AptosTapErrorCode::StorageError,
+                Libra2TapErrorCode::StorageError,
             )
         })?;
 
@@ -263,9 +263,9 @@ impl CheckerTrait for RedisRatelimitChecker {
         if !dry_run {
             let incremented_limit_value = match limit_value {
                 Some(_) => conn.incr(&key, 1).await.map_err(|e| {
-                    AptosTapError::new_with_error_code(
+                    Libra2TapError::new_with_error_code(
                         format!("Failed to increment redis key {}: {}", key, e),
-                        AptosTapErrorCode::StorageError,
+                        Libra2TapErrorCode::StorageError,
                     )
                 })?,
                 // If the limit value doesn't exist, create it and set the
@@ -283,9 +283,9 @@ impl CheckerTrait for RedisRatelimitChecker {
                         .query_async(&mut *conn)
                         .await
                         .map_err(|e| {
-                            AptosTapError::new_with_error_code(
+                            Libra2TapError::new_with_error_code(
                                 format!("Failed to increment value for redis key {}: {}", key, e),
-                                AptosTapErrorCode::StorageError,
+                                Libra2TapErrorCode::StorageError,
                             )
                         })?;
                     incremented_limit_value
@@ -305,7 +305,7 @@ impl CheckerTrait for RedisRatelimitChecker {
 
     /// All we have to do here is decrement the counter if the request was a failure due
     /// to something wrong on our end.
-    async fn complete(&self, data: CompleteData) -> Result<(), AptosTapError> {
+    async fn complete(&self, data: CompleteData) -> Result<(), Libra2TapError> {
         if !data.response_is_500 {
             return Ok(());
         }
@@ -313,7 +313,7 @@ impl CheckerTrait for RedisRatelimitChecker {
         let mut conn = self
             .get_redis_connection()
             .await
-            .map_err(|e| AptosTapError::new_with_error_code(e, AptosTapErrorCode::StorageError))?;
+            .map_err(|e| Libra2TapError::new_with_error_code(e, Libra2TapErrorCode::StorageError))?;
 
         // Generate a key corresponding to this identifier and the current day. In the
         // JWT case we re-verify the JWT. This is inefficient, but these failures are
@@ -326,9 +326,9 @@ impl CheckerTrait for RedisRatelimitChecker {
         let (key, _) = self.get_key_and_secs_until_next_day(key_prefix, &key_value);
 
         let _: () = conn.decr(&key, 1).await.map_err(|e| {
-            AptosTapError::new_with_error_code(
+            Libra2TapError::new_with_error_code(
                 format!("Failed to decrement value for redis key {}: {}", key, e),
-                AptosTapErrorCode::StorageError,
+                Libra2TapErrorCode::StorageError,
             )
         })?;
         Ok(())

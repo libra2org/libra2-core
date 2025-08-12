@@ -1,7 +1,7 @@
 // Copyright © Aptos Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-//! This module defines the gas parameters for Aptos Framework & Stdlib.
+//! This module defines the gas parameters for Libra2 Framework & Stdlib.
 
 use crate::{
     gas_feature_versions::{RELEASE_V1_14, RELEASE_V1_8, RELEASE_V1_9_SKIPPED},

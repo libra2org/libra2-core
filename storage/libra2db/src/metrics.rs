@@ -81,7 +81,7 @@ pub static PRUNER_WINDOW: Lazy<IntGaugeVec> = Lazy::new(|| {
 pub static PRUNER_VERSIONS: Lazy<IntGaugeVec> = Lazy::new(|| {
     register_int_gauge_vec!(
         // metric name
-        "aptos_pruner_versions",
+        "libra2_pruner_versions",
         // metric description
         "Aptos pruner versions",
         // metric labels (dimensions)

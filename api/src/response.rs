@@ -1,7 +1,7 @@
 // Copyright © Aptos Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-//! The Aptos API response / error handling philosophy.
+//! The Libra2 API response / error handling philosophy.
 //!
 //! The return type for every endpoint should be a
 //! `poem::Result<MyResponse<T>, MyError>` where MyResponse is an instance of
@@ -108,8 +108,8 @@ macro_rules! generate_error_traits {
             ) -> Self where Self: Sized;
 
             #[allow(unused)]
-            fn [<$trait_name:snake _from_aptos_error>](
-                aptos_error: libra2_api_types::Libra2Error,
+            fn [<$trait_name:snake _from_libra2_error>](
+                libra2_error: libra2_api_types::Libra2Error,
                 ledger_info: &libra2_api_types::LedgerInfo
             ) -> Self where Self: Sized;
         }
@@ -253,11 +253,11 @@ macro_rules! generate_error_response {
                 ))
             }
 
-            fn [<$name:snake _from_aptos_error>](
-                aptos_error: libra2_api_types::Libra2Error,
+            fn [<$name:snake _from_libra2_error>](
+                libra2_error: libra2_api_types::Libra2Error,
                 ledger_info: &libra2_api_types::LedgerInfo
             ) -> Self where Self: Sized {
-                let payload = poem_openapi::payload::Json(Box::new(aptos_error));
+                let payload = poem_openapi::payload::Json(Box::new(libra2_error));
                 Self::from($enum_name::$name(
                     payload,
                     Some(ledger_info.chain_id),

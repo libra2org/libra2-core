@@ -1,4 +1,4 @@
-spec aptos_std::type_info {
+spec libra2_std::type_info {
 
     spec native fun spec_is_struct<T>(): bool;
 

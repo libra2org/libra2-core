@@ -1,6 +1,6 @@
 # libra2-ledger
 
-Provides a set of commands and methods to communicate with Aptos app on Ledger
+Provides a set of commands and methods to communicate with Libra2 app on Ledger
 
 The methods supported by the libra2-ledger are:
 
@@ -15,7 +15,7 @@ NOTE: All methods and commands requires the user to have Aptos ledger app unlock
 
 ## Examples
 
-### Get Public Key from your Aptos account on Ledger
+### Get Public Key from your Libra2 account on Ledger
 
 ```rust
 use libra2_ledger::get_public_key;

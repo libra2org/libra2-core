@@ -62,7 +62,7 @@ def parse_args():
         required=True,
         choices=VALID_NETWORK_OPTIONS,
         help=(
-            "What branch the Aptos CLI used for the localnet should be built "
+            "What branch the Libra2 CLI used for the localnet should be built "
             'from. If "custom", --tag must be set.'
         ),
     )

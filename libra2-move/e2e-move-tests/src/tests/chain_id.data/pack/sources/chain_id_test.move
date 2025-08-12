@@ -1,5 +1,5 @@
 module 0x1::chain_id_test {
-    use aptos_std::type_info;
+    use libra2_std::type_info;
     use libra2_framework::libra2_governance;
     use libra2_framework::chain_id;
     use std::features;

@@ -1,6 +1,6 @@
 #[test_only]
-module aptos_std::federated_keyless_tests {
-    use aptos_std::federated_keyless;
+module libra2_std::federated_keyless_tests {
+    use libra2_std::federated_keyless;
     use std::string::{utf8};
     use std::bcs;
 

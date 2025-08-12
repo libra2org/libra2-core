@@ -612,7 +612,7 @@ fn setup_network(
     )
 }
 
-/// A generic FIFO Aptos channel
+/// A generic FIFO Libra2 channel
 fn libra2_channel<K: Eq + Hash + Clone, T>(
 ) -> (libra2_channel::Sender<K, T>, libra2_channel::Receiver<K, T>) {
     static MAX_QUEUE_SIZE: usize = 8;

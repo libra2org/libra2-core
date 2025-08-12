@@ -8,7 +8,7 @@ use libra2_protos::extractor::v1::Transaction as TransactionPB;
 use libra2_sdk::{
     transaction_builder::TransactionFactory,
     types::{
-        account_config::aptos_test_root_address, transaction::SignedTransaction, LocalAccount,
+        account_config::libra2_test_root_address, transaction::SignedTransaction, LocalAccount,
     },
 };
 use libra2_temppath::TempPath;
@@ -28,7 +28,7 @@ use mempool_notifications::MempoolNotificationSender;
 use storage_interface::DbReaderWriter;
 
 use crate::tests::{golden_output::GoldenOutputs, pretty};
-use aptos_api::{context::Context, index};
+use libra2_api::{context::Context, index};
 use libra2_api_types::HexEncodedBytes;
 use libra2_config::keys::ConfigKey;
 use libra2_crypto::ed25519::Ed25519PrivateKey;
@@ -137,7 +137,7 @@ impl TestContext {
     }
 
     pub fn root_account(&self) -> LocalAccount {
-        LocalAccount::new(aptos_test_root_address(), self.root_key.private_key(), 0)
+        LocalAccount::new(libra2_test_root_address(), self.root_key.private_key(), 0)
     }
 
     pub fn gen_account(&mut self) -> LocalAccount {

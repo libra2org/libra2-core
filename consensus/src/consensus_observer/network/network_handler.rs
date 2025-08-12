@@ -571,7 +571,7 @@ mod test {
         wait_and_verify_no_message(&mut publisher_message_receiver).await;
     }
 
-    /// Creates and returns a single Aptos channel
+    /// Creates and returns a single Libra2 channel
     fn create_libra2_channel<K: Eq + Hash + Clone, T>(
     ) -> (libra2_channel::Sender<K, T>, libra2_channel::Receiver<K, T>) {
         libra2_channel::new(QueueStyle::FIFO, 10, None)

@@ -132,7 +132,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "sort_desc(quantile by (pruner_name, tag) (0.8, aptos_pruner_versions{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", tag=\"min_readable\"}))",
+          "expr": "sort_desc(quantile by (pruner_name, tag) (0.8, libra2_pruner_versions{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", tag=\"min_readable\"}))",
           "hide": false,
           "interval": "",
           "legendFormat": "{{kubernetes_pod_name}} {{pruner_name}} {{tag}} (p80)",

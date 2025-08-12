@@ -3,7 +3,7 @@
 Homebrew is a package manager that works for MacOS Silicon and Intel chips as well as Linux distributions like Debian
 and Ubuntu.
 
-The [Aptos command line interface (CLI)](https://aptos.dev/tools/aptos-cli/install-cli/) may be installed
+The [Libra2 command line interface (CLI)](https://aptos.dev/tools/aptos-cli/install-cli/) may be installed
 via [Homebrew](https://brew.sh/) for simplicity. This is an in-depth overview of Homebrew and the Aptos formula. In this
 guide, we go over each section of the Homebrew formula and steps to implement changes in the future.
 
@@ -206,7 +206,7 @@ To conduct tests, run:
 brew test aptos
 ```
 
-The current test generates a new key via the Aptos CLI and ensures the shell output matches the filename(s) for that
+The current test generates a new key via the Libra2 CLI and ensures the shell output matches the filename(s) for that
 key.
 
 ```ruby

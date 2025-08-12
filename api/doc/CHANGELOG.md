@@ -1,8 +1,8 @@
-# Aptos Node API Changelog
+# Libra2 Node API Changelog
 
-All notable changes to the Aptos Node API will be captured in this file. This changelog is written by hand for now. It adheres to the format set out by [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
+All notable changes to the Libra2 Node API will be captured in this file. This changelog is written by hand for now. It adheres to the format set out by [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-**Note**: The Aptos Node API does not follow semantic version while we are in active development. Instead, breaking changes will be announced with each devnet cut. Once we launch our mainnet, the API will follow semantic versioning closely.
+**Note**: The Libra2 Node API does not follow semantic version while we are in active development. Instead, breaking changes will be announced with each devnet cut. Once we launch our mainnet, the API will follow semantic versioning closely.
 
 ## Unreleased
 - OpenAPI layout changed slightly in some enum cases, see [#13929](https://github.com/aptos-labs/aptos-core/pull/13929) for more information.
@@ -65,7 +65,7 @@ Output B (after this release):
 
 ## 1.0.0 (2022-08-04)
 
-This is the first major release of v1 of the Aptos Node API. This first changelog is therefore dedicated to changes between v0 and v1. These changes should only be generally relevant to client / SDK developers, if you are a dapp developer, you likely interact with the API via an SDK, in which case the changelog of that SDK will be more useful to you.
+This is the first major release of v1 of the Libra2 Node API. This first changelog is therefore dedicated to changes between v0 and v1. These changes should only be generally relevant to client / SDK developers, if you are a dapp developer, you likely interact with the API via an SDK, in which case the changelog of that SDK will be more useful to you.
 
 Future changelogs will follow the format laid out by [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 

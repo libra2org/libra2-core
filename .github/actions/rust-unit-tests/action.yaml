@@ -37,8 +37,8 @@ runs:
           --locked \
           --workspace \
           --exclude smoke-test \
-          --exclude aptos-testcases \
-          --exclude aptos-keyless-circuit \
+          --exclude libra2-testcases \
+          --exclude libra2-keyless-circuit \
           --retries 3 \
           --no-fail-fast \
           --message-format libtest-json > nextest_output.json || python3 .github/actions/rust-unit-tests/nextest_summary.py nextest_output.json "$GITHUB_STEP_SUMMARY" -f

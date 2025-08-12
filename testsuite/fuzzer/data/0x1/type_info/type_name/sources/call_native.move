@@ -1,7 +1,7 @@
 module poc::type_name {
-   use aptos_std::type_info;
+   use libra2_std::type_info;
    use std::string::{String};
-   use aptos_std::table::Table;
+   use libra2_std::table::Table;
 
    struct MyStruct has copy, drop, store {
        x: u64,

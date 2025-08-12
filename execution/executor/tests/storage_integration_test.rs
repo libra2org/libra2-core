@@ -13,7 +13,7 @@ use libra2_executor_test_helpers::{
 use libra2_executor_types::BlockExecutorTrait;
 use libra2_storage_interface::state_store::state_view::db_state_view::DbStateViewAtVersion;
 use libra2_types::{
-    account_config::{aptos_test_root_address, AccountResource, CORE_CODE_ADDRESS},
+    account_config::{libra2_test_root_address, AccountResource, CORE_CODE_ADDRESS},
     block_metadata::BlockMetadata,
     on_chain_config::{Libra2Version, OnChainConfig, ValidatorSet},
     state_store::{state_key::StateKey, MoveResourceExt},
@@ -107,7 +107,7 @@ fn test_reconfiguration() {
 
     // txn1 = give the validator some money so they can send a tx
     let txn1 = get_test_signed_transaction(
-        aptos_test_root_address(),
+        libra2_test_root_address(),
         /* sequence_number = */ 0,
         genesis_key.clone(),
         genesis_key.public_key(),
@@ -126,7 +126,7 @@ fn test_reconfiguration() {
 
     // txn3 = set the aptos version for next epoch
     let txn3 = get_test_signed_transaction(
-        aptos_test_root_address(),
+        libra2_test_root_address(),
         /* sequence_number = */ 1,
         genesis_key.clone(),
         genesis_key.public_key(),
@@ -134,7 +134,7 @@ fn test_reconfiguration() {
     );
 
     let txn4 = get_test_signed_transaction(
-        aptos_test_root_address(),
+        libra2_test_root_address(),
         2,
         genesis_key.clone(),
         genesis_key.public_key(),

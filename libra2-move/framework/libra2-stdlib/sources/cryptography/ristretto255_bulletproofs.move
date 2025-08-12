@@ -7,11 +7,11 @@
 /// The module also supports batch range proofs, allowing verification of multiple commitments in a single proof.
 /// Each commitment in the batch must satisfy the same range constraint $v \in [0, 2^n)$, and the supported batch
 /// sizes are limited to $\{1, 2, 4, 8, 16\}$.
-module aptos_std::ristretto255_bulletproofs {
+module libra2_std::ristretto255_bulletproofs {
     use std::error;
     use std::features;
-    use aptos_std::ristretto255_pedersen as pedersen;
-    use aptos_std::ristretto255::{Self, RistrettoPoint};
+    use libra2_std::ristretto255_pedersen as pedersen;
+    use libra2_std::ristretto255::{Self, RistrettoPoint};
 
     //
     // Constants
@@ -287,9 +287,9 @@ module aptos_std::ristretto255_bulletproofs {
     //
 
     #[test_only]
-    use aptos_std::ristretto255::{Scalar, scalar_to_bytes};
+    use libra2_std::ristretto255::{Scalar, scalar_to_bytes};
     #[test_only]
-    use aptos_std::ristretto255_pedersen::commitment_equals;
+    use libra2_std::ristretto255_pedersen::commitment_equals;
 
     #[test_only]
     const A_DST: vector<u8> = b"AptosBulletproofs";

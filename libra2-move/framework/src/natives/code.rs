@@ -223,7 +223,7 @@ impl NativeCodeContext {
 }
 
 /// Represents a request for code publishing made from a native call and to be processed
-/// by the Aptos VM.
+/// by the Libra2 VM.
 pub struct PublishRequest {
     pub destination: AccountAddress,
     pub bundle: ModuleBundle,

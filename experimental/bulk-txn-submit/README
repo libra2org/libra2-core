@@ -1,4 +1,4 @@
-Script that allows you to submit a set of transactions, from a given file, to Aptos Blockchain, in a reliable manner.
+Script that allows you to submit a set of transactions, from a given file, to Libra2 Blockchain, in a reliable manner.
 
 You can create your own file, with one address per line, or for testing, you can create bunch of sample addresses (not attached to private keys, so don't send meaningful funds there, as they are just lost):
 cargo run --release --package libra2-experimental-bulk-txn-submit --bin libra2-experimental-bulk-txn-submit -- create-sample-addresses --output-file experimental/airdrop/data/sample_1m.txt --num-addresses 100

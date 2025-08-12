@@ -1,4 +1,4 @@
-spec aptos_std::bls12381 {
+spec libra2_std::bls12381 {
 
     spec public_key_from_bytes {
         aborts_if false;

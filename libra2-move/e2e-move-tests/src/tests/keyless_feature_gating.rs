@@ -37,7 +37,7 @@ use move_core_types::{
     },
 };
 
-/// Initializes an Aptos VM and sets the keyless configuration via script.
+/// Initializes an Libra2 VM and sets the keyless configuration via script.
 fn init_feature_gating(
     enabled_features: Vec<FeatureFlag>,
     disabled_features: Vec<FeatureFlag>,

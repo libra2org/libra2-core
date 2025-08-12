@@ -1,4 +1,4 @@
-spec aptos_std::comparator {
+spec libra2_std::comparator {
     spec Result {
         invariant inner == EQUAL || inner == SMALLER || inner == GREATER;
     }

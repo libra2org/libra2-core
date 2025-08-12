@@ -23,7 +23,7 @@ use self::{
 };
 use crate::{
     common::{IpRangeManagerConfig, ListManagerConfig},
-    endpoints::{AptosTapError, RejectionReason},
+    endpoints::{Libra2TapError, RejectionReason},
 };
 use anyhow::Result;
 use libra2_sdk::types::account_address::AccountAddress;
@@ -49,7 +49,7 @@ pub trait CheckerTrait: Sync + Send + 'static {
         &self,
         data: CheckerData,
         dry_run: bool,
-    ) -> Result<Vec<RejectionReason>, AptosTapError>;
+    ) -> Result<Vec<RejectionReason>, Libra2TapError>;
 
     /// If the Checker wants to do anything after the funding has completed, it
     /// may do so in this function. For example, for the storage Checkers, this
@@ -58,7 +58,7 @@ pub trait CheckerTrait: Sync + Send + 'static {
     /// included in CompleteData that we might have from the call to the Funder.
     /// No dry_run flag for this, because we should never need to run this in
     /// dry_run mode.
-    async fn complete(&self, _data: CompleteData) -> Result<(), AptosTapError> {
+    async fn complete(&self, _data: CompleteData) -> Result<(), Libra2TapError> {
         Ok(())
     }
 

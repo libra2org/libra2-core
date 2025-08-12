@@ -75,7 +75,7 @@ module libra2_framework::system_addresses {
         addr == @vm_reserved
     }
 
-    /// Return true if `addr` is either the VM address or an Aptos Framework address.
+    /// Return true if `addr` is either the VM address or an Libra2 Framework address.
     public fun is_reserved_address(addr: address): bool {
         is_libra2_framework_address(addr) || is_vm_address(addr)
     }

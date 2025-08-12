@@ -3,11 +3,11 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use super::ungrouped::PROGRESS_THRESHOLD_20_6;
-use aptos_forge::{
+use libra2_forge::{
     args::TransactionTypeArg, success_criteria::SuccessCriteria, EmitJobMode, EmitJobRequest,
     ForgeConfig,
 };
-use aptos_testcases::performance_test::PerformanceBenchmark;
+use libra2_testcases::performance_test::PerformanceBenchmark;
 use std::{num::NonZeroUsize, path::PathBuf, sync::Arc};
 
 pub(crate) fn large_db_simple_test() -> ForgeConfig {

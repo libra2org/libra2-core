@@ -30,7 +30,7 @@ use libra2_sdk::{
 use libra2_transaction_generator_lib::{
     create_txn_generator_creator, AccountType, TransactionType, SEND_AMOUNT,
 };
-use libra2_types::account_config::aptos_test_root_address;
+use libra2_types::account_config::libra2_test_root_address;
 use futures::future::{try_join_all, FutureExt};
 use log::{error, info, warn};
 use once_cell::sync::Lazy;
@@ -1151,7 +1151,7 @@ pub async fn load_specific_account(
     client: &RestClient,
 ) -> Result<LocalAccount> {
     let address = if is_root {
-        aptos_test_root_address()
+        libra2_test_root_address()
     } else {
         account_key.authentication_key().account_address()
     };

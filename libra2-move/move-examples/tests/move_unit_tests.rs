@@ -44,7 +44,7 @@ pub fn run_tests_for_pkg(
         },
         UnitTestingConfig::default(),
         // TODO(Gas): we may want to switch to non-zero costs in the future
-        aptos_test_natives(),
+        libra2_test_natives(),
         libra2_test_feature_flags_genesis(),
         /* gas limit */ Some(100_000),
         /* cost_table */ None,
@@ -56,7 +56,7 @@ pub fn run_tests_for_pkg(
     }
 }
 
-pub fn aptos_test_natives() -> NativeFunctionTable {
+pub fn libra2_test_natives() -> NativeFunctionTable {
     natives::configure_for_unit_test();
     extended_checks::configure_extended_checks_for_unit_test();
     natives::libra2_natives(

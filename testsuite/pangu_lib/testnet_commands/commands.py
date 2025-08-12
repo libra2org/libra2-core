@@ -59,7 +59,7 @@ def create(
     layout_path: Optional[str],
     workspace: Optional[str],
     framework_path: str,
-    aptos_cli_path: str,
+    libra2_cli_path: str,
     dry_run: bool,
     name: Optional[str],
 ):
@@ -71,7 +71,7 @@ def create(
         layout_path (str): path to the layout file
         workspace (str): path to the folder you would like the genesis files to be generated (default is a temp folder).
         framework_path (str): path to the compiled move framework
-        aptos_cli_path (str): path to aptos cli
+        libra2_cli_path (str): path to aptos cli
         dry_run (bool): whether to deploy to kubernetes, or save the deployment instructions to the workspace
         namespace (str): the namespace to create the testnet
     """
@@ -105,7 +105,7 @@ def create(
                 layout_path=layout_path,
                 workspace=workspace,
                 framework_path=framework_path,
-                aptos_cli_path=aptos_cli_path,
+                libra2_cli_path=libra2_cli_path,
                 dry_run=dry_run,
                 name=testnet_name,
             ),

@@ -64,7 +64,7 @@ yes
 /// - 3.c Generate a valid signature.
 ///  Open up file `aptos-core/libra2-move/e2e-move-tests/src/tests/mint_nft.rs`.
 ///  In function `generate_nft_tutorial_part4_signature`, change the `resource_address`, `nft_receiver`, `admin_private_key`, and `receiver_account_sequence_number` variables to the actual values.
-///  You can find the `admin_private_key` by running `nano output.key`, and the `receiver_account_sequence_number` by looking up the receiver's address on the Aptos Explorer under tab `Info`.
+///  You can find the `admin_private_key` by running `nano output.key`, and the `receiver_account_sequence_number` by looking up the receiver's address on the Libra2 Explorer under tab `Info`.
 ///  Make sure you're in the right directory.
 ///  Run the following command in directory `aptos-core/libra2-move/e2e-move-tests`
 ///  Run `cargo test generate_nft_tutorial_part4_signature -- --nocapture` to generate a valid signature that we'll use in the next step.
@@ -99,12 +99,12 @@ module mint_nft::create_nft_getting_production_ready {
     use libra2_framework::account;
     use libra2_framework::event;
     use libra2_framework::timestamp;
-    use aptos_std::ed25519;
+    use libra2_std::ed25519;
     use libra2_token::token::{Self, TokenDataId};
     use libra2_framework::resource_account;
     #[test_only]
     use libra2_framework::account::create_account_for_test;
-    use aptos_std::ed25519::ValidatedPublicKey;
+    use libra2_std::ed25519::ValidatedPublicKey;
 
     #[event]
     // This struct stores the token receiver's address and token_data_id in the event of token minting

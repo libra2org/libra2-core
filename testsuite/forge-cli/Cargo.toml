@@ -1,7 +1,7 @@
 [package]
-name = "aptos-forge-cli"
-description = "Aptos end to end test framework CLI"
-version = "0.0.0"
+name = "libra2-forge-cli"
+description = "Libra2 end to end test framework CLI"
+version = "0.0.1"
 
 # Workspace inherited keys
 authors = { workspace = true }
@@ -16,12 +16,12 @@ rust-version = { workspace = true }
 anyhow = { workspace = true }
 libra2-cached-packages = { workspace = true }
 libra2-config = { workspace = true }
-aptos-forge = { workspace = true }
+libra2-forge = { workspace = true }
 libra2-global-constants = { workspace = true }
 libra2-logger = { workspace = true }
 libra2-rest-client = { workspace = true }
 libra2-sdk = { workspace = true }
-aptos-testcases = { workspace = true }
+libra2-testcases = { workspace = true }
 async-trait = { workspace = true }
 chrono = { workspace = true }
 clap = { workspace = true }

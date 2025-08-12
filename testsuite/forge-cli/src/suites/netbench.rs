@@ -5,7 +5,7 @@
 use super::multi_region::wrap_with_two_region_env;
 use crate::{suites::ungrouped::Delay, KILOBYTE, MEGABYTE};
 use libra2_config::config::NetbenchConfig;
-use aptos_forge::ForgeConfig;
+use libra2_forge::ForgeConfig;
 use std::{num::NonZeroUsize, sync::Arc};
 
 /// Attempts to match the test name to a network benchmark test

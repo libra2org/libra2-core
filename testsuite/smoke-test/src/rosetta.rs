@@ -14,7 +14,7 @@ use libra2_crypto::{
     ed25519::{Ed25519PrivateKey, Ed25519Signature},
     HashValue, PrivateKey,
 };
-use aptos_forge::{AptosPublicInfo, LocalSwarm, Node, NodeExt, Swarm};
+use libra2_forge::{Libra2PublicInfo, LocalSwarm, Node, NodeExt, Swarm};
 use libra2_gas_schedule::{Libra2GasParameters, FromOnChainGasSchedule};
 use libra2_genesis::builder::InitConfigFn;
 use libra2_global_constants::GAS_UNIT_PRICE;
@@ -91,7 +91,7 @@ async fn setup_test(
             genesis_config.randomness_config_override = Some(OnChainRandomnessConfig::Off);
         }))
         .with_init_config(config_fn)
-        .with_aptos()
+        .with_libra2()
         .build_with_cli(num_accounts)
         .await;
     let validator = swarm.validators().next().unwrap();
@@ -255,12 +255,12 @@ async fn test_account_balance() {
     let account_3 = cli.account_id(2);
     let chain_id = swarm.chain_id();
     swarm
-        .aptos_public_info()
+        .libra2_public_info()
         .sync_root_account_sequence_number()
         .await;
 
     let mut account_4 = swarm
-        .aptos_public_info()
+        .libra2_public_info()
         .create_and_fund_user_account(10_000_000_000)
         .await
         .unwrap();
@@ -400,7 +400,7 @@ async fn test_account_balance() {
     .expect_err("Original staking contract is not supported");
 
     create_staking_contract(
-        &swarm.aptos_public_info(),
+        &swarm.libra2_public_info(),
         &mut account_4,
         account_1,
         account_2,
@@ -431,7 +431,7 @@ async fn test_account_balance() {
     .unwrap();
 
     unlock_stake(
-        &swarm.aptos_public_info(),
+        &swarm.libra2_public_info(),
         &mut account_4,
         account_1,
         1_000,
@@ -473,7 +473,7 @@ async fn test_account_balance() {
 }
 
 async fn create_staking_contract(
-    info: &AptosPublicInfo,
+    info: &Libra2PublicInfo,
     account: &mut LocalAccount,
     operator: AccountAddress,
     voter: AccountAddress,
@@ -497,7 +497,7 @@ async fn create_staking_contract(
 }
 
 async fn unlock_stake(
-    info: &AptosPublicInfo,
+    info: &Libra2PublicInfo,
     account: &mut LocalAccount,
     operator: AccountAddress,
     amount: u64,
@@ -515,7 +515,7 @@ async fn unlock_stake(
 }
 
 async fn create_delegation_pool(
-    info: &AptosPublicInfo,
+    info: &Libra2PublicInfo,
     account: &mut LocalAccount,
     commission_percentage: u64,
     sequence_number: u64,
@@ -595,7 +595,7 @@ async fn wait_for_rosetta_block(node_clients: &NodeClients<'_>, block_height: u6
 async fn test_transfer() {
     let (swarm, cli, _faucet, rosetta_client) = setup_simple_test(1).await;
     let chain_id = swarm.chain_id();
-    let client = swarm.aptos_public_info().client().clone();
+    let client = swarm.libra2_public_info().client().clone();
     let sender = cli.account_id(0);
     let receiver = AccountAddress::from_hex_literal("0xBEEF").unwrap();
     let sender_private_key = cli.private_key(0);
@@ -2519,9 +2519,9 @@ async fn test_delegation_pool_operations() {
     };
     let network_identifier = chain_id.into();
 
-    let root_address = swarm.aptos_public_info().root_account().address();
+    let root_address = swarm.libra2_public_info().root_account().address();
     let root_sequence_number = swarm
-        .aptos_public_info()
+        .libra2_public_info()
         .client()
         .get_account_bcs(root_address)
         .await
@@ -2530,18 +2530,18 @@ async fn test_delegation_pool_operations() {
         .sequence_number();
 
     swarm
-        .aptos_public_info()
+        .libra2_public_info()
         .root_account()
         .set_sequence_number(root_sequence_number);
 
     let mut delegation_pool_creator_account = swarm
-        .aptos_public_info()
+        .libra2_public_info()
         .create_and_fund_user_account(1_000_000_000_000_000)
         .await
         .unwrap();
 
     let res = create_delegation_pool(
-        &swarm.aptos_public_info(),
+        &swarm.libra2_public_info(),
         &mut delegation_pool_creator_account,
         10,
         1,

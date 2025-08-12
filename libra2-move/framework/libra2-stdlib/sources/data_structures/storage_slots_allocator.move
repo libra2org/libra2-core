@@ -15,9 +15,9 @@
 /// for example:
 /// * inlining some nodes
 /// * having a fee-payer for any storage creation operations
-module aptos_std::storage_slots_allocator {
+module libra2_std::storage_slots_allocator {
     use std::error;
-    use aptos_std::table_with_length::{Self, TableWithLength};
+    use libra2_std::table_with_length::{Self, TableWithLength};
     use std::option::{Self, Option};
 
     const EINVALID_ARGUMENT: u64 = 1;

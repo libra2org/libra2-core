@@ -1,6 +1,6 @@
 module poc::add_internal {
-    use aptos_std::crypto_algebra::{Self};
-    use aptos_std::bls12381_algebra::Fr;
+    use libra2_std::crypto_algebra::{Self};
+    use libra2_std::bls12381_algebra::Fr;
 
     public entry fun main(_owner: &signer) {
         let x = crypto_algebra::from_u64<Fr>(10);

@@ -143,5 +143,5 @@ pub fn build_openapi_service<R: Runner>(
     let url: Url = server_args
         .try_into()
         .expect("Failed to parse listen address");
-    OpenApiService::new(api, "Aptos Node Checker", version).server(url)
+    OpenApiService::new(api, "Libra2 Node Checker", version).server(url)
 }

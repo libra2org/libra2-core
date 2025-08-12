@@ -27,7 +27,7 @@ pub mod validator_join_leave_test;
 pub mod validator_reboot_stress_test;
 
 use anyhow::Context;
-use aptos_forge::{
+use libra2_forge::{
     prometheus_metrics::{fetch_latency_breakdown, LatencyBreakdown},
     EmitJob, EmitJobRequest, NetworkContext, NetworkContextSynchronizer, NetworkTest, NodeExt,
     Result, Swarm, SwarmExt, Test, TestReport, TxnEmitter, TxnStats, Version,

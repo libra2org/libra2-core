@@ -1,8 +1,8 @@
-module aptos_std::smart_vector {
+module libra2_std::smart_vector {
     use std::error;
-    use aptos_std::big_vector::{Self, BigVector};
-    use aptos_std::math64::max;
-    use aptos_std::type_info::size_of_val;
+    use libra2_std::big_vector::{Self, BigVector};
+    use libra2_std::math64::max;
+    use libra2_std::type_info::size_of_val;
     use std::option::{Self, Option};
 
     /// Vector index is out of bounds
@@ -419,7 +419,7 @@ module aptos_std::smart_vector {
         self: &SmartVector<T1>,
         f: |&T1|T2
     ): SmartVector<T2> {
-        let result = aptos_std::smart_vector::new<T2>();
+        let result = libra2_std::smart_vector::new<T2>();
         self.for_each_ref(|elem| result.push_back(f(elem)));
         result
     }
@@ -429,7 +429,7 @@ module aptos_std::smart_vector {
         self: SmartVector<T1>,
         f: |T1|T2
     ): SmartVector<T2> {
-        let result = aptos_std::smart_vector::new<T2>();
+        let result = libra2_std::smart_vector::new<T2>();
         self.for_each(|elem| result.push_back(f(elem)));
         result
     }
@@ -439,7 +439,7 @@ module aptos_std::smart_vector {
         self: SmartVector<T>,
         p: |&T|bool
     ): SmartVector<T> {
-        let result = aptos_std::smart_vector::new<T>();
+        let result = libra2_std::smart_vector::new<T>();
         self.for_each(|elem| {
             if (p(&elem)) result.push_back(elem);
         });
@@ -514,7 +514,7 @@ module aptos_std::smart_vector {
         // due to how inline functions work.
         assert!(self.length() == v2.length(), 0x20005);
 
-        let result = aptos_std::smart_vector::new<NewT>();
+        let result = libra2_std::smart_vector::new<NewT>();
         self.zip(v2, |e1, e2| result.push_back(f(e1, e2)));
         result
     }
@@ -530,7 +530,7 @@ module aptos_std::smart_vector {
         // due to how inline functions work.
         assert!(self.length() == v2.length(), 0x20005);
 
-        let result = aptos_std::smart_vector::new<NewT>();
+        let result = libra2_std::smart_vector::new<NewT>();
         self.zip_ref(v2, |e1, e2| result.push_back(f(e1, e2)));
         result
     }

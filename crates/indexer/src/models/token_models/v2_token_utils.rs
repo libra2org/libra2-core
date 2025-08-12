@@ -36,7 +36,7 @@ pub type EventIndex = i64;
 /// This contains both metadata for fungible assets and fungible tokens
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct TokenV2AggregatedData {
-    pub aptos_collection: Option<Libra2Collection>,
+    pub libra2_collection: Option<Libra2Collection>,
     pub fixed_supply: Option<FixedSupply>,
     pub fungible_asset_metadata: Option<FungibleAssetMetadata>,
     pub fungible_asset_supply: Option<FungibleAssetSupply>,

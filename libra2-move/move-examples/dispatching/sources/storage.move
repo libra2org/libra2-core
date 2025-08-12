@@ -3,8 +3,8 @@ module dispatching::storage {
     use std::option;
     use std::string;
 
-    use aptos_std::table::{Self, Table};
-    use aptos_std::type_info::{Self, TypeInfo};
+    use libra2_std::table::{Self, Table};
+    use libra2_std::type_info::{Self, TypeInfo};
 
     use libra2_framework::dispatchable_fungible_asset;
     use libra2_framework::function_info::FunctionInfo;

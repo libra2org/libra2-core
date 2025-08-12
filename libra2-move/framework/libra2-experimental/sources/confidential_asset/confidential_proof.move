@@ -5,8 +5,8 @@ module libra2_experimental::confidential_proof {
     use std::option;
     use std::option::Option;
     use std::vector;
-    use aptos_std::ristretto255::{Self, CompressedRistretto, Scalar};
-    use aptos_std::ristretto255_bulletproofs::{Self as bulletproofs, RangeProof};
+    use libra2_std::ristretto255::{Self, CompressedRistretto, Scalar};
+    use libra2_std::ristretto255_bulletproofs::{Self as bulletproofs, RangeProof};
 
     use libra2_experimental::confidential_balance;
     use libra2_experimental::ristretto255_twisted_elgamal as twisted_elgamal;

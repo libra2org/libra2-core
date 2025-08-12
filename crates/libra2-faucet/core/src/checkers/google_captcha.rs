@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use super::{CheckerData, CheckerTrait};
-use crate::endpoints::{AptosTapError, AptosTapErrorCode, RejectionReason, RejectionReasonCode};
+use crate::endpoints::{Libra2TapError, Libra2TapErrorCode, RejectionReason, RejectionReasonCode};
 use anyhow::Result;
 use libra2_logger::debug;
 use async_trait::async_trait;
@@ -61,10 +61,10 @@ impl CheckerTrait for CaptchaChecker {
         &self,
         data: CheckerData,
         _dry_run: bool,
-    ) -> Result<Vec<RejectionReason>, AptosTapError> {
+    ) -> Result<Vec<RejectionReason>, Libra2TapError> {
         let captcha_token = match data.headers.get(COMPLETED_CAPTCHA_TOKEN) {
             Some(header_value) => header_value.to_str().map_err(|e| {
-                AptosTapError::new_with_error_code(e, AptosTapErrorCode::InvalidRequest)
+                Libra2TapError::new_with_error_code(e, Libra2TapErrorCode::InvalidRequest)
             })?,
             None => {
                 return Ok(vec![RejectionReason::new(
@@ -84,13 +84,13 @@ impl CheckerTrait for CaptchaChecker {
             })
             .send()
             .await
-            .map_err(|e| AptosTapError::new_with_error_code(e, AptosTapErrorCode::CheckerError))?;
+            .map_err(|e| Libra2TapError::new_with_error_code(e, Libra2TapErrorCode::CheckerError))?;
 
         let status_code = verify_result.status();
         let resp = verify_result
             .text()
             .await
-            .map_err(|e| AptosTapError::new_with_error_code(e, AptosTapErrorCode::CheckerError))?;
+            .map_err(|e| Libra2TapError::new_with_error_code(e, Libra2TapErrorCode::CheckerError))?;
         if !status_code.is_success() {
             debug!(
                 message = "Google captcha API returned error status code",
@@ -100,7 +100,7 @@ impl CheckerTrait for CaptchaChecker {
         } else {
             // Rather than `verify_result.json`, we parse the result with serde_json to have more flexibilities
             let resp: serde_json::Value = serde_json::from_str(resp.as_str()).map_err(|e| {
-                AptosTapError::new_with_error_code(e, AptosTapErrorCode::CheckerError)
+                Libra2TapError::new_with_error_code(e, Libra2TapErrorCode::CheckerError)
             })?;
 
             if resp["success"].as_bool().unwrap_or(false) {

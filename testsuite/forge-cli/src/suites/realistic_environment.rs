@@ -10,7 +10,7 @@ use crate::{
     suites::ungrouped::{optimize_for_maximum_throughput, optimize_state_sync_for_throughput},
     TestCommand,
 };
-use aptos_forge::{
+use libra2_forge::{
     args::TransactionTypeArg,
     prometheus_metrics::LatencyBreakdownSlice,
     success_criteria::{
@@ -22,7 +22,7 @@ use aptos_forge::{
 use libra2_sdk::types::on_chain_config::{
     BlockGasLimitType, OnChainConsensusConfig, OnChainExecutionConfig, TransactionShufflerType,
 };
-use aptos_testcases::{
+use libra2_testcases::{
     load_vs_perf_benchmark::{LoadVsPerfBenchmark, TransactionWorkload, Workloads},
     multi_region_network_test::MultiRegionNetworkEmulationTest,
     performance_test::PerformanceBenchmark,

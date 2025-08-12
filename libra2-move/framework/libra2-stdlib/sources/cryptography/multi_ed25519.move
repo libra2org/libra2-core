@@ -1,12 +1,12 @@
 /// Exports MultiEd25519 multi-signatures in Move.
 /// This module has the exact same interface as the Ed25519 module.
 
-module aptos_std::multi_ed25519 {
+module libra2_std::multi_ed25519 {
     use std::bcs;
     use std::error;
     use std::features;
     use std::option::{Self, Option};
-    use aptos_std::ed25519;
+    use libra2_std::ed25519;
 
     //
     // Error codes
@@ -28,7 +28,7 @@ module aptos_std::multi_ed25519 {
     // Constants
     //
 
-    /// The identifier of the MultiEd25519 signature scheme, which is used when deriving Aptos authentication keys by hashing
+    /// The identifier of the MultiEd25519 signature scheme, which is used when deriving Libra2 authentication keys by hashing
     /// it together with an MultiEd25519 public key.
     const SIGNATURE_SCHEME_ID: u8 = 1;
 

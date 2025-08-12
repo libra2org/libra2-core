@@ -6,7 +6,7 @@
  * These codes provide more granular error information beyond just the HTTP
  * status code of the response.
  */
-export enum AptosTapErrorCode {
+export enum Libra2TapErrorCode {
     YEAH_NAH_YEAH_YEAH_YEAH_NAH_YEAH_NAH = 'YeahNahYeahYeahYeahNahYeahNah',
     INVALID_REQUEST = 'InvalidRequest',
     ACCOUNT_DOES_NOT_EXIST = 'AccountDoesNotExist',
@@ -14,7 +14,7 @@ export enum AptosTapErrorCode {
     SOURCE_IP_MISSING = 'SourceIpMissing',
     TRANSACTION_FAILED = 'TransactionFailed',
     ENDPOINT_NOT_ENABLED = 'EndpointNotEnabled',
-    APTOS_API_ERROR = 'AptosApiError',
+    LIBRA2_API_ERROR = 'Libra2ApiError',
     BYPASSER_ERROR = 'BypasserError',
     CHECKER_ERROR = 'CheckerError',
     STORAGE_ERROR = 'StorageError',

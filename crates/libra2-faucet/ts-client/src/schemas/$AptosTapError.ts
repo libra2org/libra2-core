@@ -1,7 +1,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-export const $AptosTapError = {
+export const $Libra2TapError = {
     description: `This is the generic struct we use for all API errors, it contains a string
     message and a service specific error code.`,
     properties: {
@@ -13,7 +13,7 @@ export const $AptosTapError = {
         error_code: {
             type: 'all-of',
             contains: [{
-                type: 'AptosTapErrorCode',
+                type: 'Libra2TapErrorCode',
             }],
             isRequired: true,
         },

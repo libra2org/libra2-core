@@ -51,13 +51,13 @@
 
 
 <pre><code><b>use</b> <a href="account.md#0x1_account">0x1::account</a>;
-<b>use</b> <a href="libra2_coin.md#0x1_libra2_coin">0x1::libra2_coin</a>;
 <b>use</b> <a href="coin.md#0x1_coin">0x1::coin</a>;
 <b>use</b> <a href="create_signer.md#0x1_create_signer">0x1::create_signer</a>;
 <b>use</b> <a href="../../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error">0x1::error</a>;
 <b>use</b> <a href="event.md#0x1_event">0x1::event</a>;
 <b>use</b> <a href="../../libra2-stdlib/../move-stdlib/doc/features.md#0x1_features">0x1::features</a>;
 <b>use</b> <a href="fungible_asset.md#0x1_fungible_asset">0x1::fungible_asset</a>;
+<b>use</b> <a href="libra2_coin.md#0x1_libra2_coin">0x1::libra2_coin</a>;
 <b>use</b> <a href="object.md#0x1_object">0x1::object</a>;
 <b>use</b> <a href="primary_fungible_store.md#0x1_primary_fungible_store">0x1::primary_fungible_store</a>;
 <b>use</b> <a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">0x1::signer</a>;
@@ -401,7 +401,7 @@ This would create the recipient account first and register it to receive the Coi
         <b>spec</b> {
             // TODO(fa_migration)
             // <b>assert</b> <a href="coin.md#0x1_coin_spec_is_account_registered">coin::spec_is_account_registered</a>&lt;Libra2Coin&gt;(<b>to</b>);
-            // <b>assume</b> aptos_std::type_info::type_of&lt;CoinType&gt;() == aptos_std::type_info::type_of&lt;Libra2Coin&gt;() ==&gt;
+            // <b>assume</b> libra2_std::type_info::type_of&lt;CoinType&gt;() == libra2_std::type_info::type_of&lt;Libra2Coin&gt;() ==&gt;
             //     <a href="coin.md#0x1_coin_spec_is_account_registered">coin::spec_is_account_registered</a>&lt;CoinType&gt;(<b>to</b>);
         };
     };
@@ -849,7 +849,7 @@ Address of APT Primary Fungible Store
 
 <tr>
 <td>1</td>
-<td>During the creation of an Aptos account the following rules should hold: (1) the authentication key should be 32 bytes in length, (2) an Aptos account should not already exist for that authentication key, and (3) the address of the authentication key should not be equal to a reserved address (0x0, 0x1, or 0x3).</td>
+<td>During the creation of an Libra2 account the following rules should hold: (1) the authentication key should be 32 bytes in length, (2) an Libra2 account should not already exist for that authentication key, and (3) the address of the authentication key should not be equal to a reserved address (0x0, 0x1, or 0x3).</td>
 <td>Critical</td>
 <td>The authentication key which is passed in as an argument to create_account should satisfy all necessary conditions.</td>
 <td>Formally verified via <a href="#high-level-req-1">CreateAccountAbortsIf</a>.</td>
@@ -857,7 +857,7 @@ Address of APT Primary Fungible Store
 
 <tr>
 <td>2</td>
-<td>After creating an Aptos account, the account should become registered to receive Libra2Coin.</td>
+<td>After creating an Libra2 account, the account should become registered to receive Libra2Coin.</td>
 <td>Critical</td>
 <td>The create_account function creates a new account for the particular address and registers Libra2Coin.</td>
 <td>Formally verified via <a href="#high-level-req-2">create_account</a>.</td>
@@ -897,7 +897,7 @@ Address of APT Primary Fungible Store
 
 <tr>
 <td>7</td>
-<td>When performing a batch transfer of Aptos Coin and/or a batch transfer of a custom coin type, it should ensure that the vector containing destination addresses and the vector containing the corresponding amounts are equal in length.</td>
+<td>When performing a batch transfer of Libra2 Coin and/or a batch transfer of a custom coin type, it should ensure that the vector containing destination addresses and the vector containing the corresponding amounts are equal in length.</td>
 <td>Low</td>
 <td>The batch_transfer and batch_transfer_coins functions verify that the length of the recipient addresses vector matches the length of the amount vector through an assertion.</td>
 <td>Formally verified via <a href="#high-level-req-7">batch_transfer_coins</a>.</td>
@@ -929,7 +929,7 @@ Address of APT Primary Fungible Store
 
 Check if the bytes of the auth_key is 32.
 The Account does not exist under the auth_key before creating the account.
-Limit the address of auth_key is not @vm_reserved / @libra2_framework / @aptos_toke.
+Limit the address of auth_key is not @vm_reserved / @libra2_framework / @libra2_toke.
 
 
 <pre><code>// This enforces <a id="high-level-req-1" href="#high-level-req">high-level requirement 1</a>:

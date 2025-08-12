@@ -70,7 +70,7 @@ Failed to fetch state value for StateKey::AccessPath { address: 0x1, path: "Code
 ```
 
 To learn more about the API quotas, see https://developers.aptoslabs.com/docs/api-access/quotas.
-It is possible to increase your quota by creating an API key in Aptos Build. In order to do that,
+It is possible to increase your quota by creating an API key in Libra2 Build. In order to do that,
 follow instructions here: https://developers.aptoslabs.com/docs/api-access/api-keys. Then, when
 using the tool the key can be specified using `--api-key K` flag.
 

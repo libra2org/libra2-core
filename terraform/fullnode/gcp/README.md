@@ -88,7 +88,7 @@ These instructions assume that you have a functioning GCP project.  If you do no
 
          $ curl -v http://0:9101/metrics 2> /dev/null | grep "aptos_state_sync_version{type=\"synced\"}"
 
-         $ curl -v http://0:9101/metrics 2> /dev/null | grep "aptos_connections{direction=\"outbound\""
+         $ curl -v http://0:9101/metrics 2> /dev/null | grep "libra2_connections{direction=\"outbound\""
 
    * Exit port-forwarding when you are done by entering control-c in the terminal
 

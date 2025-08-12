@@ -1,7 +1,7 @@
 // Copyright © Aptos Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-//! This crate serves as the implementation of the standard gas meter and algebra used in the Aptos VM.
+//! This crate serves as the implementation of the standard gas meter and algebra used in the Libra2 VM.
 //! It also defines traits that enable composability of gas meters and algebra.
 
 mod algebra;

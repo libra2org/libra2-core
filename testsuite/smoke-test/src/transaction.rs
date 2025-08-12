@@ -2,9 +2,9 @@
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
-use crate::smoke_test_environment::new_local_swarm_with_aptos;
+use crate::smoke_test_environment::new_local_swarm_with_libra2;
 use libra2_cached_packages::libra2_stdlib;
-use aptos_forge::Swarm;
+use libra2_forge::Swarm;
 use libra2_keygen::KeyGen;
 use libra2_rest_client::{
     libra2_api_types::{EntryFunctionPayload, TransactionPayload},
@@ -19,8 +19,8 @@ use libra2_sdk::{
 #[ignore]
 #[tokio::test]
 async fn test_external_transaction_signer() {
-    let swarm = new_local_swarm_with_aptos(1).await;
-    let mut info = swarm.aptos_public_info();
+    let swarm = new_local_swarm_with_libra2(1).await;
+    let mut info = swarm.libra2_public_info();
 
     // generate key pair
     let mut key_gen = KeyGen::from_os_rng();

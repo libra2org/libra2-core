@@ -1,6 +1,6 @@
-# The Aptos Framework Repo
+# The Libra2 Framework Repo
 
-This repository serves as a mirror for the Aptos Framework packages, including the Move standard library. The contents are synced from [aptos-core](https://github.com/aptos-labs/aptos-core) on an hourly basis.
+This repository serves as a mirror for the Libra2 Framework packages, including the Move standard library. The contents are synced from [aptos-core](https://github.com/aptos-labs/aptos-core) on an hourly basis.
 
 By pulling dependencies from this mirror repository, developers can avoid downloading unnecessary data, reducing build time significantly.
 

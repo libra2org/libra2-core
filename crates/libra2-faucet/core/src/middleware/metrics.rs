@@ -10,7 +10,7 @@ use once_cell::sync::Lazy;
 
 pub static HISTOGRAM: Lazy<HistogramVec> = Lazy::new(|| {
     register_histogram_vec!(
-        "aptos_tap_requests",
+        "libra2_tap_requests",
         "Tap requests latency grouped by method, operation_id and status.",
         &["method", "operation_id", "status"]
     )
@@ -19,7 +19,7 @@ pub static HISTOGRAM: Lazy<HistogramVec> = Lazy::new(|| {
 
 pub static RESPONSE_STATUS: Lazy<HistogramVec> = Lazy::new(|| {
     register_histogram_vec!(
-        "aptos_tap_response_status",
+        "libra2_tap_response_status",
         "Tap requests latency grouped by status code only.",
         &["status"]
     )
@@ -28,7 +28,7 @@ pub static RESPONSE_STATUS: Lazy<HistogramVec> = Lazy::new(|| {
 
 static REJECTION_REASONS: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_tap_rejection_reason_count",
+        "libra2_tap_rejection_reason_count",
         "Number of times the tap has returned the given rejection reason.",
         &["rejection_reason_code"]
     )
@@ -37,7 +37,7 @@ static REJECTION_REASONS: Lazy<IntCounterVec> = Lazy::new(|| {
 
 pub static NUM_OUTSTANDING_TRANSACTIONS: Lazy<IntGauge> = Lazy::new(|| {
     register_int_gauge!(
-        "aptos_tap_num_outstanding_transactions",
+        "libra2_tap_num_outstanding_transactions",
         "Number of transactions we've submitted but have not been processed by the blockchain.",
     )
     .unwrap()
@@ -46,7 +46,7 @@ pub static NUM_OUTSTANDING_TRANSACTIONS: Lazy<IntGauge> = Lazy::new(|| {
 // TODO: Consider using IntGaugeVec to attach the account address as a label.
 pub static TRANSFER_FUNDER_ACCOUNT_BALANCE: Lazy<IntGauge> = Lazy::new(|| {
     register_int_gauge!(
-        "aptos_tap_transfer_funder_account_balance",
+        "libra2_tap_transfer_funder_account_balance",
         "Balance of the account used by the tap instance. Only populated for the TransferFunder.",
     )
     .unwrap()

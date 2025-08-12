@@ -119,7 +119,7 @@ impl ResourceGroupsTestHarness {
     pub fn new_account_with_key_pair(&mut self) -> Account {
         let acc = Account::new();
         let seq_num = 0;
-        // Mint the account 10M Aptos coins (with 8 decimals).
+        // Mint the account 10M Libra2 coins (with 8 decimals).
         let balance = 1_000_000_000_000_000;
 
         let result = self.harness.store_and_fund_account(&acc, balance, seq_num);

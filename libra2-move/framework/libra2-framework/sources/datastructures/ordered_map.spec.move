@@ -1,4 +1,4 @@
-spec aptos_std::ordered_map {
+spec libra2_std::ordered_map {
 
     spec OrderedMap {
         pragma intrinsic = map,

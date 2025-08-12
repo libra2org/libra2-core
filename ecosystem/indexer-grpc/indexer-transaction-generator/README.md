@@ -72,7 +72,7 @@ the actual account address will be allocated by the account manager.
 The accounts in `testing_accounts.yaml` will be used to run scripted transactions. 
 They are persisted in the config so each scripted transaction's generated output stays consistent between 
 `libra2-indexer-transaction-generator` runs. You can generate more testing accounts using 
-Aptos CLI by running `aptos init --profile local`. 
+Libra2 CLI by running `aptos init --profile local`. 
 
 TODO: account manager handles address as script argument.
 

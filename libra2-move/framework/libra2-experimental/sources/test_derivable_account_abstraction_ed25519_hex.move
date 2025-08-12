@@ -6,8 +6,8 @@
 /// account_identity is raw public_key.
 module libra2_experimental::test_derivable_account_abstraction_ed25519_hex {
     use std::error;
-    use aptos_std::string_utils;
-    use aptos_std::ed25519::{
+    use libra2_std::string_utils;
+    use libra2_std::ed25519::{
         Self,
         new_signature_from_bytes,
         new_unvalidated_public_key_from_bytes

@@ -3,11 +3,11 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
-    aptos_cli::validator::generate_blob, smoke_test_environment::SwarmBuilder,
+    libra2_cli::validator::generate_blob, smoke_test_environment::SwarmBuilder,
     utils::get_current_version,
 };
 use libra2::test::CliTestFramework;
-use aptos_forge::{NodeExt, Swarm, SwarmExt};
+use libra2_forge::{NodeExt, Swarm, SwarmExt};
 use libra2_rest_client::Client;
 use libra2_types::on_chain_config::{
     BlockGasLimitType, ExecutionConfigV4, OnChainExecutionConfig, TransactionDeduperType,
@@ -24,7 +24,7 @@ async fn fallback_test() {
             config.api.failpoints_enabled = true;
             config.execution.discard_failed_blocks = true;
         }))
-        .with_aptos()
+        .with_libra2()
         .build()
         .await;
 
@@ -114,7 +114,7 @@ async fn get_last_non_reconfig_block_ending_txn_name(rest_client: &Client) -> Op
 #[tokio::test]
 async fn block_epilogue_upgrade_test() {
     let (swarm, mut cli, _faucet) = SwarmBuilder::new_local(2)
-        .with_aptos()
+        .with_libra2()
         // Start with V1
         .with_init_genesis_config(Arc::new(|genesis_config| {
             genesis_config.execution_config = OnChainExecutionConfig::V4(ExecutionConfigV4 {

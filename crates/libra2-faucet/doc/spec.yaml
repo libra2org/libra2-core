@@ -80,7 +80,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AptosTapError'
+                $ref: '#/components/schemas/Libra2TapError'
           headers:
             CAPTCHA_KEY:
               description: Captcha key
@@ -123,7 +123,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AptosTapError'
+                $ref: '#/components/schemas/Libra2TapError'
           headers:
             RETRY-AFTER:
               deprecated: false
@@ -155,7 +155,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AptosTapError'
+                $ref: '#/components/schemas/Libra2TapError'
           headers:
             RETRY-AFTER:
               deprecated: false
@@ -165,7 +165,7 @@ paths:
       operationId: is_eligible
 components:
   schemas:
-    AptosTapError:
+    Libra2TapError:
       type: object
       description: |-
         This is the generic struct we use for all API errors, it contains a string
@@ -181,7 +181,7 @@ components:
           description: A message describing the error
         error_code:
           allOf:
-          - $ref: '#/components/schemas/AptosTapErrorCode'
+          - $ref: '#/components/schemas/Libra2TapErrorCode'
           - description: A code describing the error for programmatic use.
         rejection_reasons:
           type: array
@@ -195,7 +195,7 @@ components:
           description: Submitted transaction hashes, if it got to that point.
           items:
             type: string
-    AptosTapErrorCode:
+    Libra2TapErrorCode:
       type: string
       description: |-
         These codes provide more granular error information beyond just the HTTP
@@ -208,7 +208,7 @@ components:
       - SourceIpMissing
       - TransactionFailed
       - EndpointNotEnabled
-      - AptosApiError
+      - Libra2ApiError
       - BypasserError
       - CheckerError
       - StorageError

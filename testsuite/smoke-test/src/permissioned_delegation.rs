@@ -5,7 +5,7 @@ use crate::smoke_test_environment::SwarmBuilder;
 use libra2::move_tool::MemberId;
 use libra2_cached_packages::libra2_stdlib;
 use libra2_crypto::SigningKey;
-use aptos_forge::Swarm;
+use libra2_forge::Swarm;
 use libra2_types::function_info::FunctionInfo;
 use move_core_types::account_address::AccountAddress;
 use std::{str::FromStr, sync::Arc};
@@ -13,10 +13,10 @@ use std::{str::FromStr, sync::Arc};
 #[tokio::test(flavor = "multi_thread", worker_threads = 1)]
 async fn test_permissioned_delegation() {
     let (swarm, mut cli, _faucet) = SwarmBuilder::new_local(1)
-        .with_aptos()
+        .with_libra2()
         .build_with_cli(0)
         .await;
-    let mut info = swarm.aptos_public_info();
+    let mut info = swarm.libra2_public_info();
 
     let mut account1 = info
         .create_and_fund_user_account(100_000_000_000)
@@ -53,7 +53,7 @@ async fn test_permissioned_delegation() {
     let script = format!(
         r#"
     script {{
-    use aptos_std::ed25519;
+    use libra2_std::ed25519;
     use libra2_framework::coin;
     use libra2_framework::permissioned_delegation;
     use libra2_framework::primary_fungible_store;

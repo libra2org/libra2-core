@@ -52,7 +52,7 @@
             "name": "Collection"
           },
           "typeStr": "0x4::collection::Collection",
-          "data": "{\"creator\":\"0x3fda2b751a0d209e17069ae72ccde256efeaad39e5403ea0e65ef5dcebdf6763\",\"description\":\"Congratulations, your account is eligible to receive airdrop tokens!\",\"mutation_events\":{\"counter\":\"0\",\"guid\":{\"id\":{\"addr\":\"0x1ac3cb52493947623cd727e2db9e4cfd828d5f9cd264920d253828276a5e314e\",\"creation_num\":\"1125899906842625\"}}},\"name\":\"Aptos Airdrop\",\"uri\":\"https://pwncdn.com/nft/img/collection\"}"
+          "data": "{\"creator\":\"0x3fda2b751a0d209e17069ae72ccde256efeaad39e5403ea0e65ef5dcebdf6763\",\"description\":\"Congratulations, your account is eligible to receive airdrop tokens!\",\"mutation_events\":{\"counter\":\"0\",\"guid\":{\"id\":{\"addr\":\"0x1ac3cb52493947623cd727e2db9e4cfd828d5f9cd264920d253828276a5e314e\",\"creation_num\":\"1125899906842625\"}}},\"name\":\"Libra2 Airdrop\",\"uri\":\"https://pwncdn.com/nft/img/collection\"}"
         }
       },
       {

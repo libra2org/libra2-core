@@ -4,7 +4,7 @@
 
 use crate::generate_traffic;
 use anyhow::bail;
-use aptos_forge::{
+use libra2_forge::{
     get_highest_synced_epoch, get_highest_synced_version, NetworkContext,
     NetworkContextSynchronizer, NetworkTest, Result, SwarmExt, Test,
 };

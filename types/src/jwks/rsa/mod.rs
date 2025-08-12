@@ -75,7 +75,7 @@ impl RSA_JWK {
         }
     }
 
-    // The private key to this JWK is found under INTERNAL_TEST_OIDC_PROVIDER_PRIVATE_KEY in aptos-keyless-prod in gcloud secrets
+    // The private key to this JWK is found under INTERNAL_TEST_OIDC_PROVIDER_PRIVATE_KEY in libra2-keyless-prod in gcloud secrets
     pub fn secure_test_jwk() -> RSA_JWK {
         RSA_JWK {
             kid:"test-rsa".to_owned(),

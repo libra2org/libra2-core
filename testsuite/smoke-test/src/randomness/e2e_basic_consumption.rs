@@ -3,7 +3,7 @@
 
 use crate::smoke_test_environment::SwarmBuilder;
 use libra2::{common::types::GasOptions, move_tool::MemberId, test::CliTestFramework};
-use aptos_forge::{NodeExt, Swarm, SwarmExt};
+use libra2_forge::{NodeExt, Swarm, SwarmExt};
 use libra2_logger::info;
 use libra2_types::on_chain_config::OnChainRandomnessConfig;
 use serde::{Deserialize, Serialize};
@@ -18,7 +18,7 @@ async fn e2e_basic_consumption() {
 
     let (swarm, mut cli, _faucet) = SwarmBuilder::new_local(4)
         .with_num_fullnodes(1)
-        .with_aptos()
+        .with_libra2()
         .with_init_genesis_config(Arc::new(move |conf| {
             conf.epoch_duration_secs = epoch_duration_secs;
 

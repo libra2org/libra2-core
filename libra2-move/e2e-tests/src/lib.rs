@@ -4,9 +4,9 @@
 
 #![forbid(unsafe_code)]
 
-//! Test infrastructure for the Aptos VM.
+//! Test infrastructure for the Libra2 VM.
 //!
-//! This crate contains helpers for executing tests against the Aptos VM.
+//! This crate contains helpers for executing tests against the Libra2 VM.
 
 use libra2_types::{transaction::TransactionStatus, vm_status::KeptVMStatus};
 

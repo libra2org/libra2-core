@@ -260,7 +260,7 @@ members = [
     "vm-validator",
 ]
 
-# NOTE: default-members is the complete list of binaries that form the "production Aptos codebase". These members should
+# NOTE: default-members is the complete list of binaries that form the "production Libra2 codebase". These members should
 # never include crates that require fuzzing features or test features. These are the crates we want built with no extra
 # test-only code included.
 #
@@ -300,8 +300,8 @@ libra2 = { path = "crates/libra2" }
 libra2-accumulator = { path = "storage/accumulator" }
 libra2-admin-service = { path = "crates/libra2-admin-service" }
 libra2-aggregator = { path = "libra2-move/libra2-aggregator" }
-aptos-api = { path = "api" }
-aptos-api-test-context = { path = "api/test-context" }
+libra2-api = { path = "api" }
+libra2-api-test-context = { path = "api/test-context" }
 libra2-api-types = { path = "api/types" }
 libra2-backup-cli = { path = "storage/backup/backup-cli" }
 libra2-backup-service = { path = "storage/backup/backup-service" }
@@ -349,7 +349,7 @@ libra2-faucet-core = { path = "crates/libra2-faucet/core" }
 libra2-faucet-service = { path = "crates/libra2-faucet/service" }
 libra2-faucet-metrics-server = { path = "crates/libra2-faucet/metrics-server" }
 libra2-fallible = { path = "crates/fallible" }
-aptos-forge = { path = "testsuite/forge" }
+libra2-forge = { path = "testsuite/forge" }
 libra2-framework = { path = "libra2-move/framework" }
 fuzzer = { path = "testsuite/fuzzer" }
 libra2-abstract-gas-usage = { path = "libra2-move/libra2-abstract-gas-usage" }
@@ -417,7 +417,7 @@ libra2-package-builder = { path = "libra2-move/package-builder" }
 libra2-peer-monitoring-service-client = { path = "peer-monitoring-service/client" }
 libra2-peer-monitoring-service-server = { path = "peer-monitoring-service/server" }
 libra2-peer-monitoring-service-types = { path = "peer-monitoring-service/types" }
-aptos-keyless-common = { path = "keyless/common" }
+libra2-keyless-common = { path = "keyless/common" }
 libra2-keyless-pepper-common = { path = "keyless/pepper/common" }
 libra2-keyless-pepper-service = { path = "keyless/pepper/service" }
 libra2-profiler = { path = "crates/libra2-profiler" }
@@ -457,7 +457,7 @@ libra2-transaction-filters = { path = "crates/libra2-transaction-filters" }
 libra2-telemetry = { path = "crates/libra2-telemetry" }
 libra2-telemetry-service = { path = "crates/libra2-telemetry-service" }
 libra2-temppath = { path = "crates/libra2-temppath" }
-aptos-testcases = { path = "testsuite/testcases" }
+libra2-testcases = { path = "testsuite/testcases" }
 libra2-time-service = { path = "crates/libra2-time-service", features = [
     "async",
 ] }

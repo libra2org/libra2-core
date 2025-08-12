@@ -193,7 +193,7 @@ loadTestGenesis: false
 # -- TEST ONLY: Enable running as root for profiling
 enablePrivilegedMode: false
 
-genesis_blob_upload_url: https://us-west1-aptos-forge-gcp-0.cloudfunctions.net/signed-url?cluster_name=unknown&era=1
+genesis_blob_upload_url: https://us-west1-libra2-forge-gcp-0.cloudfunctions.net/signed-url?cluster_name=unknown&era=1
 cluster_name: unknown
 
 # Additional labels

@@ -14,7 +14,7 @@ The multisig account is a resource account underneath. By default, it has no aut
 the special multisig transaction flow. However, owners can create a transaction to change the auth key to match a
 private key off chain if so desired.
 
-Transactions need to be executed in order of creation, similar to transactions for a normal Aptos account (enforced
+Transactions need to be executed in order of creation, similar to transactions for a normal Libra2 account (enforced
 with account nonce).
 
 The flow is like below:
@@ -152,7 +152,7 @@ and implement the governance voting logic on top.
 <b>use</b> <a href="event.md#0x1_event">0x1::event</a>;
 <b>use</b> <a href="../../libra2-stdlib/../move-stdlib/doc/features.md#0x1_features">0x1::features</a>;
 <b>use</b> <a href="../../libra2-stdlib/../move-stdlib/doc/hash.md#0x1_hash">0x1::hash</a>;
-<b>use</b> <a href="aptos_coin.md#0x1_libra2_coin">0x1::libra2_coin</a>;
+<b>use</b> <a href="libra2_coin.md#0x1_libra2_coin">0x1::libra2_coin</a>;
 <b>use</b> <a href="../../libra2-stdlib/../move-stdlib/doc/option.md#0x1_option">0x1::option</a>;
 <b>use</b> <a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">0x1::signer</a>;
 <b>use</b> <a href="../../libra2-stdlib/doc/simple_map.md#0x1_simple_map">0x1::simple_map</a>;

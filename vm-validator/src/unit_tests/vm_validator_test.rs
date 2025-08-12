@@ -81,7 +81,7 @@ impl std::ops::Deref for TestValidator {
 fn test_validate_transaction() {
     let vm_validator = TestValidator::new();
 
-    let address = account_config::aptos_test_root_address();
+    let address = account_config::libra2_test_root_address();
     let program = libra2_stdlib::libra2_coin_mint(address, 100);
     let transaction = transaction_test_helpers::get_test_signed_txn(
         address,
@@ -102,7 +102,7 @@ fn test_validate_invalid_signature() {
     let other_private_key = Ed25519PrivateKey::generate(&mut rng);
     // Submit with an account using an different private/public keypair
 
-    let address = account_config::aptos_test_root_address();
+    let address = account_config::libra2_test_root_address();
     let program = libra2_stdlib::libra2_coin_transfer(address, 100);
     let transaction = transaction_test_helpers::get_test_unchecked_txn(
         address,
@@ -119,7 +119,7 @@ fn test_validate_invalid_signature() {
 fn test_validate_known_script_too_large_args() {
     let vm_validator = TestValidator::new();
 
-    let address = account_config::aptos_test_root_address();
+    let address = account_config::libra2_test_root_address();
     let transaction = transaction_test_helpers::get_test_signed_transaction(
         address,
         1,
@@ -149,7 +149,7 @@ fn test_validate_known_script_too_large_args() {
 fn test_validate_max_gas_units_above_max() {
     let vm_validator = TestValidator::new();
 
-    let address = account_config::aptos_test_root_address();
+    let address = account_config::libra2_test_root_address();
     let transaction = transaction_test_helpers::get_test_signed_transaction(
         address,
         1,
@@ -171,7 +171,7 @@ fn test_validate_max_gas_units_above_max() {
 fn test_validate_max_gas_units_below_min() {
     let vm_validator = TestValidator::new();
 
-    let address = account_config::aptos_test_root_address();
+    let address = account_config::libra2_test_root_address();
     // Calculate a size for the transaction script that will ensure
     // that the minimum transaction gas is at least 1 after scaling to the
     // external gas units.
@@ -205,7 +205,7 @@ fn test_validate_max_gas_units_below_min() {
 #[test]
 fn test_get_account_sequence_number() {
     let vm_validator = TestValidator::new();
-    let root_address = account_config::aptos_test_root_address();
+    let root_address = account_config::libra2_test_root_address();
     let state_view = vm_validator
         .vm_validator
         .get_next_vm()
@@ -232,7 +232,7 @@ fn test_get_account_sequence_number() {
 fn test_validate_max_gas_price_above_bounds() {
     let vm_validator = TestValidator::new();
 
-    let address = account_config::aptos_test_root_address();
+    let address = account_config::libra2_test_root_address();
     let transaction = transaction_test_helpers::get_test_signed_transaction(
         address,
         1,
@@ -257,7 +257,7 @@ fn test_validate_max_gas_price_above_bounds() {
 fn test_validate_max_gas_price_below_bounds() {
     let vm_validator = TestValidator::new();
 
-    let address = account_config::aptos_test_root_address();
+    let address = account_config::libra2_test_root_address();
     let program = libra2_stdlib::libra2_coin_transfer(address, 100);
     let transaction = transaction_test_helpers::get_test_signed_transaction(
         address,
@@ -286,7 +286,7 @@ fn test_validate_invalid_auth_key() {
     let other_private_key = Ed25519PrivateKey::generate(&mut rng);
     // Submit with an account using an different private/public keypair
 
-    let address = account_config::aptos_test_root_address();
+    let address = account_config::libra2_test_root_address();
     let program = libra2_stdlib::libra2_coin_transfer(address, 100);
     let transaction = transaction_test_helpers::get_test_signed_txn(
         address,
@@ -303,7 +303,7 @@ fn test_validate_invalid_auth_key() {
 fn test_validate_account_doesnt_exist() {
     let vm_validator = TestValidator::new();
 
-    let address = account_config::aptos_test_root_address();
+    let address = account_config::libra2_test_root_address();
     let random_account_addr = account_address::AccountAddress::random();
     let program = libra2_stdlib::libra2_coin_transfer(address, 100);
     let transaction = transaction_test_helpers::get_test_signed_transaction(
@@ -324,7 +324,7 @@ fn test_validate_account_doesnt_exist() {
 fn test_validate_sequence_number_too_new() {
     let vm_validator = TestValidator::new();
 
-    let address = account_config::aptos_test_root_address();
+    let address = account_config::libra2_test_root_address();
     let program = libra2_stdlib::libra2_coin_transfer(address, 100);
     let transaction = transaction_test_helpers::get_test_signed_txn(
         address,
@@ -341,7 +341,7 @@ fn test_validate_sequence_number_too_new() {
 fn test_validate_invalid_arguments() {
     let vm_validator = TestValidator::new();
 
-    let address = account_config::aptos_test_root_address();
+    let address = account_config::libra2_test_root_address();
     let program = libra2_stdlib::libra2_coin_transfer(address, 100);
     let transaction = transaction_test_helpers::get_test_signed_txn(
         address,
@@ -359,7 +359,7 @@ fn test_validate_invalid_arguments() {
 fn test_validate_expiration_time() {
     let vm_validator = TestValidator::new();
 
-    let address = account_config::aptos_test_root_address();
+    let address = account_config::libra2_test_root_address();
     let transaction = transaction_test_helpers::get_test_signed_transaction(
         address,
         1, /* sequence_number */
@@ -378,7 +378,7 @@ fn test_validate_expiration_time() {
 fn test_validate_chain_id() {
     let vm_validator = TestValidator::new();
 
-    let address = account_config::aptos_test_root_address();
+    let address = account_config::libra2_test_root_address();
     let transaction = transaction_test_helpers::get_test_txn_with_chain_id(
         address,
         0, /* sequence_number */

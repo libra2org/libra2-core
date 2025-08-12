@@ -1,4 +1,4 @@
-spec aptos_std::ed25519 {
+spec libra2_std::ed25519 {
 
     // -----------------------
     // Function specifications

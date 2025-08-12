@@ -1,7 +1,7 @@
 // Copyright © Aptos Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-use crate::{wait_for_all_nodes_to_catchup_to_version, AptosPublicInfo};
+use crate::{wait_for_all_nodes_to_catchup_to_version, Libra2PublicInfo};
 use anyhow::{bail, Context, Result};
 use libra2_config::config::DEFAULT_MAX_PAGE_SIZE;
 use libra2_rest_client::Client as RestClient;
@@ -55,7 +55,7 @@ async fn get_node_state(validator_client: &RestClient) -> NodeState {
 pub async fn test_consensus_fault_tolerance(
     // swarm: Arc<tokio::sync::RwLock<Box<(dyn Swarm)>>>,
     validator_clients: Vec<(String, RestClient)>,
-    public_info: AptosPublicInfo,
+    public_info: Libra2PublicInfo,
     cycles: usize,
     cycle_duration_s: f32,
     parts_in_cycle: usize,
