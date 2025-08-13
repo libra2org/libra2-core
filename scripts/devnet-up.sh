@@ -20,5 +20,4 @@ rm -rf "$DATA_DIR"
 cargo run -p libra2 --release -- node run-localnet \
   --test-dir "$DATA_DIR" \
   --force-restart \
-  --with-faucet \
-  --no-txn-stream
+  --with-faucet # --no-txn-stream

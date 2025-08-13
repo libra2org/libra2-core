@@ -4,7 +4,7 @@
 use super::{golden_output::GoldenOutputs, pretty};
 use libra2_api::{attach_poem_to_runtime, BasicError, Context};
 use libra2_api_types::{
-    mime_types, HexEncodedBytes, TransactionOnChainData, X_APTOS_CHAIN_ID,
+    mime_types, HexEncodedBytes, TransactionOnChainData, X_LIBRA2_CHAIN_ID,
     X_LIBRA2_LEDGER_TIMESTAMP, X_LIBRA2_LEDGER_VERSION,
 };
 use libra2_cached_packages::libra2_stdlib;
@@ -1323,7 +1323,7 @@ impl TestContext {
 
         if self.expect_status_code < 300 {
             let ledger_info = self.get_latest_ledger_info();
-            assert_eq!(headers[X_APTOS_CHAIN_ID], "4");
+            assert_eq!(headers[X_LIBRA2_CHAIN_ID], "4");
             assert_eq!(
                 headers[X_LIBRA2_LEDGER_VERSION],
                 ledger_info.version().to_string()

@@ -209,12 +209,12 @@ mod tests {
                 .path("/v1/accounts/0000000000000000000000000000000000000000000000000000000000000001/resource/0x1::stake::ValidatorSet");
             then.status(200)
                 .body(bcs::to_bytes(&validator_set).unwrap())
-                .header(X_APTOS_CHAIN_ID, "25")
-                .header(X_APTOS_EPOCH, "10")
+                .header(X_LIBRA2_CHAIN_ID, "25")
+                .header(X_LIBRA2_EPOCH, "10")
                 .header(X_LIBRA2_LEDGER_VERSION, "10")
                 .header(X_LIBRA2_LEDGER_OLDEST_VERSION, "2")
-                .header(X_APTOS_BLOCK_HEIGHT, "25")
-                .header(X_APTOS_OLDEST_BLOCK_HEIGHT, "10")
+                .header(X_LIBRA2_BLOCK_HEIGHT, "25")
+                .header(X_LIBRA2_OLDEST_BLOCK_HEIGHT, "10")
                 .header(X_LIBRA2_LEDGER_TIMESTAMP, "10");
         });
 
@@ -257,12 +257,12 @@ mod tests {
                 .path("/v1/accounts/0000000000000000000000000000000000000000000000000000000000000001/resource/0x1::stake::ValidatorSet");
             then.status(200)
             .body(bcs::to_bytes(&validator_set).unwrap())
-            .header(X_APTOS_CHAIN_ID, "25")
-            .header(X_APTOS_EPOCH, "10")
+            .header(X_LIBRA2_CHAIN_ID, "25")
+            .header(X_LIBRA2_EPOCH, "10")
             .header(X_LIBRA2_LEDGER_VERSION, "10")
             .header(X_LIBRA2_LEDGER_OLDEST_VERSION, "2")
-            .header(X_APTOS_BLOCK_HEIGHT, "25")
-            .header(X_APTOS_OLDEST_BLOCK_HEIGHT, "10")
+            .header(X_LIBRA2_BLOCK_HEIGHT, "25")
+            .header(X_LIBRA2_OLDEST_BLOCK_HEIGHT, "10")
             .header(X_LIBRA2_LEDGER_TIMESTAMP, "10");
         });
 

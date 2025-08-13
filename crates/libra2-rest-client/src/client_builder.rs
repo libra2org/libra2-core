@@ -5,7 +5,7 @@ use crate::{
     get_version_path_with_base, Client, DEFAULT_VERSION_PATH_BASE, X_LIBRA2_SDK_HEADER_VALUE,
 };
 use anyhow::Result;
-use libra2_api_types::X_APTOS_CLIENT;
+use libra2_api_types::X_LIBRA2_CLIENT;
 use reqwest::{
     header::{self, HeaderMap, HeaderName, HeaderValue},
     Client as ReqwestClient, ClientBuilder as ReqwestClientBuilder,
@@ -43,7 +43,7 @@ impl ClientBuilder {
     pub fn new(aptos_base_url: Libra2BaseUrl) -> Self {
         let mut headers = HeaderMap::new();
         headers.insert(
-            X_APTOS_CLIENT,
+            X_LIBRA2_CLIENT,
             HeaderValue::from_static(X_LIBRA2_SDK_HEADER_VALUE),
         );
 

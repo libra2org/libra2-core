@@ -11129,6 +11129,25 @@ dependencies = [
 ]
 
 [[package]]
+name = "libra2-txnstream-server"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "bcs 0.1.6",
+ "futures",
+ "libra2-config",
+ "libra2-db",
+ "libra2-protos",
+ "libra2-telemetry",
+ "prost 0.13.5",
+ "thiserror 1.0.69",
+ "tokio",
+ "tokio-stream",
+ "tonic 0.12.3",
+ "tonic-health",
+]
+
+[[package]]
 name = "libra2-types"
 version = "0.0.4"
 dependencies = [
@@ -18610,6 +18629,19 @@ dependencies = [
  "tower-service",
  "tracing",
  "zstd 0.13.3",
+]
+
+[[package]]
+name = "tonic-health"
+version = "0.12.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1eaf34ddb812120f5c601162d5429933c9b527d901ab0e7f930d3147e33a09b2"
+dependencies = [
+ "async-stream",
+ "prost 0.13.5",
+ "tokio",
+ "tokio-stream",
+ "tonic 0.12.3",
 ]
 
 [[package]]

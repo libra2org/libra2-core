@@ -1,6 +1,8 @@
+// protos/proto/libra2/txnstream/v1/txnstream.proto
 syntax = "proto3";
+package libra2.txnstream.v1;
 
-package txnstream.v1;
+message Empty {}
 
 message ChainIdResponse {
   uint32 chain_id = 1;
@@ -14,23 +16,21 @@ message ServerInfoResponse {
 message TransactionsRequest {
   uint64 start_version = 1;
   bool include_events = 2;
-  uint32 batch_size = 3;
-  uint32 max_wait_ms = 4;
+  uint32 batch_size = 3;   // server clamps to sane max (e.g., 1000)
+  uint32 max_wait_ms = 4;  // long-poll; 0 = immediate
   bool exclude_ledger_changes = 5;
 }
 
 message TransactionOutput {
   uint64 version = 1;
-  bytes txn = 2;
-  repeated bytes events = 3;
-  bytes info = 4;
+  bytes txn = 2;            // bcs-encoded transaction
+  repeated bytes events = 3;// bcs-encoded events
+  bytes info = 4;           // bcs-encoded TransactionInfo
 }
 
 message TransactionsResponse {
   repeated TransactionOutput batch = 1;
 }
-
-message Empty {}
 
 service TxnStream {
   rpc GetChainId(Empty) returns (ChainIdResponse);

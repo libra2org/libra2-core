@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::metrics::{HISTOGRAM, POST_BODY_BYTES, REQUEST_SOURCE_CLIENT, RESPONSE_STATUS};
-use libra2_api_types::X_APTOS_CLIENT;
+use libra2_api_types::X_LIBRA2_CLIENT;
 use libra2_logger::{
     debug, info,
     prelude::{sample, SampleRate},
@@ -43,7 +43,7 @@ pub async fn middleware_log<E: Endpoint>(next: E, request: Request) -> Result<Re
             .and_then(|v| v.to_str().ok().map(|v| v.to_string())),
         libra2_client: request
             .headers()
-            .get(X_APTOS_CLIENT)
+            .get(X_LIBRA2_CLIENT)
             .and_then(|v| v.to_str().ok().map(|v| v.to_string())),
         elapsed: Duration::from_secs(0),
         forwarded: request
@@ -110,7 +110,7 @@ pub async fn middleware_log<E: Endpoint>(next: E, request: Request) -> Result<Re
     Ok(response)
 }
 
-// Each of our clients includes a header value called X_APTOS_CLIENT that identifies
+// Each of our clients includes a header value called X_LIBRA2_CLIENT that identifies
 // that client. This string follows a particular format: <identifier>/<version>,
 // where <identifier> always starts with `aptos-`. This function ensure this string
 // matches the specified format and returns it if it does. You can see more specifics
