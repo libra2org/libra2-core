@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package txnstream.v1;
+
+message ChainIdResponse {
+  uint32 chain_id = 1;
+}
+
+message ServerInfoResponse {
+  string version = 1;
+  uint64 build_timestamp = 2;
+}
+
+message TransactionsRequest {
+  uint64 start_version = 1;
+  bool include_events = 2;
+  uint32 batch_size = 3;
+  uint32 max_wait_ms = 4;
+  bool exclude_ledger_changes = 5;
+}
+
+message TransactionOutput {
+  uint64 version = 1;
+  bytes txn = 2;
+  repeated bytes events = 3;
+  bytes info = 4;
+}
+
+message TransactionsResponse {
+  repeated TransactionOutput batch = 1;
+}
+
+message Empty {}
+
+service TxnStream {
+  rpc GetChainId(Empty) returns (ChainIdResponse);
+  rpc GetServerInfo(Empty) returns (ServerInfoResponse);
+  rpc StreamTransactions(TransactionsRequest) returns (stream TransactionsResponse);
+}

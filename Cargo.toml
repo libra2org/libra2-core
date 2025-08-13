@@ -76,6 +76,8 @@ members = [
     "crates/libra2-id-generator",
     "crates/libra2-infallible",
     "crates/libra2-inspection-service",
+    "crates/libra2-protos-txnstream",
+    "crates/libra2-txnstream-server",
     "crates/libra2-jwk-consensus",
     "crates/libra2-keygen",
     "crates/libra2-ledger",
