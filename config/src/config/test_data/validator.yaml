@@ -79,3 +79,9 @@ validator_network:
     max_frame_size: 4194304 # 4 MiB
 api:
     enabled: true
+    address: 127.0.0.1:8080
+
+txn_stream:
+    enabled: true
+    bind_address: "127.0.0.1"
+    port: 50051

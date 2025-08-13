@@ -3,21 +3,43 @@ set -euo pipefail
 
 DATA_DIR="$HOME/.libra2/localnet"
 
-# Remove any previous localnet data
+NO_TXN_STREAM=false
+TXN_ADDR="127.0.0.1"
+TXN_PORT="50051"
+ARGS=()
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    --no-txn-stream)
+      NO_TXN_STREAM=true
+      ARGS+=("$1")
+      shift
+      ;;
+    --txn-stream-addr)
+      TXN_ADDR="$2"
+      ARGS+=("$1" "$2")
+      shift 2
+      ;;
+    --txn-stream-port)
+      TXN_PORT="$2"
+      ARGS+=("$1" "$2")
+      shift 2
+      ;;
+    *)
+      ARGS+=("$1")
+      shift
+      ;;
+  esac
+done
+
 echo "Cleaning existing localnet data at $DATA_DIR"
 rm -rf "$DATA_DIR"
 
-# Start a new single validator localnet with faucet
-# This uses the Libra2 CLI built from this repository.
-# It will automatically generate keys, genesis, and configuration.
-
-# Disable the transaction stream for local development. The gRPC transaction stream
-# service is not yet implemented in Libra2, so enabling it causes a startup failure.
-# See the README for details. The --no-txn-stream flag skips starting the gRPC
-# transaction stream and prevents the "Unimplemented" error seen when polling
-# the transaction stream endpoint.
+if [ "$NO_TXN_STREAM" = false ]; then
+  echo "gRPC txn-stream endpoint: ${TXN_ADDR}:${TXN_PORT}"
+fi
 
 cargo run -p libra2 --release -- node run-localnet \
   --test-dir "$DATA_DIR" \
   --force-restart \
-  --with-faucet # --no-txn-stream
+  --with-faucet \
+  "${ARGS[@]}"

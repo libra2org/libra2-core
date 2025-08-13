@@ -11,6 +11,7 @@ use clap::Parser;
 use maplit::hashset;
 use rand::{rngs::StdRng, SeedableRng};
 use reqwest::Url;
+use tokio::task::JoinHandle;
 use std::{
     collections::HashSet,
     net::{IpAddr, Ipv4Addr},
@@ -60,6 +61,10 @@ pub struct NodeArgs {
     /// The port at which to expose the grpc transaction stream.
     #[clap(long, default_value_t = DEFAULT_GRPC_STREAM_PORT)]
     txn_stream_port: u16,
+
+    /// The address at which to bind the grpc transaction stream.
+    #[clap(long)]
+    txn_stream_addr: Option<Ipv4Addr>,
 
     /// If set we won't run the node at all.
     //
@@ -128,11 +133,13 @@ impl NodeManager {
             args.node_args.performance,
             test_dir.clone(),
         )?;
+        let txn_addr = args.node_args.txn_stream_addr.unwrap_or(bind_to);
         Self::new_with_config(
             node_config,
             bind_to,
             test_dir,
             !args.node_args.no_txn_stream,
+            txn_addr,
             args.node_args.txn_stream_port,
             args.node_args.no_node,
         )
@@ -143,12 +150,17 @@ impl NodeManager {
         bind_to: Ipv4Addr,
         test_dir: PathBuf,
         run_txn_stream: bool,
+        txn_stream_addr: Ipv4Addr,
         txn_stream_port: u16,
         no_node: bool,
     ) -> Result<Self> {
         eprintln!();
 
         // Enable the grpc stream on the node if we will run a txn stream service.
+        node_config.txn_stream.enabled = run_txn_stream;
+        node_config.txn_stream.bind_address = txn_stream_addr.to_string();
+        node_config.txn_stream.port = txn_stream_port;
+
         node_config.indexer_grpc.enabled = run_txn_stream;
         node_config.indexer_grpc.use_data_service_interface = run_txn_stream;
         node_config.indexer_grpc.address.set_port(txn_stream_port);
@@ -182,6 +194,14 @@ impl NodeManager {
     pub fn get_data_service_url(&self) -> Url {
         socket_addr_to_url(&self.config.indexer_grpc.address, "http").unwrap()
     }
+
+    pub fn get_txn_stream_url(&self) -> Url {
+        Url::parse(&format!(
+            "http://{}:{}",
+            self.config.txn_stream.bind_address, self.config.txn_stream.port
+        ))
+        .unwrap()
+    }
 }
 
 #[async_trait]
@@ -202,6 +222,9 @@ impl ServiceManager for NodeManager {
                 socket_addr_to_url(&self.config.indexer_grpc.address, "http").unwrap();
             checkers.insert(HealthChecker::DataServiceGrpc(data_service_url));
         }
+        if self.config.txn_stream.enabled {
+            checkers.insert(HealthChecker::TxnStreamGrpc(self.get_txn_stream_url()));
+        }
         checkers
     }
 
@@ -214,11 +237,24 @@ impl ServiceManager for NodeManager {
     /// exit (which should never happen) forever. This is necessary because there is
     /// no async function we can use to run the node.
     async fn run_service(self: Box<Self>) -> Result<()> {
-        // Don't actually run the node, just idle.
         if self.no_node {
             loop {
                 tokio::time::sleep(Duration::from_millis(10000)).await;
             }
+        }
+
+        let mut handles: Vec<JoinHandle<()>> = Vec::new();
+
+        if self.config.txn_stream.enabled {
+            let addr = format!(
+                "{}:{}",
+                self.config.txn_stream.bind_address, self.config.txn_stream.port
+            );
+            handles.push(tokio::spawn(async move {
+                if let Err(e) = libra2_txnstream_server::serve(&addr).await {
+                    tracing::error!(%addr, error = ?e, "txn-stream server failed");
+                }
+            }));
         }
 
         let node_thread_handle = thread::spawn(move || {
@@ -226,10 +262,15 @@ impl ServiceManager for NodeManager {
             eprintln!("Node stopped unexpectedly {:#?}", result);
         });
 
-        // This just waits for the node thread forever.
         loop {
             if node_thread_handle.is_finished() {
                 return Err(anyhow!("Node thread finished unexpectedly"));
+            }
+            // If the txn stream task exited, return error
+            for handle in &handles {
+                if handle.is_finished() {
+                    return Err(anyhow!("txn-stream server task finished unexpectedly"));
+                }
             }
             tokio::time::sleep(Duration::from_millis(500)).await;
         }

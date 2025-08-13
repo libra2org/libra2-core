@@ -124,6 +124,7 @@ impl RunLocalnet {
                 HealthChecker::NodeApi(_) => false,
                 HealthChecker::Http(_, _) => false,
                 HealthChecker::DataServiceGrpc(_) => false,
+                HealthChecker::TxnStreamGrpc(_) => false,
                 HealthChecker::Postgres(_) => false,
                 // We don't want to print anything for the processors, it'd be too spammy.
                 HealthChecker::Processor(_, _) => true,

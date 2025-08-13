@@ -378,6 +378,7 @@ libra2-indexer-test-transactions = { path = "ecosystem/indexer-grpc/indexer-test
 libra2-indexer-grpc-utils = { path = "ecosystem/indexer-grpc/indexer-grpc-utils" }
 libra2-indexer-grpc-v2-file-store-backfiller = { path = "ecosystem/indexer-grpc/indexer-grpc-v2-file-store-backfiller" }
 libra2-indexer-grpc-server-framework = { path = "ecosystem/indexer-grpc/indexer-grpc-server-framework" }
+libra2-txnstream-server = { path = "crates/libra2-txnstream-server" }
 libra2-indexer-transaction-generator = { path = "ecosystem/indexer-grpc/indexer-transaction-generator" }
 libra2-infallible = { path = "crates/libra2-infallible" }
 libra2-inspection-service = { path = "crates/libra2-inspection-service" }

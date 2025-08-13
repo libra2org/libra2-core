@@ -28,8 +28,17 @@ Libra2 Core is licensed under [Apache 2.0](https://github.com/libra2org/libra2-c
 Run a local validator node with a faucet for development:
 
 ```bash
-./scripts/devnet-up.sh
+./scripts/devnet-up.sh          # starts REST, faucet, txn-stream
+./scripts/devnet-up.sh --no-txn-stream
 # REST: 127.0.0.1:8080, Faucet: 127.0.0.1:8081
+```
+
+Verify the gRPC transaction stream:
+
+```bash
+grpcurl -plaintext 127.0.0.1:50051 list
+grpcurl -plaintext -d '{}' 127.0.0.1:50051 grpc.health.v1.Health/Check
+grpcurl -plaintext -d '{}' 127.0.0.1:50051 libra2.txnstream.v1.TxnStream/GetChainId
 ```
 
 When done, stop the node and clean up data:

@@ -38,6 +38,7 @@ mod secure_backend_config;
 mod state_sync_config;
 mod storage_config;
 mod transaction_filters_config;
+mod txn_stream_config;
 mod utils;
 
 // All public usage statements should be declared below
@@ -70,3 +71,4 @@ pub use secure_backend_config::*;
 pub use state_sync_config::*;
 pub use storage_config::*;
 pub use transaction_filters_config::*;
+pub use txn_stream_config::*;
