@@ -6,7 +6,7 @@ use move_binary_format::errors::PartialVMResult;
 use move_core_types::{account_address::AccountAddress, identifier::IdentStr};
 use move_vm_runtime::ModuleStorage;
 
-/// Represents module storage used by the Aptos blockchain.
+/// Represents module storage used by the Libra2 blockchain.
 pub trait Libra2ModuleStorage: ModuleStorage {
     /// Returns the state value metadata associated with this module. The error is returned if
     /// there is a storage error. If the module does not exist, [None] is returned.

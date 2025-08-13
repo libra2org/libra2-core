@@ -10,7 +10,7 @@ SIWE.
 <domain> wants you to sign in with your Ethereum account:
 <ethereum_address>
 
-Please confirm you explicitly initiated this request from <domain>. You are approving to execute transaction <entry_function_name> on Aptos blockchain (<network_name>).
+Please confirm you explicitly initiated this request from <domain>. You are approving to execute transaction <entry_function_name> on Libra2 blockchain (<network_name>).
 
 URI: <scheme>://<domain>
 Version: 1
@@ -323,7 +323,7 @@ We include the issued_at in the signature as it is a required field in the SIWE 
     message.append(b".");
     message.append(b" You are approving <b>to</b> execute transaction ");
     message.append(*entry_function_name);
-    message.append(b" on Aptos blockchain");
+    message.append(b" on Libra2 blockchain");
     <b>let</b> network_name = network_name();
     message.append(b" (");
     message.append(network_name);

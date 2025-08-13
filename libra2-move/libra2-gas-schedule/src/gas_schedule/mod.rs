@@ -33,7 +33,7 @@ pub mod gas_params {
     }
 }
 
-/// Gas parameters for everything that is needed to run the Aptos blockchain, including
+/// Gas parameters for everything that is needed to run the Libra2 blockchain, including
 /// instructions, transactions and native functions from various packages.
 #[derive(Debug, Clone)]
 pub struct Libra2GasParameters {

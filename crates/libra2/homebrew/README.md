@@ -39,7 +39,7 @@ aptos --help
 
 # aptos 1.0.5
 # Aptos Labs <opensource@aptoslabs.com>
-# Command Line Interface (CLI) for developing and interacting with the Aptos blockchain
+# Command Line Interface (CLI) for developing and interacting with the Libra2 blockchain
 # ...
 ```
 

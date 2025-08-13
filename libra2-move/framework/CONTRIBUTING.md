@@ -4,7 +4,7 @@ This guide describes the process for adding, removing, and changing the Move mod
 
 ## Overview
 
-Every state change in the Aptos blockchain occurs via executing a Move *entry function* or a *script* embedded in a [SignedTransaction](../../types/src/transaction/mod.rs). Entry functions and scripts invoke procedures of Move *modules* that update published *resources*. The Move standard library consists of [modules](modules/) initially published in the genesis transaction.
+Every state change in the Libra2 blockchain occurs via executing a Move *entry function* or a *script* embedded in a [SignedTransaction](../../types/src/transaction/mod.rs). Entry functions and scripts invoke procedures of Move *modules* that update published *resources*. The Move standard library consists of [modules](modules/) initially published in the genesis transaction.
 
 ## Environment Setup
 

@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Libra2 Node API
-  description: The Libra2 Node API is a RESTful API for client applications to interact with the Aptos blockchain.
+  description: The Libra2 Node API is a RESTful API for client applications to interact with the Libra2 blockchain.
   version: 1.2.0
   contact:
     name: Aptos Labs

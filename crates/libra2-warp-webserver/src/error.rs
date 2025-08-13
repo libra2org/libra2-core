@@ -14,7 +14,7 @@ use warp::{http::StatusCode, reject::Reject};
 pub struct Error {
     pub code: u16,
     pub message: String,
-    /// Aptos blockchain latest onchain ledger version.
+    /// Libra2 blockchain latest onchain ledger version.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub libra2_ledger_version: Option<U64>,
 }

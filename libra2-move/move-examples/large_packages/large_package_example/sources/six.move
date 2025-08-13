@@ -1,6 +1,6 @@
 /// # Transaction Management
 ///
-/// This guide explains how to build a transaction management harness that can scale on the Aptos blockchain.
+/// This guide explains how to build a transaction management harness that can scale on the Libra2 blockchain.
 ///
 /// ## Background
 ///

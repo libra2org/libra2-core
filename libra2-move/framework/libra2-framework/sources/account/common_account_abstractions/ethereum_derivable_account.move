@@ -5,7 +5,7 @@
 /// <domain> wants you to sign in with your Ethereum account:
 /// <ethereum_address>
 ///
-/// Please confirm you explicitly initiated this request from <domain>. You are approving to execute transaction <entry_function_name> on Aptos blockchain (<network_name>).
+/// Please confirm you explicitly initiated this request from <domain>. You are approving to execute transaction <entry_function_name> on Libra2 blockchain (<network_name>).
 ///
 /// URI: <scheme>://<domain>
 /// Version: 1
@@ -120,7 +120,7 @@ module libra2_framework::ethereum_derivable_account {
         message.append(b".");
         message.append(b" You are approving to execute transaction ");
         message.append(*entry_function_name);
-        message.append(b" on Aptos blockchain");
+        message.append(b" on Libra2 blockchain");
         let network_name = network_name();
         message.append(b" (");
         message.append(network_name);
@@ -312,7 +312,7 @@ module libra2_framework::ethereum_derivable_account {
         let issued_at = b"2025-01-01T00:00:00.000Z";
         let scheme = b"https";
         let message = construct_message(&ethereum_address, &domain, &entry_function_name, &digest_utf8, &issued_at, &scheme);
-        let expected_message = b"\x19Ethereum Signed Message:\n442localhost:3001 wants you to sign in with your Ethereum account:\n0xC7B576Ead6aFb962E2DEcB35814FB29723AEC98a\n\nPlease confirm you explicitly initiated this request from localhost:3001. You are approving to execute transaction 0x1::libra2_account::transfer on Aptos blockchain (local).\n\nURI: https://localhost:3001\nVersion: 1\nChain ID: 4\nNonce: 0x2a2f07c32382a94aa90ddfdb97076b77d779656bb9730c4f3e4d22a30df298dd\nIssued At: 2025-01-01T00:00:00.000Z";
+        let expected_message = b"\x19Ethereum Signed Message:\n442localhost:3001 wants you to sign in with your Ethereum account:\n0xC7B576Ead6aFb962E2DEcB35814FB29723AEC98a\n\nPlease confirm you explicitly initiated this request from localhost:3001. You are approving to execute transaction 0x1::libra2_account::transfer on Libra2 blockchain (local).\n\nURI: https://localhost:3001\nVersion: 1\nChain ID: 4\nNonce: 0x2a2f07c32382a94aa90ddfdb97076b77d779656bb9730c4f3e4d22a30df298dd\nIssued At: 2025-01-01T00:00:00.000Z";
         assert!(message == expected_message);
     }
 

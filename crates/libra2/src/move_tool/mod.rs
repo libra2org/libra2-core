@@ -767,7 +767,7 @@ pub struct IncludedArtifactsArgs {
     pub included_artifacts: IncludedArtifacts,
 }
 
-/// Publishes the modules in a Move package to the Aptos blockchain
+/// Publishes the modules in a Move package to the Libra2 blockchain
 #[derive(Parser)]
 pub struct PublishPackage {
     #[clap(flatten)]
@@ -1118,7 +1118,7 @@ impl CliCommand<String> for BuildPublishPayload {
     }
 }
 
-/// Publishes the modules in a Move package to the Aptos blockchain, under an object (legacy version of `deploy-object`)
+/// Publishes the modules in a Move package to the Libra2 blockchain, under an object (legacy version of `deploy-object`)
 #[derive(Parser)]
 pub struct CreateObjectAndPublishPackage {
     /// The named address for compiling and using in the contract
@@ -1370,7 +1370,7 @@ impl CliCommand<TransactionSummary> for UpgradeObjectPackage {
     }
 }
 
-/// Publishes the modules in a Move package to the Aptos blockchain, under an object.
+/// Publishes the modules in a Move package to the Libra2 blockchain, under an object.
 #[derive(Parser)]
 pub struct DeployObjectCode {
     /// The named address for compiling and using in the contract
@@ -1777,7 +1777,7 @@ impl CliCommand<TransactionSummary> for ClearStagingArea {
     }
 }
 
-/// Publishes the modules in a Move package to the Aptos blockchain under a resource account
+/// Publishes the modules in a Move package to the Libra2 blockchain under a resource account
 #[derive(Parser)]
 pub struct CreateResourceAccountAndPublishPackage {
     /// The named address for compiling and using in the contract

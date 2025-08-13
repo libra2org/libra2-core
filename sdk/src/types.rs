@@ -119,7 +119,7 @@ impl<T: Into<AccountKey>> From<T> for LocalAccountAuthenticator {
     }
 }
 
-/// LocalAccount represents an account on the Aptos blockchain. Internally it
+/// LocalAccount represents an account on the Libra2 blockchain. Internally it
 /// holds the private / public key pair and the address of the account. You can
 /// use this struct to help transact with the blockchain, e.g. by generating a
 /// new account and signing transactions.
@@ -161,7 +161,7 @@ pub fn get_paired_fa_metadata_address(coin_type_name: &MoveStructTag) -> Account
 
 impl LocalAccount {
     /// Create a new representation of an account locally. Note: This function
-    /// does not actually create an account on the Aptos blockchain, just a
+    /// does not actually create an account on the Libra2 blockchain, just a
     /// local representation.
     pub fn new<T: Into<AccountKey>>(address: AccountAddress, key: T, sequence_number: u64) -> Self {
         Self {
@@ -336,7 +336,7 @@ impl LocalAccount {
     }
 
     /// Generate a new account locally. Note: This function does not actually
-    /// create an account on the Aptos blockchain, it just generates a new
+    /// create an account on the Libra2 blockchain, it just generates a new
     /// account locally.
     pub fn generate<R>(rng: &mut R) -> Self
     where

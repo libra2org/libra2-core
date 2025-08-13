@@ -157,7 +157,7 @@ pub fn get_api_service(
 
     OpenApiService::new(apis, "Libra2 Node API", version.trim())
         .server("/v1")
-        .description("The Libra2 Node API is a RESTful API for client applications to interact with the Aptos blockchain.")
+        .description("The Libra2 Node API is a RESTful API for client applications to interact with the Libra2 blockchain.")
         .license(license)
         .contact(contact)
         .external_document("https://github.com/aptos-labs/aptos-core")

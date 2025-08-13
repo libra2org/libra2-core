@@ -117,7 +117,7 @@ async fn test_solana_derivable_account() {
             let function_name = "0x1::libra2_account::create_account";
             let digest = format!("0x{}", hex::encode(x));
             let message = format!(
-                "{} wants you to sign in with your Solana account:\n{}\n\nPlease confirm you explicitly initiated this request from {}. You are approving to execute transaction {} on Aptos blockchain (local).\n\nNonce: {}",
+                "{} wants you to sign in with your Solana account:\n{}\n\nPlease confirm you explicitly initiated this request from {}. You are approving to execute transaction {} on Libra2 blockchain (local).\n\nNonce: {}",
                 domain,
                 base58_public_key,
                 domain,
@@ -185,7 +185,7 @@ async fn test_ethereum_derivable_account() {
                 let function_name = "0x1::libra2_account::create_account";
                 let digest = format!("0x{}", hex::encode(x));
                 let message_body = format!(
-                    "{} wants you to sign in with your Ethereum account:\n{}\n\nPlease confirm you explicitly initiated this request from {}. You are approving to execute transaction {} on Aptos blockchain (local).\n\nURI: {}://{}\nVersion: 1\nChain ID: {}\nNonce: {}\nIssued At: {}",
+                    "{} wants you to sign in with your Ethereum account:\n{}\n\nPlease confirm you explicitly initiated this request from {}. You are approving to execute transaction {} on Libra2 blockchain (local).\n\nURI: {}://{}\nVersion: 1\nChain ID: {}\nNonce: {}\nIssued At: {}",
                     domain,
                     address_str,
                     domain,

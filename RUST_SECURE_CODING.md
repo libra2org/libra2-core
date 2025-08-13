@@ -120,7 +120,7 @@ By utilizing these primitives, Rust programs can manage shared resources among m
 
 ### Data Structures with Deterministic Internal Order
 
-Certain data structures, like HashMap and HashSet, do not guarantee a deterministic order for the elements stored within them. This lack of order can lead to problems in operations that require processing elements in a consistent sequence across multiple executions. In the Aptos blockchain, deterministic data structures help in achieving consensus, maintaining the integrity of the ledger, and ensuring that computations can be reliably reproduced across different nodes.
+Certain data structures, like HashMap and HashSet, do not guarantee a deterministic order for the elements stored within them. This lack of order can lead to problems in operations that require processing elements in a consistent sequence across multiple executions. In the Libra2 blockchain, deterministic data structures help in achieving consensus, maintaining the integrity of the ledger, and ensuring that computations can be reliably reproduced across different nodes.
 
 Below is a list of deterministic data structures available in Rust. Please note, this list may not be exhaustive:
 

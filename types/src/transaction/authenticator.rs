@@ -66,7 +66,7 @@ impl AuthenticationProof {
     }
 }
 
-/// Each transaction submitted to the Aptos blockchain contains a `TransactionAuthenticator`. During
+/// Each transaction submitted to the Libra2 blockchain contains a `TransactionAuthenticator`. During
 /// transaction execution, the executor will check if every `AccountAuthenticator`'s signature on
 /// the transaction hash is well-formed and whether the sha3 hash of the
 /// `AccountAuthenticator`'s `AuthenticationKeyPreimage` matches the `AuthenticationKey` stored

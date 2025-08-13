@@ -5,7 +5,7 @@
 /// <domain> wants you to sign in with your Solana account:
 /// <base58_public_key>
 ///
-/// Please confirm you explicitly initiated this request from <domain>. You are approving to execute transaction <entry_function_name> on Aptos blockchain (<network_name>).
+/// Please confirm you explicitly initiated this request from <domain>. You are approving to execute transaction <entry_function_name> on Libra2 blockchain (<network_name>).
 ///
 /// Nonce: <libra2_txn_digest>
 ///
@@ -96,7 +96,7 @@ module libra2_framework::solana_derivable_account {
         message.append(b".");
         message.append(b" You are approving to execute transaction ");
         message.append(*entry_function_name);
-        message.append(b" on Aptos blockchain");
+        message.append(b" on Libra2 blockchain");
         let network_name = network_name();
         message.append(b" (");
         message.append(network_name);
@@ -267,7 +267,7 @@ module libra2_framework::solana_derivable_account {
         let entry_function_name = b"0x1::coin::transfer";
         let digest_utf8 = b"0x9509edc861070b2848d8161c9453159139f867745dc87d32864a71e796c7d279";
         let message = construct_message(&base58_public_key, &domain, &entry_function_name, &digest_utf8);
-        assert!(message == b"localhost:3000 wants you to sign in with your Solana account:\nG56zT1K6AQab7FzwHdQ8hiHXusR14Rmddw6Vz5MFbbmV\n\nPlease confirm you explicitly initiated this request from localhost:3000. You are approving to execute transaction 0x1::coin::transfer on Aptos blockchain (testnet).\n\nNonce: 0x9509edc861070b2848d8161c9453159139f867745dc87d32864a71e796c7d279");
+        assert!(message == b"localhost:3000 wants you to sign in with your Solana account:\nG56zT1K6AQab7FzwHdQ8hiHXusR14Rmddw6Vz5MFbbmV\n\nPlease confirm you explicitly initiated this request from localhost:3000. You are approving to execute transaction 0x1::coin::transfer on Libra2 blockchain (testnet).\n\nNonce: 0x9509edc861070b2848d8161c9453159139f867745dc87d32864a71e796c7d279");
     }
 
     #[test]

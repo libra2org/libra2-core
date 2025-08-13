@@ -293,7 +293,7 @@ module libra2_framework::account_abstraction {
 
         function_info::load_module_from_function(&func_info);
         let returned_signer = dispatchable_authenticate(account, signing_data, &func_info);
-        // Returned signer MUST represent the same account address. Otherwise, it may break the invariant of Aptos blockchain!
+        // Returned signer MUST represent the same account address. Otherwise, it may break the invariant of Libra2 blockchain!
         assert!(
             master_signer_addr == signer::address_of(&returned_signer),
             error::invalid_state(EINCONSISTENT_SIGNER_ADDRESS)

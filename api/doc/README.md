@@ -1,7 +1,7 @@
 # Libra2 Node API v1
 
 ## Overview
-Libra2 Node API v1 provides a RESTful interface for interacting with Aptos blockchain nodes. The API enables users to retrieve blockchain information, submit transactions, and query account states.
+Libra2 Node API v1 provides a RESTful interface for interacting with Libra2 blockchain nodes. The API enables users to retrieve blockchain information, submit transactions, and query account states.
 
 ## Key Features
 - Account state and resources querying

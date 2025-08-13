@@ -10,7 +10,7 @@ SIWS.
 <domain> wants you to sign in with your Solana account:
 <base58_public_key>
 
-Please confirm you explicitly initiated this request from <domain>. You are approving to execute transaction <entry_function_name> on Aptos blockchain (<network_name>).
+Please confirm you explicitly initiated this request from <domain>. You are approving to execute transaction <entry_function_name> on Libra2 blockchain (<network_name>).
 
 Nonce: <libra2_txn_digest>
 
@@ -277,7 +277,7 @@ Returns a tuple of the signature type and the signature.
     message.append(b".");
     message.append(b" You are approving <b>to</b> execute transaction ");
     message.append(*entry_function_name);
-    message.append(b" on Aptos blockchain");
+    message.append(b" on Libra2 blockchain");
     <b>let</b> network_name = network_name();
     message.append(b" (");
     message.append(network_name);
