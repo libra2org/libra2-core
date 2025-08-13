@@ -24,3 +24,8 @@ full_node_networks:
 api:
     enabled: true
     address: 127.0.0.1:8080
+
+txn_stream:
+    enabled: true
+    bind_address: "127.0.0.1"
+    port: 50051

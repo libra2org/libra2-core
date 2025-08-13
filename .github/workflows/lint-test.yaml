@@ -132,6 +132,27 @@ jobs:
       - run: echo "Skipping rust smoke tests! Unrelated changes detected."
         if: needs.file_change_determinator.outputs.only_docs_changed == 'true'
 
+  txn-stream-smoke-test:
+    needs: file_change_determinator
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install grpcurl
+        run: sudo apt-get update && sudo apt-get install -y grpcurl
+      - name: Start localnet
+        run: ./scripts/devnet-up.sh > /tmp/devnet.log &
+      - name: Wait for txn stream
+        run: |
+          for i in {1..30}; do
+            if grpcurl -plaintext -d '{}' 127.0.0.1:50051 libra2.txnstream.v1.TxnStream/GetChainId; then
+              break
+            fi
+            sleep 2
+          done
+      - name: Shutdown
+        if: always()
+        run: ./scripts/devnet-down.sh
+
   # Check the freshess of the merge base. This is a PR required job.
   rust-check-merge-base:
     if: | # Don't run on release branches

@@ -13,6 +13,7 @@ use crate::{
         ApiConfig, BaseConfig, ConsensusConfig, Error, ExecutionConfig, IndexerConfig,
         IndexerGrpcConfig, InspectionServiceConfig, LoggerConfig, MempoolConfig, NetworkConfig,
         PeerMonitoringServiceConfig, SafetyRulesTestConfig, StateSyncConfig, StorageConfig,
+        TxnStreamConfig,
     },
     network_id::NetworkId,
 };
@@ -89,6 +90,8 @@ pub struct NodeConfig {
     pub validator_network: Option<NetworkConfig>,
     #[serde(default)]
     pub indexer_db_config: InternalIndexerDBConfig,
+    #[serde(default)]
+    pub txn_stream: TxnStreamConfig,
 }
 
 impl NodeConfig {

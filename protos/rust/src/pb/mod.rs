@@ -33,6 +33,13 @@ pub mod libra2 {
             // @@protoc_insertion_point(libra2.transaction.v1)
         }
     }
+    pub mod txnstream {
+        // @@protoc_insertion_point(attribute:libra2.txnstream.v1)
+        pub mod v1 {
+            include!("libra2.txnstream.v1.rs");
+            // @@protoc_insertion_point(libra2.txnstream.v1)
+        }
+    }
     pub mod util {
         // @@protoc_insertion_point(attribute:libra2.util.timestamp)
         pub mod timestamp {

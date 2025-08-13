@@ -14,6 +14,9 @@ use serde::Serialize;
 use std::time::Duration;
 use tokio::time::Instant;
 use tracing::info;
+use libra2_protos::pb::libra2::txnstream::v1::{txn_stream_client::TxnStreamClient, Empty};
+use tonic::Request;
+use tonic_health::pb::health_client::HealthClient;
 
 const MAX_WAIT_S: u64 = 120;
 const WAIT_INTERVAL_MS: u64 = 200;
@@ -30,6 +33,8 @@ pub enum HealthChecker {
     NodeApi(Url),
     /// Check that a data service GRPC stream is up.
     DataServiceGrpc(Url),
+    /// Check that a txn stream gRPC service is up.
+    TxnStreamGrpc(Url),
     /// Check that a postgres instance is up.
     Postgres(String),
     /// Check that a processor is successfully processing txns. The first value is the
@@ -83,6 +88,26 @@ impl HealthChecker {
                 })
                 .await
                 .context("Failed to get a response from gRPC")?;
+                Ok(())
+            },
+            HealthChecker::TxnStreamGrpc(url) => {
+                let addr = url.to_string();
+                // Check gRPC health
+                let mut health = HealthClient::connect(addr.clone())
+                    .await
+                    .context("Failed to connect health client")?;
+                health
+                    .check(Request::new(tonic_health::pb::HealthCheckRequest { service: "".into() }))
+                    .await
+                    .context("Failed health check")?;
+                // Get chain id
+                let mut client = TxnStreamClient::connect(addr)
+                    .await
+                    .context("Failed to connect txn stream client")?;
+                client
+                    .get_chain_id(Request::new(Empty {}))
+                    .await
+                    .context("Failed to get chain id")?;
                 Ok(())
             },
             HealthChecker::Postgres(connection_string) => {
@@ -159,6 +184,7 @@ impl HealthChecker {
             HealthChecker::Http(url, _) => url.as_str(),
             HealthChecker::NodeApi(url) => url.as_str(),
             HealthChecker::DataServiceGrpc(url) => url.as_str(),
+            HealthChecker::TxnStreamGrpc(url) => url.as_str(),
             HealthChecker::Postgres(url) => url.as_str(),
             HealthChecker::Processor(_, processor_name) => processor_name.as_str(),
             HealthChecker::IndexerApiMetadata(url) => url.as_str(),
@@ -180,6 +206,7 @@ impl std::fmt::Display for HealthChecker {
             HealthChecker::Http(_, name) => write!(f, "{}", name),
             HealthChecker::NodeApi(_) => write!(f, "Node API"),
             HealthChecker::DataServiceGrpc(_) => write!(f, "Transaction stream"),
+            HealthChecker::TxnStreamGrpc(_) => write!(f, "TxnStream gRPC"),
             HealthChecker::Postgres(_) => write!(f, "Postgres"),
             HealthChecker::Processor(_, processor_name) => write!(f, "{}", processor_name),
             HealthChecker::IndexerApiMetadata(_) => write!(f, "Indexer API with metadata applied"),
