@@ -22,3 +22,34 @@ Libra2 inherits Libra, Diem, and Aptos technologies.
 You can learn more about contributing to the Libra2 project by reading our [Contribution Guide](https://github.com/libra2org/libra2-core/blob/main/CONTRIBUTING.md) and by viewing our [Code of Conduct](https://github.com/aptos-labs/aptos-core/blob/main/CODE_OF_CONDUCT.md).
 
 Libra2 Core is licensed under [Apache 2.0](https://github.com/libra2org/libra2-core/blob/main/LICENSE).
+
+## Local Devnet (Single Validator)
+
+Run a local validator node with a faucet for development:
+
+```bash
+./scripts/devnet-up.sh
+# REST: 127.0.0.1:8080, Faucet: 127.0.0.1:8081
+```
+
+When done, stop the node and clean up data:
+
+```bash
+./scripts/devnet-down.sh
+```
+
+Example CLI usage against the running devnet:
+
+```bash
+# Initialize a local profile pointing at the devnet
+libra2 init --profile local --rest-url http://127.0.0.1:8080 \
+  --faucet-url http://127.0.0.1:8081
+
+# Create a new account and fund it
+libra2 account create --profile local
+ACCOUNT_ADDRESS=$(libra2 account list --profile local | tail -n 1 | awk '{print $2}')
+libra2 account fund-with-faucet --profile local --account "$ACCOUNT_ADDRESS" --amount 100
+
+# Send a transfer
+libra2 account transfer --profile local --to "$ACCOUNT_ADDRESS" --amount 1
+```
