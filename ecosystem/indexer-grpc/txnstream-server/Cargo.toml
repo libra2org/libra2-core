@@ -22,6 +22,13 @@ libra2-config = { workspace = true }
 libra2-telemetry = { workspace = true }
 # Adjust to your actual storage crate(s)
 libra2-db = { workspace = true, optional = true }
+clap = { version = "4.5.43", features = ["derive"] }
 
 [features]
 default = []
+bin = []
+
+[[bin]]
+name = "txnstream-server"
+path = "src/lib.rs"
+required-features = ["bin"]

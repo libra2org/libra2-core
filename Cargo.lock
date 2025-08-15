@@ -11140,6 +11140,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "bcs 0.1.4",
+ "clap 4.5.43",
  "futures",
  "libra2-config",
  "libra2-db",

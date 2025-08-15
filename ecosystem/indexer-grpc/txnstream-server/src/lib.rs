@@ -183,3 +183,34 @@ pub async fn serve(addr: &str) -> Result<()> {
 
     Ok(())
 }
+
+// --- CLI entrypoint for the binary target ------------------------------------
+#[cfg(feature = "bin")]
+mod __bin {
+    use super::*;
+    use clap::Parser;
+    use std::net::SocketAddr;
+
+    /// Tiny CLI to run the txnstream gRPC server
+    #[derive(Parser, Debug)]
+    #[command(name = "txnstream-server")]
+    struct Args {
+        /// Address to bind the gRPC server to, e.g. 127.0.0.1:50052
+        #[arg(long, default_value = "127.0.0.1:50052")]
+        addr: SocketAddr,
+
+        /// REST endpoint of the local node, used by the server to fetch data
+        #[arg(long, default_value = "http://127.0.0.1:8080")]
+        rest: String,
+    }
+
+    #[tokio::main]
+    async fn main() -> anyhow::Result<()> {
+        let args = Args::parse();
+
+        // Prefer calling your existing server bootstrap, if it exists.
+        // Replace `run_server` with whatever your lib exposes (e.g. `bootstrap`/`serve`).
+        // If you don't have a helper yet, you can inline the tonic Server builder here.
+        libra2_txnstream_server::run_server(args.addr, args.rest).await
+    }
+}
