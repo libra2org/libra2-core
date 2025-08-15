@@ -26,9 +26,7 @@ clap = { version = "4.5.43", features = ["derive"] }
 
 [features]
 default = []
-bin = []
 
 [[bin]]
 name = "txnstream-server"
-path = "src/lib.rs"
-required-features = ["bin"]
+path = "src/main.rs"

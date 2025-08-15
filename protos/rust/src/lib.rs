@@ -2,5 +2,5 @@
 // SPDX-License-Identifier: Apache-2.0
 
 #[allow(clippy::all)]
-mod pb;
+pub mod pb;
 pub use pb::libra2::*;

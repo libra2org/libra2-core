@@ -1,8 +1,11 @@
 // Copyright (c) Aptos Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-use std::time::{Duration, SystemTime, UNIX_EPOCH};
-use std::sync::Arc;
+use std::{
+    net::SocketAddr,
+    sync::Arc,
+    time::{Duration, SystemTime, UNIX_EPOCH},
+};
 
 use anyhow::{Context, Result};
 use tokio::time::sleep;
@@ -14,7 +17,6 @@ use libra2_protos::txnstream::v1::{
     ChainIdResponse, Empty, ServerInfoResponse, TransactionOutput, TransactionsRequest,
     TransactionsResponse,
 };
-
 
 /// Service context pulling chain id and a read handle to committed transactions.
 /// Replace the MockStore with your real storage adapter.
@@ -50,7 +52,9 @@ pub trait TxnStore {
 struct MockStore;
 #[tonic::async_trait]
 impl TxnStore for MockStore {
-    async fn latest_version(&self) -> Result<u64> { Ok(0) }
+    async fn latest_version(&self) -> Result<u64> {
+        Ok(0)
+    }
     async fn fetch_batch(
         &self,
         start: u64,
@@ -77,7 +81,9 @@ pub struct TxnStreamSvc {
 }
 
 impl TxnStreamSvc {
-    pub fn new(ctx: ServiceContext) -> Self { Self { ctx } }
+    pub fn new(ctx: ServiceContext) -> Self {
+        Self { ctx }
+    }
 }
 
 #[tonic::async_trait]
@@ -97,7 +103,12 @@ impl TxnStream for TxnStreamSvc {
     ) -> Result<Response<ServerInfoResponse>, Status> {
         let build_ts = option_env!("VERGEN_BUILD_TIMESTAMP")
             .and_then(|s| s.parse::<u64>().ok())
-            .unwrap_or_else(|| SystemTime::now().duration_since(UNIX_EPOCH).unwrap().as_secs());
+            .unwrap_or_else(|| {
+                SystemTime::now()
+                    .duration_since(UNIX_EPOCH)
+                    .unwrap()
+                    .as_secs()
+            });
 
         Ok(Response::new(ServerInfoResponse {
             version: env!("CARGO_PKG_VERSION").to_string(),
@@ -132,38 +143,47 @@ impl TxnStream for TxnStreamSvc {
                                 if tx.send(Ok(TransactionsResponse { batch })).await.is_err() {
                                     break; // client disconnected
                                 }
-                            }
+                            },
                             Err(e) => {
-                                let _ = tx.send(Err(Status::internal(format!("fetch error: {e:#}")))).await;
+                                let _ = tx
+                                    .send(Err(Status::internal(format!("fetch error: {e:#}"))))
+                                    .await;
                                 break;
-                            }
+                            },
                         }
-                    }
+                    },
                     Ok(_) => {
                         if max_wait.is_zero() {
                             // short-poll: return empty to wake client
-                            if tx.send(Ok(TransactionsResponse { batch: vec![] })).await.is_err() {
+                            if tx
+                                .send(Ok(TransactionsResponse { batch: vec![] }))
+                                .await
+                                .is_err()
+                            {
                                 break;
                             }
                         } else {
                             sleep(max_wait).await;
                         }
-                    }
+                    },
                     Err(e) => {
-                        let _ = tx.send(Err(Status::unavailable(format!("store not ready: {e:#}")))).await;
+                        let _ = tx
+                            .send(Err(Status::unavailable(format!("store not ready: {e:#}"))))
+                            .await;
                         break;
-                    }
+                    },
                 }
             }
         });
 
-        Ok(Response::new(tokio_stream::wrappers::ReceiverStream::new(rx)))
+        Ok(Response::new(tokio_stream::wrappers::ReceiverStream::new(
+            rx,
+        )))
     }
 }
 
 /// Start the gRPC server on given addr (e.g. "127.0.0.1:50051")
 pub async fn serve(addr: &str) -> Result<()> {
-
     let addr = addr.parse().context("invalid addr")?;
     let ctx = ServiceContext::from_env().await?;
 
@@ -184,33 +204,8 @@ pub async fn serve(addr: &str) -> Result<()> {
     Ok(())
 }
 
-// --- CLI entrypoint for the binary target ------------------------------------
-#[cfg(feature = "bin")]
-mod __bin {
-    use super::*;
-    use clap::Parser;
-    use std::net::SocketAddr;
-
-    /// Tiny CLI to run the txnstream gRPC server
-    #[derive(Parser, Debug)]
-    #[command(name = "txnstream-server")]
-    struct Args {
-        /// Address to bind the gRPC server to, e.g. 127.0.0.1:50052
-        #[arg(long, default_value = "127.0.0.1:50052")]
-        addr: SocketAddr,
-
-        /// REST endpoint of the local node, used by the server to fetch data
-        #[arg(long, default_value = "http://127.0.0.1:8080")]
-        rest: String,
-    }
-
-    #[tokio::main]
-    async fn main() -> anyhow::Result<()> {
-        let args = Args::parse();
-
-        // Prefer calling your existing server bootstrap, if it exists.
-        // Replace `run_server` with whatever your lib exposes (e.g. `bootstrap`/`serve`).
-        // If you don't have a helper yet, you can inline the tonic Server builder here.
-        libra2_txnstream_server::run_server(args.addr, args.rest).await
-    }
+/// Run the gRPC server using a CLI-style signature.
+/// `rest` is currently unused but kept for API compatibility.
+pub async fn run_server(addr: SocketAddr, _rest: String) -> Result<()> {
+    serve(&addr.to_string()).await
 }
