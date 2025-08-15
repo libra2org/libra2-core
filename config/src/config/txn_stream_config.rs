@@ -1,8 +1,11 @@
+// Copyright (c) Aptos Foundation
+// SPDX-License-Identifier: Apache-2.0
+
 use serde::{Deserialize, Serialize};
 
 use super::indexer_grpc_config::DEFAULT_GRPC_STREAM_PORT;
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, PartialEq, Eq)]
 pub struct TxnStreamConfig {
     pub enabled: bool,
     pub bind_address: String,

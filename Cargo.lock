@@ -10190,8 +10190,10 @@ dependencies = [
 name = "libra2-protos"
 version = "1.3.2"
 dependencies = [
+ "futures-core",
  "pbjson",
  "prost 0.13.5",
+ "prost-types 0.13.5",
  "serde",
  "tonic 0.12.3",
 ]
@@ -11137,7 +11139,7 @@ name = "libra2-txnstream-server"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "bcs 0.1.6",
+ "bcs 0.1.4",
  "futures",
  "libra2-config",
  "libra2-db",

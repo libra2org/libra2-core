@@ -75,7 +75,7 @@ members = [
     "crates/libra2-id-generator",
     "crates/libra2-infallible",
     "crates/libra2-inspection-service",
-    "crates/libra2-txnstream-server",
+    "ecosystem/indexer-grpc/txnstream-server",
     "crates/libra2-jwk-consensus",
     "crates/libra2-keygen",
     "crates/libra2-ledger",
@@ -378,7 +378,7 @@ libra2-indexer-test-transactions = { path = "ecosystem/indexer-grpc/indexer-test
 libra2-indexer-grpc-utils = { path = "ecosystem/indexer-grpc/indexer-grpc-utils" }
 libra2-indexer-grpc-v2-file-store-backfiller = { path = "ecosystem/indexer-grpc/indexer-grpc-v2-file-store-backfiller" }
 libra2-indexer-grpc-server-framework = { path = "ecosystem/indexer-grpc/indexer-grpc-server-framework" }
-libra2-txnstream-server = { path = "crates/libra2-txnstream-server" }
+libra2-txnstream-server = { path = "ecosystem/indexer-grpc/txnstream-server" }
 libra2-indexer-transaction-generator = { path = "ecosystem/indexer-grpc/indexer-transaction-generator" }
 libra2-infallible = { path = "crates/libra2-infallible" }
 libra2-inspection-service = { path = "crates/libra2-inspection-service" }
@@ -814,6 +814,7 @@ tonic = { version = "0.12.3", features = [
     "codegen",
     "zstd",
 ] }
+tonic-health = "0.12.3"
 tonic-reflection = "0.12.3"
 topological-sort = "0.2.2"
 triomphe = "0.1.9"

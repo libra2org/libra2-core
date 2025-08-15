@@ -1,3 +1,3 @@
 /* eslint-disable */
 
-export * as aptos from "./index.aptos";
+export * as libra2 from "./index.libra2";

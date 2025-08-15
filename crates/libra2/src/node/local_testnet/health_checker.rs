@@ -14,8 +14,9 @@ use serde::Serialize;
 use std::time::Duration;
 use tokio::time::Instant;
 use tracing::info;
-use libra2_protos::pb::libra2::txnstream::v1::{txn_stream_client::TxnStreamClient, Empty};
+use libra2_protos::txnstream::v1::{txn_stream_client::TxnStreamClient, Empty};
 use tonic::Request;
+use tonic::transport::Endpoint;
 use tonic_health::pb::health_client::HealthClient;
 
 const MAX_WAIT_S: u64 = 120;
@@ -91,19 +92,24 @@ impl HealthChecker {
                 Ok(())
             },
             HealthChecker::TxnStreamGrpc(url) => {
-                let addr = url.to_string();
-                // Check gRPC health
-                let mut health = HealthClient::connect(addr.clone())
+                // Build a shared channel to the gRPC endpoint
+                let channel = Endpoint::from_shared(url.to_string())
+                    .context("Invalid gRPC URL")?
+                    .connect()
                     .await
-                    .context("Failed to connect health client")?;
+                    .context("Failed to connect gRPC channel")?;
+
+                // Health check via tonic-health (0.12.x API uses client constructors, not `connect`)
+                let mut health = HealthClient::new(channel.clone());
                 health
-                    .check(Request::new(tonic_health::pb::HealthCheckRequest { service: "".into() }))
+                    .check(Request::new(tonic_health::pb::HealthCheckRequest {
+                        service: "".into(),
+                    }))
                     .await
                     .context("Failed health check")?;
-                // Get chain id
-                let mut client = TxnStreamClient::connect(addr)
-                    .await
-                    .context("Failed to connect txn stream client")?;
+
+                // Get chain id via txn stream service
+                let mut client = TxnStreamClient::new(channel);
                 client
                     .get_chain_id(Request::new(Empty {}))
                     .await

@@ -41,7 +41,7 @@ libra2-network-checker = { workspace = true }
 libra2-txnstream-server = { workspace = true }
 libra2-protos = { workspace = true }
 tonic = { workspace = true }
-tonic-health = "0.12"
+tonic-health = { workspace = true }
 libra2-node = { workspace = true }
 libra2-rest-client = { workspace = true }
 libra2-sdk = { workspace = true }
