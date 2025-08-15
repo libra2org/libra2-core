@@ -2,19 +2,18 @@
 // SPDX-License-Identifier: Apache-2.0
 
 // Manually generated prost/tonic definitions for libra2.txnstream.v1
-#![allow(clippy::derive_partial_eq_without_eq)]
 use ::prost::alloc::vec::Vec;
 
-#[derive(Clone, PartialEq, ::prost::Message, ::serde::Serialize, ::serde::Deserialize, Default)]
+#[derive(Clone, PartialEq, Eq, ::prost::Message, ::serde::Serialize, ::serde::Deserialize)]
 pub struct Empty {}
 
-#[derive(Clone, PartialEq, ::prost::Message, ::serde::Serialize, ::serde::Deserialize, Default)]
+#[derive(Clone, PartialEq, Eq, ::prost::Message, ::serde::Serialize, ::serde::Deserialize)]
 pub struct ChainIdResponse {
     #[prost(uint32, tag="1")]
     pub chain_id: u32,
 }
 
-#[derive(Clone, PartialEq, ::prost::Message, ::serde::Serialize, ::serde::Deserialize, Default)]
+#[derive(Clone, PartialEq, Eq, ::prost::Message, ::serde::Serialize, ::serde::Deserialize)]
 pub struct ServerInfoResponse {
     #[prost(string, tag="1")]
     pub version: ::prost::alloc::string::String,
@@ -22,7 +21,7 @@ pub struct ServerInfoResponse {
     pub build_timestamp: u64,
 }
 
-#[derive(Clone, PartialEq, ::prost::Message, ::serde::Serialize, ::serde::Deserialize, Default)]
+#[derive(Clone, PartialEq, Eq, ::prost::Message, ::serde::Serialize, ::serde::Deserialize)]
 pub struct TransactionsRequest {
     #[prost(uint64, tag="1")]
     pub start_version: u64,
@@ -36,7 +35,7 @@ pub struct TransactionsRequest {
     pub exclude_ledger_changes: bool,
 }
 
-#[derive(Clone, PartialEq, ::prost::Message, ::serde::Serialize, ::serde::Deserialize, Default)]
+#[derive(Clone, PartialEq, Eq, ::prost::Message, ::serde::Serialize, ::serde::Deserialize)]
 pub struct TransactionOutput {
     #[prost(uint64, tag="1")]
     pub version: u64,
@@ -48,7 +47,7 @@ pub struct TransactionOutput {
     pub info: Vec<u8>,
 }
 
-#[derive(Clone, PartialEq, ::prost::Message, ::serde::Serialize, ::serde::Deserialize, Default)]
+#[derive(Clone, PartialEq, Eq, ::prost::Message, ::serde::Serialize, ::serde::Deserialize)]
 pub struct TransactionsResponse {
     #[prost(message, repeated, tag="1")]
     pub batch: Vec<TransactionOutput>,
@@ -58,7 +57,6 @@ pub struct TransactionsResponse {
 pub mod txn_stream_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::wildcard_imports, clippy::let_unit_value)]
     use tonic::codegen::*;
-    use tonic::codegen::http::Uri;
     #[derive(Debug, Clone)]
     pub struct TxnStreamClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -137,8 +135,11 @@ pub mod txn_stream_server {
         async fn get_server_info(
             &self,
             request: tonic::Request<super::Empty>,
-            ) -> Result<tonic::Response<super::ServerInfoResponse>, tonic::Status>;
-        type StreamTransactionsStream: futures_core::Stream<Item = Result<super::TransactionsResponse, tonic::Status>> + Send + 'static;
+        ) -> Result<tonic::Response<super::ServerInfoResponse>, tonic::Status>;
+        type StreamTransactionsStream: tonic::codegen::tokio_stream::Stream<
+                Item = Result<super::TransactionsResponse, tonic::Status>,
+            > + Send
+            + 'static;
         async fn stream_transactions(
             &self,
             request: tonic::Request<super::TransactionsRequest>,
