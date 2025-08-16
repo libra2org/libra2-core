@@ -9,9 +9,9 @@ describe('releaseImages', () => {
         expect(releaseGroup).toEqual('libra2-node');
     });
     it('gets indexer image group', () => {
-        const prefix = 'aptos-indexer-grpc-vX.Y.Z';
+        const prefix = 'libra2-indexer-grpc-vX.Y.Z';
         const releaseGroup = getImageReleaseGroupByImageTagPrefix(prefix);
-        expect(releaseGroup).toEqual('aptos-indexer-grpc');
+        expect(releaseGroup).toEqual('libra2-indexer-grpc');
     });
     it('gets libra2-node as the node image group', () => {
         const prefix = 'libra2-node-vX.Y.Z';

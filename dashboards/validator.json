@@ -449,14 +449,14 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "aptos_state_sync_version{type=\"committed\", role=\"validator\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
+          "expr": "libra2_state_sync_version{type=\"committed\", role=\"validator\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{kubernetes_pod_name}}-committed",
           "refId": "A"
         },
         {
-          "expr": "aptos_state_sync_version{type=\"synced\", role=\"validator\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
+          "expr": "libra2_state_sync_version{type=\"synced\", role=\"validator\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{kubernetes_pod_name}}-synced",
@@ -965,7 +965,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "increase(aptos_key_manager_state{state=\"keys_still_fresh\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[1h]) > bool 1",
+          "expr": "increase(libra2_key_manager_state{state=\"keys_still_fresh\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[1h]) > bool 1",
           "legendFormat": "{{kubernetes_pod_name}}",
           "refId": "A"
         }

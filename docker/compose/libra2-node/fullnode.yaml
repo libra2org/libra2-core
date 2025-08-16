@@ -1,11 +1,11 @@
 base:
   role: "full_node"
-  data_dir: "/opt/aptos/data"
+  data_dir: "/opt/libra2/data"
   waypoint:
-    from_file: "/opt/aptos/genesis/waypoint.txt"
+    from_file: "/opt/libra2/genesis/waypoint.txt"
 
 execution:
-  genesis_file_location: "/opt/aptos/genesis/genesis.blob"
+  genesis_file_location: "/opt/libra2/genesis/genesis.blob"
 
 storage:
   rocksdb_configs:
@@ -26,7 +26,7 @@ full_node_networks:
   listen_address: "/ip4/0.0.0.0/tcp/6182"
   identity:
     type: "from_file"
-    path: "/opt/aptos/genesis/validator-full-node-identity.yaml"
+    path: "/opt/libra2/genesis/validator-full-node-identity.yaml"
 
 api:
   enabled: true

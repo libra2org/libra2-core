@@ -485,7 +485,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "quantile(0.67, rate(aptos_execution_dependency_wait_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) / avg(block_executor_concurrency{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}) ) ",
+          "expr": "quantile(0.67, rate(libra2_execution_dependency_wait_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) / avg(block_executor_concurrency{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}) ) ",
           "hide": false,
           "legendFormat": "executor_dependency_wait",
           "range": true,
@@ -494,7 +494,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "quantile(0.67, rate(aptos_execution_vm_init_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) / avg(block_executor_concurrency{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}) ) ",
+          "expr": "quantile(0.67, rate(libra2_execution_vm_init_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) / avg(block_executor_concurrency{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}) ) ",
           "hide": false,
           "legendFormat": "vm_init",
           "range": true,
@@ -503,7 +503,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "quantile(0.67, rate(aptos_execution_task_validate_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) / avg(block_executor_concurrency{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}) ) ",
+          "expr": "quantile(0.67, rate(libra2_execution_task_validate_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) / avg(block_executor_concurrency{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}) ) ",
           "hide": false,
           "legendFormat": "task_validate",
           "range": true,
@@ -512,7 +512,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "quantile(0.67, rate(aptos_execution_task_execute_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) / avg(block_executor_concurrency{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}) ) ",
+          "expr": "quantile(0.67, rate(libra2_execution_task_execute_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) / avg(block_executor_concurrency{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}) ) ",
           "hide": false,
           "legendFormat": "task_execute",
           "range": true,
@@ -530,7 +530,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "quantile(0.67, rate(aptos_execution_transaction_dedup_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])) ",
+          "expr": "quantile(0.67, rate(libra2_execution_transaction_dedup_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])) ",
           "hide": false,
           "legendFormat": "pre_dedup",
           "range": true,
@@ -539,7 +539,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "quantile(0.67, rate(aptos_execution_transaction_shuffle_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])) ",
+          "expr": "quantile(0.67, rate(libra2_execution_transaction_shuffle_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])) ",
           "hide": false,
           "legendFormat": "pre_shuffle",
           "range": true,
@@ -557,7 +557,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "quantile(0.67, rate(aptos_execution_work_with_task_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) / avg(block_executor_concurrency{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}) )",
+          "expr": "quantile(0.67, rate(libra2_execution_work_with_task_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) / avg(block_executor_concurrency{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}) )",
           "hide": false,
           "legendFormat": "work_with_task",
           "range": true,
@@ -566,7 +566,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "quantile(0.67, rate(aptos_parallel_execution_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) ) ",
+          "expr": "quantile(0.67, rate(libra2_parallel_execution_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) ) ",
           "hide": false,
           "legendFormat": "parallel_execution",
           "range": true,
@@ -575,7 +575,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "quantile(0.67, rate(aptos_rayon_execution_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) ) ",
+          "expr": "quantile(0.67, rate(libra2_rayon_execution_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) ) ",
           "hide": false,
           "legendFormat": "rayon_execution",
           "range": true,
@@ -866,7 +866,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "quantile(0.67, rate(aptos_execution_dependency_wait_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) / avg(block_executor_concurrency{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}) ) / quantile(0.67, rate(libra2_executor_execute_block_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) )",
+          "expr": "quantile(0.67, rate(libra2_execution_dependency_wait_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) / avg(block_executor_concurrency{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}) ) / quantile(0.67, rate(libra2_executor_execute_block_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) )",
           "hide": false,
           "legendFormat": "executor_dependency_wait",
           "range": true,
@@ -875,7 +875,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "quantile(0.67, rate(aptos_execution_vm_init_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) / avg(block_executor_concurrency{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}) ) / quantile(0.67, rate(libra2_executor_execute_block_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) )",
+          "expr": "quantile(0.67, rate(libra2_execution_vm_init_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) / avg(block_executor_concurrency{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}) ) / quantile(0.67, rate(libra2_executor_execute_block_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) )",
           "hide": false,
           "legendFormat": "vm_init",
           "range": true,
@@ -884,7 +884,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "quantile(0.67, rate(aptos_execution_task_validate_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) / avg(block_executor_concurrency{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}) ) / quantile(0.67, rate(libra2_executor_execute_block_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) )",
+          "expr": "quantile(0.67, rate(libra2_execution_task_validate_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) / avg(block_executor_concurrency{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}) ) / quantile(0.67, rate(libra2_executor_execute_block_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) )",
           "hide": false,
           "legendFormat": "task_validate",
           "range": true,
@@ -893,7 +893,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "quantile(0.67, rate(aptos_execution_task_execute_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) / avg(block_executor_concurrency{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}) ) / quantile(0.67, rate(libra2_executor_execute_block_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) )",
+          "expr": "quantile(0.67, rate(libra2_execution_task_execute_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) / avg(block_executor_concurrency{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}) ) / quantile(0.67, rate(libra2_executor_execute_block_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) )",
           "hide": false,
           "legendFormat": "task_execute",
           "range": true,
@@ -931,7 +931,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "quantile(0.67, rate(aptos_parallel_execution_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) ) / quantile(0.67, rate(libra2_executor_execute_block_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])  )",
+          "expr": "quantile(0.67, rate(libra2_parallel_execution_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) ) / quantile(0.67, rate(libra2_executor_execute_block_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])  )",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -942,7 +942,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "quantile(0.67, rate(aptos_rayon_execution_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) ) / quantile(0.67, rate(libra2_executor_execute_block_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])  )",
+          "expr": "quantile(0.67, rate(libra2_rayon_execution_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) ) / quantile(0.67, rate(libra2_executor_execute_block_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])  )",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -953,7 +953,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "quantile(0.67, rate(aptos_execution_work_with_task_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) / avg(block_executor_concurrency{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}) ) / quantile(0.67, rate(libra2_executor_execute_block_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])  )",
+          "expr": "quantile(0.67, rate(libra2_execution_work_with_task_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) / avg(block_executor_concurrency{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}) ) / quantile(0.67, rate(libra2_executor_execute_block_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])  )",
           "hide": false,
           "legendFormat": "work_with_task",
           "range": true,
@@ -1027,7 +1027,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "quantile(0.67, rate(aptos_execution_dependency_wait_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) ) / quantile(0.67, rate(libra2_executor_execute_block_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])  )",
+          "expr": "quantile(0.67, rate(libra2_execution_dependency_wait_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) ) / quantile(0.67, rate(libra2_executor_execute_block_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])  )",
           "hide": false,
           "legendFormat": "dependency_wait_per_block",
           "range": true,
@@ -1036,7 +1036,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "quantile(0.67, rate(aptos_execution_task_validate_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])) / quantile(0.67, rate(libra2_executor_execute_block_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])  )",
+          "expr": "quantile(0.67, rate(libra2_execution_task_validate_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])) / quantile(0.67, rate(libra2_executor_execute_block_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])  )",
           "hide": false,
           "legendFormat": "task_validate_per_block",
           "range": true,
@@ -1045,7 +1045,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "quantile(0.67, rate(aptos_execution_task_execute_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) ) / quantile(0.67, rate(libra2_executor_execute_block_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])  )",
+          "expr": "quantile(0.67, rate(libra2_execution_task_execute_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) ) / quantile(0.67, rate(libra2_executor_execute_block_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])  )",
           "hide": false,
           "legendFormat": "task_execute_per_block",
           "range": true,
@@ -1063,7 +1063,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "quantile(0.67, rate(aptos_execution_speculative_abort_count{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])) /  quantile(0.67, rate(libra2_executor_execute_block_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])  )",
+          "expr": "quantile(0.67, rate(libra2_execution_speculative_abort_count{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])) /  quantile(0.67, rate(libra2_executor_execute_block_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])  )",
           "hide": false,
           "legendFormat": "speculative_abort_per_block",
           "range": true,
@@ -1072,7 +1072,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "quantile(0.67, rate(aptos_execution_transaction_dedup_filtered_sum{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])) /  quantile(0.67, rate(libra2_executor_execute_block_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])  )",
+          "expr": "quantile(0.67, rate(libra2_execution_transaction_dedup_filtered_sum{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])) /  quantile(0.67, rate(libra2_executor_execute_block_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])  )",
           "hide": false,
           "legendFormat": "deduped_per_block",
           "range": true,
@@ -2535,7 +2535,7 @@
             {
               "datasource": { "type": "prometheus", "uid": "${Datasource}" },
               "editorMode": "code",
-              "expr": "rate(aptos_execution_speculative_abort_count{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])",
+              "expr": "rate(libra2_execution_speculative_abort_count{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "{{kubernetes_pod_name}}-{{role}}",
@@ -2612,7 +2612,7 @@
             {
               "datasource": { "type": "prometheus", "uid": "${Datasource}" },
               "editorMode": "code",
-              "expr": "quantile(0.67, rate(aptos_execution_dependency_wait_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) / avg(block_executor_concurrency{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}) ) / quantile(0.67, rate(libra2_executor_execute_block_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) )",
+              "expr": "quantile(0.67, rate(libra2_execution_dependency_wait_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) / avg(block_executor_concurrency{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}) ) / quantile(0.67, rate(libra2_executor_execute_block_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) )",
               "hide": false,
               "legendFormat": "executor_dependency_wait",
               "range": true,
@@ -2621,7 +2621,7 @@
             {
               "datasource": { "type": "prometheus", "uid": "${Datasource}" },
               "editorMode": "code",
-              "expr": "quantile(0.67, rate(aptos_execution_vm_init_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) / avg(block_executor_concurrency{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}) ) / quantile(0.67, rate(libra2_executor_execute_block_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) )",
+              "expr": "quantile(0.67, rate(libra2_execution_vm_init_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) / avg(block_executor_concurrency{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}) ) / quantile(0.67, rate(libra2_executor_execute_block_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) )",
               "hide": false,
               "legendFormat": "vm_init",
               "range": true,
@@ -2630,7 +2630,7 @@
             {
               "datasource": { "type": "prometheus", "uid": "${Datasource}" },
               "editorMode": "code",
-              "expr": "quantile(0.67, rate(aptos_execution_task_validate_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) / avg(block_executor_concurrency{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}) ) / quantile(0.67, rate(libra2_executor_execute_block_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) )",
+              "expr": "quantile(0.67, rate(libra2_execution_task_validate_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) / avg(block_executor_concurrency{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}) ) / quantile(0.67, rate(libra2_executor_execute_block_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) )",
               "hide": false,
               "legendFormat": "task_validate",
               "range": true,
@@ -2639,7 +2639,7 @@
             {
               "datasource": { "type": "prometheus", "uid": "${Datasource}" },
               "editorMode": "code",
-              "expr": "quantile(0.67, rate(aptos_execution_task_execute_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) / avg(block_executor_concurrency{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}) ) / quantile(0.67, rate(libra2_executor_execute_block_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) )",
+              "expr": "quantile(0.67, rate(libra2_execution_task_execute_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) / avg(block_executor_concurrency{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}) ) / quantile(0.67, rate(libra2_executor_execute_block_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) )",
               "hide": false,
               "legendFormat": "task_execute",
               "range": true,
@@ -2677,7 +2677,7 @@
             {
               "datasource": { "type": "prometheus", "uid": "${Datasource}" },
               "editorMode": "code",
-              "expr": "quantile(0.67, rate(aptos_parallel_execution_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) ) / quantile(0.67, rate(libra2_executor_execute_block_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])  )",
+              "expr": "quantile(0.67, rate(libra2_parallel_execution_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) ) / quantile(0.67, rate(libra2_executor_execute_block_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])  )",
               "format": "time_series",
               "hide": false,
               "intervalFactor": 1,
@@ -2688,7 +2688,7 @@
             {
               "datasource": { "type": "prometheus", "uid": "${Datasource}" },
               "editorMode": "code",
-              "expr": "quantile(0.67, rate(aptos_rayon_execution_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) ) / quantile(0.67, rate(libra2_executor_execute_block_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])  )",
+              "expr": "quantile(0.67, rate(libra2_rayon_execution_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) ) / quantile(0.67, rate(libra2_executor_execute_block_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])  )",
               "format": "time_series",
               "hide": false,
               "intervalFactor": 1,
@@ -2699,7 +2699,7 @@
             {
               "datasource": { "type": "prometheus", "uid": "${Datasource}" },
               "editorMode": "code",
-              "expr": "quantile(0.67, rate(aptos_execution_work_with_task_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) / avg(block_executor_concurrency{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}) ) / quantile(0.67, rate(libra2_executor_execute_block_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])  )",
+              "expr": "quantile(0.67, rate(libra2_execution_work_with_task_seconds_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) / avg(block_executor_concurrency{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}) ) / quantile(0.67, rate(libra2_executor_execute_block_seconds_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])  )",
               "hide": false,
               "legendFormat": "work_with_task",
               "range": true,
@@ -2882,7 +2882,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "quantile by(stage) (0.5, rate(aptos_execution_block_gas_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", stage=~\"execution_gas|io_gas|non_storage_gas\", mode=\"parallel\"}[$interval]) /  rate(aptos_execution_block_gas_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", stage=~\"execution_gas|io_gas|non_storage_gas\", mode=\"parallel\"}[$interval]))",
+          "expr": "quantile by(stage) (0.5, rate(libra2_execution_block_gas_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", stage=~\"execution_gas|io_gas|non_storage_gas\", mode=\"parallel\"}[$interval]) /  rate(libra2_execution_block_gas_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", stage=~\"execution_gas|io_gas|non_storage_gas\", mode=\"parallel\"}[$interval]))",
           "hide": false,
           "legendFormat": "parallel_{{stage}}",
           "range": true,
@@ -2891,7 +2891,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "quantile by(stage) (0.5, rate(aptos_execution_block_gas_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", stage=~\"execution_gas|io_gas|non_storage_gas\", mode=\"sequential\"}[$interval]) /  rate(aptos_execution_block_gas_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", stage=~\"execution_gas|io_gas|non_storage_gas\", mode=\"sequential\"}[$interval]))",
+          "expr": "quantile by(stage) (0.5, rate(libra2_execution_block_gas_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", stage=~\"execution_gas|io_gas|non_storage_gas\", mode=\"sequential\"}[$interval]) /  rate(libra2_execution_block_gas_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", stage=~\"execution_gas|io_gas|non_storage_gas\", mode=\"sequential\"}[$interval]))",
           "hide": false,
           "legendFormat": "sequential_{{stage}}",
           "range": true,
@@ -2956,7 +2956,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "quantile by(stage) (0.5, rate(aptos_execution_block_gas_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", stage=~\"storage_in_octas|storage_in_gas\", mode=\"parallel\"}[$interval]) /  rate(aptos_execution_block_gas_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", stage=~\"storage_in_octas|storage_in_gas\", mode=\"parallel\"}[$interval]))",
+          "expr": "quantile by(stage) (0.5, rate(libra2_execution_block_gas_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", stage=~\"storage_in_octas|storage_in_gas\", mode=\"parallel\"}[$interval]) /  rate(libra2_execution_block_gas_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", stage=~\"storage_in_octas|storage_in_gas\", mode=\"parallel\"}[$interval]))",
           "hide": false,
           "legendFormat": "parallel_{{stage}}",
           "range": true,
@@ -2965,7 +2965,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "quantile by(stage) (0.5, rate(aptos_execution_block_gas_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", stage=~\"storage_in_octas|storage_in_gas\", mode=\"sequential\"}[$interval]) /  rate(aptos_execution_block_gas_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", stage=~\"storage_in_octas|storage_in_gas\", mode=\"sequential\"}[$interval]))",
+          "expr": "quantile by(stage) (0.5, rate(libra2_execution_block_gas_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", stage=~\"storage_in_octas|storage_in_gas\", mode=\"sequential\"}[$interval]) /  rate(libra2_execution_block_gas_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", stage=~\"storage_in_octas|storage_in_gas\", mode=\"sequential\"}[$interval]))",
           "hide": false,
           "legendFormat": "sequential_{{stage}}",
           "range": true,
@@ -3030,7 +3030,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "quantile by(stage) (0.5, rate(aptos_execution_block_gas_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", stage='storage_in_octas', mode=\"parallel\"}[$interval]) /  rate(aptos_execution_block_gas_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", stage='storage_in_octas', mode=\"parallel\"}[$interval]))",
+          "expr": "quantile by(stage) (0.5, rate(libra2_execution_block_gas_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", stage='storage_in_octas', mode=\"parallel\"}[$interval]) /  rate(libra2_execution_block_gas_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", stage='storage_in_octas', mode=\"parallel\"}[$interval]))",
           "hide": false,
           "legendFormat": "parallel_{{stage}}",
           "range": true,
@@ -3039,7 +3039,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "quantile by(stage) (0.5, rate(aptos_execution_block_gas_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", stage='storage_in_octas', mode=\"sequential\"}[$interval]) /  rate(aptos_execution_block_gas_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", stage='storage_in_octas', mode=\"sequential\"}[$interval]))",
+          "expr": "quantile by(stage) (0.5, rate(libra2_execution_block_gas_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", stage='storage_in_octas', mode=\"sequential\"}[$interval]) /  rate(libra2_execution_block_gas_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", stage='storage_in_octas', mode=\"sequential\"}[$interval]))",
           "hide": false,
           "legendFormat": "sequential_{{stage}}",
           "range": true,
@@ -3104,7 +3104,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "quantile by(stage) (0.5, rate(aptos_execution_txn_gas_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", stage!='storage_in_octas', mode=\"parallel\"}[$interval]) /  rate(aptos_execution_txn_gas_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", stage!='storage_in_octas', mode=\"parallel\"}[$interval]))",
+          "expr": "quantile by(stage) (0.5, rate(libra2_execution_txn_gas_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", stage!='storage_in_octas', mode=\"parallel\"}[$interval]) /  rate(libra2_execution_txn_gas_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", stage!='storage_in_octas', mode=\"parallel\"}[$interval]))",
           "hide": false,
           "legendFormat": "parallel_{{stage}}",
           "range": true,
@@ -3113,7 +3113,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "quantile by(stage) (0.5, rate(aptos_execution_txn_gas_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", stage!='storage_in_octas', mode=\"sequential\"}[$interval]) /  rate(aptos_execution_txn_gas_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", stage!='storage_in_octas', mode=\"sequential\"}[$interval]))",
+          "expr": "quantile by(stage) (0.5, rate(libra2_execution_txn_gas_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", stage!='storage_in_octas', mode=\"sequential\"}[$interval]) /  rate(libra2_execution_txn_gas_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", stage!='storage_in_octas', mode=\"sequential\"}[$interval]))",
           "hide": false,
           "legendFormat": "sequential_{{stage}}",
           "range": true,
@@ -3178,7 +3178,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "quantile (0.5, \n    (\n        max by (kubernetes_pod_name, role) (\n            rate(aptos_execution_block_gas_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", stage='non_storage_gas'}[$interval])\n        )\n        /  \n        max by (kubernetes_pod_name, role) (\n            rate(aptos_execution_block_gas_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", stage='non_storage_gas'}[$interval])\n        )\n    )\n    / \n    (\n        max by (kubernetes_pod_name, role) (\n            rate(consensus_duration_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", op='execute_block'}[$interval])\n        )\n        / \n        max by (kubernetes_pod_name, role) (\n            rate(consensus_duration_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", op='execute_block'}[$interval])\n        )\n    )\n)",
+          "expr": "quantile (0.5, \n    (\n        max by (kubernetes_pod_name, role) (\n            rate(libra2_execution_block_gas_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", stage='non_storage_gas'}[$interval])\n        )\n        /  \n        max by (kubernetes_pod_name, role) (\n            rate(libra2_execution_block_gas_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", stage='non_storage_gas'}[$interval])\n        )\n    )\n    / \n    (\n        max by (kubernetes_pod_name, role) (\n            rate(consensus_duration_sum{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", op='execute_block'}[$interval])\n        )\n        / \n        max by (kubernetes_pod_name, role) (\n            rate(consensus_duration_count{ chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", op='execute_block'}[$interval])\n        )\n    )\n)",
           "hide": false,
           "legendFormat": "gas / s",
           "range": true,
@@ -3243,7 +3243,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "rate(aptos_execution_gas_limit_count{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", mode=\"parallel\"}[$interval])",
+          "expr": "rate(libra2_execution_gas_limit_count{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", mode=\"parallel\"}[$interval])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "__auto",
@@ -3253,7 +3253,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "rate(aptos_execution_gas_limit_count{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", mode=\"sequential\"}[$interval])",
+          "expr": "rate(libra2_execution_gas_limit_count{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\", mode=\"sequential\"}[$interval])",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -3320,7 +3320,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "rate(aptos_execution_transaction_shuffle_seconds_sum{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) / rate(aptos_execution_transaction_shuffle_seconds_count{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])",
+          "expr": "rate(libra2_execution_transaction_shuffle_seconds_sum{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) / rate(libra2_execution_transaction_shuffle_seconds_count{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{kubernetes_pod_name}}-{{role}}",
@@ -3386,7 +3386,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "rate(aptos_execution_transaction_dedup_seconds_sum{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) / rate(aptos_execution_transaction_dedup_seconds_count{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])",
+          "expr": "rate(libra2_execution_transaction_dedup_seconds_sum{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) / rate(libra2_execution_transaction_dedup_seconds_count{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{kubernetes_pod_name}}-{{role}}",

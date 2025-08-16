@@ -30,26 +30,26 @@ services:
       - "127.0.0.1:9102:9102"
 
   fullnode:
-    image: "${VALIDATOR_IMAGE_REPO:-aptoslabs/validator}:${IMAGE_TAG:-testnet}"
+    image: "${VALIDATOR_IMAGE_REPO:-libra2org/validator}:${IMAGE_TAG:-testnet}"
     networks:
       shared:
     volumes:
       - type: volume
-        source: aptos-fullnode
-        target: /opt/aptos/data
+        source: libra2-fullnode
+        target: /opt/libra2/data
       - type: bind
         source: ./fullnode.yaml
-        target: /opt/aptos/etc/fullnode.yaml
+        target: /opt/libra2/etc/fullnode.yaml
       - type: bind
         source: ./genesis.blob
-        target: /opt/aptos/genesis/genesis.blob
+        target: /opt/libra2/genesis/genesis.blob
       - type: bind
         source: ./waypoint.txt
-        target: /opt/aptos/genesis/waypoint.txt
+        target: /opt/libra2/genesis/waypoint.txt
       - type: bind
         source: ./keys/validator-full-node-identity.yaml
-        target: /opt/aptos/genesis/validator-full-node-identity.yaml
-    command: ["/usr/local/bin/libra2-node", "-f", "/opt/aptos/etc/fullnode.yaml"]
+        target: /opt/libra2/genesis/validator-full-node-identity.yaml
+    command: ["/usr/local/bin/libra2-node", "-f", "/opt/libra2/etc/fullnode.yaml"]
     restart: unless-stopped
     expose:
       # Public fullnode access
@@ -61,11 +61,11 @@ services:
 
 networks:
   shared:
-    name: "aptos-docker-compose-shared"
+    name: "libra2-docker-compose-shared"
     ipam:
       config:
         - subnet: 172.16.1.0/24
 
 volumes:
-  aptos-fullnode:
-    name: aptos-fullnode
+  libra2-fullnode:
+    name: libra2-fullnode

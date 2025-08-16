@@ -15,7 +15,7 @@ pub static PENDING_SELF_MESSAGES: Lazy<IntGauge> = Lazy::new(|| {
 
 pub static OBSERVATION_SECONDS: Lazy<HistogramVec> = Lazy::new(|| {
     register_histogram_vec!(
-        "aptos_jwk_observation_seconds",
+        "libra2_jwk_observation_seconds",
         "JWK observation seconds by issuer and result.",
         &["issuer", "result"]
     )

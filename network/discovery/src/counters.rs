@@ -21,7 +21,7 @@ pub static EVENT_PROCESSING_LOOP_BUSY_DURATION_S: Lazy<DurationHistogram> = Lazy
 
 pub static DISCOVERY_COUNTS: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_simple_onchain_discovery_counts",
+        "libra2_simple_onchain_discovery_counts",
         "Histogram of busy time of spent in event processing loop",
         &["role_type", "network_id", "peer_id", "metric"]
     )

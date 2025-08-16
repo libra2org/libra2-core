@@ -27,22 +27,22 @@ COPY --link docker/tools/boto.cfg /etc/boto.cfg
 RUN wget https://storage.googleapis.com/pub/gsutil.tar.gz -O- | tar --gzip --directory /opt --extract && ln -s /opt/gsutil/gsutil /usr/local/bin
 RUN cd /usr/local/bin && wget "https://storage.googleapis.com/kubernetes-release/release/v1.18.6/bin/linux/amd64/kubectl" -O kubectl && chmod +x kubectl
 
-COPY --link --from=tools-builder /aptos/dist/libra2-debugger /usr/local/bin/libra2-debugger
-COPY --link --from=tools-builder /aptos/dist/aptos /usr/local/bin/aptos
-COPY --link --from=tools-builder /aptos/dist/libra2-openapi-spec-generator /usr/local/bin/libra2-openapi-spec-generator
-COPY --link --from=tools-builder /aptos/dist/aptos-fn-check-client /usr/local/bin/aptos-fn-check-client
-COPY --link --from=tools-builder /aptos/dist/libra2-transaction-emitter /usr/local/bin/libra2-transaction-emitter
-COPY --link --from=tools-builder /aptos/dist/libra2-api-tester /usr/local/bin/libra2-api-tester
+COPY --link --from=tools-builder /libra2/dist/libra2-debugger /usr/local/bin/libra2-debugger
+COPY --link --from=tools-builder /libra2/dist/libra2 /usr/local/bin/libra2
+COPY --link --from=tools-builder /libra2/dist/libra2-openapi-spec-generator /usr/local/bin/libra2-openapi-spec-generator
+COPY --link --from=tools-builder /libra2/dist/libra2-fn-check-client /usr/local/bin/libra2-fn-check-client
+COPY --link --from=tools-builder /libra2/dist/libra2-transaction-emitter /usr/local/bin/libra2-transaction-emitter
+COPY --link --from=tools-builder /libra2/dist/libra2-api-tester /usr/local/bin/libra2-api-tester
 
 # Copy the example module to publish for api-tester
-COPY --link --from=tools-builder /aptos/libra2-move/framework/libra2-framework /libra2-move/framework/libra2-framework
-COPY --link --from=tools-builder /aptos/libra2-move/framework/libra2-stdlib /libra2-move/framework/libra2-stdlib
-COPY --link --from=tools-builder /aptos/libra2-move/framework/move-stdlib /libra2-move/framework/move-stdlib
-COPY --link --from=tools-builder /aptos/libra2-move/move-examples/hello_blockchain /libra2-move/move-examples/hello_blockchain
+COPY --link --from=tools-builder /libra2/libra2-move/framework/libra2-framework /libra2-move/framework/libra2-framework
+COPY --link --from=tools-builder /libra2/libra2-move/framework/libra2-stdlib /libra2-move/framework/libra2-stdlib
+COPY --link --from=tools-builder /libra2/libra2-move/framework/move-stdlib /libra2-move/framework/move-stdlib
+COPY --link --from=tools-builder /libra2/libra2-move/move-examples/hello_blockchain /libra2-move/move-examples/hello_blockchain
 
 ### Get Aptos Move releases for genesis ceremony
 RUN mkdir -p /libra2-framework/move
-COPY --link --from=tools-builder /aptos/dist/head.mrb /libra2-framework/move/head.mrb
+COPY --link --from=tools-builder /libra2/dist/head.mrb /libra2-framework/move/head.mrb
 
 # add build info
 ARG BUILD_DATE

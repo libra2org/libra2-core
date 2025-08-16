@@ -191,7 +191,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "aptos_failed_proposals_in_window{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"} ",
+          "expr": "libra2_failed_proposals_in_window{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"} ",
           "legendFormat": "{{kubernetes_pod_name}}",
           "range": true,
           "refId": "A"
@@ -313,7 +313,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "rate(aptos_proposer_collected_most_voting_power_sum{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=\"$kubernetes_pod_name\", role=~\"$role\"}[$__rate_interval])/rate(aptos_proposer_collecting_round_count{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=\"$kubernetes_pod_name\", role=~\"$role\"}[$__rate_interval])/libra2_total_voting_power{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=\"$kubernetes_pod_name\", role=~\"$role\"}",
+          "expr": "rate(libra2_proposer_collected_most_voting_power_sum{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=\"$kubernetes_pod_name\", role=~\"$role\"}[$__rate_interval])/rate(libra2_proposer_collecting_round_count{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=\"$kubernetes_pod_name\", role=~\"$role\"}[$__rate_interval])/libra2_total_voting_power{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=\"$kubernetes_pod_name\", role=~\"$role\"}",
           "legendFormat": "proposal",
           "range": true,
           "refId": "A"
@@ -321,7 +321,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "rate(aptos_proposer_collected_conflicting_voting_power_sum{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=\"$kubernetes_pod_name\", role=~\"$role\"}[$__rate_interval])/rate(aptos_proposer_collecting_round_count{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=\"$kubernetes_pod_name\", role=~\"$role\"}[$__rate_interval])/libra2_total_voting_power{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=\"$kubernetes_pod_name\", role=~\"$role\"}",
+          "expr": "rate(libra2_proposer_collected_conflicting_voting_power_sum{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=\"$kubernetes_pod_name\", role=~\"$role\"}[$__rate_interval])/rate(libra2_proposer_collecting_round_count{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=\"$kubernetes_pod_name\", role=~\"$role\"}[$__rate_interval])/libra2_total_voting_power{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=\"$kubernetes_pod_name\", role=~\"$role\"}",
           "hide": false,
           "legendFormat": "conflicting",
           "range": true,
@@ -330,7 +330,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "rate(aptos_proposer_collected_timeout_voting_power_sum{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=\"$kubernetes_pod_name\", role=~\"$role\"}[$__rate_interval])/rate(aptos_proposer_collecting_round_count{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=\"$kubernetes_pod_name\", role=~\"$role\"}[$__rate_interval])/libra2_total_voting_power{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=\"$kubernetes_pod_name\", role=~\"$role\"}",
+          "expr": "rate(libra2_proposer_collected_timeout_voting_power_sum{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=\"$kubernetes_pod_name\", role=~\"$role\"}[$__rate_interval])/rate(libra2_proposer_collecting_round_count{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=\"$kubernetes_pod_name\", role=~\"$role\"}[$__rate_interval])/libra2_total_voting_power{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=\"$kubernetes_pod_name\", role=~\"$role\"}",
           "hide": false,
           "legendFormat": "timeout",
           "range": true,
@@ -398,7 +398,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "aptos_failed_proposals_in_window{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]",
+          "expr": "libra2_failed_proposals_in_window{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]",
           "hide": false,
           "legendFormat": "failed_proposals",
           "range": true,

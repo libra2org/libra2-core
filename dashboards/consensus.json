@@ -5096,7 +5096,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "sum by (kubernetes_pod_name) (aptos_quorum_store_channel_msgs_count{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", state=\"enqueued\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}) - sum by (kubernetes_pod_name) (aptos_quorum_store_channel_msgs_count{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", state=\"dequeued\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}) - sum by (kubernetes_pod_name) (aptos_quorum_store_channel_msgs_count{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", state=\"dropped\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"})",
+          "expr": "sum by (kubernetes_pod_name) (libra2_quorum_store_channel_msgs_count{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", state=\"enqueued\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}) - sum by (kubernetes_pod_name) (libra2_quorum_store_channel_msgs_count{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", state=\"dequeued\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}) - sum by (kubernetes_pod_name) (libra2_quorum_store_channel_msgs_count{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", state=\"dropped\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"})",
           "legendFormat": "{{kubernetes_pod_name}}-{{role}}",
           "range": true,
           "refId": "C"
@@ -6472,7 +6472,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "rate(aptos_proposer_collected_most_voting_power_sum{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$__rate_interval])/rate(aptos_proposer_collecting_round_count{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$__rate_interval])/libra2_total_voting_power{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}",
+          "expr": "rate(libra2_proposer_collected_most_voting_power_sum{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$__rate_interval])/rate(libra2_proposer_collecting_round_count{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$__rate_interval])/libra2_total_voting_power{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -6523,7 +6523,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "rate(aptos_proposer_collected_conflicting_voting_power_sum{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$__rate_interval])/rate(aptos_proposer_collecting_round_count{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$__rate_interval])/libra2_total_voting_power{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}",
+          "expr": "rate(libra2_proposer_collected_conflicting_voting_power_sum{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$__rate_interval])/rate(libra2_proposer_collecting_round_count{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$__rate_interval])/libra2_total_voting_power{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -6574,7 +6574,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "rate(aptos_proposer_collected_timeout_voting_power_sum{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$__rate_interval])/rate(aptos_proposer_collecting_round_count{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$__rate_interval])/libra2_total_voting_power{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}",
+          "expr": "rate(libra2_proposer_collected_timeout_voting_power_sum{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$__rate_interval])/rate(libra2_proposer_collecting_round_count{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$__rate_interval])/libra2_total_voting_power{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -6676,7 +6676,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "aptos_failed_proposals_in_window{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"} / clamp_min(aptos_failed_proposals_in_window{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"} + libra2_committed_proposals_in_window{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}, 1)",
+          "expr": "libra2_failed_proposals_in_window{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"} / clamp_min(libra2_failed_proposals_in_window{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"} + libra2_committed_proposals_in_window{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}, 1)",
           "legendFormat": "{{kubernetes_pod_name}}",
           "range": true,
           "refId": "A"
@@ -6727,7 +6727,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "aptos_failed_proposals_in_window{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"} ",
+          "expr": "libra2_failed_proposals_in_window{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"} ",
           "legendFormat": "{{kubernetes_pod_name}}",
           "range": true,
           "refId": "A"
@@ -6966,7 +6966,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "aptos_proposer_pending_blocks_count{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}",
+          "expr": "libra2_proposer_pending_blocks_count{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}",
           "legendFormat": "last 10 rounds",
           "range": true,
           "refId": "A"
@@ -7025,7 +7025,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "aptos_proposer_pending_blocks_fill_fraction{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}",
+          "expr": "libra2_proposer_pending_blocks_fill_fraction{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}",
           "legendFormat": "last 10 rounds",
           "range": true,
           "refId": "A"
@@ -7152,7 +7152,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "avg(rate(aptos_wait_for_full_blocks_triggered_sum{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$__rate_interval]) / rate(aptos_wait_for_full_blocks_triggered_count{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$__rate_interval]))",
+          "expr": "avg(rate(libra2_wait_for_full_blocks_triggered_sum{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$__rate_interval]) / rate(libra2_wait_for_full_blocks_triggered_count{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$__rate_interval]))",
           "hide": false,
           "legendFormat": "wait_for_full_blocks_triggered",
           "range": true,

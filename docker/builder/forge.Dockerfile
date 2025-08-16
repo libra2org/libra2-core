@@ -12,22 +12,22 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
         unzip \
         wget
 
-WORKDIR /aptos
+WORKDIR /libra2
 
 # copy helm charts from source
-COPY --link --from=tools-builder /aptos/terraform/helm /aptos/terraform/helm
-COPY --link --from=tools-builder /aptos/testsuite/forge/src/backend/k8s/helm-values/libra2-node-default-values.yaml /aptos/terraform/libra2-node-default-values.yaml
+COPY --link --from=tools-builder /libra2/terraform/helm /libra2/terraform/helm
+COPY --link --from=tools-builder /libra2/testsuite/forge/src/backend/k8s/helm-values/libra2-node-default-values.yaml /libra2/terraform/libra2-node-default-values.yaml
 
 RUN cd /usr/local/bin && wget "https://storage.googleapis.com/kubernetes-release/release/v1.18.6/bin/linux/amd64/kubectl" -O kubectl && chmod +x kubectl
 RUN cd /usr/local/bin && wget "https://get.helm.sh/helm-v3.8.0-linux-amd64.tar.gz" -O- | busybox tar -zxvf - && mv linux-amd64/helm . && chmod +x helm
 ENV PATH "$PATH:/root/bin"
 
-WORKDIR /aptos
-COPY --link --from=node-builder /aptos/dist/forge /usr/local/bin/forge
+WORKDIR /libra2
+COPY --link --from=node-builder /libra2/dist/forge /usr/local/bin/forge
 
 ### Get Libra2 Framework Release for forge framework upgrade testing
-COPY --link --from=tools-builder /aptos/libra2-move/framework/ /aptos/libra2-move/framework/
-COPY --link --from=tools-builder /aptos/libra2-move/libra2-release-builder/ /aptos/libra2-move/libra2-release-builder/
+COPY --link --from=tools-builder /libra2/libra2-move/framework/ /libra2/libra2-move/framework/
+COPY --link --from=tools-builder /libra2/libra2-move/libra2-release-builder/ /libra2/libra2-move/libra2-release-builder/
 
 ENV RUST_LOG_FORMAT=json
 

@@ -2215,7 +2215,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "rate(aptos_quorum_store_channel_msgs_count{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$__rate_interval])",
+          "expr": "rate(libra2_quorum_store_channel_msgs_count{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$__rate_interval])",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"

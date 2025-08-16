@@ -3,7 +3,7 @@
 # Check https://crazymax.dev/docker-allhands2-buildx-bake and https://docs.docker.com/engine/reference/commandline/buildx_bake/#file-definition for an intro.
 
 variable "CI" {
-  # whether this build runs in aptos-labs' CI environment which makes certain assumptions about certain registries being available to push to cache layers.
+  # whether this build runs in libra2org' CI environment which makes certain assumptions about certain registries being available to push to cache layers.
   # for local builds we simply default to relying on dockers local caching.
   default = "false"
 }
@@ -30,7 +30,7 @@ variable "TARGET_REGISTRY" {
 }
 
 variable "ecr_base" {
-  default = "${AWS_ECR_ACCOUNT_NUM}.dkr.ecr.us-west-2.amazonaws.com/aptos"
+  default = "${AWS_ECR_ACCOUNT_NUM}.dkr.ecr.us-west-2.amazonaws.com/libra2"
 }
 
 variable "NORMALIZED_GIT_BRANCH_OR_PR" {}
@@ -237,8 +237,8 @@ function "generate_tags" {
       "${GCP_DOCKER_ARTIFACT_REPO}/${target}:${IMAGE_TAG_PREFIX}${GIT_SHA}",
       "${GCP_DOCKER_ARTIFACT_REPO}/${target}:${IMAGE_TAG_PREFIX}${NORMALIZED_GIT_BRANCH_OR_PR}",
       ] : [ // "local" or any other value
-      "aptos-core/${target}:${IMAGE_TAG_PREFIX}${GIT_SHA}-from-local",
-      "aptos-core/${target}:${IMAGE_TAG_PREFIX}from-local",
+      "libra2-core/${target}:${IMAGE_TAG_PREFIX}${GIT_SHA}-from-local",
+      "libra2-core/${target}:${IMAGE_TAG_PREFIX}from-local",
     ]
   )
 }

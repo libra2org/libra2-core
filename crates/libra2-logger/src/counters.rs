@@ -8,13 +8,13 @@ use prometheus::{register_int_counter, IntCounter};
 
 /// Count of the struct logs submitted by macro
 pub static STRUCT_LOG_COUNT: Lazy<IntCounter> = Lazy::new(|| {
-    register_int_counter!("aptos_struct_log_count", "Count of the struct logs.").unwrap()
+    register_int_counter!("libra2_struct_log_count", "Count of the struct logs.").unwrap()
 });
 
 /// Count of struct logs processed, but not necessarily sent
 pub static PROCESSED_STRUCT_LOG_COUNT: Lazy<IntCounter> = Lazy::new(|| {
     register_int_counter!(
-        "aptos_struct_log_processed_count",
+        "libra2_struct_log_processed_count",
         "Count of the struct logs received by the sender."
     )
     .unwrap()
@@ -24,14 +24,14 @@ pub static PROCESSED_STRUCT_LOG_COUNT: Lazy<IntCounter> = Lazy::new(|| {
 pub static ERROR_LOG_COUNT: Lazy<IntCounter> =
     Lazy::new(|| register_int_counter!("libra2_error_log_count", "Count of error!() logs").unwrap());
 pub static WARN_LOG_COUNT: Lazy<IntCounter> =
-    Lazy::new(|| register_int_counter!("aptos_warn_log_count", "Count of warn!() logs").unwrap());
+    Lazy::new(|| register_int_counter!("libra2_warn_log_count", "Count of warn!() logs").unwrap());
 pub static INFO_LOG_COUNT: Lazy<IntCounter> =
-    Lazy::new(|| register_int_counter!("aptos_info_log_count", "Count of info!() logs").unwrap());
+    Lazy::new(|| register_int_counter!("libra2_info_log_count", "Count of info!() logs").unwrap());
 
 /// Metric for when we fail to log during sending to the queue
 pub static STRUCT_LOG_QUEUE_ERROR_COUNT: Lazy<IntCounter> = Lazy::new(|| {
     register_int_counter!(
-        "aptos_struct_log_queue_error_count",
+        "libra2_struct_log_queue_error_count",
         "Count of all errors during queuing struct logs."
     )
     .unwrap()
@@ -39,25 +39,25 @@ pub static STRUCT_LOG_QUEUE_ERROR_COUNT: Lazy<IntCounter> = Lazy::new(|| {
 
 pub static STRUCT_LOG_PARSE_ERROR_COUNT: Lazy<IntCounter> = Lazy::new(|| {
     register_int_counter!(
-        "aptos_struct_log_parse_error_count",
+        "libra2_struct_log_parse_error_count",
         "Count of all parse errors during struct logs."
     )
     .unwrap()
 });
 
 /// Counter for failed log ingest writes (see also: libra2-telemetry for sender metrics)
-pub static APTOS_LOG_INGEST_WRITER_FULL: Lazy<IntCounter> = Lazy::new(|| {
+pub static libra2_log_ingest_writer_full: Lazy<IntCounter> = Lazy::new(|| {
     register_int_counter!(
-        "aptos_log_ingest_writer_full",
+        "libra2_log_ingest_writer_full",
         "Number of log ingest writes that failed due to channel full"
     )
     .unwrap()
 });
 
 /// Counter for failed log ingest writes (see also: libra2-telemetry for sender metrics)
-pub static APTOS_LOG_INGEST_WRITER_DISCONNECTED: Lazy<IntCounter> = Lazy::new(|| {
+pub static libra2_log_ingest_writer_disconnected: Lazy<IntCounter> = Lazy::new(|| {
     register_int_counter!(
-        "aptos_log_ingest_writer_disconnected",
+        "libra2_log_ingest_writer_disconnected",
         "Number of log ingest writes that failed due to channel disconnected"
     )
     .unwrap()

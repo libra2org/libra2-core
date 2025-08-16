@@ -36,26 +36,29 @@ services:
 
 
   validator:
-    image: "${VALIDATOR_IMAGE_REPO:-aptoslabs/validator}:${IMAGE_TAG:-testnet}"
+    image: debian:latest
     networks:
       shared:
     volumes:
+      - type: bind
+        source: libra2-node
+        target: /usr/local/bin/libra2-node
       - type: volume
-        source: aptos-validator
-        target: /opt/aptos/data
+        source: libra2-validator
+        target: /opt/libra2/data
       - type: bind
         source: ./validator.yaml
-        target: /opt/aptos/etc/validator.yaml
+        target: /opt/libra2/etc/validator.yaml
       - type: bind
         source: ./genesis.blob
-        target: /opt/aptos/genesis/genesis.blob
+        target: /opt/libra2/genesis/genesis.blob
       - type: bind
         source: ./waypoint.txt
-        target: /opt/aptos/genesis/waypoint.txt
+        target: /opt/libra2/genesis/waypoint.txt
       - type: bind
         source: ./keys/validator-identity.yaml
-        target: /opt/aptos/genesis/validator-identity.yaml
-    command: ["/usr/local/bin/libra2-node", "-f", "/opt/aptos/etc/validator.yaml"]
+        target: /opt/libra2/genesis/validator-identity.yaml
+    command: ["/usr/local/bin/libra2-node", "-f", "/opt/libra2/etc/validator.yaml"]
     restart: unless-stopped
     expose:
       # These are only exposed on the docker internal network
@@ -70,11 +73,11 @@ services:
 
 networks:
   shared:
-    name: "aptos-docker-compose-shared"
+    name: "libra2-docker-compose-shared"
     ipam:
       config:
         - subnet: 172.16.1.0/24
 
 volumes:
-  aptos-validator:
+  libra2-validator:
     name: aptos-validator

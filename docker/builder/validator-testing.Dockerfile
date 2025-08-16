@@ -33,11 +33,11 @@ FROM tools-builder
 # cache invalidation and reduce build times. 
 FROM validator-testing-base  AS validator-testing
 
-RUN addgroup --system --gid 6180 aptos && adduser --system --ingroup aptos --no-create-home --uid 6180 aptos
+RUN addgroup --system --gid 6180 libra2 && adduser --system --ingroup libra2 --no-create-home --uid 6180 libra2
 
-RUN mkdir -p /opt/aptos/etc
-COPY --link --from=node-builder /aptos/dist/libra2-node /usr/local/bin/
-COPY --link --from=tools-builder /aptos/dist/libra2-debugger /usr/local/bin/
+RUN mkdir -p /opt/libra2/etc
+COPY --link --from=node-builder /libra2/dist/libra2-node /usr/local/bin/
+COPY --link --from=tools-builder /libra2/dist/libra2-debugger /usr/local/bin/
 
 # Admission control
 EXPOSE 8000

@@ -193,7 +193,7 @@ pub static NUM_SENDERS_IN_BLOCK: Lazy<Gauge> = Lazy::new(|| {
 pub static TXN_SHUFFLE_SECONDS: Lazy<Histogram> = Lazy::new(|| {
     register_histogram!(
         // metric name
-        "aptos_execution_transaction_shuffle_seconds",
+        "libra2_execution_transaction_shuffle_seconds",
         // metric description
         "The time spent in seconds in shuffle of transactions",
         exponential_buckets(/*start=*/ 1e-6, /*factor=*/ 2.0, /*count=*/ 30).unwrap(),
@@ -205,7 +205,7 @@ pub static TXN_SHUFFLE_SECONDS: Lazy<Histogram> = Lazy::new(|| {
 pub static TXN_DEDUP_SECONDS: Lazy<Histogram> = Lazy::new(|| {
     register_histogram!(
         // metric name
-        "aptos_execution_transaction_dedup_seconds",
+        "libra2_execution_transaction_dedup_seconds",
         // metric description
         "The time spent in seconds in dedup of transaction",
         exponential_buckets(/*start=*/ 1e-6, /*factor=*/ 2.0, /*count=*/ 30).unwrap(),
@@ -216,7 +216,7 @@ pub static TXN_DEDUP_SECONDS: Lazy<Histogram> = Lazy::new(|| {
 pub static BLOCK_PREPARER_LATENCY: Lazy<DurationHistogram> = Lazy::new(|| {
     DurationHistogram::new(
         register_histogram!(
-            "aptos_execution_block_preparer_seconds",
+            "libra2_execution_block_preparer_seconds",
             "The time spent in block preparer",
         )
         .unwrap(),
@@ -226,7 +226,7 @@ pub static BLOCK_PREPARER_LATENCY: Lazy<DurationHistogram> = Lazy::new(|| {
 /// Transaction dedup number of filtered
 pub static TXN_DEDUP_FILTERED: Lazy<Histogram> = Lazy::new(|| {
     register_avg_counter(
-        "aptos_execution_transaction_dedup_filtered",
+        "libra2_execution_transaction_dedup_filtered",
         "The number of duplicates filtered per block",
     )
 });
@@ -235,7 +235,7 @@ pub static TXN_DEDUP_FILTERED: Lazy<Histogram> = Lazy::new(|| {
 /// (similar to PROPOSALS_COUNT, but can be larger, if we failed in creating/sending of the proposal)
 pub static PROPOSER_COLLECTED_ROUND_COUNT: Lazy<IntCounter> = Lazy::new(|| {
     register_int_counter!(
-        "aptos_proposer_collecting_round_count",
+        "libra2_proposer_collecting_round_count",
         "Total voting power of all votes collected for the round this node was proposer",
     )
     .unwrap()
@@ -245,7 +245,7 @@ pub static PROPOSER_COLLECTED_ROUND_COUNT: Lazy<IntCounter> = Lazy::new(|| {
 /// for the rounds this node was a proposer (cumulative)
 pub static PROPOSER_COLLECTED_MOST_VOTING_POWER: Lazy<Counter> = Lazy::new(|| {
     register_counter!(
-        "aptos_proposer_collected_most_voting_power_sum",
+        "libra2_proposer_collected_most_voting_power_sum",
         "Total voting power of all votes collected for the same ledger info for the rounds this node was a proposer",
     )
         .unwrap()
@@ -255,7 +255,7 @@ pub static PROPOSER_COLLECTED_MOST_VOTING_POWER: Lazy<Counter> = Lazy::new(|| {
 /// for the rounds this node was a proposer
 pub static PROPOSER_COLLECTED_CONFLICTING_VOTING_POWER: Lazy<Counter> = Lazy::new(|| {
     register_counter!(
-        "aptos_proposer_collected_conflicting_voting_power_sum",
+        "libra2_proposer_collected_conflicting_voting_power_sum",
         "Total voting power of all votes collected for all other ledger info for the rounds this node was a proposer",
     )
         .unwrap()
@@ -265,7 +265,7 @@ pub static PROPOSER_COLLECTED_CONFLICTING_VOTING_POWER: Lazy<Counter> = Lazy::ne
 /// for the rounds this node was a proposer
 pub static PROPOSER_COLLECTED_TIMEOUT_VOTING_POWER: Lazy<Counter> = Lazy::new(|| {
     register_counter!(
-        "aptos_proposer_collected_timeout_voting_power_sum",
+        "libra2_proposer_collected_timeout_voting_power_sum",
         "Total voting power of all votes collected for the same ledger info for the rounds this node was a proposer",
     )
         .unwrap()
@@ -283,7 +283,7 @@ pub static COMMITTED_PROPOSALS_IN_WINDOW: Lazy<IntGauge> = Lazy::new(|| {
 /// Failed proposals map when using LeaderReputation as the ProposerElection
 pub static FAILED_PROPOSALS_IN_WINDOW: Lazy<IntGauge> = Lazy::new(|| {
     register_int_gauge!(
-        "aptos_failed_proposals_in_window",
+        "libra2_failed_proposals_in_window",
         "Total number of failed proposals in the current reputation window",
     )
     .unwrap()
@@ -301,7 +301,7 @@ pub static COMMITTED_VOTES_IN_WINDOW: Lazy<IntGauge> = Lazy::new(|| {
 /// The number of block events the LeaderReputation uses
 pub static LEADER_REPUTATION_ROUND_HISTORY_SIZE: Lazy<IntGauge> = Lazy::new(|| {
     register_int_gauge!(
-        "aptos_leader_reputation_round_history_size",
+        "libra2_leader_reputation_round_history_size",
         "Total number of new block events in the current reputation window"
     )
     .unwrap()
@@ -326,7 +326,7 @@ pub static CHAIN_HEALTH_BACKOFF_TRIGGERED: Lazy<Histogram> = Lazy::new(|| {
 /// Counts when waiting for full blocks is triggered
 pub static WAIT_FOR_FULL_BLOCKS_TRIGGERED: Lazy<Histogram> = Lazy::new(|| {
     register_avg_counter(
-        "aptos_wait_for_full_blocks_triggered",
+        "libra2_wait_for_full_blocks_triggered",
         "Counts when waiting for full blocks is triggered",
     )
 });
@@ -334,7 +334,7 @@ pub static WAIT_FOR_FULL_BLOCKS_TRIGGERED: Lazy<Histogram> = Lazy::new(|| {
 /// Counts when pipeline backpressure is triggered
 pub static PIPELINE_BACKPRESSURE_ON_PROPOSAL_TRIGGERED: Lazy<Histogram> = Lazy::new(|| {
     register_avg_counter(
-        "aptos_pipeline_backpressure_on_proposal_triggered",
+        "libra2_pipeline_backpressure_on_proposal_triggered",
         "Counts when pipeline backpressure is triggered",
     )
 });
@@ -342,7 +342,7 @@ pub static PIPELINE_BACKPRESSURE_ON_PROPOSAL_TRIGGERED: Lazy<Histogram> = Lazy::
 /// Counts when execution backpressure is triggered
 pub static EXECUTION_BACKPRESSURE_ON_PROPOSAL_TRIGGERED: Lazy<Histogram> = Lazy::new(|| {
     register_avg_counter(
-        "aptos_execution_backpressure_on_proposal_triggered",
+        "libra2_execution_backpressure_on_proposal_triggered",
         "Counts when execution backpressure is triggered",
     )
 });
@@ -369,7 +369,7 @@ pub static CONSENSUS_PROPOSAL_PENDING_DURATION: Lazy<DurationHistogram> = Lazy::
 /// Amount of time (in seconds) proposal is delayed due to backpressure/backoff
 pub static PROPOSER_DELAY_PROPOSAL: Lazy<Histogram> = Lazy::new(|| {
     register_avg_counter(
-        "aptos_proposer_delay_proposal",
+        "libra2_proposer_delay_proposal",
         "Amount of time (in seconds) proposal is delayed due to backpressure/backoff",
     )
 });
@@ -377,7 +377,7 @@ pub static PROPOSER_DELAY_PROPOSAL: Lazy<Histogram> = Lazy::new(|| {
 /// Histogram for max number of transactions (after filtering for dedup, expirations, etc) proposer uses when creating block.
 pub static PROPOSER_MAX_BLOCK_TXNS_AFTER_FILTERING: Lazy<Histogram> = Lazy::new(|| {
     register_histogram!(
-        "aptos_proposer_max_block_txns_after_filtering",
+        "libra2_proposer_max_block_txns_after_filtering",
         "Histogram for max number of transactions (after filtering) proposer uses when creating block.",
         NUM_CONSENSUS_TRANSACTIONS_BUCKETS.to_vec()
     )
@@ -387,7 +387,7 @@ pub static PROPOSER_MAX_BLOCK_TXNS_AFTER_FILTERING: Lazy<Histogram> = Lazy::new(
 /// Histogram for max number of transactions to execute proposer uses when creating block.
 pub static PROPOSER_MAX_BLOCK_TXNS_TO_EXECUTE: Lazy<Histogram> = Lazy::new(|| {
     register_histogram!(
-        "aptos_proposer_max_block_txns_to_execute",
+        "libra2_proposer_max_block_txns_to_execute",
         "Histogram for max number of transactions to execute proposer uses when creating block.",
         NUM_CONSENSUS_TRANSACTIONS_BUCKETS.to_vec()
     )
@@ -397,7 +397,7 @@ pub static PROPOSER_MAX_BLOCK_TXNS_TO_EXECUTE: Lazy<Histogram> = Lazy::new(|| {
 /// How many pending blocks are there, when we make a proposal
 pub static PROPOSER_PENDING_BLOCKS_COUNT: Lazy<IntGauge> = Lazy::new(|| {
     register_int_gauge!(
-        "aptos_proposer_pending_blocks_count",
+        "libra2_proposer_pending_blocks_count",
         "How many pending blocks are there, when we make a proposal",
     )
     .unwrap()
@@ -406,7 +406,7 @@ pub static PROPOSER_PENDING_BLOCKS_COUNT: Lazy<IntGauge> = Lazy::new(|| {
 /// How full is a largest pending block, as a fraction of max len/bytes (between 0 and 1)
 pub static PROPOSER_PENDING_BLOCKS_FILL_FRACTION: Lazy<Gauge> = Lazy::new(|| {
     register_gauge!(
-        "aptos_proposer_pending_blocks_fill_fraction",
+        "libra2_proposer_pending_blocks_fill_fraction",
         "How full is a largest recent pending block, as a fraction of max len/bytes (between 0 and 1)",
     )
     .unwrap()
@@ -415,7 +415,7 @@ pub static PROPOSER_PENDING_BLOCKS_FILL_FRACTION: Lazy<Gauge> = Lazy::new(|| {
 /// Histogram for max number of transactions calibrated block should have, based on the proposer
 pub static PROPOSER_ESTIMATED_CALIBRATED_BLOCK_TXNS: Lazy<Histogram> = Lazy::new(|| {
     register_histogram!(
-        "aptos_proposer_estimated_calibrated_block_txns",
+        "libra2_proposer_estimated_calibrated_block_txns",
         "Histogram for max number of transactions calibrated block should have, based on the proposer",
         NUM_CONSENSUS_TRANSACTIONS_BUCKETS.to_vec()
     )
@@ -425,7 +425,7 @@ pub static PROPOSER_ESTIMATED_CALIBRATED_BLOCK_TXNS: Lazy<Histogram> = Lazy::new
 /// Histogram for max gas calibrated block should have, based on the proposer
 pub static PROPOSER_ESTIMATED_CALIBRATED_BLOCK_GAS: Lazy<Histogram> = Lazy::new(|| {
     register_histogram!(
-        "aptos_proposer_estimated_calibrated_block_gas",
+        "libra2_proposer_estimated_calibrated_block_gas",
         "Histogram for max gas calibrated block should have, based on the proposer",
         gas_buckets()
     )
@@ -517,7 +517,7 @@ pub static CONSENSUS_PARTICIPATION_STATUS: Lazy<IntGaugeVec> = Lazy::new(|| {
 /// Voting power of the validator
 pub static VALIDATOR_VOTING_POWER: Lazy<Gauge> = Lazy::new(|| {
     register_gauge!(
-        "aptos_validator_voting_power",
+        "libra2_validator_voting_power",
         "Voting power of the validator"
     )
     .unwrap()
@@ -526,7 +526,7 @@ pub static VALIDATOR_VOTING_POWER: Lazy<Gauge> = Lazy::new(|| {
 /// Emits voting power for all validators in the current epoch.
 pub static ALL_VALIDATORS_VOTING_POWER: Lazy<IntGaugeVec> = Lazy::new(|| {
     register_int_gauge_vec!(
-        "aptos_all_validators_voting_power",
+        "libra2_all_validators_voting_power",
         "Voting power for all validators in current epoch",
         &["peer_id"]
     )
@@ -842,7 +842,7 @@ pub static NUM_BLOCKS_IN_PIPELINE: Lazy<IntGaugeVec> = Lazy::new(|| {
 // pub static UNWRAPPED_PROPOSAL_SIZE_BYTES: Lazy<Histogram> = Lazy::new(|| {
 //     register_histogram!(
 //         "libra2_consensus_unwrapped_proposal_size_bytes",
-//         "Histogram of proposal size after BCS but before wrapping with GRPC and aptos net."
+//         "Histogram of proposal size after BCS but before wrapping with GRPC and libra2 net."
 //     )
 //     .unwrap()
 // });
@@ -1066,7 +1066,7 @@ pub static CONSENSUS_CHANNEL_MSGS: Lazy<IntCounterVec> = Lazy::new(|| {
 /// Counters(queued,dequeued,dropped) related to buffer manager channel
 pub static BUFFER_MANAGER_CHANNEL_MSGS: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_buffer_manager_channel_msgs_count",
+        "libra2_buffer_manager_channel_msgs_count",
         "Counters(queued,dequeued,dropped) related to buffer manager channel",
         &["state"]
     )
@@ -1106,7 +1106,7 @@ pub static ROUND_MANAGER_CHANNEL_MSGS: Lazy<IntCounterVec> = Lazy::new(|| {
 /// Counters(queued,dequeued,dropped) related to quorum store channel
 pub static QUORUM_STORE_CHANNEL_MSGS: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_quorum_store_channel_msgs_count",
+        "libra2_quorum_store_channel_msgs_count",
         "Counters(queued,dequeued,dropped) related to quorum store channel",
         &["state"]
     )
@@ -1369,7 +1369,7 @@ pub static EPOCH_MANAGER_ISSUES_DETAILS: Lazy<IntCounterVec> = Lazy::new(|| {
 
 pub static PROPOSED_VTXN_COUNT: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_proposed_vtxn_count",
+        "libra2_proposed_vtxn_count",
         "Number of validator transactions proposed",
         &["proposer"]
     )
@@ -1378,7 +1378,7 @@ pub static PROPOSED_VTXN_COUNT: Lazy<IntCounterVec> = Lazy::new(|| {
 
 pub static PROPOSED_VTXN_BYTES: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_proposed_vtxn_bytes",
+        "libra2_proposed_vtxn_bytes",
         "The total size in bytes of validator transactions proposed",
         &["proposer"]
     )
@@ -1424,7 +1424,7 @@ pub static CONSENSUS_PROPOSAL_PAYLOAD_BATCH_AVAILABILITY_IN_QS: Lazy<IntCounterV
 
 pub static OPTQS_EXCLUDE_AUTHORS_COUNT: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_optqs_exclude_authors",
+        "libra2_optqs_exclude_authors",
         "The number of times a batch author appears on the exclude list",
         &["author"]
     )
@@ -1433,7 +1433,7 @@ pub static OPTQS_EXCLUDE_AUTHORS_COUNT: Lazy<IntCounterVec> = Lazy::new(|| {
 
 pub static OPTQS_LAST_CONSECUTIVE_SUCCESS_COUNT: Lazy<Histogram> = Lazy::new(|| {
     register_avg_counter(
-        "aptos_optqs_last_consecutive_successes",
+        "libra2_optqs_last_consecutive_successes",
         "The number of last consecutive successes capped at window length",
     )
 });

@@ -19,7 +19,7 @@ The builder can produce the following Docker images. To build a particular image
 
 1. `validator-testing` : Image containing the `libra2-node`, `libra2-debugger` binaries and other linux tools useful for debugging and testing. This image is used in Forge tests.
 2. `validator` : Image containing the `libra2-node` and `libra2-debugger` binaries. This image is usually used for distribution.
-3. `tools`: Image containing all the aptos tools binaries including `libra2-debugger`, `aptos`, `libra2-transaction-emitter`, `libra2-openapi-spec-generator` and `aptos-fn-check-client`. Also, includes the Aptos Move framework for use with genesis generation.
+3. `tools`: Image containing all the libra2 tools binaries including `libra2-debugger`, `libra2`, `libra2-transaction-emitter`, `libra2-openapi-spec-generator` and `libra2-fn-check-client`. Also, includes the Aptos Move framework for use with genesis generation.
 4. `forge`: Image containing the `forge` binary that orchestrates and runs Forge tests.
 5. `node-checker`: Image containing the `node-checker` binary that checks the health of a node.
 6. `faucet`: Image containing the `faucet` binary that provides a faucet service for minting coins.
@@ -55,7 +55,7 @@ FROM tools-builder
 
 4. In your new Dockerfile, use the COPY command to copy the output of the `libra2-node-builder`, `indexer-builder`, `tools-builder` target into the image. For example, to copy the `libra2-node` binary into the `validator` image, use the following command:
    ```
-   COPY --link --from=node-builder /aptos/dist/libra2-node /usr/local/bin/
+   COPY --link --from=node-builder /libra2/dist/libra2-node /usr/local/bin/
    ```
 5. Add a new target definition in [docker-bake-rust-all.hcl](docker-bake-rust-all.hcl) file by copying another target (e.g. `validator`). The target definition should have the following fields:
 

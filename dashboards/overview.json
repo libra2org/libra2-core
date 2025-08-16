@@ -1173,7 +1173,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "avg(aptos_all_validators_voting_power{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\",kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"validator\"}) by (peer_id) * 100 ",
+          "expr": "avg(libra2_all_validators_voting_power{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\",kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"validator\"}) by (peer_id) * 100 ",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -1224,7 +1224,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "avg(aptos_all_validators_voting_power{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\",kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"validator\"}) by (peer_id) * 100 / avg(libra2_total_voting_power{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\",kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"validator\"})",
+          "expr": "avg(libra2_all_validators_voting_power{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\",kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"validator\"}) by (peer_id) * 100 / avg(libra2_total_voting_power{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\",kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"validator\"})",
           "format": "time_series",
           "hide": false,
           "instant": true,
@@ -1364,7 +1364,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "\nsum by (git_hash) (\n    max by (kubernetes_pod_name) (\n        aptos_validator_voting_power {chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\",kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"validator\"}\n    ) * \n    on (kubernetes_pod_name) group_left(git_hash) \n    (\n        max by(kubernetes_pod_name, git_hash) (\n            node_release_git_hash{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\",kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"validator\"}\n        )\n     )\n) * 100 \n/ \navg(libra2_total_voting_power{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\",kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"validator\"})",
+          "expr": "\nsum by (git_hash) (\n    max by (kubernetes_pod_name) (\n        libra2_validator_voting_power {chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\",kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"validator\"}\n    ) * \n    on (kubernetes_pod_name) group_left(git_hash) \n    (\n        max by(kubernetes_pod_name, git_hash) (\n            node_release_git_hash{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\",kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"validator\"}\n        )\n     )\n) * 100 \n/ \navg(libra2_total_voting_power{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\",kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"validator\"})",
           "hide": false,
           "legendFormat": "__auto",
           "range": true,
@@ -1461,7 +1461,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "avg(aptos_all_validators_voting_power{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\",kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"validator\"}) by (peer_id) * 100 / avg(libra2_total_voting_power{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\",kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"validator\"})",
+          "expr": "avg(libra2_all_validators_voting_power{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\",kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"validator\"}) by (peer_id) * 100 / avg(libra2_total_voting_power{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\",kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"validator\"})",
           "format": "time_series",
           "hide": false,
           "instant": true,
@@ -2630,7 +2630,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "aptos_failed_proposals_in_window{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"validator\"} ",
+          "expr": "libra2_failed_proposals_in_window{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"validator\"} ",
           "legendFormat": "{{kubernetes_pod_name}}",
           "range": true,
           "refId": "A"

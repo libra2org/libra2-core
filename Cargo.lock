@@ -304,24 +304,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "aptos-fn-check-client"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "clap 4.5.43",
- "env_logger 0.10.2",
- "futures",
- "gcp-bigquery-client",
- "libra2-logger",
- "libra2-node-checker",
- "libra2-sdk",
- "reqwest 0.11.27",
- "serde",
- "serde_json",
- "tokio",
-]
-
-[[package]]
 name = "aptos-indexer"
 version = "0.0.2"
 dependencies = [
@@ -8517,6 +8499,24 @@ dependencies = [
  "clap 4.5.43",
  "libra2-faucet-core",
  "libra2-logger",
+ "tokio",
+]
+
+[[package]]
+name = "libra2-fn-check-client"
+version = "0.1.1"
+dependencies = [
+ "anyhow",
+ "clap 4.5.43",
+ "env_logger 0.10.2",
+ "futures",
+ "gcp-bigquery-client",
+ "libra2-logger",
+ "libra2-node-checker",
+ "libra2-sdk",
+ "reqwest 0.11.27",
+ "serde",
+ "serde_json",
  "tokio",
 ]
 

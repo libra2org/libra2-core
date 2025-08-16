@@ -32,12 +32,12 @@ services:
         ipv4_address:  172.16.1.10
     volumes:
       - type: volume
-        source: aptos-shared
-        target: /opt/aptos/var
+        source: libra2-shared
+        target: /opt/libra2/var
       - type: bind
         source: ./validator_node_template.yaml
-        target: /opt/aptos/config.yaml
-    command: ["/usr/local/bin/libra2-node", "--test", "--test-dir", "/opt/aptos/var/", "--test-config-override", "/opt/aptos/config.yaml"]
+        target: /opt/libra2/config.yaml
+    command: ["/usr/local/bin/libra2-node", "--test", "--test-dir", "/opt/libra2/var/", "--test-config-override", "/opt/libra2/config.yaml"]
     ports:
       - "8080:8080" # REST API
       - "50051:50051" # Indexer GRPC, if enabled
@@ -45,7 +45,7 @@ services:
       - 9101
 
   faucet:
-    image: "${FAUCET_IMAGE_REPO:-aptoslabs/faucet}:${IMAGE_TAG:-devnet}"
+    image: "${FAUCET_IMAGE_REPO:-libra2org/faucet}:${IMAGE_TAG:-devnet}"
     depends_on:
       - validator
     networks:
@@ -53,19 +53,19 @@ services:
         ipv4_address:  172.16.1.11
     volumes:
       - type: volume
-        source: aptos-shared
-        target: /opt/aptos/var
+        source: libra2-shared
+        target: /opt/libra2/var
     command: >
       /bin/bash -c "
         for i in {1..10}; do
-          if [[ ! -s /opt/aptos/var/mint.key ]]; then
+          if [[ ! -s /opt/libra2/var/mint.key ]]; then
             echo 'Validator has not populated mint.key yet. Is it running?'
             sleep 1
           else
             sleep 1
             /usr/local/bin/libra2-faucet-service \\
               run-simple \\
-              --key-file-path /opt/aptos/var/mint.key \\
+              --key-file-path /opt/libra2/var/mint.key \\
               --chain-id TESTING \\
               --node-url http://172.16.1.10:8080
             echo 'Faucet failed to run likely due to the Validator still starting. Will try again.'
@@ -78,11 +78,11 @@ services:
 
 networks:
   shared:
-    name: "aptos-docker-compose-shared"
+    name: "libra2-docker-compose-shared"
     ipam:
       config:
         - subnet: 172.16.1.0/24
 
 volumes:
-  aptos-shared:
-    name: aptos-shared
+  libra2-shared:
+    name: libra2-shared

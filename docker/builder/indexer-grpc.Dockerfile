@@ -2,12 +2,12 @@
 
 FROM debian-base AS indexer-grpc
 
-COPY --link --from=indexer-builder /aptos/dist/libra2-indexer-grpc-cache-worker /usr/local/bin/libra2-indexer-grpc-cache-worker
-COPY --link --from=indexer-builder /aptos/dist/libra2-indexer-grpc-file-store /usr/local/bin/libra2-indexer-grpc-file-store
-COPY --link --from=indexer-builder /aptos/dist/libra2-indexer-grpc-data-service /usr/local/bin/libra2-indexer-grpc-data-service
-COPY --link --from=indexer-builder /aptos/dist/libra2-indexer-grpc-file-checker /usr/local/bin/libra2-indexer-grpc-file-checker
-COPY --link --from=indexer-builder /aptos/dist/libra2-indexer-grpc-data-service-v2 /usr/local/bin/libra2-indexer-grpc-data-service-v2
-COPY --link --from=indexer-builder /aptos/dist/libra2-indexer-grpc-manager /usr/local/bin/libra2-indexer-grpc-manager
+COPY --link --from=indexer-builder /libra2/dist/libra2-indexer-grpc-cache-worker /usr/local/bin/libra2-indexer-grpc-cache-worker
+COPY --link --from=indexer-builder /libra2/dist/libra2-indexer-grpc-file-store /usr/local/bin/libra2-indexer-grpc-file-store
+COPY --link --from=indexer-builder /libra2/dist/libra2-indexer-grpc-data-service /usr/local/bin/libra2-indexer-grpc-data-service
+COPY --link --from=indexer-builder /libra2/dist/libra2-indexer-grpc-file-checker /usr/local/bin/libra2-indexer-grpc-file-checker
+COPY --link --from=indexer-builder /libra2/dist/libra2-indexer-grpc-data-service-v2 /usr/local/bin/libra2-indexer-grpc-data-service-v2
+COPY --link --from=indexer-builder /libra2/dist/libra2-indexer-grpc-manager /usr/local/bin/libra2-indexer-grpc-manager
 
 # The health check port
 EXPOSE 8080

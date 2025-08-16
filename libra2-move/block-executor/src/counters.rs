@@ -64,7 +64,7 @@ pub static BLOCK_EXECUTOR_INNER_EXECUTE_BLOCK: Lazy<Histogram> = Lazy::new(|| {
 /// Count of times the module publishing fallback was triggered in parallel execution.
 pub static MODULE_PUBLISHING_FALLBACK_COUNT: Lazy<IntCounter> = Lazy::new(|| {
     register_int_counter!(
-        "aptos_execution_module_publishing_fallback_count",
+        "libra2_execution_module_publishing_fallback_count",
         "Count times module was read and written in parallel execution (sequential fallback)"
     )
     .unwrap()
@@ -73,7 +73,7 @@ pub static MODULE_PUBLISHING_FALLBACK_COUNT: Lazy<IntCounter> = Lazy::new(|| {
 /// Count of speculative transaction re-executions due to a failed validation.
 pub static SPECULATIVE_ABORT_COUNT: Lazy<IntCounter> = Lazy::new(|| {
     register_int_counter!(
-        "aptos_execution_speculative_abort_count",
+        "libra2_execution_speculative_abort_count",
         "Number of speculative aborts in parallel execution (leading to re-execution)"
     )
     .unwrap()
@@ -82,7 +82,7 @@ pub static SPECULATIVE_ABORT_COUNT: Lazy<IntCounter> = Lazy::new(|| {
 /// Count of times the BlockSTM is early halted due to exceeding the per-block gas limit.
 pub static EXCEED_PER_BLOCK_GAS_LIMIT_COUNT: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_execution_gas_limit_count",
+        "libra2_execution_gas_limit_count",
         "Count of times the BlockSTM is early halted due to exceeding the per-block gas limit",
         &["mode"]
     )
@@ -92,7 +92,7 @@ pub static EXCEED_PER_BLOCK_GAS_LIMIT_COUNT: Lazy<IntCounterVec> = Lazy::new(|| 
 /// Count of times the BlockSTM is early halted due to exceeding the per-block output size limit.
 pub static EXCEED_PER_BLOCK_OUTPUT_LIMIT_COUNT: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_execution_output_limit_count",
+        "libra2_execution_output_limit_count",
         "Count of times the BlockSTM is early halted due to exceeding the per-block output size limit",
         &["mode"]
     )
@@ -102,7 +102,7 @@ pub static EXCEED_PER_BLOCK_OUTPUT_LIMIT_COUNT: Lazy<IntCounterVec> = Lazy::new(
 pub static PARALLEL_EXECUTION_SECONDS: Lazy<Histogram> = Lazy::new(|| {
     register_histogram!(
         // metric name
-        "aptos_parallel_execution_seconds",
+        "libra2_parallel_execution_seconds",
         // metric description
         "The time spent in seconds in parallel execution",
         time_buckets(),
@@ -113,7 +113,7 @@ pub static PARALLEL_EXECUTION_SECONDS: Lazy<Histogram> = Lazy::new(|| {
 pub static RAYON_EXECUTION_SECONDS: Lazy<Histogram> = Lazy::new(|| {
     register_histogram!(
         // metric name
-        "aptos_rayon_execution_seconds",
+        "libra2_rayon_execution_seconds",
         // metric description
         "The time spent in seconds in rayon thread pool in parallel execution",
         time_buckets(),
@@ -124,7 +124,7 @@ pub static RAYON_EXECUTION_SECONDS: Lazy<Histogram> = Lazy::new(|| {
 pub static VM_INIT_SECONDS: Lazy<Histogram> = Lazy::new(|| {
     register_histogram!(
         // metric name
-        "aptos_execution_vm_init_seconds",
+        "libra2_execution_vm_init_seconds",
         // metric description
         "The time spent in seconds in initializing the VM in the block executor",
         time_buckets(),
@@ -135,7 +135,7 @@ pub static VM_INIT_SECONDS: Lazy<Histogram> = Lazy::new(|| {
 pub static TASK_VALIDATE_SECONDS: Lazy<Histogram> = Lazy::new(|| {
     register_histogram!(
         // metric name
-        "aptos_execution_task_validate_seconds",
+        "libra2_execution_task_validate_seconds",
         // metric description
         "The time spent in task validation in Block STM",
         time_buckets(),
@@ -146,7 +146,7 @@ pub static TASK_VALIDATE_SECONDS: Lazy<Histogram> = Lazy::new(|| {
 pub static WORK_WITH_TASK_SECONDS: Lazy<Histogram> = Lazy::new(|| {
     register_histogram!(
         // metric name
-        "aptos_execution_work_with_task_seconds",
+        "libra2_execution_work_with_task_seconds",
         // metric description
         "The time spent in work task with scope call in Block STM",
         time_buckets(),
@@ -157,7 +157,7 @@ pub static WORK_WITH_TASK_SECONDS: Lazy<Histogram> = Lazy::new(|| {
 pub static TASK_EXECUTE_SECONDS: Lazy<Histogram> = Lazy::new(|| {
     register_histogram!(
         // metric name
-        "aptos_execution_task_execute_seconds",
+        "libra2_execution_task_execute_seconds",
         // metric description
         "The time spent in seconds for task execution in Block STM",
         time_buckets(),
@@ -167,7 +167,7 @@ pub static TASK_EXECUTE_SECONDS: Lazy<Histogram> = Lazy::new(|| {
 
 pub static DEPENDENCY_WAIT_SECONDS: Lazy<Histogram> = Lazy::new(|| {
     register_histogram!(
-        "aptos_execution_dependency_wait",
+        "libra2_execution_dependency_wait",
         "The time spent in waiting for dependency in Block STM",
         time_buckets(),
     )
@@ -176,7 +176,7 @@ pub static DEPENDENCY_WAIT_SECONDS: Lazy<Histogram> = Lazy::new(|| {
 
 pub static BLOCK_GAS: Lazy<HistogramVec> = Lazy::new(|| {
     register_histogram_vec!(
-        "aptos_execution_block_gas",
+        "libra2_execution_block_gas",
         "Histogram for different block gas costs (execution, io, storage, storage fee, non-storage)",
         &["mode", "stage"],
         gas_buckets(),
@@ -186,7 +186,7 @@ pub static BLOCK_GAS: Lazy<HistogramVec> = Lazy::new(|| {
 
 pub static EFFECTIVE_BLOCK_GAS: Lazy<HistogramVec> = Lazy::new(|| {
     register_histogram_vec!(
-        "aptos_execution_effective_block_gas",
+        "libra2_execution_effective_block_gas",
         "Histogram for different effective block gas costs - used for evaluating block gas limit. \
         This can be different from actual gas consumed in a block, due to applied adjustements",
         &["mode"],
@@ -197,7 +197,7 @@ pub static EFFECTIVE_BLOCK_GAS: Lazy<HistogramVec> = Lazy::new(|| {
 
 pub static APPROX_BLOCK_OUTPUT_SIZE: Lazy<HistogramVec> = Lazy::new(|| {
     register_histogram_vec!(
-        "aptos_execution_approx_block_output_size",
+        "libra2_execution_approx_block_output_size",
         "Histogram for different approx block output sizes - used for evaluating block output limit.",
         &["mode"],
         output_buckets(),
@@ -207,7 +207,7 @@ pub static APPROX_BLOCK_OUTPUT_SIZE: Lazy<HistogramVec> = Lazy::new(|| {
 
 pub static TXN_GAS: Lazy<HistogramVec> = Lazy::new(|| {
     register_histogram_vec!(
-        "aptos_execution_txn_gas",
+        "libra2_execution_txn_gas",
         "Histogram for different average txn gas costs (execution, io, storage, storage fee, non-storage)",
         &["mode", "stage"],
         gas_buckets(),
@@ -217,7 +217,7 @@ pub static TXN_GAS: Lazy<HistogramVec> = Lazy::new(|| {
 
 pub static BLOCK_COMMITTED_TXNS: Lazy<HistogramVec> = Lazy::new(|| {
     register_histogram_vec!(
-        "aptos_execution_block_committed_txns",
+        "libra2_execution_block_committed_txns",
         "The per-block committed txns (Block STM)",
         &["mode"],
         exponential_buckets(/*start=*/ 1.0, /*factor=*/ 2.0, /*count=*/ 30).unwrap(),
@@ -227,7 +227,7 @@ pub static BLOCK_COMMITTED_TXNS: Lazy<HistogramVec> = Lazy::new(|| {
 
 pub static BLOCK_VIEW_DISTINCT_KEYS: Lazy<HistogramVec> = Lazy::new(|| {
     register_avg_counter_vec(
-        "aptos_execution_block_view_distinct_keys",
+        "libra2_execution_block_view_distinct_keys",
         "Size (number of keys) ",
         &["mode", "object_type"],
     )
@@ -235,7 +235,7 @@ pub static BLOCK_VIEW_DISTINCT_KEYS: Lazy<HistogramVec> = Lazy::new(|| {
 
 pub static BLOCK_VIEW_BASE_VALUES_MEMORY_USAGE: Lazy<HistogramVec> = Lazy::new(|| {
     register_avg_counter_vec(
-        "aptos_execution_block_view_base_values_memory_usage",
+        "libra2_execution_block_view_base_values_memory_usage",
         "Memory usage (in bytes) for base values",
         &["mode", "object_type"],
     )
@@ -372,7 +372,7 @@ pub static STRUCT_NAME_INDEX_MAP_NUM_ENTRIES: Lazy<IntGauge> = Lazy::new(|| {
 pub static HOT_STATE_OP_ACCUMULATOR_COUNTER: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
         // metric name
-        "aptos_hot_state_op_accumulator_counter",
+        "libra2_hot_state_op_accumulator_counter",
         // metric description
         "Various counters for BlockHotStateOpAccumulator",
         // metric labels (dimensions)

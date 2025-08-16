@@ -408,7 +408,7 @@ pub fn mempool_service_start_latency_timer(label: &'static str, result: &str) ->
 /// Counter for types of network messages received by shared mempool
 static SHARED_MEMPOOL_EVENTS: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_shared_mempool_events",
+        "libra2_shared_mempool_events",
         "Number of network events received by shared mempool",
         &["event"] // type of event: "new_peer", "lost_peer", "message"
     )

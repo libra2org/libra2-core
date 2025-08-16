@@ -788,7 +788,7 @@ pub static SENT_BATCH_REQUEST_RETRY_COUNT: Lazy<IntCounter> = Lazy::new(|| {
 /// Counters(queued,dequeued,dropped) related to batch retrieval per epoch task
 pub static BATCH_RETRIEVAL_TASK_MSGS: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_quorum_store_batch_retrieval_task_msgs_count",
+        "libra2_quorum_store_batch_retrieval_task_msgs_count",
         "Counters(queued,dequeued,dropped) related to batch retrieval task",
         &["state"]
     )
