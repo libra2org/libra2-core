@@ -1362,4 +1362,4 @@ Removes and returns the orders that are ready to be executed based on the time c
 </details>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
@@ -57,7 +57,7 @@ impl LatencyMonitor {
     pub async fn start_latency_monitor(mut self) {
         info!(
             (LogSchema::new(LogEntry::LatencyMonitor)
-                .message("Starting the Aptos data client latency monitor!"))
+                .message("Starting the Libra2 data client latency monitor!"))
         );
         let loop_ticker = self.time_service.interval(self.monitor_loop_interval);
         futures::pin_mut!(loop_ticker);

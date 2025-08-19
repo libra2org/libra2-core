@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 use crate::{
@@ -17,7 +17,7 @@ use crate::{
 };
 use anyhow::{Context, Result};
 use libra2_crypto::{ed25519::Ed25519Signature, secp256r1_ecdsa, HashValue, PrivateKey, SigningKey};
-use libra2_ledger::AptosLedgerError;
+use libra2_ledger::Libra2LedgerError;
 use libra2_rest_client::{libra2_api_types::MoveStructTag, Client, PepperRequest, ProverRequest};
 pub use libra2_types::*;
 use libra2_types::{
@@ -48,7 +48,7 @@ use std::{
     time::{Duration, SystemTime, UNIX_EPOCH},
 };
 
-pub const APTOS_COIN_TYPE_STR: &str = "0x1::libra2_coin::Libra2Coin";
+pub const LIBRA2_COIN_TYPE_STR: &str = "0x1::libra2_coin::Libra2Coin";
 lazy_static! {
     pub static ref APT_METADATA_ADDRESS: AccountAddress = {
         let mut addr = [0u8; 32];
@@ -119,7 +119,7 @@ impl<T: Into<AccountKey>> From<T> for LocalAccountAuthenticator {
     }
 }
 
-/// LocalAccount represents an account on the Aptos blockchain. Internally it
+/// LocalAccount represents an account on the Libra2 blockchain. Internally it
 /// holds the private / public key pair and the address of the account. You can
 /// use this struct to help transact with the blockchain, e.g. by generating a
 /// new account and signing transactions.
@@ -149,7 +149,7 @@ pub fn get_paired_fa_primary_store_address(
 
 pub fn get_paired_fa_metadata_address(coin_type_name: &MoveStructTag) -> AccountAddress {
     let coin_type_name = coin_type_name.to_string();
-    if coin_type_name == APTOS_COIN_TYPE_STR {
+    if coin_type_name == LIBRA2_COIN_TYPE_STR {
         *APT_METADATA_ADDRESS
     } else {
         let mut preimage = APT_METADATA_ADDRESS.to_vec();
@@ -161,7 +161,7 @@ pub fn get_paired_fa_metadata_address(coin_type_name: &MoveStructTag) -> Account
 
 impl LocalAccount {
     /// Create a new representation of an account locally. Note: This function
-    /// does not actually create an account on the Aptos blockchain, just a
+    /// does not actually create an account on the Libra2 blockchain, just a
     /// local representation.
     pub fn new<T: Into<AccountKey>>(address: AccountAddress, key: T, sequence_number: u64) -> Self {
         Self {
@@ -336,7 +336,7 @@ impl LocalAccount {
     }
 
     /// Generate a new account locally. Note: This function does not actually
-    /// create an account on the Aptos blockchain, it just generates a new
+    /// create an account on the Libra2 blockchain, it just generates a new
     /// account locally.
     pub fn generate<R>(rng: &mut R) -> Self
     where
@@ -666,7 +666,7 @@ impl HardwareWalletAccount {
     pub fn from_ledger(
         derivation_path: String,
         sequence_number: u64,
-    ) -> Result<Self, AptosLedgerError> {
+    ) -> Result<Self, Libra2LedgerError> {
         let public_key = libra2_ledger::get_public_key(&derivation_path, false)?;
         let authentication_key = AuthenticationKey::ed25519(&public_key);
         let address = authentication_key.account_address();
@@ -707,7 +707,7 @@ impl HardwareWalletAccount {
     pub fn sign_arbitrary_message(
         &self,
         message: &[u8],
-    ) -> Result<Ed25519Signature, AptosLedgerError> {
+    ) -> Result<Ed25519Signature, Libra2LedgerError> {
         libra2_ledger::sign_message(&self.derivation_path, message)
     }
 }
@@ -1299,7 +1299,7 @@ mod tests {
         if balance < 10000000 {
             println!("Funding account");
             let faucet_client = FaucetClient::new_from_rest_client(
-                Url::from_str("https://faucet.devnet.aptoslabs.com").unwrap(),
+                Url::from_str("https://faucet.devnet.libra2.org").unwrap(),
                 libra2_rest_client.clone(),
             );
             faucet_client

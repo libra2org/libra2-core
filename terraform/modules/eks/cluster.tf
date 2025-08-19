@@ -33,7 +33,7 @@ resource "aws_eks_cluster" "aptos" {
 }
 
 data "aws_eks_cluster_auth" "aptos" {
-  name = aws_eks_cluster.aptos.name
+  name = aws_eks_cluster.libra2.name
 }
 
 locals {
@@ -76,9 +76,9 @@ resource "aws_launch_template" "nodes" {
 
 resource "aws_eks_node_group" "nodes" {
   for_each        = local.pools
-  cluster_name    = aws_eks_cluster.aptos.name
+  cluster_name    = aws_eks_cluster.libra2.name
   node_group_name = each.key
-  version         = aws_eks_cluster.aptos.version
+  version         = aws_eks_cluster.libra2.version
   node_role_arn   = aws_iam_role.nodes.arn
   subnet_ids      = [aws_subnet.private[0].id]
   tags            = local.default_tags
@@ -120,7 +120,7 @@ resource "aws_eks_node_group" "nodes" {
 resource "aws_iam_openid_connect_provider" "cluster" {
   client_id_list  = ["sts.amazonaws.com"]
   thumbprint_list = ["9e99a48a9960b14926bb7f3b02e22da2b0ab7280"] # Thumbprint of Root CA for EKS OIDC, Valid until 2037
-  url             = aws_eks_cluster.aptos.identity[0].oidc[0].issuer
+  url             = aws_eks_cluster.libra2.identity[0].oidc[0].issuer
 }
 
 locals {
@@ -168,7 +168,7 @@ resource "aws_iam_role_policy_attachment" "caws-ebs-csi-driver" {
 }
 
 resource "aws_eks_addon" "aws-ebs-csi-driver" {
-  cluster_name             = aws_eks_cluster.aptos.name
+  cluster_name             = aws_eks_cluster.libra2.name
   addon_name               = "aws-ebs-csi-driver"
   service_account_role_arn = aws_iam_role.aws-ebs-csi-driver.arn
 }
@@ -210,7 +210,7 @@ data "aws_iam_policy_document" "cluster-autoscaler" {
     resources = ["*"]
     condition {
       test     = "StringEquals"
-      variable = "aws:ResourceTag/k8s.io/cluster-autoscaler/${aws_eks_cluster.aptos.name}"
+      variable = "aws:ResourceTag/k8s.io/cluster-autoscaler/${aws_eks_cluster.libra2.name}"
       values   = ["owned"]
     }
   }
@@ -262,10 +262,10 @@ resource "helm_release" "autoscaling" {
     jsonencode({
       autoscaler = {
         enabled     = true
-        clusterName = aws_eks_cluster.aptos.name
+        clusterName = aws_eks_cluster.libra2.name
         image = {
           # EKS does not report patch version
-          tag = "v${aws_eks_cluster.aptos.version}.0"
+          tag = "v${aws_eks_cluster.libra2.version}.0"
         }
         serviceAccount = {
           annotations = {

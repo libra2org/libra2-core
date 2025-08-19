@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 use super::{build::BaselineConfigurationRunners, common::ServerArgs};
 use crate::{configuration::NodeAddress, runner::Runner, CheckSummary};

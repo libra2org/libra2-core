@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{common::types::load_account_arg, move_tool::CachedPackageRegistry};
@@ -12,12 +12,12 @@ use move_symbol_pool::Symbol;
 use reqwest::Url;
 
 pub fn register_package_hooks() {
-    move_package::package_hooks::register_package_hooks(Box::new(AptosPackageHooks {}))
+    move_package::package_hooks::register_package_hooks(Box::new(Libra2PackageHooks {}))
 }
 
-struct AptosPackageHooks {}
+struct Libra2PackageHooks {}
 
-impl PackageHooks for AptosPackageHooks {
+impl PackageHooks for Libra2PackageHooks {
     fn custom_package_info_fields(&self) -> Vec<String> {
         vec![UPGRADE_POLICY_CUSTOM_FIELD.to_string()]
     }

@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -49,7 +49,7 @@ use libra2_types::{
         block_epilogue::TBlockEndInfoExt, BlockExecutableTransaction, BlockOutput, FeeDistribution,
         Transaction,
     },
-    vm::modules::AptosModuleExtension,
+    vm::modules::Libra2ModuleExtension,
     write_set::{TransactionWrite, WriteOp},
 };
 use libra2_vm_environment::environment::Libra2Environment;
@@ -90,7 +90,7 @@ where
     scheduler: &'a SchedulerV2,
     versioned_cache: &'a MVHashMap<T::Key, T::Tag, T::Value, DelayedFieldID>,
     global_module_cache:
-        &'a GlobalModuleCache<ModuleId, CompiledModule, Module, AptosModuleExtension>,
+        &'a GlobalModuleCache<ModuleId, CompiledModule, Module, Libra2ModuleExtension>,
     last_input_output: &'a TxnLastInputOutput<T, E::Output, E::Error>,
     delayed_field_id_counter: &'a AtomicU32,
     block_limit_processor: &'a ExplicitSyncWrapper<BlockGasLimitProcessor<'b, T, S>>,
@@ -138,7 +138,7 @@ where
 
     fn process_execution_result<'a>(
         execution_result: &'a ExecutionStatus<E::Output, E::Error>,
-        read_set: &mut CapturedReads<T, ModuleId, CompiledModule, Module, AptosModuleExtension>,
+        read_set: &mut CapturedReads<T, ModuleId, CompiledModule, Module, Libra2ModuleExtension>,
         txn_idx: TxnIndex,
     ) -> Result<Option<&'a E::Output>, PanicError> {
         match execution_result {
@@ -260,7 +260,7 @@ where
     fn process_delayed_field_output(
         maybe_output: Option<&E::Output>,
         idx_to_execute: TxnIndex,
-        read_set: &mut CapturedReads<T, ModuleId, CompiledModule, Module, AptosModuleExtension>,
+        read_set: &mut CapturedReads<T, ModuleId, CompiledModule, Module, Libra2ModuleExtension>,
         last_input_output: &TxnLastInputOutput<T, E::Output, E::Error>,
         versioned_cache: &MVHashMap<T::Key, T::Tag, T::Value, DelayedFieldID>,
         is_v2: bool,
@@ -333,7 +333,7 @@ where
             ModuleId,
             CompiledModule,
             Module,
-            AptosModuleExtension,
+            Libra2ModuleExtension,
         >,
         runtime_environment: &RuntimeEnvironment,
         parallel_state: ParallelState<T>,
@@ -476,7 +476,7 @@ where
             ModuleId,
             CompiledModule,
             Module,
-            AptosModuleExtension,
+            Libra2ModuleExtension,
         >,
         runtime_environment: &RuntimeEnvironment,
         parallel_state: ParallelState<T>,
@@ -638,7 +638,7 @@ where
             ModuleId,
             CompiledModule,
             Module,
-            AptosModuleExtension,
+            Libra2ModuleExtension,
         >,
         versioned_cache: &MVHashMap<T::Key, T::Tag, T::Value, DelayedFieldID>,
     ) -> Result<bool, PanicError> {
@@ -691,7 +691,7 @@ where
             ModuleId,
             CompiledModule,
             Module,
-            AptosModuleExtension,
+            Libra2ModuleExtension,
         >,
         versioned_cache: &MVHashMap<T::Key, T::Tag, T::Value, DelayedFieldID>,
         skip_module_reads_validation: bool,
@@ -854,7 +854,7 @@ where
             ModuleId,
             CompiledModule,
             Module,
-            AptosModuleExtension,
+            Libra2ModuleExtension,
         >,
         runtime_environment: &RuntimeEnvironment,
         start_shared_counter: u32,
@@ -1041,7 +1041,7 @@ where
             ModuleId,
             CompiledModule,
             Module,
-            AptosModuleExtension,
+            Libra2ModuleExtension,
         >,
         versioned_cache: &MVHashMap<T::Key, T::Tag, T::Value, DelayedFieldID>,
         runtime_environment: &RuntimeEnvironment,
@@ -1127,7 +1127,7 @@ where
             ModuleId,
             CompiledModule,
             Module,
-            AptosModuleExtension,
+            Libra2ModuleExtension,
         >,
         runtime_environment: &RuntimeEnvironment,
         total_txns_to_materialize: &AtomicU32,
@@ -1274,7 +1274,7 @@ where
             ModuleId,
             CompiledModule,
             Module,
-            AptosModuleExtension,
+            Libra2ModuleExtension,
         >,
         skip_module_reads_validation: &AtomicBool,
         start_shared_counter: u32,
@@ -2011,13 +2011,13 @@ where
             ModuleId,
             CompiledModule,
             Module,
-            AptosModuleExtension,
+            Libra2ModuleExtension,
         >,
         per_block_module_cache: &impl ModuleCache<
             Key = ModuleId,
             Deserialized = CompiledModule,
             Verified = Module,
-            Extension = AptosModuleExtension,
+            Extension = Libra2ModuleExtension,
             Version = Option<TxnIndex>,
         >,
     ) -> Result<(), PanicError> {
@@ -2035,7 +2035,7 @@ where
                 let msg = format!("Failed to construct the module from state value: {:?}", err);
                 PanicError::CodeInvariantError(msg)
             })?;
-        let extension = Arc::new(AptosModuleExtension::new(state_value));
+        let extension = Arc::new(Libra2ModuleExtension::new(state_value));
 
         per_block_module_cache
             .insert_deserialized_module(id.clone(), compiled_module, extension, Some(txn_idx))
@@ -2060,7 +2060,7 @@ where
             ModuleId,
             CompiledModule,
             Module,
-            AptosModuleExtension,
+            Libra2ModuleExtension,
         >,
         unsync_map: &UnsyncMap<T::Key, T::Tag, T::Value, DelayedFieldID>,
         output: &E::Output,

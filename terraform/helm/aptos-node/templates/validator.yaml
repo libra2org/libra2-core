@@ -163,7 +163,7 @@ spec:
         - name: RUST_LOG
           value: {{ .rust_log }}
         {{- if .force_enable_telemetry }}
-        - name: APTOS_FORCE_ENABLE_TELEMETRY
+        - name: LIBRA2_FORCE_ENABLE_TELEMETRY
           value: "true"
         {{- end }}
         - name: KUBERNETES_NAMESPACE
@@ -178,7 +178,7 @@ spec:
           mountPath: /opt/aptos/etc
         - name: writable-genesis
           mountPath: /opt/aptos/genesis
-        - name: aptos-data
+        - name: libra2-data
           mountPath: /opt/aptos/data
         ports:
         - containerPort: 6180
@@ -237,7 +237,7 @@ spec:
         # depends on the position of this volume item within the parent list.
         secret:
           secretName: {{ include "aptos-validator.fullname" $ }}-{{$i}}-genesis-e{{ $.Values.chain.era }}
-      - name: aptos-data
+      - name: libra2-data
         persistentVolumeClaim:
           claimName: {{ include "aptos-validator.fullname" $ }}-{{$i}}-validator-e{{ $.Values.chain.era }}
       - name: writable-genesis

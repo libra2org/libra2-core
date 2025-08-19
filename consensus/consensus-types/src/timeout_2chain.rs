@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -21,7 +21,7 @@ use std::{
 };
 
 /// This structure contains all the information necessary to construct a signature
-/// on the equivalent of a AptosBFT v4 timeout message.
+/// on the equivalent of a Libra2BFT v4 timeout message.
 #[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 pub struct TwoChainTimeout {
     /// Epoch number corresponds to the set of validators that are active for this round.
@@ -104,7 +104,7 @@ pub struct TimeoutSigningRepr {
 }
 
 /// TimeoutCertificate is a proof that 2f+1 participants in epoch i
-/// have voted in round r and we can now move to round r+1. AptosBFT v4 requires signature to sign on
+/// have voted in round r and we can now move to round r+1. Libra2BFT v4 requires signature to sign on
 /// the TimeoutSigningRepr and carry the TimeoutWithHighestQC with highest quorum cert among 2f+1.
 #[derive(Debug, Clone, Serialize, Deserialize, Eq, PartialEq)]
 pub struct TwoChainTimeoutCertificate {

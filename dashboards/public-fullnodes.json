@@ -105,7 +105,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "aptos_state_sync_version{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", type=\"synced\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
+          "expr": "libra2_state_sync_version{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", type=\"synced\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
           "hide": false,
           "legendFormat": "{{kubernetes_pod_name}}-{{role}}",
           "range": true,
@@ -148,7 +148,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "aptos_state_sync_version{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", type=\"synced\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
+          "expr": "libra2_state_sync_version{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", type=\"synced\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
           "legendFormat": "{{kubernetes_pod_name}}-{{role}}",
           "range": true,
           "refId": "A"
@@ -202,7 +202,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "fHo-R604z" },
           "editorMode": "code",
-          "expr": "rate(aptos_state_sync_version{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", type=\"synced\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[$interval])",
+          "expr": "rate(libra2_state_sync_version{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", type=\"synced\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[$interval])",
           "legendFormat": "{{kubernetes_pod_name}}-{{kubernetes_pod_name}}",
           "range": true,
           "refId": "A"
@@ -267,7 +267,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "clamp_min(libra2_data_client_highest_advertised_data{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", data_type=\"transactions\"} - on(kubernetes_pod_name, cluster, run_uuid) aptos_state_sync_version{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", type=\"synced\"}, 0)",
+          "expr": "clamp_min(libra2_data_client_highest_advertised_data{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", data_type=\"transactions\"} - on(kubernetes_pod_name, cluster, run_uuid) libra2_state_sync_version{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", type=\"synced\"}, 0)",
           "hide": false,
           "legendFormat": "{{kubernetes_pod_name}}-{{role}}",
           "range": true,
@@ -953,7 +953,7 @@
   "refresh": "",
   "schemaVersion": 38,
   "style": "dark",
-  "tags": ["aptos-core"],
+  "tags": ["libra2-core"],
   "templating": {
     "list": [
       {

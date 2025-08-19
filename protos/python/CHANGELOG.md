@@ -1,4 +1,4 @@
-# Aptos Protos Changelog
+# Libra2 Protos Changelog
 
 All notable changes to the Libra2 Protos will be captured in this file. This changelog is written by hand for now.
 

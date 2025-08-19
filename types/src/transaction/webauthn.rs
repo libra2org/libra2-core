@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::transaction::authenticator::AnyPublicKey;
@@ -588,7 +588,7 @@ mod tests {
         // The user entity
         let user_entity = PublicKeyCredentialUserEntity {
             id: random_vec(32).into(),
-            display_name: "Aptos Passkey".into(),
+            display_name: "Libra2 Passkey".into(),
             name: "aptos@aptos.dev".into(),
         };
         let origin = Url::parse("http://localhost:4000")?;

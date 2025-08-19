@@ -329,10 +329,10 @@ module libra2_framework::coin {
             assert!(!is_apt || allow_apt_creation, error::invalid_state(EAPT_PAIRING_IS_NOT_ENABLED));
             let metadata_object_cref =
                 if (is_apt) {
-                    object::create_sticky_object_at_address(@libra2_framework, @aptos_fungible_asset)
+                    object::create_sticky_object_at_address(@libra2_framework, @libra2_fungible_asset)
                 } else {
                     object::create_named_object(
-                        &create_signer::create_signer(@aptos_fungible_asset),
+                        &create_signer::create_signer(@libra2_fungible_asset),
                         *string::bytes(&type_info::type_name<CoinType>())
                     )
                 };

@@ -1,4 +1,4 @@
-// Copyright (c) Aptos Foundation
+// Copyright (c) A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use super::{node::get_data_service_url, postgres::get_postgres_connection_string};

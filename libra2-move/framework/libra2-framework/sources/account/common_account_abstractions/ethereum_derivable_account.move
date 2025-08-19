@@ -5,7 +5,7 @@
 /// <domain> wants you to sign in with your Ethereum account:
 /// <ethereum_address>
 ///
-/// Please confirm you explicitly initiated this request from <domain>. You are approving to execute transaction <entry_function_name> on Aptos blockchain (<network_name>).
+/// Please confirm you explicitly initiated this request from <domain>. You are approving to execute transaction <entry_function_name> on Libra2 blockchain (<network_name>).
 ///
 /// URI: <scheme>://<domain>
 /// Version: 1
@@ -29,7 +29,7 @@ module libra2_framework::ethereum_derivable_account {
     use libra2_framework::base16::base16_utf8_to_vec_u8;
     use libra2_std::secp256k1;
     use libra2_std::option;
-    use libra2_std::aptos_hash;
+    use libra2_std::libra2_hash;
     use std::bcs_stream::{Self, deserialize_u8};
     use std::chain_id;
     use std::string_utils;
@@ -120,7 +120,7 @@ module libra2_framework::ethereum_derivable_account {
         message.append(b".");
         message.append(b" You are approving to execute transaction ");
         message.append(*entry_function_name);
-        message.append(b" on Aptos blockchain");
+        message.append(b" on Libra2 blockchain");
         let network_name = network_name();
         message.append(b" (");
         message.append(network_name);
@@ -190,13 +190,13 @@ module libra2_framework::ethereum_derivable_account {
         let issued_at = abstract_signature.issued_at.bytes();
         let scheme = abstract_signature.scheme.bytes();
         let message = construct_message(&abstract_public_key.ethereum_address, &abstract_public_key.domain, entry_function_name, digest_utf8, issued_at, scheme);
-        let hashed_message = aptos_hash::keccak256(message);
+        let hashed_message = libra2_hash::keccak256(message);
         let public_key_bytes = recover_public_key(&abstract_signature.signature, &hashed_message);
 
         // 1. Skip the 0x04 prefix (take the bytes after the first byte)
         let public_key_without_prefix = vector::slice(&public_key_bytes, 1, vector::length(&public_key_bytes));
         // 2. Run Keccak256 on the public key (without the 0x04 prefix)
-        let kexHash = aptos_hash::keccak256(public_key_without_prefix);
+        let kexHash = libra2_hash::keccak256(public_key_without_prefix);
         // 3. Slice the last 20 bytes (this is the Ethereum address)
         let recovered_addr = vector::slice(&kexHash, 12, 32);
         // 4. Remove the 0x prefix from the utf8 account address
@@ -312,7 +312,7 @@ module libra2_framework::ethereum_derivable_account {
         let issued_at = b"2025-01-01T00:00:00.000Z";
         let scheme = b"https";
         let message = construct_message(&ethereum_address, &domain, &entry_function_name, &digest_utf8, &issued_at, &scheme);
-        let expected_message = b"\x19Ethereum Signed Message:\n442localhost:3001 wants you to sign in with your Ethereum account:\n0xC7B576Ead6aFb962E2DEcB35814FB29723AEC98a\n\nPlease confirm you explicitly initiated this request from localhost:3001. You are approving to execute transaction 0x1::libra2_account::transfer on Aptos blockchain (local).\n\nURI: https://localhost:3001\nVersion: 1\nChain ID: 4\nNonce: 0x2a2f07c32382a94aa90ddfdb97076b77d779656bb9730c4f3e4d22a30df298dd\nIssued At: 2025-01-01T00:00:00.000Z";
+        let expected_message = b"\x19Ethereum Signed Message:\n442localhost:3001 wants you to sign in with your Ethereum account:\n0xC7B576Ead6aFb962E2DEcB35814FB29723AEC98a\n\nPlease confirm you explicitly initiated this request from localhost:3001. You are approving to execute transaction 0x1::libra2_account::transfer on Libra2 blockchain (local).\n\nURI: https://localhost:3001\nVersion: 1\nChain ID: 4\nNonce: 0x2a2f07c32382a94aa90ddfdb97076b77d779656bb9730c4f3e4d22a30df298dd\nIssued At: 2025-01-01T00:00:00.000Z";
         assert!(message == expected_message);
     }
 
@@ -326,7 +326,7 @@ module libra2_framework::ethereum_derivable_account {
         let issued_at = b"2025-05-02T16:17:10.714Z";
         let scheme = b"https";
         let message = construct_message(&ethereum_address, &domain, &entry_function_name, &digest, &issued_at, &scheme);
-        let hashed_message = aptos_hash::keccak256(message);
+        let hashed_message = libra2_hash::keccak256(message);
         let signature_bytes = vector[
             162, 57, 230, 98, 9, 139, 202, 15, 110, 61, 237, 54, 252, 234, 202, 13,
             181, 196, 174, 19, 226, 50, 151, 63, 137, 229, 144, 15, 4, 56, 1, 122,

@@ -1,4 +1,4 @@
-# Aptos Indexer GRPC Table Info on Fullnode
+# Libra2 Indexer GRPC Table Info on Fullnode
 
 This indexes and parses table info mapping on fullnode.
 

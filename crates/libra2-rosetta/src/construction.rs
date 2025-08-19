@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 //! Construction APIs
@@ -554,17 +554,17 @@ async fn construction_parse(
                 function_name.as_str(),
             ) {
                 (AccountAddress::ONE, COIN_MODULE, TRANSFER_FUNCTION)
-                | (AccountAddress::ONE, APTOS_ACCOUNT_MODULE, TRANSFER_COINS_FUNCTION) => {
+                | (AccountAddress::ONE, LIBRA2_ACCOUNT_MODULE, TRANSFER_COINS_FUNCTION) => {
                     parse_transfer_operation(&server_context, sender, &type_args, &args)?
                 },
-                (AccountAddress::ONE, APTOS_ACCOUNT_MODULE, TRANSFER_FUNCTION) => {
+                (AccountAddress::ONE, LIBRA2_ACCOUNT_MODULE, TRANSFER_FUNCTION) => {
                     parse_account_transfer_operation(sender, &type_args, &args)?
                 },
-                (AccountAddress::ONE, APTOS_ACCOUNT_MODULE, CREATE_ACCOUNT_FUNCTION) => {
+                (AccountAddress::ONE, LIBRA2_ACCOUNT_MODULE, CREATE_ACCOUNT_FUNCTION) => {
                     parse_create_account_operation(sender, &type_args, &args)?
                 },
                 (AccountAddress::ONE, PRIMARY_FUNGIBLE_STORE_MODULE, TRANSFER_FUNCTION)
-                | (AccountAddress::ONE, APTOS_ACCOUNT_MODULE, TRANSFER_FUNGIBLE_ASSETS_FUNCTION) => {
+                | (AccountAddress::ONE, LIBRA2_ACCOUNT_MODULE, TRANSFER_FUNGIBLE_ASSETS_FUNCTION) => {
                     parse_primary_fa_transfer_operation(&server_context, sender, &type_args, &args)?
                 },
                 (AccountAddress::ONE, FUNGIBLE_ASSET_MODULE, TRANSFER_FUNCTION) => {

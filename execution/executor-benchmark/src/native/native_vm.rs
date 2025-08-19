@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -47,7 +47,7 @@ use libra2_types::{
     Libra2CoinType,
 };
 use libra2_vm::{
-    block_executor::{AptosBlockExecutorWrapper, Libra2TransactionOutput},
+    block_executor::{Libra2BlockExecutorWrapper, Libra2TransactionOutput},
     VMBlockExecutor,
 };
 use libra2_vm_environment::environment::Libra2Environment;
@@ -91,7 +91,7 @@ impl VMBlockExecutor for NativeVMBlockExecutor {
         onchain_config: BlockExecutorConfigFromOnchain,
         transaction_slice_metadata: TransactionSliceMetadata,
     ) -> Result<BlockOutput<StateKey, TransactionOutput>, VMStatus> {
-        AptosBlockExecutorWrapper::<NativeVMExecutorTask>::execute_block_on_thread_pool::<
+        Libra2BlockExecutorWrapper::<NativeVMExecutorTask>::execute_block_on_thread_pool::<
             _,
             NoOpTransactionCommitHook<Libra2TransactionOutput, VMStatus>,
             _,

@@ -8,7 +8,7 @@ spec libra2_framework::timestamp {
     /// Enforcement: Formally verified via [high-level-req-1](module).
     ///
     /// No.: 2
-    /// Requirement: The global wall clock resource should only be owned by the Aptos framework.
+    /// Requirement: The global wall clock resource should only be owned by the Libra2 framework.
     /// Criticality: High
     /// Implementation: The function set_time_has_started ensures that only the libra2_framework account can possess the
     /// CurrentTimeMicroseconds resource using the assert_libra2_framework function.

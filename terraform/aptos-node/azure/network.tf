@@ -4,31 +4,31 @@ locals {
 
 resource "azurerm_virtual_network" "aptos" {
   name                = "aptos-${terraform.workspace}"
-  resource_group_name = azurerm_resource_group.aptos.name
-  location            = azurerm_resource_group.aptos.location
+  resource_group_name = azurerm_resource_group.libra2.name
+  location            = azurerm_resource_group.libra2.location
   address_space       = [local.vnet_address]
 }
 
 resource "azurerm_subnet" "nodes" {
   name                 = "nodes"
-  resource_group_name  = azurerm_resource_group.aptos.name
-  virtual_network_name = azurerm_virtual_network.aptos.name
+  resource_group_name  = azurerm_resource_group.libra2.name
+  virtual_network_name = azurerm_virtual_network.libra2.name
   address_prefixes     = [cidrsubnet(local.vnet_address, 4, 0)]
   service_endpoints    = ["Microsoft.Storage"]
 }
 
 resource "azurerm_public_ip" "nat" {
   name                = "aptos-${terraform.workspace}-nat"
-  resource_group_name = azurerm_resource_group.aptos.name
-  location            = azurerm_resource_group.aptos.location
+  resource_group_name = azurerm_resource_group.libra2.name
+  location            = azurerm_resource_group.libra2.location
   allocation_method   = "Static"
   sku                 = "Standard"
 }
 
 resource "azurerm_nat_gateway" "nat" {
   name                = "aptos-${terraform.workspace}-nat"
-  resource_group_name = azurerm_resource_group.aptos.name
-  location            = azurerm_resource_group.aptos.location
+  resource_group_name = azurerm_resource_group.libra2.name
+  location            = azurerm_resource_group.libra2.location
 }
 
 resource "azurerm_nat_gateway_public_ip_association" "nat" {
@@ -39,15 +39,15 @@ resource "azurerm_nat_gateway_public_ip_association" "nat" {
 locals {
   cluster_ips = concat(
     azurerm_subnet.nodes.address_prefixes,
-    [azurerm_kubernetes_cluster.aptos.network_profile[0].service_cidr,
-    azurerm_kubernetes_cluster.aptos.network_profile[0].pod_cidr]
+    [azurerm_kubernetes_cluster.libra2.network_profile[0].service_cidr,
+    azurerm_kubernetes_cluster.libra2.network_profile[0].pod_cidr]
   )
 }
 
 resource "azurerm_network_security_group" "nodes" {
   name                = "aptos-${terraform.workspace}-nodes"
-  resource_group_name = azurerm_resource_group.aptos.name
-  location            = azurerm_resource_group.aptos.location
+  resource_group_name = azurerm_resource_group.libra2.name
+  location            = azurerm_resource_group.libra2.location
 
   security_rule {
     name                       = "nodes-tcp"

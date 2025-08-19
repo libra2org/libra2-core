@@ -1,10 +1,10 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
 //! This crate implements wrappers around our [Noise][noise] implementation.
 //! Noise is a protocol framework to encrypt and authentication connections.
-//! We use Noise to secure connections between peers in Aptos.
+//! We use Noise to secure connections between peers in Libra2.
 //! Specifically, we use the [Noise IK][ik] handshake which is a one round-trip protocol
 //! (the client sends one message, then the server responds).
 //! For more information about Noise and our implementation, refer to the [crypto] crate.

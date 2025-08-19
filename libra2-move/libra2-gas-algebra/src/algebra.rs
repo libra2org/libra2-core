@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 pub use move_core_types::gas_algebra::*;
@@ -19,10 +19,10 @@ pub type AbstractValueSizePerArg = GasQuantity<UnitDiv<AbstractValueUnit, Arg>>;
 /// Unit of (external) gas.
 pub enum GasUnit {}
 
-/// Unit of the Aptos network's native coin.
+/// Unit of the Libra2 network's native coin.
 pub enum APT {}
 
-/// Alternative unit of the Aptos network's native coin. 1 Octa = 10^-8 Libra2 coins.
+/// Alternative unit of the Libra2 network's native coin. 1 Octa = 10^-8 Libra2 coins.
 pub enum Octa {}
 
 pub type Gas = GasQuantity<GasUnit>;

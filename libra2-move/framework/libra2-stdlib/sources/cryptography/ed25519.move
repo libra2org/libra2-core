@@ -156,17 +156,17 @@ module libra2_std::ed25519 {
         }
     }
 
-    /// Derives the Aptos-specific authentication key of the given Ed25519 public key.
+    /// Derives the Libra2-specific authentication key of the given Ed25519 public key.
     public fun unvalidated_public_key_to_authentication_key(pk: &UnvalidatedPublicKey): vector<u8> {
         public_key_bytes_to_authentication_key(pk.bytes)
     }
 
-    /// Derives the Aptos-specific authentication key of the given Ed25519 public key.
+    /// Derives the Libra2-specific authentication key of the given Ed25519 public key.
     public fun validated_public_key_to_authentication_key(pk: &ValidatedPublicKey): vector<u8> {
         public_key_bytes_to_authentication_key(pk.bytes)
     }
 
-    /// Derives the Aptos-specific authentication key of the given Ed25519 public key.
+    /// Derives the Libra2-specific authentication key of the given Ed25519 public key.
     fun public_key_bytes_to_authentication_key(pk_bytes: vector<u8>): vector<u8> {
         pk_bytes.push_back(SIGNATURE_SCHEME_ID);
         std::hash::sha3_256(pk_bytes)

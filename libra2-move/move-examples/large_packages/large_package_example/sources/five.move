@@ -1,5 +1,5 @@
 /// ---
-/// title: "Integrate with Aptos"
+/// title: "Integrate with Libra2"
 /// slug: "system-integrators-guide"
 /// ---
 ///
@@ -8,11 +8,11 @@
 ///
 /// # Integrate with the Libra2 Blockchain
 ///
-/// If you provide blockchain services to your customers and wish to add the Aptos blockchain to your platform, then this guide is for you. This system integrators guide will walk you through all you need to integrate the Aptos blockchain into your platform.
+/// If you provide blockchain services to your customers and wish to add the Libra2 blockchain to your platform, then this guide is for you. This system integrators guide will walk you through all you need to integrate the Libra2 blockchain into your platform.
 ///
 /// ## Overview
 ///
-/// This document will guide you through the following tasks to integrate with Aptos:
+/// This document will guide you through the following tasks to integrate with Libra2:
 /// 1. Prepare an environment for testing.
 /// 1. Create an account on the blockchain.
 /// 1. Exchange account identifiers with another entity on the blockchain, for example, to perform swaps.
@@ -28,20 +28,20 @@
 ///
 /// ### Choose a network
 ///
-/// There are four well-supported networks for integrating with the Aptos blockchain:
+/// There are four well-supported networks for integrating with the Libra2 blockchain:
 ///
 /// 1. [Localnet](http://127.0.0.1:8080) -- our standalone tool for local development against a known version of the codebase with no external network.
-/// 1. [Devnet](https://fullnode.devnet.aptoslabs.com/v1/spec#/) -- a shared resource for the community, data resets weekly, weekly update from aptos-core main branch.
-/// 1. [Testnet](https://fullnode.testnet.aptoslabs.com/v1/spec#/) -- a shared resource for the community, data will be preserved, network configuration will mimic Mainnet.
-/// 1. [Mainnet](https://fullnode.mainnet.aptoslabs.com/v1/spec#/) -- a production network with real assets.
+/// 1. [Devnet](https://fullnode.devnet.libra2.org/v1/spec#/) -- a shared resource for the community, data resets weekly, weekly update from libra2-core main branch.
+/// 1. [Testnet](https://fullnode.testnet.libra2.org/v1/spec#/) -- a shared resource for the community, data will be preserved, network configuration will mimic Mainnet.
+/// 1. [Mainnet](https://fullnode.mainnet.libra2.org/v1/spec#/) -- a production network with real assets.
 ///
 /// See [Libra2 Blockchain Networks](../nodes/networks.md) for full details on each environment.
 ///
 /// ### Run a localnet
 ///
 /// There are two options for running a localnet:
-/// * Directly [run a localnet](../nodes/local-testnet/run-a-local-testnet.md) using either the [Aptos-core source code](../nodes/local-testnet/run-a-local-testnet.md#using-the-aptos-core-source-code) or a [Docker image](../nodes/local-testnet/run-a-local-testnet.md#using-docker). These paths are useful for testing changes to the Aptos-core codebase or framework, or for building services on top of the Aptos blockchain, respectively.
-/// * [Install the Libra2 CLI](../tools/install-cli/index.md) and 2) start a [local node with a faucet](../nodes/local-testnet/using-cli-to-run-a-local-testnet.md#starting-a-local-testnet-with-a-faucet). This path is useful for developing on the Aptos blockchain, debugging Move contracts, and testing node operations.
+/// * Directly [run a localnet](../nodes/local-testnet/run-a-local-testnet.md) using either the [Libra2-core source code](../nodes/local-testnet/run-a-local-testnet.md#using-the-libra2-core-source-code) or a [Docker image](../nodes/local-testnet/run-a-local-testnet.md#using-docker). These paths are useful for testing changes to the Libra2-core codebase or framework, or for building services on top of the Libra2 blockchain, respectively.
+/// * [Install the Libra2 CLI](../tools/install-cli/index.md) and 2) start a [local node with a faucet](../nodes/local-testnet/using-cli-to-run-a-local-testnet.md#starting-a-local-testnet-with-a-faucet). This path is useful for developing on the Libra2 blockchain, debugging Move contracts, and testing node operations.
 ///
 /// Either of these methods will expose a [REST API service](../integration/fullnode-rest-api.md) at `http://127.0.0.1:8080` and a Faucet API service at `http://127.0.0.1:8000` for option 1 run a localnet or `http://127.0.0.1:8081` for option 2 install the Libra2 CLI. The applications will output the location of the services.
 ///
@@ -50,29 +50,29 @@
 /// <Tabs groupId="networks">
 ///   <TabItem value="devnet" label="Devnet">
 ///     <ul>
-///       <li>REST API: <a href="https://fullnode.devnet.aptoslabs.com/v1">https://fullnode.devnet.aptoslabs.com/v1</a></li>
-///       <li>REST API Spec: <a href="https://fullnode.devnet.aptoslabs.com/v1/spec#/">https://fullnode.devnet.aptoslabs.com/v1/spec#/</a></li>
-///       <li>Indexer API: <a href="https://api.devnet.aptoslabs.com/v1/graphql">https://api.devnet.aptoslabs.com/v1/graphql</a></li>
-///       <li>Faucet API: <a href="https://faucet.devnet.aptoslabs.com">https://faucet.devnet.aptoslabs.com</a></li>
-///       <li><a href="https://cloud.hasura.io/public/graphiql?endpoint=https://api.devnet.aptoslabs.com/v1/graphql">Indexer GraphQL</a></li>
+///       <li>REST API: <a href="https://fullnode.devnet.libra2.org/v1">https://fullnode.devnet.libra2.org/v1</a></li>
+///       <li>REST API Spec: <a href="https://fullnode.devnet.libra2.org/v1/spec#/">https://fullnode.devnet.libra2.org/v1/spec#/</a></li>
+///       <li>Indexer API: <a href="https://api.devnet.libra2.org/v1/graphql">https://api.devnet.libra2.org/v1/graphql</a></li>
+///       <li>Faucet API: <a href="https://faucet.devnet.libra2.org">https://faucet.devnet.libra2.org</a></li>
+///       <li><a href="https://cloud.hasura.io/public/graphiql?endpoint=https://api.devnet.libra2.org/v1/graphql">Indexer GraphQL</a></li>
 ///     </ul>
 ///   </TabItem>
 ///   <TabItem value="testnet" label="Testnet">
 ///     <ul>
-///       <li>REST API: <a href="https://fullnode.testnet.aptoslabs.com/v1">https://fullnode.testnet.aptoslabs.com/v1</a></li>
-///       <li>REST API Spec: <a href="https://fullnode.testnet.aptoslabs.com/v1/spec#/">https://fullnode.testnet.aptoslabs.com/v1/spec#/</a></li>
-///       <li>Indexer API: <a href="https://api.testnet.aptoslabs.com/v1/graphql">https://api.testnet.aptoslabs.com/v1/graphql</a></li>
-///       <li>Faucet API: <a href="https://faucet.testnet.aptoslabs.com">https://faucet.testnet.aptoslabs.com</a></li>
-///       <li><a href="https://cloud.hasura.io/public/graphiql?endpoint=https://api.testnet.aptoslabs.com/v1/graphql">Indexer GraphQL</a></li>
+///       <li>REST API: <a href="https://fullnode.testnet.libra2.org/v1">https://fullnode.testnet.libra2.org/v1</a></li>
+///       <li>REST API Spec: <a href="https://fullnode.testnet.libra2.org/v1/spec#/">https://fullnode.testnet.libra2.org/v1/spec#/</a></li>
+///       <li>Indexer API: <a href="https://api.testnet.libra2.org/v1/graphql">https://api.testnet.libra2.org/v1/graphql</a></li>
+///       <li>Faucet API: <a href="https://faucet.testnet.libra2.org">https://faucet.testnet.libra2.org</a></li>
+///       <li><a href="https://cloud.hasura.io/public/graphiql?endpoint=https://api.testnet.libra2.org/v1/graphql">Indexer GraphQL</a></li>
 ///     </ul>
 ///   </TabItem>
 ///   <TabItem value="mainnet" label="Mainnet">
 ///     <ul>
-///       <li>REST API: <a href="https://fullnode.mainnet.aptoslabs.com/v1">https://fullnode.mainnet.aptoslabs.com/v1</a></li>
-///       <li>REST API Spec: <a href="https://fullnode.mainnet.aptoslabs.com/v1/spec#/">https://fullnode.mainnet.aptoslabs.com/v1/spec#/</a></li>
-///       <li>Indexer API: <a href="https://api.mainnet.aptoslabs.com/v1/graphql">https://api.mainnet.aptoslabs.com/v1/graphql</a></li>
+///       <li>REST API: <a href="https://fullnode.mainnet.libra2.org/v1">https://fullnode.mainnet.libra2.org/v1</a></li>
+///       <li>REST API Spec: <a href="https://fullnode.mainnet.libra2.org/v1/spec#/">https://fullnode.mainnet.libra2.org/v1/spec#/</a></li>
+///       <li>Indexer API: <a href="https://api.mainnet.libra2.org/v1/graphql">https://api.mainnet.libra2.org/v1/graphql</a></li>
 ///       <li>Faucet: N/A</li>
-///       <li><a href="https://cloud.hasura.io/public/graphiql?endpoint=https://api.mainnet.aptoslabs.com/v1/graphql">Indexer GraphQL</a></li>
+///       <li><a href="https://cloud.hasura.io/public/graphiql?endpoint=https://api.mainnet.libra2.org/v1/graphql">Indexer GraphQL</a></li>
 ///     </ul>
 ///   </TabItem>
 /// </Tabs>
@@ -84,9 +84,9 @@
 /// 2. [Python](../sdks/python-sdk.md)
 /// 3. [Rust](../sdks/rust-sdk.md)
 ///
-/// Almost all developers will benefit from exploring the CLI. [Using the CLI](../tools/aptos-cli-tool/use-aptos-cli.md) demonstrates how the CLI can be used to which includes creating accounts, transferring coins, and publishing modules.
+/// Almost all developers will benefit from exploring the CLI. [Using the CLI](../tools/libra2-cli-tool/use-libra2-cli.md) demonstrates how the CLI can be used to which includes creating accounts, transferring coins, and publishing modules.
 ///
-/// ## Accounts on Aptos
+/// ## Accounts on Libra2
 ///
 ///
 /// At creation, an [Libra2 account](https://github.com/libra2org/libra2-core/blob/88c9aab3982c246f8aa75eb2caf8c8ab1dcab491/libra2-move/framework/libra2-framework/sources/account.move#L23) contains:
@@ -97,7 +97,7 @@
 /// * An [event handle](../concepts/events.md) for all new types of coins added to the account.
 /// * An event handle for all key rotations for the account.
 ///
-/// Read more about [Accounts](../concepts/accounts.md) and [set one up](../tools/aptos-cli-tool/use-aptos-cli#initialize-local-configuration-and-create-an-account).
+/// Read more about [Accounts](../concepts/accounts.md) and [set one up](../tools/libra2-cli-tool/use-libra2-cli#initialize-local-configuration-and-create-an-account).
 ///
 /// ## Transactions
 ///
@@ -106,7 +106,7 @@
 ///
 /// ### Generating transactions
 ///
-/// Aptos supports two methods for constructing transactions:
+/// Libra2 supports two methods for constructing transactions:
 ///
 /// - Using the Libra2 client libraries to generate native BCS transactions.
 /// - Constructing JSON-encoded objects and interacting with the REST API to generate native transactions.
@@ -130,7 +130,7 @@
 ///
 /// Both [Python](https://github.com/libra2org/libra2-core/blob/3973311dac6bb9348bfc81cf983c2a1be11f1b48/ecosystem/python/sdk/libra2_sdk/client.py#L256) and [TypeScript](https://github.com/libra2org/libra2-core/blob/3973311dac6bb9348bfc81cf983c2a1be11f1b48/ecosystem/typescript/sdk/src/libra2_client.test.ts#L93) support the generation of transactions that target entry points. This guide points out many of those entry points, such as `libra2_account::transfer` and `libra2_account::create_account`.
 ///
-/// Most basic operations on the Aptos blockchain should be available via entry point calls. While one could submit multiple transactions calling entry points in series, such operations benefit from being called atomically from a single transaction. A script payload transaction can call any public (entry) function defined within any module. Here's an example [Move script](https://github.com/libra2org/libra2-core/tree/main/libra2-move/move-examples/scripts/two_by_two_transfer) that uses a MultiAgent transaction to extract funds from two accounts and deposit them into two other accounts. This is a [Python example](https://github.com/libra2org/libra2-core/blob/main/ecosystem/python/sdk/examples/transfer-two-by-two.py) that uses the bytecode generated by compiling that script. Currently there is limited support for script payloads in TypeScript.
+/// Most basic operations on the Libra2 blockchain should be available via entry point calls. While one could submit multiple transactions calling entry points in series, such operations benefit from being called atomically from a single transaction. A script payload transaction can call any public (entry) function defined within any module. Here's an example [Move script](https://github.com/libra2org/libra2-core/tree/main/libra2-move/move-examples/scripts/two_by_two_transfer) that uses a MultiAgent transaction to extract funds from two accounts and deposit them into two other accounts. This is a [Python example](https://github.com/libra2org/libra2-core/blob/main/ecosystem/python/sdk/examples/transfer-two-by-two.py) that uses the bytecode generated by compiling that script. Currently there is limited support for script payloads in TypeScript.
 ///
 /// ### Status of a transaction
 ///
@@ -139,14 +139,14 @@
 ///
 /// ### Testing transactions or transaction pre-execution
 ///
-/// To facilitate evaluation of transactions as well as gas estimation, Aptos supports a simulation API that does not require and should not contain valid signatures on transactions.
+/// To facilitate evaluation of transactions as well as gas estimation, Libra2 supports a simulation API that does not require and should not contain valid signatures on transactions.
 ///
 ///
 /// Both the [Typescript SDK](https://github.com/libra2org/libra2-core/blob/9b85d41ed8ef4a61a9cd64f9de511654fcc02024/ecosystem/typescript/sdk/src/libra2_client.ts#L413) and [Python SDK](https://github.com/libra2org/libra2-core/blob/main/ecosystem/python/sdk/examples/simulate-transfer-coin.py) support the simulation API. Note the output and gas used may change based upon the state of the account. For gas estimations, we recommend that the maximum gas amount be larger than the amount quoted by this API.
 ///
 /// ## Viewing current and historical state
 ///
-/// Most integrations into the Aptos blockchain benefit from a holistic and comprehensive overview of the current and historical state of the blockchain. Aptos provides historical transactions, state, and events, all the result of transaction execution.
+/// Most integrations into the Libra2 blockchain benefit from a holistic and comprehensive overview of the current and historical state of the blockchain. Libra2 provides historical transactions, state, and events, all the result of transaction execution.
 ///
 /// * Historical transactions specify the execution status, output, and tie to related events. Each transaction has a unique version number associated with it that dictates its global sequential ordering in the history of the blockchain ledger.
 /// * The state is the representation of all transaction outputs up to a specific version. In other words, a state version is the accumulation of all transactions inclusive of that transaction version.
@@ -159,17 +159,17 @@
 ///
 /// While either of these may be disabled, storing the state versions is not particularly sustainable.
 ///
-/// Events and transactions pruning can be disabled via setting the [`enable_ledger_pruner`](https://github.com/libra2org/libra2-core/blob/cf0bc2e4031a843cdc0c04e70b3f7cd92666afcf/config/src/config/storage_config.rs#L141) to `false`. This is default behavior in Mainnet. In the near future, Aptos will provide indexers that mitigate the need to directly query from a node.
+/// Events and transactions pruning can be disabled via setting the [`enable_ledger_pruner`](https://github.com/libra2org/libra2-core/blob/cf0bc2e4031a843cdc0c04e70b3f7cd92666afcf/config/src/config/storage_config.rs#L141) to `false`. This is default behavior in Mainnet. In the near future, Libra2 will provide indexers that mitigate the need to directly query from a node.
 ///
 /// The REST API offers querying transactions and events in these ways:
 ///
-/// * [Transactions for an account](https://fullnode.devnet.aptoslabs.com/v1/spec#/operations/get_account_transactions)
-/// * [Transactions by version](https://fullnode.devnet.aptoslabs.com/v1/spec#/operations/get_transaction_by_version)
-/// * [Events by event handle](https://fullnode.devnet.aptoslabs.com/v1/spec#/operations/get_events_by_event_handle)
+/// * [Transactions for an account](https://fullnode.devnet.libra2.org/v1/spec#/operations/get_account_transactions)
+/// * [Transactions by version](https://fullnode.devnet.libra2.org/v1/spec#/operations/get_transaction_by_version)
+/// * [Events by event handle](https://fullnode.devnet.libra2.org/v1/spec#/operations/get_events_by_event_handle)
 ///
 /// ## Exchanging and tracking coins
 ///
-/// Aptos has a standard [Coin type](https://github.com/libra2org/libra2-core/blob/main/libra2-move/framework/libra2-framework/sources/coin.move). Different types of coins can be represented in this type through the use of distinct structs that represent the type parameter or generic for `Coin<T>`.
+/// Libra2 has a standard [Coin type](https://github.com/libra2org/libra2-core/blob/main/libra2-move/framework/libra2-framework/sources/coin.move). Different types of coins can be represented in this type through the use of distinct structs that represent the type parameter or generic for `Coin<T>`.
 ///
 /// Coins are stored within an account under the resource `CoinStore<T>`. At account creation, each user has the resource `CoinStore<0x1::libra2_coin::Libra2Coin>` or `CoinStore<Libra2Coin>`, for short. Within this resource is the Libra2 coin: `Coin<Libra2Coin>`.
 ///
@@ -216,7 +216,7 @@
 ///
 /// ### Querying transactions
 ///
-/// In Aptos, each transaction is committed as a distinct version to the blockchain. This allows for the convenience of sharing committed transactions by their version number; to do so, query: `https://{rest_server_api}/transactions/by_version/{version}`
+/// In Libra2, each transaction is committed as a distinct version to the blockchain. This allows for the convenience of sharing committed transactions by their version number; to do so, query: `https://{rest_server_api}/transactions/by_version/{version}`
 ///
 /// Transactions submitted by an account can also be queried via the following URL where the `sequence_number` matches the sequence number of the transaction: `https://{rest_server_api}/account/{address}/transactions?start={sequence_number}&limit=1`
 ///
@@ -330,7 +330,7 @@
 ///
 /// ### Querying events
 ///
-/// Aptos provides clear and canonical events for all withdraw and deposit of coins. This can be used in coordination with the associated transactions to present to a user the change of their account balance over time, when that happened, and what caused it. With some amount of additional parsing, metadata such as the transaction type and the other parties involved can also be shared.
+/// Libra2 provides clear and canonical events for all withdraw and deposit of coins. This can be used in coordination with the associated transactions to present to a user the change of their account balance over time, when that happened, and what caused it. With some amount of additional parsing, metadata such as the transaction type and the other parties involved can also be shared.
 ///
 /// Query events by handle URL: `https://{rest_api_server}/accounts/{address}/events/0x1::coin::CoinStore<0x1::libra2_coin::Libra2Coin>/withdraw_events`
 ///
@@ -359,7 +359,7 @@
 ///
 /// :::tip
 ///
-/// When tracking full movement of coins, normally events are sufficient. `0x1::libra2_coin::Libra2Coin`, however, requires considering `gas_used` for each transaction sent from the given account since it represents gas in Aptos. To reduce unnecessary overhead, extracting gas fees due to transactions does not emit an event. All transactions for an account can be retrieved from this API: `https://{rest_server_api}/accounts/{address}/transactions`
+/// When tracking full movement of coins, normally events are sufficient. `0x1::libra2_coin::Libra2Coin`, however, requires considering `gas_used` for each transaction sent from the given account since it represents gas in Libra2. To reduce unnecessary overhead, extracting gas fees due to transactions does not emit an event. All transactions for an account can be retrieved from this API: `https://{rest_server_api}/accounts/{address}/transactions`
 ///
 /// :::
 ///
@@ -492,27 +492,27 @@
 ///
 /// ## Integrating with the faucet
 ///
-/// This tutorial is for SDK and wallet developers who want to integrate with the [Aptos Faucet](https://github.com/libra2org/libra2-core/tree/main/crates/libra2-faucet). If you are a dapp developer, you should access the faucet through an existing [SDK](../tutorials/first-transaction.md) or [CLI](../tools/aptos-cli-tool/use-aptos-cli#initialize-local-configuration-and-create-an-account) instead.
+/// This tutorial is for SDK and wallet developers who want to integrate with the [Libra2 Faucet](https://github.com/libra2org/libra2-core/tree/main/crates/libra2-faucet). If you are a dapp developer, you should access the faucet through an existing [SDK](../tutorials/first-transaction.md) or [CLI](../tools/libra2-cli-tool/use-libra2-cli#initialize-local-configuration-and-create-an-account) instead.
 ///
 /// ### Differences between devnet and testnet
 /// What are the differences between devnet and testnet? Effectively none. In the past, the testnet faucet had a Captcha in front of it, making it unqueryable by normal means. This is no longer true.
 ///
 /// The endpoints for each faucet are:
-/// - Devnet: https://faucet.devnet.aptoslabs.com
-/// - Testnet: https://faucet.testnet.aptoslabs.com
+/// - Devnet: https://faucet.devnet.libra2.org
+/// - Testnet: https://faucet.testnet.libra2.org
 ///
 /// ### Calling the faucet: JavaScript / TypeScript
-/// If you are building a client in JavaScript or TypeScript, you should make use of the [@aptos-labs/libra2-faucet-client](https://www.npmjs.com/package/@aptos-labs/libra2-faucet-client) package. This client is generated based on the OpenAPI spec published by the faucet service.
+/// If you are building a client in JavaScript or TypeScript, you should make use of the [@libra2-labs/libra2-faucet-client](https://www.npmjs.com/package/@libra2-labs/libra2-faucet-client) package. This client is generated based on the OpenAPI spec published by the faucet service.
 ///
 /// Example use:
 /// ```typescript
 /// import {
-///   AptosFaucetClient,
+///   Libra2FaucetClient,
 ///   FundRequest,
-/// } from "@aptos-labs/libra2-faucet-client";
+/// } from "@libra2-labs/libra2-faucet-client";
 ///
 /// async function callFaucet(amount: number, address: string): Promise<string[]> {
-///   const faucetClient = new AptosFaucetClient({BASE: "https://faucet.devnet.aptoslabs.com"});
+///   const faucetClient = new Libra2FaucetClient({BASE: "https://faucet.devnet.libra2.org"});
 ///   const request: FundRequest = {
 ///     amount,
 ///     address,
@@ -529,7 +529,7 @@
 ///
 /// For the latter, you will want to build a query similar to this:
 /// ```
-/// curl -X POST 'https://faucet.devnet.aptoslabs.com/mint?amount=10000&address=0xd0f523c9e73e6f3d68c16ae883a9febc616e484c4998a72d8899a1009e5a89d6'
+/// curl -X POST 'https://faucet.devnet.libra2.org/mint?amount=10000&address=0xd0f523c9e73e6f3d68c16ae883a9febc616e484c4998a72d8899a1009e5a89d6'
 /// ```
 ///
 /// This means mint 10000 OCTA to address `0xd0f523c9e73e6f3d68c16ae883a9febc616e484c4998a72d8899a1009e5a89d6`.

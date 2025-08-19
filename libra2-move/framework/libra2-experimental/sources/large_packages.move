@@ -1,6 +1,6 @@
-/// # Aptos Large Packages Framework
+/// # Libra2 Large Packages Framework
 ///
-/// This module provides a framework for uploading large packages to the Aptos network, under standard
+/// This module provides a framework for uploading large packages to the Libra2 network, under standard
 /// accounts or objects.
 /// To publish using this API, you must divide your metadata and modules across multiple calls
 /// into `large_packages::stage_code_chunk`.

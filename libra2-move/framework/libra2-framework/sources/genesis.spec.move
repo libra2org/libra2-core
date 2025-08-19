@@ -1,7 +1,7 @@
 spec libra2_framework::genesis {
     /// <high-level-req>
     /// No.: 1
-    /// Requirement: All the core resources and modules should be created during genesis and owned by the Aptos framework
+    /// Requirement: All the core resources and modules should be created during genesis and owned by the Libra2 framework
     /// account.
     /// Criticality: Critical
     /// Implementation: Resources created during genesis initialization: GovernanceResponsbility, ConsensusConfig,
@@ -9,7 +9,7 @@ spec libra2_framework::genesis {
     /// StorageGasConfig, StorageGas, GasScheduleV2, AggregatorFactory, SupplyConfig, ChainId, Configuration,
     /// BlockResource, StateStorageUsage, CurrentTimeMicroseconds. If some of the resources were to be owned by a
     /// malicious account, it could lead to the compromise of the chain, as these are core resources. It should be
-    /// formally verified by a post condition to ensure that all the critical resources are owned by the Aptos framework.
+    /// formally verified by a post condition to ensure that all the critical resources are owned by the Libra2 framework.
     /// Enforcement: Formally verified via [high-level-req-1](initialize).
     ///
     /// No.: 2
@@ -22,7 +22,7 @@ spec libra2_framework::genesis {
     /// Enforcement: Formally verified via [high-level-req-2](initialize).
     ///
     /// No.: 3
-    /// Requirement: The Libra2 coin should be initialized during genesis and only the Aptos framework account should own
+    /// Requirement: The Libra2 coin should be initialized during genesis and only the Libra2 framework account should own
     /// the mint and burn capabilities for the APT token.
     /// Criticality: Critical
     /// Implementation: Both mint and burn capabilities are wrapped inside the stake::Libra2CoinCapabilities and
@@ -75,7 +75,7 @@ spec libra2_framework::genesis {
         ensures exists<account::Account>(@0x9);
         ensures exists<account::Account>(@0xa);
 
-        // property 1: All the core resources and modules should be created during genesis and owned by the Aptos framework account.
+        // property 1: All the core resources and modules should be created during genesis and owned by the Libra2 framework account.
         /// [high-level-req-1]
         ensures exists<libra2_governance::GovernanceResponsbility>(@libra2_framework);
         ensures exists<consensus_config::ConsensusConfig>(@libra2_framework);
@@ -99,7 +99,7 @@ spec libra2_framework::genesis {
     }
 
     spec initialize_libra2_coin {
-        // property 3: The Libra2 coin should be initialized during genesis and only the Aptos framework account should
+        // property 3: The Libra2 coin should be initialized during genesis and only the Libra2 framework account should
         // own the mint and burn capabilities for the APT token.
         /// [high-level-req-3]
         requires !exists<stake::Libra2CoinCapabilities>(@libra2_framework);

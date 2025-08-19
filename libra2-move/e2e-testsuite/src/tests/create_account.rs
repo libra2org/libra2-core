@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -14,7 +14,7 @@ fn create_account() {
     executor.set_golden_file(current_function_name!());
 
     // create and publish a sender with 1_000_000 coins
-    let sender = Account::new_aptos_root();
+    let sender = Account::new_libra2_root();
     let new_account = executor.create_raw_account();
 
     // define the arguments to the create account transaction

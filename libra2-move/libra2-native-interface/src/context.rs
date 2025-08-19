@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::errors::{LimitExceededError, SafeNativeError, SafeNativeResult};
@@ -28,7 +28,7 @@ use std::{
 /// A proxy between the VM and the native functions, allowing the latter to query VM configurations
 /// or access certain VM functionalities.
 ///
-/// It is a wrapper around Move VM's [`NativeContext`], providing improved and Aptos-specific APIs.
+/// It is a wrapper around Move VM's [`NativeContext`], providing improved and Libra2-specific APIs.
 /// Major features include incremental gas charging and less ambiguous error handling. For this
 /// reason, native functions should always use [`SafeNativeContext`] instead of [`NativeContext`].
 #[allow(unused)]

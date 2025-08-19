@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Copyright © Aptos Foundation
+# Copyright © A-p-t-o-s Foundation
 # SPDX-License-Identifier: Apache-2.0
 
-# This builds the move docs for the Aptos-framework
+# This builds the move docs for the Libra2-framework
 # Removes the awkward links so that it can be reasonably well self-hosted
 # And moves them to a local folder
 

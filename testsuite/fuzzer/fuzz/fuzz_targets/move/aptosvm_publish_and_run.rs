@@ -1,6 +1,6 @@
 #![no_main]
 
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use libra2_language_e2e_tests::{account::Account, executor::FakeExecutor};
@@ -111,7 +111,7 @@ fn run_case(mut input: RunnableState) -> Result<(), Corpus> {
     filter_modules(&input)?;
 
     let verifier_config =
-        prod_configs::aptos_prod_verifier_config(LATEST_GAS_FEATURE_VERSION, &Features::default());
+        prod_configs::libra2_prod_verifier_config(LATEST_GAS_FEATURE_VERSION, &Features::default());
     let deserializer_config = DeserializerConfig::new(BYTECODE_VERSION, 255);
 
     for m in input.dep_modules.iter_mut() {

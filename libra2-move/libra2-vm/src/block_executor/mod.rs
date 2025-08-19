@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -49,7 +49,7 @@ use std::{
     marker::PhantomData,
     sync::Arc,
 };
-use vm_wrapper::AptosExecutorTask;
+use vm_wrapper::Libra2ExecutorTask;
 
 static RAYON_EXEC_POOL: Lazy<Arc<rayon::ThreadPool>> = Lazy::new(|| {
     Arc::new(
@@ -491,7 +491,7 @@ impl BlockExecutorTransactionOutput for Libra2TransactionOutput {
     }
 }
 
-pub struct AptosBlockExecutorWrapper<
+pub struct Libra2BlockExecutorWrapper<
     E: ExecutorTask<
         Txn = SignatureVerifiedTransaction,
         Error = VMStatus,
@@ -507,7 +507,7 @@ impl<
             Error = VMStatus,
             Output = Libra2TransactionOutput,
         >,
-    > AptosBlockExecutorWrapper<E>
+    > Libra2BlockExecutorWrapper<E>
 {
     pub fn execute_block_on_thread_pool<
         S: StateView + Sync,
@@ -627,5 +627,5 @@ impl<
     }
 }
 
-// Same as AptosBlockExecutorWrapper with AptosExecutorTask
-pub type Libra2VMBlockExecutorWrapper = AptosBlockExecutorWrapper<AptosExecutorTask>;
+// Same as Libra2BlockExecutorWrapper with Libra2ExecutorTask
+pub type Libra2VMBlockExecutorWrapper = Libra2BlockExecutorWrapper<Libra2ExecutorTask>;

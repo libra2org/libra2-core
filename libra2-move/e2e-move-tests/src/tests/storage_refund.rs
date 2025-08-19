@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{assert_success, tests::common::test_dir_path, MoveHarness};
@@ -130,7 +130,7 @@ fn assert_result(
     expect_num_slots_charged: i64, // negative for refund
     expect_success: bool,
 ) {
-    let start_balance = h.read_aptos_balance(account.address());
+    let start_balance = h.read_libra2_balance(account.address());
 
     // run the function
     let txn = h.create_entry_function(
@@ -151,7 +151,7 @@ fn assert_result(
         );
     }
 
-    let end_balance = h.read_aptos_balance(account.address());
+    let end_balance = h.read_libra2_balance(account.address());
 
     // check the creates / deletes in the txn output
     let mut creates = 0;

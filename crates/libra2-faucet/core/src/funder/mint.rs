@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -86,7 +86,7 @@ impl MintFunderConfig {
 }
 
 pub struct MintFunder {
-    /// URL of an Aptos node API.
+    /// URL of an Libra2 node API.
     node_url: Url,
     node_api_key: Option<String>,
     node_additional_headers: Option<HashMap<String, String>>,

@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{account, block, construction, network};
@@ -10,9 +10,9 @@ use libra2_types::chain_id::ChainId;
 use clap::Parser;
 use serde::Serialize;
 
-/// Aptos Rosetta CLI
+/// Libra2 Rosetta CLI
 ///
-/// Provides an implementation of [Rosetta](https://www.rosetta-api.org/docs/Reference.html) on Aptos.
+/// Provides an implementation of [Rosetta](https://www.rosetta-api.org/docs/Reference.html) on Libra2.
 #[derive(Debug, Parser)]
 #[clap(name = "libra2-rosetta-cli", author, version, propagate_version = true)]
 pub enum RosettaCliArgs {
@@ -45,7 +45,7 @@ pub fn format_output<T: Serialize>(input: anyhow::Result<T>) -> anyhow::Result<S
 
 #[derive(Debug, Parser)]
 pub struct UrlArgs {
-    /// URL for the Aptos Rosetta API. e.g. http://localhost:8082
+    /// URL for the Libra2 Rosetta API. e.g. http://localhost:8082
     #[clap(long, default_value = "http://localhost:8082")]
     rosetta_api_url: url::Url,
 }

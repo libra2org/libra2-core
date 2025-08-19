@@ -1,12 +1,12 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
 #![allow(clippy::arc_with_non_send_sync)]
 
-//! A model to test properties of common Aptos transactions.
+//! A model to test properties of common Libra2 transactions.
 //!
-//! The structs and functions in this module together form a simplified *model* of how common Aptos
+//! The structs and functions in this module together form a simplified *model* of how common Libra2
 //! transactions should behave. This model is then used as an *oracle* for property-based tests --
 //! the results of executing transactions through the VM should match the results computed using
 //! this model.

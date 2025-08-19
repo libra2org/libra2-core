@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 #![allow(clippy::duplicated_attributes)]
@@ -11,7 +11,7 @@ use ambassador::{delegate_to_methods, Delegate};
 use libra2_types::{
     error::PanicError,
     state_store::{state_key::StateKey, state_value::StateValueMetadata, StateView, TStateView},
-    vm::modules::AptosModuleExtension,
+    vm::modules::Libra2ModuleExtension,
 };
 use bytes::Bytes;
 use move_binary_format::{
@@ -113,7 +113,7 @@ where
         impl Iterator<
             Item = (
                 ModuleId,
-                Arc<ModuleCode<CompiledModule, Module, AptosModuleExtension>>,
+                Arc<ModuleCode<CompiledModule, Module, Libra2ModuleExtension>>,
             ),
         >,
         PanicError,
@@ -146,7 +146,7 @@ where
                             );
                             Err(PanicError::CodeInvariantError(msg))
                         },
-                        |state_value| Ok(AptosModuleExtension::new(state_value)),
+                        |state_value| Ok(Libra2ModuleExtension::new(state_value)),
                     )?;
 
                 let module = ModuleCode::from_arced_verified(verified_code, Arc::new(extension));
@@ -187,7 +187,7 @@ impl<S: StateView, E: WithRuntimeEnvironment> BlockSynchronizationKillSwitch
 
 /// Allows to treat the state view as a code storage with scripts and modules. The main use case is
 /// when a transaction or a Move function has to be executed outside the long-living environment or
-/// block executor, e.g., for single transaction simulation, in Aptos debugger, etc.
+/// block executor, e.g., for single transaction simulation, in Libra2 debugger, etc.
 pub trait AsLibra2CodeStorage<'ctx, S, E> {
     fn as_libra2_code_storage(
         &'ctx self,

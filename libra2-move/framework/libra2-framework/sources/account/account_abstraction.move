@@ -201,7 +201,7 @@ module libra2_framework::account_abstraction {
     }
 
     inline fun resource_addr(source: address): address {
-        object::create_user_derived_object_address(source, @aptos_fungible_asset)
+        object::create_user_derived_object_address(source, @libra2_fungible_asset)
     }
 
     fun update_dispatchable_authenticator_impl(
@@ -293,7 +293,7 @@ module libra2_framework::account_abstraction {
 
         function_info::load_module_from_function(&func_info);
         let returned_signer = dispatchable_authenticate(account, signing_data, &func_info);
-        // Returned signer MUST represent the same account address. Otherwise, it may break the invariant of Aptos blockchain!
+        // Returned signer MUST represent the same account address. Otherwise, it may break the invariant of Libra2 blockchain!
         assert!(
             master_signer_addr == signer::address_of(&returned_signer),
             error::invalid_state(EINCONSISTENT_SIGNER_ADDRESS)

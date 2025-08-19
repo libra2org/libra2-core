@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
@@ -7,7 +7,7 @@ use crate::{
     tests::{mock::MockNetwork, utils, utils::NUM_SELECTION_ITERATIONS},
 };
 use libra2_config::{
-    config::{Libra2DataClientConfig, AptosDataMultiFetchConfig},
+    config::{Libra2DataClientConfig, Libra2DataMultiFetchConfig},
     network_id::NetworkId,
 };
 use libra2_storage_service_types::requests::{
@@ -25,7 +25,7 @@ async fn multi_fetch_disabled_trivial_request() {
 
     // Create a data client config with multi-fetch disabled
     let data_client_config = Libra2DataClientConfig {
-        data_multi_fetch_config: AptosDataMultiFetchConfig {
+        data_multi_fetch_config: Libra2DataMultiFetchConfig {
             enable_multi_fetch: false,
             ..Default::default()
         },
@@ -61,7 +61,7 @@ async fn multi_fetch_disabled_optimistic_fetch_request() {
 
     // Create a data client config with multi-fetch disabled
     let data_client_config = Libra2DataClientConfig {
-        data_multi_fetch_config: AptosDataMultiFetchConfig {
+        data_multi_fetch_config: Libra2DataMultiFetchConfig {
             enable_multi_fetch: false,
             ..Default::default()
         },
@@ -115,7 +115,7 @@ async fn multi_fetch_optimistic_fetch_extend_with_random_peers() {
     let max_optimistic_fetch_lag_secs = 5;
     let num_peers_for_multi_fetch = 5;
     let data_client_config = Libra2DataClientConfig {
-        data_multi_fetch_config: AptosDataMultiFetchConfig {
+        data_multi_fetch_config: Libra2DataMultiFetchConfig {
             enable_multi_fetch: true,
             min_peers_for_multi_fetch: num_peers_for_multi_fetch,
             max_peers_for_multi_fetch: num_peers_for_multi_fetch,
@@ -235,7 +235,7 @@ async fn multi_fetch_optimistic_fetch_priority() {
     let peers_for_multi_fetch = 3;
     let max_optimistic_fetch_lag_secs = 10;
     let data_client_config = Libra2DataClientConfig {
-        data_multi_fetch_config: AptosDataMultiFetchConfig {
+        data_multi_fetch_config: Libra2DataMultiFetchConfig {
             enable_multi_fetch: true,
             min_peers_for_multi_fetch: peers_for_multi_fetch,
             max_peers_for_multi_fetch: peers_for_multi_fetch,
@@ -303,7 +303,7 @@ async fn multi_fetch_optimistic_fetch_priority_mix() {
     let peers_for_multi_fetch = 4;
     let max_optimistic_fetch_lag_secs = 1;
     let data_client_config = Libra2DataClientConfig {
-        data_multi_fetch_config: AptosDataMultiFetchConfig {
+        data_multi_fetch_config: Libra2DataMultiFetchConfig {
             enable_multi_fetch: true,
             min_peers_for_multi_fetch: 1,
             max_peers_for_multi_fetch: peers_for_multi_fetch,
@@ -507,7 +507,7 @@ async fn multi_fetch_peer_bucket_sizes() {
     let max_peers_for_multi_fetch = 1000;
     let multi_fetch_peer_bucket_size = 4;
     let data_client_config = Libra2DataClientConfig {
-        data_multi_fetch_config: AptosDataMultiFetchConfig {
+        data_multi_fetch_config: Libra2DataMultiFetchConfig {
             enable_multi_fetch: true,
             additional_requests_per_peer_bucket,
             min_peers_for_multi_fetch,
@@ -602,7 +602,7 @@ async fn multi_fetch_peer_bucket_sizes_across_buckets() {
     let max_peers_for_multi_fetch = 1000;
     let multi_fetch_peer_bucket_size = 1;
     let data_client_config = Libra2DataClientConfig {
-        data_multi_fetch_config: AptosDataMultiFetchConfig {
+        data_multi_fetch_config: Libra2DataMultiFetchConfig {
             enable_multi_fetch: true,
             additional_requests_per_peer_bucket,
             min_peers_for_multi_fetch,
@@ -703,7 +703,7 @@ async fn multi_fetch_request_selection_extend_with_random_peers() {
     // Create a data client with multi-fetch enabled (4 peers per request)
     let num_peers_for_multi_fetch = 4;
     let data_client_config = Libra2DataClientConfig {
-        data_multi_fetch_config: AptosDataMultiFetchConfig {
+        data_multi_fetch_config: Libra2DataMultiFetchConfig {
             enable_multi_fetch: true,
             min_peers_for_multi_fetch: num_peers_for_multi_fetch,
             max_peers_for_multi_fetch: num_peers_for_multi_fetch,
@@ -788,7 +788,7 @@ async fn multi_fetch_request_selection_priority() {
     // Create a data client with multi-fetch enabled (4 peers per request)
     let peers_for_multi_fetch = 4;
     let data_client_config = Libra2DataClientConfig {
-        data_multi_fetch_config: AptosDataMultiFetchConfig {
+        data_multi_fetch_config: Libra2DataMultiFetchConfig {
             enable_multi_fetch: true,
             min_peers_for_multi_fetch: peers_for_multi_fetch,
             max_peers_for_multi_fetch: peers_for_multi_fetch,
@@ -841,7 +841,7 @@ async fn multi_fetch_request_selection_priority_mix() {
     // Create a data client with multi-fetch enabled (3 peers per request)
     let peers_for_multi_fetch = 3;
     let data_client_config = Libra2DataClientConfig {
-        data_multi_fetch_config: AptosDataMultiFetchConfig {
+        data_multi_fetch_config: Libra2DataMultiFetchConfig {
             enable_multi_fetch: true,
             min_peers_for_multi_fetch: 2,
             max_peers_for_multi_fetch: peers_for_multi_fetch,
@@ -960,7 +960,7 @@ async fn multi_fetch_simple_peer_selection() {
 
     // Create a data client config with multi-fetch enabled (2 -> 3 peers per request)
     let data_client_config = Libra2DataClientConfig {
-        data_multi_fetch_config: AptosDataMultiFetchConfig {
+        data_multi_fetch_config: Libra2DataMultiFetchConfig {
             enable_multi_fetch: true,
             min_peers_for_multi_fetch: 2,
             max_peers_for_multi_fetch: 3,
@@ -1056,7 +1056,7 @@ async fn multi_fetch_subscription_selection_priority() {
     // Create a data client with a max lag of 10 and multi-fetch enabled (2 peers per request)
     let max_subscription_lag_secs = 10;
     let data_client_config = Libra2DataClientConfig {
-        data_multi_fetch_config: AptosDataMultiFetchConfig {
+        data_multi_fetch_config: Libra2DataMultiFetchConfig {
             enable_multi_fetch: true,
             min_peers_for_multi_fetch: 2,
             max_peers_for_multi_fetch: 2,
@@ -1129,7 +1129,7 @@ async fn multi_fetch_subscription_selection_priority_mix() {
     // Create a data client with a max lag of 100 and multi-fetch enabled (2 peers per request)
     let max_subscription_lag_secs = 100;
     let data_client_config = Libra2DataClientConfig {
-        data_multi_fetch_config: AptosDataMultiFetchConfig {
+        data_multi_fetch_config: Libra2DataMultiFetchConfig {
             enable_multi_fetch: true,
             min_peers_for_multi_fetch: 2,
             max_peers_for_multi_fetch: 2,
@@ -1255,7 +1255,7 @@ async fn multi_fetch_trivial_serviceability() {
 
     // Create a data client config with multi-fetch enabled (2 peers per request)
     let data_client_config = Libra2DataClientConfig {
-        data_multi_fetch_config: AptosDataMultiFetchConfig {
+        data_multi_fetch_config: Libra2DataMultiFetchConfig {
             enable_multi_fetch: true,
             min_peers_for_multi_fetch: 2,
             max_peers_for_multi_fetch: 2,
@@ -1395,7 +1395,7 @@ async fn multi_fetch_trivial_serviceability_pfn() {
 
     // Create a data client config with multi-fetch enabled (2 peers per request)
     let data_client_config = Libra2DataClientConfig {
-        data_multi_fetch_config: AptosDataMultiFetchConfig {
+        data_multi_fetch_config: Libra2DataMultiFetchConfig {
             enable_multi_fetch: true,
             min_peers_for_multi_fetch: 2,
             max_peers_for_multi_fetch: 2,

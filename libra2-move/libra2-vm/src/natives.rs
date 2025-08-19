@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -53,17 +53,17 @@ use {
 };
 
 #[cfg(feature = "testing")]
-struct AptosBlankStorage;
+struct Libra2BlankStorage;
 
 #[cfg(feature = "testing")]
-impl AptosBlankStorage {
+impl Libra2BlankStorage {
     pub fn new() -> Self {
         Self {}
     }
 }
 
 #[cfg(feature = "testing")]
-impl TAggregatorV1View for AptosBlankStorage {
+impl TAggregatorV1View for Libra2BlankStorage {
     type Identifier = StateKey;
 
     fn get_aggregator_v1_state_value(
@@ -75,7 +75,7 @@ impl TAggregatorV1View for AptosBlankStorage {
 }
 
 #[cfg(feature = "testing")]
-impl TDelayedFieldView for AptosBlankStorage {
+impl TDelayedFieldView for Libra2BlankStorage {
     type Identifier = DelayedFieldID;
     type ResourceGroupTag = StructTag;
     type ResourceKey = StateKey;
@@ -126,7 +126,7 @@ impl TDelayedFieldView for AptosBlankStorage {
 }
 
 #[cfg(feature = "testing")]
-impl TableResolver for AptosBlankStorage {
+impl TableResolver for Libra2BlankStorage {
     fn resolve_table_entry_bytes_with_layout(
         &self,
         _handle: &TableHandle,
@@ -139,7 +139,7 @@ impl TableResolver for AptosBlankStorage {
 
 #[cfg(feature = "testing")]
 #[allow(clippy::redundant_closure)]
-static DUMMY_RESOLVER: Lazy<AptosBlankStorage> = Lazy::new(|| AptosBlankStorage::new());
+static DUMMY_RESOLVER: Lazy<Libra2BlankStorage> = Lazy::new(|| Libra2BlankStorage::new());
 
 pub fn libra2_natives(
     gas_feature_version: u64,

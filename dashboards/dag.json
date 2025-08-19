@@ -41,9 +41,9 @@
       "icon": "external link",
       "includeVars": true,
       "keepTime": true,
-      "tags": ["aptos-core"],
+      "tags": ["libra2-core"],
       "targetBlank": true,
-      "title": "aptos-core",
+      "title": "libra2-core",
       "tooltip": "",
       "type": "dashboards",
       "url": ""
@@ -237,7 +237,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "aptos_state_sync_version{type=\"synced\", role=\"validator\", kubernetes_pod_name=~\"$kubernetes_pod_name\", chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\"}",
+          "expr": "libra2_state_sync_version{type=\"synced\", role=\"validator\", kubernetes_pod_name=~\"$kubernetes_pod_name\", chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{kubernetes_pod_name}}-{{cluster}}-synced",
@@ -935,7 +935,7 @@
   "refresh": false,
   "revision": 1,
   "schemaVersion": 38,
-  "tags": ["aptos-core"],
+  "tags": ["libra2-core"],
   "templating": {
     "list": [
       {

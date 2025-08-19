@@ -156,13 +156,13 @@ export function assertTagMatchesSourceVersion(imageTag) {
   }
 }
 
-const APTOS_RELEASE_REGEX = /libra2-node-v(\d+\.\d+\.\d+)/;
+const LIBRA2_RELEASE_REGEX = /libra2-node-v(\d+\.\d+\.\d+)/;
 
 function doesTagMatchConfig(imageTag, configVersion) {
-  if (!APTOS_RELEASE_REGEX.test(imageTag)) {
+  if (!LIBRA2_RELEASE_REGEX.test(imageTag)) {
     reportError(`image tag does not match cargo version: ${imageTag} !== ${configVersion}`, { throwOnFailure: true });
   }
-  const version = imageTag.match(APTOS_RELEASE_REGEX)[1];
+  const version = imageTag.match(LIBRA2_RELEASE_REGEX)[1];
   return version === configVersion;
 }
 
@@ -182,5 +182,5 @@ function reportError(message, opts = { throwOnFailure: false }) {
 }
 
 export function isReleaseImage(imageTag) {
-  return APTOS_RELEASE_REGEX.test(imageTag);
+  return LIBRA2_RELEASE_REGEX.test(imageTag);
 }

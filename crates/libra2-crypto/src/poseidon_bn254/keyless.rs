@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 //! Implements keyless-specific domain-separated hash functions from Poseidon scalar hashing.

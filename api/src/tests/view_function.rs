@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use super::{
@@ -91,7 +91,7 @@ async fn test_view_gas_used_header(
     // Confirm the gas used header is present.
     assert!(
         resp.headers()
-            .get("X-Aptos-Gas-Used")
+            .get("X-Libra2-Gas-Used")
             .unwrap()
             .to_str()
             .unwrap()

@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
@@ -7,7 +7,7 @@ use crate::{
     tests::{mock::MockNetwork, utils, utils::NUM_SELECTION_ITERATIONS},
 };
 use libra2_config::{
-    config::{Libra2DataClientConfig, AptosDataMultiFetchConfig, AptosLatencyFilteringConfig},
+    config::{Libra2DataClientConfig, Libra2DataMultiFetchConfig, Libra2LatencyFilteringConfig},
     network_id::{NetworkId, PeerNetworkId},
 };
 use libra2_storage_service_types::requests::{DataRequest, StorageServiceRequest};
@@ -26,7 +26,7 @@ async fn optimistic_fetch_distance_latency_weights() {
     let max_optimistic_fetch_lag_secs = 5;
     let num_peers_for_multi_fetch = 3;
     let data_client_config = Libra2DataClientConfig {
-        data_multi_fetch_config: AptosDataMultiFetchConfig {
+        data_multi_fetch_config: Libra2DataMultiFetchConfig {
             enable_multi_fetch: true,
             min_peers_for_multi_fetch: num_peers_for_multi_fetch,
             max_peers_for_multi_fetch: num_peers_for_multi_fetch,
@@ -106,7 +106,7 @@ async fn optimistic_fetch_missing_distances() {
     let max_optimistic_fetch_lag_secs = 5;
     let num_peers_for_multi_fetch = 4;
     let data_client_config = Libra2DataClientConfig {
-        data_multi_fetch_config: AptosDataMultiFetchConfig {
+        data_multi_fetch_config: Libra2DataMultiFetchConfig {
             enable_multi_fetch: true,
             min_peers_for_multi_fetch: num_peers_for_multi_fetch,
             max_peers_for_multi_fetch: num_peers_for_multi_fetch,
@@ -192,7 +192,7 @@ async fn optimistic_fetch_no_distances() {
     let max_optimistic_fetch_lag_secs = 5;
     let num_peers_for_multi_fetch = 2;
     let data_client_config = Libra2DataClientConfig {
-        data_multi_fetch_config: AptosDataMultiFetchConfig {
+        data_multi_fetch_config: Libra2DataMultiFetchConfig {
             enable_multi_fetch: true,
             min_peers_for_multi_fetch: num_peers_for_multi_fetch,
             max_peers_for_multi_fetch: num_peers_for_multi_fetch,
@@ -264,7 +264,7 @@ async fn optimistic_fetch_missing_latencies() {
     let max_optimistic_fetch_lag_secs = 5;
     let num_peers_for_multi_fetch = 3;
     let data_client_config = Libra2DataClientConfig {
-        data_multi_fetch_config: AptosDataMultiFetchConfig {
+        data_multi_fetch_config: Libra2DataMultiFetchConfig {
             enable_multi_fetch: true,
             min_peers_for_multi_fetch: num_peers_for_multi_fetch,
             max_peers_for_multi_fetch: num_peers_for_multi_fetch,
@@ -350,7 +350,7 @@ async fn optimistic_fetch_no_latencies() {
     let max_optimistic_fetch_lag_secs = 5;
     let num_peers_for_multi_fetch = 3;
     let data_client_config = Libra2DataClientConfig {
-        data_multi_fetch_config: AptosDataMultiFetchConfig {
+        data_multi_fetch_config: Libra2DataMultiFetchConfig {
             enable_multi_fetch: true,
             min_peers_for_multi_fetch: num_peers_for_multi_fetch,
             max_peers_for_multi_fetch: num_peers_for_multi_fetch,
@@ -424,13 +424,13 @@ async fn request_latency_filtering() {
     let min_peers_for_latency_filtering = 100;
     let latency_filtering_reduction_factor = 2;
     let data_client_config = Libra2DataClientConfig {
-        data_multi_fetch_config: AptosDataMultiFetchConfig {
+        data_multi_fetch_config: Libra2DataMultiFetchConfig {
             enable_multi_fetch: true,
             min_peers_for_multi_fetch: 1,
             max_peers_for_multi_fetch: num_peers_for_multi_fetch,
             ..Default::default()
         },
-        latency_filtering_config: AptosLatencyFilteringConfig {
+        latency_filtering_config: Libra2LatencyFilteringConfig {
             min_peers_for_latency_filtering,
             latency_filtering_reduction_factor,
             ..Default::default()
@@ -512,13 +512,13 @@ async fn request_latency_filtering_ratio() {
     let min_peer_ratio_for_latency_filtering = 10_000; // Set to a very high value
     let latency_filtering_reduction_factor = 2;
     let data_client_config = Libra2DataClientConfig {
-        data_multi_fetch_config: AptosDataMultiFetchConfig {
+        data_multi_fetch_config: Libra2DataMultiFetchConfig {
             enable_multi_fetch: true,
             min_peers_for_multi_fetch: num_peers_for_multi_fetch,
             max_peers_for_multi_fetch: num_peers_for_multi_fetch,
             ..Default::default()
         },
-        latency_filtering_config: AptosLatencyFilteringConfig {
+        latency_filtering_config: Libra2LatencyFilteringConfig {
             min_peers_for_latency_filtering,
             min_peer_ratio_for_latency_filtering,
             latency_filtering_reduction_factor,
@@ -573,13 +573,13 @@ async fn request_latency_selection() {
     let min_peers_for_latency_filtering = 50;
     let latency_filtering_reduction_factor = 2;
     let data_client_config = Libra2DataClientConfig {
-        data_multi_fetch_config: AptosDataMultiFetchConfig {
+        data_multi_fetch_config: Libra2DataMultiFetchConfig {
             enable_multi_fetch: true,
             min_peers_for_multi_fetch: num_peers_for_multi_fetch,
             max_peers_for_multi_fetch: num_peers_for_multi_fetch,
             ..Default::default()
         },
-        latency_filtering_config: AptosLatencyFilteringConfig {
+        latency_filtering_config: Libra2LatencyFilteringConfig {
             min_peers_for_latency_filtering,
             latency_filtering_reduction_factor,
             ..Default::default()
@@ -634,13 +634,13 @@ async fn request_missing_latencies() {
     let num_peers_for_multi_fetch = 2;
     let min_peers_for_latency_filtering = 50;
     let data_client_config = Libra2DataClientConfig {
-        data_multi_fetch_config: AptosDataMultiFetchConfig {
+        data_multi_fetch_config: Libra2DataMultiFetchConfig {
             enable_multi_fetch: true,
             min_peers_for_multi_fetch: num_peers_for_multi_fetch,
             max_peers_for_multi_fetch: num_peers_for_multi_fetch,
             ..Default::default()
         },
-        latency_filtering_config: AptosLatencyFilteringConfig {
+        latency_filtering_config: Libra2LatencyFilteringConfig {
             min_peers_for_latency_filtering,
             ..Default::default()
         },
@@ -698,14 +698,14 @@ async fn request_no_latencies() {
     let num_peers_for_multi_fetch = 2;
     let min_peers_for_latency_filtering = 50;
     let data_client_config = Libra2DataClientConfig {
-        data_multi_fetch_config: AptosDataMultiFetchConfig {
+        data_multi_fetch_config: Libra2DataMultiFetchConfig {
             enable_multi_fetch: true,
             min_peers_for_multi_fetch: 1,
             max_peers_for_multi_fetch: num_peers_for_multi_fetch,
             multi_fetch_peer_bucket_size: 1,
             ..Default::default()
         },
-        latency_filtering_config: AptosLatencyFilteringConfig {
+        latency_filtering_config: Libra2LatencyFilteringConfig {
             min_peers_for_latency_filtering,
             ..Default::default()
         },

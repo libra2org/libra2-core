@@ -281,4 +281,4 @@ This reduces the latency to submit a cancellation transaction from 500 ms to 0.
 </details>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

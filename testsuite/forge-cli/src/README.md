@@ -7,7 +7,7 @@ custom_edit_url: https://github.com/libra2org/libra2-core/edit/main/testsuite/fo
 # Forge CLI
 
 This crate contains the Forge command line interface (CLI) tool. This enables users to
-run local and remote Aptos swarms (i.e., networks of validators and validator fullnodes). For
+run local and remote Libra2 swarms (i.e., networks of validators and validator fullnodes). For
 example, to deploy a local validator swarm, run:
 
 ```
@@ -27,7 +27,7 @@ run the above command you should see:
 ...
 2022-09-01T15:41:28.090606Z [main] INFO testsuite/forge/src/backend/local/swarm.rs:207 The root (or mint) key for the swarm is: 0xf9f...
 ...
-2022-09-01T15:41:28.094800Z [main] INFO testsuite/forge/src/backend/local/node.rs:129 Started node 0 (PID: 78939) with command: ".../aptos-core/target/debug/libra2-node" "-f" "/private/var/folders/dx/c0l2rrkn0656gfx6v5_dy_p80000gn/T/.tmpq9uPMJ/0/node.yaml"
+2022-09-01T15:41:28.094800Z [main] INFO testsuite/forge/src/backend/local/node.rs:129 Started node 0 (PID: 78939) with command: ".../libra2-core/target/debug/libra2-node" "-f" "/private/var/folders/dx/c0l2rrkn0656gfx6v5_dy_p80000gn/T/.tmpq9uPMJ/0/node.yaml"
 2022-09-01T15:41:28.094825Z [main] INFO testsuite/forge/src/backend/local/node.rs:137 Node 0: REST API is listening at: http://127.0.0.1:64566
 2022-09-01T15:41:28.094838Z [main] INFO testsuite/forge/src/backend/local/node.rs:142 Node 0: Inspection service is listening at http://127.0.0.1:64568
 ...
@@ -67,7 +67,7 @@ cargo run -p libra2-faucet-cli -- --amount 10 --accounts <account_address> --key
 :::tip Faucet and Libra2 CLI
 See more on how the faucet works in the [README](https://github.com/libra2org/libra2-core/tree/main/crates/libra2-faucet).
 
-Also see how to use the [Libra2 CLI](../cli-tools/aptos-cli/use-cli/use-aptos-cli.md#account-examples) with an existing faucet.
+Also see how to use the [Libra2 CLI](../cli-tools/libra2-cli/use-cli/use-libra2-cli.md#account-examples) with an existing faucet.
 :::
 
 ## Validator fullnodes

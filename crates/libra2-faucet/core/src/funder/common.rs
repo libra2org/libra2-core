@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -48,9 +48,9 @@ const DEFAULT_KEY_FILE_PATH: &str = "/opt/aptos/etc/mint.key";
 /// faucet CLI, they are not necessary for the service.
 #[derive(Clone, Debug, Deserialize, Parser, Serialize)]
 pub struct ApiConnectionConfig {
-    /// Aptos node (any node type with an open API) server URL.
+    /// Libra2 node (any node type with an open API) server URL.
     /// Include the port in this if not using the default for the scheme.
-    #[clap(long, default_value = "https://fullnode.testnet.aptoslabs.com/")]
+    #[clap(long, default_value = "https://fullnode.testnet.libra2.org/")]
     pub node_url: Url,
 
     /// API key for talking to the node API.

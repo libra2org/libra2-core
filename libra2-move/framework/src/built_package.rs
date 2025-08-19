@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
@@ -54,13 +54,13 @@ use std::{
 pub const METADATA_FILE_NAME: &str = "package-metadata.bcs";
 pub const UPGRADE_POLICY_CUSTOM_FIELD: &str = "upgrade_policy";
 
-pub const APTOS_PACKAGES: [&str; 6] = [
+pub const LIBRA2_PACKAGES: [&str; 6] = [
     "Libra2Framework",
     "MoveStdlib",
     "Libra2Stdlib",
     "Libra2Token",
     "Libra2TokenObjects",
-    "AptosExperimental",
+    "Libra2Experimental",
 ];
 
 /// Represents a set of options for building artifacts from Move.

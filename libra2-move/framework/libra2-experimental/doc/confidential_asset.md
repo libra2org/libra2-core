@@ -2749,4 +2749,4 @@ Returns <code>Some(Object&lt;Metadata&gt;)</code> if user has a suffucient amoun
 </details>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

@@ -536,7 +536,7 @@ reconfiguration event.
 
 <tr>
 <td>1</td>
-<td>The Configuration resource is stored under the Aptos framework account with initial values upon module's initialization.</td>
+<td>The Configuration resource is stored under the Libra2 framework account with initial values upon module's initialization.</td>
 <td>Medium</td>
 <td>The Configuration resource may only be initialized with specific values and published under the libra2_framework account.</td>
 <td>Formally verified via <a href="#high-level-req-1">initialize</a>.</td>
@@ -778,4 +778,4 @@ Should equal to 0
 </code></pre>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

@@ -1,4 +1,4 @@
-# All processors are migrated to [processor repo](https://github.com/aptos-labs/aptos-indexer-processors)
+# All processors are migrated to [processor repo](https://github.com/libra2org/libra2-indexer-processors)
 
 # Indexer GRPC Parser
 
@@ -46,4 +46,4 @@ Indexer GRPC parser is to indexer data processor that leverages the indexer grpc
 
 
 ### Use a custom parser
-* Check our [indexer processors](https://github.com/aptos-labs/aptos-indexer-processors)! 
+* Check our [indexer processors](https://github.com/libra2org/libra2-indexer-processors)! 

@@ -796,4 +796,4 @@ and can be used only in modules that know by themselves that table is empty.
 </code></pre>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

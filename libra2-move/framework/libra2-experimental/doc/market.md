@@ -2488,4 +2488,4 @@ call the <code>place_order_with_order_id</code> API to place the order with the 
 </details>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

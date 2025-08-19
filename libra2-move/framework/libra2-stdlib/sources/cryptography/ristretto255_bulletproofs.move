@@ -292,7 +292,7 @@ module libra2_std::ristretto255_bulletproofs {
     use libra2_std::ristretto255_pedersen::commitment_equals;
 
     #[test_only]
-    const A_DST: vector<u8> = b"AptosBulletproofs";
+    const A_DST: vector<u8> = b"Libra2Bulletproofs";
     #[test_only]
     const A_VALUE: vector<u8> = x"870c2fa1b2e9ac45000000000000000000000000000000000000000000000000";  // i.e., 5020644638028926087u64
     #[test_only]

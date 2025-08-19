@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -16,7 +16,7 @@ use std::{num::NonZeroUsize, sync::Arc};
 pub struct ForgeConfig {
     suite_name: Option<String>,
 
-    pub libra2_tests: Vec<Box<dyn AptosTest>>,
+    pub libra2_tests: Vec<Box<dyn Libra2Test>>,
     pub admin_tests: Vec<Box<dyn AdminTest>>,
     pub network_tests: Vec<Box<dyn NetworkTest>>,
 
@@ -65,7 +65,7 @@ impl ForgeConfig {
         Self::default()
     }
 
-    pub fn add_libra2_test<T: AptosTest + 'static>(mut self, libra2_test: T) -> Self {
+    pub fn add_libra2_test<T: Libra2Test + 'static>(mut self, libra2_test: T) -> Self {
         self.libra2_tests.push(Box::new(libra2_test));
         self
     }
@@ -79,7 +79,7 @@ impl ForgeConfig {
         self
     }
 
-    pub fn with_libra2_tests(mut self, libra2_tests: Vec<Box<dyn AptosTest>>) -> Self {
+    pub fn with_libra2_tests(mut self, libra2_tests: Vec<Box<dyn Libra2Test>>) -> Self {
         self.libra2_tests = libra2_tests;
         self
     }
@@ -315,7 +315,7 @@ impl ForgeConfig {
             .chain(
                 self.libra2_tests
                     .iter()
-                    .map(|t| Box::new(AnyTestRef::Aptos(t.as_ref()))),
+                    .map(|t| Box::new(AnyTestRef::Libra2(t.as_ref()))),
             )
             .collect()
     }

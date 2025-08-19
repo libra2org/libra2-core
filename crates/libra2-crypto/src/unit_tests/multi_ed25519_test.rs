@@ -1,10 +1,10 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
     ed25519::{Ed25519PrivateKey, Ed25519PublicKey, ED25519_PUBLIC_KEY_LENGTH},
     multi_ed25519::{MultiEd25519PrivateKey, MultiEd25519PublicKey, MultiEd25519Signature},
-    test_utils::{TestAptosCrypto, TEST_SEED},
+    test_utils::{TestLibra2Crypto, TEST_SEED},
     traits::*,
     CryptoMaterialError::{ValidationError, WrongLengthError},
 };
@@ -12,8 +12,8 @@ use core::convert::TryFrom;
 use once_cell::sync::Lazy;
 use rand::{rngs::StdRng, SeedableRng};
 
-static MESSAGE: Lazy<TestAptosCrypto> = Lazy::new(|| TestAptosCrypto("Test Message".to_string()));
-fn message() -> &'static TestAptosCrypto {
+static MESSAGE: Lazy<TestLibra2Crypto> = Lazy::new(|| TestLibra2Crypto("Test Message".to_string()));
+fn message() -> &'static TestLibra2Crypto {
     &MESSAGE
 }
 
@@ -517,7 +517,7 @@ fn test_sample_multisig() {
     let mut ns = vec![];
     let mut pks = vec![];
     let mut sigs = vec![];
-    let msg = b"Hello Aptos!";
+    let msg = b"Hello Libra2!";
 
     for &(k, n) in test_cases.iter() {
         let private_keys = generate_keys(n);
@@ -533,7 +533,7 @@ fn test_sample_multisig() {
         sigs.push(multi_signature);
     }
 
-    println!("let msg = b\"Hello Aptos!\";");
+    println!("let msg = b\"Hello Libra2!\";");
     print!("//let ks = vector[");
     for k in ks {
         print!("{k}, ")

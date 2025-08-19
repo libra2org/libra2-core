@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use libra2_network::protocols::network::RpcError;
@@ -18,7 +18,7 @@ pub enum Error {
     #[error("Consensus observer progress stopped: {0}")]
     ObserverProgressStopped(String),
 
-    #[error("Aptos network rpc error: {0}")]
+    #[error("Libra2 network rpc error: {0}")]
     RpcError(#[from] RpcError),
 
     #[error("Subscription disconnected: {0}")]

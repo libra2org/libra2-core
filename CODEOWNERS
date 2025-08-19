@@ -1,14 +1,14 @@
 # **Please** keep this file ordered alphabetically by directory paths.
 
 # Owners for the `.github` directory and all its subdirectories.
-/.github/ @aptos-labs/prod-eng
+/.github/ @libra2-labs/prod-eng
 
 # Owners for the `/api` directory and all its subdirectories.
 /api/ @banool @gregnazario @0xmaayan
 
-# Owners for the `/libra2-move` directory and its subdirectories:`aptos-gas`, `libra2-vm`, `framework` and `framework/libra2-stdlib/sources/cryptography`.
+# Owners for the `/libra2-move` directory and its subdirectories:`libra2-gas`, `libra2-vm`, `framework` and `framework/libra2-stdlib/sources/cryptography`.
 /libra2-move/libra2-aggregator/ @georgemitenkov @gelash @zekun000
-/libra2-move/aptos-gas/ @vgao1996
+/libra2-move/libra2-gas/ @vgao1996
 /libra2-move/libra2-vm/ @davidiw @wrwg @zekun000 @vgao1996 @georgemitenkov
 /libra2-move/libra2-vm/src/keyless_validation.rs @alinush @heliuchuan
 /libra2-move/libra2-vm-types/ @georgemitenkov @gelash @vgao1996
@@ -29,7 +29,7 @@
 /libra2-move/mvhashmap/ @gelash @runtian-zhou @sasha8 @danielxiangzl
 /libra2-move/vm-genesis/ @davidiw @movekevin
 
-# Owner for aptos node (to prevent things from becoming out of hand :D)
+# Owner for libra2 node (to prevent things from becoming out of hand :D)
 /libra2-node/ @joshlind
 
 # Owner for the node configs (to prevent things from becoming out of hand :D)

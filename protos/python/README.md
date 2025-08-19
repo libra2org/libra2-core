@@ -1,6 +1,6 @@
-# Aptos Protos
+# Libra2 Protos
 
-This repository contains the protobuf definitions for Aptos.
+This repository contains the protobuf definitions for Libra2.
 
 ## Usage
 Import generated classes like this:

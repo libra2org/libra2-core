@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{libra2_core_path, components::get_execution_hash};
@@ -30,7 +30,7 @@ pub fn generate_upgrade_proposals(
         "only multi-step proposals can have a next execution hash"
     );
 
-    const APTOS_GIT_PATH: &str = "https://github.com/libra2org/libra2-core.git";
+    const LIBRA2_GIT_PATH: &str = "https://github.com/libra2org/libra2-core.git";
 
     // NOTE: This is skipping 0x7 (libra2-experimental package) which is only meant to be released
     // to devnet (or local testnet) via the genesis process and never released/upgraded in testnet
@@ -50,7 +50,7 @@ pub fn generate_upgrade_proposals(
 
     let commit_info = if let Some(revision) = &config.git_hash {
         // If a commit hash is set, clone the repo from github and checkout to desired hash to a local temp directory.
-        let repository = Repository::clone(APTOS_GIT_PATH, temp_root_path.path())?;
+        let repository = Repository::clone(LIBRA2_GIT_PATH, temp_root_path.path())?;
         let (commit, _) = repository.revparse_ext(revision.as_str())?;
         let commit_info = commit
             .describe(&git2::DescribeOptions::default())?

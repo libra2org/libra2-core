@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{error, error::Error, global_summary::GlobalDataSummary};
@@ -12,7 +12,7 @@ use async_trait::async_trait;
 use serde::{Deserialize, Serialize};
 use std::{fmt, time::Instant};
 
-/// The API offered by the Aptos Data Client.
+/// The API offered by the Libra2 Data Client.
 #[async_trait]
 pub trait Libra2DataClientInterface {
     /// Fetches a global summary of the data currently available in the network.
@@ -177,7 +177,7 @@ pub struct SubscriptionRequestMetadata {
     pub subscription_stream_index: u64,     // The index of the request in the subscription stream
 }
 
-/// A response error that users of the Aptos Data Client can use to notify
+/// A response error that users of the Libra2 Data Client can use to notify
 /// the Data Client about invalid or malformed responses.
 #[derive(Clone, Debug, Deserialize, PartialEq, Eq, Serialize)]
 pub enum ResponseError {

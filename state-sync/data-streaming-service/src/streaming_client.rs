@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -21,7 +21,7 @@ use std::{
 
 pub type Epoch = u64;
 
-/// The streaming client used by state sync to fetch data from the Aptos network
+/// The streaming client used by state sync to fetch data from the Libra2 network
 /// to synchronize local state.
 ///
 /// Notes:

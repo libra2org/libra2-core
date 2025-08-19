@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 //! Runs the Rosetta server directly.
@@ -120,9 +120,9 @@ trait ServerArgs {
     fn supported_currencies(&self) -> HashSet<Currency>;
 }
 
-/// Aptos Rosetta API Server
+/// Libra2 Rosetta API Server
 ///
-/// Provides an implementation of [Rosetta](https://www.rosetta-api.org/docs/Reference.html) on Aptos.
+/// Provides an implementation of [Rosetta](https://www.rosetta-api.org/docs/Reference.html) on Libra2.
 #[derive(Debug, Parser)]
 #[clap(name = "libra2-rosetta", author, version, propagate_version = true)]
 pub enum CommandArgs {
@@ -277,7 +277,7 @@ impl ServerArgs for OfflineArgs {
 pub struct OnlineRemoteArgs {
     #[clap(flatten)]
     offline_args: OfflineArgs,
-    /// URL for the Aptos REST API. e.g. https://fullnode.devnet.aptoslabs.com
+    /// URL for the Libra2 REST API. e.g. https://fullnode.devnet.libra2.org
     #[clap(long, default_value = "http://localhost:8080")]
     rest_api_url: url::Url,
     /// DEPRECATED: Owner addresses file as a YAML file with a list

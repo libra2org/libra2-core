@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
@@ -9,7 +9,7 @@ use crate::{
     tests::{mock::MockNetwork, utils, utils::NUM_SELECTION_ITERATIONS},
 };
 use libra2_config::{
-    config::{Libra2DataClientConfig, AptosDataPollerConfig},
+    config::{Libra2DataClientConfig, Libra2DataPollerConfig},
     network_id::PeerNetworkId,
 };
 use libra2_storage_service_types::StorageServiceError;
@@ -78,7 +78,7 @@ async fn identify_peers_to_poll_rounds() {
 async fn identify_peers_to_poll_frequencies() {
     // Create the data client config
     let data_client_config = Libra2DataClientConfig {
-        data_poller_config: AptosDataPollerConfig {
+        data_poller_config: Libra2DataPollerConfig {
             additional_polls_per_peer_bucket: 1,
             min_polls_per_second: 5,
             max_polls_per_second: 20,
@@ -129,7 +129,7 @@ async fn identify_peers_to_poll_frequencies() {
 async fn identify_peers_to_poll_config_changes() {
     // Create the data client config with non-default config values
     let data_client_config = Libra2DataClientConfig {
-        data_poller_config: AptosDataPollerConfig {
+        data_poller_config: Libra2DataPollerConfig {
             additional_polls_per_peer_bucket: 2,
             min_polls_per_second: 10,
             max_polls_per_second: 25,
@@ -179,7 +179,7 @@ async fn identify_peers_to_poll_config_changes() {
 async fn identify_peers_to_poll_latency_weights() {
     // Create the data client config
     let data_client_config = Libra2DataClientConfig {
-        data_poller_config: AptosDataPollerConfig {
+        data_poller_config: Libra2DataPollerConfig {
             additional_polls_per_peer_bucket: 2,
             min_polls_per_second: 6,
             max_polls_per_second: 40,
@@ -229,7 +229,7 @@ async fn identify_peers_to_poll_latency_weights() {
 async fn identify_peers_to_poll_missing_latencies() {
     // Create the data client config
     let data_client_config = Libra2DataClientConfig {
-        data_poller_config: AptosDataPollerConfig {
+        data_poller_config: Libra2DataPollerConfig {
             poll_loop_interval_ms: 1000,
             ..Default::default()
         },
@@ -593,7 +593,7 @@ async fn identify_peers_to_poll_reconnected_in_flight() {
 async fn identify_peers_to_poll_max_in_flight() {
     // Create a data client with max in-flight requests of 2
     let data_client_config = Libra2DataClientConfig {
-        data_poller_config: AptosDataPollerConfig {
+        data_poller_config: Libra2DataPollerConfig {
             max_num_in_flight_priority_polls: 2,
             max_num_in_flight_regular_polls: 2,
             ..Default::default()
@@ -673,7 +673,7 @@ async fn identify_peers_to_poll_max_in_flight_disjoint() {
     // Create a data client with max in-flight requests of 3
     let max_num_in_flight_polls = 3;
     let data_client_config = Libra2DataClientConfig {
-        data_poller_config: AptosDataPollerConfig {
+        data_poller_config: Libra2DataPollerConfig {
             max_num_in_flight_priority_polls: max_num_in_flight_polls,
             max_num_in_flight_regular_polls: max_num_in_flight_polls,
             ..Default::default()
@@ -755,7 +755,7 @@ async fn peers_with_active_polls() {
     // Create a data client with max in-flight requests of 3
     let max_num_in_flight_polls = 3;
     let data_client_config = Libra2DataClientConfig {
-        data_poller_config: AptosDataPollerConfig {
+        data_poller_config: Libra2DataPollerConfig {
             max_num_in_flight_priority_polls: max_num_in_flight_polls,
             max_num_in_flight_regular_polls: max_num_in_flight_polls,
             ..Default::default()
@@ -844,7 +844,7 @@ async fn peers_with_active_polls() {
 async fn poll_peers_error_handling() {
     // Create a data client with max in-flight requests of 1
     let data_client_config = Libra2DataClientConfig {
-        data_poller_config: AptosDataPollerConfig {
+        data_poller_config: Libra2DataPollerConfig {
             max_num_in_flight_priority_polls: 1,
             max_num_in_flight_regular_polls: 1,
             ..Default::default()

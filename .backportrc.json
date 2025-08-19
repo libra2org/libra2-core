@@ -1,9 +1,9 @@
 {
-    "repoOwner": "aptos-labs",
-    "repoName": "aptos-core",
+    "repoOwner": "libra2",
+    "repoName": "libra2-core",
 
     "branchLabelMapping": {
-        "^v(\\d+).(\\d+)$": "aptos-release-v$1.$2"
+        "^v(\\d+).(\\d+)$": "libra2-release-v$1.$2"
     },
     "commitConflicts": true,
     "prTitle": "[cp][{{targetBranch}}] {{sourcePullRequest.title}}",

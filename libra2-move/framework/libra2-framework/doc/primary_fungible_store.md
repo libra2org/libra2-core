@@ -424,7 +424,7 @@ Use instead of the corresponding view functions for dispatchable hooks to avoid 
     <a href="fungible_asset.md#0x1_fungible_asset_grant_permission_by_address">fungible_asset::grant_permission_by_address</a>(
         master,
         permissioned,
-        <a href="object.md#0x1_object_create_user_derived_object_address">object::create_user_derived_object_address</a>(<a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer_address_of">signer::address_of</a>(permissioned), @aptos_fungible_asset),
+        <a href="object.md#0x1_object_create_user_derived_object_address">object::create_user_derived_object_address</a>(<a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer_address_of">signer::address_of</a>(permissioned), @libra2_fungible_asset),
         amount
     );
 }
@@ -1032,4 +1032,4 @@ Transfer <code>amount</code> of FA from the primary store of <code>from</code> t
 </code></pre>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

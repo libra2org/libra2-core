@@ -18,7 +18,7 @@ locals {
   dns_prefix  = var.workspace_dns ? "${local.workspace_name}." : ""
   record_name = replace(var.record_name, "<workspace>", local.workspace_name)
   # domain name for external-dns, if it is installed
-  domain = var.zone_id != "" ? "${local.dns_prefix}${data.aws_route53_zone.aptos[0].name}" : null
+  domain = var.zone_id != "" ? "${local.dns_prefix}${data.aws_route53_zone.libra2[0].name}" : null
 }
 
 data "kubernetes_service" "validator-lb" {

@@ -1,7 +1,7 @@
-// Copyright (c) Aptos Foundation
+// Copyright (c) A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 
 use crate::{
     instrumented_channel::channel_metrics::init_channel_metrics_registry,

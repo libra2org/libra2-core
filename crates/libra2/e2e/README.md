@@ -26,7 +26,7 @@ poetry run python main.py --base-network mainnet --test-cli-tag nightly
 
 Using the CLI from a local path:
 ```
-poetry run python main.py -d --base-network mainnet --test-cli-path ~/aptos-core/target/debug/aptos
+poetry run python main.py -d --base-network mainnet --test-cli-path ~/libra2-core/target/debug/libra2
 ```
 
 ## Debugging
@@ -39,7 +39,7 @@ docker: no matching manifest for linux/arm64/v8 in the manifest list entries.
 
 Try running the poetry command with this env var:
 ```
-DOCKER_DEFAULT_PLATFORM=linux/amd64 poetry run python main.py --base-network testnet --test-cli-path ~/aptos-core/target/debug/aptos
+DOCKER_DEFAULT_PLATFORM=linux/amd64 poetry run python main.py --base-network testnet --test-cli-path ~/libra2-core/target/debug/libra2
 ```
 This makes the docker commands use the x86_64 images since we don't publish images for ARM.
 
@@ -47,20 +47,20 @@ This makes the docker commands use the x86_64 images since we don't publish imag
 If you see an error like this:
 ```
 Traceback (most recent call last):
-  File "/Users/dport/a/core/crates/aptos/e2e/main.py", line 194, in <module>
+  File "/Users/dport/a/core/crates/libra2/e2e/main.py", line 194, in <module>
     if main():
-  File "/Users/dport/a/core/crates/aptos/e2e/main.py", line 156, in main
+  File "/Users/dport/a/core/crates/libra2/e2e/main.py", line 156, in main
     run_helper.prepare()
-  File "/Users/dport/a/core/crates/aptos/e2e/test_helpers.py", line 155, in prepare
+  File "/Users/dport/a/core/crates/libra2/e2e/test_helpers.py", line 155, in prepare
     self.prepare_cli()
-  File "/Users/dport/a/core/crates/aptos/e2e/test_helpers.py", line 189, in prepare_cli
+  File "/Users/dport/a/core/crates/libra2/e2e/test_helpers.py", line 189, in prepare_cli
     raise RuntimeError(
-RuntimeError: When using --test-cli-path you must use workspace configuration, try running `aptos config set-global-config --config-type workspace`
+RuntimeError: When using --test-cli-path you must use workspace configuration, try running `libra2 config set-global-config --config-type workspace`
 ```
 
 It is because you are using the `--test-cli-path` flag but have configured the CLI to use the `global` config type. This is not currently compatible, you must switch the config type to workspace prior to running the E2E tests:
 ```
-aptos config set-global-config --config-type workspace
+libra2 config set-global-config --config-type workspace
 ```
 
 ### My test doesn't work
@@ -70,11 +70,11 @@ You might be getting output like this:
 2023-06-22 20:27:07,533 - ERROR - test_move_compile_script ...
 ```
 
-The best place to look is the test framework working directory, by default `/tmp/aptos-cli-tests`.
+The best place to look is the test framework working directory, by default `/tmp/libra2-cli-tests`.
 
 In this directory you will find lots of useful output. For example, you can see the stdout of one of the commands in a test case like this:
 ```
-$ cat /tmp/aptos-cli-tests/out/007_test_move_compile_script.stdout
+$ cat /tmp/libra2-cli-tests/out/007_test_move_compile_script.stdout
 {
   "Error": "Move compilation failed: Unable to resolve packages for package 'TwoByTwoTransfer': While resolving dependency 'Libra2Framework' in package 'TwoByTwoTransfer': While processing dependency 'Libra2Framework': Unable to find package manifest for 'Libra2Framework' at \"Move.toml/move/scripts/two_by_two_transfer/../../../framework/libra2-framework\""
 }

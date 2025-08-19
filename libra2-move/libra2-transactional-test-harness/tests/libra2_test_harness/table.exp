@@ -1,5 +1,5 @@
 processed 8 tasks
-task 1 lines 6-8:  run --signers Alice --args x"6170746f735f70756e6b73" x"" x"" 100 x"000000" --show-events -- 0x3::token::create_collection_script [// Mint "geek_token" for collection "aptos_punks"]
+task 1 lines 6-8:  run --signers Alice --args x"6170746f735f70756e6b73" x"" x"" 100 x"000000" --show-events -- 0x3::token::create_collection_script [// Mint "geek_token" for collection "libra2_punks"]
 Events:
 {
     type:    0x3::token::CreateCollection
@@ -65,8 +65,8 @@ key 0x3::token::Collections {
         }
     }
 }
-task 4 lines 13-15:  view_table --table_handle 0x5adf7712b6186bb577ebd9e2067ef3d46014f5bb5fa1c457f51a334295affe9a --key_type 0x1::string::String --value_type 0x3::token::CollectionData --key_value "aptos_punks" [// Alice offers tokens to Bob]
-{"description":"","maximum":"100","mutability_config":{"description":false,"maximum":false,"uri":false},"name":"aptos_punks","supply":"1","uri":""}
+task 4 lines 13-15:  view_table --table_handle 0x5adf7712b6186bb577ebd9e2067ef3d46014f5bb5fa1c457f51a334295affe9a --key_type 0x1::string::String --value_type 0x3::token::CollectionData --key_value "libra2_punks" [// Alice offers tokens to Bob]
+{"description":"","maximum":"100","mutability_config":{"description":false,"maximum":false,"uri":false},"name":"libra2_punks","supply":"1","uri":""}
 task 5 lines 16-18:  run --signers Alice --args @Bob @Alice x"6170746f735f70756e6b73" x"6765656b5f746f6b656e" 0 1 --show-events -- 0x3::token_transfers::offer_script [// Bob accepts tokens from Alice]
 Events:
 {
@@ -97,5 +97,5 @@ Events:
     data:    "9d0000000000000006000000000000000300000000000000c04202000000000058bb000000000000"
 }mutable inputs after call: local#0: 0
 return values: 0
-task 7 lines 21-21:  view_table --table_handle 0x630c3a2b1a1f2a5a9d112eb98bfe1b35265a16f1482e6224950abd8ad4c76d52 --key_type 0x3::token::TokenDataId --value_type 0x3::token::TokenData --key_value {"creator":"0xf75daa73fc071f93593335eb9033da804777eb94491650dd3f095ce6f778acb6","collection":"aptos_punks","name":"geek_token"}
+task 7 lines 21-21:  view_table --table_handle 0x630c3a2b1a1f2a5a9d112eb98bfe1b35265a16f1482e6224950abd8ad4c76d52 --key_type 0x3::token::TokenDataId --value_type 0x3::token::TokenData --key_value {"creator":"0xf75daa73fc071f93593335eb9033da804777eb94491650dd3f095ce6f778acb6","collection":"libra2_punks","name":"geek_token"}
 {"default_properties":{"map":{"data":[]}},"description":"","largest_property_version":"0","maximum":"100","mutability_config":{"description":false,"maximum":false,"properties":false,"royalty":false,"uri":false},"name":"geek_token","royalty":{"payee_address":"0xf75daa73fc071f93593335eb9033da804777eb94491650dd3f095ce6f778acb6","royalty_points_denominator":"1","royalty_points_numerator":"0"},"supply":"10","uri":""}

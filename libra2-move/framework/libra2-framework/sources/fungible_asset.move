@@ -454,7 +454,7 @@ module libra2_framework::fungible_asset {
     )  {
         // Cannot register hook for APT.
         assert!(
-            object::address_from_constructor_ref(constructor_ref) != @aptos_fungible_asset,
+            object::address_from_constructor_ref(constructor_ref) != @libra2_fungible_asset,
             error::permission_denied(EAPT_NOT_DISPATCHABLE)
         );
         assert!(
@@ -712,7 +712,7 @@ module libra2_framework::fungible_asset {
     fun has_deposit_dispatch_function(metadata: Object<Metadata>): bool acquires DispatchFunctionStore {
         let metadata_addr = object::object_address(&metadata);
         // Short circuit on APT for better perf
-        if(metadata_addr != @aptos_fungible_asset && exists<DispatchFunctionStore>(metadata_addr)) {
+        if(metadata_addr != @libra2_fungible_asset && exists<DispatchFunctionStore>(metadata_addr)) {
             option::is_some(&borrow_global<DispatchFunctionStore>(metadata_addr).deposit_function)
         } else {
             false
@@ -732,7 +732,7 @@ module libra2_framework::fungible_asset {
     fun has_withdraw_dispatch_function(metadata: Object<Metadata>): bool acquires DispatchFunctionStore {
         let metadata_addr = object::object_address(&metadata);
         // Short circuit on APT for better perf
-        if (metadata_addr != @aptos_fungible_asset && exists<DispatchFunctionStore>(metadata_addr)) {
+        if (metadata_addr != @libra2_fungible_asset && exists<DispatchFunctionStore>(metadata_addr)) {
             option::is_some(&borrow_global<DispatchFunctionStore>(metadata_addr).withdraw_function)
         } else {
             false
@@ -742,7 +742,7 @@ module libra2_framework::fungible_asset {
     fun has_balance_dispatch_function(metadata: Object<Metadata>): bool acquires DispatchFunctionStore {
         let metadata_addr = object::object_address(&metadata);
         // Short circuit on APT for better perf
-        if (metadata_addr != @aptos_fungible_asset && exists<DispatchFunctionStore>(metadata_addr)) {
+        if (metadata_addr != @libra2_fungible_asset && exists<DispatchFunctionStore>(metadata_addr)) {
             option::is_some(&borrow_global<DispatchFunctionStore>(metadata_addr).derived_balance_function)
         } else {
             false
@@ -751,7 +751,7 @@ module libra2_framework::fungible_asset {
 
     fun has_supply_dispatch_function(metadata_addr: address): bool {
         // Short circuit on APT for better perf
-        if (metadata_addr != @aptos_fungible_asset) {
+        if (metadata_addr != @libra2_fungible_asset) {
             exists<DeriveSupply>(metadata_addr)
         } else {
             false

@@ -1,15 +1,15 @@
-# Copyright © Aptos Foundation
+# Copyright © A-p-t-o-s Foundation
 # SPDX-License-Identifier: Apache-2.0
 
 ###########################################
 # Build and package a release for the CLI #
 ###########################################
 
-# Note: This must be run from the root of the aptos-core repository.
+# Note: This must be run from the root of the libra2-core repository.
 
 # Set up basic variables.
-$NAME="aptos-cli"
-$CRATE_NAME="aptos"
+$NAME="libra2-cli"
+$CRATE_NAME="libra2"
 $CARGO_PATH="crates\$CRATE_NAME\Cargo.toml"
 $Env:VCPKG_ROOT = 'C:\vcpkg\'
 

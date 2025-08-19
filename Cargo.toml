@@ -53,7 +53,6 @@ members = [
     "consensus/consensus-types",
     "consensus/safety-rules",
     "crates/libra2",
-#    "crates/aptos",
     "crates/libra2-admin-service",
     "crates/libra2-api-tester",
     "crates/libra2-bcs-utils",
@@ -269,7 +268,6 @@ default-members = [
     "libra2-node",
     "consensus/safety-rules",
     "crates/libra2",
-#    "crates/aptos",
     "crates/libra2-debugger",
     "crates/libra2-faucet/service",
     "crates/libra2-keygen",
@@ -296,7 +294,6 @@ rust-version = "1.80.1"
 # Internal crate dependencies.
 # Please do not add any test features here: they should be declared by the individual crate.
 libra2 = { path = "crates/libra2" }
-# aptos = { path = "crates/aptos" }
 libra2-accumulator = { path = "storage/accumulator" }
 libra2-admin-service = { path = "crates/libra2-admin-service" }
 libra2-aggregator = { path = "libra2-move/libra2-aggregator" }
@@ -363,7 +360,7 @@ libra2-genesis = { path = "crates/libra2-genesis" }
 libra2-github-client = { path = "crates/libra2-github-client" }
 libra2-global-constants = { path = "config/global-constants" }
 libra2-id-generator = { path = "crates/libra2-id-generator" }
-aptos-indexer = { path = "crates/indexer" }
+libra2-indexer = { path = "crates/indexer" }
 libra2-indexer-grpc-cache-worker = { path = "ecosystem/indexer-grpc/indexer-grpc-cache-worker" }
 libra2-indexer-grpc-data-service = { path = "ecosystem/indexer-grpc/indexer-grpc-data-service" }
 libra2-indexer-grpc-data-service-v2 = { path = "ecosystem/indexer-grpc/indexer-grpc-data-service-v2" }
@@ -707,7 +704,7 @@ pretty = "0.10.0"
 pretty_assertions = "1.2.1"
 # We set default-features to false so we don't onboard the libpq dep. See more here:
 # https://github.com/libra2org/libra2-core/pull/12568
-processor = { git = "https://github.com/aptos-labs/aptos-indexer-processors-v2.git", tag = "aptos-indexer-processors-v2.1.5", default-features = false }
+processor = { git = "https://github.com/libra2org/libra2-indexer-processors-v2.git", default-features = false }
 procfs = "0.14.1"
 proc-macro2 = "1.0.38"
 project-root = "0.2.2"

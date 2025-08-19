@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use anyhow::Result;
@@ -23,11 +23,11 @@ struct ProcessorStatus {
 
 fn indexer_status_url(chain_id: ChainId) -> &'static str {
     if chain_id.is_mainnet() {
-        "https://indexer.mainnet.aptoslabs.com/api/rest/get_latest_processor_status"
+        "https://indexer.mainnet.libra2.org/api/rest/get_latest_processor_status"
     } else if chain_id.is_testnet() {
-        "https://indexer-testnet.staging.gcp.aptosdev.com/api/rest/get_latest_processor_status"
+        "https://indexer-testnet.staging.gcp.libra2.org/api/rest/get_latest_processor_status"
     } else {
-        "https://indexer-devnet.staging.gcp.aptosdev.com/api/rest/get_latest_processor_status"
+        "https://indexer-devnet.staging.gcp.libra2.org/api/rest/get_latest_processor_status"
     }
 }
 

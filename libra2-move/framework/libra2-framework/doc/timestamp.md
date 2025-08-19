@@ -236,7 +236,7 @@ Gets the current time in seconds.
 
 <tr>
 <td>2</td>
-<td>The global wall clock resource should only be owned by the Aptos framework.</td>
+<td>The global wall clock resource should only be owned by the Libra2 framework.</td>
 <td>High</td>
 <td>The function set_time_has_started ensures that only the libra2_framework account can possess the CurrentTimeMicroseconds resource using the assert_libra2_framework function.</td>
 <td>Formally verified via <a href="#high-level-req-2">module</a>.</td>
@@ -331,4 +331,4 @@ Gets the current time in seconds.
 </code></pre>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

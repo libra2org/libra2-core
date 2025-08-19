@@ -111,10 +111,10 @@ spec libra2_framework::account {
     /// Only the address `@libra2_framework` can call.
     /// OriginatingAddress does not exist under `@libra2_framework` before the call.
     spec initialize(libra2_framework: &signer) {
-        let aptos_addr = signer::address_of(libra2_framework);
-        aborts_if !system_addresses::is_libra2_framework_address(aptos_addr);
-        aborts_if exists<OriginatingAddress>(aptos_addr);
-        ensures exists<OriginatingAddress>(aptos_addr);
+        let libra2_addr = signer::address_of(libra2_framework);
+        aborts_if !system_addresses::is_libra2_framework_address(libra2_addr);
+        aborts_if exists<OriginatingAddress>(libra2_addr);
+        ensures exists<OriginatingAddress>(libra2_addr);
     }
 
     /// Ensure that the account exists at the end of the call.

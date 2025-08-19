@@ -1,19 +1,19 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 /// A collection of constants and default values for configuring telemetry components
 
 // Environment variables
-pub(crate) const ENV_APTOS_DISABLE_TELEMETRY: &str = "APTOS_DISABLE_TELEMETRY";
-pub(crate) const ENV_APTOS_FORCE_ENABLE_TELEMETRY: &str = "APTOS_FORCE_ENABLE_TELEMETRY";
-pub(crate) const ENV_APTOS_DISABLE_TELEMETRY_PUSH_METRICS: &str =
-    "APTOS_DISABLE_TELEMETRY_PUSH_METRICS";
-pub(crate) const ENV_APTOS_DISABLE_TELEMETRY_PUSH_LOGS: &str = "APTOS_DISABLE_TELEMETRY_PUSH_LOGS";
-pub(crate) const ENV_APTOS_DISABLE_TELEMETRY_PUSH_EVENTS: &str =
-    "APTOS_DISABLE_TELEMETRY_PUSH_EVENTS";
-pub(crate) const ENV_APTOS_DISABLE_PROMETHEUS_NODE_METRICS: &str =
-    "APTOS_DISABLE_PROMETHEUS_NODE_METRICS";
-pub(crate) const ENV_APTOS_DISABLE_LOG_ENV_POLLING: &str = "APTOS_DISABLE_LOG_ENV_POLLING";
+pub(crate) const ENV_LIBRA2_DISABLE_TELEMETRY: &str = "LIBRA2_DISABLE_TELEMETRY";
+pub(crate) const ENV_LIBRA2_FORCE_ENABLE_TELEMETRY: &str = "LIBRA2_FORCE_ENABLE_TELEMETRY";
+pub(crate) const ENV_LIBRA2_DISABLE_TELEMETRY_PUSH_METRICS: &str =
+    "LIBRA2_DISABLE_TELEMETRY_PUSH_METRICS";
+pub(crate) const ENV_LIBRA2_DISABLE_TELEMETRY_PUSH_LOGS: &str = "LIBRA2_DISABLE_TELEMETRY_PUSH_LOGS";
+pub(crate) const ENV_LIBRA2_DISABLE_TELEMETRY_PUSH_EVENTS: &str =
+    "LIBRA2_DISABLE_TELEMETRY_PUSH_EVENTS";
+pub(crate) const ENV_LIBRA2_DISABLE_PROMETHEUS_NODE_METRICS: &str =
+    "LIBRA2_DISABLE_PROMETHEUS_NODE_METRICS";
+pub(crate) const ENV_LIBRA2_DISABLE_LOG_ENV_POLLING: &str = "LIBRA2_DISABLE_LOG_ENV_POLLING";
 
 pub(crate) const ENV_GA_MEASUREMENT_ID: &str = "GA_MEASUREMENT_ID";
 pub(crate) const ENV_GA_API_SECRET: &str = "GA_API_SECRET";
@@ -21,16 +21,16 @@ pub(crate) const ENV_TELEMETRY_SERVICE_URL: &str = "TELEMETRY_SERVICE_URL";
 
 // Default Google Analytic values.
 // TODO: Rotate these periodically.
-pub(crate) const APTOS_GA_MEASUREMENT_ID: &str = "G-ZX4L6WPCFZ";
-pub(crate) const APTOS_GA_API_SECRET: &str = "ArtslKPTTjeiMi1n-IR39g";
+pub(crate) const LIBRA2_GA_MEASUREMENT_ID: &str = "G-ZX4L6WPCFZ";
+pub(crate) const LIBRA2_GA_API_SECRET: &str = "ArtslKPTTjeiMi1n-IR39g";
 
 // Useful URLS.
 // Note: the measurement protocol requires HTTPS.
 // See: https://developers.google.com/analytics/devguides/collection/protocol/v1/reference#transport
 pub(crate) const GA4_URL: &str = "https://www.google-analytics.com/mp/collect";
 pub(crate) const HTTPBIN_URL: &str = "https://httpbin.org/ip";
-pub(crate) const TELEMETRY_SERVICE_URL: &str = "https://telemetry.aptoslabs.com";
-pub(crate) const MAINNET_TELEMETRY_SERVICE_URL: &str = "https://telemetry.mainnet.aptoslabs.com";
+pub(crate) const TELEMETRY_SERVICE_URL: &str = "https://telemetry.libra2.org";
+pub(crate) const MAINNET_TELEMETRY_SERVICE_URL: &str = "https://telemetry.mainnet.libra2.org";
 
 // Frequencies for the various metrics and pushes
 pub(crate) const NODE_BUILD_INFO_FREQ_SECS: u64 = 60 * 60; // 60 minutes

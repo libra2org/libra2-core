@@ -1,7 +1,7 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-//! Aptos Rosetta API
+//! Libra2 Rosetta API
 //!
 //! [Rosetta API Spec](https://www.rosetta-api.org/docs/Reference.html)
 

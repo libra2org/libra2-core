@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::metrics::{self, increment_log_ingest_failures_by, increment_log_ingest_successes_by};
@@ -421,7 +421,7 @@ async fn error_for_status_with_body(response: Response) -> Result<Response, anyh
 mod tests {
 
     use super::*;
-    use crate::metrics::{APTOS_TELEMETRY_SERVICE_FAILURE, APTOS_TELEMETRY_SERVICE_SUCCESS};
+    use crate::metrics::{LIBRA2_TELEMETRY_SERVICE_FAILURE, LIBRA2_TELEMETRY_SERVICE_SUCCESS};
     use libra2_crypto::Uniform;
     use libra2_telemetry_service::types::telemetry::TelemetryEvent;
     use httpmock::MockServer;
@@ -559,13 +559,13 @@ mod tests {
 
         mock.assert_hits(1);
         assert_eq!(
-            APTOS_TELEMETRY_SERVICE_SUCCESS
+            LIBRA2_TELEMETRY_SERVICE_SUCCESS
                 .with_label_values(&[event_name])
                 .get(),
             0
         );
         assert_eq!(
-            APTOS_TELEMETRY_SERVICE_FAILURE
+            LIBRA2_TELEMETRY_SERVICE_FAILURE
                 .with_label_values(&[event_name])
                 .get(),
             1

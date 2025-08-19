@@ -48,7 +48,7 @@ if __name__ == "__main__":
     main()
 
 
-class CheckAptosNodeVersionTests(unittest.TestCase):
+class CheckLibra2NodeVersionTests(unittest.TestCase):
     def test_envs_not_specified(self):
         with self.assertRaises(SystemExit):
             os.environ["RELEASE_TAG"] = ""

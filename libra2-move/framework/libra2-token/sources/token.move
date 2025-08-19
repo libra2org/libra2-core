@@ -260,7 +260,7 @@ module libra2_token::token {
 
     /// Represent the collection metadata
     struct CollectionData has store {
-        /// A description for the token collection Eg: "Aptos Toad Overload"
+        /// A description for the token collection Eg: "Libra2 Toad Overload"
         description: String,
         /// The collection name, which should be unique among all collections by the creator; the name should also be smaller than 128 characters, eg: "Animal Collection"
         name: String,
@@ -269,7 +269,7 @@ module libra2_token::token {
         /// The number of different TokenData entries in this collection
         supply: u64,
         /// If maximal is a non-zero value, the number of created TokenData entries should be smaller or equal to this maximum
-        /// If maximal is 0, Aptos doesn't track the supply of this collection, and there is no limit
+        /// If maximal is 0, Libra2 doesn't track the supply of this collection, and there is no limit
         maximum: u64,
         /// control which collectionData field is mutable
         mutability_config: CollectionMutabilityConfig,

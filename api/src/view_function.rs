@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
@@ -54,7 +54,7 @@ pub enum ViewFunctionRequest {
     #[oai(content_type = "application/json")]
     Json(Json<ViewRequest>),
 
-    #[oai(content_type = "application/x.aptos.view_function+bcs")]
+    #[oai(content_type = "application/x.libra2.view_function+bcs")]
     Bcs(Bcs),
 }
 
@@ -64,7 +64,7 @@ impl ViewFunctionApi {
     ///
     /// Execute the Move function with the given parameters and return its execution result.
     ///
-    /// The Aptos nodes prune account state history, via a configurable time window.
+    /// The Libra2 nodes prune account state history, via a configurable time window.
     /// If the requested ledger version has been pruned, the server responds with a 410.
     #[oai(
         path = "/view",

@@ -5,7 +5,7 @@ spec libra2_framework::code {
     /// Criticality: Critical
     /// Implementation: The publish_package function may only be able to update the package if the signer is the actual
     /// owner of the package.
-    /// Enforcement: The Aptos upgrade native functions have been manually audited.
+    /// Enforcement: The Libra2 upgrade native functions have been manually audited.
     ///
     /// No.: 2
     /// Requirement: The arbitrary upgrade policy should never be used.
@@ -80,9 +80,9 @@ spec libra2_framework::code {
     }
 
     spec initialize(libra2_framework: &signer, package_owner: &signer, metadata: PackageMetadata) {
-        let aptos_addr = signer::address_of(libra2_framework);
+        let libra2_addr = signer::address_of(libra2_framework);
         let owner_addr = signer::address_of(package_owner);
-        aborts_if !system_addresses::is_libra2_framework_address(aptos_addr);
+        aborts_if !system_addresses::is_libra2_framework_address(libra2_addr);
 
         ensures exists<PackageRegistry>(owner_addr);
     }

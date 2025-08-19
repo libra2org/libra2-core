@@ -4,8 +4,8 @@ locals {
 
 resource "azurerm_kubernetes_cluster" "aptos" {
   name                            = "aptos-${terraform.workspace}"
-  resource_group_name             = azurerm_resource_group.aptos.name
-  location                        = azurerm_resource_group.aptos.location
+  resource_group_name             = azurerm_resource_group.libra2.name
+  location                        = azurerm_resource_group.libra2.location
   dns_prefix                      = "aptos-${terraform.workspace}"
   kubernetes_version              = local.kubernetes_version
   api_server_authorized_ip_ranges = concat(["${azurerm_public_ip.nat.ip_address}/32"], var.k8s_api_sources)
@@ -25,14 +25,14 @@ resource "azurerm_kubernetes_cluster" "aptos" {
   }
 
   service_principal {
-    client_id     = azuread_service_principal.aptos.application_id
-    client_secret = azuread_application_password.aptos.value
+    client_id     = azuread_service_principal.libra2.application_id
+    client_secret = azuread_application_password.libra2.value
   }
 }
 
 resource "azurerm_kubernetes_cluster_node_pool" "validators" {
-  kubernetes_cluster_id = azurerm_kubernetes_cluster.aptos.id
-  orchestrator_version  = azurerm_kubernetes_cluster.aptos.kubernetes_version
+  kubernetes_cluster_id = azurerm_kubernetes_cluster.libra2.id
+  orchestrator_version  = azurerm_kubernetes_cluster.libra2.kubernetes_version
 
   name            = "validators"
   vm_size         = var.validator_instance_type
@@ -44,15 +44,15 @@ resource "azurerm_kubernetes_cluster_node_pool" "validators" {
 
 resource "azurerm_log_analytics_workspace" "aptos" {
   name                = "aptos-${terraform.workspace}"
-  resource_group_name = azurerm_resource_group.aptos.name
-  location            = azurerm_resource_group.aptos.location
+  resource_group_name = azurerm_resource_group.libra2.name
+  location            = azurerm_resource_group.libra2.location
   retention_in_days   = 30
 }
 
 resource "azurerm_monitor_diagnostic_setting" "cluster" {
   name                       = "cluster"
-  target_resource_id         = azurerm_kubernetes_cluster.aptos.id
-  log_analytics_workspace_id = azurerm_log_analytics_workspace.aptos.id
+  target_resource_id         = azurerm_kubernetes_cluster.libra2.id
+  log_analytics_workspace_id = azurerm_log_analytics_workspace.libra2.id
 
   log { category = "kube-apiserver" }
   log { category = "kube-controller-manager" }

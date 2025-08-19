@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -26,7 +26,7 @@ pub static EXECUTE_CHUNK: Lazy<Histogram> = Lazy::new(|| {
         // metric name
         "libra2_executor_execute_chunk_seconds",
         // metric description
-        "The time spent in seconds of chunk execution in Aptos executor",
+        "The time spent in seconds of chunk execution in Libra2 executor",
         exponential_buckets(/*start=*/ 1e-3, /*factor=*/ 2.0, /*count=*/ 20).unwrap(),
     )
     .unwrap()
@@ -37,7 +37,7 @@ pub static APPLY_CHUNK: Lazy<Histogram> = Lazy::new(|| {
         // metric name
         "libra2_executor_apply_chunk_seconds",
         // metric description
-        "The time spent in seconds of applying txn output chunk in Aptos executor",
+        "The time spent in seconds of applying txn output chunk in Libra2 executor",
         exponential_buckets(/*start=*/ 1e-3, /*factor=*/ 2.0, /*count=*/ 20).unwrap(),
     )
     .unwrap()
@@ -48,7 +48,7 @@ pub static COMMIT_CHUNK: Lazy<Histogram> = Lazy::new(|| {
         // metric name
         "libra2_executor_commit_chunk_seconds",
         // metric description
-        "The time spent in seconds of committing chunk in Aptos executor",
+        "The time spent in seconds of committing chunk in Libra2 executor",
         exponential_buckets(/*start=*/ 1e-3, /*factor=*/ 2.0, /*count=*/ 20).unwrap(),
     )
     .unwrap()
@@ -70,7 +70,7 @@ pub static OTHER_TIMERS: Lazy<HistogramVec> = Lazy::new(|| {
         // metric name
         "libra2_executor_other_timers_seconds",
         // metric description
-        "The time spent in seconds of others in Aptos executor",
+        "The time spent in seconds of others in Libra2 executor",
         &["name"],
         exponential_buckets(/*start=*/ 1e-3, /*factor=*/ 2.0, /*count=*/ 20).unwrap(),
     )
@@ -131,7 +131,7 @@ pub static COMMIT_BLOCKS: Lazy<Histogram> = Lazy::new(|| {
         // metric name
         "libra2_executor_commit_blocks_seconds",
         // metric description
-        "The total time spent in seconds of commiting blocks in Aptos executor ",
+        "The total time spent in seconds of commiting blocks in Libra2 executor ",
         exponential_buckets(/*start=*/ 1e-3, /*factor=*/ 2.0, /*count=*/ 20).unwrap(),
     )
     .unwrap()
@@ -142,7 +142,7 @@ pub static SAVE_TRANSACTIONS: Lazy<Histogram> = Lazy::new(|| {
         // metric name
         "libra2_executor_save_transactions_seconds",
         // metric description
-        "The time spent in seconds of calling save_transactions to storage in Aptos executor",
+        "The time spent in seconds of calling save_transactions to storage in Libra2 executor",
         exponential_buckets(/*start=*/ 1e-3, /*factor=*/ 2.0, /*count=*/ 20).unwrap(),
     )
     .unwrap()
@@ -153,7 +153,7 @@ pub static TRANSACTIONS_SAVED: Lazy<Histogram> = Lazy::new(|| {
         // metric name
         "libra2_executor_transactions_saved",
         // metric description
-        "The number of transactions saved to storage in Aptos executor"
+        "The number of transactions saved to storage in Libra2 executor"
     )
     .unwrap()
 });
@@ -165,7 +165,7 @@ pub static TRANSACTIONS_SAVED: Lazy<Histogram> = Lazy::new(|| {
 /// Count of the executed transactions since last restart.
 pub static PROCESSED_TXNS_COUNT: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_processed_txns_count",
+        "libra2_processed_txns_count",
         "Count of the transactions since last restart. state is success, failed or retry",
         &["process", "kind", "state"]
     )
@@ -175,7 +175,7 @@ pub static PROCESSED_TXNS_COUNT: Lazy<IntCounterVec> = Lazy::new(|| {
 /// Count of the executed transactions since last restart.
 pub static PROCESSED_FAILED_TXNS_REASON_COUNT: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_processed_failed_txns_reason_count",
+        "libra2_processed_failed_txns_reason_count",
         "Count of the transactions since last restart. state is success, failed or retry",
         &["is_detailed", "process", "state", "reason", "error_code"]
     )
@@ -185,7 +185,7 @@ pub static PROCESSED_FAILED_TXNS_REASON_COUNT: Lazy<IntCounterVec> = Lazy::new(|
 /// Counter of executed user transactions by payload type
 pub static PROCESSED_USER_TXNS_BY_PAYLOAD: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_processed_user_transactions_by_payload",
+        "libra2_processed_user_transactions_by_payload",
         "Counter of processed user transactions by payload type",
         &["process", "payload_type", "state"]
     )
@@ -195,7 +195,7 @@ pub static PROCESSED_USER_TXNS_BY_PAYLOAD: Lazy<IntCounterVec> = Lazy::new(|| {
 /// Counter of executed EntryFunction user transactions by module
 pub static PROCESSED_USER_TXNS_ENTRY_FUNCTION_BY_MODULE: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_processed_user_transactions_entry_function_by_module",
+        "libra2_processed_user_transactions_entry_function_by_module",
         "Counter of processed EntryFunction user transactions by module",
         &["is_detailed", "process", "account", "name", "state"]
     )
@@ -206,7 +206,7 @@ pub static PROCESSED_USER_TXNS_ENTRY_FUNCTION_BY_MODULE: Lazy<IntCounterVec> = L
 pub static PROCESSED_USER_TXNS_ENTRY_FUNCTION_BY_CORE_METHOD: Lazy<IntCounterVec> =
     Lazy::new(|| {
         register_int_counter_vec!(
-            "aptos_processed_user_transactions_entry_function_by_core_method",
+            "libra2_processed_user_transactions_entry_function_by_core_method",
             "Counter of processed EntryFunction user transaction for core address by method",
             &["process", "module", "method", "state"]
         )
@@ -216,7 +216,7 @@ pub static PROCESSED_USER_TXNS_ENTRY_FUNCTION_BY_CORE_METHOD: Lazy<IntCounterVec
 /// Counter of executed EntryFunction user transaction for core address by method
 pub static PROCESSED_USER_TXNS_CORE_EVENTS: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_processed_user_transactions_core_events",
+        "libra2_processed_user_transactions_core_events",
         "Counter of processed EntryFunction user transaction for core address by method",
         &["is_detailed", "process", "account", "creation_number"]
     )
@@ -225,7 +225,7 @@ pub static PROCESSED_USER_TXNS_CORE_EVENTS: Lazy<IntCounterVec> = Lazy::new(|| {
 
 pub static PROCESSED_TXNS_OUTPUT_SIZE: Lazy<HistogramVec> = Lazy::new(|| {
     register_histogram_vec!(
-        "aptos_processed_txns_output_size",
+        "libra2_processed_txns_output_size",
         "Histogram of transaction output sizes",
         &["process"],
         exponential_buckets(/*start=*/ 1.0, /*factor=*/ 2.0, /*count=*/ 25).unwrap()
@@ -235,7 +235,7 @@ pub static PROCESSED_TXNS_OUTPUT_SIZE: Lazy<HistogramVec> = Lazy::new(|| {
 
 pub static PROCESSED_TXNS_NUM_AUTHENTICATORS: Lazy<HistogramVec> = Lazy::new(|| {
     register_histogram_vec!(
-        "aptos_processed_txns_num_authenticators",
+        "libra2_processed_txns_num_authenticators",
         "Histogram of number of authenticators in a transaction",
         &["process"],
         exponential_buckets(/*start=*/ 1.0, /*factor=*/ 2.0, /*count=*/ 6).unwrap()
@@ -245,7 +245,7 @@ pub static PROCESSED_TXNS_NUM_AUTHENTICATORS: Lazy<HistogramVec> = Lazy::new(|| 
 
 pub static PROCESSED_TXNS_AUTHENTICATOR: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_processed_txns_authenticator",
+        "libra2_processed_txns_authenticator",
         "Counter of authenticators by type, for processed transactions",
         &["process", "auth_type"]
     )

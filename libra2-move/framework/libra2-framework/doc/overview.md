@@ -4,7 +4,7 @@
 # Libra2 Framework
 
 
-This is the reference documentation of the Aptos framework.
+This is the reference documentation of the Libra2 framework.
 
 
 <a id="@Index_1"></a>
@@ -85,4 +85,4 @@ This is the reference documentation of the Aptos framework.
 -  [`0x1::voting`](voting.md#0x1_voting)
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

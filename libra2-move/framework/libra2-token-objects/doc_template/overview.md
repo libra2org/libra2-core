@@ -1,6 +1,6 @@
-# Aptos Token Framework
+# Libra2 Token Framework
 
-This is the reference documentation of the Aptos Token Objects framework.
+This is the reference documentation of the Libra2 Token Objects framework.
 
 ## Index
 

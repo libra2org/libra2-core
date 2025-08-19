@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -94,7 +94,7 @@ const RECONFIGURATION_STATE_MODULE_NAME: &str = "reconfiguration_state";
 
 const NUM_SECONDS_PER_YEAR: u64 = 365 * 24 * 60 * 60;
 const MICRO_SECONDS_PER_SECOND: u64 = 1_000_000;
-const APTOS_COINS_BASE_WITH_DECIMALS: u64 = u64::pow(10, 8);
+const LIBRA2_COINS_BASE_WITH_DECIMALS: u64 = u64::pow(10, 8);
 
 pub struct GenesisConfiguration {
     pub allow_new_validators: bool,
@@ -133,7 +133,7 @@ pub fn default_gas_schedule() -> GasScheduleV2 {
     }
 }
 
-pub fn encode_aptos_mainnet_genesis_transaction(
+pub fn encode_libra2_mainnet_genesis_transaction(
     accounts: &[AccountBalance],
     employees: &[EmployeePool],
     validators: &[ValidatorWithCommissionRate],
@@ -239,7 +239,7 @@ pub fn encode_aptos_mainnet_genesis_transaction(
 }
 
 pub fn encode_genesis_transaction(
-    aptos_root_key: Ed25519PublicKey,
+    libra2_root_key: Ed25519PublicKey,
     validators: &[Validator],
     framework: &ReleaseBundle,
     chain_id: ChainId,
@@ -249,7 +249,7 @@ pub fn encode_genesis_transaction(
     gas_schedule: &GasScheduleV2,
 ) -> Transaction {
     Transaction::GenesisTransaction(WriteSetPayload::Direct(encode_genesis_change_set(
-        &aptos_root_key,
+        &libra2_root_key,
         validators,
         framework,
         chain_id,
@@ -1463,12 +1463,12 @@ fn mainnet_genesis_config() -> GenesisConfiguration {
         allow_new_validators: true,
         epoch_duration_secs: 2 * 3600, // 2 hours
         is_test: false,
-        min_stake: 1_000_000 * APTOS_COINS_BASE_WITH_DECIMALS, // 1M APT
+        min_stake: 1_000_000 * LIBRA2_COINS_BASE_WITH_DECIMALS, // 1M APT
         // 400M APT
-        min_voting_threshold: (400_000_000 * APTOS_COINS_BASE_WITH_DECIMALS as u128),
-        max_stake: 50_000_000 * APTOS_COINS_BASE_WITH_DECIMALS, // 50M APT.
+        min_voting_threshold: (400_000_000 * LIBRA2_COINS_BASE_WITH_DECIMALS as u128),
+        max_stake: 50_000_000 * LIBRA2_COINS_BASE_WITH_DECIMALS, // 50M APT.
         recurring_lockup_duration_secs: 30 * 24 * 3600,         // 1 month
-        required_proposer_stake: 1_000_000 * APTOS_COINS_BASE_WITH_DECIMALS, // 1M APT
+        required_proposer_stake: 1_000_000 * LIBRA2_COINS_BASE_WITH_DECIMALS, // 1M APT
         rewards_apy_percentage: 10,
         voting_duration_secs: 7 * 24 * 3600, // 7 days
         voting_power_increase_limit: 30,
@@ -1532,8 +1532,8 @@ pub fn test_mainnet_end_to_end() {
         write_set::TransactionWrite,
     };
 
-    let balance = 10_000_000 * APTOS_COINS_BASE_WITH_DECIMALS;
-    let non_validator_balance = 10 * APTOS_COINS_BASE_WITH_DECIMALS;
+    let balance = 10_000_000 * LIBRA2_COINS_BASE_WITH_DECIMALS;
+    let non_validator_balance = 10 * LIBRA2_COINS_BASE_WITH_DECIMALS;
 
     // currently just test that all functions have the right interface
     let account44 = AccountAddress::from_hex_literal("0x44").unwrap();
@@ -1709,7 +1709,7 @@ pub fn test_mainnet_end_to_end() {
         },
     ];
 
-    let transaction = encode_aptos_mainnet_genesis_transaction(
+    let transaction = encode_libra2_mainnet_genesis_transaction(
         &accounts,
         &employees,
         &validators,

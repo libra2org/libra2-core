@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
@@ -23,7 +23,7 @@ fn get_index_response() -> String {
     let mut index_response: Vec<String> = Vec::new();
 
     // Add the list of available endpoints
-    index_response.push("Welcome to the Aptos Inspection Service!".into());
+    index_response.push("Welcome to the Libra2 Inspection Service!".into());
     index_response.push("The following endpoints are available:".into());
     index_response.push(format!("\t- {}", CONFIGURATION_PATH));
     index_response.push(format!("\t- {}", CONSENSUS_HEALTH_CHECK_PATH));

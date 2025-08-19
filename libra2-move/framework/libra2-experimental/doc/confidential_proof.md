@@ -3074,4 +3074,4 @@ Raises 2 to the power of the provided exponent and returns the result as a scala
 </details>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

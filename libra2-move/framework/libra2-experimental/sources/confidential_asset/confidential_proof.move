@@ -24,12 +24,12 @@ module libra2_experimental::confidential_proof {
     // Constants
     //
 
-    const FIAT_SHAMIR_WITHDRAWAL_SIGMA_DST: vector<u8> = b"AptosConfidentialAsset/WithdrawalProofFiatShamir";
-    const FIAT_SHAMIR_TRANSFER_SIGMA_DST: vector<u8> = b"AptosConfidentialAsset/TransferProofFiatShamir";
-    const FIAT_SHAMIR_ROTATION_SIGMA_DST: vector<u8> = b"AptosConfidentialAsset/RotationProofFiatShamir";
-    const FIAT_SHAMIR_NORMALIZATION_SIGMA_DST: vector<u8> = b"AptosConfidentialAsset/NormalizationProofFiatShamir";
+    const FIAT_SHAMIR_WITHDRAWAL_SIGMA_DST: vector<u8> = b"Libra2ConfidentialAsset/WithdrawalProofFiatShamir";
+    const FIAT_SHAMIR_TRANSFER_SIGMA_DST: vector<u8> = b"Libra2ConfidentialAsset/TransferProofFiatShamir";
+    const FIAT_SHAMIR_ROTATION_SIGMA_DST: vector<u8> = b"Libra2ConfidentialAsset/RotationProofFiatShamir";
+    const FIAT_SHAMIR_NORMALIZATION_SIGMA_DST: vector<u8> = b"Libra2ConfidentialAsset/NormalizationProofFiatShamir";
 
-    const BULLETPROOFS_DST: vector<u8> = b"AptosConfidentialAsset/BulletproofRangeProof";
+    const BULLETPROOFS_DST: vector<u8> = b"Libra2ConfidentialAsset/BulletproofRangeProof";
     const BULLETPROOFS_NUM_BITS: u64 = 16;
 
     //

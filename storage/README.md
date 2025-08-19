@@ -51,7 +51,7 @@ storage:
 
 Now here's the full set of configs, with their default values and explanations.
 The default values should work in most cases and generally speaking don't need
-to be changed. Another reason to not overriding them is the developers of Aptos
+to be changed. Another reason to not overriding them is the developers of Libra2
 can tune the default configs with new software releases and a override will
 make your node miss it.
 If you do have a reason to change them, probably read the more
@@ -277,7 +277,7 @@ and can mess up with the backup storage, use only at your own risk.
 
 It's part of the Libra2 API functionality to bootstrap a Libra2DB with a backup.
 When emergency happens and the need to do the somewhat manual bootstrapping is
-high, Aptos will provide a backup source in the form of a yaml config file. Otherwise
+high, Libra2 will provide a backup source in the form of a yaml config file. Otherwise
 one can play with a config created by herself (probably the same one used in the
 backup process described in the previous section.).
 
@@ -312,7 +312,7 @@ OPTIONS:
 
         --target-db-dir <DB_DIR>
             Target dir where the tool recreates a Libra2DB with snapshots and transactions provided
-            in the backup. The data folder can later be used to start an Aptos node. e.g. /opt/
+            in the backup. The data folder can later be used to start an Libra2 node. e.g. /opt/
             aptos/data/db
 
     -V, --version

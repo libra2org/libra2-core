@@ -1,12 +1,12 @@
 ---
-id: Aptos-vm-benchmarks
+id: Libra2-vm-benchmarks
 title: Libra2 VM Benchmarks
 ---
 
 ## Libra2 VM Benchmarks
 
 The Libra2 VM Benchmark allows anyone to specify a set of Move modules and benchmark 
-the running time of transactions in the Libra2VM measured in milliseconds. The Aptos
+the running time of transactions in the Libra2VM measured in milliseconds. The Libra2
 VM Benchmark allows an arbitrary amount of packages to be benchmarked.
 
 ## Usage

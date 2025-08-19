@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{assert_success, tests::common, MoveHarness};
@@ -250,7 +250,7 @@ fn generate_nft_tutorial_part4_signature() {
         module_name: String::from("create_nft_getting_production_ready"),
         struct_name: String::from("MintProofChallenge"),
         // change the `receiver_account_sequence_number` to the right sequence number
-        // you can find an account's sequence number by searching for the account's address on explorer.aptoslabs.com and going to the `Info` tab
+        // you can find an account's sequence number by searching for the account's address on explorer.libra2.org and going to the `Info` tab
         receiver_account_sequence_number: 0,
         receiver_account_address: *nft_receiver.address(),
         token_data_id,

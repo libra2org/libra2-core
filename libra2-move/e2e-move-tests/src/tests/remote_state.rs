@@ -1,10 +1,10 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 //! # Overview
 //! This module contains tests demonstrating how to use [`MoveHarness`]'s
 //! network-forking feature, allowing simulations on top of the current state
-//! of a remote Aptos network.
+//! of a remote Libra2 network.
 //!
 //! **Note**: These simulations run entirely locally -- they do **not** affect the
 //! actual remote network state in any way.
@@ -33,7 +33,7 @@ use libra2_types::account_address::AccountAddress;
 use move_core_types::{language_storage::TypeTag, value::MoveValue};
 use std::str::FromStr;
 
-const APTOS_COIN_STRUCT_STRING: &str = "0x1::libra2_coin::Libra2Coin";
+const LIBRA2_COIN_STRUCT_STRING: &str = "0x1::libra2_coin::Libra2Coin";
 
 const TESTNET_TXN_VERSION: u64 = 6691904943;
 const TESTNET_ACCOUNT_ADDR: &str =
@@ -47,7 +47,7 @@ fn get_account_apt_balance(h: &mut MoveHarness, addr: AccountAddress) -> u64 {
     let bytes = h
         .execute_view_function(
             str::parse("0x1::coin::balance").unwrap(),
-            vec![TypeTag::from_str(APTOS_COIN_STRUCT_STRING).unwrap()],
+            vec![TypeTag::from_str(LIBRA2_COIN_STRUCT_STRING).unwrap()],
             vec![addr.to_vec()],
         )
         .values
@@ -68,7 +68,7 @@ async fn view_existing_account_balance() {
     // Providing an API key raises these limits significantly.
     //
     // If you hit rate limits, you can create a free Libra2 Build account and generate an API key:
-    // - https://build.aptoslabs.com/docs/start#api-quick-start
+    // - https://build.libra2.org/docs/start#api-quick-start
     //
     // To use an API key here, switch to the alternative constructor:
     // `MoveHarness::new_with_remote_state_with_api_key`.

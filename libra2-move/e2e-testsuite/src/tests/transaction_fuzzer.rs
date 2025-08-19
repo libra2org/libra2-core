@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -14,7 +14,7 @@ proptest! {
     ) {
         let executor = FakeExecutor::from_head_genesis();
         let accounts = vec![
-            (Account::new_aptos_root(), 0),
+            (Account::new_libra2_root(), 0),
         ];
         let num_accounts = accounts.len();
 

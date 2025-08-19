@@ -1,6 +1,6 @@
 {
   "name": "@aptos-labs/libra2-faucet-client",
-  "description": "Generated client for the Aptos faucet",
+  "description": "Generated client for the Libra2 faucet",
   "license": "Apache 2.0",
   "engines": {
     "node": ">=11.0.0"
@@ -12,7 +12,7 @@
     "prepack": "tsup",
     "build": "tsup",
     "test": "jest",
-    "generate-client": "openapi -i ../doc/spec.yaml -o ./src -c axios --name AptosFaucetClient --exportSchemas true --useOptions",
+    "generate-client": "openapi -i ../doc/spec.yaml -o ./src -c axios --name Libra2FaucetClient --exportSchemas true --useOptions",
     "checked-publish": "./checked_publish.sh"
   },
   "repository": {
@@ -26,7 +26,7 @@
   "author": "aptoslabs.com",
   "keywords": [
     "Libra2",
-    "Aptos Labs"
+    "Libra2 Labs"
   ],
   "dependencies": {
     "axios": "1.8.2",

@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::move_vm_ext::{Libra2MoveResolver, SessionExt, SessionId};
@@ -13,7 +13,7 @@ use libra2_types::{
 use libra2_vm_environment::{
     environment::Libra2Environment,
     natives::libra2_natives_with_builder,
-    prod_configs::{aptos_default_ty_builder, aptos_prod_vm_config},
+    prod_configs::{libra2_default_ty_builder, libra2_prod_vm_config},
 };
 use libra2_vm_types::storage::change_set_configs::ChangeSetConfigs;
 use move_vm_runtime::{config::VMConfig, RuntimeEnvironment};
@@ -32,11 +32,11 @@ impl GenesisRuntimeBuilder {
         let features = Features::default();
         let timed_features = TimedFeaturesBuilder::enable_all().build();
 
-        let vm_config = aptos_prod_vm_config(
+        let vm_config = libra2_prod_vm_config(
             LATEST_GAS_FEATURE_VERSION,
             &features,
             &timed_features,
-            aptos_default_ty_builder(),
+            libra2_default_ty_builder(),
         );
 
         // All genesis sessions run with unmetered gas meter, and here we set

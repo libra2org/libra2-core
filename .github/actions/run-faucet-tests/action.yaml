@@ -1,6 +1,6 @@
 name: "Faucet Integration Tests"
 description: |
-  Runs the tests for the Aptos faucet against a local testnet built from a particular release branch
+  Runs the tests for the Libra2 faucet against a local testnet built from a particular release branch
 inputs:
   NETWORK:
     description: "The network branch for running the local testnet: devnet, testnet, or custom for a specific tag."

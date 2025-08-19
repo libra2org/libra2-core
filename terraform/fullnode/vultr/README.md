@@ -1,4 +1,4 @@
-Aptos Fullnodes VULTR (https://www.vultr.com/) Deployment
+Libra2 Fullnodes VULTR (https://www.vultr.com/) Deployment
 ==============================
 
 This directory contains Terraform configs to deploy a public fullnode on VULTR.
@@ -17,11 +17,11 @@ The default configuration will create a single node cluster with 4CPU/8GB and a 
    Configure the Access Control to whitelist the IP of the machine where you will run Terraform from.
 
 
-2. Clone the aptos-core repo and go to the terraform vultr folder.
+2. Clone the libra2-core repo and go to the terraform vultr folder.
 
          $ git clone https://github.com/libra2org/libra2-core.git
 
-         $ cd aptos-core/terraform/fullnode/vultr
+         $ cd libra2-core/terraform/fullnode/vultr
 
 3. Create a working directory for your configuration.  Copy the files you will change so it does not interfere with the cloned repo:
 
@@ -52,25 +52,25 @@ The default configuration will create a single node cluster with 4CPU/8GB and a 
 
 8. Check that your fullnode pods are now running (this may take a few minutes):
 
-        $ kubectl get pods -n aptos
+        $ kubectl get pods -n libra2
 
 9. Get your fullnode IP:
 
-        $ kubectl get svc -o custom-columns=IP:status.loadBalancer.ingress -n aptos
+        $ kubectl get svc -o custom-columns=IP:status.loadBalancer.ingress -n libra2
 
 10. Check REST API, make sure the ledge version is increasing.
 
         $ curl http://<IP>
 
-11. To verify the correctness of your FullNode, as outlined in the documentation (https://aptos.dev/tutorials/run-a-fullnode/#verify-the-correctness-of-your-fullnode), you will need to set up a port-forwarding mechanism directly to the aptos pod in one ssh terminal and test it in another ssh terminal
+11. To verify the correctness of your FullNode, as outlined in the documentation (https://docs.libra2.org/tutorials/run-a-fullnode/#verify-the-correctness-of-your-fullnode), you will need to set up a port-forwarding mechanism directly to the libra2 pod in one ssh terminal and test it in another ssh terminal
 
-   * Set up the port-forwarding to the aptos-fullnode pod.  Use `kubectl get pods -n aptos` to get the name of the pod
+   * Set up the port-forwarding to the libra2-fullnode pod.  Use `kubectl get pods -n libra2` to get the name of the pod
 
-         $ kubectl port-forward -n aptos <pod-name> 9101:9101
+         $ kubectl port-forward -n libra2 <pod-name> 9101:9101
 
    * Open a new ssh terminal.  Execute the following curl calls to verify the correctness
 
-         $ curl -v http://0:9101/metrics 2> /dev/null | grep "aptos_state_sync_version{type=\"synced\"}"
+         $ curl -v http://0:9101/metrics 2> /dev/null | grep "libra2_state_sync_version{type=\"synced\"}"
 
          $ curl -v http://0:9101/metrics 2> /dev/null | grep "libra2_connections{direction=\"outbound\""
 

@@ -1,6 +1,6 @@
 ## Implementation of: https://github.com/marketplace/actions/lychee-broken-link-checker
 
-name: Aptos GitHub Links Checker
+name: Libra2 GitHub Links Checker
 
 on:
   repository_dispatch:

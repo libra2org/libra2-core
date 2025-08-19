@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use libra2_rest_client::{libra2_api_types, Libra2BaseUrl, Client as RestClient};
@@ -6,7 +6,7 @@ use reqwest::Url;
 use std::fmt;
 
 // Custom header value to identify the client
-const X_APTOS_CLIENT_VALUE: &str = "libra2-transaction-emitter";
+const X_LIBRA2_CLIENT_VALUE: &str = "libra2-transaction-emitter";
 
 #[derive(Clone)]
 pub struct Instance {
@@ -45,7 +45,7 @@ impl Instance {
 
     pub fn rest_client(&self) -> RestClient {
         let client = RestClient::builder(Libra2BaseUrl::Custom(self.api_url()))
-            .header(libra2_api_types::X_APTOS_CLIENT, X_APTOS_CLIENT_VALUE)
+            .header(libra2_api_types::X_LIBRA2_CLIENT, X_LIBRA2_CLIENT_VALUE)
             .expect("Failed to initialize REST Client instance");
 
         // add the API key if it is provided

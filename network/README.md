@@ -9,7 +9,7 @@ custom_edit_url: https://github.com/libra2org/libra2-core/edit/main/network/READ
 For more detailed info, see the [Libra2Net Specification](../documentation/specifications/network/README.md).
 
 Libra2Net is the primary protocol for communication between any two nodes in the
-Aptos ecosystem. It is specifically designed to facilitate the consensus, shared
+Libra2 ecosystem. It is specifically designed to facilitate the consensus, shared
 mempool, and state sync protocols. Libra2Net tries to maintain at-most one connection
 with each remote peer; the application protocols to that remote peer are then
 multiplexed over the single peer connection.
@@ -61,7 +61,7 @@ partial membership views, sophisticated failure detectors, or network overlays.
                       +----------------------+--------------------+   +---------------------+
                       |        Peer(s)       |                    |
                       +----------------------+                    |
-                      |                AptosTransport             |
+                      |                Libra2Transport             |
                       +-------------------------------------------+
 ```
 
@@ -84,9 +84,9 @@ components of new or closed connections. Optionally can be connected to
 writes [`NetworkMessage`]es from/to the wire. Currently, it implements the two
 protocols: DirectSend and Rpc.
 
-+ [`AptosTransport`] &mdash; A secure, reliable transport. It uses [NoiseIK] over
++ [`Libra2Transport`] &mdash; A secure, reliable transport. It uses [NoiseIK] over
 TCP to negotiate an encrypted and authenticated connection between peers.
-The Libra2Net version and any Aptos-specific application protocols are negotiated
+The Libra2Net version and any Libra2-specific application protocols are negotiated
 afterward using the [Libra2Net Handshake Protocol].
 
 * [`ConnectivityManager`] &mdash; Establishes connections to known peers found
@@ -134,7 +134,7 @@ configurable static timeout.
 [`ConnectivityManager`]: ./src/connectivity_manager/mod.rs
 [`Libra2Net Handshake Protocol`]: ../specifications/network/handshake-v1.md
 [`ValidatorSet`]: ../types/src/on_chain_config/validator_set.rs
-[`AptosTransport`]: ./src/transport/mod.rs
+[`Libra2Transport`]: ./src/transport/mod.rs
 [`HealthChecker`]: ./src/protocols/health_checker/mod.rs
 [`Network Interface`]: ./src/protocols/network/mod.rs
 [`NetworkMessage`]: ./src/protocols/wire/messaging/v1/mod.rs

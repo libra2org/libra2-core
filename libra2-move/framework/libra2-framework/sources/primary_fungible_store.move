@@ -149,7 +149,7 @@ module libra2_framework::primary_fungible_store {
         fungible_asset::grant_permission_by_address(
             master,
             permissioned,
-            object::create_user_derived_object_address(signer::address_of(permissioned), @aptos_fungible_asset),
+            object::create_user_derived_object_address(signer::address_of(permissioned), @libra2_fungible_asset),
             amount
         );
     }

@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
@@ -7,7 +7,7 @@ use crate::{
     tests::{mock::MockNetwork, utils},
 };
 use libra2_config::{
-    config::{Libra2DataClientConfig, AptosDataMultiFetchConfig},
+    config::{Libra2DataClientConfig, Libra2DataMultiFetchConfig},
     network_id::{NetworkId, PeerNetworkId},
 };
 use libra2_storage_service_types::{
@@ -22,7 +22,7 @@ use std::{cmp::Ordering, collections::HashSet};
 async fn prioritized_peer_request_selection() {
     // Create a data client with multi-fetch disabled
     let data_client_config = Libra2DataClientConfig {
-        data_multi_fetch_config: AptosDataMultiFetchConfig {
+        data_multi_fetch_config: Libra2DataMultiFetchConfig {
             enable_multi_fetch: false,
             ..Default::default()
         },
@@ -91,7 +91,7 @@ async fn prioritized_peer_optimistic_fetch_selection() {
     // Create a data client with a max lag of 100 and multi-fetch disabled
     let max_optimistic_fetch_lag_secs = 100;
     let data_client_config = Libra2DataClientConfig {
-        data_multi_fetch_config: AptosDataMultiFetchConfig {
+        data_multi_fetch_config: Libra2DataMultiFetchConfig {
             enable_multi_fetch: false,
             ..Default::default()
         },
@@ -210,7 +210,7 @@ async fn prioritized_peer_optimistic_fetch_distance_latency_selection() {
     // Create a data client with a max lag of 100 and multi-fetch disabled
     let max_optimistic_fetch_lag_secs = 100;
     let data_client_config = Libra2DataClientConfig {
-        data_multi_fetch_config: AptosDataMultiFetchConfig {
+        data_multi_fetch_config: Libra2DataMultiFetchConfig {
             enable_multi_fetch: false,
             ..Default::default()
         },

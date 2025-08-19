@@ -10,7 +10,7 @@ SIWE.
 <domain> wants you to sign in with your Ethereum account:
 <ethereum_address>
 
-Please confirm you explicitly initiated this request from <domain>. You are approving to execute transaction <entry_function_name> on Aptos blockchain (<network_name>).
+Please confirm you explicitly initiated this request from <domain>. You are approving to execute transaction <entry_function_name> on Libra2 blockchain (<network_name>).
 
 URI: <scheme>://<domain>
 Version: 1
@@ -40,12 +40,12 @@ Issued At: <issued_at>
 -  [Function `authenticate`](#0x1_ethereum_derivable_account_authenticate)
 
 
-<pre><code><b>use</b> <a href="../../libra2-stdlib/../move-stdlib/doc/hash.md#0x1_aptos_hash">0x1::aptos_hash</a>;
-<b>use</b> <a href="auth_data.md#0x1_auth_data">0x1::auth_data</a>;
+<pre><code><b>use</b> <a href="auth_data.md#0x1_auth_data">0x1::auth_data</a>;
 <b>use</b> <a href="base16.md#0x1_base16">0x1::base16</a>;
 <b>use</b> <a href="../../libra2-stdlib/doc/bcs_stream.md#0x1_bcs_stream">0x1::bcs_stream</a>;
 <b>use</b> <a href="chain_id.md#0x1_chain_id">0x1::chain_id</a>;
 <b>use</b> <a href="common_account_abstractions_utils.md#0x1_common_account_abstractions_utils">0x1::common_account_abstractions_utils</a>;
+<b>use</b> <a href="../../libra2-stdlib/../move-stdlib/doc/hash.md#0x1_libra2_hash">0x1::libra2_hash</a>;
 <b>use</b> <a href="../../libra2-stdlib/../move-stdlib/doc/option.md#0x1_option">0x1::option</a>;
 <b>use</b> <a href="../../libra2-stdlib/doc/secp256k1.md#0x1_secp256k1">0x1::secp256k1</a>;
 <b>use</b> <a href="../../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string">0x1::string</a>;
@@ -323,7 +323,7 @@ We include the issued_at in the signature as it is a required field in the SIWE 
     message.append(b".");
     message.append(b" You are approving <b>to</b> execute transaction ");
     message.append(*entry_function_name);
-    message.append(b" on Aptos blockchain");
+    message.append(b" on Libra2 blockchain");
     <b>let</b> network_name = network_name();
     message.append(b" (");
     message.append(network_name);
@@ -432,13 +432,13 @@ We include the issued_at in the signature as it is a required field in the SIWE 
     <b>let</b> issued_at = abstract_signature.issued_at.bytes();
     <b>let</b> scheme = abstract_signature.scheme.bytes();
     <b>let</b> message = <a href="ethereum_derivable_account.md#0x1_ethereum_derivable_account_construct_message">construct_message</a>(&abstract_public_key.ethereum_address, &abstract_public_key.domain, entry_function_name, digest_utf8, issued_at, scheme);
-    <b>let</b> hashed_message = <a href="../../libra2-stdlib/../move-stdlib/doc/hash.md#0x1_aptos_hash_keccak256">aptos_hash::keccak256</a>(message);
+    <b>let</b> hashed_message = <a href="../../libra2-stdlib/../move-stdlib/doc/hash.md#0x1_libra2_hash_keccak256">libra2_hash::keccak256</a>(message);
     <b>let</b> public_key_bytes = <a href="ethereum_derivable_account.md#0x1_ethereum_derivable_account_recover_public_key">recover_public_key</a>(&abstract_signature.signature, &hashed_message);
 
     // 1. Skip the 0x04 prefix (take the bytes after the first byte)
     <b>let</b> public_key_without_prefix = <a href="../../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector_slice">vector::slice</a>(&public_key_bytes, 1, <a href="../../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector_length">vector::length</a>(&public_key_bytes));
     // 2. Run Keccak256 on the <b>public</b> key (without the 0x04 prefix)
-    <b>let</b> kexHash = <a href="../../libra2-stdlib/../move-stdlib/doc/hash.md#0x1_aptos_hash_keccak256">aptos_hash::keccak256</a>(public_key_without_prefix);
+    <b>let</b> kexHash = <a href="../../libra2-stdlib/../move-stdlib/doc/hash.md#0x1_libra2_hash_keccak256">libra2_hash::keccak256</a>(public_key_without_prefix);
     // 3. Slice the last 20 bytes (this is the Ethereum <b>address</b>)
     <b>let</b> recovered_addr = <a href="../../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector_slice">vector::slice</a>(&kexHash, 12, 32);
     // 4. Remove the 0x prefix from the utf8 <a href="account.md#0x1_account">account</a> <b>address</b>
@@ -488,4 +488,4 @@ Authorization function for domain account abstraction.
 </details>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

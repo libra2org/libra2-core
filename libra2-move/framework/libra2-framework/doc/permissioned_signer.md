@@ -2036,4 +2036,4 @@ signer::address_of(master) == signer::address_of(signer_from_permissioned_handle
 </code></pre>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

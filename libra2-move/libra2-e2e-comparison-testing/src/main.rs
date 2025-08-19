@@ -1,9 +1,9 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use anyhow::Result;
 use libra2_comparison_testing::{
-    prepare_aptos_packages, DataCollection, Execution, ExecutionMode, OnlineExecutor, APTOS_COMMONS,
+    prepare_libra2_packages, DataCollection, Execution, ExecutionMode, OnlineExecutor, LIBRA2_COMMONS,
 };
 use libra2_rest_client::Client;
 use clap::{Parser, Subcommand};
@@ -107,7 +107,7 @@ async fn main() -> Result<()> {
                 std::fs::create_dir_all(output.as_path()).unwrap();
             }
             if !skip_source_code {
-                prepare_aptos_packages(output.join(APTOS_COMMONS)).await;
+                prepare_libra2_packages(output.join(LIBRA2_COMMONS)).await;
             }
             let data_collector = DataCollection::new_with_rest_client(
                 Client::new(Url::parse(&endpoint)?),
@@ -139,7 +139,7 @@ async fn main() -> Result<()> {
             if !output.exists() {
                 std::fs::create_dir_all(output.as_path()).unwrap();
             }
-            prepare_aptos_packages(output.join(APTOS_COMMONS)).await;
+            prepare_libra2_packages(output.join(LIBRA2_COMMONS)).await;
             let online = OnlineExecutor::new_with_rest_client(
                 Client::new(Url::parse(&endpoint)?),
                 output.clone(),
@@ -160,7 +160,7 @@ async fn main() -> Result<()> {
             } else {
                 PathBuf::from(".")
             };
-            prepare_aptos_packages(input.join(APTOS_COMMONS)).await;
+            prepare_libra2_packages(input.join(LIBRA2_COMMONS)).await;
             let executor = Execution::new(input, execution_mode.unwrap_or_default());
             executor
                 .execute_txns(args.begin_version, args.limit)

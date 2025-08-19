@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 #![forbid(unsafe_code)]
@@ -586,7 +586,7 @@ impl MockClient {
     }
 }
 
-/// Initializes the Aptos logger for tests
+/// Initializes the Libra2 logger for tests
 pub fn initialize_logger() {
     libra2_logger::Logger::builder()
         .is_async(false)

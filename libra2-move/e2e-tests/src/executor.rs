@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -133,7 +133,7 @@ fn empty_in_memory_state_store() -> FakeExecutorStateStore {
 
 /// Provides an environment to run a VM instance.
 ///
-/// This struct is a mock in-memory implementation of the Aptos executor.
+/// This struct is a mock in-memory implementation of the Libra2 executor.
 pub struct FakeExecutor {
     state_store: FakeExecutorStateStore,
     event_store: Vec<ContractEvent>,
@@ -295,7 +295,7 @@ impl FakeExecutor {
     /// Providing an API key raises these limits significantly.
     ///
     /// If you hit rate limits, you can create a free Libra2 Build account and generate an API key:
-    /// - https://build.aptoslabs.com/docs/start#api-quick-start
+    /// - https://build.libra2.org/docs/start#api-quick-start
     pub fn from_remote_state_with_api_key(
         network_url: Libra2BaseUrl,
         txn_id: u64,
@@ -407,7 +407,7 @@ impl FakeExecutor {
         //  - the e2e test outputs a golden file, and
         //  - the environment variable is properly set
         if let Some(env_trace_dir) = env::var_os(ENV_TRACE_DIR) {
-            let aptos_version =
+            let libra2_version =
                 Libra2Version::fetch_config(&self.state_store).map_or(0, |v| v.major);
 
             let trace_dir = Path::new(&env_trace_dir).join(file_name);
@@ -420,7 +420,7 @@ impl FakeExecutor {
                 .create_new(true)
                 .open(trace_dir.join(TRACE_FILE_NAME))
                 .unwrap();
-            write!(name_file, "{}::{}", test_name, aptos_version).unwrap();
+            write!(name_file, "{}::{}", test_name, libra2_version).unwrap();
             for sub_dir in &[
                 TRACE_DIR_META,
                 TRACE_DIR_DATA,

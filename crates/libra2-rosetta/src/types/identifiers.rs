@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 //! Identifiers for the Rosetta spec
@@ -408,7 +408,7 @@ impl SubAccountIdentifierMetadata {
     }
 }
 
-/// Identifier for a "block".  On Aptos, we use a transaction model, so the index
+/// Identifier for a "block".  On Libra2, we use a transaction model, so the index
 /// represents multiple transactions in a "block" grouping of transactions
 ///
 /// [API Spec](https://www.rosetta-api.org/docs/models/BlockIdentifier.html)

@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use self::framework::FrameworkReleaseConfig;
@@ -19,7 +19,7 @@ use libra2_temppath::TempPath;
 use libra2_types::{
     account_config::CORE_CODE_ADDRESS,
     on_chain_config::{
-        Libra2Version, ExecutionConfigV1, FeatureFlag as AptosFeatureFlag, GasScheduleV2,
+        Libra2Version, ExecutionConfigV1, FeatureFlag as Libra2FeatureFlag, GasScheduleV2,
         OnChainConfig, OnChainConsensusConfig, OnChainExecutionConfig, OnChainJWKConsensusConfig,
         OnChainRandomnessConfig, RandomnessConfigMoveStruct, TransactionShufflerType,
     },
@@ -790,7 +790,7 @@ impl Default for ReleaseConfig {
                     name: "feature_flags".to_string(),
                     update_sequence: vec![
                         ReleaseEntry::FeatureFlag(Features {
-                            enabled: AptosFeatureFlag::default_features()
+                            enabled: Libra2FeatureFlag::default_features()
                                 .into_iter()
                                 .map(crate::components::feature_flags::FeatureFlag::from)
                                 .collect(),

@@ -1,7 +1,7 @@
 # Libra2 Node API v1
 
 ## Overview
-Libra2 Node API v1 provides a RESTful interface for interacting with Aptos blockchain nodes. The API enables users to retrieve blockchain information, submit transactions, and query account states.
+Libra2 Node API v1 provides a RESTful interface for interacting with Libra2 blockchain nodes. The API enables users to retrieve blockchain information, submit transactions, and query account states.
 
 ## Key Features
 - Account state and resources querying
@@ -11,7 +11,7 @@ Libra2 Node API v1 provides a RESTful interface for interacting with Aptos block
 - Smart contract interaction
 
 ## Getting Started
-1. Ensure you have an Aptos node running
+1. Ensure you have an Libra2 node running
 2. API is available by default on port 8080
 3. Use any REST client to send requests
 
@@ -37,7 +37,7 @@ Complete OpenAPI specification is available at `/api/v1/spec`
 ## Support
 - [GitHub Issues](https://github.com/libra2org/libra2-core/issues)
 - [Discord](https://discord.gg/aptosnetwork)
-- [Aptos Documentation](https://aptos.dev)
+- [Libra2 Documentation](https://aptos.dev)
 
 ## Contributing
 We welcome community contributions! Please review our [contribution guidelines](../CONTRIBUTING.md) before submitting a pull request.

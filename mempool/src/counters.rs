@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -422,7 +422,7 @@ pub fn shared_mempool_event_inc(event: &'static str) {
 /// Counter for tracking e2e latency for mempool to process txn submission requests from clients and peers
 static PROCESS_TXN_SUBMISSION_LATENCY: Lazy<HistogramVec> = Lazy::new(|| {
     register_histogram_vec!(
-        "aptos_shared_mempool_request_latency",
+        "libra2_shared_mempool_request_latency",
         "Latency of mempool processing txn submission requests",
         &["network"]
     )
@@ -444,7 +444,7 @@ pub fn process_txn_submit_latency_timer_client() -> HistogramTimer {
 /// Counter for tracking e2e latency for mempool to process get txn by hash requests from clients and peers
 static PROCESS_GET_TXN_LATENCY: Lazy<HistogramVec> = Lazy::new(|| {
     register_histogram_vec!(
-        "aptos_shared_mempool_get_txn_request_latency",
+        "libra2_shared_mempool_get_txn_request_latency",
         "Latency of mempool processing get txn by hash requests",
         &["network"]
     )
@@ -486,7 +486,7 @@ pub fn shared_mempool_broadcast_latency(network_id: NetworkId, latency: Duration
 /// Counter for tracking roundtrip-time from sending a broadcast to receiving ACK for that broadcast
 pub static SHARED_MEMPOOL_BROADCAST_RTT: Lazy<HistogramVec> = Lazy::new(|| {
     register_histogram_vec!(
-        "aptos_shared_mempool_broadcast_roundtrip_latency",
+        "libra2_shared_mempool_broadcast_roundtrip_latency",
         "Time elapsed between sending a broadcast and receiving an ACK for that broadcast",
         &["network"]
     )
@@ -496,7 +496,7 @@ pub static SHARED_MEMPOOL_BROADCAST_RTT: Lazy<HistogramVec> = Lazy::new(|| {
 /// Counter tracking number of mempool broadcasts that have not been ACK'ed for
 static SHARED_MEMPOOL_PENDING_BROADCASTS_COUNT: Lazy<IntGaugeVec> = Lazy::new(|| {
     register_int_gauge_vec!(
-        "aptos_shared_mempool_pending_broadcasts_count",
+        "libra2_shared_mempool_pending_broadcasts_count",
         "Number of mempool broadcasts not ACK'ed for yet",
         &["network", "recipient"]
     )
@@ -513,7 +513,7 @@ pub fn shared_mempool_pending_broadcasts(peer: &PeerNetworkId) -> IntGauge {
 /// Counter tracking the number of peers that changed priority in shared mempool
 pub static SHARED_MEMPOOL_PRIORITY_CHANGE_COUNT: Lazy<IntGauge> = Lazy::new(|| {
     register_int_gauge!(
-        "aptos_shared_mempool_priority_change_count",
+        "libra2_shared_mempool_priority_change_count",
         "Number of peers that changed priority in shared mempool",
     )
     .unwrap()
@@ -525,7 +525,7 @@ pub fn shared_mempool_priority_change_count(change_count: i64) {
 
 static SHARED_MEMPOOL_TRANSACTIONS_PROCESSED: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_shared_mempool_transactions_processed",
+        "libra2_shared_mempool_transactions_processed",
         "Number of transactions received and handled by shared mempool",
         &[
             "status", // state of transaction processing: "received", "success", status code from failed txn processing
@@ -544,7 +544,7 @@ pub fn shared_mempool_transactions_processed_inc(status: &str, network: &str) {
 /// Counter for number of transactions in each mempool broadcast sent
 static SHARED_MEMPOOL_TRANSACTION_BROADCAST_SIZE: Lazy<HistogramVec> = Lazy::new(|| {
     register_histogram_vec!(
-        "aptos_shared_mempool_transaction_broadcast",
+        "libra2_shared_mempool_transaction_broadcast",
         "Number of transactions in each mempool broadcast sent",
         &["network"]
     )
@@ -559,7 +559,7 @@ pub fn shared_mempool_broadcast_size(network_id: NetworkId, num_txns: usize) {
 
 static SHARED_MEMPOOL_BROADCAST_TYPE_COUNT: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_shared_mempool_rebroadcast_count",
+        "libra2_shared_mempool_rebroadcast_count",
         "Number of various types of broadcasts executed by shared mempool",
         &["network", "type"]
     )
@@ -574,7 +574,7 @@ pub fn shared_mempool_broadcast_type_inc(network_id: NetworkId, label: &str) {
 
 static SHARED_MEMPOOL_ACK_TYPE_COUNT: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_shared_mempool_ack_count",
+        "libra2_shared_mempool_ack_count",
         "Number of various types of ACKs sent/received by shared mempool",
         &["network", "direction", "type"]
     )

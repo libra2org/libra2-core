@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -38,7 +38,7 @@ use libra2_types::{
     },
     transaction::Version,
 };
-use libra2_vm_environment::prod_configs::{aptos_prod_verifier_config, LATEST_GAS_FEATURE_VERSION};
+use libra2_vm_environment::prod_configs::{libra2_prod_verifier_config, LATEST_GAS_FEATURE_VERSION};
 use clap::Parser;
 use futures::{stream, TryStreamExt};
 use move_binary_format::CompiledModule;
@@ -236,7 +236,7 @@ impl StateSnapshotRestoreController {
         // TODO: Instead of using default features, fetch them from the the state.
         let features = Features::default();
 
-        let config = aptos_prod_verifier_config(LATEST_GAS_FEATURE_VERSION, &features);
+        let config = libra2_prod_verifier_config(LATEST_GAS_FEATURE_VERSION, &features);
         for (key, value) in blob {
             if let StateKeyInner::AccessPath(p) = key.inner() {
                 if let Path::Code(module_id) = p.get_path() {

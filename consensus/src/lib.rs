@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -6,7 +6,7 @@
 
 //! Consensus for the Libra2 Core blockchain
 //!
-//! The consensus protocol implemented is AptosBFT (based on
+//! The consensus protocol implemented is Libra2BFT (based on
 //! [DiemBFT](https://developers.diem.com/papers/diem-consensus-state-machine-replication-in-the-diem-blockchain/2021-08-17.pdf)).
 
 #![cfg_attr(feature = "fuzzing", allow(dead_code))]
@@ -50,7 +50,7 @@ pub mod util;
 
 mod block_preparer;
 pub mod consensus_observer;
-/// AptosBFT implementation
+/// Libra2BFT implementation
 pub mod consensus_provider;
 /// Required by the telemetry service
 pub mod counters;

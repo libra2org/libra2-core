@@ -1,7 +1,7 @@
 [package]
 name = "libra2-vm-profiling"
 version = "0.1.1"
-authors = ["Aptos Labs <opensource@aptoslabs.com>"]
+authors = ["Libra2 Team <info@libra2.org>"]
 repository = "https://github.com/libra2org/libra2-core"
 homepage = "https://aptoslabs.com"
 license = "Apache-2.0"

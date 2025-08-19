@@ -26,7 +26,7 @@ module libra2_framework::libra2_coin_tests {
         assert!(
             primary_fungible_store::balance(
                 @libra2_framework,
-                object::address_to_object<Metadata>(@aptos_fungible_asset)
+                object::address_to_object<Metadata>(@libra2_fungible_asset)
             ) == 100,
             0
         );
@@ -36,11 +36,11 @@ module libra2_framework::libra2_coin_tests {
 
     #[test]
     fun test_fa_helpers_for_test() {
-        assert!(!object::object_exists<Metadata>(@aptos_fungible_asset), 0);
+        assert!(!object::object_exists<Metadata>(@libra2_fungible_asset), 0);
         libra2_coin::ensure_initialized_with_apt_fa_metadata_for_test();
-        assert!(object::object_exists<Metadata>(@aptos_fungible_asset), 0);
+        assert!(object::object_exists<Metadata>(@libra2_fungible_asset), 0);
         mint_apt_fa_to_primary_fungible_store_for_test(@libra2_framework, 100);
-        let metadata = object::address_to_object<Metadata>(@aptos_fungible_asset);
+        let metadata = object::address_to_object<Metadata>(@libra2_fungible_asset);
         assert!(primary_fungible_store::balance(@libra2_framework, metadata) == 100, 0);
         let store_addr = primary_fungible_store::primary_store_address(@libra2_framework, metadata);
         mint_apt_fa_to_for_test(object::address_to_object<FungibleStore>(store_addr), 100);

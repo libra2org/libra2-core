@@ -1,17 +1,17 @@
-# Homebrew Aptos
+# Homebrew Libra2
 
 Homebrew is a package manager that works for MacOS Silicon and Intel chips as well as Linux distributions like Debian
 and Ubuntu.
 
-The [Libra2 command line interface (CLI)](https://aptos.dev/tools/aptos-cli/install-cli/) may be installed
-via [Homebrew](https://brew.sh/) for simplicity. This is an in-depth overview of Homebrew and the Aptos formula. In this
+The [Libra2 command line interface (CLI)](https://docs.libra2.org/tools/libra2-cli/install-cli/) may be installed
+via [Homebrew](https://brew.sh/) for simplicity. This is an in-depth overview of Homebrew and the Libra2 formula. In this
 guide, we go over each section of the Homebrew formula and steps to implement changes in the future.
 
 ## Quick guide
 
-- [Formula in Homebrew GitHub](https://github.com/Homebrew/homebrew-core/blob/master/Formula/aptos.rb)
-- [Aptos 1.0.3 New Formula PR for GitHub](https://github.com/Homebrew/homebrew-core/pull/119832)
-- [Aptos Formula Fix PR to use build_cli_release.sh](https://github.com/Homebrew/homebrew-core/pull/120051)
+- [Formula in Homebrew GitHub](https://github.com/Homebrew/homebrew-core/blob/master/Formula/libra2.rb)
+- [Libra2 1.0.3 New Formula PR for GitHub](https://github.com/Homebrew/homebrew-core/pull/119832)
+- [Libra2 Formula Fix PR to use build_cli_release.sh](https://github.com/Homebrew/homebrew-core/pull/120051)
 
 ## Getting started
 
@@ -27,29 +27,29 @@ brew help
 Once homebrew is installed, run
 
 ```bash
-brew install aptos
+brew install libra2
 ```
 
 to test that it installed correctly, try
 
 ```bash
-aptos --help
+libra2 --help
 
 # This should return something like
 
-# aptos 1.0.5
-# Aptos Labs <opensource@aptoslabs.com>
-# Command Line Interface (CLI) for developing and interacting with the Aptos blockchain
+# libra2 1.0.5
+# Libra2 Team <info@libra2.org>
+# Command Line Interface (CLI) for developing and interacting with the Libra2 blockchain
 # ...
 ```
 
 ## Change guide
 
-Note: This guide is for developers who are trying to update the Aptos homebrew formula.
+Note: This guide is for developers who are trying to update the Libra2 homebrew formula.
 
-You can get the latest formula here: https://github.com/Homebrew/homebrew-core/blob/master/Formula/a/aptos.rb
+You can get the latest formula here: https://github.com/Homebrew/homebrew-core/blob/master/Formula/a/libra2.rb
 
-Copy the `aptos.rb` file to your `homebrew` `formula` directory. For example, on macOS with an M1, this will likely be:
+Copy the `libra2.rb` file to your `homebrew` `formula` directory. For example, on macOS with an M1, this will likely be:
 
 ```bash
 /opt/homebrew/Library/Taps/homebrew/homebrew-core/Formula
@@ -57,7 +57,7 @@ Copy the `aptos.rb` file to your `homebrew` `formula` directory. For example, on
 
 ### Development
 
-After you've copied `aptos.rb` to your local `homebrew` `formula` directory, you can modify it and use the commands
+After you've copied `libra2.rb` to your local `homebrew` `formula` directory, you can modify it and use the commands
 below for testing.
 
 ```bash
@@ -65,37 +65,37 @@ below for testing.
 /opt/homebrew/Library/Taps/homebrew/homebrew-core/Formula
 
 # Before submitting changes run
-brew audit --new-formula aptos      # For new formula
-brew audit aptos --strict --online
-brew install aptos
-brew test aptos
+brew audit --new-formula libra2      # For new formula
+brew audit libra2 --strict --online
+brew install libra2
+brew test libra2
 
 # For debugging issues during the installation process you can do
-brew install aptos --interactive    # Interactive, gives you access to the shell
-brew install aptos -d               # Debug mode
+brew install libra2 --interactive    # Interactive, gives you access to the shell
+brew install libra2 -d               # Debug mode
 
 # Livecheck
-brew livecheck --debug aptos
+brew livecheck --debug libra2
 ```
 
 ### Committing changes
 
 Once you have audited and tested your brew formula using the commands above, make sure you:
 
-1. Commit your changes to `aptos-core` in `crates/aptos/homebrew`.
+1. Commit your changes to `libra2-core` in `crates/libra2/homebrew`.
 2. Fork the Homebrew Core repository
    per [How to Open a Homebrew Pull Request](https://docs.brew.sh/How-To-Open-a-Homebrew-Pull-Request#formulae-related-pull-request).
 3. Create a PR on the [Homebrew Core](https://github.com/Homebrew/homebrew-core/pulls) repo with your changes.
 
-## Aptos.rb structure overview
+## Libra2.rb structure overview
 
 ### Header
 
 ```ruby
-class Aptos < Formula
+class Libra2 < Formula
   desc "Layer 1 blockchain built to support fair access to decentralized assets for all"
-  homepage "https://aptoslabs.com/"
-  url "https://github.com/libra2org/libra2-core/archive/refs/tags/aptos-cli-v1.0.3.tar.gz"
+  homepage "https://libra2.org/"
+  url "https://github.com/libra2org/libra2-core/archive/refs/tags/libra2-cli-v1.0.3.tar.gz"
   sha256 "670bb6cb841cb8a65294878af9a4f03d4cba2a598ab4550061fed3a4b1fe4e98"
   license "Apache-2.0"
   ...
@@ -129,7 +129,7 @@ compile from source every time.
 ### Livecheck
 
 [Brew livecheck](https://docs.brew.sh/Brew-Livecheck) uses strategies to find the newest version of a formula or cask’s
-software by checking upstream. The strategy used below checks for all `aptos-cli-v<SEMVER>` tags for `aptos-core`. The
+software by checking upstream. The strategy used below checks for all `libra2-cli-v<SEMVER>` tags for `libra2-core`. The
 regex ensures that releases for other, non-CLI builds are not factored into livecheck.
 
 Livecheck is run on a schedule with BrewTestBot and will update the bottles automatically on a schedule to ensure
@@ -140,11 +140,11 @@ discussion.
 ```ruby
 ...
   # This livecheck scans the releases folder and looks for all releases
-  # with matching regex of href="<URL>/tag/aptos-cli-v<SEMVER>". This
+  # with matching regex of href="<URL>/tag/libra2-cli-v<SEMVER>". This
   # is done to automatically check for new release versions of the CLI.
   livecheck do
     url :stable
-    regex(/^aptos-cli[._-]v?(\d+(?:\.\d+)+)$/i)
+    regex(/^libra2-cli[._-]v?(\d+(?:\.\d+)+)$/i)
   end
 ...
 ```
@@ -152,7 +152,7 @@ discussion.
 To run livecheck for testing, we recommend including the `--debug` argument:
 
 ```bash
-brew livecheck --debug aptos
+brew livecheck --debug libra2
 ```
 
 ### Depends on and installation
@@ -164,9 +164,9 @@ brew livecheck --debug aptos
   going forward, we would modify the formula slightly. See the comments below for more details.
 
 ```ruby
-  # Installs listed homebrew dependencies before Aptos installation
-  # Dependencies needed: https://aptos.dev/cli-tools/build-aptos-cli
-  # See scripts/dev_setup.sh in aptos-core for more info
+  # Installs listed homebrew dependencies before Libra2 installation
+  # Dependencies needed: https://docs.libra2.org/cli-tools/build-libra2-cli
+  # See scripts/dev_setup.sh in libra2-core for more info
   depends_on "cmake" => :build
   depends_on "rustup-init" => :build
   uses_from_macos "llvm" => :build
@@ -179,7 +179,7 @@ brew livecheck --debug aptos
   end
 
   # Currently must compile with the same rustc version specified in the
-  # root Cargo.toml file of aptos-core (currently it is pegged to Rust 
+  # root Cargo.toml file of libra2-core (currently it is pegged to Rust 
   # v1.64). In the future if it becomes compatible with the latest Rust
   # toolchain, we can remove the use of rustup-init, replacing it with a 
   # depends_on "rust" => :build
@@ -194,7 +194,7 @@ brew livecheck --debug aptos
       "-qy", "--no-modify-path", "--default-toolchain", "1.64"
     ENV.prepend_path "PATH", HOMEBREW_CACHE/"cargo_cache/bin"
     system "./scripts/cli/build_cli_release.sh", "homebrew"
-    bin.install "target/cli/aptos"
+    bin.install "target/cli/libra2"
   end
 ```
 
@@ -203,7 +203,7 @@ brew livecheck --debug aptos
 To conduct tests, run:
 
 ```bash
-brew test aptos
+brew test libra2
 ```
 
 The current test generates a new key via the Libra2 CLI and ensures the shell output matches the filename(s) for that
@@ -212,7 +212,7 @@ key.
 ```ruby
   ...
   test do
-    assert_match(/output.pub/i, shell_output("#{bin}/aptos key generate --output-file output"))
+    assert_match(/output.pub/i, shell_output("#{bin}/libra2 key generate --output-file output"))
   end
   ...
 ```

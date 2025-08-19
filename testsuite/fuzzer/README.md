@@ -73,7 +73,7 @@ The script includes several functions to manage and execute fuzz tests:
 ## Writing Fuzz Targets
 
 ### Setting Up Fuzz Targets
-To set up a fuzz harness in Aptos-core using `cargo-fuzz`:
+To set up a fuzz harness in Libra2-core using `cargo-fuzz`:
 #### Initialize Fuzz Target
 Run the following command to initialize the fuzzing target. This creates and edits all the necessary files.
 ```bash
@@ -133,7 +133,7 @@ When building in the OSS-Fuzz environment, `fuzz.sh` will place the corpus archi
 
 ## Generate Corpora
 Some fuzzers operate better if a good initial corpus is provided. In order to generate the corpus, utilities are available via `./fuzz.sh block-builder`. Once a corpus is obtained, to feed it to fuzzers running on OSS-Fuzz, building a ZIP archive with a specific name is required: `$FUZZERNAME_seed_corpus.zip`. Upload it to a publicly accessible cloud, e.g., GCP Bucket or S3; avoid GDrive. Obtain a public link and add it to the `CORPUS_ZIPS` array in `fuzz.sh`. It will automatically be downloaded and used inside Google's infrastructure.
-### Aptos-VM Publish & Run
+### Libra2-VM Publish & Run
 `./fuzz.sh block-builder generate_runnable_state /tmp/modules.csv /tmp/Modules`
 The CSV file is structured as follows:  
 - Column 1: Module name  

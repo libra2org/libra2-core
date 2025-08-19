@@ -1,4 +1,4 @@
-# Generated TS client for the Aptos Faucet
+# Generated TS client for the Libra2 Faucet
 
 ## Quickstart
 ```bash

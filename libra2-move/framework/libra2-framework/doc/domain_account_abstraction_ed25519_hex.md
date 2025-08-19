@@ -77,4 +77,4 @@ Authorization function for domain account abstraction.
 </details>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

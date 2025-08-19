@@ -1485,10 +1485,10 @@ Create APT pairing by passing <code>Libra2Coin</code>.
         <b>assert</b>!(!is_apt || allow_apt_creation, <a href="../../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_invalid_state">error::invalid_state</a>(<a href="coin.md#0x1_coin_EAPT_PAIRING_IS_NOT_ENABLED">EAPT_PAIRING_IS_NOT_ENABLED</a>));
         <b>let</b> metadata_object_cref =
             <b>if</b> (is_apt) {
-                <a href="object.md#0x1_object_create_sticky_object_at_address">object::create_sticky_object_at_address</a>(@libra2_framework, @aptos_fungible_asset)
+                <a href="object.md#0x1_object_create_sticky_object_at_address">object::create_sticky_object_at_address</a>(@libra2_framework, @libra2_fungible_asset)
             } <b>else</b> {
                 <a href="object.md#0x1_object_create_named_object">object::create_named_object</a>(
-                    &<a href="create_signer.md#0x1_create_signer_create_signer">create_signer::create_signer</a>(@aptos_fungible_asset),
+                    &<a href="create_signer.md#0x1_create_signer_create_signer">create_signer::create_signer</a>(@libra2_fungible_asset),
                     *<a href="../../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_bytes">string::bytes</a>(&<a href="../../libra2-stdlib/doc/type_info.md#0x1_type_info_type_name">type_info::type_name</a>&lt;CoinType&gt;())
                 )
             };
@@ -4658,4 +4658,4 @@ Account is not frozen and sufficient balance.
 </code></pre>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

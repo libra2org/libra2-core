@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
@@ -15,7 +15,7 @@ use libra2_types::{
     fee_statement::FeeStatement,
     state_store::state_value::StateValueMetadata,
     transaction::BlockExecutableTransaction as Transaction,
-    vm::modules::AptosModuleExtension,
+    vm::modules::Libra2ModuleExtension,
     write_set::WriteOp,
 };
 use libra2_vm_types::module_write_set::ModuleWrite;
@@ -32,7 +32,7 @@ use std::{
     sync::Arc,
 };
 
-type TxnInput<T> = CapturedReads<T, ModuleId, CompiledModule, Module, AptosModuleExtension>;
+type TxnInput<T> = CapturedReads<T, ModuleId, CompiledModule, Module, Libra2ModuleExtension>;
 
 macro_rules! forward_on_success_or_skip_rest {
     ($self:ident, $txn_idx:ident, $f:ident) => {{

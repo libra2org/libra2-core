@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{error::Error, metrics::increment_network_frame_overflow};
@@ -21,7 +21,7 @@ use libra2_types::{
 use serde::Serialize;
 use std::{cmp::min, sync::Arc};
 
-/// The interface into local storage (e.g., the Aptos DB) used by the storage
+/// The interface into local storage (e.g., the Libra2 DB) used by the storage
 /// server to handle client requests and responses.
 pub trait StorageReaderInterface: Clone + Send + 'static {
     /// Returns a data summary of the underlying storage state.

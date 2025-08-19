@@ -1,5 +1,5 @@
 // Copyright (c) The Move Contributors
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 #![no_main]
@@ -24,7 +24,7 @@ fn check_for_invariant_violation_vmerror(e: VMError) {
 
 fuzz_target!(|fuzz_data: RunnableState| -> Corpus {
     let verifier_config =
-        prod_configs::aptos_prod_verifier_config(LATEST_GAS_FEATURE_VERSION, &Features::default());
+        prod_configs::libra2_prod_verifier_config(LATEST_GAS_FEATURE_VERSION, &Features::default());
 
     for m in fuzz_data.dep_modules.iter() {
         if let Err(e) = move_bytecode_verifier::verify_module_with_config(&verifier_config, m) {

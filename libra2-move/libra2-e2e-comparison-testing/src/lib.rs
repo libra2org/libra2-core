@@ -1,8 +1,8 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use libra2_framework::{
-    natives::code::PackageMetadata, unzip_metadata_str, BuiltPackage, APTOS_PACKAGES,
+    natives::code::PackageMetadata, unzip_metadata_str, BuiltPackage, LIBRA2_PACKAGES,
 };
 use libra2_transaction_simulation::InMemoryStateStore;
 use libra2_types::{
@@ -42,7 +42,7 @@ use move_package::{
 };
 pub use online_execution::*;
 
-const APTOS_PACKAGES_DIR_NAMES: [&str; 5] = [
+const LIBRA2_PACKAGES_DIR_NAMES: [&str; 5] = [
     "libra2-framework",
     "move-stdlib",
     "libra2-stdlib",
@@ -55,7 +55,7 @@ const WRITE_SET_DATA: &str = "write_set_data";
 const INDEX_FILE: &str = "version_index.txt";
 const ERR_LOG: &str = "err_log.txt";
 const ROCKS_INDEX_DB: &str = "rocks_txn_idx_db";
-pub const APTOS_COMMONS: &str = "aptos-commons";
+pub const LIBRA2_COMMONS: &str = "aptos-commons";
 const MAX_TO_FLUSH: usize = 50000;
 
 struct IndexWriter {
@@ -277,21 +277,21 @@ impl DataManager {
 }
 
 fn is_libra2_package(package_name: &str) -> bool {
-    APTOS_PACKAGES.contains(&package_name)
+    LIBRA2_PACKAGES.contains(&package_name)
 }
 
-fn get_aptos_dir(package_name: &str) -> Option<&str> {
+fn get_libra2_dir(package_name: &str) -> Option<&str> {
     if is_libra2_package(package_name) {
-        for i in 0..APTOS_PACKAGES.len() {
-            if APTOS_PACKAGES[i] == package_name {
-                return Some(APTOS_PACKAGES_DIR_NAMES[i]);
+        for i in 0..LIBRA2_PACKAGES.len() {
+            if LIBRA2_PACKAGES[i] == package_name {
+                return Some(LIBRA2_PACKAGES_DIR_NAMES[i]);
             }
         }
     }
     None
 }
 
-async fn download_aptos_packages(path: &Path) -> anyhow::Result<()> {
+async fn download_libra2_packages(path: &Path) -> anyhow::Result<()> {
     let git_url = "https://github.com/libra2org/libra2-core";
     let tmp_dir = TempDir::new()?;
     Command::new("git")
@@ -299,10 +299,10 @@ async fn download_aptos_packages(path: &Path) -> anyhow::Result<()> {
         .output()
         .map_err(|_| anyhow::anyhow!("Failed to clone Git repository"))?;
     let source_framework_path = PathBuf::from(tmp_dir.path()).join("libra2-move/framework");
-    for package_name in APTOS_PACKAGES {
+    for package_name in LIBRA2_PACKAGES {
         let source_framework_path =
-            source_framework_path.join(get_aptos_dir(package_name).unwrap());
-        let target_framework_path = PathBuf::from(path).join(get_aptos_dir(package_name).unwrap());
+            source_framework_path.join(get_libra2_dir(package_name).unwrap());
+        let target_framework_path = PathBuf::from(path).join(get_libra2_dir(package_name).unwrap());
         Command::new("cp")
             .arg("-r")
             .arg(source_framework_path)
@@ -318,22 +318,22 @@ fn check_libra2_packages_availability(path: PathBuf) -> bool {
     if !path.exists() {
         return false;
     }
-    for package in APTOS_PACKAGES {
-        if !path.join(get_aptos_dir(package).unwrap()).exists() {
+    for package in LIBRA2_PACKAGES {
+        if !path.join(get_libra2_dir(package).unwrap()).exists() {
             return false;
         }
     }
     true
 }
 
-pub async fn prepare_aptos_packages(path: PathBuf) {
+pub async fn prepare_libra2_packages(path: PathBuf) {
     let mut success = true;
     if path.exists() {
         success = std::fs::remove_dir_all(path.clone()).is_ok();
     }
     if success {
         std::fs::create_dir_all(path.clone()).unwrap();
-        download_aptos_packages(&path).await.unwrap();
+        download_libra2_packages(&path).await.unwrap();
     }
 }
 
@@ -404,13 +404,13 @@ fn generate_compiled_blob(
     compiled_blobs.insert(package_info.clone(), blob_map);
 }
 
-fn compile_aptos_packages(
+fn compile_libra2_packages(
     libra2_commons_path: &Path,
     compiled_package_map: &mut HashMap<PackageInfo, HashMap<ModuleId, Vec<u8>>>,
     v2_flag: bool,
 ) -> anyhow::Result<()> {
-    for package in APTOS_PACKAGES {
-        let root_package_dir = libra2_commons_path.join(get_aptos_dir(package).unwrap());
+    for package in LIBRA2_PACKAGES {
+        let root_package_dir = libra2_commons_path.join(get_libra2_dir(package).unwrap());
         let compiler_version = if v2_flag {
             Some(CompilerVersion::latest_stable())
         } else {
@@ -517,8 +517,8 @@ fn dump_and_compile_from_package_metadata(
                         dep,
                         &format!(
                             "{}/{}",
-                            APTOS_COMMONS,
-                            get_aptos_dir(&pack_dep_name).unwrap()
+                            LIBRA2_COMMONS,
+                            get_libra2_dir(&pack_dep_name).unwrap()
                         ),
                     );
                     break;

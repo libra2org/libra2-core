@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -23,8 +23,8 @@ use libra2_types::{
 
 fn txn(seq_num: u64) -> SignedTransaction {
     let account = Account::new();
-    let aptos_root = Account::new_aptos_root();
-    create_account_txn(&aptos_root, &account, seq_num)
+    let libra2_root = Account::new_libra2_root();
+    create_account_txn(&libra2_root, &account, seq_num)
 }
 
 fn execute_and_assert_success<T>(

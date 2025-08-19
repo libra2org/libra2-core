@@ -38,7 +38,7 @@ module libra2_framework::jwks {
     const EUNKNOWN_JWK_VARIANT: u64 = 4;
     const EISSUER_NOT_FOUND: u64 = 5;
     const EJWK_ID_NOT_FOUND: u64 = 6;
-    const EINSTALL_FEDERATED_JWKS_AT_APTOS_FRAMEWORK: u64 = 7;
+    const EINSTALL_FEDERATED_JWKS_AT_LIBRA2_FRAMEWORK: u64 = 7;
     const EFEDERATED_JWKS_TOO_LARGE: u64 = 8;
     const EINVALID_FEDERATED_JWK_SET: u64 = 9;
 
@@ -65,7 +65,7 @@ module libra2_framework::jwks {
         providers: vector<OIDCProvider>,
     }
 
-    /// An JWK variant that represents the JWKs which were observed but not yet supported by Aptos.
+    /// An JWK variant that represents the JWKs which were observed but not yet supported by Libra2.
     /// Observing `UnsupportedJWK`s means the providers adopted a new key type/format, and the system should be updated.
     struct UnsupportedJWK has copy, drop, store {
         id: vector<u8>,
@@ -181,9 +181,9 @@ module libra2_framework::jwks {
     /// Cognito, etc). For type-safety, we explicitly use a `struct FederatedJWKs { jwks: AllProviderJWKs }` instead of
     /// reusing `PatchedJWKs { jwks: AllProviderJWKs }`, which is a JWK-consensus-specific struct.
     public fun patch_federated_jwks(jwk_owner: &signer, patches: vector<Patch>) acquires FederatedJWKs {
-        // Prevents accidental calls in 0x1::jwks that install federated JWKs at the Aptos framework address.
+        // Prevents accidental calls in 0x1::jwks that install federated JWKs at the Libra2 framework address.
         assert!(!system_addresses::is_libra2_framework_address(signer::address_of(jwk_owner)),
-            error::invalid_argument(EINSTALL_FEDERATED_JWKS_AT_APTOS_FRAMEWORK)
+            error::invalid_argument(EINSTALL_FEDERATED_JWKS_AT_LIBRA2_FRAMEWORK)
         );
 
         let jwk_addr = signer::address_of(jwk_owner);

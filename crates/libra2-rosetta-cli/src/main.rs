@@ -1,9 +1,9 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-//! Aptos Rosetta CLI
+//! Libra2 Rosetta CLI
 //!
-//! Why have an Aptos version of the Rosetta CLI?
+//! Why have an Libra2 version of the Rosetta CLI?
 //!
 //! The Rosetta CLI doesn't build on my Mac easily and I just wanted something simple to test out
 //! the POST requests

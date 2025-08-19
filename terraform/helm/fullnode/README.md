@@ -7,7 +7,7 @@
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
-| libra2_chains | object | `{"devnet":{"genesis_blob_url":"https://devnet.aptoslabs.com/genesis.blob","waypoint_txt_url":"https://devnet.aptoslabs.com/waypoint.txt"},"mainnet":{"genesis_blob_url":"https://raw.githubusercontent.com/aptos-labs/libra2-networks/main/mainnet/genesis.blob","waypoint_txt_url":"https://raw.githubusercontent.com/aptos-labs/libra2-networks/main/mainnet/waypoint.txt"},"testnet":{"genesis_blob_url":"https://raw.githubusercontent.com/aptos-labs/libra2-networks/main/testnet/genesis.blob","waypoint_txt_url":"https://raw.githubusercontent.com/aptos-labs/libra2-networks/main/testnet/genesis_waypoint.txt"}}` | For each supported chain, specify the URLs from which to download the genesis.blob and waypoint.txt |
+| libra2_chains | object | `{"devnet":{"genesis_blob_url":"https://devnet.libra2.org/genesis.blob","waypoint_txt_url":"https://devnet.libra2.org/waypoint.txt"},"mainnet":{"genesis_blob_url":"https://github.com/libra2org/libra2-networks/main/mainnet/genesis.blob","waypoint_txt_url":"https://github.com/libra2org/libra2-networks/main/mainnet/waypoint.txt"},"testnet":{"genesis_blob_url":"https://github.com/libra2org/libra2-networks/main/testnet/genesis.blob","waypoint_txt_url":"https://github.com/libra2org/libra2-networks/main/testnet/genesis_waypoint.txt"}}` | For each supported chain, specify the URLs from which to download the genesis.blob and waypoint.txt |
 | backup.affinity | object | `{}` |  |
 | backup.config.azure.account | string | `nil` |  |
 | backup.config.azure.container | string | `nil` |  |
@@ -111,8 +111,8 @@
 Configuration
 -------------
 
-This Helm chart deploys a public fullnode for the Aptos blockchain network. The
-fullnode connects to Aptos validators and synchronises the blockchain state to
+This Helm chart deploys a public fullnode for the Libra2 blockchain network. The
+fullnode connects to Libra2 validators and synchronises the blockchain state to
 a persistent volume. It provides a [REST API][] for interacting with
 the blockchain.
 
@@ -121,7 +121,7 @@ See [values.yaml][] for the full list of options you can configure.
 Connecting to Testnet
 -------------
 
-To connect to the Aptos devnet, you must have the correct genesis blob and waypoint. The source of truth for these are hosted here: https://github.com/aptos-labs/libra2-genesis-waypoint
+To connect to the Libra2 devnet, you must have the correct genesis blob and waypoint. The source of truth for these are hosted here: https://github.com/aptos-labs/libra2-genesis-waypoint
 
 The waypoint and genesis blobs are download at runtime, and their URLs are specified in `.Values.libra2_chains`.
 
@@ -136,4 +136,4 @@ Deployment
 
 [REST API]: https://github.com/libra2org/libra2-core/blob/main/api/doc/v0/openapi.yaml
 [values.yaml]: values.yaml
-[Aptos dockerhub]: https://hub.docker.com/r/aptoslabs/validator/tags?page=1&ordering=last_updated
+[Libra2 dockerhub]: https://hub.docker.com/r/aptoslabs/validator/tags?page=1&ordering=last_updated

@@ -271,7 +271,7 @@ Only used in reconfigurations to apply the pending <code><a href="consensus_conf
 
 <tr>
 <td>1</td>
-<td>During genesis, the Aptos framework account should be assigned the consensus config resource.</td>
+<td>During genesis, the Libra2 framework account should be assigned the consensus config resource.</td>
 <td>Medium</td>
 <td>The consensus_config::initialize function calls the assert_libra2_framework function to ensure that the signer is the libra2_framework and then assigns the ConsensusConfig resource to it.</td>
 <td>Formally verified via <a href="#high-level-req-1">initialize</a>.</td>
@@ -440,4 +440,4 @@ When setting now time must be later than last_reconfiguration_time.
 </code></pre>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

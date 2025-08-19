@@ -3,7 +3,7 @@ This guide assumes you already have AWS account setup.
 
 Install pre-requisites if needed:
 
-   * Libra2 CLI: https://github.com/libra2org/libra2-core/releases/tag/aptos-cli-v0.1.0-alpha
+   * Libra2 CLI: https://github.com/libra2org/libra2-core/releases/tag/libra2-cli-v0.1.0-alpha
    * Terraform 1.1.7: https://www.terraform.io/downloads.html
    * Kubernetes CLI: https://kubernetes.io/docs/tasks/tools/
    * AWS CLI: https://aws.amazon.com/cli/

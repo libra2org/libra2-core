@@ -927,7 +927,7 @@ async def create_node_stateful_sets(
     )
 
     volume4: client.V1Volume = client.V1Volume(
-        name=util.APTOS_DATA_NAME,
+        name=util.LIBRA2_DATA_NAME,
         persistent_volume_claim=client.V1PersistentVolumeClaimVolumeSource(
             claim_name=util.type_specific_name(
                 vfn_validator_node_pair_name, type, "pvc"
@@ -936,7 +936,7 @@ async def create_node_stateful_sets(
     )
 
     volume_mount4: client.V1VolumeMount = client.V1VolumeMount(
-        name=util.APTOS_DATA_NAME, mount_path=util.APTOS_DATA_DIR
+        name=util.LIBRA2_DATA_NAME, mount_path=util.LIBRA2_DATA_DIR
     )
 
     #

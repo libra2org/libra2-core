@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use anyhow::{anyhow, bail};
@@ -55,7 +55,7 @@ impl PrebuiltPackagesBundle {
 pub struct PrebuiltPackageConfig {
     /// If true, packages are compiled with latest (possibly unstable) version.
     pub latest_language: bool,
-    /// If true, will use the local Aptos framework.
+    /// If true, will use the local Libra2 framework.
     pub use_local_std: bool,
 }
 
@@ -112,14 +112,14 @@ pub fn create_prebuilt_packages_bundle(
 
     // Step 2: generate implementation to access prebuilt packages.
     let code = r#"
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 // This file was generated. Do not modify!
 //
 // To update this code, run `testsuite/benchmark-workloads/generate.py`.
 
-use aptos_sdk::bcs;
+use libra2_sdk::bcs;
 use libra2_transaction_generator_lib::{
     entry_point_trait::PreBuiltPackages, publishing::prebuild_packages::PrebuiltPackagesBundle,
 };

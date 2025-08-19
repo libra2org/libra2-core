@@ -49,7 +49,7 @@
       "icon": "external link",
       "includeVars": true,
       "keepTime": true,
-      "tags": ["aptos-core"],
+      "tags": ["libra2-core"],
       "targetBlank": true,
       "title": "aptos core",
       "tooltip": "",
@@ -1302,7 +1302,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "fHo-R604z" },
           "editorMode": "code",
-          "expr": "(sum(rate(aptos_state_sync_storage_synchronizer_latencies_sum{chain_name=~\"$chain_name\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\".*libra2-node-.*-fullnode-.*\",role=\"fullnode\",label!=\"commit_chunk\"}[$__rate_interval])))\n/\n(sum(rate(aptos_state_sync_storage_synchronizer_latencies_count{chain_name=~\"$chain_name\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\".*libra2-node-.*-fullnode-.*\",role=~\"fullnode\",label!=\"commit_chunk\"}[$__rate_interval])))",
+          "expr": "(sum(rate(libra2_state_sync_storage_synchronizer_latencies_sum{chain_name=~\"$chain_name\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\".*libra2-node-.*-fullnode-.*\",role=\"fullnode\",label!=\"commit_chunk\"}[$__rate_interval])))\n/\n(sum(rate(libra2_state_sync_storage_synchronizer_latencies_count{chain_name=~\"$chain_name\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\".*libra2-node-.*-fullnode-.*\",role=~\"fullnode\",label!=\"commit_chunk\"}[$__rate_interval])))",
           "hide": false,
           "instant": false,
           "legendFormat": "Execute/Apply Chunk",
@@ -1312,7 +1312,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "fHo-R604z" },
           "editorMode": "code",
-          "expr": "(sum(rate(aptos_state_sync_storage_synchronizer_latencies_sum{chain_name=~\"$chain_name\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\".*libra2-node-.*-fullnode-.*\",role=~\"$role\",label=\"commit_chunk\"}[$__rate_interval])))\n/\n(sum(rate(aptos_state_sync_storage_synchronizer_latencies_count{chain_name=~\"$chain_name\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\".*libra2-node-.*-fullnode-.*\",role=~\"$role\",label=\"commit_chunk\"}[$__rate_interval])))",
+          "expr": "(sum(rate(libra2_state_sync_storage_synchronizer_latencies_sum{chain_name=~\"$chain_name\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\".*libra2-node-.*-fullnode-.*\",role=~\"$role\",label=\"commit_chunk\"}[$__rate_interval])))\n/\n(sum(rate(libra2_state_sync_storage_synchronizer_latencies_count{chain_name=~\"$chain_name\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\".*libra2-node-.*-fullnode-.*\",role=~\"$role\",label=\"commit_chunk\"}[$__rate_interval])))",
           "hide": false,
           "instant": false,
           "legendFormat": "Commit Chunk",
@@ -1382,7 +1382,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "fHo-R604z" },
           "editorMode": "code",
-          "expr": "sum(rate(aptos_state_sync_storage_synchronizer_latencies_sum{chain_name=~\"$chain_name\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"^(pfn|public-fullnode-).*\",role=\"fullnode\",label!=\"commit_chunk\"}[$__rate_interval]))\n/\nsum(rate(aptos_state_sync_storage_synchronizer_latencies_count{chain_name=~\"$chain_name\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"^(pfn|public-fullnode-).*\",role=~\"fullnode\",label!=\"commit_chunk\"}[$__rate_interval]))",
+          "expr": "sum(rate(libra2_state_sync_storage_synchronizer_latencies_sum{chain_name=~\"$chain_name\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"^(pfn|public-fullnode-).*\",role=\"fullnode\",label!=\"commit_chunk\"}[$__rate_interval]))\n/\nsum(rate(libra2_state_sync_storage_synchronizer_latencies_count{chain_name=~\"$chain_name\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"^(pfn|public-fullnode-).*\",role=~\"fullnode\",label!=\"commit_chunk\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
           "legendFormat": "Execute/Apply Chunk",
@@ -1392,7 +1392,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "fHo-R604z" },
           "editorMode": "code",
-          "expr": "sum(rate(aptos_state_sync_storage_synchronizer_latencies_sum{chain_name=~\"$chain_name\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"^(pfn|public-fullnode-).*\",role=~\"$role\",label=\"commit_chunk\"}[$__rate_interval]))\n/\nsum(rate(aptos_state_sync_storage_synchronizer_latencies_count{chain_name=~\"$chain_name\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"^(pfn|public-fullnode-).*\",role=~\"$role\",label=\"commit_chunk\"}[$__rate_interval]))",
+          "expr": "sum(rate(libra2_state_sync_storage_synchronizer_latencies_sum{chain_name=~\"$chain_name\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"^(pfn|public-fullnode-).*\",role=~\"$role\",label=\"commit_chunk\"}[$__rate_interval]))\n/\nsum(rate(libra2_state_sync_storage_synchronizer_latencies_count{chain_name=~\"$chain_name\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"^(pfn|public-fullnode-).*\",role=~\"$role\",label=\"commit_chunk\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
           "legendFormat": "Commit Chunk",
@@ -1406,7 +1406,7 @@
   ],
   "refresh": "",
   "schemaVersion": 38,
-  "tags": ["aptos-core"],
+  "tags": ["libra2-core"],
   "templating": {
     "list": [
       {

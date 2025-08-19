@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright (c) Aptos Foundation
+# Copyright (c) A-p-t-o-s Foundation
 # Copyright (c) The Move Contributors
 # SPDX-License-Identifier: Apache-2.0
 
@@ -34,7 +34,7 @@ Usage:
 Flags:
     -h   Print this help
     -t   Run tests
-    -i   In addition to -t, run integration tests (Aptos framework and e2e tests)
+    -i   In addition to -t, run integration tests (Libra2 framework and e2e tests)
     -c   Run xclippy and fmt +nightly
     -g   Run the git checks script (whitespace check). This works
          only for committed clients.

@@ -1,6 +1,6 @@
 // Script hash: 12e7b871
 // Modifying on-chain feature flags:
-// Enabled Features: [CodeDependencyCheck, TreatFriendAsPrivate, Sha512AndRipeMd160Natives, AptosStdChainIdNatives, VMBinaryFormatV6, MultiEd25519PkValidateV2Natives, Blake2b256Native, ResourceGroups, MultisigAccounts, DelegationPools, Ed25519PubkeyValidateReturnFalseWrongLength]
+// Enabled Features: [CodeDependencyCheck, TreatFriendAsPrivate, Sha512AndRipeMd160Natives, Libra2StdChainIdNatives, VMBinaryFormatV6, MultiEd25519PkValidateV2Natives, Blake2b256Native, ResourceGroups, MultisigAccounts, DelegationPools, Ed25519PubkeyValidateReturnFalseWrongLength]
 // Disabled Features: []
 //
 script {

@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -11,7 +11,7 @@ use libra2_crypto::{
     ValidCryptoMaterialStringExt,
 };
 use libra2_gas_schedule::{InitialGasSchedule, TransactionGasParameters};
-use libra2_resource_viewer::AptosValueAnnotator;
+use libra2_resource_viewer::Libra2ValueAnnotator;
 use libra2_transaction_simulation::{
     InMemoryStateStore, SimulationStateStore, GENESIS_CHANGE_SET_HEAD,
 };
@@ -77,13 +77,13 @@ use tempfile::NamedTempFile;
  * Definitions
  */
 
-/// The Aptos transaction test adapter.
+/// The Libra2 transaction test adapter.
 ///
 /// This differs from the SimpleVMTestAdapter in a few ways to ensure that our tests mimics
 /// production settings:
 ///   - It uses a StateView as its storage backend
 ///   - It executes transactions through Libra2VM, instead of MoveVM directly
-struct AptosTestAdapter<'a> {
+struct Libra2TestAdapter<'a> {
     compiled_state: CompiledState<'a>,
     storage: InMemoryStateStore,
     default_syntax: SyntaxChoice,
@@ -99,9 +99,9 @@ struct TransactionParameters {
     pub expiration_timestamp_secs: u64,
 }
 
-/// Aptos-specific arguments for the publish command.
+/// Libra2-specific arguments for the publish command.
 #[derive(Parser, Debug)]
-struct AptosPublishArgs {
+struct Libra2PublishArgs {
     #[clap(long = "private-key", value_parser = RawPrivateKey::parse)]
     private_key: Option<RawPrivateKey>,
 
@@ -124,9 +124,9 @@ struct SignerAndKeyPair {
     private_key: Option<RawPrivateKey>,
 }
 
-/// Aptos-specifc arguments for the run command.
+/// Libra2-specifc arguments for the run command.
 #[derive(Parser, Debug)]
-struct AptosRunArgs {
+struct Libra2RunArgs {
     #[clap(long = "private-key", value_parser = RawPrivateKey::parse)]
     private_key: Option<RawPrivateKey>,
 
@@ -149,9 +149,9 @@ struct AptosRunArgs {
     secondary_signers: Option<Vec<SignerAndKeyPair>>,
 }
 
-/// Aptos-specifc arguments for the init command.
+/// Libra2-specifc arguments for the init command.
 #[derive(Parser, Debug)]
-struct AptosInitArgs {
+struct Libra2InitArgs {
     #[clap(long = "private-keys", value_parser = parse_named_private_key, num_args = 0..)]
     private_keys: Option<Vec<(Identifier, Ed25519PrivateKey)>>,
     #[clap(long = "initial-coins")]
@@ -197,7 +197,7 @@ fn parse_value(input: &str) -> Result<serde_json::Value, serde_json::Error> {
 
 /// Custom commands for the transactional test flow.
 #[derive(Parser, Debug)]
-enum AptosSubCommand {
+enum Libra2SubCommand {
     #[clap(name = "block")]
     BlockCommand(BlockCommand),
 
@@ -324,7 +324,7 @@ fn compile_framework_sources(
 // libra2-experimental can be using latest language features, while others cannot.
 // So we need to compile it twice, once without libra2-experimental, and once with.
 
-static PRECOMPILED_APTOS_FRAMEWORK_V2: Lazy<PrecompiledFilesModules> = Lazy::new(|| {
+static PRECOMPILED_LIBRA2_FRAMEWORK_V2: Lazy<PrecompiledFilesModules> = Lazy::new(|| {
     compile_framework_sources(
         libra2_cached_packages::head_release_bundle()
             .files()
@@ -337,7 +337,7 @@ static PRECOMPILED_APTOS_FRAMEWORK_V2: Lazy<PrecompiledFilesModules> = Lazy::new
     )
 });
 
-static PRECOMPILED_APTOS_FRAMEWORK_V2_WITH_EXPERIMENTAL: Lazy<PrecompiledFilesModules> =
+static PRECOMPILED_LIBRA2_FRAMEWORK_V2_WITH_EXPERIMENTAL: Lazy<PrecompiledFilesModules> =
     Lazy::new(|| {
         let named_address_mapping_strings: Vec<String> = libra2_framework::named_addresses()
             .iter()
@@ -371,7 +371,7 @@ static PRECOMPILED_APTOS_FRAMEWORK_V2_WITH_EXPERIMENTAL: Lazy<PrecompiledFilesMo
  * Test Adapter Implementation
  */
 
-impl AptosTestAdapter<'_> {
+impl Libra2TestAdapter<'_> {
     /// Look up the named private key in the mapping.
     fn resolve_named_private_key(&self, s: &IdentStr) -> Ed25519PrivateKey {
         if let Some(private_key) = self.private_key_mapping.get(s.as_str()) {
@@ -570,12 +570,12 @@ impl AptosTestAdapter<'_> {
     }
 }
 
-impl<'a> MoveTestAdapter<'a> for AptosTestAdapter<'a> {
-    type ExtraInitArgs = AptosInitArgs;
-    type ExtraPublishArgs = AptosPublishArgs;
-    type ExtraRunArgs = AptosRunArgs;
+impl<'a> MoveTestAdapter<'a> for Libra2TestAdapter<'a> {
+    type ExtraInitArgs = Libra2InitArgs;
+    type ExtraPublishArgs = Libra2PublishArgs;
+    type ExtraRunArgs = Libra2RunArgs;
     type ExtraValueArgs = ();
-    type Subcommand = AptosSubCommand;
+    type Subcommand = Libra2SubCommand;
 
     fn compiled_state(&mut self) -> &mut CompiledState<'a> {
         &mut self.compiled_state
@@ -982,7 +982,7 @@ impl<'a> MoveTestAdapter<'a> for AptosTestAdapter<'a> {
             None => Ok("[No Resource Exists]".to_owned()),
             Some(data) => {
                 let annotated =
-                    AptosValueAnnotator::new(&self.storage).view_resource(&struct_tag, &data)?;
+                    Libra2ValueAnnotator::new(&self.storage).view_resource(&struct_tag, &data)?;
                 Ok(format!("{}", annotated))
             },
         }
@@ -990,7 +990,7 @@ impl<'a> MoveTestAdapter<'a> for AptosTestAdapter<'a> {
 
     fn handle_subcommand(&mut self, input: TaskInput<Self::Subcommand>) -> Result<Option<String>> {
         match input.command {
-            AptosSubCommand::BlockCommand(block_cmd) => {
+            Libra2SubCommand::BlockCommand(block_cmd) => {
                 let proposer = self.compiled_state().resolve_address(&block_cmd.proposer);
                 let metadata = BlockMetadata::new(
                     HashValue::zero(),
@@ -1006,7 +1006,7 @@ impl<'a> MoveTestAdapter<'a> for AptosTestAdapter<'a> {
 
                 Ok(render_events(output.events()))
             },
-            AptosSubCommand::ViewTableCommand(view_table_cmd) => {
+            Libra2SubCommand::ViewTableCommand(view_table_cmd) => {
                 let converter = self.storage.as_converter(Arc::new(FakeDbReader {}), None);
 
                 let vm_key = converter
@@ -1090,11 +1090,11 @@ fn render_events(events: &[ContractEvent]) -> Option<String> {
 }
 
 fn precompiled_v2_framework() -> &'static PrecompiledFilesModules {
-    &PRECOMPILED_APTOS_FRAMEWORK_V2
+    &PRECOMPILED_LIBRA2_FRAMEWORK_V2
 }
 
 fn precompiled_v2_framework_with_experimental() -> &'static PrecompiledFilesModules {
-    &PRECOMPILED_APTOS_FRAMEWORK_V2_WITH_EXPERIMENTAL
+    &PRECOMPILED_LIBRA2_FRAMEWORK_V2_WITH_EXPERIMENTAL
 }
 
 pub fn run_libra2_test(path: &Path) -> Result<(), Box<dyn std::error::Error>> {
@@ -1121,5 +1121,5 @@ pub fn run_libra2_test_with_config(
         }
     };
     set_paranoid_type_checks(true);
-    run_test_impl::<AptosTestAdapter>(config, path, v2_lib, &suffix)
+    run_test_impl::<Libra2TestAdapter>(config, path, v2_lib, &suffix)
 }

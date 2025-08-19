@@ -3,8 +3,8 @@
 
 # Module `0x1::features`
 
-Defines feature flags for Aptos. Those are used in Aptos specific implementations of features in
-the Move stdlib, the Aptos stdlib, and the Aptos framework.
+Defines feature flags for Libra2. Those are used in Libra2 specific implementations of features in
+the Move stdlib, the Libra2 stdlib, and the Libra2 framework.
 
 ============================================================================================
 Feature Flag Definitions
@@ -284,25 +284,25 @@ Lifetime: transient
 
 
 
-<a id="0x1_features_APTOS_STD_CHAIN_ID_NATIVES"></a>
+<a id="0x1_features_LIBRA2_STD_CHAIN_ID_NATIVES"></a>
 
 Whether the new <code>libra2_stdlib::type_info::chain_id()</code> native for fetching the chain ID is enabled.
 This is needed because of the introduction of a new native function.
 Lifetime: transient
 
 
-<pre><code><b>const</b> <a href="features.md#0x1_features_APTOS_STD_CHAIN_ID_NATIVES">APTOS_STD_CHAIN_ID_NATIVES</a>: u64 = 4;
+<pre><code><b>const</b> <a href="features.md#0x1_features_LIBRA2_STD_CHAIN_ID_NATIVES">LIBRA2_STD_CHAIN_ID_NATIVES</a>: u64 = 4;
 </code></pre>
 
 
 
-<a id="0x1_features_APTOS_UNIQUE_IDENTIFIERS"></a>
+<a id="0x1_features_LIBRA2_UNIQUE_IDENTIFIERS"></a>
 
 Whether enable MOVE functions to call create_auid method to create AUIDs.
 Lifetime: transient
 
 
-<pre><code><b>const</b> <a href="features.md#0x1_features_APTOS_UNIQUE_IDENTIFIERS">APTOS_UNIQUE_IDENTIFIERS</a>: u64 = 23;
+<pre><code><b>const</b> <a href="features.md#0x1_features_LIBRA2_UNIQUE_IDENTIFIERS">LIBRA2_UNIQUE_IDENTIFIERS</a>: u64 = 23;
 </code></pre>
 
 
@@ -743,7 +743,7 @@ Lifetime: transient
 
 <a id="0x1_features_MODULE_EVENT_MIGRATION"></a>
 
-Whether aptos_framwork enables the behavior of module event migration.
+Whether libra2_framwork enables the behavior of module event migration.
 
 Lifetime: transient
 
@@ -1204,7 +1204,7 @@ We do not expect use from Move, so for now only for documentation purposes here
 <summary>Implementation</summary>
 
 
-<pre><code><b>public</b> <b>fun</b> <a href="features.md#0x1_features_get_libra2_stdlib_chain_id_feature">get_libra2_stdlib_chain_id_feature</a>(): u64 { <a href="features.md#0x1_features_APTOS_STD_CHAIN_ID_NATIVES">APTOS_STD_CHAIN_ID_NATIVES</a> }
+<pre><code><b>public</b> <b>fun</b> <a href="features.md#0x1_features_get_libra2_stdlib_chain_id_feature">get_libra2_stdlib_chain_id_feature</a>(): u64 { <a href="features.md#0x1_features_LIBRA2_STD_CHAIN_ID_NATIVES">LIBRA2_STD_CHAIN_ID_NATIVES</a> }
 </code></pre>
 
 
@@ -1227,7 +1227,7 @@ We do not expect use from Move, so for now only for documentation purposes here
 
 
 <pre><code><b>public</b> <b>fun</b> <a href="features.md#0x1_features_libra2_stdlib_chain_id_enabled">libra2_stdlib_chain_id_enabled</a>(): bool <b>acquires</b> <a href="features.md#0x1_features_Features">Features</a> {
-    <a href="features.md#0x1_features_is_enabled">is_enabled</a>(<a href="features.md#0x1_features_APTOS_STD_CHAIN_ID_NATIVES">APTOS_STD_CHAIN_ID_NATIVES</a>)
+    <a href="features.md#0x1_features_is_enabled">is_enabled</a>(<a href="features.md#0x1_features_LIBRA2_STD_CHAIN_ID_NATIVES">LIBRA2_STD_CHAIN_ID_NATIVES</a>)
 }
 </code></pre>
 
@@ -4643,4 +4643,4 @@ Helper to check whether a feature flag is enabled.
 </code></pre>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

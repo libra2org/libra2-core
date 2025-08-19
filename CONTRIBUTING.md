@@ -5,26 +5,26 @@ title: Contributing to Libra2 Core
 
 # Contributing
 
-Our goal is to make contributing to Libra2 Core easy and transparent. See [Libra2 Community](https://aptos.dev/community) for full details. This page describes [our development process](#our-development-process).
+Our goal is to make contributing to Libra2 Core easy and transparent. See [Libra2 Community](https://docs.libra2.org/community) for full details. This page describes [our development process](#our-development-process).
 
 ## Libra2 Core
 
 To contribute to the Libra2 Core implementation, first start with the proper development copy.
-You may want to use the GitHub interface to fork [aptos-core](https://github.com/libra2org/libra2-core) and check out your fork.
-For development environment setup and first build, see [Building Libra2 From Source](https://aptos.dev/guides/building-from-source)
+You may want to use the GitHub interface to fork [libra2-core](https://github.com/libra2org/libra2-core) and check out your fork.
+For development environment setup and first build, see [Building Libra2 From Source](https://docs.libra2.org/guides/building-from-source)
 
 ## Our Development Process
 
 ### Code Style, Hints, and Testing
 
-Refer to our Coding Guidelines for the [Move](https://aptos.dev/move/book/coding-conventions/) and [Rust](./RUST_CODING_STYLE.md) programming languages for detailed guidance about how to contribute to the project.
+Refer to our Coding Guidelines for the [Move](https://docs.libra2.org/move/book/coding-conventions/) and [Rust](./RUST_CODING_STYLE.md) programming languages for detailed guidance about how to contribute to the project.
 
-Also, please ensure you follow our [Secure Coding Guidelines](./RUST_SECURE_CODING.md) to contribute to Aptos securely. 
+Also, please ensure you follow our [Secure Coding Guidelines](./RUST_SECURE_CODING.md) to contribute to Libra2 securely. 
 
 
 ### Documentation
 
-Libra2 Core's developer website is also open source (the code can be found in this [repository](https://github.com/aptos-labs/developer-docs).  It is built using [Docusaurus](https://docusaurus.io/):
+Libra2 Core's developer website is also open source (the code can be found in this [repository](https://github.com/libra2org/libra2-docs).  It is built using [Docusaurus](https://docusaurus.io/):
 
 If you know Markdown, you can already contribute!
 

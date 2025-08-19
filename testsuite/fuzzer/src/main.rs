@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use clap::{Arg, Command};
@@ -6,7 +6,7 @@ use clap::{Arg, Command};
 fn main() {
     let matches = Command::new("Fuzz CLI")
         .version("0.1")
-        .author("Security Team @ Aptos Labs")
+        .author("Security Team @ Libra2 Labs")
         .about("This CLI is used to help craft and maintain fuzz targets for the Core components of the Libra2 Blockchain.")
         .subcommand(
             Command::new("compile_federated_jwk")

@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use anyhow::{format_err, Result};
@@ -6,21 +6,21 @@ use libra2_types::{chain_id::ChainId, PeerId};
 use once_cell::sync::OnceCell;
 use std::sync::Arc;
 
-/// The global [AptosNodeIdentity]
-static LIBRA2_NODE_IDENTITY: OnceCell<Arc<AptosNodeIdentity>> = OnceCell::new();
+/// The global [Libra2NodeIdentity]
+static LIBRA2_NODE_IDENTITY: OnceCell<Arc<Libra2NodeIdentity>> = OnceCell::new();
 
 /// Structure that holds information related to a node's identity
-pub struct AptosNodeIdentity {
+pub struct Libra2NodeIdentity {
     pub chain_id: OnceCell<ChainId>,
     pub peer_id: Option<PeerId>,
     // Holds Peer ID as String to reduce overhead for frequent lookups.
     pub peer_id_str: Option<String>,
 }
 
-/// Initializes the [AptosNodeIdentity] using the provided [PeerId] and
+/// Initializes the [Libra2NodeIdentity] using the provided [PeerId] and
 /// sets it globally exactly once.
 pub fn init(peer_id: Option<PeerId>) -> Result<()> {
-    let identity = AptosNodeIdentity {
+    let identity = Libra2NodeIdentity {
         chain_id: OnceCell::new(),
         peer_id,
         peer_id_str: peer_id.map(|id| id.to_string()),
@@ -31,7 +31,7 @@ pub fn init(peer_id: Option<PeerId>) -> Result<()> {
         .map_err(|_| format_err!("LIBRA2_NODE_IDENTITY was already set"))
 }
 
-/// Sets the [ChainId] in the global [AptosNodeIdentity], returning an error
+/// Sets the [ChainId] in the global [Libra2NodeIdentity], returning an error
 /// if [init] was not called already.
 pub fn set_chain_id(chain_id: ChainId) -> Result<()> {
     match LIBRA2_NODE_IDENTITY.get() {

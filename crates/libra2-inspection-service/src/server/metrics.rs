@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::server::{
@@ -11,7 +11,7 @@ use hyper::{Body, StatusCode};
 use prometheus::TextEncoder;
 
 // The metric key for the consensus execution gauge
-const CONSENSUS_EXECUTION_GAUGE: &str = "aptos_state_sync_consensus_executing_gauge{}";
+const CONSENSUS_EXECUTION_GAUGE: &str = "libra2_state_sync_consensus_executing_gauge{}";
 
 /// Handles a consensus health check request. This method returns
 /// 200 if the node is currently participating in consensus.

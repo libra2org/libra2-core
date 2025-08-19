@@ -1,8 +1,8 @@
-This guide gives some hints to troubleshoot issues when using the prover for specifying the Aptos frameworks.
+This guide gives some hints to troubleshoot issues when using the prover for specifying the Libra2 frameworks.
 
 ## Installation
 
-Please refer to the [doc](https://aptos.dev/tools/aptos-cli/install-cli/install-move-prover/).
+Please refer to the [doc](https://docs.libra2.org/tools/libra2-cli/install-cli/install-move-prover/).
 
 ## Timeout
 

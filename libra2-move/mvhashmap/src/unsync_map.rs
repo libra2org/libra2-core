@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
@@ -10,7 +10,7 @@ use libra2_aggregator::types::DelayedFieldValue;
 use libra2_types::{
     error::{code_invariant_error, PanicError},
     executable::ModulePath,
-    vm::modules::AptosModuleExtension,
+    vm::modules::Libra2ModuleExtension,
     write_set::TransactionWrite,
 };
 use libra2_vm_types::{resolver::ResourceGroupSize, resource_group_adapter::group_size_as_sum};
@@ -45,7 +45,7 @@ pub struct UnsyncMap<
 
     // Code caches for modules and scripts.
     module_cache:
-        UnsyncModuleCache<ModuleId, CompiledModule, Module, AptosModuleExtension, Option<TxnIndex>>,
+        UnsyncModuleCache<ModuleId, CompiledModule, Module, Libra2ModuleExtension, Option<TxnIndex>>,
     script_cache: UnsyncScriptCache<[u8; 32], CompiledScript, Script>,
 
     total_base_resource_size: AtomicU64,
@@ -86,7 +86,7 @@ impl<
     /// Returns the module cache for this [UnsyncMap].
     pub fn module_cache(
         &self,
-    ) -> &UnsyncModuleCache<ModuleId, CompiledModule, Module, AptosModuleExtension, Option<TxnIndex>>
+    ) -> &UnsyncModuleCache<ModuleId, CompiledModule, Module, Libra2ModuleExtension, Option<TxnIndex>>
     {
         &self.module_cache
     }
@@ -102,7 +102,7 @@ impl<
     ) -> impl Iterator<
         Item = (
             ModuleId,
-            Arc<ModuleCode<CompiledModule, Module, AptosModuleExtension>>,
+            Arc<ModuleCode<CompiledModule, Module, Libra2ModuleExtension>>,
         ),
     > {
         self.module_cache.into_modules_iter()

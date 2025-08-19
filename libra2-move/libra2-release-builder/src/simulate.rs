@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 //! This module implements the simulation of governance proposals.
@@ -189,7 +189,7 @@ fn add_simple_native_function(
  * Patches
  *
  **************************************************************************************************/
-static MODULE_ID_APTOS_GOVERNANCE: Lazy<ModuleId> = Lazy::new(|| {
+static MODULE_ID_LIBRA2_GOVERNANCE: Lazy<ModuleId> = Lazy::new(|| {
     ModuleId::new(
         AccountAddress::ONE,
         Identifier::new("libra2_governance").unwrap(),
@@ -243,7 +243,7 @@ fn patch_libra2_governance(
 ) -> Result<()> {
     use Bytecode::*;
 
-    patch_module(state_view, &MODULE_ID_APTOS_GOVERNANCE, |m| {
+    patch_module(state_view, &MODULE_ID_LIBRA2_GOVERNANCE, |m| {
         // Inject `native fun create_signer`.
         let create_signer_handle_idx = add_simple_native_function(
             m,
@@ -337,7 +337,7 @@ fn force_end_epoch(state_view: &impl SimulationStateStore) -> Result<()> {
     let traversal_storage = TraversalStorage::new();
     let mut sess = vm.new_session(&resolver, SessionId::void(), None);
     sess.execute_function_bypass_visibility(
-        &MODULE_ID_APTOS_GOVERNANCE,
+        &MODULE_ID_LIBRA2_GOVERNANCE,
         IdentStr::new("force_end_epoch").unwrap(),
         vec![],
         vec![MoveValue::Signer(AccountAddress::ONE)

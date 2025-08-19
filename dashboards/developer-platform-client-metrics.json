@@ -103,7 +103,7 @@
           "type": "math"
         }
       ],
-      "title": "Percentage of node API requests the with x-aptos-client header set",
+      "title": "Percentage of node API requests the with x-libra2-client header set",
       "type": "stat"
     },
     {

@@ -6,7 +6,7 @@ import { useWallet, InputTransactionData } from "@aptos-labs/wallet-adapter-reac
 
 import "@aptos-labs/wallet-adapter-ant-design/dist/index.css";
 import { CheckboxChangeEvent } from "antd/es/checkbox";
-import { Aptos } from "@aptos-labs/ts-sdk";
+import { Libra2 } from "@aptos-labs/ts-sdk";
 
 type Task = {
   address: string;
@@ -15,7 +15,7 @@ type Task = {
   task_id: string;
 };
 
-export const aptos = new Aptos();
+export const aptos = new Libra2();
 // change this to be your module account address
 export const moduleAddress = "0xcbddf398841353776903dbab2fdaefc54f181d07e114ae818b1a67af28d1b018";
 
@@ -238,7 +238,7 @@ function App() {
                         title={task.content}
                         description={
                           <a
-                            href={`https://explorer.aptoslabs.com/account/${task.address}/`}
+                            href={`https://explorer.libra2.org/account/${task.address}/`}
                             target="_blank"
                           >{`${task.address.slice(0, 6)}...${task.address.slice(-5)}`}</a>
                         }

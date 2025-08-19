@@ -1,7 +1,7 @@
 provider "kubernetes" {
-  host                   = aws_eks_cluster.aptos.endpoint
-  cluster_ca_certificate = base64decode(aws_eks_cluster.aptos.certificate_authority[0].data)
-  token                  = data.aws_eks_cluster_auth.aptos.token
+  host                   = aws_eks_cluster.libra2.endpoint
+  cluster_ca_certificate = base64decode(aws_eks_cluster.libra2.certificate_authority[0].data)
+  token                  = data.aws_eks_cluster_auth.libra2.token
 }
 
 resource "kubernetes_storage_class" "io1" {
@@ -47,7 +47,7 @@ resource "kubernetes_storage_class" "io2" {
 resource "null_resource" "delete-gp2" {
   provisioner "local-exec" {
     command = <<-EOT
-      aws --region ${var.region} eks update-kubeconfig --name ${aws_eks_cluster.aptos.name} --kubeconfig ${local.kubeconfig} &&
+      aws --region ${var.region} eks update-kubeconfig --name ${aws_eks_cluster.libra2.name} --kubeconfig ${local.kubeconfig} &&
       kubectl --kubeconfig ${local.kubeconfig} delete --ignore-not-found storageclass gp2
     EOT
   }
@@ -78,9 +78,9 @@ locals {
 
 provider "helm" {
   kubernetes {
-    host                   = aws_eks_cluster.aptos.endpoint
-    cluster_ca_certificate = base64decode(aws_eks_cluster.aptos.certificate_authority[0].data)
-    token                  = data.aws_eks_cluster_auth.aptos.token
+    host                   = aws_eks_cluster.libra2.endpoint
+    cluster_ca_certificate = base64decode(aws_eks_cluster.libra2.certificate_authority[0].data)
+    token                  = data.aws_eks_cluster_auth.libra2.token
   }
 }
 
@@ -193,9 +193,9 @@ resource "kubernetes_config_map" "aws-auth" {
 resource "local_file" "kubernetes" {
   filename = "${local.workspace_name}-kubernetes.json"
   content = jsonencode({
-    kubernetes_host        = aws_eks_cluster.aptos.endpoint
-    kubernetes_ca_cert     = base64decode(aws_eks_cluster.aptos.certificate_authority[0].data)
-    issuer                 = aws_eks_cluster.aptos.identity[0].oidc[0].issuer
+    kubernetes_host        = aws_eks_cluster.libra2.endpoint
+    kubernetes_ca_cert     = base64decode(aws_eks_cluster.libra2.certificate_authority[0].data)
+    issuer                 = aws_eks_cluster.libra2.identity[0].oidc[0].issuer
     service_account_prefix = "aptos-pfn"
     pod_cidrs              = aws_subnet.private[*].cidr_block
   })

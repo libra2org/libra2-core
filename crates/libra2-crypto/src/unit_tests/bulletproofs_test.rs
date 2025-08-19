@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::bulletproofs::MAX_RANGE_BITS;
@@ -8,7 +8,7 @@ use merlin::Transcript;
 use rand::{thread_rng, Rng};
 use std::convert::TryFrom;
 
-const TEST_DOMAIN_SEPARATION_TAG: &[u8; 21] = b"AptosTestBulletproofs";
+const TEST_DOMAIN_SEPARATION_TAG: &[u8; 21] = b"Libra2TestBulletproofs";
 
 #[test]
 #[ignore]

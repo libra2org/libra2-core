@@ -1,5 +1,5 @@
 #![no_main]
-// Copyright (c) Aptos Foundation
+// Copyright (c) A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use libra2_consensus::transaction_shuffler_fuzzing::use_case_aware::{Config, UseCaseAwareShuffler};

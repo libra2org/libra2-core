@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use libra2_native_interface::SafeNativeBuilder;
@@ -6,7 +6,7 @@ use move_core_types::language_storage::CORE_CODE_ADDRESS;
 use move_vm_runtime::native_functions::NativeFunctionTable;
 use std::collections::HashSet;
 
-/// Builds and returns all Aptos native functions.
+/// Builds and returns all Libra2 native functions.
 pub fn libra2_natives_with_builder(
     builder: &mut SafeNativeBuilder,
     inject_create_signer_for_gov_sim: bool,

@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -8,11 +8,11 @@ use std::{fs::File, io::Write};
 
 #[derive(Debug, Parser)]
 #[clap(
-    name = "Aptos format generator",
-    about = "Trace serde (de)serialization to generate format descriptions for Aptos types"
+    name = "Libra2 format generator",
+    about = "Trace serde (de)serialization to generate format descriptions for Libra2 types"
 )]
 struct Options {
-    #[clap(long, value_enum, default_value_t = Corpus::Aptos, ignore_case = true)]
+    #[clap(long, value_enum, default_value_t = Corpus::Libra2, ignore_case = true)]
     corpus: Corpus,
 
     #[clap(long)]

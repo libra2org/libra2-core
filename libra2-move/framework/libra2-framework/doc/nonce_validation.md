@@ -17,9 +17,9 @@
 -  [Function `check_and_insert_nonce`](#0x1_nonce_validation_check_and_insert_nonce)
 
 
-<pre><code><b>use</b> <a href="../../libra2-stdlib/../move-stdlib/doc/hash.md#0x1_aptos_hash">0x1::aptos_hash</a>;
-<b>use</b> <a href="big_ordered_map.md#0x1_big_ordered_map">0x1::big_ordered_map</a>;
+<pre><code><b>use</b> <a href="big_ordered_map.md#0x1_big_ordered_map">0x1::big_ordered_map</a>;
 <b>use</b> <a href="../../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error">0x1::error</a>;
+<b>use</b> <a href="../../libra2-stdlib/../move-stdlib/doc/hash.md#0x1_libra2_hash">0x1::libra2_hash</a>;
 <b>use</b> <a href="../../libra2-stdlib/../move-stdlib/doc/option.md#0x1_option">0x1::option</a>;
 <b>use</b> <a href="system_addresses.md#0x1_system_addresses">0x1::system_addresses</a>;
 <b>use</b> <a href="../../libra2-stdlib/doc/table.md#0x1_table">0x1::table</a>;
@@ -443,4 +443,4 @@
 </details>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

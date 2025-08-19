@@ -233,9 +233,9 @@ Returns a new aggregator.
 
 <tr>
 <td>1</td>
-<td>During the module's initialization, it guarantees that the Aptos framework is the caller and that the AggregatorFactory resource will move under the Aptos framework account.</td>
+<td>During the module's initialization, it guarantees that the Libra2 framework is the caller and that the AggregatorFactory resource will move under the Libra2 framework account.</td>
 <td>High</td>
-<td>The initialize function is responsible for establishing the initial state of the module by creating the AggregatorFactory resource, indicating its presence within the module's context. Subsequently, the resource transfers to the Aptos framework account.</td>
+<td>The initialize function is responsible for establishing the initial state of the module by creating the AggregatorFactory resource, indicating its presence within the module's context. Subsequently, the resource transfers to the Libra2 framework account.</td>
 <td>Formally verified via <a href="#high-level-req-1">initialize_aggregator_factory</a>.</td>
 </tr>
 
@@ -243,15 +243,15 @@ Returns a new aggregator.
 <td>2</td>
 <td>To create a new aggregator instance, the aggregator factory must already be initialized and exist under the Libra2 account.</td>
 <td>High</td>
-<td>The create_aggregator_internal function asserts that AggregatorFactory exists for the Aptos account.</td>
+<td>The create_aggregator_internal function asserts that AggregatorFactory exists for the Libra2 account.</td>
 <td>Formally verified via <a href="#high-level-req-2">CreateAggregatorInternalAbortsIf</a>.</td>
 </tr>
 
 <tr>
 <td>3</td>
-<td>Only the Aptos framework address may create an aggregator instance currently.</td>
+<td>Only the Libra2 framework address may create an aggregator instance currently.</td>
 <td>Low</td>
-<td>The create_aggregator function ensures that the address calling it is the Aptos framework address.</td>
+<td>The create_aggregator function ensures that the address calling it is the Libra2 framework address.</td>
 <td>Formally verified via <a href="#high-level-req-3">create_aggregator</a>.</td>
 </tr>
 
@@ -380,4 +380,4 @@ AggregatorFactory existed under the @libra2_framework when Creating a new aggreg
 </code></pre>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

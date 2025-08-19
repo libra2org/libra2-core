@@ -1,7 +1,7 @@
-// Copyright (c) Aptos Foundation
+// Copyright (c) A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-//! This library runs and manages a set of services that makes up a local Aptos network.
+//! This library runs and manages a set of services that makes up a local Libra2 network.
 //! - node
 //!     - node API
 //!     - indexer grpc

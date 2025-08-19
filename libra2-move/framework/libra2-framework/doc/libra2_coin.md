@@ -215,7 +215,7 @@ Can only called during genesis to initialize the Libra2 coin.
         <b>true</b>, // monitor_supply
     );
 
-    // Aptos framework needs mint cap <b>to</b> mint coins <b>to</b> initial validators. This will be revoked once the validators
+    // Libra2 framework needs mint cap <b>to</b> mint coins <b>to</b> initial validators. This will be revoked once the validators
     // have been initialized.
     <b>move_to</b>(libra2_framework, <a href="libra2_coin.md#0x1_libra2_coin_MintCapStore">MintCapStore</a> { mint_cap });
 
@@ -657,4 +657,4 @@ Claim the delegated mint capability and destroy the delegated token.
 </code></pre>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

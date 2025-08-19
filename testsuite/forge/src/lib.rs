@@ -1,8 +1,8 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
-//! Forge is a framework for writing and running end-to-end tests in Aptos
+//! Forge is a framework for writing and running end-to-end tests in Libra2
 
 pub use anyhow::Result;
 

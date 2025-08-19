@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{BUILD_PROFILE, PATH_CRATE_ROOT};
@@ -23,7 +23,7 @@ static PATH_BIN_RUN_LIBRA2_P2P: Lazy<PathBuf> = Lazy::new(|| {
         .join(RUN_LIBRA2_P2P)
 });
 
-fn run_aptos_p2p() -> Result<()> {
+fn run_libra2_p2p() -> Result<()> {
     println!("Profiling Libra2 VM...");
 
     let genesis_blob = bcs::to_bytes(GENESIS_CHANGE_SET_HEAD.write_set())?;
@@ -61,7 +61,7 @@ fn build_binaries() -> Result<()> {
 
 pub fn run() -> Result<()> {
     build_binaries()?;
-    run_aptos_p2p()?;
+    run_libra2_p2p()?;
 
     Ok(())
 }

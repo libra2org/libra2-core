@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 mod cargo;
@@ -13,10 +13,10 @@ use determinator::Utf8Paths0;
 use log::{debug, trace};
 
 // Useful package name constants for targeted tests
-const APTOS_CLI_PACKAGE_NAME: &str = "aptos";
+const LIBRA2_CLI_PACKAGE_NAME: &str = "libra2";
 
 // Relevant file paths to monitor when deciding to run the targeted tests.
-// Note: these paths should be relative to the root of the `aptos-core` repository,
+// Note: these paths should be relative to the root of the `libra2-core` repository,
 // and will be transformed into UTF-8 paths for cross-platform compatibility.
 const RELEVANT_FILE_PATHS_FOR_COMPILER_V2: [&str; 5] = [
     "libra2-move/libra2-transactional-test-harness",
@@ -69,7 +69,7 @@ impl CommonArgs {
 }
 
 #[derive(Clone, Subcommand, Debug)]
-pub enum AptosCargoCommand {
+pub enum Libra2CargoCommand {
     AffectedPackages(CommonArgs),
     ChangedFiles(CommonArgs),
     Check(CommonArgs),
@@ -85,39 +85,39 @@ pub enum AptosCargoCommand {
     Test(CommonArgs),
 }
 
-impl AptosCargoCommand {
+impl Libra2CargoCommand {
     fn command(&self) -> &'static str {
         match self {
-            AptosCargoCommand::Check(_) => "check",
-            AptosCargoCommand::Xclippy(_) => "clippy",
-            AptosCargoCommand::Fmt(_) => "fmt",
-            AptosCargoCommand::Nextest(_) => "nextest",
-            AptosCargoCommand::Test(_) => "test",
+            Libra2CargoCommand::Check(_) => "check",
+            Libra2CargoCommand::Xclippy(_) => "clippy",
+            Libra2CargoCommand::Fmt(_) => "fmt",
+            Libra2CargoCommand::Nextest(_) => "nextest",
+            Libra2CargoCommand::Test(_) => "test",
             command => panic!("Unsupported command attempted! Command: {:?}", command),
         }
     }
 
     fn command_args(&self) -> &CommonArgs {
         match self {
-            AptosCargoCommand::AffectedPackages(args) => args,
-            AptosCargoCommand::ChangedFiles(args) => args,
-            AptosCargoCommand::Check(args) => args,
-            AptosCargoCommand::CheckMergeBase(args) => args,
-            AptosCargoCommand::Xclippy(args) => args,
-            AptosCargoCommand::Fmt(args) => args,
-            AptosCargoCommand::Nextest(args) => args,
-            AptosCargoCommand::TargetedCLITests(args) => args,
-            AptosCargoCommand::TargetedCompilerV2Tests(args) => args,
-            AptosCargoCommand::TargetedExecutionPerformanceTests(args) => args,
-            AptosCargoCommand::TargetedFrameworkUpgradeTests(args) => args,
-            AptosCargoCommand::TargetedUnitTests(args) => args,
-            AptosCargoCommand::Test(args) => args,
+            Libra2CargoCommand::AffectedPackages(args) => args,
+            Libra2CargoCommand::ChangedFiles(args) => args,
+            Libra2CargoCommand::Check(args) => args,
+            Libra2CargoCommand::CheckMergeBase(args) => args,
+            Libra2CargoCommand::Xclippy(args) => args,
+            Libra2CargoCommand::Fmt(args) => args,
+            Libra2CargoCommand::Nextest(args) => args,
+            Libra2CargoCommand::TargetedCLITests(args) => args,
+            Libra2CargoCommand::TargetedCompilerV2Tests(args) => args,
+            Libra2CargoCommand::TargetedExecutionPerformanceTests(args) => args,
+            Libra2CargoCommand::TargetedFrameworkUpgradeTests(args) => args,
+            Libra2CargoCommand::TargetedUnitTests(args) => args,
+            Libra2CargoCommand::Test(args) => args,
         }
     }
 
     fn extra_opts(&self) -> Option<&[&str]> {
         match self {
-            AptosCargoCommand::Xclippy(_) => Some(&[
+            Libra2CargoCommand::Xclippy(_) => Some(&[
                 "-Dwarnings",
                 "-Wclippy::all",
                 "-Aclippy::upper_case_acronyms",
@@ -157,21 +157,21 @@ impl AptosCargoCommand {
 
     pub fn execute(&self, package_args: &SelectedPackageArgs) -> anyhow::Result<()> {
         match self {
-            AptosCargoCommand::AffectedPackages(_) => {
+            Libra2CargoCommand::AffectedPackages(_) => {
                 // Calculate and display the affected packages
                 let affected_package_paths = package_args.compute_target_packages()?;
                 output_affected_packages(affected_package_paths)
             },
-            AptosCargoCommand::ChangedFiles(_) => {
+            Libra2CargoCommand::ChangedFiles(_) => {
                 // Calculate and display the changed files
                 let (_, _, changed_files) = package_args.identify_changed_files()?;
                 output_changed_files(changed_files)
             },
-            AptosCargoCommand::CheckMergeBase(_) => {
+            Libra2CargoCommand::CheckMergeBase(_) => {
                 // Check the merge base
                 package_args.check_merge_base()
             },
-            AptosCargoCommand::TargetedCLITests(_) => {
+            Libra2CargoCommand::TargetedCLITests(_) => {
                 // Run the targeted CLI tests (if necessary).
                 // First, start by calculating the affected packages.
                 let affected_package_paths = package_args.compute_target_packages()?;
@@ -183,7 +183,7 @@ impl AptosCargoCommand {
                     let package_name = get_package_name_from_path(&package_path);
 
                     // Check if the package is the Libra2 CLI
-                    if package_name == APTOS_CLI_PACKAGE_NAME {
+                    if package_name == LIBRA2_CLI_PACKAGE_NAME {
                         cli_affected = true; // The Libra2 CLI was affected
                         break;
                     }
@@ -199,7 +199,7 @@ impl AptosCargoCommand {
                 println!("Skipping CLI tests as the Libra2 CLI package was not affected!");
                 Ok(())
             },
-            AptosCargoCommand::TargetedCompilerV2Tests(_) => {
+            Libra2CargoCommand::TargetedCompilerV2Tests(_) => {
                 // Run the targeted compiler v2 tests (if necessary).
                 // Start by calculating the changed files and affected packages.
                 let (_, _, changed_files) = package_args.identify_changed_files()?;
@@ -224,7 +224,7 @@ impl AptosCargoCommand {
                 println!("Skipping targeted compiler v2 tests because no relevant files or packages were affected!");
                 Ok(())
             },
-            AptosCargoCommand::TargetedExecutionPerformanceTests(_) => {
+            Libra2CargoCommand::TargetedExecutionPerformanceTests(_) => {
                 // Determine if the execution performance tests should be run.
                 // Start by calculating the changed files and affected packages.
                 let (_, _, changed_files) = package_args.identify_changed_files()?;
@@ -248,7 +248,7 @@ impl AptosCargoCommand {
 
                 Ok(())
             },
-            AptosCargoCommand::TargetedFrameworkUpgradeTests(_) => {
+            Libra2CargoCommand::TargetedFrameworkUpgradeTests(_) => {
                 // Determine if the framework upgrade tests should be run.
                 // Start by calculating the changed files and affected packages.
                 let (_, _, changed_files) = package_args.identify_changed_files()?;
@@ -273,7 +273,7 @@ impl AptosCargoCommand {
 
                 Ok(())
             },
-            AptosCargoCommand::TargetedUnitTests(_) => {
+            Libra2CargoCommand::TargetedUnitTests(_) => {
                 // Run the targeted unit tests (if necessary).
                 // Start by calculating the affected packages.
                 let (direct_args, push_through_args, affected_package_paths) =
@@ -418,18 +418,18 @@ fn get_package_name_from_path(package_path: &str) -> String {
 fn run_targeted_cli_tests() -> anyhow::Result<()> {
     // First, run the CLI tests
     let mut command = Cargo::command("test");
-    command.args(["-p", APTOS_CLI_PACKAGE_NAME]);
+    command.args(["-p", LIBRA2_CLI_PACKAGE_NAME]);
     command.run(false);
 
     // Next, build the CLI binary
     let mut command = Cargo::command("build");
-    command.args(["-p", APTOS_CLI_PACKAGE_NAME]);
+    command.args(["-p", LIBRA2_CLI_PACKAGE_NAME]);
     command.run(false);
 
     // Finally, run the CLI --help command. Here, we ignore the exit status
     // because the CLI will return a non-zero exit status when running --help.
     let mut command = Cargo::command("run");
-    command.args(["-p", APTOS_CLI_PACKAGE_NAME]);
+    command.args(["-p", LIBRA2_CLI_PACKAGE_NAME]);
     command.run(true);
 
     Ok(())
@@ -517,7 +517,7 @@ fn output_changed_files(changed_files: Utf8Paths0) -> anyhow::Result<()> {
 #[clap(author, version)]
 pub struct Libra2CargoCli {
     #[command(subcommand)]
-    cmd: AptosCargoCommand,
+    cmd: Libra2CargoCommand,
     #[command(flatten)]
     package_args: SelectedPackageArgs,
     #[command(flatten)]
@@ -595,7 +595,7 @@ mod tests {
         // Verify that no changes are detected
         let changed_file_paths = vec![
             ".githubb/",
-            "aptos-nove/file.txt",
+            "libra2-nove/file.txt",
             "Cargo.lockity",
             "/my/crates/",
         ];
@@ -642,7 +642,7 @@ mod tests {
 
         // Verify that no changes are detected
         let affected_package_paths = vec![
-            "file:///home/libra2-core/aptos-mode/tests/e2e-move-tests#test-crate",
+            "file:///home/libra2-core/libra2-mode/tests/e2e-move-tests#test-crate",
             "file:///home/libra2-core/crates/test-crate#other-test-crate",
             "file:///home/libra2-core/crates/other-crate#other-crate",
             "file:///home/libra2-core/libra2-node#other-node-crate",

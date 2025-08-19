@@ -49,7 +49,7 @@ variable "chain_name" {
 }
 
 variable "image_tag" {
-  description = "Docker image tag for Aptos node"
+  description = "Docker image tag for Libra2 node"
   type        = string
   default     = "devnet"
 }
@@ -89,7 +89,7 @@ variable "create_google_managed_ssl_certificate" {
 variable "record_name" {
   description = "DNS record name to use (<workspace> is replaced with the TF workspace name)"
   type        = string
-  default     = "<workspace>.aptos"
+  default     = "<workspace>.libra2"
 }
 
 variable "create_dns_records" {

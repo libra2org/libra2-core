@@ -1,7 +1,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-export { AptosFaucetClient } from './AptosFaucetClient';
+export { Libra2FaucetClient } from './Libra2FaucetClient';
 
 export { ApiError } from './core/ApiError';
 export { BaseHttpRequest } from './core/BaseHttpRequest';

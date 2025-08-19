@@ -351,7 +351,7 @@ module example_addr::managed_fungible_asset {
         initialize(
             constructor_ref,
             0,
-            utf8(b"Aptos Token"), /* name */
+            utf8(b"Libra2 Token"), /* name */
             utf8(b"APT"), /* symbol */
             8, /* decimals */
             utf8(b"http://example.com/favicon.ico"), /* icon */

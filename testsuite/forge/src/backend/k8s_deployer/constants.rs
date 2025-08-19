@@ -1,4 +1,4 @@
-// Copyright (c) Aptos Foundation
+// Copyright (c) A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 pub const FORGE_INDEXER_DEPLOYER_DOCKER_IMAGE_REPO: &str =

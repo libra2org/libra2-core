@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::traits::{FromOnChainGasSchedule, InitialGasSchedule, ToOnChainGasSchedule};
@@ -33,7 +33,7 @@ pub mod gas_params {
     }
 }
 
-/// Gas parameters for everything that is needed to run the Aptos blockchain, including
+/// Gas parameters for everything that is needed to run the Libra2 blockchain, including
 /// instructions, transactions and native functions from various packages.
 #[derive(Debug, Clone)]
 pub struct Libra2GasParameters {

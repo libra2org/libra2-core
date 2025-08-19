@@ -43,7 +43,7 @@ spec:
         - mountPath: /opt/aptos/genesis
           name: genesis-config
         - mountPath: /opt/aptos/data
-          name: aptos-data
+          name: libra2-data
       volumes:
       - configMap:
           name: pfn-name-pfn-configmap
@@ -51,6 +51,6 @@ spec:
       - configMap:
           name: genesis-artifiact-configmap-pangu
         name: genesis-config
-      - name: aptos-data
+      - name: libra2-data
         persistentVolumeClaim:
           claimName: pfn-name-pfn-pvc

@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -7,7 +7,7 @@ use crate::{
     versioned_delayed_fields::VersionedDelayedFields, versioned_group_data::VersionedGroupData,
 };
 use libra2_types::{
-    executable::ModulePath, vm::modules::AptosModuleExtension, write_set::TransactionWrite,
+    executable::ModulePath, vm::modules::Libra2ModuleExtension, write_set::TransactionWrite,
 };
 use move_binary_format::{file_format::CompiledScript, CompiledModule};
 use move_core_types::language_storage::ModuleId;
@@ -44,7 +44,7 @@ pub struct MVHashMap<K, T, V: TransactionWrite, I: Clone> {
     delayed_fields: VersionedDelayedFields<I>,
 
     module_cache:
-        SyncModuleCache<ModuleId, CompiledModule, Module, AptosModuleExtension, Option<TxnIndex>>,
+        SyncModuleCache<ModuleId, CompiledModule, Module, Libra2ModuleExtension, Option<TxnIndex>>,
     script_cache: SyncScriptCache<[u8; 32], CompiledScript, Script>,
 }
 
@@ -99,7 +99,7 @@ where
     /// 2) committed modules.
     pub fn module_cache(
         &self,
-    ) -> &SyncModuleCache<ModuleId, CompiledModule, Module, AptosModuleExtension, Option<TxnIndex>>
+    ) -> &SyncModuleCache<ModuleId, CompiledModule, Module, Libra2ModuleExtension, Option<TxnIndex>>
     {
         &self.module_cache
     }
@@ -110,7 +110,7 @@ where
     ) -> impl Iterator<
         Item = (
             ModuleId,
-            Arc<ModuleCode<CompiledModule, Module, AptosModuleExtension>>,
+            Arc<ModuleCode<CompiledModule, Module, Libra2ModuleExtension>>,
         ),
     > {
         self.module_cache.take_modules_iter()

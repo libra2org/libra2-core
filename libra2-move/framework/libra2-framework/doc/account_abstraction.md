@@ -669,7 +669,7 @@ only be obtained as a part of the governance script.
 
 
 <pre><code>inline <b>fun</b> <a href="account_abstraction.md#0x1_account_abstraction_resource_addr">resource_addr</a>(source: <b>address</b>): <b>address</b> {
-    <a href="object.md#0x1_object_create_user_derived_object_address">object::create_user_derived_object_address</a>(source, @aptos_fungible_asset)
+    <a href="object.md#0x1_object_create_user_derived_object_address">object::create_user_derived_object_address</a>(source, @libra2_fungible_asset)
 }
 </code></pre>
 
@@ -841,7 +841,7 @@ only be obtained as a part of the governance script.
 
     <a href="function_info.md#0x1_function_info_load_module_from_function">function_info::load_module_from_function</a>(&func_info);
     <b>let</b> returned_signer = <a href="account_abstraction.md#0x1_account_abstraction_dispatchable_authenticate">dispatchable_authenticate</a>(<a href="account.md#0x1_account">account</a>, signing_data, &func_info);
-    // Returned <a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a> MUST represent the same <a href="account.md#0x1_account">account</a> <b>address</b>. Otherwise, it may <b>break</b> the <b>invariant</b> of Aptos blockchain!
+    // Returned <a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a> MUST represent the same <a href="account.md#0x1_account">account</a> <b>address</b>. Otherwise, it may <b>break</b> the <b>invariant</b> of Libra2 blockchain!
     <b>assert</b>!(
         master_signer_addr == <a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer_address_of">signer::address_of</a>(&returned_signer),
         <a href="../../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_invalid_state">error::invalid_state</a>(<a href="account_abstraction.md#0x1_account_abstraction_EINCONSISTENT_SIGNER_ADDRESS">EINCONSISTENT_SIGNER_ADDRESS</a>)
@@ -1008,4 +1008,4 @@ The native function to dispatch customized move authentication function.
 </code></pre>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

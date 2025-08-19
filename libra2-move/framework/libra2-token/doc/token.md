@@ -658,7 +658,7 @@ Represent the collection metadata
 <code>description: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a></code>
 </dt>
 <dd>
- A description for the token collection Eg: "Aptos Toad Overload"
+ A description for the token collection Eg: "Libra2 Toad Overload"
 </dd>
 <dt>
 <code>name: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a></code>
@@ -683,7 +683,7 @@ Represent the collection metadata
 </dt>
 <dd>
  If maximal is a non-zero value, the number of created TokenData entries should be smaller or equal to this maximum
- If maximal is 0, Aptos doesn't track the supply of this collection, and there is no limit
+ If maximal is 0, Libra2 doesn't track the supply of this collection, and there is no limit
 </dd>
 <dt>
 <code>mutability_config: <a href="token.md#0x3_token_CollectionMutabilityConfig">token::CollectionMutabilityConfig</a></code>
@@ -6897,4 +6897,4 @@ Deprecated function
 </code></pre>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

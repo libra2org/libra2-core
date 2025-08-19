@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -80,7 +80,7 @@ pub const MAX_REAL_EPOCH_END: u64 = MAX_ADVERTISED_EPOCH_END + 2;
 pub const MAX_REAL_TRANSACTION: u64 = MAX_ADVERTISED_TRANSACTION + 10;
 pub const MAX_REAL_TRANSACTION_OUTPUT: u64 = MAX_REAL_TRANSACTION;
 
-/// A simple mock of the Aptos Data Client
+/// A simple mock of the Libra2 Data Client
 #[derive(Clone, Debug)]
 pub struct MockLibra2DataClient {
     pub libra2_data_client_config: Libra2DataClientConfig,
@@ -1038,7 +1038,7 @@ async fn determine_target_ledger_info(
     }
 }
 
-/// Initializes the Aptos logger for tests
+/// Initializes the Libra2 logger for tests
 pub fn initialize_logger() {
     libra2_logger::Logger::builder()
         .is_async(false)

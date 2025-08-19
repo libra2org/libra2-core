@@ -1,14 +1,14 @@
 provider "kubernetes" {
-  host                   = aws_eks_cluster.aptos.endpoint
-  cluster_ca_certificate = base64decode(aws_eks_cluster.aptos.certificate_authority[0].data)
-  token                  = data.aws_eks_cluster_auth.aptos.token
+  host                   = aws_eks_cluster.libra2.endpoint
+  cluster_ca_certificate = base64decode(aws_eks_cluster.libra2.certificate_authority[0].data)
+  token                  = data.aws_eks_cluster_auth.libra2.token
 }
 
 provider "helm" {
   kubernetes {
-    host                   = aws_eks_cluster.aptos.endpoint
-    cluster_ca_certificate = base64decode(aws_eks_cluster.aptos.certificate_authority[0].data)
-    token                  = data.aws_eks_cluster_auth.aptos.token
+    host                   = aws_eks_cluster.libra2.endpoint
+    cluster_ca_certificate = base64decode(aws_eks_cluster.libra2.certificate_authority[0].data)
+    token                  = data.aws_eks_cluster_auth.libra2.token
   }
 }
 
@@ -23,7 +23,7 @@ locals {
 resource "null_resource" "delete-gp2" {
   provisioner "local-exec" {
     command = <<-EOT
-      aws --region ${var.region} eks update-kubeconfig --name ${aws_eks_cluster.aptos.name} --kubeconfig ${local.kubeconfig} &&
+      aws --region ${var.region} eks update-kubeconfig --name ${aws_eks_cluster.libra2.name} --kubeconfig ${local.kubeconfig} &&
       kubectl --kubeconfig ${local.kubeconfig} delete --ignore-not-found storageclass gp2
     EOT
   }

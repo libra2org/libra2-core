@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{emitter::load_specific_account, instance::Instance, ClusterArgs};
@@ -176,7 +176,7 @@ impl Cluster {
         for url in &urls {
             if url.host_str().unwrap().starts_with("api.") {
                 if args.node_api_key.is_none() {
-                    println!("URL {} starts with api.* but no API key was provided. Hint: generate one at https://developers.aptoslabs.com", url);
+                    println!("URL {} starts with api.* but no API key was provided. Hint: generate one at https://developers.libra2.org", url);
                 }
             } else if args.node_api_key.is_some() {
                 println!(

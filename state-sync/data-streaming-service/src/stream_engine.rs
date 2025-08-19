@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -69,7 +69,7 @@ macro_rules! invalid_stream_request {
 #[enum_dispatch]
 pub trait DataStreamEngine {
     /// Creates a batch of data client requests that can be sent to the
-    /// Aptos data client to progress the stream. The number of requests
+    /// Libra2 data client to progress the stream. The number of requests
     /// created is bound by the `max_number_of_requests`.
     fn create_data_client_requests(
         &mut self,

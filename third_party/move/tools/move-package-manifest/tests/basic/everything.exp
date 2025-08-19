@@ -37,7 +37,7 @@ PackageManifest {
             version: Some(
                 "0.1.2",
             ),
-            location: Aptos {
+            location: Libra2 {
                 node_url: "mainnet",
                 package_addr: "0x1",
             },

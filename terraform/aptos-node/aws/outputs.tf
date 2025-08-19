@@ -3,12 +3,12 @@ output "helm_release_name" {
 }
 
 output "aws_eks_cluster" {
-  value     = aws_eks_cluster.aptos
+  value     = aws_eks_cluster.libra2
   sensitive = true
 }
 
 output "aws_eks_cluster_auth_token" {
-  value     = data.aws_eks_cluster_auth.aptos.token
+  value     = data.aws_eks_cluster_auth.libra2.token
   sensitive = true
 }
 
@@ -52,5 +52,5 @@ output "aws_eip_nat_public_ip" {
 }
 
 output "cluster_security_group_id" {
-  value = aws_eks_cluster.aptos.vpc_config[0].cluster_security_group_id
+  value = aws_eks_cluster.libra2.vpc_config[0].cluster_security_group_id
 }

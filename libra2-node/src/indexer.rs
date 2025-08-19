@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use libra2_config::config::NodeConfig;
@@ -15,7 +15,7 @@ pub fn bootstrap_indexer(
     libra2_db: Arc<dyn DbReader>,
     mp_client_sender: MempoolClientSender,
 ) -> Result<Option<Runtime>, anyhow::Error> {
-    use aptos_indexer::runtime::bootstrap as bootstrap_indexer_stream;
+    use libra2_indexer::runtime::bootstrap as bootstrap_indexer_stream;
 
     match bootstrap_indexer_stream(&node_config, chain_id, libra2_db, mp_client_sender) {
         None => Ok(None),

@@ -1,8 +1,8 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
-//! The official Rust SDK for Aptos.
+//! The official Rust SDK for Libra2.
 //!
 //! ## Modules
 //!
@@ -12,7 +12,7 @@
 //! * `move_types` - Includes types used when interacting with the Move VM
 //! * `rest_client` - The Libra2 API Client, used for sending requests to the Libra2 Blockchain.
 //! * `transaction_builder` - Includes helpers for constructing transactions
-//! * `types` - Includes types for Aptos on-chain data structures
+//! * `types` - Includes types for Libra2 on-chain data structures
 //!
 //! ## Example
 //!

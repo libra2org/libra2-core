@@ -254,4 +254,4 @@ Returns the identifier bytes of the public key
 </code></pre>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

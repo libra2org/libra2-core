@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -22,7 +22,7 @@ pub mod tests;
 
 /// CompiledScript generated from script composer will have this key in its metadata to
 /// distinguish from other scripts.
-pub static APTOS_SCRIPT_COMPOSER_KEY: &[u8] = "libra2::script_composer".as_bytes();
+pub static LIBRA2_SCRIPT_COMPOSER_KEY: &[u8] = "libra2::script_composer".as_bytes();
 
 /// Representing a returned value from a previous list of `MoveFunctionCall`s.
 #[wasm_bindgen]

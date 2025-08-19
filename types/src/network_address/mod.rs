@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -28,7 +28,7 @@ const MAX_DNS_NAME_SIZE: usize = 255;
 
 /// ## Overview
 ///
-/// Aptos `NetworkAddress` is a compact, efficient, self-describing and
+/// Libra2 `NetworkAddress` is a compact, efficient, self-describing and
 /// future-proof network address represented as a stack of protocols. Essentially
 /// libp2p's [multiaddr] but using [`bcs`] to describe the binary format.
 ///

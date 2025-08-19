@@ -8,9 +8,9 @@ Pangu is a testnet creation and management CLI, which deploys on top of existing
 
 ## What is Pangu CLI?
 
-Ever had to wait for the Aptos devnet/testnet releases to test a new feature? Or, create a PR to launch testnets through Forge? Well, these will be a thing of the past with Pangu.
+Ever had to wait for the Libra2 devnet/testnet releases to test a new feature? Or, create a PR to launch testnets through Forge? Well, these will be a thing of the past with Pangu.
 
-Pangu is a modular, customizable, and next-gen Aptos testnet creation-management CLI tool written in Python. Pangu allows you to create, and manage testnets on demand, and blazingly fast 🚀🚀🚀 
+Pangu is a modular, customizable, and next-gen Libra2 testnet creation-management CLI tool written in Python. Pangu allows you to create, and manage testnets on demand, and blazingly fast 🚀🚀🚀 
 
 Pangu is inherently faster than its predecessors (Forge testnet creation) because:
 
@@ -90,10 +90,10 @@ CREATE OPTIONS:
     - Pass **`true`** if you would like to run genesis without deploying on Kubernetes (K8S). All Kubernetes YAML files will be dumped to the workspace. If you don’t provide a workspace, all the YAML files will be dumped to a tmp folder.
     - Default: **`False`**
     - Example: **`-dry-run true`**
-1. **`-aptos-cli-path`**:
+1. **`-libra2-cli-path`**:
     - The path to the Libra2 CLI if it is not in your $PATH variable.
     - Default: **`aptos`**
-    - Example: **`-aptos-cli-path /path/to/aptos`**
+    - Example: **`-libra2-cli-path /path/to/aptos`**
 2. **`-name`**:
     - Name for the testnet. The default is a randomly generated name. The name will automatically have “pangu-” appended to it.
     - Example: **`-name MyTestnet`**

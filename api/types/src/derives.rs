@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 //! This file is where we apply a number of traits that allow us to use these
@@ -145,7 +145,7 @@ impl_poem_type!(
           1. Empty chars should be ignored when comparing 2 struct tag ids.
           2. When used in an URL path, should be encoded by url-encoding (AKA percent-encoding).
 
-        See [doc](https://aptos.dev/concepts/accounts) for more details.
+        See [doc](https://docs.libra2.org/concepts/accounts) for more details.
       "})
     )
 );

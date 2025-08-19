@@ -15,7 +15,7 @@ services:
       # `s3.yaml` (AWS S3)
       # `gcs.yaml` (GCP GCS)
       # You can update the yaml file to specify where you want to download data from,
-      # default data resource is hosted by AptosLabs.
+      # default data resource is hosted by Libra2Labs.
       - type: bind
         source: ./s3.yaml
         target: /opt/libra2/etc/restore.yaml

@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -89,7 +89,7 @@ pub struct Libra2NodeArgs {
     #[clap(long, requires("test"))]
     random_ports: bool,
 
-    /// Paths to the Aptos framework release package to be used for genesis.
+    /// Paths to the Libra2 framework release package to be used for genesis.
     #[clap(long, requires("test"))]
     genesis_framework: Option<PathBuf>,
 
@@ -344,7 +344,7 @@ pub fn start_test_environment_node(
     test_dir: PathBuf,
     enable_lazy_mode: bool,
 ) -> anyhow::Result<()> {
-    let aptos_root_key_path = test_dir.join("mint.key");
+    let libra2_root_key_path = test_dir.join("mint.key");
 
     // Prepare log file since we cannot automatically route logs to stderr
     let log_file = test_dir.join("validator.log");
@@ -353,7 +353,7 @@ pub fn start_test_environment_node(
     println!("Completed generating configuration:");
     println!("\tLog file: {:?}", log_file);
     println!("\tTest dir: {:?}", test_dir);
-    println!("\tLibra2 root key path: {:?}", aptos_root_key_path);
+    println!("\tLibra2 root key path: {:?}", libra2_root_key_path);
     println!("\tWaypoint: {}", config.base.waypoint.genesis_waypoint());
     println!("\tChainId: {}", ChainId::test().id());
     println!("\tREST API endpoint: http://{}", &config.api.address);
@@ -574,7 +574,7 @@ where
     }
 
     // The validator builder puts the first node in the 0 directory
-    let aptos_root_key_path = test_dir.join("mint.key");
+    let libra2_root_key_path = test_dir.join("mint.key");
 
     // Build genesis and the validator node
     let builder = libra2_genesis::builder::Builder::new(test_dir, framework.clone())?
@@ -588,7 +588,7 @@ where
 
             match env::var("ENABLE_KEYLESS_DEFAULT") {
                 Ok(val) if val.as_str() == "1" => {
-                    let response = ureq::get("https://api.devnet.aptoslabs.com/v1/accounts/0x1/resource/0x1::keyless_account::Groth16VerificationKey").call();
+                    let response = ureq::get("https://api.devnet.libra2.org/v1/accounts/0x1/resource/0x1::keyless_account::Groth16VerificationKey").call();
                     let json: Value = response.into_json().expect("Failed to parse JSON");
                     configure_keyless_with_vk(genesis_config, json).unwrap();
                 },
@@ -612,7 +612,7 @@ where
 
     // Write the mint key to disk
     let serialized_keys = bcs::to_bytes(&root_key)?;
-    let mut key_file = fs::File::create(aptos_root_key_path)?;
+    let mut key_file = fs::File::create(libra2_root_key_path)?;
     key_file.write_all(&serialized_keys)?;
 
     // Build a waypoint file so that clients / docker can grab it easily

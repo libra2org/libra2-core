@@ -1,4 +1,4 @@
-// Copyright (c) Aptos Foundation
+// Copyright (c) A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
@@ -492,7 +492,7 @@ mod test {
         UserTransactionFilterBuilder, /*UserTransactionPayloadFilterBuilder,*/
     };
 
-    // Disabled for now while we investigate an issue with lz4 in aptos-core:
+    // Disabled for now while we investigate an issue with lz4 in libra2-core:
     // https://aptos-org.slack.com/archives/C04PF1X2UKY/p1718995777239809?thread_ts=1718969817.705389&cid=C04PF1X2UKY
     /*
     #[test]

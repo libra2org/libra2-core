@@ -1,8 +1,8 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
-//! How and where to record the Serde format of interesting Aptos types.
+//! How and where to record the Serde format of interesting Libra2 types.
 //! See API documentation with `cargo doc -p serde-reflection --open`
 
 use libra2_crypto::ed25519::{Ed25519PublicKey, Ed25519Signature};
@@ -17,7 +17,7 @@ use std::fmt::{Display, Formatter};
 
 /// Rest API types
 mod api;
-/// Aptos transactions.
+/// Libra2 transactions.
 mod libra2;
 /// Consensus messages.
 mod consensus;
@@ -34,7 +34,7 @@ pub use linter::lint_bcs_format;
 /// A corpus of Rust types to trace, and optionally record on disk.
 pub enum Corpus {
     API,
-    Aptos,
+    Libra2,
     Consensus,
     Network,
     MoveABI,
@@ -45,7 +45,7 @@ impl Corpus {
     pub fn get_registry(self) -> Registry {
         let result = match self {
             Corpus::API => api::get_registry(),
-            Corpus::Aptos => libra2::get_registry(),
+            Corpus::Libra2 => libra2::get_registry(),
             Corpus::Consensus => consensus::get_registry(),
             Corpus::Network => network::get_registry(),
             Corpus::MoveABI => move_abi::get_registry(),
@@ -62,7 +62,7 @@ impl Corpus {
     pub fn output_file(self) -> Option<&'static str> {
         match self {
             Corpus::API => api::output_file(),
-            Corpus::Aptos => libra2::output_file(),
+            Corpus::Libra2 => libra2::output_file(),
             Corpus::Consensus => consensus::output_file(),
             Corpus::Network => network::output_file(),
             Corpus::MoveABI => move_abi::output_file(),
@@ -74,7 +74,7 @@ impl Display for Corpus {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         f.write_str(match self {
             Corpus::API => "API",
-            Corpus::Aptos => "Libra2",
+            Corpus::Libra2 => "Libra2",
             Corpus::Consensus => "Consensus",
             Corpus::Network => "Network",
             Corpus::MoveABI => "MoveABI",

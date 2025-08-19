@@ -996,7 +996,7 @@ The signer capability offer doesn't exist at the given address
 
 <a id="0x1_account_ENO_VALID_FRAMEWORK_RESERVED_ADDRESS"></a>
 
-Address to create is not a valid reserved address for Aptos framework
+Address to create is not a valid reserved address for Libra2 framework
 
 
 <pre><code><b>const</b> <a href="account.md#0x1_account_ENO_VALID_FRAMEWORK_RESERVED_ADDRESS">ENO_VALID_FRAMEWORK_RESERVED_ADDRESS</a>: u64 = 11;
@@ -2774,7 +2774,7 @@ A resource account is used to manage resources independent of an account managed
 In Libra2 a resource account is created based upon the sha3 256 of the source's address and additional seed data.
 A resource account can only be created once, this is designated by setting the
 <code>Account::signer_capability_offer::for</code> to the address of the resource account. While an entity may call
-<code>create_account</code> to attempt to claim an account ahead of the creation of a resource account, if found Aptos will
+<code>create_account</code> to attempt to claim an account ahead of the creation of a resource account, if found Libra2 will
 transition ownership of the account over to the resource account. This is done by validating that the account has
 yet to execute any transactions and that the <code>Account::signer_capability_offer::for</code> is none. The probability of a
 collision where someone has legitimately produced a private key that maps to a resource account address is less
@@ -3227,10 +3227,10 @@ Only the address <code>@libra2_framework</code> can call.
 OriginatingAddress does not exist under <code>@libra2_framework</code> before the call.
 
 
-<pre><code><b>let</b> aptos_addr = <a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer_address_of">signer::address_of</a>(libra2_framework);
-<b>aborts_if</b> !<a href="system_addresses.md#0x1_system_addresses_is_libra2_framework_address">system_addresses::is_libra2_framework_address</a>(aptos_addr);
-<b>aborts_if</b> <b>exists</b>&lt;<a href="account.md#0x1_account_OriginatingAddress">OriginatingAddress</a>&gt;(aptos_addr);
-<b>ensures</b> <b>exists</b>&lt;<a href="account.md#0x1_account_OriginatingAddress">OriginatingAddress</a>&gt;(aptos_addr);
+<pre><code><b>let</b> libra2_addr = <a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer_address_of">signer::address_of</a>(libra2_framework);
+<b>aborts_if</b> !<a href="system_addresses.md#0x1_system_addresses_is_libra2_framework_address">system_addresses::is_libra2_framework_address</a>(libra2_addr);
+<b>aborts_if</b> <b>exists</b>&lt;<a href="account.md#0x1_account_OriginatingAddress">OriginatingAddress</a>&gt;(libra2_addr);
+<b>ensures</b> <b>exists</b>&lt;<a href="account.md#0x1_account_OriginatingAddress">OriginatingAddress</a>&gt;(libra2_addr);
 </code></pre>
 
 
@@ -4301,4 +4301,4 @@ The guid_creation_num of the Account is up to MAX_U64.
 </code></pre>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -22,7 +22,7 @@ use libra2_forge::{
         LatencyType, MetricsThreshold, StateProgressThreshold, SuccessCriteria,
         SystemMetricsThreshold,
     },
-    AdminContext, AdminTest, AptosContext, AptosTest, EmitJobMode, EmitJobRequest, ForgeConfig,
+    AdminContext, AdminTest, Libra2Context, Libra2Test, EmitJobMode, EmitJobRequest, ForgeConfig,
     NetworkContext, NetworkContextSynchronizer, NetworkTest, NodeResourceOverride, Test,
     WorkflowProgress,
 };
@@ -994,8 +994,8 @@ impl Test for RunForever {
 }
 
 #[async_trait::async_trait]
-impl AptosTest for RunForever {
-    async fn run<'t>(&self, _ctx: &mut AptosContext<'t>) -> Result<()> {
+impl Libra2Test for RunForever {
+    async fn run<'t>(&self, _ctx: &mut Libra2Context<'t>) -> Result<()> {
         println!("The network has been deployed. Hit Ctrl+C to kill this, otherwise it will run forever.");
         let keep_running = Arc::new(AtomicBool::new(true));
         while keep_running.load(Ordering::Acquire) {
@@ -1019,7 +1019,7 @@ impl AdminTest for GetMetadata {
     fn run(&self, ctx: &mut AdminContext<'_>) -> Result<()> {
         let client = ctx.rest_client();
         let runtime = Runtime::new().unwrap();
-        runtime.block_on(client.get_aptos_version()).unwrap();
+        runtime.block_on(client.get_libra2_version()).unwrap();
         runtime.block_on(client.get_ledger_information()).unwrap();
 
         Ok(())
@@ -1050,8 +1050,8 @@ impl Test for FundAccount {
 }
 
 #[async_trait::async_trait]
-impl AptosTest for FundAccount {
-    async fn run<'t>(&self, ctx: &mut AptosContext<'t>) -> Result<()> {
+impl Libra2Test for FundAccount {
+    async fn run<'t>(&self, ctx: &mut Libra2Context<'t>) -> Result<()> {
         let client = ctx.client();
 
         let account = ctx.random_account();
@@ -1074,8 +1074,8 @@ impl Test for TransferCoins {
 }
 
 #[async_trait::async_trait]
-impl AptosTest for TransferCoins {
-    async fn run<'t>(&self, ctx: &mut AptosContext<'t>) -> Result<()> {
+impl Libra2Test for TransferCoins {
+    async fn run<'t>(&self, ctx: &mut Libra2Context<'t>) -> Result<()> {
         let client = ctx.client();
         let payer = ctx.random_account();
         let payee = ctx.random_account();

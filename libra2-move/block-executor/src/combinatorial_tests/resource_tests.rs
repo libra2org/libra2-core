@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -20,7 +20,7 @@ use libra2_types::{
     },
     state_store::{state_value::StateValue, MockStateView, TStateView},
     transaction::{BlockExecutableTransaction as Transaction, BlockOutput},
-    vm::modules::AptosModuleExtension,
+    vm::modules::Libra2ModuleExtension,
 };
 use move_core_types::language_storage::ModuleId;
 use move_vm_runtime::Module;
@@ -85,7 +85,7 @@ pub(crate) fn populate_guard_with_modules(
         // Create a ModuleCode::verified instance with the module
         let module_code = Arc::new(ModuleCode::from_arced_verified(
             Arc::new(module),
-            Arc::new(AptosModuleExtension::new(StateValue::new_legacy(
+            Arc::new(Libra2ModuleExtension::new(StateValue::new_legacy(
                 serialized_bytes.into(),
             ))),
         ));

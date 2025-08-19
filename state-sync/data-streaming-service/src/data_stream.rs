@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -57,7 +57,7 @@ pub type PendingClientResponse = Arc<Mutex<Box<data_notification::PendingClientR
 
 /// Each data stream holds the original stream request from the client and tracks
 /// the progress of the data stream to satisfy that request (e.g., the data that
-/// has already been sent along the stream to the client and the in-flight Aptos
+/// has already been sent along the stream to the client and the in-flight Libra2
 /// data client requests that have been sent to the network).
 ///
 /// Note that it is the responsibility of the data stream to send data
@@ -74,7 +74,7 @@ pub struct DataStream<T> {
     // The unique ID for this data stream. This is useful for logging.
     data_stream_id: DataStreamId,
 
-    // The data client through which to fetch data from the Aptos network
+    // The data client through which to fetch data from the Libra2 network
     libra2_data_client: T,
 
     // The engine for this data stream
@@ -231,7 +231,7 @@ impl<T: Libra2DataClientInterface + Send + Clone + 'static> DataStream<T> {
             .contains_key(notification_id)
     }
 
-    /// Notifies the Aptos data client of a bad client response
+    /// Notifies the Libra2 data client of a bad client response
     pub fn handle_notification_feedback(
         &self,
         notification_id: &NotificationId,
@@ -744,7 +744,7 @@ impl<T: Libra2DataClientInterface + Send + Clone + 'static> DataStream<T> {
         Ok(())
     }
 
-    /// Notifies the Aptos data client of a bad client response
+    /// Notifies the Libra2 data client of a bad client response
     fn notify_bad_response(
         &self,
         response_context: &ResponseContext,
@@ -1380,7 +1380,7 @@ fn sanity_check_client_response_type(
 }
 
 /// Transforms the notification feedback into a specific response error that
-/// can be sent to the Aptos data client.
+/// can be sent to the Libra2 data client.
 fn extract_response_error(
     notification_feedback: &NotificationFeedback,
 ) -> Result<ResponseError, Error> {

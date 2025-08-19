@@ -1,9 +1,9 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
 use libra2_infallible::RwLock;
-use libra2_logger::{libra2_logger::AptosData, info, Writer};
+use libra2_logger::{libra2_logger::Libra2Data, info, Writer};
 use std::sync::Arc;
 
 #[derive(Default)]
@@ -25,7 +25,7 @@ impl Writer for VecWriter {
 fn verify_end_to_end() {
     let writer = VecWriter::default();
     let logs = writer.logs.clone();
-    AptosData::builder()
+    Libra2Data::builder()
         .is_async(false)
         .printer(Box::new(writer))
         .build();

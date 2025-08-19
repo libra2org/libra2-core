@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use libra2_logger::{error, warn};
@@ -16,7 +16,7 @@ pub const CONTENT_TYPE_TEXT: &str = "text/plain";
 
 /// Counter for the number of metrics in various states
 pub static NUM_METRICS: Lazy<IntCounterVec> = Lazy::new(|| {
-    register_int_counter_vec!("aptos_metrics", "Number of metrics in certain states", &[
+    register_int_counter_vec!("libra2_metrics", "Number of metrics in certain states", &[
         "type"
     ])
     .unwrap()

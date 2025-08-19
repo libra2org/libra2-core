@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -21,12 +21,12 @@ use libra2_vm_types::{
 use fail::fail_point;
 use move_core_types::vm_status::{StatusCode, VMStatus};
 
-pub struct AptosExecutorTask {
+pub struct Libra2ExecutorTask {
     vm: Libra2VM,
     id: StateViewId,
 }
 
-impl ExecutorTask for AptosExecutorTask {
+impl ExecutorTask for Libra2ExecutorTask {
     type Error = VMStatus;
     type Output = Libra2TransactionOutput;
     type Txn = SignatureVerifiedTransaction;

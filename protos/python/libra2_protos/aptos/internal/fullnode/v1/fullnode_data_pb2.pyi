@@ -4,7 +4,7 @@ from typing import Mapping as _Mapping
 from typing import Optional as _Optional
 from typing import Union as _Union
 
-from aptos.indexer.v1 import grpc_pb2 as _grpc_pb2
+from libra2.indexer.v1 import grpc_pb2 as _grpc_pb2
 from aptos.transaction.v1 import transaction_pb2 as _transaction_pb2
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message

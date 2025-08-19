@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use super::{CheckResult, Checker, CheckerError, CommonCheckerConfig};
@@ -16,7 +16,7 @@ use serde::{Deserialize, Serialize};
 use thiserror::Error as ThisError;
 
 const NODE_REQUIREMENTS_LINK: &str =
-    "https://aptos.dev/nodes/validator-node/operator/node-requirements";
+    "https://docs.libra2.org/nodes/validator-node/operator/node-requirements";
 
 #[derive(Debug, ThisError)]
 pub enum TpsCheckerError {

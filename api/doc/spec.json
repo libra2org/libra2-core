@@ -2,10 +2,10 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Libra2 Node API",
-    "description": "The Libra2 Node API is a RESTful API for client applications to interact with the Aptos blockchain.",
+    "description": "The Libra2 Node API is a RESTful API for client applications to interact with the Libra2 blockchain.",
     "version": "1.2.0",
     "contact": {
-      "name": "Aptos Labs",
+      "name": "Libra2 Labs",
       "url": "https://github.com/libra2org/libra2-core"
     },
     "license": {
@@ -650,7 +650,7 @@
           "Accounts"
         ],
         "summary": "Get account resources",
-        "description": "Retrieves all account resources for a given account and a specific ledger version.  If the\nledger version is not specified in the request, the latest ledger version is used.\n\nThe Aptos nodes prune account state history, via a configurable time window.\nIf the requested ledger version has been pruned, the server responds with a 410.",
+        "description": "Retrieves all account resources for a given account and a specific ledger version.  If the\nledger version is not specified in the request, the latest ledger version is used.\n\nThe Libra2 nodes prune account state history, via a configurable time window.\nIf the requested ledger version has been pruned, the server responds with a 410.",
         "parameters": [
           {
             "name": "address",
@@ -680,7 +680,7 @@
               "$ref": "#/components/schemas/StateKeyWrapper"
             },
             "in": "query",
-            "description": "Cursor specifying where to start for pagination\n\nThis cursor cannot be derived manually client-side. Instead, you must\ncall this endpoint once without this query parameter specified, and\nthen use the cursor returned in the X-Aptos-Cursor header in the\nresponse.",
+            "description": "Cursor specifying where to start for pagination\n\nThis cursor cannot be derived manually client-side. Instead, you must\ncall this endpoint once without this query parameter specified, and\nthen use the cursor returned in the X-Libra2-Cursor header in the\nresponse.",
             "required": false,
             "deprecated": false,
             "explode": true
@@ -1267,7 +1267,7 @@
           "Accounts"
         ],
         "summary": "Get account balance",
-        "description": "Retrieves account balance for coins / fungible asset (only for primary fungible asset store)\nfor a given account, asset type and a specific ledger version.  If the\nledger version is not specified in the request, the latest ledger version is used.\n\nThe Aptos nodes prune account state history, via a configurable time window.\nIf the requested ledger version has been pruned, the server responds with a 410.",
+        "description": "Retrieves account balance for coins / fungible asset (only for primary fungible asset store)\nfor a given account, asset type and a specific ledger version.  If the\nledger version is not specified in the request, the latest ledger version is used.\n\nThe Libra2 nodes prune account state history, via a configurable time window.\nIf the requested ledger version has been pruned, the server responds with a 410.",
         "parameters": [
           {
             "name": "address",
@@ -1869,7 +1869,7 @@
           "Accounts"
         ],
         "summary": "Get account modules",
-        "description": "Retrieves all account modules' bytecode for a given account at a specific ledger version.\nIf the ledger version is not specified in the request, the latest ledger version is used.\n\nThe Aptos nodes prune account state history, via a configurable time window.\nIf the requested ledger version has been pruned, the server responds with a 410.",
+        "description": "Retrieves all account modules' bytecode for a given account at a specific ledger version.\nIf the ledger version is not specified in the request, the latest ledger version is used.\n\nThe Libra2 nodes prune account state history, via a configurable time window.\nIf the requested ledger version has been pruned, the server responds with a 410.",
         "parameters": [
           {
             "name": "address",
@@ -1899,7 +1899,7 @@
               "$ref": "#/components/schemas/StateKeyWrapper"
             },
             "in": "query",
-            "description": "Cursor specifying where to start for pagination\n\nThis cursor cannot be derived manually client-side. Instead, you must\ncall this endpoint once without this query parameter specified, and\nthen use the cursor returned in the X-Aptos-Cursor header in the\nresponse.",
+            "description": "Cursor specifying where to start for pagination\n\nThis cursor cannot be derived manually client-side. Instead, you must\ncall this endpoint once without this query parameter specified, and\nthen use the cursor returned in the X-Libra2-Cursor header in the\nresponse.",
             "required": false,
             "deprecated": false,
             "explode": true
@@ -5651,7 +5651,7 @@
           "Accounts"
         ],
         "summary": "Get account resource",
-        "description": "Retrieves an individual resource from a given account and at a specific ledger version. If the\nledger version is not specified in the request, the latest ledger version is used.\n\nThe Aptos nodes prune account state history, via a configurable time window.\nIf the requested ledger version has been pruned, the server responds with a 410.",
+        "description": "Retrieves an individual resource from a given account and at a specific ledger version. If the\nledger version is not specified in the request, the latest ledger version is used.\n\nThe Libra2 nodes prune account state history, via a configurable time window.\nIf the requested ledger version has been pruned, the server responds with a 410.",
         "parameters": [
           {
             "name": "address",
@@ -6253,7 +6253,7 @@
           "Accounts"
         ],
         "summary": "Get account module",
-        "description": "Retrieves an individual module from a given account and at a specific ledger version. If the\nledger version is not specified in the request, the latest ledger version is used.\n\nThe Aptos nodes prune account state history, via a configurable time window.\nIf the requested ledger version has been pruned, the server responds with a 410.",
+        "description": "Retrieves an individual module from a given account and at a specific ledger version. If the\nledger version is not specified in the request, the latest ledger version is used.\n\nThe Libra2 nodes prune account state history, via a configurable time window.\nIf the requested ledger version has been pruned, the server responds with a 410.",
         "parameters": [
           {
             "name": "address",
@@ -6855,7 +6855,7 @@
           "Tables"
         ],
         "summary": "Get table item",
-        "description": "Get a table item at a specific ledger version from the table identified by {table_handle}\nin the path and the \"key\" (TableItemRequest) provided in the request body.\n\nThis is a POST endpoint because the \"key\" for requesting a specific\ntable item (TableItemRequest) could be quite complex, as each of its\nfields could themselves be composed of other structs. This makes it\nimpractical to express using query params, meaning GET isn't an option.\n\nThe Aptos nodes prune account state history, via a configurable time window.\nIf the requested ledger version has been pruned, the server responds with a 410.",
+        "description": "Get a table item at a specific ledger version from the table identified by {table_handle}\nin the path and the \"key\" (TableItemRequest) provided in the request body.\n\nThis is a POST endpoint because the \"key\" for requesting a specific\ntable item (TableItemRequest) could be quite complex, as each of its\nfields could themselves be composed of other structs. This makes it\nimpractical to express using query params, meaning GET isn't an option.\n\nThe Libra2 nodes prune account state history, via a configurable time window.\nIf the requested ledger version has been pruned, the server responds with a 410.",
         "parameters": [
           {
             "name": "table_handle",
@@ -7456,7 +7456,7 @@
           "Tables"
         ],
         "summary": "Get raw table item",
-        "description": "Get a table item at a specific ledger version from the table identified by {table_handle}\nin the path and the \"key\" (RawTableItemRequest) provided in the request body.\n\nThe `get_raw_table_item` requires only a serialized key comparing to the full move type information\ncomparing to the `get_table_item` api, and can only return the query in the bcs format.\n\nThe Aptos nodes prune account state history, via a configurable time window.\nIf the requested ledger version has been pruned, the server responds with a 410.",
+        "description": "Get a table item at a specific ledger version from the table identified by {table_handle}\nin the path and the \"key\" (RawTableItemRequest) provided in the request body.\n\nThe `get_raw_table_item` requires only a serialized key comparing to the full move type information\ncomparing to the `get_table_item` api, and can only return the query in the bcs format.\n\nThe Libra2 nodes prune account state history, via a configurable time window.\nIf the requested ledger version has been pruned, the server responds with a 410.",
         "parameters": [
           {
             "name": "table_handle",
@@ -8650,7 +8650,7 @@
           "Transactions"
         ],
         "summary": "Submit transaction",
-        "description": "This endpoint accepts transaction submissions in two formats.\n\nTo submit a transaction as JSON, you must submit a SubmitTransactionRequest.\nTo build this request, do the following:\n\n1. Encode the transaction as BCS. If you are using a language that has\nnative BCS support, make sure of that library. If not, you may take\nadvantage of /transactions/encode_submission. When using this\nendpoint, make sure you trust the node you're talking to, as it is\npossible they could manipulate your request.\n2. Sign the encoded transaction and use it to create a TransactionSignature.\n3. Submit the request. Make sure to use the \"application/json\" Content-Type.\n\nTo submit a transaction as BCS, you must submit a SignedTransaction\nencoded as BCS. See SignedTransaction in types/src/transaction/mod.rs.\nMake sure to use the `application/x.aptos.signed_transaction+bcs` Content-Type.",
+        "description": "This endpoint accepts transaction submissions in two formats.\n\nTo submit a transaction as JSON, you must submit a SubmitTransactionRequest.\nTo build this request, do the following:\n\n1. Encode the transaction as BCS. If you are using a language that has\nnative BCS support, make sure of that library. If not, you may take\nadvantage of /transactions/encode_submission. When using this\nendpoint, make sure you trust the node you're talking to, as it is\npossible they could manipulate your request.\n2. Sign the encoded transaction and use it to create a TransactionSignature.\n3. Submit the request. Make sure to use the \"application/json\" Content-Type.\n\nTo submit a transaction as BCS, you must submit a SignedTransaction\nencoded as BCS. See SignedTransaction in types/src/transaction/mod.rs.\nMake sure to use the `application/x.libra2.signed_transaction+bcs` Content-Type.",
         "requestBody": {
           "content": {
             "application/json": {
@@ -8658,7 +8658,7 @@
                 "$ref": "#/components/schemas/SubmitTransactionRequest"
               }
             },
-            "application/x.aptos.signed_transaction+bcs": {
+            "application/x.libra2.signed_transaction+bcs": {
               "schema": {
                 "type": "array",
                 "items": {
@@ -9312,7 +9312,7 @@
           "Transactions"
         ],
         "summary": "Get transaction by hash",
-        "description": "Look up a transaction by its hash. This is the same hash that is returned\nby the API when submitting a transaction (see PendingTransaction).\n\nWhen given a transaction hash, the server first looks for the transaction\nin storage (on-chain, committed). If no on-chain transaction is found, it\nlooks the transaction up by hash in the mempool (pending, not yet committed).\n\nTo create a transaction hash by yourself, do the following:\n1. Hash message bytes: \"RawTransaction\" bytes + BCS bytes of [Transaction](https://aptos-labs.github.io/aptos-core/libra2_types/transaction/enum.Transaction.html).\n2. Apply hash algorithm `SHA3-256` to the hash message bytes.\n3. Hex-encode the hash bytes with `0x` prefix.",
+        "description": "Look up a transaction by its hash. This is the same hash that is returned\nby the API when submitting a transaction (see PendingTransaction).\n\nWhen given a transaction hash, the server first looks for the transaction\nin storage (on-chain, committed). If no on-chain transaction is found, it\nlooks the transaction up by hash in the mempool (pending, not yet committed).\n\nTo create a transaction hash by yourself, do the following:\n1. Hash message bytes: \"RawTransaction\" bytes + BCS bytes of [Transaction](https://github.com/libra2org/libra2-core/libra2_types/transaction/enum.Transaction.html).\n2. Apply hash algorithm `SHA3-256` to the hash message bytes.\n3. Hex-encode the hash bytes with `0x` prefix.",
         "parameters": [
           {
             "name": "txn_hash",
@@ -12275,7 +12275,7 @@
           "Transactions"
         ],
         "summary": "Submit batch transactions",
-        "description": "This allows you to submit multiple transactions.  The response has three outcomes:\n\n1. All transactions succeed, and it will return a 202\n2. Some transactions succeed, and it will return the failed transactions and a 206\n3. No transactions succeed, and it will also return the failed transactions and a 206\n\nTo submit a transaction as JSON, you must submit a SubmitTransactionRequest.\nTo build this request, do the following:\n\n1. Encode the transaction as BCS. If you are using a language that has\nnative BCS support, make sure to use that library. If not, you may take\nadvantage of /transactions/encode_submission. When using this\nendpoint, make sure you trust the node you're talking to, as it is\npossible they could manipulate your request.\n2. Sign the encoded transaction and use it to create a TransactionSignature.\n3. Submit the request. Make sure to use the \"application/json\" Content-Type.\n\nTo submit a transaction as BCS, you must submit a SignedTransaction\nencoded as BCS. See SignedTransaction in types/src/transaction/mod.rs.\nMake sure to use the `application/x.aptos.signed_transaction+bcs` Content-Type.",
+        "description": "This allows you to submit multiple transactions.  The response has three outcomes:\n\n1. All transactions succeed, and it will return a 202\n2. Some transactions succeed, and it will return the failed transactions and a 206\n3. No transactions succeed, and it will also return the failed transactions and a 206\n\nTo submit a transaction as JSON, you must submit a SubmitTransactionRequest.\nTo build this request, do the following:\n\n1. Encode the transaction as BCS. If you are using a language that has\nnative BCS support, make sure to use that library. If not, you may take\nadvantage of /transactions/encode_submission. When using this\nendpoint, make sure you trust the node you're talking to, as it is\npossible they could manipulate your request.\n2. Sign the encoded transaction and use it to create a TransactionSignature.\n3. Submit the request. Make sure to use the \"application/json\" Content-Type.\n\nTo submit a transaction as BCS, you must submit a SignedTransaction\nencoded as BCS. See SignedTransaction in types/src/transaction/mod.rs.\nMake sure to use the `application/x.libra2.signed_transaction+bcs` Content-Type.",
         "requestBody": {
           "content": {
             "application/json": {
@@ -12286,7 +12286,7 @@
                 }
               }
             },
-            "application/x.aptos.signed_transaction+bcs": {
+            "application/x.libra2.signed_transaction+bcs": {
               "schema": {
                 "type": "array",
                 "items": {
@@ -13082,7 +13082,7 @@
                 "$ref": "#/components/schemas/SubmitTransactionRequest"
               }
             },
-            "application/x.aptos.signed_transaction+bcs": {
+            "application/x.libra2.signed_transaction+bcs": {
               "schema": {
                 "type": "array",
                 "items": {
@@ -14579,7 +14579,7 @@
           "View"
         ],
         "summary": "Execute view function of a module",
-        "description": "Execute the Move function with the given parameters and return its execution result.\n\nThe Aptos nodes prune account state history, via a configurable time window.\nIf the requested ledger version has been pruned, the server responds with a 410.",
+        "description": "Execute the Move function with the given parameters and return its execution result.\n\nThe Libra2 nodes prune account state history, via a configurable time window.\nIf the requested ledger version has been pruned, the server responds with a 410.",
         "parameters": [
           {
             "name": "ledger_version",
@@ -14600,7 +14600,7 @@
                 "$ref": "#/components/schemas/ViewRequest"
               }
             },
-            "application/x.aptos.view_function+bcs": {
+            "application/x.libra2.view_function+bcs": {
               "schema": {
                 "type": "array",
                 "items": {
@@ -16769,7 +16769,7 @@
       },
       "MoveStructTag": {
         "type": "string",
-        "description": "String representation of a MoveStructTag (on-chain Move struct type). This exists so you\ncan specify MoveStructTags as path / query parameters, e.g. for get_events_by_event_handle.\n\nIt is a combination of:\n  1. `move_module_address`, `module_name` and `struct_name`, all joined by `::`\n  2. `struct generic type parameters` joined by `, `\n\nExamples:\n  * `0x1::coin::CoinStore<0x1::libra2_coin::Libra2Coin>`\n  * `0x1::account::Account`\n\nNote:\n  1. Empty chars should be ignored when comparing 2 struct tag ids.\n  2. When used in an URL path, should be encoded by url-encoding (AKA percent-encoding).\n\nSee [doc](https://aptos.dev/concepts/accounts) for more details.\n",
+        "description": "String representation of a MoveStructTag (on-chain Move struct type). This exists so you\ncan specify MoveStructTags as path / query parameters, e.g. for get_events_by_event_handle.\n\nIt is a combination of:\n  1. `move_module_address`, `module_name` and `struct_name`, all joined by `::`\n  2. `struct generic type parameters` joined by `, `\n\nExamples:\n  * `0x1::coin::CoinStore<0x1::libra2_coin::Libra2Coin>`\n  * `0x1::account::Account`\n\nNote:\n  1. Empty chars should be ignored when comparing 2 struct tag ids.\n  2. When used in an URL path, should be encoded by url-encoding (AKA percent-encoding).\n\nSee [doc](https://docs.libra2.org/concepts/accounts) for more details.\n",
         "example": "0x1::coin::CoinStore<0x1::libra2_coin::Libra2Coin>",
         "pattern": "^0x[0-9a-zA-Z:_<>]+$"
       },
@@ -17573,7 +17573,7 @@
       },
       "Transaction": {
         "type": "object",
-        "description": "Enum of the different types of transactions in Aptos",
+        "description": "Enum of the different types of transactions in Libra2",
         "oneOf": [
           {
             "$ref": "#/components/schemas/Transaction_PendingTransaction"

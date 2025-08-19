@@ -91,7 +91,7 @@ spec:
         volumeMounts:
         - name: backup-config
           mountPath: /opt/aptos/etc
-        - name: aptos-data
+        - name: libra2-data
           mountPath: /opt/aptos/data
         - name: tmp
           mountPath: /tmp
@@ -145,7 +145,7 @@ spec:
           mountPath: /opt/aptos/etc
         - name: libra2-genesis
           mountPath: /opt/aptos/genesis
-        - name: aptos-data
+        - name: libra2-data
           mountPath: /opt/aptos/data
         - name: tmp
           mountPath: /tmp
@@ -226,7 +226,7 @@ spec:
       {{- else }}
         emptyDir: {}
       {{- end }}
-      - name: aptos-data
+      - name: libra2-data
         persistentVolumeClaim:
           claimName: {{ include "aptos-fullnode.fullname" . }}-e{{ .Values.chain.era }}
       - name: backup-config

@@ -1,9 +1,9 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use libra2_cached_packages::libra2_stdlib::libra2_token_stdlib;
 use libra2_forge::{Libra2PublicInfo, Result, Swarm};
-use aptos_indexer::{
+use libra2_indexer::{
     database::{new_db_pool, PgDbPool, PgPoolConnection},
     models::transactions::TransactionQuery,
 };
@@ -91,7 +91,7 @@ pub async fn execute_nft_txns(creator: LocalAccount, info: &mut Libra2PublicInfo
 #[ignore]
 #[tokio::test]
 async fn test_old_indexer() {
-    if aptos_indexer::should_skip_pg_tests() {
+    if libra2_indexer::should_skip_pg_tests() {
         return;
     }
 
@@ -105,7 +105,7 @@ async fn test_old_indexer() {
             config.indexer.enabled = true;
             config.indexer.postgres_uri = Some(get_database_url());
             config.indexer.processor =
-                Some(aptos_indexer::processors::default_processor::NAME.to_string());
+                Some(libra2_indexer::processors::default_processor::NAME.to_string());
         }))
         .build()
         .await;

@@ -1,11 +1,11 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
     get_version_path_with_base, Client, DEFAULT_VERSION_PATH_BASE, X_LIBRA2_SDK_HEADER_VALUE,
 };
 use anyhow::Result;
-use libra2_api_types::X_APTOS_CLIENT;
+use libra2_api_types::X_LIBRA2_CLIENT;
 use reqwest::{
     header::{self, HeaderMap, HeaderName, HeaderValue},
     Client as ReqwestClient, ClientBuilder as ReqwestClientBuilder,
@@ -23,9 +23,9 @@ pub enum Libra2BaseUrl {
 impl Libra2BaseUrl {
     pub fn to_url(&self) -> Url {
         match self {
-            Libra2BaseUrl::Mainnet => Url::from_str("https://api.mainnet.aptoslabs.com").unwrap(),
-            Libra2BaseUrl::Devnet => Url::from_str("https://api.devnet.aptoslabs.com").unwrap(),
-            Libra2BaseUrl::Testnet => Url::from_str("https://api.testnet.aptoslabs.com").unwrap(),
+            Libra2BaseUrl::Mainnet => Url::from_str("https://api.mainnet.libra2.org").unwrap(),
+            Libra2BaseUrl::Devnet => Url::from_str("https://api.devnet.libra2.org").unwrap(),
+            Libra2BaseUrl::Testnet => Url::from_str("https://api.testnet.libra2.org").unwrap(),
             Libra2BaseUrl::Custom(url) => url.to_owned(),
         }
     }
@@ -40,16 +40,16 @@ pub struct ClientBuilder {
 }
 
 impl ClientBuilder {
-    pub fn new(aptos_base_url: Libra2BaseUrl) -> Self {
+    pub fn new(libra2_base_url: Libra2BaseUrl) -> Self {
         let mut headers = HeaderMap::new();
         headers.insert(
-            X_APTOS_CLIENT,
+            X_LIBRA2_CLIENT,
             HeaderValue::from_static(X_LIBRA2_SDK_HEADER_VALUE),
         );
 
         let mut client_builder = Self {
             reqwest_builder: ReqwestClient::builder(),
-            base_url: aptos_base_url.to_url(),
+            base_url: libra2_base_url.to_url(),
             version_path_base: DEFAULT_VERSION_PATH_BASE.to_string(),
             timeout: Duration::from_secs(10), // Default to 10 seconds
             headers,

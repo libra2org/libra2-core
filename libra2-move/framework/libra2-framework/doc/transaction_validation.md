@@ -2243,11 +2243,11 @@ Skip transaction_fee::burn_fee verification.
     <b>aborts_if</b> amount_to_mint &gt; 0 && !<b>exists</b>&lt;Libra2CoinMintCapability&gt;(@libra2_framework);
     <b>aborts_if</b> amount_to_mint &gt; 0 && total_supply + amount_to_mint &gt; MAX_U128;
     <b>ensures</b> amount_to_mint &gt; 0 ==&gt; post_total_supply == total_supply + amount_to_mint;
-    <b>let</b> aptos_addr = <a href="../../libra2-stdlib/doc/type_info.md#0x1_type_info_type_of">type_info::type_of</a>&lt;Libra2Coin&gt;().account_address;
-    <b>aborts_if</b> (amount_to_mint != 0) && !<b>exists</b>&lt;<a href="coin.md#0x1_coin_CoinInfo">coin::CoinInfo</a>&lt;Libra2Coin&gt;&gt;(aptos_addr);
+    <b>let</b> libra2_addr = <a href="../../libra2-stdlib/doc/type_info.md#0x1_type_info_type_of">type_info::type_of</a>&lt;Libra2Coin&gt;().account_address;
+    <b>aborts_if</b> (amount_to_mint != 0) && !<b>exists</b>&lt;<a href="coin.md#0x1_coin_CoinInfo">coin::CoinInfo</a>&lt;Libra2Coin&gt;&gt;(libra2_addr);
     <b>include</b> <a href="coin.md#0x1_coin_CoinAddAbortsIf">coin::CoinAddAbortsIf</a>&lt;Libra2Coin&gt; { amount: amount_to_mint };
 }
 </code></pre>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

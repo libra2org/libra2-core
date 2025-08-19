@@ -1,4 +1,4 @@
-/// Enhanced multisig account standard on Aptos. This is different from the native multisig scheme support enforced via
+/// Enhanced multisig account standard on Libra2. This is different from the native multisig scheme support enforced via
 /// the account's auth key.
 ///
 /// This module allows creating a flexible and powerful multisig account with seamless support for updating owners

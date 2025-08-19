@@ -1,6 +1,6 @@
 ### Libra2VM
 
-Libra2VM is used to execute a single Aptos transaction.
+Libra2VM is used to execute a single Libra2 transaction.
 Executes both system and user transactions.
 For every user transaction, the following steps are performed:
 

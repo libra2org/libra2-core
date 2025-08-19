@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{builder::GenesisConfiguration, config::ValidatorConfiguration};
@@ -120,7 +120,7 @@ impl MainnetGenesisInfo {
     }
 
     fn generate_genesis_txn(&self) -> Transaction {
-        libra2_vm_genesis::encode_aptos_mainnet_genesis_transaction(
+        libra2_vm_genesis::encode_libra2_mainnet_genesis_transaction(
             &self.accounts,
             &self.employee_vesting_accounts,
             &self.validators,

@@ -1,8 +1,8 @@
 [tool.poetry]
 name = "libra2-faucet-e2e-tests"
 version = "0.1.0"
-description = "Aptos Faucet E2E tests"
-authors = ["Aptos Labs <opensource@aptoslabs.com>"]
+description = "Libra2 Faucet E2E tests"
+authors = ["Libra2 Team <info@libra2.org>"]
 license = "Apache-2.0"
 
 [tool.poetry.dependencies]

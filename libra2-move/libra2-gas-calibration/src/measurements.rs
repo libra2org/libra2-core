@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 use crate::measurements_helpers::{get_dir_paths, list_entrypoints, record_gas_usage};
 use libra2_framework::{BuildOptions, BuiltPackage};

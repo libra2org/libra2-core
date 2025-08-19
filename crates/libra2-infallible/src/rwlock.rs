@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -49,7 +49,7 @@ mod tests {
     use std::{sync::Arc, thread};
 
     #[test]
-    fn test_aptos_rwlock() {
+    fn test_libra2_rwlock() {
         let a = 7u8;
         let rwlock = Arc::new(RwLock::new(a));
         let rwlock2 = rwlock.clone();

@@ -94,7 +94,7 @@ docker/compose/indexer-grpc/data-service-grpc-server.key
 \#*\#
 
 # Libra2 CLI / local testnet files
-.aptos
+.libra2
 **/*.rdb
 
 # VSCode settings

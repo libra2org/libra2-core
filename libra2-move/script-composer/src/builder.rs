@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 //! Code to generate compiled Move script from a series of individual Move calls.
@@ -12,7 +12,7 @@
 use crate::MoveFunctionCall;
 use crate::{
     helpers::{import_signature, import_type_tag, Script},
-    ArgumentOperation, CallArgument, ComposerVersion, PreviousResult, APTOS_SCRIPT_COMPOSER_KEY,
+    ArgumentOperation, CallArgument, ComposerVersion, PreviousResult, LIBRA2_SCRIPT_COMPOSER_KEY,
 };
 use anyhow::{anyhow, bail, Result};
 use move_binary_format::{
@@ -408,7 +408,7 @@ impl TransactionComposer {
         move_bytecode_verifier::verify_script(&script).map_err(|err| anyhow!("{:?}", err))?;
         if with_metadata {
             script.metadata.push(Metadata {
-                key: APTOS_SCRIPT_COMPOSER_KEY.to_owned(),
+                key: LIBRA2_SCRIPT_COMPOSER_KEY.to_owned(),
                 value: bcs::to_bytes(&ComposerVersion::V1).unwrap(),
             });
         }

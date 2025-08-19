@@ -34,7 +34,7 @@ module libra2_framework::transaction_fee {
     }
 
     /// Stores burn capability to burn the gas fees.
-    struct AptosFABurnCapabilities has key {
+    struct Libra2FABurnCapabilities has key {
         burn_ref: BurnRef,
     }
 
@@ -77,9 +77,9 @@ module libra2_framework::transaction_fee {
     }
 
     /// Burn transaction fees in epilogue.
-    public(friend) fun burn_fee(account: address, fee: u64) acquires AptosFABurnCapabilities, Libra2CoinCapabilities {
-        if (exists<AptosFABurnCapabilities>(@libra2_framework)) {
-            let burn_ref = &borrow_global<AptosFABurnCapabilities>(@libra2_framework).burn_ref;
+    public(friend) fun burn_fee(account: address, fee: u64) acquires Libra2FABurnCapabilities, Libra2CoinCapabilities {
+        if (exists<Libra2FABurnCapabilities>(@libra2_framework)) {
+            let burn_ref = &borrow_global<Libra2FABurnCapabilities>(@libra2_framework).burn_ref;
             libra2_account::burn_from_fungible_store_for_gas(burn_ref, account, fee);
         } else {
             let burn_cap = &borrow_global<Libra2CoinCapabilities>(@libra2_framework).burn_cap;
@@ -110,20 +110,20 @@ module libra2_framework::transaction_fee {
 
         if (features::operations_default_to_fa_apt_store_enabled()) {
             let burn_ref = coin::convert_and_take_paired_burn_ref(burn_cap);
-            move_to(libra2_framework, AptosFABurnCapabilities { burn_ref });
+            move_to(libra2_framework, Libra2FABurnCapabilities { burn_ref });
         } else {
             move_to(libra2_framework, Libra2CoinCapabilities { burn_cap })
         }
     }
 
-    public entry fun convert_to_aptos_fa_burn_ref(libra2_framework: &signer) acquires Libra2CoinCapabilities {
+    public entry fun convert_to_libra2_fa_burn_ref(libra2_framework: &signer) acquires Libra2CoinCapabilities {
         assert!(features::operations_default_to_fa_apt_store_enabled(), EFA_GAS_CHARGING_NOT_ENABLED);
         system_addresses::assert_libra2_framework(libra2_framework);
         let Libra2CoinCapabilities {
             burn_cap,
         } = move_from<Libra2CoinCapabilities>(signer::address_of(libra2_framework));
         let burn_ref = coin::convert_and_take_paired_burn_ref(burn_cap);
-        move_to(libra2_framework, AptosFABurnCapabilities { burn_ref });
+        move_to(libra2_framework, Libra2FABurnCapabilities { burn_ref });
     }
 
     /// Only called during genesis.

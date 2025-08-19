@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::utils;
@@ -47,7 +47,7 @@ fn collect_connection_metrics(network_metrics: &mut BTreeMap<String, String>) {
     // Calculate the number of inbound and outbound connections
     let mut inbound_connection_count: f64 = 0.0;
     let mut outbound_connection_count: f64 = 0.0;
-    for metric_family in libra2_network::counters::APTOS_CONNECTIONS.collect() {
+    for metric_family in libra2_network::counters::LIBRA2_CONNECTIONS.collect() {
         for metric in metric_family.get_metric() {
             // TODO(joshlind): avoid matching on strings that can change!
             for label in metric.get_label() {

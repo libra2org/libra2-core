@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::account_address::AccountAddress;
@@ -17,7 +17,7 @@ pub trait CoinType {
     fn coin_info_address() -> AccountAddress;
 }
 
-static APTOS_COIN_TYPE: Lazy<TypeTag> = Lazy::new(|| {
+static LIBRA2_COIN_TYPE: Lazy<TypeTag> = Lazy::new(|| {
     TypeTag::Struct(Box::new(StructTag {
         address: AccountAddress::ONE,
         module: ident_str!("libra2_coin").to_owned(),
@@ -31,7 +31,7 @@ pub struct Libra2CoinType;
 
 impl CoinType for Libra2CoinType {
     fn type_tag() -> TypeTag {
-        APTOS_COIN_TYPE.clone()
+        LIBRA2_COIN_TYPE.clone()
     }
 
     fn coin_info_address() -> AccountAddress {

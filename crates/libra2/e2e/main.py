@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# Copyright © Aptos Foundation
+# Copyright © A-p-t-o-s Foundation
 # SPDX-License-Identifier: Apache-2.0
 
 """
@@ -13,9 +13,9 @@ Example (testing CLI in image):
   python3 main.py --base-network testnet --test-cli-tag mainnet_0431e2251d0b42920d89a52c63439f7b9eda6ac3
 
 Example (testing locally built CLI binary):
-  python3 main.py --base-network devnet --test-cli-path ~/aptos-core/target/release/aptos
+  python3 main.py --base-network devnet --test-cli-path ~/libra2-core/target/release/libra2
 
-This means, run the CLI test suite using a CLI built from mainnet_0431e2251d0b42920d89a52c63439f7b9eda6ac3 against a localnet built from the testnet branch of aptos-core.
+This means, run the CLI test suite using a CLI built from mainnet_0431e2251d0b42920d89a52c63439f7b9eda6ac3 against a localnet built from the testnet branch of libra2-core.
 
 Example (using a different image repo):
   See ~/.github/workflows/cli-e2e-tests.yaml
@@ -126,7 +126,7 @@ def parse_args():
     )
     parser.add_argument(
         "--working-directory",
-        default="/tmp/aptos-cli-tests",
+        default="/tmp/libra2-cli-tests",
         help="Where we'll run CLI commands from (in the host system). Default: %(default)s",
     )
     parser.add_argument(
@@ -155,7 +155,7 @@ async def run_tests(run_helper):
     test_account_lookup_address(run_helper)
     test_account_resource_account(run_helper)
 
-    # Make sure the aptos-cli header is included on the original request
+    # Make sure the libra2-cli header is included on the original request
     test_libra2_header_included(run_helper)
 
     # Run move subcommand group tests.

@@ -91,7 +91,7 @@ variable "chain_name" {
 }
 
 variable "image_tag" {
-  description = "Docker image tag for all Aptos workloads, including validators, fullnodes, backup, restore, genesis, and other tooling"
+  description = "Docker image tag for all Libra2 workloads, including validators, fullnodes, backup, restore, genesis, and other tooling"
   type        = string
   default     = "devnet"
 }

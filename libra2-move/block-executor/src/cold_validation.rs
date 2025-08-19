@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{explicit_sync_wrapper::ExplicitSyncWrapper, scheduler_status::ExecutionStatuses};

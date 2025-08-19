@@ -1,4 +1,4 @@
-// Copyright (c) Aptos Foundation
+// Copyright (c) A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use libra2_cached_packages::libra2_stdlib;
@@ -247,7 +247,7 @@ fn test_db_indexer_data() {
         ident_str!("type_info"),
         ident_str!("aggregator"),
         ident_str!("libra2_coin"),
-        ident_str!("aptos_hash"),
+        ident_str!("libra2_hash"),
         ident_str!("bcs_stream"),
         ident_str!("big_vector"),
         ident_str!("bit_vector"),
@@ -375,7 +375,7 @@ fn test_db_indexer_data() {
         (false, "0x1::staking_config::StakingRewardsConfig"),
         (false, "0x1::aggregator_factory::AggregatorFactory"),
         (false, "0x1::transaction_fee::Libra2CoinMintCapability"),
-        (false, "0x1::transaction_fee::AptosFABurnCapabilities"),
+        (false, "0x1::transaction_fee::Libra2FABurnCapabilities"),
         (false, "0x1::jwk_consensus_config::JWKConsensusConfig"),
         (false, "0x1::libra2_governance::ApprovedExecutionHashes"),
         (false, "0x1::libra2_governance::GovernanceResponsbility"),

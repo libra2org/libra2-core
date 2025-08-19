@@ -1,7 +1,7 @@
 # Coding Guidelines for Libra2 Core
 
-This document describes the coding guidelines for the [Libra2 Core](https://github.com/libra2org/libra2-core) Rust codebase. For the Move language, see the [Move Coding Conventions](https://aptos.dev/move/book/SUMMARY).
-Secure coding guidance is provided in the [Aptos Rust Secure Coding Guidelines](./RUST_SECURE_CODING.md).
+This document describes the coding guidelines for the [Libra2 Core](https://github.com/libra2org/libra2-core) Rust codebase. For the Move language, see the [Move Coding Conventions](https://docs.libra2.org/move/book/SUMMARY).
+Secure coding guidance is provided in the [Libra2 Rust Secure Coding Guidelines](./RUST_SECURE_CODING.md).
 
 ## Code formatting & Code analysis
 
@@ -70,7 +70,7 @@ Document the following for each function:
 
 Each major component of Libra2 Core needs to have a `README.md` file. Major components are:
 
-- top-level directories (e.g. `aptos-core/network`, `aptos-core/language`)
+- top-level directories (e.g. `libra2-core/network`, `libra2-core/language`)
 - the most important crates in the system (e.g. `vm-runtime`)
 
 This file should contain:
@@ -111,14 +111,14 @@ For the external API of this crate refer to [Link to rustdoc API].
 
 ## Contributing
 
-Refer to the Aptos Project contributing guide [LINK].
+Refer to the Libra2 Project contributing guide [LINK].
 
 ## License
 
-Refer to the Aptos Project License [LINK].
+Refer to the Libra2 Project License [LINK].
 ```
 
-A good example of README.md is `aptos-core/network/README.md` that describes the networking crate.
+A good example of README.md is `libra2-core/network/README.md` that describes the networking crate.
 
 ## Binary, Argument, and Crate Naming
 
@@ -266,7 +266,7 @@ _Property-based tests_
 
 Libra2 contains [property-based tests](https://blog.jessitron.com/2013/04/25/property-based-testing-what-is-it/) written in Rust using the [`proptest` framework](https://github.com/AltSysrq/proptest). Property-based tests generate random test cases and assert that invariants, also called _properties_, hold for the code under test.
 
-Some examples of properties tested in Aptos:
+Some examples of properties tested in Libra2:
 
 - Every serializer and deserializer pair is tested for correctness with random inputs to the serializer. Any pair of functions that are inverses of each other can be tested this way.
 - The results of executing common transactions through the VM are tested using randomly generated scenarios and verified with an _Oracle_.
@@ -281,7 +281,7 @@ References:
 
 ### Conditional compilation of tests
 
-Aptos [conditionally
+Libra2 [conditionally
 compiles](https://doc.rust-lang.org/stable/reference/conditional-compilation.html)
 code that is _only relevant for tests, but does not consist of tests_ (unitary
 or otherwise). Examples of this include proptest strategies, implementations
@@ -301,7 +301,7 @@ As a consequence, it is recommended that you set up your test-only code in the f
 
 **For production crates:**
 
-Production crates are defined as the set of crates that create externally published artifacts, e.g. the Aptos validator,
+Production crates are defined as the set of crates that create externally published artifacts, e.g. the Libra2 validator,
 the Move compiler, and so on.
 
 For the sake of example, we'll consider you are defining a test-only helper function `foo` in `foo_crate`:

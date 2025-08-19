@@ -4,11 +4,11 @@ This guide describes the process for adding, removing, and changing the Move mod
 
 ## Overview
 
-Every state change in the Aptos blockchain occurs via executing a Move *entry function* or a *script* embedded in a [SignedTransaction](../../types/src/transaction/mod.rs). Entry functions and scripts invoke procedures of Move *modules* that update published *resources*. The Move standard library consists of [modules](modules/) initially published in the genesis transaction.
+Every state change in the Libra2 blockchain occurs via executing a Move *entry function* or a *script* embedded in a [SignedTransaction](../../types/src/transaction/mod.rs). Entry functions and scripts invoke procedures of Move *modules* that update published *resources*. The Move standard library consists of [modules](modules/) initially published in the genesis transaction.
 
 ## Environment Setup
 
-Start by following the general Aptos setup advice [here](../../CONTRIBUTING.md). Nothing else is strictly required, but you may want to consider a Move syntax highlighter for your editor (asking it to interpret `.move` files as Rust source is a decent start).
+Start by following the general Libra2 setup advice [here](../../CONTRIBUTING.md). Nothing else is strictly required, but you may want to consider a Move syntax highlighter for your editor (asking it to interpret `.move` files as Rust source is a decent start).
 
 <!-- TODO: editor-specific suggestions, bash aliases -->
 
@@ -39,7 +39,7 @@ Most tests for the standard library live [here](../e2e-move-tests) and can be ru
 - **Type names**: are camel case e.g., `WithdrawalCapability`, `KeyRotationCapability`
 - **Function names**: are lower snake case e.g., `register_currency`
 - **Constant names**: are upper snake case e.g., `TREASURY_COMPLIANCE_ADDRESS`
-- Generic types should be descriptive, or anti-descriptive where appropriate (e.g. `T` for the Vector generic type parameter, `Libra2Account` for the core `Libra2Account` resource, `deposit<CoinType>(t: CoinType)` for depositing a token in the `Libra2` module). Most of the time the "main" type in a module should be the same name as the module e.g., `Aptos::Aptos`, `Libra2Account::Libra2Account`.
+- Generic types should be descriptive, or anti-descriptive where appropriate (e.g. `T` for the Vector generic type parameter, `Libra2Account` for the core `Libra2Account` resource, `deposit<CoinType>(t: CoinType)` for depositing a token in the `Libra2` module). Most of the time the "main" type in a module should be the same name as the module e.g., `Libra2::Libra2`, `Libra2Account::Libra2Account`.
 - **Module file names**: are the same as the module name e.g., `Libra2Account.move`
 - **Script file names**: should be lower snake case and named after the name of the “main” function in the script.
 - **Mixed file names**: If the file contains multiple modules and/or scripts, the file name should be lower_snake_case, where the name does not match any particular module/script inside.

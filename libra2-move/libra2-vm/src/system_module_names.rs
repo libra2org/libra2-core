@@ -1,8 +1,8 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
-//! Names of modules, functions, and types used by Aptos System.
+//! Names of modules, functions, and types used by Libra2 System.
 
 use libra2_types::account_config;
 use move_core_types::{ident_str, identifier::IdentStr, language_storage::ModuleId};

@@ -232,7 +232,7 @@ module libra2_std::multi_ed25519 {
         signature_verify_strict_internal(multisignature.bytes, public_key.bytes, bcs::to_bytes(&encoded))
     }
 
-    /// Derives the Aptos-specific authentication key of the given Ed25519 public key.
+    /// Derives the Libra2-specific authentication key of the given Ed25519 public key.
     public fun unvalidated_public_key_to_authentication_key(pk: &UnvalidatedPublicKey): vector<u8> {
         public_key_bytes_to_authentication_key(pk.bytes)
     }
@@ -255,7 +255,7 @@ module libra2_std::multi_ed25519 {
         check_and_get_threshold(pk.bytes)
     }
 
-    /// Derives the Aptos-specific authentication key of the given Ed25519 public key.
+    /// Derives the Libra2-specific authentication key of the given Ed25519 public key.
     public fun validated_public_key_to_authentication_key(pk: &ValidatedPublicKey): vector<u8> {
         public_key_bytes_to_authentication_key(pk.bytes)
     }
@@ -298,7 +298,7 @@ module libra2_std::multi_ed25519 {
         }
     }
 
-    /// Derives the Aptos-specific authentication key of the given Ed25519 public key.
+    /// Derives the Libra2-specific authentication key of the given Ed25519 public key.
     fun public_key_bytes_to_authentication_key(pk_bytes: vector<u8>): vector<u8> {
         pk_bytes.push_back(SIGNATURE_SCHEME_ID);
         std::hash::sha3_256(pk_bytes)
@@ -440,7 +440,7 @@ module libra2_std::multi_ed25519 {
             assert!(unvalidated_public_key_threshold(&upk).extract() == threshold, 4);
             assert!(unvalidated_public_key_num_sub_pks(&upk) == group_size, 5);
 
-            let msg1 = b"Hello Aptos!";
+            let msg1 = b"Hello Libra2!";
             let sig1 = sign_arbitrary_bytes(&sk, msg1);
             assert!(signature_verify_strict(&sig1, &upk, msg1), 6);
 
@@ -466,7 +466,7 @@ module libra2_std::multi_ed25519 {
         assert!(unvalidated_public_key_threshold(&upk).extract() == 4, 4);
         assert!(unvalidated_public_key_num_sub_pks(&upk) == 5, 5);
 
-        let msg1 = b"Hello Aptos!";
+        let msg1 = b"Hello Libra2!";
         let sig1 = sign_arbitrary_bytes(&sk, msg1);
         maul_first_signature(&mut sig1);
         assert!(!signature_verify_strict(&sig1, &upk, msg1), 6);

@@ -6,7 +6,7 @@ custom_edit_url: https://github.com/libra2org/libra2-core/edit/main/state-sync/R
 
 # State Synchronization (State Sync)
 
-State sync is a component that runs within each Aptos node and is responsible
+State sync is a component that runs within each Libra2 node and is responsible
 for synchronizing the node to the latest blockchain state. It is required by
 both validators and fullnodes to ensure that they do not fall behind the rest
 of the network. To achieve this, state sync identifies and fetches new
@@ -29,7 +29,7 @@ new data chunks from peers, without having to worry about which peers have the
 data or how to manage data requests. For example, the client can request all
 transactions since version `5` and the data streaming service will provide
 this.
-3. **Aptos Data Client**: The data client is responsible for handling data
+3. **Libra2 Data Client**: The data client is responsible for handling data
 requests from the data streaming service. For the data streaming service to
 stream all transactions, it must make multiple requests (each request for a
 batch of transactions) and send those requests to peers (e.g., transactions
@@ -45,7 +45,7 @@ a batch of transactions.
 The state sync code structure matches the architecture outlined above:
 - **Driver:** [https://github.com/libra2org/libra2-core/tree/main/state-sync/state-sync-driver](https://github.com/libra2org/libra2-core/tree/main/state-sync/state-sync-driver)
 - **Data Streaming Service:** [https://github.com/libra2org/libra2-core/tree/main/state-sync/data-streaming-service](https://github.com/libra2org/libra2-core/tree/main/state-sync/data-streaming-service)
-- **Aptos Data Client**: [https://github.com/libra2org/libra2-core/tree/main/state-sync/libra2-data-client](https://github.com/libra2org/libra2-core/tree/main/state-sync/libra2-data-client)
+- **Libra2 Data Client**: [https://github.com/libra2org/libra2-core/tree/main/state-sync/libra2-data-client](https://github.com/libra2org/libra2-core/tree/main/state-sync/libra2-data-client)
 - **Storage Service:** [https://github.com/libra2org/libra2-core/tree/main/state-sync/storage-service](https://github.com/libra2org/libra2-core/tree/main/state-sync/storage-service)
 
 In addition, there is also a directory containing the code for

@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -12,7 +12,7 @@ use libra2_types::{
 use libra2_vm::data_cache::AsMoveResolver;
 
 #[test]
-fn initial_aptos_version() {
+fn initial_libra2_version() {
     let mut executor = FakeExecutor::from_head_genesis();
     let resolver = executor.get_state_view().as_move_resolver();
     let version = libra2_types::on_chain_config::LIBRA2_MAX_KNOWN_VERSION;

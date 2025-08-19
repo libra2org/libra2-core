@@ -1,13 +1,13 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
 use anyhow::Result;
 use libra2_api_types::{
     mime_types::{BCS, JSON},
-    LedgerInfo, X_APTOS_BLOCK_HEIGHT, X_APTOS_CHAIN_ID, X_APTOS_EPOCH,
+    LedgerInfo, X_LIBRA2_BLOCK_HEIGHT, X_LIBRA2_CHAIN_ID, X_LIBRA2_EPOCH,
     X_LIBRA2_LEDGER_OLDEST_VERSION, X_LIBRA2_LEDGER_TIMESTAMP, X_LIBRA2_LEDGER_VERSION,
-    X_APTOS_OLDEST_BLOCK_HEIGHT,
+    X_LIBRA2_OLDEST_BLOCK_HEIGHT,
 };
 use hyper::{header::CONTENT_TYPE, http::HeaderValue};
 use serde::Serialize;
@@ -46,7 +46,7 @@ impl warp::Reply for Response {
         } else {
             headers.insert(CONTENT_TYPE, HeaderValue::from_static(JSON));
         }
-        headers.insert(X_APTOS_CHAIN_ID, (self.ledger_info.chain_id as u16).into());
+        headers.insert(X_LIBRA2_CHAIN_ID, (self.ledger_info.chain_id as u16).into());
         headers.insert(
             X_LIBRA2_LEDGER_VERSION,
             self.ledger_info.ledger_version.0.into(),
@@ -59,10 +59,10 @@ impl warp::Reply for Response {
             X_LIBRA2_LEDGER_TIMESTAMP,
             self.ledger_info.ledger_timestamp.0.into(),
         );
-        headers.insert(X_APTOS_EPOCH, self.ledger_info.epoch.0.into());
-        headers.insert(X_APTOS_BLOCK_HEIGHT, self.ledger_info.block_height.0.into());
+        headers.insert(X_LIBRA2_EPOCH, self.ledger_info.epoch.0.into());
+        headers.insert(X_LIBRA2_BLOCK_HEIGHT, self.ledger_info.block_height.0.into());
         headers.insert(
-            X_APTOS_OLDEST_BLOCK_HEIGHT,
+            X_LIBRA2_OLDEST_BLOCK_HEIGHT,
             self.ledger_info.oldest_block_height.0.into(),
         );
 

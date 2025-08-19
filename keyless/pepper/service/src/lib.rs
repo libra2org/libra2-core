@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
@@ -22,7 +22,7 @@ use libra2_keyless_pepper_common::{
     vuf::{
         self,
         bls12381_g1_bls::PinkasPepper,
-        slip_10::{get_aptos_derivation_path, ExtendedPepper},
+        slip_10::{get_libra2_derivation_path, ExtendedPepper},
         VUF,
     },
     PepperInput, PepperRequest, PepperResponse, SignatureResponse, VerifyRequest, VerifyResponse,
@@ -316,7 +316,7 @@ async fn process_common(
         DEFAULT_DERIVATION_PATH.to_owned()
     };
     let checked_derivation_path =
-        get_aptos_derivation_path(&derivation_path).map_err(|e| BadRequest(e.to_string()))?;
+        get_libra2_derivation_path(&derivation_path).map_err(|e| BadRequest(e.to_string()))?;
 
     let curve25519_pk_point = match &epk {
         EphemeralPublicKey::Ed25519 { public_key } => public_key

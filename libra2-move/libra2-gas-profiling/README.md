@@ -9,7 +9,7 @@ You can run the gas profiler by appending the `--profile-gas` option to the apto
 ```
 >> cargo run -p aptos -- move publish --profile-gas
     Finished dev [unoptimized + debuginfo] target(s) in 0.51s
-     Running `/home/vgao/aptos-core/target/debug/aptos move publish --profile-gas`
+     Running `/home/vgao/libra2-core/target/debug/libra2 move publish --profile-gas`
 Compiling, may take a little while to download git dependencies...
 BUILDING empty_fun
 package size 427 bytes

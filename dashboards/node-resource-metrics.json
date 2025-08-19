@@ -41,7 +41,7 @@
       "icon": "external link",
       "includeVars": true,
       "keepTime": true,
-      "tags": ["aptos-core"],
+      "tags": ["libra2-core"],
       "targetBlank": true,
       "title": "aptos core ",
       "type": "dashboards"
@@ -691,7 +691,7 @@
   ],
   "schemaVersion": 37,
   "style": "dark",
-  "tags": ["aptos-core"],
+  "tags": ["libra2-core"],
   "templating": {
     "list": [
       {

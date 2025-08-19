@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -40,7 +40,7 @@ impl NetworkTest for ReconfigurationTest {
     //         .map(|n| n.rest_client())
     //         .collect::<Vec<_>>();
     //     let tx_factory = TransactionFactory::new(ctx.swarm().chain_info().chain_id);
-    //     let mut aptos_root_account = ctx.swarm().chain_info().root_account;
+    //     let mut libra2_root_account = ctx.swarm().chain_info().root_account;
     //     let allowed_nonce = 0;
     //     let full_node_client = validator_clients.iter().choose(&mut rng).unwrap();
     //     let timer = Instant::now();
@@ -51,7 +51,7 @@ impl NetworkTest for ReconfigurationTest {
     //         {
     //             println!("Remove and add back {}.", affected_pod_name);
     //             let validator_name = affected_pod_name.as_bytes().to_vec();
-    //             let remove_txn = aptos_root_account.sign_with_transaction_builder(
+    //             let remove_txn = libra2_root_account.sign_with_transaction_builder(
     //                 tx_factory.remove_validator_and_reconfigure(
     //                     allowed_nonce,
     //                     validator_name.clone(),
@@ -60,13 +60,13 @@ impl NetworkTest for ReconfigurationTest {
     //             );
     //             execute_and_wait_transactions(
     //                 full_node_client,
-    //                 &mut aptos_root_account,
+    //                 &mut libra2_root_account,
     //                 vec![remove_txn],
     //             )
     //             .await
     //             .unwrap();
     //             expect_epoch(full_node_client, 2).await.unwrap();
-    //             let add_txn = aptos_root_account.sign_with_transaction_builder(
+    //             let add_txn = libra2_root_account.sign_with_transaction_builder(
     //                 tx_factory.add_validator_and_reconfigure(
     //                     allowed_nonce,
     //                     validator_name.clone(),
@@ -75,7 +75,7 @@ impl NetworkTest for ReconfigurationTest {
     //             );
     //             execute_and_wait_transactions(
     //                 full_node_client,
-    //                 &mut aptos_root_account,
+    //                 &mut libra2_root_account,
     //                 vec![add_txn],
     //             )
     //             .await
@@ -93,7 +93,7 @@ impl NetworkTest for ReconfigurationTest {
     //             });
     //             let downgrade_config = OnChainConsensusConfig::default();
     //             for i in 1..count / 2 {
-    //                 let upgrade_txn = aptos_root_account.sign_with_transaction_builder(
+    //                 let upgrade_txn = libra2_root_account.sign_with_transaction_builder(
     //                     tx_factory.update_libra2_consensus_config(
     //                         allowed_nonce,
     //                         bcs::to_bytes(&upgrade_config).unwrap(),
@@ -101,13 +101,13 @@ impl NetworkTest for ReconfigurationTest {
     //                 );
     //                 execute_and_wait_transactions(
     //                     full_node_client,
-    //                     &mut aptos_root_account,
+    //                     &mut libra2_root_account,
     //                     vec![upgrade_txn],
     //                 )
     //                 .await
     //                 .unwrap();
     //                 expect_epoch(full_node_client, (i + 1) * 2).await.unwrap();
-    //                 let downgrade_txn = aptos_root_account.sign_with_transaction_builder(
+    //                 let downgrade_txn = libra2_root_account.sign_with_transaction_builder(
     //                     tx_factory.update_libra2_consensus_config(
     //                         allowed_nonce,
     //                         bcs::to_bytes(&downgrade_config).unwrap(),
@@ -115,7 +115,7 @@ impl NetworkTest for ReconfigurationTest {
     //                 );
     //                 execute_and_wait_transactions(
     //                     full_node_client,
-    //                     &mut aptos_root_account,
+    //                     &mut libra2_root_account,
     //                     vec![downgrade_txn],
     //                 )
     //                 .await
@@ -129,12 +129,12 @@ impl NetworkTest for ReconfigurationTest {
     //         if count % 2 == 1 {
     //             let magic_number = 42;
     //             println!("Bump Version to {}", magic_number);
-    //             let update_txn = aptos_root_account.sign_with_transaction_builder(
-    //                 tx_factory.update_aptos_version(allowed_nonce, magic_number),
+    //             let update_txn = libra2_root_account.sign_with_transaction_builder(
+    //                 tx_factory.update_libra2_version(allowed_nonce, magic_number),
     //             );
     //             execute_and_wait_transactions(
     //                 full_node_client,
-    //                 &mut aptos_root_account,
+    //                 &mut libra2_root_account,
     //                 vec![update_txn],
     //             )
     //             .await

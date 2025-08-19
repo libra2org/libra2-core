@@ -1,4 +1,4 @@
-// Copyright (c) Aptos Foundation
+// Copyright (c) A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 #![allow(unexpected_cfgs)]
@@ -57,7 +57,7 @@ type HmacSha512 = Hmac<Sha512>;
 /// A convenience wrapper for a [`core::result::Result`] with an [`Error`]
 // pub type Result<T, E = Error> = core::result::Result<T, E>;
 
-pub fn get_aptos_derivation_path(s: &str) -> Result<DerivationPath> {
+pub fn get_libra2_derivation_path(s: &str) -> Result<DerivationPath> {
     let re = Regex::new(r"^m\/44'\/637'\/[0-9]+'\/[0-9]+'\/[0-9]+'?$").unwrap();
     if re.is_match(s) {
         println!("Valid path");
@@ -149,7 +149,7 @@ mod tests {
     #[test]
     fn test_pepper_derivation() {
         let derive_path = "m/44'/637'/0'/0'/0'";
-        let checked_derivation_path = get_aptos_derivation_path(derive_path).unwrap();
+        let checked_derivation_path = get_libra2_derivation_path(derive_path).unwrap();
         let master_pepper = "9b543408c1a90aac54e5130e61c7fbc30994d86aea62782b477448e585d194";
         let derived_pepper =
             ExtendedPepper::from_seed(hex::decode(master_pepper).unwrap().as_slice())
@@ -169,7 +169,7 @@ mod tests {
     #[test]
     fn test_pepper_derivation_second_account() {
         let derive_path = "m/44'/637'/1'/0'/0'";
-        let checked_derivation_path = get_aptos_derivation_path(derive_path).unwrap();
+        let checked_derivation_path = get_libra2_derivation_path(derive_path).unwrap();
         let master_pepper = "9b543408c1a90aac54e5130e61c7fbc30994d86aea62782b477448e585d194";
         let derived_pepper =
             ExtendedPepper::from_seed(hex::decode(master_pepper).unwrap().as_slice())

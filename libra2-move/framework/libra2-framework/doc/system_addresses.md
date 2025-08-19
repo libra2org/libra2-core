@@ -41,12 +41,12 @@
 ## Constants
 
 
-<a id="0x1_system_addresses_ENOT_APTOS_FRAMEWORK_ADDRESS"></a>
+<a id="0x1_system_addresses_ENOT_LIBRA2_FRAMEWORK_ADDRESS"></a>
 
 The address/account did not correspond to the core framework address
 
 
-<pre><code><b>const</b> <a href="system_addresses.md#0x1_system_addresses_ENOT_APTOS_FRAMEWORK_ADDRESS">ENOT_APTOS_FRAMEWORK_ADDRESS</a>: u64 = 3;
+<pre><code><b>const</b> <a href="system_addresses.md#0x1_system_addresses_ENOT_LIBRA2_FRAMEWORK_ADDRESS">ENOT_LIBRA2_FRAMEWORK_ADDRESS</a>: u64 = 3;
 </code></pre>
 
 
@@ -171,7 +171,7 @@ The operation can only be performed by the VM
 <pre><code><b>public</b> <b>fun</b> <a href="system_addresses.md#0x1_system_addresses_assert_libra2_framework">assert_libra2_framework</a>(<a href="account.md#0x1_account">account</a>: &<a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>) {
     <b>assert</b>!(
         <a href="system_addresses.md#0x1_system_addresses_is_libra2_framework_address">is_libra2_framework_address</a>(<a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer_address_of">signer::address_of</a>(<a href="account.md#0x1_account">account</a>)),
-        <a href="../../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_permission_denied">error::permission_denied</a>(<a href="system_addresses.md#0x1_system_addresses_ENOT_APTOS_FRAMEWORK_ADDRESS">ENOT_APTOS_FRAMEWORK_ADDRESS</a>),
+        <a href="../../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_permission_denied">error::permission_denied</a>(<a href="system_addresses.md#0x1_system_addresses_ENOT_LIBRA2_FRAMEWORK_ADDRESS">ENOT_LIBRA2_FRAMEWORK_ADDRESS</a>),
     )
 }
 </code></pre>
@@ -591,4 +591,4 @@ Specifies that a function aborts if the account does not have the VM reserved ad
 </code></pre>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

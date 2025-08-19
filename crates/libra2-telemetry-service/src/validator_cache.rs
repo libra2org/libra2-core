@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
@@ -209,12 +209,12 @@ mod tests {
                 .path("/v1/accounts/0000000000000000000000000000000000000000000000000000000000000001/resource/0x1::stake::ValidatorSet");
             then.status(200)
                 .body(bcs::to_bytes(&validator_set).unwrap())
-                .header(X_APTOS_CHAIN_ID, "25")
-                .header(X_APTOS_EPOCH, "10")
+                .header(X_LIBRA2_CHAIN_ID, "25")
+                .header(X_LIBRA2_EPOCH, "10")
                 .header(X_LIBRA2_LEDGER_VERSION, "10")
                 .header(X_LIBRA2_LEDGER_OLDEST_VERSION, "2")
-                .header(X_APTOS_BLOCK_HEIGHT, "25")
-                .header(X_APTOS_OLDEST_BLOCK_HEIGHT, "10")
+                .header(X_LIBRA2_BLOCK_HEIGHT, "25")
+                .header(X_LIBRA2_OLDEST_BLOCK_HEIGHT, "10")
                 .header(X_LIBRA2_LEDGER_TIMESTAMP, "10");
         });
 
@@ -245,7 +245,7 @@ mod tests {
             ValidatorConfig::new(
                 keypair.public_key,
                 bcs::to_bytes(&vec![NetworkAddress::from_str("/dns/a5f3d921730874389bb2f66275f163a5-8f14ad5b5e992c1c.elb.ap-southeast-1.amazonaws.com/tcp/6180/noise-ik/0xc5edf62233096df793b554e1013b07c83d01b3cf50c14ac83a0a7e0cfe340426/handshake/0").unwrap()]).unwrap(),
-                bcs::to_bytes(&vec![NetworkAddress::from_str("/dns/fullnode0.testnet.aptoslabs.com/tcp/6182/noise-ik/0xea19ab47ed9191865f15d85d751ed0663205c0b2f0f465714b1947c023715973/handshake/0").unwrap()]).unwrap(),
+                bcs::to_bytes(&vec![NetworkAddress::from_str("/dns/fullnode0.testnet.libra2.org/tcp/6182/noise-ik/0xea19ab47ed9191865f15d85d751ed0663205c0b2f0f465714b1947c023715973/handshake/0").unwrap()]).unwrap(),
                 2,
             ),
         );
@@ -257,12 +257,12 @@ mod tests {
                 .path("/v1/accounts/0000000000000000000000000000000000000000000000000000000000000001/resource/0x1::stake::ValidatorSet");
             then.status(200)
             .body(bcs::to_bytes(&validator_set).unwrap())
-            .header(X_APTOS_CHAIN_ID, "25")
-            .header(X_APTOS_EPOCH, "10")
+            .header(X_LIBRA2_CHAIN_ID, "25")
+            .header(X_LIBRA2_EPOCH, "10")
             .header(X_LIBRA2_LEDGER_VERSION, "10")
             .header(X_LIBRA2_LEDGER_OLDEST_VERSION, "2")
-            .header(X_APTOS_BLOCK_HEIGHT, "25")
-            .header(X_APTOS_OLDEST_BLOCK_HEIGHT, "10")
+            .header(X_LIBRA2_BLOCK_HEIGHT, "25")
+            .header(X_LIBRA2_OLDEST_BLOCK_HEIGHT, "10")
             .header(X_LIBRA2_LEDGER_TIMESTAMP, "10");
         });
 

@@ -14,7 +14,7 @@ spec libra2_framework::libra2_coin {
     /// module, which has been audited.
     ///
     /// No.: 3
-    /// Requirement: The abilities to mint Aptos tokens should be transferable, duplicatable, and destroyable.
+    /// Requirement: The abilities to mint Libra2 tokens should be transferable, duplicatable, and destroyable.
     /// Criticality: High
     /// Implementation: The MintCapability struct has the copy and store abilities. This means that it can be duplicated
     /// and stored in different object wrappers (such as MintCapStore). This capability is tested against the
@@ -50,7 +50,7 @@ spec libra2_framework::libra2_coin {
         aborts_if !exists<aggregator_factory::AggregatorFactory>(addr);
         /// [high-level-req-1]
         ensures exists<MintCapStore>(addr);
-        // property 3: The abilities to mint Aptos tokens should be transferable, duplicatable, and destroyable.
+        // property 3: The abilities to mint Libra2 tokens should be transferable, duplicatable, and destroyable.
         /// [high-level-req-3]
         ensures global<MintCapStore>(addr).mint_cap ==  MintCapability<Libra2Coin> {};
         ensures exists<coin::CoinInfo<Libra2Coin>>(addr);

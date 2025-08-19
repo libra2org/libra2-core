@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use libra2_crypto::{
@@ -37,7 +37,7 @@ pub fn output_file() -> Option<&'static str> {
 
 /// This aims at signing canonically serializable BCS data
 #[derive(CryptoHasher, BCSCryptoHash, Serialize, Deserialize)]
-struct TestAptosCrypto(String);
+struct TestLibra2Crypto(String);
 
 /// Record sample values for crypto types used by transactions.
 fn trace_crypto_values(tracer: &mut Tracer, samples: &mut Samples) -> Result<()> {
@@ -45,7 +45,7 @@ fn trace_crypto_values(tracer: &mut Tracer, samples: &mut Samples) -> Result<()>
     hasher.update(b"Test message");
     let hashed_message = hasher.finish();
 
-    let message = TestAptosCrypto("Hello, World".to_string());
+    let message = TestLibra2Crypto("Hello, World".to_string());
 
     let mut rng: StdRng = SeedableRng::from_seed([0; 32]);
     let private_key = Ed25519PrivateKey::generate(&mut rng);

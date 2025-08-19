@@ -27,14 +27,14 @@ groups:
 {{- end }}
     # State sync alerts
   - alert: State sync is not making progress
-    expr: rate(aptos_state_sync_version{type="synced"}[5m]) == 0 OR absent(aptos_state_sync_version{type="synced"})
+    expr: rate(libra2_state_sync_version{type="synced"}[5m]) == 0 OR absent(libra2_state_sync_version{type="synced"})
     for: 5m
     labels:
       severity: error
       summary: "State sync is not making progress (i.e., the synced version is not increasing!)"
     annotations:
   - alert: State sync is lagging significantly
-    expr: (libra2_data_client_highest_advertised_data{data_type="transactions"} - on(kubernetes_pod_name, role) aptos_state_sync_version{type="synced"}) > 1000000
+    expr: (libra2_data_client_highest_advertised_data{data_type="transactions"} - on(kubernetes_pod_name, role) libra2_state_sync_version{type="synced"}) > 1000000
     for: 5m
     labels:
       severity: error
@@ -124,7 +124,7 @@ groups:
         3. If you believe this is happening on nodes that are not run by us, involve the PE / Community / Ecosystem teams to coordinate efforts needed on those nodes.
       "
   - alert: Libra2DB API Success Rate
-    expr: sum by(kubernetes_pod_name) (rate(aptos_storage_api_latency_seconds_count{result="Ok"}[1m])) / sum by(kubernetes_pod_name) (rate(aptos_storage_api_latency_seconds_count[1m])) < 0.99  # 99%
+    expr: sum by(kubernetes_pod_name) (rate(libra2_storage_api_latency_seconds_count{result="Ok"}[1m])) / sum by(kubernetes_pod_name) (rate(libra2_storage_api_latency_seconds_count[1m])) < 0.99  # 99%
     for: 5m
     labels:
       severity: error
@@ -154,7 +154,7 @@ groups:
       "
   # Logging alerts
   - alert: Logs Being Dropped
-    expr: 1 < (rate(aptos_struct_log_queue_error[1m]) + rate(aptos_struct_log_send_error[1m]))
+    expr: 1 < (rate(libra2_struct_log_queue_error[1m]) + rate(libra2_struct_log_send_error[1m]))
     for: 5m
     labels:
       severity: warning

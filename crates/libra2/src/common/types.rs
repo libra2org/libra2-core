@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use super::utils::{explorer_transaction_link, fund_account, strip_private_key_prefix};
@@ -87,7 +87,7 @@ pub const DEFAULT_EXPIRATION_SECS: u64 = 30;
 pub const DEFAULT_PROFILE: &str = "default";
 pub const GIT_IGNORE: &str = ".gitignore";
 
-pub const APTOS_FOLDER_GIT_IGNORE: &str = indoc! {"
+pub const LIBRA2_FOLDER_GIT_IGNORE: &str = indoc! {"
     *
     testnet/
     config.yaml
@@ -100,7 +100,7 @@ pub const MOVE_FOLDER_GIT_IGNORE: &str = indoc! {"
 };
 
 // Custom header value to identify the client
-const X_APTOS_CLIENT_VALUE: &str = concat!("libra2-cli/", env!("CARGO_PKG_VERSION"));
+const X_LIBRA2_CLIENT_VALUE: &str = concat!("libra2-cli/", env!("CARGO_PKG_VERSION"));
 
 /// A common result to be returned to users
 pub type CliResult = Result<String, String>;
@@ -234,8 +234,8 @@ impl From<bcs::Error> for CliError {
     }
 }
 
-impl From<libra2_ledger::AptosLedgerError> for CliError {
-    fn from(e: libra2_ledger::AptosLedgerError) -> Self {
+impl From<libra2_ledger::Libra2LedgerError> for CliError {
+    fn from(e: libra2_ledger::Libra2LedgerError) -> Self {
         CliError::UnexpectedError(e.to_string())
     }
 }
@@ -430,7 +430,7 @@ impl CliConfig {
             write_to_user_only_file(
                 libra2_folder.join(GIT_IGNORE).as_path(),
                 GIT_IGNORE,
-                APTOS_FOLDER_GIT_IGNORE.as_bytes(),
+                LIBRA2_FOLDER_GIT_IGNORE.as_bytes(),
             )?;
         }
 
@@ -1145,7 +1145,7 @@ impl RestOptions {
     pub fn client(&self, profile: &ProfileOptions) -> CliTypedResult<Client> {
         let mut client = Client::builder(Libra2BaseUrl::Custom(self.url(profile)?))
             .timeout(Duration::from_secs(self.connection_timeout_secs))
-            .header(libra2_api_types::X_APTOS_CLIENT, X_APTOS_CLIENT_VALUE)?;
+            .header(libra2_api_types::X_LIBRA2_CLIENT, X_LIBRA2_CLIENT_VALUE)?;
         if let Some(node_api_key) = &self.node_api_key {
             client = client.api_key(node_api_key)?;
         }

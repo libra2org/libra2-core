@@ -1,10 +1,10 @@
 /// # Transaction Management
 ///
-/// This guide explains how to build a transaction management harness that can scale on the Aptos blockchain.
+/// This guide explains how to build a transaction management harness that can scale on the Libra2 blockchain.
 ///
 /// ## Background
 ///
-/// In Aptos, transactions are mapped back to an account both in terms of the entity that signs or authorizes that transaction as well as a providing an account-based sequence number. When Aptos network receives a new transaction several rules are followed with respect to the this:
+/// In Libra2, transactions are mapped back to an account both in terms of the entity that signs or authorizes that transaction as well as a providing an account-based sequence number. When Libra2 network receives a new transaction several rules are followed with respect to the this:
 ///
 /// - The transaction sent from an account must be authorized correctly by that account.
 /// - The current time as defined by the most recent ledger update must be before the expiration timestamp of the transaction.
@@ -98,7 +98,7 @@
 ///
 /// Using the above framework, a single account can push upwards of 100 transactions from the start of a block to the end of a block. Assuming that all 100 transactions are consumed within 1 block, it will take a bit of time for the next 100 slots to be available. This is due to the network delays as well as the multi-staged validator pipeline.
 ///
-/// To fully leverage the blockchain for massive throughput, using a single user account is not enough. Instead, Aptos supports the concept of worker accounts that can share the responsibility of pushing work through a shared account, also known as a resource account.
+/// To fully leverage the blockchain for massive throughput, using a single user account is not enough. Instead, Libra2 supports the concept of worker accounts that can share the responsibility of pushing work through a shared account, also known as a resource account.
 ///
 /// In this model, each worker has access to the `SignerCap` of the shared account, which enables them to impersonate the shared account or generate the `signer` for the shared account. Upon gaining the `signer`, the transaction can execute the logic that is gated by the signer of the shared account.
 ///

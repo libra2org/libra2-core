@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -35,7 +35,7 @@ use libra2_db_indexer::{db_indexer::InternalIndexerDB, Indexer};
 use libra2_experimental_runtimes::thread_manager::THREAD_MANAGER;
 use libra2_logger::prelude::*;
 use libra2_metrics_core::TimerHelper;
-use libra2_resource_viewer::AptosValueAnnotator;
+use libra2_resource_viewer::Libra2ValueAnnotator;
 use libra2_schemadb::batch::SchemaBatch;
 use libra2_storage_interface::{
     db_ensure as ensure, db_other_bail as bail, Libra2DbError, DbReader, DbWriter, LedgerSummary,
@@ -85,7 +85,7 @@ mod libra2db_test;
 pub mod test_helper;
 
 /// This holds a handle to the underlying DB responsible for physical storage and provides APIs for
-/// access to the core Aptos data structures.
+/// access to the core Libra2 data structures.
 pub struct Libra2DB {
     pub(crate) ledger_db: Arc<LedgerDb>,
     pub(crate) state_kv_db: Arc<StateKvDb>,

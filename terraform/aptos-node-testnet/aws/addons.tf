@@ -221,7 +221,7 @@ resource "helm_release" "external-dns" {
         create = false
         name   = kubernetes_service_account.k8s-aws-integrations.metadata[0].name
       }
-      domainFilters = var.zone_id != "" ? [data.aws_route53_zone.aptos[0].name] : []
+      domainFilters = var.zone_id != "" ? [data.aws_route53_zone.libra2[0].name] : []
       txtOwnerId    = var.zone_id
     })
   ]

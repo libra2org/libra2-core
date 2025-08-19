@@ -40,7 +40,7 @@ COPY --link --from=tools-builder /libra2/libra2-move/framework/libra2-stdlib /li
 COPY --link --from=tools-builder /libra2/libra2-move/framework/move-stdlib /libra2-move/framework/move-stdlib
 COPY --link --from=tools-builder /libra2/libra2-move/move-examples/hello_blockchain /libra2-move/move-examples/hello_blockchain
 
-### Get Aptos Move releases for genesis ceremony
+### Get Libra2 Move releases for genesis ceremony
 RUN mkdir -p /libra2-framework/move
 COPY --link --from=tools-builder /libra2/dist/head.mrb /libra2-framework/move/head.mrb
 

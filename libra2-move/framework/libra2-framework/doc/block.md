@@ -486,7 +486,7 @@ Initialize the commit history resource if it's not in genesis.
 ## Function `update_epoch_interval_microsecs`
 
 Update the epoch interval.
-Can only be called as part of the Aptos governance proposal process established by the AptosGovernance module.
+Can only be called as part of the Libra2 governance proposal process established by the Libra2Governance module.
 
 
 <pre><code><b>public</b> <b>fun</b> <a href="block.md#0x1_block_update_epoch_interval_microsecs">update_epoch_interval_microsecs</a>(libra2_framework: &<a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, new_epoch_interval: u64)
@@ -909,15 +909,15 @@ new block event for WriteSetPayload.
 
 <tr>
 <td>1</td>
-<td>During the module's initialization, it guarantees that the BlockResource resource moves under the Aptos framework account with initial values.</td>
+<td>During the module's initialization, it guarantees that the BlockResource resource moves under the Libra2 framework account with initial values.</td>
 <td>High</td>
-<td>The initialize function is responsible for setting up the initial state of the module, ensuring that the following conditions are met (1) the BlockResource resource is created, indicating its existence within the module's context, and moved under the Aptos framework account, (2) the block height is set to zero during initialization, and (3) the epoch interval is greater than zero.</td>
+<td>The initialize function is responsible for setting up the initial state of the module, ensuring that the following conditions are met (1) the BlockResource resource is created, indicating its existence within the module's context, and moved under the Libra2 framework account, (2) the block height is set to zero during initialization, and (3) the epoch interval is greater than zero.</td>
 <td>Formally Verified via <a href="#high-level-req-1">Initialize</a>.</td>
 </tr>
 
 <tr>
 <td>2</td>
-<td>Only the Aptos framework address may execute the following functionalities: (1) initialize BlockResource, and (2) update the epoch interval.</td>
+<td>Only the Libra2 framework address may execute the following functionalities: (1) initialize BlockResource, and (2) update the epoch interval.</td>
 <td>Critical</td>
 <td>The initialize and  update_epoch_interval_microsecs functions ensure that only libra2_framework can call them.</td>
 <td>Formally Verified via <a href="#high-level-req-2.1">Initialize</a> and <a href="#high-level-req-2.2">update_epoch_interval_microsecs</a>.</td>
@@ -1347,4 +1347,4 @@ The CurrentTimeMicroseconds existed under the @libra2_framework.
 </code></pre>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

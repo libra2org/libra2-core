@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use super::types::FaucetOptions;
@@ -32,9 +32,9 @@ use std::{
 /// 1 APT (might not actually get that much, depending on the faucet)
 const NUM_DEFAULT_OCTAS: u64 = 100000000;
 
-/// Tool to initialize current directory for the aptos tool
+/// Tool to initialize current directory for the libra2 tool
 ///
-/// Configuration will be pushed into .aptos/config.yaml
+/// Configuration will be pushed into .libra2/config.yaml
 #[derive(Debug, Parser)]
 pub struct InitTool {
     /// Network to use for default settings
@@ -79,7 +79,7 @@ pub struct InitTool {
 #[async_trait]
 impl CliCommand<()> for InitTool {
     fn command_name(&self) -> &'static str {
-        "AptosInit"
+        "Libra2Init"
     }
 
     #[allow(clippy::literal_string_with_formatting_args)]
@@ -142,12 +142,12 @@ impl CliCommand<()> for InitTool {
         match network {
             Network::Mainnet => {
                 profile_config.rest_url =
-                    Some("https://fullnode.mainnet.aptoslabs.com".to_string());
+                    Some("https://fullnode.mainnet.libra2.org".to_string());
                 profile_config.faucet_url = None;
             },
             Network::Testnet => {
                 profile_config.rest_url =
-                    Some("https://fullnode.testnet.aptoslabs.com".to_string());
+                    Some("https://fullnode.testnet.libra2.org".to_string());
                 // The faucet in testnet is only accessible with some kind of bypass.
                 // For regular users this can only really mean an auth token. So if
                 // there is no auth token set, we don't set the faucet URL. If the user
@@ -156,8 +156,8 @@ impl CliCommand<()> for InitTool {
                 profile_config.faucet_url = None;
             },
             Network::Devnet => {
-                profile_config.rest_url = Some("https://fullnode.devnet.aptoslabs.com".to_string());
-                profile_config.faucet_url = Some("https://faucet.devnet.aptoslabs.com".to_string());
+                profile_config.rest_url = Some("https://fullnode.devnet.libra2.org".to_string());
+                profile_config.faucet_url = Some("https://faucet.devnet.libra2.org".to_string());
             },
             Network::Local => {
                 profile_config.rest_url = Some("http://localhost:8080".to_string());

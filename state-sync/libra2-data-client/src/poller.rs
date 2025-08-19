@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
@@ -13,7 +13,7 @@ use crate::{
     utils,
 };
 use libra2_config::{
-    config::{Libra2DataClientConfig, AptosDataPollerConfig},
+    config::{Libra2DataClientConfig, Libra2DataPollerConfig},
     network_id::PeerNetworkId,
 };
 use libra2_logger::{debug, error, info, sample, sample::SampleRate, warn};
@@ -281,7 +281,7 @@ pub async fn start_poller(poller: DataSummaryPoller) {
 
     // Start the poller
     let mut polling_round: u64 = 0;
-    info!((LogSchema::new(LogEntry::DataSummaryPoller).message("Starting the Aptos data poller!")));
+    info!((LogSchema::new(LogEntry::DataSummaryPoller).message("Starting the Libra2 data poller!")));
     loop {
         // Wait for the next round before polling
         poll_loop_ticker.next().await;
@@ -351,7 +351,7 @@ pub async fn start_poller(poller: DataSummaryPoller) {
 pub(crate) fn calculate_num_peers_to_poll(
     potential_peers: &HashSet<PeerNetworkId>,
     max_num_peers_to_poll: u64,
-    data_poller_config: AptosDataPollerConfig,
+    data_poller_config: Libra2DataPollerConfig,
 ) -> u64 {
     // Calculate the total number of peers to poll (per second)
     let min_polls_per_second = data_poller_config.min_polls_per_second;

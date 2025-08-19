@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 #![forbid(unsafe_code)]
@@ -197,7 +197,7 @@ static NAMED_ADDRESSES: Lazy<BTreeMap<String, NumericalAddress>> = Lazy::new(|| 
     result.insert("libra2_token".to_owned(), three);
     result.insert("libra2_token_objects".to_owned(), four);
     result.insert("libra2_experimental".to_owned(), seven);
-    result.insert("aptos_fungible_asset".to_owned(), ten);
+    result.insert("libra2_fungible_asset".to_owned(), ten);
     result.insert("core_resources".to_owned(), resources);
     result.insert("vm".to_owned(), zero);
     result.insert("vm_reserved".to_owned(), zero);

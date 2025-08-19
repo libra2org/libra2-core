@@ -3,7 +3,7 @@
 
 # Module `0x4::token`
 
-This defines an object-based Token. The key differentiating features from the Aptos standard
+This defines an object-based Token. The key differentiating features from the Libra2 standard
 token are:
 * Decoupled token ownership from token data.
 * Explicit data model for token metadata via adjacent resources
@@ -1938,4 +1938,4 @@ as that would prohibit transactions to be executed in parallel.
 </details>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

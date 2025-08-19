@@ -1,4 +1,4 @@
-# This compose file defines an Aptos Fullnode deployment.
+# This compose file defines an Libra2 Fullnode deployment.
 # Read the README.md files for instruction on how to install libra2-node
 
 services:

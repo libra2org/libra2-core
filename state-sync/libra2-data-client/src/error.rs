@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use serde::{Deserialize, Serialize};
@@ -6,7 +6,7 @@ use thiserror::Error;
 
 pub type Result<T, E = Error> = ::std::result::Result<T, E>;
 
-/// An error returned by the Aptos Data Client for failed API calls.
+/// An error returned by the Libra2 Data Client for failed API calls.
 #[derive(Clone, Debug, Deserialize, Error, PartialEq, Eq, Serialize)]
 pub enum Error {
     #[error("The requested data is unavailable and cannot be found! Error: {0}")]

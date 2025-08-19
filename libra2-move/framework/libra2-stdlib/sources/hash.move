@@ -6,7 +6,7 @@
 ///
 /// Non-cryptograhic hashes:
 /// - SipHash: an add-rotate-xor (ARX) based family of pseudorandom functions created by Jean-Philippe Aumasson and Daniel J. Bernstein in 2012
-module libra2_std::aptos_hash {
+module libra2_std::libra2_hash {
     use std::bcs;
     use std::features;
 

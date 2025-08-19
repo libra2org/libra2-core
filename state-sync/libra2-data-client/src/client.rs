@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
@@ -74,7 +74,7 @@ const PEER_METRICS_FREQ_SECS: u64 = 5; // The frequency to update peer metrics a
 ///
 /// The `Libra2DataClient`:
 ///
-/// 1. Sends requests to connected Aptos peers.
+/// 1. Sends requests to connected Libra2 peers.
 /// 2. Does basic type conversions and error handling on the responses.
 /// 3. Routes requests to peers that advertise availability for that data.
 /// 4. Maintains peer scores based on each peer's observed quality of service

@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
@@ -16,7 +16,7 @@ use libra2_types::{
     },
     error::PanicError,
     state_store::StateView,
-    vm::modules::AptosModuleExtension,
+    vm::modules::Libra2ModuleExtension,
 };
 use libra2_vm_environment::environment::Libra2Environment;
 use libra2_vm_logging::alert;
@@ -149,10 +149,10 @@ where
     }
 }
 
-/// Module cache manager used by Aptos block executor. Ensures that only one thread has exclusive
+/// Module cache manager used by Libra2 block executor. Ensures that only one thread has exclusive
 /// access to it at a time.
 pub struct Libra2ModuleCacheManager {
-    inner: Mutex<ModuleCacheManager<ModuleId, CompiledModule, Module, AptosModuleExtension>>,
+    inner: Mutex<ModuleCacheManager<ModuleId, CompiledModule, Module, Libra2ModuleExtension>>,
 }
 
 impl Libra2ModuleCacheManager {
@@ -196,7 +196,7 @@ impl Libra2ModuleCacheManager {
     }
 
     /// Tries to lock the manager using [Libra2ModuleCacheManager::try_lock_inner]. Additionally, if
-    /// the module cache is empty, can prefetch Aptos framework into it.
+    /// the module cache is empty, can prefetch Libra2 framework into it.
     pub fn try_lock(
         &self,
         state_view: &impl StateView,
@@ -210,7 +210,7 @@ impl Libra2ModuleCacheManager {
         // prefetch).
         if guard.module_cache().num_modules() == 0 && config.prefetch_framework_code {
             prefetch_libra2_framework(state_view, &mut guard).map_err(|err| {
-                alert_or_println!("Failed to load Aptos framework to module cache: {:?}", err);
+                alert_or_println!("Failed to load Libra2 framework to module cache: {:?}", err);
                 VMError::from(err).into_vm_status()
             })?;
         }
@@ -226,13 +226,13 @@ pub enum Libra2ModuleCacheManagerGuard<'a> {
     Guard {
         guard: MutexGuard<
             'a,
-            ModuleCacheManager<ModuleId, CompiledModule, Module, AptosModuleExtension>,
+            ModuleCacheManager<ModuleId, CompiledModule, Module, Libra2ModuleExtension>,
         >,
     },
     /// Either there is no [Libra2ModuleCacheManager], or acquiring the lock for it failed.
     None {
         environment: Libra2Environment,
-        module_cache: GlobalModuleCache<ModuleId, CompiledModule, Module, AptosModuleExtension>,
+        module_cache: GlobalModuleCache<ModuleId, CompiledModule, Module, Libra2ModuleExtension>,
     },
 }
 
@@ -252,7 +252,7 @@ impl Libra2ModuleCacheManagerGuard<'_> {
     /// Returns the references to the module cache.
     pub fn module_cache(
         &self,
-    ) -> &GlobalModuleCache<ModuleId, CompiledModule, Module, AptosModuleExtension> {
+    ) -> &GlobalModuleCache<ModuleId, CompiledModule, Module, Libra2ModuleExtension> {
         use Libra2ModuleCacheManagerGuard::*;
         match self {
             Guard { guard } => &guard.module_cache,
@@ -263,7 +263,7 @@ impl Libra2ModuleCacheManagerGuard<'_> {
     /// Returns the mutable references to the module cache.
     pub fn module_cache_mut(
         &mut self,
-    ) -> &mut GlobalModuleCache<ModuleId, CompiledModule, Module, AptosModuleExtension> {
+    ) -> &mut GlobalModuleCache<ModuleId, CompiledModule, Module, Libra2ModuleExtension> {
         use Libra2ModuleCacheManagerGuard::*;
         match self {
             Guard { guard } => &mut guard.module_cache,
@@ -290,7 +290,7 @@ impl Libra2ModuleCacheManagerGuard<'_> {
     }
 }
 
-/// If Aptos framework exists, loads "transaction_validation.move" and all its transitive
+/// If Libra2 framework exists, loads "transaction_validation.move" and all its transitive
 /// dependencies from storage into provided module cache. If loading fails for any reason, a panic
 /// error is returned.
 fn prefetch_libra2_framework(
@@ -308,13 +308,13 @@ fn prefetch_libra2_framework(
             let maybe_loaded = code_storage
                 .unmetered_get_module_skip_verification(&AccountAddress::ONE, ident_str!("transaction_validation"))
                 .map_err(|err| {
-                    PanicError::CodeInvariantError(format!("Unable to fetch Aptos framework: {:?}", err))
+                    PanicError::CodeInvariantError(format!("Unable to fetch Libra2 framework: {:?}", err))
                 })?;
         } else {
             let maybe_loaded = code_storage
                 .unmetered_get_eagerly_verified_module(&AccountAddress::ONE, ident_str!("transaction_validation"))
                 .map_err(|err| {
-                    PanicError::CodeInvariantError(format!("Unable to fetch Aptos framework: {:?}", err))
+                    PanicError::CodeInvariantError(format!("Unable to fetch Libra2 framework: {:?}", err))
                 })?;
         }
     }

@@ -4,7 +4,7 @@ import { sleep } from "k6";
 import grpc from "k6/experimental/grpc";
 
 const GRPC_ADDR = __ENV.GRPC_ADDR || "127.0.0.1:50052";
-const GRPC_METHOD = "aptos.indexer.v1.RawData/GetTransactions";
+const GRPC_METHOD = "libra2.indexer.v1.RawData/GetTransactions";
 
 // relative path from this directory to the proto files
 const GRPC_IMPORT_PATHS = ["../../../crates/libra2-protos/proto"];
@@ -25,7 +25,7 @@ export const options = {
 };
 
 // GetTransactions from raw data stream
-// Inspiration from: https://github.com/aptos-labs/aptos-indexer-processors/blob/main/typescript/processors/example-write-set-change-processor/processor.ts
+// Inspiration from: https://github.com/libra2org/libra2-indexer-processors/blob/main/typescript/processors/example-write-set-change-processor/processor.ts
 export default () => {
   if (__ITER == 0) {
     client.connect(GRPC_ADDR, { plaintext: true });
@@ -36,7 +36,7 @@ export default () => {
   };
 
   const metadata = {
-    "x-aptos-data-authorization": "dummy_token",
+    "x-libra2-data-authorization": "dummy_token",
   };
 
   const params = {

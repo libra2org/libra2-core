@@ -67,8 +67,8 @@ PLACEHOLDER_VFN_DNS4_VALUE: str = (
     "f0274c2774519281a8332d0bb9d8101bd58bc7bb154b38039bc9096ce04e1237"
 )
 DEFAULT_IMAGE: str = "aptoslabs/validator:devnet@sha256:f0c62463b0e86acc9ad081c54be2d1823f143f780c73828b876caebc978c8947"
-APTOS_DATA_NAME: str = "aptos-data"
-APTOS_DATA_DIR: str = "/opt/aptos/data"
+LIBRA2_DATA_NAME: str = "libra2-data"
+LIBRA2_DATA_DIR: str = "/opt/aptos/data"
 LEDGER_DB_NAME: str = "ledger_db"
 STATE_MERKLE_DB_NAME: str = "state_merkle_db"
 STATE_SYNC_DB_NAME: str = "state_sync_db"

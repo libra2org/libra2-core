@@ -1,4 +1,4 @@
-// Copyright (c) Aptos Foundation
+// Copyright (c) A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use libra2_logger::{Level, Logger};
@@ -42,7 +42,7 @@ pub(crate) fn build_debugger(
 pub struct RestAPI {
     #[clap(
         long,
-        help = "Fullnode's REST API query endpoint, e.g., https://api.mainnet.aptoslabs.com/v1 \
+        help = "Fullnode's REST API query endpoint, e.g., https://api.mainnet.libra2.org/v1 \
                 for mainnet"
     )]
     rest_endpoint: String,

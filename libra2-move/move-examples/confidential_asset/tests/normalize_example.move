@@ -71,19 +71,19 @@ module confidential_asset_example::normalize_example {
 
     #[test(
         confidential_asset = @libra2_experimental,
-        aptos_fx = @libra2_framework,
+        libra2_fx = @libra2_framework,
         fa = @0xfa,
         bob = @0xb0
     )]
     fun normalize_example_test(
         confidential_asset: signer,
-        aptos_fx: signer,
+        libra2_fx: signer,
         fa: signer,
         bob: signer)
     {
         let token = confidential_asset_tests::set_up_for_confidential_asset_test(
             &confidential_asset,
-            &aptos_fx,
+            &libra2_fx,
             &fa,
             &bob,
             &bob,

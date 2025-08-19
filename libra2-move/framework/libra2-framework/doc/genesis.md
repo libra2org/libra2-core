@@ -850,9 +850,9 @@ The last step of genesis.
 
 <tr>
 <td>1</td>
-<td>All the core resources and modules should be created during genesis and owned by the Aptos framework account.</td>
+<td>All the core resources and modules should be created during genesis and owned by the Libra2 framework account.</td>
 <td>Critical</td>
-<td>Resources created during genesis initialization: GovernanceResponsbility, ConsensusConfig, ExecutionConfig, Version, SetVersionCapability, ValidatorSet, ValidatorPerformance, StakingConfig, StorageGasConfig, StorageGas, GasScheduleV2, AggregatorFactory, SupplyConfig, ChainId, Configuration, BlockResource, StateStorageUsage, CurrentTimeMicroseconds. If some of the resources were to be owned by a malicious account, it could lead to the compromise of the chain, as these are core resources. It should be formally verified by a post condition to ensure that all the critical resources are owned by the Aptos framework.</td>
+<td>Resources created during genesis initialization: GovernanceResponsbility, ConsensusConfig, ExecutionConfig, Version, SetVersionCapability, ValidatorSet, ValidatorPerformance, StakingConfig, StorageGasConfig, StorageGas, GasScheduleV2, AggregatorFactory, SupplyConfig, ChainId, Configuration, BlockResource, StateStorageUsage, CurrentTimeMicroseconds. If some of the resources were to be owned by a malicious account, it could lead to the compromise of the chain, as these are core resources. It should be formally verified by a post condition to ensure that all the critical resources are owned by the Libra2 framework.</td>
 <td>Formally verified via <a href="#high-level-req-1">initialize</a>.</td>
 </tr>
 
@@ -866,7 +866,7 @@ The last step of genesis.
 
 <tr>
 <td>3</td>
-<td>The Libra2 coin should be initialized during genesis and only the Aptos framework account should own the mint and burn capabilities for the APT token.</td>
+<td>The Libra2 coin should be initialized during genesis and only the Libra2 framework account should own the mint and burn capabilities for the APT token.</td>
 <td>Critical</td>
 <td>Both mint and burn capabilities are wrapped inside the stake::Libra2CoinCapabilities and transaction_fee::Libra2CoinCapabilities resources which are stored under the aptos framework account.</td>
 <td>Formally verified via <a href="#high-level-req-3">initialize_libra2_coin</a>.</td>
@@ -1104,4 +1104,4 @@ The last step of genesis.
 </code></pre>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

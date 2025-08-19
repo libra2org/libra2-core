@@ -1,4 +1,4 @@
-# This compose file defines an Aptos Validator deployment.
+# This compose file defines an Libra2 Validator deployment.
 # Read the README.md files for instruction on how to install libra2-node
 
 services:

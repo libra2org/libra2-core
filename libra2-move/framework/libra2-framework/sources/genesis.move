@@ -545,7 +545,7 @@ module libra2_framework::genesis {
         let core_resources = account::create_account(@core_resources);
         libra2_account::register_apt(&core_resources); // registers APT store
 
-        let apt_metadata = object::address_to_object<Metadata>(@aptos_fungible_asset);
+        let apt_metadata = object::address_to_object<Metadata>(@libra2_fungible_asset);
         assert!(primary_fungible_store::primary_store_exists(@core_resources, apt_metadata), 2);
 
         libra2_coin::configure_accounts_for_test(libra2_framework, &core_resources, mint_cap);

@@ -8,7 +8,7 @@
 
 Libra2 is an AI driven layer 1 blockchain built to support the future digital asset, crypto market, AI agent & virtual world.
 
-Libra2 inherits Libra, Diem, and Aptos technologies.
+Libra2 inherits Libra, Diem, and Libra2 technologies.
 
 ## Getting Started
 

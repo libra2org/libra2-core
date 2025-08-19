@@ -1,11 +1,11 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
     gas::get_gas_parameters,
     natives::libra2_natives_with_builder,
     prod_configs::{
-        aptos_default_ty_builder, aptos_prod_ty_builder, aptos_prod_vm_config,
+        libra2_default_ty_builder, libra2_prod_ty_builder, libra2_prod_vm_config,
         get_timed_feature_override,
     },
 };
@@ -215,7 +215,7 @@ impl Environment {
             get_gas_parameters(&mut sha3_256, &features, state_view);
         let (native_gas_params, misc_gas_params, ty_builder) = match &gas_params {
             Ok(gas_params) => {
-                let ty_builder = aptos_prod_ty_builder(gas_feature_version, gas_params);
+                let ty_builder = libra2_prod_ty_builder(gas_feature_version, gas_params);
                 (
                     gas_params.natives.clone(),
                     gas_params.vm.misc.clone(),
@@ -223,7 +223,7 @@ impl Environment {
                 )
             },
             Err(_) => {
-                let ty_builder = aptos_default_ty_builder();
+                let ty_builder = libra2_default_ty_builder();
                 (
                     NativeGasParameters::zeros(),
                     MiscGasParameters::zeros(),
@@ -242,7 +242,7 @@ impl Environment {
         );
         let natives = libra2_natives_with_builder(&mut builder, inject_create_signer_for_gov_sim);
         let vm_config =
-            aptos_prod_vm_config(gas_feature_version, &features, &timed_features, ty_builder);
+            libra2_prod_vm_config(gas_feature_version, &features, &timed_features, ty_builder);
         let verifier_bytes =
             bcs::to_bytes(&vm_config.verifier_config).expect("Verifier config is serializable");
         let runtime_environment = RuntimeEnvironment::new_with_config(natives, vm_config);

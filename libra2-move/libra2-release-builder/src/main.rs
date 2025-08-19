@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use anyhow::{bail, Context};
@@ -29,7 +29,7 @@ pub struct Argument {
     libra2_core_path: Option<PathBuf>,
 }
 
-// TODO(vgao1996): unify with `ReplayNetworkSelection` in the `aptos` crate.
+// TODO(vgao1996): unify with `ReplayNetworkSelection` in the `libra2` crate.
 #[derive(Clone, Debug)]
 pub enum NetworkSelection {
     Mainnet,
@@ -56,9 +56,9 @@ impl NetworkSelection {
         use NetworkSelection::*;
 
         let s = match &self {
-            Mainnet => "https://fullnode.mainnet.aptoslabs.com",
-            Testnet => "https://fullnode.testnet.aptoslabs.com",
-            Devnet => "https://fullnode.devnet.aptoslabs.com",
+            Mainnet => "https://fullnode.mainnet.libra2.org",
+            Testnet => "https://fullnode.testnet.libra2.org",
+            Devnet => "https://fullnode.devnet.libra2.org",
             RestEndpoint(url) => url,
         };
 
@@ -159,7 +159,7 @@ pub enum Commands {
     },
     /// Print out current values of on chain configs.
     PrintConfigs {
-        /// Url endpoint for the desired network. e.g: https://fullnode.mainnet.aptoslabs.com/v1.
+        /// Url endpoint for the desired network. e.g: https://fullnode.mainnet.libra2.org/v1.
         #[clap(short, long)]
         endpoint: url::Url,
         /// Whether to print out the full gas schedule.
@@ -175,7 +175,7 @@ pub enum Commands {
     /// Usage: --endpoint '<URL>'
     /// --package-address <ADDRESS> --package-name <PACKAGE_NAME> [--print-json]
     PrintPackageMetadata {
-        /// Url endpoint for the desired network. e.g: https://fullnode.mainnet.aptoslabs.com/v1.
+        /// Url endpoint for the desired network. e.g: https://fullnode.mainnet.libra2.org/v1.
         #[clap(short, long)]
         endpoint: url::Url,
         /// The address under which the package is published
@@ -198,7 +198,7 @@ pub enum Commands {
 #[derive(Subcommand, Debug)]
 pub enum InputOptions {
     FromDirectory {
-        /// Path to the localnet folder. If you are running localnet via cli, it should be `.aptos/testnet`.
+        /// Path to the localnet folder. If you are running localnet via cli, it should be `.libra2/testnet`.
         #[clap(short, long)]
         test_dir: PathBuf,
     },

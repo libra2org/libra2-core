@@ -7,11 +7,11 @@
 This is the general Voting module that can be used as part of a DAO Governance. Voting is designed to be used by
 standalone governance modules, who has full control over the voting flow and is responsible for voting power
 calculation and including proper capabilities when creating the proposal so resolution can go through.
-On-chain governance of the Aptos network also uses Voting.
+On-chain governance of the Libra2 network also uses Voting.
 
 The voting flow:
-1. The Voting module can be deployed at a known address (e.g. 0x1 for Aptos on-chain governance)
-2. The governance module, e.g. AptosGovernance, can be deployed later and define a GovernanceProposal resource type
+1. The Voting module can be deployed at a known address (e.g. 0x1 for Libra2 on-chain governance)
+2. The governance module, e.g. Libra2Governance, can be deployed later and define a GovernanceProposal resource type
 that can also contain other information such as Capability resource for authorization.
 3. The governance module's owner can then register the ProposalType with Voting. This also hosts the proposal list
 (forum) on the calling account.
@@ -2700,4 +2700,4 @@ Return true if the voting period of the given proposal has already ended.
 </code></pre>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

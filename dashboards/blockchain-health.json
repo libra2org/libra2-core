@@ -41,9 +41,9 @@
       "icon": "external link",
       "includeVars": true,
       "keepTime": true,
-      "tags": ["aptos-core"],
+      "tags": ["libra2-core"],
       "targetBlank": true,
-      "title": "aptos-core",
+      "title": "libra2-core",
       "tooltip": "",
       "type": "dashboards",
       "url": ""
@@ -241,7 +241,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "count(\n    max by (kubernetes_pod_name,role) (libra2_data_client_highest_advertised_data{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"validator\", data_type=\"transactions\"})  \n    - on(kubernetes_pod_name,role) max by (kubernetes_pod_name,role) (aptos_state_sync_version{chain_name=~\"$chain_name\", cluster=~\"$cluster\", namespace=~\"telemetry-service\",kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"validator\", type=\"synced\"})\n     > 30000\n)  OR on() vector(0) ",
+          "expr": "count(\n    max by (kubernetes_pod_name,role) (libra2_data_client_highest_advertised_data{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"validator\", data_type=\"transactions\"})  \n    - on(kubernetes_pod_name,role) max by (kubernetes_pod_name,role) (libra2_state_sync_version{chain_name=~\"$chain_name\", cluster=~\"$cluster\", namespace=~\"telemetry-service\",kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"validator\", type=\"synced\"})\n     > 30000\n)  OR on() vector(0) ",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{kubernetes_pod_name}}-committed",
@@ -297,7 +297,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "aptos_state_sync_version{type=\"synced\", chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}",
+          "expr": "libra2_state_sync_version{type=\"synced\", chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1363,7 +1363,7 @@
           "refId": "A"
         }
       ],
-      "title": "Aptos PFN-only Per Bucket Avg E2E Txn Commit Latency",
+      "title": "Libra2 PFN-only Per Bucket Avg E2E Txn Commit Latency",
       "type": "timeseries"
     },
     {
@@ -3014,7 +3014,7 @@
   "revision": 1,
   "schemaVersion": 38,
   "style": "dark",
-  "tags": ["aptos-core"],
+  "tags": ["libra2-core"],
   "templating": {
     "list": [
       {

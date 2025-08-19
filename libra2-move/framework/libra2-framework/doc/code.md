@@ -1107,7 +1107,7 @@ Native function to initiate module loading, including a list of allowed dependen
 <td>Updating a package should fail if the user is not the owner of it.</td>
 <td>Critical</td>
 <td>The publish_package function may only be able to update the package if the signer is the actual owner of the package.</td>
-<td>The Aptos upgrade native functions have been manually audited.</td>
+<td>The Libra2 upgrade native functions have been manually audited.</td>
 </tr>
 
 <tr>
@@ -1185,9 +1185,9 @@ Native function to initiate module loading, including a list of allowed dependen
 
 
 
-<pre><code><b>let</b> aptos_addr = <a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer_address_of">signer::address_of</a>(libra2_framework);
+<pre><code><b>let</b> libra2_addr = <a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer_address_of">signer::address_of</a>(libra2_framework);
 <b>let</b> owner_addr = <a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer_address_of">signer::address_of</a>(package_owner);
-<b>aborts_if</b> !<a href="system_addresses.md#0x1_system_addresses_is_libra2_framework_address">system_addresses::is_libra2_framework_address</a>(aptos_addr);
+<b>aborts_if</b> !<a href="system_addresses.md#0x1_system_addresses_is_libra2_framework_address">system_addresses::is_libra2_framework_address</a>(libra2_addr);
 <b>ensures</b> <b>exists</b>&lt;<a href="code.md#0x1_code_PackageRegistry">PackageRegistry</a>&gt;(owner_addr);
 </code></pre>
 
@@ -1362,4 +1362,4 @@ Native function to initiate module loading, including a list of allowed dependen
 </code></pre>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

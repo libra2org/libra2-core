@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use libra2_config::{
@@ -53,7 +53,7 @@ pub struct NetbenchDataReply {
 /// Counter for pending network events to the network benchmark service (server-side)
 pub static PENDING_NETBENCH_NETWORK_EVENTS: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_netbench_pending_network_events",
+        "libra2_netbench_pending_network_events",
         "Counters for pending network events for benchmarking",
         &["state"]
     )
@@ -566,7 +566,7 @@ pub struct SendRecord {
     pub bytes_sent: usize,
 }
 
-pub static APTOS_NETWORK_BENCHMARK_DIRECT_MESSAGES: Lazy<IntCounterVec> = Lazy::new(|| {
+pub static LIBRA2_NETWORK_BENCHMARK_DIRECT_MESSAGES: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
         "libra2_network_benchmark_direct_messages",
         "Number of net benchmark direct messages",
@@ -576,12 +576,12 @@ pub static APTOS_NETWORK_BENCHMARK_DIRECT_MESSAGES: Lazy<IntCounterVec> = Lazy::
 });
 
 fn direct_messages(state_label: &'static str) {
-    APTOS_NETWORK_BENCHMARK_DIRECT_MESSAGES
+    LIBRA2_NETWORK_BENCHMARK_DIRECT_MESSAGES
         .with_label_values(&[state_label])
         .inc();
 }
 
-pub static APTOS_NETWORK_BENCHMARK_DIRECT_BYTES: Lazy<IntCounterVec> = Lazy::new(|| {
+pub static LIBRA2_NETWORK_BENCHMARK_DIRECT_BYTES: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
         "libra2_network_benchmark_direct_bytes",
         "Number of net benchmark direct bytes",
@@ -591,12 +591,12 @@ pub static APTOS_NETWORK_BENCHMARK_DIRECT_BYTES: Lazy<IntCounterVec> = Lazy::new
 });
 
 fn direct_bytes(state_label: &'static str, byte_count: u64) {
-    APTOS_NETWORK_BENCHMARK_DIRECT_BYTES
+    LIBRA2_NETWORK_BENCHMARK_DIRECT_BYTES
         .with_label_values(&[state_label])
         .inc_by(byte_count);
 }
 
-pub static APTOS_NETWORK_BENCHMARK_DIRECT_MICROS: Lazy<IntCounterVec> = Lazy::new(|| {
+pub static LIBRA2_NETWORK_BENCHMARK_DIRECT_MICROS: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
         "libra2_network_benchmark_direct_micros",
         "Number of net benchmark direct micros",
@@ -606,12 +606,12 @@ pub static APTOS_NETWORK_BENCHMARK_DIRECT_MICROS: Lazy<IntCounterVec> = Lazy::ne
 });
 
 fn direct_micros(state_label: &'static str, micros: u64) {
-    APTOS_NETWORK_BENCHMARK_DIRECT_MICROS
+    LIBRA2_NETWORK_BENCHMARK_DIRECT_MICROS
         .with_label_values(&[state_label])
         .inc_by(micros);
 }
 
-pub static APTOS_NETWORK_BENCHMARK_RPC_MESSAGES: Lazy<IntCounterVec> = Lazy::new(|| {
+pub static LIBRA2_NETWORK_BENCHMARK_RPC_MESSAGES: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
         "libra2_network_benchmark_rpc_messages",
         "Number of net benchmark RPC messages",
@@ -621,12 +621,12 @@ pub static APTOS_NETWORK_BENCHMARK_RPC_MESSAGES: Lazy<IntCounterVec> = Lazy::new
 });
 
 fn rpc_messages(state_label: &'static str) {
-    APTOS_NETWORK_BENCHMARK_RPC_MESSAGES
+    LIBRA2_NETWORK_BENCHMARK_RPC_MESSAGES
         .with_label_values(&[state_label])
         .inc();
 }
 
-pub static APTOS_NETWORK_BENCHMARK_RPC_BYTES: Lazy<IntCounterVec> = Lazy::new(|| {
+pub static LIBRA2_NETWORK_BENCHMARK_RPC_BYTES: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
         "libra2_network_benchmark_rpc_bytes",
         "Number of net benchmark RPC bytes transferred",
@@ -636,10 +636,10 @@ pub static APTOS_NETWORK_BENCHMARK_RPC_BYTES: Lazy<IntCounterVec> = Lazy::new(||
 });
 
 pub fn rpc_bytes(state_label: &'static str) -> IntCounter {
-    APTOS_NETWORK_BENCHMARK_RPC_BYTES.with_label_values(&[state_label])
+    LIBRA2_NETWORK_BENCHMARK_RPC_BYTES.with_label_values(&[state_label])
 }
 
-pub static APTOS_NETWORK_BENCHMARK_RPC_MICROS: Lazy<IntCounterVec> = Lazy::new(|| {
+pub static LIBRA2_NETWORK_BENCHMARK_RPC_MICROS: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
         "libra2_network_benchmark_rpc_micros",
         "Number of net benchmark RPC microseconds used (hint: divide by _messages)",
@@ -649,5 +649,5 @@ pub static APTOS_NETWORK_BENCHMARK_RPC_MICROS: Lazy<IntCounterVec> = Lazy::new(|
 });
 
 pub fn rpc_micros(state_label: &'static str) -> IntCounter {
-    APTOS_NETWORK_BENCHMARK_RPC_MICROS.with_label_values(&[state_label])
+    LIBRA2_NETWORK_BENCHMARK_RPC_MICROS.with_label_values(&[state_label])
 }

@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 //! The Libra2 API response / error handling philosophy.
@@ -41,7 +41,7 @@ use std::fmt::Display;
 
 /// An enum representing the different types of outputs for APIs
 #[derive(ResponseContent)]
-pub enum AptosResponseContent<T: ToJSON + Send + Sync> {
+pub enum Libra2ResponseContent<T: ToJSON + Send + Sync> {
     /// When returning data as JSON, we take in T and then serialize to JSON as
     /// part of the response.
     Json(Json<T>),
@@ -142,7 +142,7 @@ macro_rules! generate_error_response {
                 // We use just regular u64 here instead of U64 since all header
                 // values are implicitly strings anyway.
                 /// Chain ID of the current chain
-                #[oai(header = "X-Aptos-Chain-Id")] Option<u8>,
+                #[oai(header = "X-Libra2-Chain-Id")] Option<u8>,
                 /// Current ledger version of the chain
                 #[oai(header = "X-libra2-ledger-Version")] Option<u64>,
                 /// Oldest non-pruned ledger version of the chain
@@ -150,13 +150,13 @@ macro_rules! generate_error_response {
                 /// Current timestamp of the chain
                 #[oai(header = "X-libra2-ledger-TimestampUsec")] Option<u64>,
                 /// Current epoch of the chain
-                #[oai(header = "X-Aptos-Epoch")] Option<u64>,
+                #[oai(header = "X-Libra2-Epoch")] Option<u64>,
                 /// Current block height of the chain
-                #[oai(header = "X-Aptos-Block-Height")] Option<u64>,
+                #[oai(header = "X-Libra2-Block-Height")] Option<u64>,
                 /// Oldest non-pruned block height of the chain
-                #[oai(header = "X-Aptos-Oldest-Block-Height")] Option<u64>,
+                #[oai(header = "X-Libra2-Oldest-Block-Height")] Option<u64>,
                 /// The cost of the call in terms of gas
-                #[oai(header = "X-Aptos-Gas-Used")] Option<u64>,
+                #[oai(header = "X-Libra2-Gas-Used")] Option<u64>,
             ),
             )*
         }
@@ -325,9 +325,9 @@ macro_rules! generate_success_response {
             $name(
                 // We use just regular u64 here instead of U64 since all header
                 // values are implicitly strings anyway.
-                $crate::response::AptosResponseContent<T>,
+                $crate::response::Libra2ResponseContent<T>,
                 /// Chain ID of the current chain
-                #[oai(header = "X-Aptos-Chain-Id")] u8,
+                #[oai(header = "X-Libra2-Chain-Id")] u8,
                 /// Current ledger version of the chain
                 #[oai(header = "X-libra2-ledger-Version")] u64,
                 /// Oldest non-pruned ledger version of the chain
@@ -335,17 +335,17 @@ macro_rules! generate_success_response {
                 /// Current timestamp of the chain
                 #[oai(header = "X-libra2-ledger-TimestampUsec")] u64,
                 /// Current epoch of the chain
-                #[oai(header = "X-Aptos-Epoch")] u64,
+                #[oai(header = "X-Libra2-Epoch")] u64,
                 /// Current block height of the chain
-                #[oai(header = "X-Aptos-Block-Height")] u64,
+                #[oai(header = "X-Libra2-Block-Height")] u64,
                 /// Oldest non-pruned block height of the chain
-                #[oai(header = "X-Aptos-Oldest-Block-Height")] u64,
+                #[oai(header = "X-Libra2-Oldest-Block-Height")] u64,
                 /// The cost of the call in terms of gas
-                #[oai(header = "X-Aptos-Gas-Used")] Option<u64>,
+                #[oai(header = "X-Libra2-Gas-Used")] Option<u64>,
                 /// Cursor to be used for endpoints that support cursor-based
                 /// pagination. Pass this to the `start` field of the endpoint
                 /// on the next call to get the next page of results.
-                #[oai(header = "X-Aptos-Cursor")] Option<String>,
+                #[oai(header = "X-Libra2-Cursor")] Option<String>,
             ),
             )*
         }
@@ -359,16 +359,16 @@ macro_rules! generate_success_response {
             )*
         }
 
-        // Generate a From impl that builds a response from AptosResponseContent.
+        // Generate a From impl that builds a response from Libra2ResponseContent.
         // Each variant in the main enum takes in the same argument, so the macro
         // is really just helping us enumerate and build each variant. We use this
         // in the other From impls.
-        impl <T: poem_openapi::types::ToJSON + Send + Sync> From<($crate::response::AptosResponseContent<T>, &libra2_api_types::LedgerInfo, [<$enum_name Status>])>
+        impl <T: poem_openapi::types::ToJSON + Send + Sync> From<($crate::response::Libra2ResponseContent<T>, &libra2_api_types::LedgerInfo, [<$enum_name Status>])>
             for $enum_name<T>
         {
             fn from(
                 (value, ledger_info, status): (
-                    $crate::response::AptosResponseContent<T>,
+                    $crate::response::Libra2ResponseContent<T>,
                     &libra2_api_types::LedgerInfo,
                     [<$enum_name Status>]
                 ),
@@ -401,7 +401,7 @@ macro_rules! generate_success_response {
             fn from(
                 (value, ledger_info, status): (poem_openapi::payload::Json<T>, &libra2_api_types::LedgerInfo, [<$enum_name Status>]),
             ) -> Self {
-                let content = $crate::response::AptosResponseContent::Json(value);
+                let content = $crate::response::Libra2ResponseContent::Json(value);
                 Self::from((content, ledger_info, status))
             }
         }
@@ -417,7 +417,7 @@ macro_rules! generate_success_response {
                     [<$enum_name Status>]
                 ),
             ) -> Self {
-                let content = $crate::response::AptosResponseContent::Bcs(value);
+                let content = $crate::response::Libra2ResponseContent::Bcs(value);
                 Self::from((content, ledger_info, status))
             }
         }

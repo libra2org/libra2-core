@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
@@ -179,13 +179,13 @@ impl MoveTool {
 
 #[derive(Default, Parser)]
 pub struct FrameworkPackageArgs {
-    /// Git revision or branch for the Aptos framework
+    /// Git revision or branch for the Libra2 framework
     ///
     /// This is mutually exclusive with `--framework-local-dir`
     #[clap(long, group = "framework_package_args")]
     pub(crate) framework_git_rev: Option<String>,
 
-    /// Local framework directory for the Aptos framework
+    /// Local framework directory for the Libra2 framework
     ///
     /// This is mutually exclusive with `--framework-git-rev`
     #[clap(long, value_parser, group = "framework_package_args")]
@@ -208,8 +208,8 @@ impl FrameworkPackageArgs {
         addresses: BTreeMap<String, ManifestNamedAddress>,
         prompt_options: PromptOptions,
     ) -> CliTypedResult<()> {
-        const APTOS_FRAMEWORK: &str = "Libra2Framework";
-        const APTOS_GIT_PATH: &str = "https://github.com/libra2org/libra2-framework.git";
+        const LIBRA2_FRAMEWORK: &str = "Libra2Framework";
+        const LIBRA2_GIT_PATH: &str = "https://github.com/libra2org/libra2-framework.git";
         const SUBDIR_PATH: &str = "libra2-framework";
         const DEFAULT_BRANCH: &str = "mainnet";
 
@@ -234,7 +234,7 @@ impl FrameworkPackageArgs {
         // Add the framework dependency if it's provided
         let mut dependencies = BTreeMap::new();
         if let Some(ref path) = self.framework_local_dir {
-            dependencies.insert(APTOS_FRAMEWORK.to_string(), Dependency {
+            dependencies.insert(LIBRA2_FRAMEWORK.to_string(), Dependency {
                 local: Some(path.display().to_string()),
                 git: None,
                 rev: None,
@@ -244,9 +244,9 @@ impl FrameworkPackageArgs {
             });
         } else {
             let git_rev = self.framework_git_rev.as_deref().unwrap_or(DEFAULT_BRANCH);
-            dependencies.insert(APTOS_FRAMEWORK.to_string(), Dependency {
+            dependencies.insert(LIBRA2_FRAMEWORK.to_string(), Dependency {
                 local: None,
-                git: Some(APTOS_GIT_PATH.to_string()),
+                git: Some(LIBRA2_GIT_PATH.to_string()),
                 rev: Some(git_rev.to_string()),
                 subdir: Some(SUBDIR_PATH.to_string()),
                 libra2: None,
@@ -767,7 +767,7 @@ pub struct IncludedArtifactsArgs {
     pub included_artifacts: IncludedArtifacts,
 }
 
-/// Publishes the modules in a Move package to the Aptos blockchain
+/// Publishes the modules in a Move package to the Libra2 blockchain
 #[derive(Parser)]
 pub struct PublishPackage {
     #[clap(flatten)]
@@ -1118,7 +1118,7 @@ impl CliCommand<String> for BuildPublishPayload {
     }
 }
 
-/// Publishes the modules in a Move package to the Aptos blockchain, under an object (legacy version of `deploy-object`)
+/// Publishes the modules in a Move package to the Libra2 blockchain, under an object (legacy version of `deploy-object`)
 #[derive(Parser)]
 pub struct CreateObjectAndPublishPackage {
     /// The named address for compiling and using in the contract
@@ -1370,7 +1370,7 @@ impl CliCommand<TransactionSummary> for UpgradeObjectPackage {
     }
 }
 
-/// Publishes the modules in a Move package to the Aptos blockchain, under an object.
+/// Publishes the modules in a Move package to the Libra2 blockchain, under an object.
 #[derive(Parser)]
 pub struct DeployObjectCode {
     /// The named address for compiling and using in the contract
@@ -1777,7 +1777,7 @@ impl CliCommand<TransactionSummary> for ClearStagingArea {
     }
 }
 
-/// Publishes the modules in a Move package to the Aptos blockchain under a resource account
+/// Publishes the modules in a Move package to the Libra2 blockchain under a resource account
 #[derive(Parser)]
 pub struct CreateResourceAccountAndPublishPackage {
     /// The named address for compiling and using in the contract

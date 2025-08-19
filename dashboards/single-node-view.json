@@ -41,9 +41,9 @@
       "icon": "external link",
       "includeVars": true,
       "keepTime": true,
-      "tags": ["aptos-core"],
+      "tags": ["libra2-core"],
       "targetBlank": true,
-      "title": "aptos-core",
+      "title": "libra2-core",
       "tooltip": "",
       "type": "dashboards",
       "url": ""
@@ -98,7 +98,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "(aptos_state_sync_version{role=~\"$role\", kubernetes_pod_name=\"$kubernetes_pod_name\", chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", type=\"synced\"}) - on (kubernetes_pod_name, role) (aptos_storage_latest_transaction_version{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=\"$kubernetes_pod_name\", role=~\"$role\"})",
+          "expr": "(libra2_state_sync_version{role=~\"$role\", kubernetes_pod_name=\"$kubernetes_pod_name\", chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", type=\"synced\"}) - on (kubernetes_pod_name, role) (libra2_storage_latest_transaction_version{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=\"$kubernetes_pod_name\", role=~\"$role\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "synced - stored",
@@ -108,7 +108,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "rate(aptos_state_sync_version{role=~\"$role\", kubernetes_pod_name=\"$kubernetes_pod_name\", chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", type=\"synced\"}[$__rate_interval])",
+          "expr": "rate(libra2_state_sync_version{role=~\"$role\", kubernetes_pod_name=\"$kubernetes_pod_name\", chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", type=\"synced\"}[$__rate_interval])",
           "hide": false,
           "legendFormat": "sync_rate",
           "range": true,
@@ -117,7 +117,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "rate(aptos_storage_latest_transaction_version{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=\"$kubernetes_pod_name\", role=~\"$role\"}[$__rate_interval])",
+          "expr": "rate(libra2_storage_latest_transaction_version{chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", kubernetes_pod_name=\"$kubernetes_pod_name\", role=~\"$role\"}[$__rate_interval])",
           "hide": false,
           "legendFormat": "stored_rate",
           "range": true,
@@ -126,7 +126,7 @@
         {
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
           "editorMode": "code",
-          "expr": "max(aptos_state_sync_version{role=~\"$role\", kubernetes_pod_name=~\".*\", chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", type=\"synced\"}) - max(aptos_state_sync_version{role=~\"$role\", kubernetes_pod_name=\"$kubernetes_pod_name\", chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", type=\"synced\"})",
+          "expr": "max(libra2_state_sync_version{role=~\"$role\", kubernetes_pod_name=~\".*\", chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", type=\"synced\"}) - max(libra2_state_sync_version{role=~\"$role\", kubernetes_pod_name=\"$kubernetes_pod_name\", chain_name=~\"$chain_name\", cluster=~\"$cluster\", metrics_source=~\"$metrics_source\", namespace=~\"$namespace\", type=\"synced\"})",
           "hide": false,
           "legendFormat": "lag from chain",
           "range": true,
@@ -924,7 +924,7 @@
   "refresh": false,
   "schemaVersion": 37,
   "style": "dark",
-  "tags": ["aptos-core"],
+  "tags": ["libra2-core"],
   "templating": {
     "list": [
       {

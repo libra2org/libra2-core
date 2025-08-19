@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 #![forbid(unsafe_code)]
@@ -234,7 +234,7 @@ impl<'scope, 'view: 'scope, BaseView: StateView + Sync> Worker<'view, BaseView> 
         let idx = format!("{}", self.worker_index);
         let _timer = PER_WORKER_TIMER.timer_with(&[&idx, "block_total"]);
         // Share a VM in the same thread.
-        // TODO(ptx): maybe warm up vm like done in AptosExecutorTask
+        // TODO(ptx): maybe warm up vm like done in Libra2ExecutorTask
         let env = Libra2Environment::new(&self.base_view);
         let vm = {
             let _timer = PER_WORKER_TIMER.timer_with(&[&idx, "vm_init"]);

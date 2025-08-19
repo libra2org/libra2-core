@@ -146,7 +146,7 @@ A list of OIDC providers whose JWKs should be watched by validators. Maintained 
 
 ## Struct `UnsupportedJWK`
 
-An JWK variant that represents the JWKs which were observed but not yet supported by Aptos.
+An JWK variant that represents the JWKs which were observed but not yet supported by Libra2.
 Observing <code><a href="jwks.md#0x1_jwks_UnsupportedJWK">UnsupportedJWK</a></code>s means the providers adopted a new key type/format, and the system should be updated.
 
 
@@ -652,11 +652,11 @@ JWKs for federated keyless accounts are stored in this resource.
 
 
 
-<a id="0x1_jwks_EINSTALL_FEDERATED_JWKS_AT_APTOS_FRAMEWORK"></a>
+<a id="0x1_jwks_EINSTALL_FEDERATED_JWKS_AT_LIBRA2_FRAMEWORK"></a>
 
 
 
-<pre><code><b>const</b> <a href="jwks.md#0x1_jwks_EINSTALL_FEDERATED_JWKS_AT_APTOS_FRAMEWORK">EINSTALL_FEDERATED_JWKS_AT_APTOS_FRAMEWORK</a>: u64 = 7;
+<pre><code><b>const</b> <a href="jwks.md#0x1_jwks_EINSTALL_FEDERATED_JWKS_AT_LIBRA2_FRAMEWORK">EINSTALL_FEDERATED_JWKS_AT_LIBRA2_FRAMEWORK</a>: u64 = 7;
 </code></pre>
 
 
@@ -799,9 +799,9 @@ reusing <code><a href="jwks.md#0x1_jwks_PatchedJWKs">PatchedJWKs</a> { <a href="
 
 
 <pre><code><b>public</b> <b>fun</b> <a href="jwks.md#0x1_jwks_patch_federated_jwks">patch_federated_jwks</a>(jwk_owner: &<a href="../../../libra2-stdlib/../move-stdlib/tests/compiler-v2-doc/signer.md#0x1_signer">signer</a>, patches: <a href="../../../libra2-stdlib/../move-stdlib/tests/compiler-v2-doc/vector.md#0x1_vector">vector</a>&lt;<a href="jwks.md#0x1_jwks_Patch">Patch</a>&gt;) <b>acquires</b> <a href="jwks.md#0x1_jwks_FederatedJWKs">FederatedJWKs</a> {
-    // Prevents accidental calls in <a href="jwks.md#0x1_jwks">0x1::jwks</a> that install federated JWKs at the Aptos framework <b>address</b>.
+    // Prevents accidental calls in <a href="jwks.md#0x1_jwks">0x1::jwks</a> that install federated JWKs at the Libra2 framework <b>address</b>.
     <b>assert</b>!(!<a href="system_addresses.md#0x1_system_addresses_is_libra2_framework_address">system_addresses::is_libra2_framework_address</a>(<a href="../../../libra2-stdlib/../move-stdlib/tests/compiler-v2-doc/signer.md#0x1_signer_address_of">signer::address_of</a>(jwk_owner)),
-        <a href="../../../libra2-stdlib/../move-stdlib/tests/compiler-v2-doc/error.md#0x1_error_invalid_argument">error::invalid_argument</a>(<a href="jwks.md#0x1_jwks_EINSTALL_FEDERATED_JWKS_AT_APTOS_FRAMEWORK">EINSTALL_FEDERATED_JWKS_AT_APTOS_FRAMEWORK</a>)
+        <a href="../../../libra2-stdlib/../move-stdlib/tests/compiler-v2-doc/error.md#0x1_error_invalid_argument">error::invalid_argument</a>(<a href="jwks.md#0x1_jwks_EINSTALL_FEDERATED_JWKS_AT_LIBRA2_FRAMEWORK">EINSTALL_FEDERATED_JWKS_AT_LIBRA2_FRAMEWORK</a>)
     );
 
     <b>let</b> jwk_addr = <a href="../../../libra2-stdlib/../move-stdlib/tests/compiler-v2-doc/signer.md#0x1_signer_address_of">signer::address_of</a>(jwk_owner);
@@ -1882,4 +1882,4 @@ Maintains the sorted-by-issuer invariant in <code><a href="jwks.md#0x1_jwks_AllP
 </code></pre>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

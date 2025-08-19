@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{service, utils};
@@ -7,7 +7,7 @@ use libra2_telemetry_service::types::telemetry::TelemetryEvent;
 use std::{collections::BTreeMap, time::Duration};
 
 /// CLI metrics event name
-const APTOS_CLI_METRICS: &str = "APTOS_CLI_METRICS";
+const LIBRA2_CLI_METRICS: &str = "LIBRA2_CLI_METRICS";
 
 /// Core metric keys
 const COMMAND: &str = "command";
@@ -28,7 +28,7 @@ pub async fn send_cli_telemetry_event(
 
     // Create a new telemetry event
     let telemetry_event = TelemetryEvent {
-        name: APTOS_CLI_METRICS.into(),
+        name: LIBRA2_CLI_METRICS.into(),
         params: build_information,
     };
 

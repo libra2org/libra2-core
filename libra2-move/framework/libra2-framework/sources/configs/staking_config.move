@@ -152,7 +152,7 @@ module libra2_framework::staking_config {
     }
 
     /// Initialize rewards configurations.
-    /// Can only be called as part of the Aptos governance proposal process established by the AptosGovernance module.
+    /// Can only be called as part of the Libra2 governance proposal process established by the Libra2Governance module.
     public fun initialize_rewards(
         libra2_framework: &signer,
         rewards_rate: FixedPoint64,
@@ -270,7 +270,7 @@ module libra2_framework::staking_config {
     }
 
     /// Update the min and max stake amounts.
-    /// Can only be called as part of the Aptos governance proposal process established by the AptosGovernance module.
+    /// Can only be called as part of the Libra2 governance proposal process established by the Libra2Governance module.
     public fun update_required_stake(
         libra2_framework: &signer,
         minimum_stake: u64,
@@ -285,7 +285,7 @@ module libra2_framework::staking_config {
     }
 
     /// Update the recurring lockup duration.
-    /// Can only be called as part of the Aptos governance proposal process established by the AptosGovernance module.
+    /// Can only be called as part of the Libra2 governance proposal process established by the Libra2Governance module.
     public fun update_recurring_lockup_duration_secs(
         libra2_framework: &signer,
         new_recurring_lockup_duration_secs: u64,
@@ -299,7 +299,7 @@ module libra2_framework::staking_config {
 
     /// DEPRECATING
     /// Update the rewards rate.
-    /// Can only be called as part of the Aptos governance proposal process established by the AptosGovernance module.
+    /// Can only be called as part of the Libra2 governance proposal process established by the Libra2Governance module.
     public fun update_rewards_rate(
         libra2_framework: &signer,
         new_rewards_rate: u64,
@@ -354,7 +354,7 @@ module libra2_framework::staking_config {
     }
 
     /// Update the joining limit %.
-    /// Can only be called as part of the Aptos governance proposal process established by the AptosGovernance module.
+    /// Can only be called as part of the Libra2 governance proposal process established by the Libra2Governance module.
     public fun update_voting_power_increase_limit(
         libra2_framework: &signer,
         new_voting_power_increase_limit: u64,

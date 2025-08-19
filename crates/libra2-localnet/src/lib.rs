@@ -1,7 +1,7 @@
-// Copyright (c) Aptos Foundation
+// Copyright (c) A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-//! This is a library that provides functionalities required for running a local Aptos network,
+//! This is a library that provides functionalities required for running a local Libra2 network,
 //! use by `libra2-workspace-server`` and the CLI's localnet command.
 //!
 //! Currently it only contains some utility functions, but more code will be moved here over

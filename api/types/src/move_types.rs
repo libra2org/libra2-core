@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -1493,7 +1493,7 @@ mod tests {
                 address: "0x1".parse().unwrap(),
                 name: "Libra2".parse().unwrap(),
             },
-            json!("0x1::Aptos"),
+            json!("0x1::Libra2"),
         );
     }
 
@@ -1520,16 +1520,16 @@ mod tests {
                 .to_string()
         );
         assert_eq!(
-            "Invalid Move module ID: Aptos::Aptos",
-            "Aptos::Aptos"
+            "Invalid Move module ID: Libra2::Libra2",
+            "Libra2::Libra2"
                 .parse::<MoveModuleId>()
                 .err()
                 .unwrap()
                 .to_string()
         );
         assert_eq!(
-            "Invalid Move module ID: 0x1::Aptos::Aptos",
-            "0x1::Aptos::Aptos"
+            "Invalid Move module ID: 0x1::Libra2::Libra2",
+            "0x1::Libra2::Libra2"
                 .parse::<MoveModuleId>()
                 .err()
                 .unwrap()
@@ -1547,7 +1547,7 @@ mod tests {
                 },
                 name: "Add".parse().unwrap(),
             },
-            json!("0x1::Aptos::Add"),
+            json!("0x1::Libra2::Add"),
         );
     }
 
@@ -1578,24 +1578,24 @@ mod tests {
                 .to_string()
         );
         assert_eq!(
-            "Invalid entry function ID Aptos::Aptos",
-            "Aptos::Aptos"
+            "Invalid entry function ID Libra2::Libra2",
+            "Libra2::Libra2"
                 .parse::<EntryFunctionId>()
                 .err()
                 .unwrap()
                 .to_string()
         );
         assert_eq!(
-            "Invalid entry function ID Aptos::Aptos::??",
-            "Aptos::Aptos::??"
+            "Invalid entry function ID Libra2::Libra2::??",
+            "Libra2::Libra2::??"
                 .parse::<EntryFunctionId>()
                 .err()
                 .unwrap()
                 .to_string()
         );
         assert_eq!(
-            "Invalid entry function ID 0x1::Aptos::Aptos::Aptos",
-            "0x1::Aptos::Aptos::Aptos"
+            "Invalid entry function ID 0x1::Libra2::Libra2::Libra2",
+            "0x1::Libra2::Libra2::Libra2"
                 .parse::<EntryFunctionId>()
                 .err()
                 .unwrap()

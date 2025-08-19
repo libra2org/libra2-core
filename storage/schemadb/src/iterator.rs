@@ -1,9 +1,9 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
-    IntoDbResult, KeyCodec, Schema, SeekKeyCodec, ValueCodec, APTOS_SCHEMADB_ITER_BYTES,
-    APTOS_SCHEMADB_ITER_LATENCY_SECONDS, APTOS_SCHEMADB_SEEK_LATENCY_SECONDS,
+    IntoDbResult, KeyCodec, Schema, SeekKeyCodec, ValueCodec, LIBRA2_SCHEMADB_ITER_BYTES,
+    LIBRA2_SCHEMADB_ITER_LATENCY_SECONDS, LIBRA2_SCHEMADB_SEEK_LATENCY_SECONDS,
 };
 use std::marker::PhantomData;
 
@@ -44,7 +44,7 @@ where
 
     /// Seeks to the first key.
     pub fn seek_to_first(&mut self) {
-        let _timer = APTOS_SCHEMADB_SEEK_LATENCY_SECONDS
+        let _timer = LIBRA2_SCHEMADB_SEEK_LATENCY_SECONDS
             .with_label_values(&[S::COLUMN_FAMILY_NAME, "seek_to_first"])
             .start_timer();
         self.db_iter.seek_to_first();
@@ -53,7 +53,7 @@ where
 
     /// Seeks to the last key.
     pub fn seek_to_last(&mut self) {
-        let _timer = APTOS_SCHEMADB_SEEK_LATENCY_SECONDS
+        let _timer = LIBRA2_SCHEMADB_SEEK_LATENCY_SECONDS
             .with_label_values(&[S::COLUMN_FAMILY_NAME, "seek_to_last"])
             .start_timer();
         self.db_iter.seek_to_last();
@@ -66,7 +66,7 @@ where
     where
         SK: SeekKeyCodec<S>,
     {
-        let _timer = APTOS_SCHEMADB_SEEK_LATENCY_SECONDS
+        let _timer = LIBRA2_SCHEMADB_SEEK_LATENCY_SECONDS
             .with_label_values(&[S::COLUMN_FAMILY_NAME, "seek"])
             .start_timer();
         let key = <SK as SeekKeyCodec<S>>::encode_seek_key(seek_key)?;
@@ -83,7 +83,7 @@ where
     where
         SK: SeekKeyCodec<S>,
     {
-        let _timer = APTOS_SCHEMADB_SEEK_LATENCY_SECONDS
+        let _timer = LIBRA2_SCHEMADB_SEEK_LATENCY_SECONDS
             .with_label_values(&[S::COLUMN_FAMILY_NAME, "seek_for_prev"])
             .start_timer();
         let key = <SK as SeekKeyCodec<S>>::encode_seek_key(seek_key)?;
@@ -93,7 +93,7 @@ where
     }
 
     fn next_impl(&mut self) -> libra2_storage_interface::Result<Option<(S::Key, S::Value)>> {
-        let _timer = APTOS_SCHEMADB_ITER_LATENCY_SECONDS
+        let _timer = LIBRA2_SCHEMADB_ITER_LATENCY_SECONDS
             .with_label_values(&[S::COLUMN_FAMILY_NAME])
             .start_timer();
 
@@ -115,7 +115,7 @@ where
 
         let raw_key = self.db_iter.key().expect("db_iter.key() failed.");
         let raw_value = self.db_iter.value().expect("db_iter.value(0 failed.");
-        APTOS_SCHEMADB_ITER_BYTES
+        LIBRA2_SCHEMADB_ITER_BYTES
             .with_label_values(&[S::COLUMN_FAMILY_NAME])
             .observe((raw_key.len() + raw_value.len()) as f64);
 

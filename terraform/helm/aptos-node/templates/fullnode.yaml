@@ -172,7 +172,7 @@ spec:
         - name: RUST_LOG
           value: {{ .rust_log }}
         {{- if .force_enable_telemetry }}
-        - name: APTOS_FORCE_ENABLE_TELEMETRY
+        - name: LIBRA2_FORCE_ENABLE_TELEMETRY
           value: "true"
         {{- end }}
         - name: KUBERNETES_NAMESPACE
@@ -192,7 +192,7 @@ spec:
         - name: writable-genesis
           mountPath: /opt/aptos/genesis
         {{- if $.Values.migrations.enable_vfn_explicit_pvc }}
-        - name: aptos-data
+        - name: libra2-data
         {{- else }}
         - name: fn
         {{- end }}
@@ -254,7 +254,7 @@ spec:
       - name: writable-genesis
         emptyDir: {}
       {{- if $.Values.migrations.enable_vfn_explicit_pvc }}
-      - name: aptos-data
+      - name: libra2-data
         persistentVolumeClaim:
           claimName: {{ include "aptos-validator.fullname" $ }}-{{$i}}-{{ .name }}-e{{ $.Values.chain.era }}
       {{- end }}

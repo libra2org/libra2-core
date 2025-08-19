@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 #[macro_use]
@@ -84,7 +84,7 @@ fn range_proof_deserialize<M: Measurement>(g: &mut BenchmarkGroup<M>, num_bits: 
                 || {
                     let (v, b) = get_values(num_bits, 1);
 
-                    let mut t = merlin::Transcript::new(b"AptosBenchmark");
+                    let mut t = merlin::Transcript::new(b"Libra2Benchmark");
 
                     let proof = RangeProof::prove_multiple(
                         &bp_gens,
@@ -120,7 +120,7 @@ fn range_verify<M: Measurement>(g: &mut BenchmarkGroup<M>, num_bits: usize, batc
                 || {
                     let (v, b) = get_values(num_bits, batch_size);
 
-                    let mut t = merlin::Transcript::new(b"AptosBenchmark");
+                    let mut t = merlin::Transcript::new(b"Libra2Benchmark");
 
                     RangeProof::prove_multiple(
                         &bp_gens,
@@ -133,7 +133,7 @@ fn range_verify<M: Measurement>(g: &mut BenchmarkGroup<M>, num_bits: usize, batc
                     .unwrap()
                 },
                 |(proof, comm)| {
-                    let mut t = merlin::Transcript::new(b"AptosBenchmark");
+                    let mut t = merlin::Transcript::new(b"Libra2Benchmark");
 
                     assert!(proof
                         .verify_multiple(&bp_gens, &pc_gens, &mut t, &comm, num_bits)

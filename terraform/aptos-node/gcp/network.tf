@@ -1,5 +1,5 @@
-resource "google_compute_network" "aptos" {
-  name                    = "aptos-${local.workspace_name}"
+resource "google_compute_network" "libra2" {
+  name                    = "libra2-${local.workspace_name}"
   auto_create_subnetworks = true
 }
 
@@ -8,25 +8,25 @@ resource "google_compute_network" "aptos" {
 # in the vault-lb address being created in the default network.
 resource "time_sleep" "create-subnetworks" {
   create_duration = "30s"
-  depends_on      = [google_compute_network.aptos]
+  depends_on      = [google_compute_network.libra2]
 }
 
 data "google_compute_subnetwork" "region" {
-  name       = google_compute_network.aptos.name
+  name       = google_compute_network.libra2.name
   depends_on = [time_sleep.create-subnetworks]
 }
 
 resource "google_compute_router" "nat" {
-  name    = "aptos-${local.workspace_name}-nat"
-  network = google_compute_network.aptos.id
+  name    = "libra2-${local.workspace_name}-nat"
+  network = google_compute_network.libra2.id
 }
 
 resource "google_compute_address" "nat" {
-  name = "aptos-${local.workspace_name}-nat"
+  name = "libra2-${local.workspace_name}-nat"
 }
 
 resource "google_compute_router_nat" "nat" {
-  name                                = "aptos-${local.workspace_name}-nat"
+  name                                = "libra2-${local.workspace_name}-nat"
   router                              = google_compute_router.nat.name
   nat_ip_allocate_option              = var.router_nat_ip_allocate_option
   nat_ips                             = var.router_nat_ip_allocate_option == "MANUAL_ONLY" ? [google_compute_address.nat.self_link] : null

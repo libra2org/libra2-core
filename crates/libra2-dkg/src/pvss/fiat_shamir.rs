@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 //! For what it's worth, I don't understand why the `merlin` library wants the user to first define
@@ -17,7 +17,7 @@ use blstrs::Scalar;
 use ff::PrimeField;
 use serde::Serialize;
 
-pub const PVSS_DOM_SEP: &[u8; 21] = b"APTOS_SCRAPE_PVSS_DST";
+pub const PVSS_DOM_SEP: &[u8; 21] = b"LIBRA2_SCRAPE_PVSS_DST";
 
 #[allow(non_snake_case)]
 pub trait FiatShamirProtocol<T: Transcript> {

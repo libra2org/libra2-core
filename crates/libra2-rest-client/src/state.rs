@@ -1,10 +1,10 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use libra2_api_types::{
-    X_APTOS_BLOCK_HEIGHT, X_APTOS_CHAIN_ID, X_APTOS_CURSOR, X_APTOS_EPOCH,
+    X_LIBRA2_BLOCK_HEIGHT, X_LIBRA2_CHAIN_ID, X_LIBRA2_CURSOR, X_LIBRA2_EPOCH,
     X_LIBRA2_LEDGER_OLDEST_VERSION, X_LIBRA2_LEDGER_TIMESTAMP, X_LIBRA2_LEDGER_VERSION,
-    X_APTOS_OLDEST_BLOCK_HEIGHT,
+    X_LIBRA2_OLDEST_BLOCK_HEIGHT,
 };
 
 #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd)]
@@ -22,7 +22,7 @@ pub struct State {
 impl State {
     pub fn from_headers(headers: &reqwest::header::HeaderMap) -> anyhow::Result<Self> {
         let maybe_chain_id = headers
-            .get(X_APTOS_CHAIN_ID)
+            .get(X_LIBRA2_CHAIN_ID)
             .and_then(|h| h.to_str().ok())
             .and_then(|s| s.parse().ok());
         let maybe_version = headers
@@ -34,7 +34,7 @@ impl State {
             .and_then(|h| h.to_str().ok())
             .and_then(|s| s.parse().ok());
         let maybe_epoch = headers
-            .get(X_APTOS_EPOCH)
+            .get(X_LIBRA2_EPOCH)
             .and_then(|h| h.to_str().ok())
             .and_then(|s| s.parse().ok());
         let maybe_oldest_ledger_version = headers
@@ -42,15 +42,15 @@ impl State {
             .and_then(|h| h.to_str().ok())
             .and_then(|s| s.parse().ok());
         let maybe_block_height = headers
-            .get(X_APTOS_BLOCK_HEIGHT)
+            .get(X_LIBRA2_BLOCK_HEIGHT)
             .and_then(|h| h.to_str().ok())
             .and_then(|s| s.parse().ok());
         let maybe_oldest_block_height = headers
-            .get(X_APTOS_OLDEST_BLOCK_HEIGHT)
+            .get(X_LIBRA2_OLDEST_BLOCK_HEIGHT)
             .and_then(|h| h.to_str().ok())
             .and_then(|s| s.parse().ok());
         let cursor = headers
-            .get(X_APTOS_CURSOR)
+            .get(X_LIBRA2_CURSOR)
             .and_then(|h| h.to_str().ok())
             .map(|s| s.to_string());
 

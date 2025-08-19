@@ -1,7 +1,7 @@
 [package]
 name = "libra2-comparison-testing"
 version = "0.1.0"
-authors = ["Aptos Labs <opensource@aptoslabs.com>"]
+authors = ["Libra2 Team <info@libra2.org>"]
 description = "A tool to perform comparison testing on the compiler"
 repository = "https://github.com/libra2org/libra2-core"
 homepage = "https://aptoslabs.com"

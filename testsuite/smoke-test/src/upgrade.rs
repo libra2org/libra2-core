@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
@@ -19,7 +19,7 @@ use libra2_release_builder::{
     ReleaseEntry,
 };
 use libra2_temppath::TempPath;
-use libra2_types::on_chain_config::{FeatureFlag as AptosFeatureFlag, OnChainConsensusConfig};
+use libra2_types::on_chain_config::{FeatureFlag as Libra2FeatureFlag, OnChainConsensusConfig};
 use move_binary_format::file_format_common::VERSION_DEFAULT_LANG_V2;
 use std::{fs, path::PathBuf, process::Command, sync::Arc};
 
@@ -133,7 +133,7 @@ async fn test_upgrade_flow() {
                 metadata: ProposalMetadata::default(),
                 update_sequence: vec![
                     ReleaseEntry::FeatureFlag(Features {
-                        enabled: AptosFeatureFlag::default_features()
+                        enabled: Libra2FeatureFlag::default_features()
                             .into_iter()
                             .map(FeatureFlag::from)
                             .collect(),

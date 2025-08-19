@@ -1,10 +1,10 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
 #![forbid(unsafe_code)]
 
-//! This crate provides [`Libra2DB`] which represents physical storage of the core Aptos data
+//! This crate provides [`Libra2DB`] which represents physical storage of the core Libra2 data
 //! structures.
 //!
 //! It relays read/write operations on the physical storage via `schemadb` to the underlying

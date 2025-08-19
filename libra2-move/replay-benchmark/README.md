@@ -1,4 +1,4 @@
-## A tool to replay, benchmark and analyze past Aptos transactions
+## A tool to replay, benchmark and analyze past Libra2 transactions
 
 This tool allows to benchmark an ordered sequence of past transactions. The tool supports four
 commands:
@@ -22,9 +22,9 @@ not possible to download only first few transactions in a block - only the whole
 
 Transactions are fetched from the fullnode via REST API. Users should provide fullnode's REST API
 query endpoint using `--rest-endpoint E` flag. Examples of endpoints are:
-  - devnet: https://api.devnet.aptoslabs.com/v1
-  - testnet: https://api.testnet.aptoslabs.com/v1
-  - mainnet: https://api.mainnet.aptoslabs.com/v1
+  - devnet: https://api.devnet.libra2.org/v1
+  - testnet: https://api.testnet.libra2.org/v1
+  - mainnet: https://api.mainnet.libra2.org/v1
 
 #### Example
 
@@ -32,7 +32,7 @@ query endpoint using `--rest-endpoint E` flag. Examples of endpoints are:
 libra2-replay-benchmark download \
   --begin-version 2232125001 \
   --end-version 2232125093 \
-  --rest-endpoint https://api.mainnet.aptoslabs.com/v1 \
+  --rest-endpoint https://api.mainnet.libra2.org/v1 \
   --transactions-file transactions.file
 ```
 saves transactions to `transactions.file` and outputs
@@ -61,7 +61,7 @@ some cryptic errors show up, e.g.:
 ```text
 ...
 Failed to fetch state value for StateKey::AccessPath { address: 0x1, path: "Code(0000000000000000000000000000000000000000000000000000000000000001::randomness)" }: Other("HTTP error 429 Too Many Requests: error decoding response body: expected value at line 1 column 1")
-2025-01-21T12:01:51.931988Z [tokio-runtime-worker] ERROR libra2-move/block-executor/src/view.rs:1088 [VM, StateView] Error getting data from storage for StateKey::AccessPath { address: 0x1, path: "Resource(0x1::transaction_fee::AptosFABurnCapabilities)" } {"name":"execution","txn_idx":1}
+2025-01-21T12:01:51.931988Z [tokio-runtime-worker] ERROR libra2-move/block-executor/src/view.rs:1088 [VM, StateView] Error getting data from storage for StateKey::AccessPath { address: 0x1, path: "Resource(0x1::transaction_fee::Libra2FABurnCapabilities)" } {"name":"execution","txn_idx":1}
 2025-01-21T12:01:51.933342Z [tokio-runtime-worker] ERROR libra2-move/block-executor/src/view.rs:1088 [VM, StateView] Error getting data from storage for StateKey::TableItem { handle: d1321c17eebcaceee2d54d5f6ea0f78dae846689935ef53d1f0c3cff9e2d6c49, key: 209d4294bbcd1174d6f2003ec365831e64cc31d9f6f15a2b85399db8d5000960f6 } {"name":"execution","txn_idx":10}
 thread 'tokio-runtime-worker' panicked at libra2-move/replay-benchmark/src/state_view.rs:67:17:
 Failed to fetch state value for StateKey::AccessPath { address: 0x1, path: "Code(0000000000000000000000000000000000000000000000000000000000000001::string)" }: Other("receiving on a closed channel")
@@ -69,16 +69,16 @@ Failed to fetch state value for StateKey::AccessPath { address: 0x1, path: "Code
 ...
 ```
 
-To learn more about the API quotas, see https://developers.aptoslabs.com/docs/api-access/quotas.
+To learn more about the API quotas, see https://developers.libra2.org/docs/api-access/quotas.
 It is possible to increase your quota by creating an API key in Libra2 Build. In order to do that,
-follow instructions here: https://developers.aptoslabs.com/docs/api-access/api-keys. Then, when
+follow instructions here: https://developers.libra2.org/docs/api-access/api-keys. Then, when
 using the tool the key can be specified using `--api-key K` flag.
 
 #### Example
 
 ```shell
 libra2-replay-benchmark initialize \
-  --rest-endpoint https://api.mainnet.aptoslabs.com/v1 \
+  --rest-endpoint https://api.mainnet.libra2.org/v1 \
   --transactions-file transactions.file \
   --inputs-file baseline-state.file
 ```
@@ -113,7 +113,7 @@ on historical workloads.
 
 ```commandline
 libra2-replay-benchmark initialize \
-  --rest-endpoint https://api.mainnet.aptoslabs.com/v1 \
+  --rest-endpoint https://api.mainnet.libra2.org/v1 \
   --transactions-file transactions.file
   --enable-features ENABLE_CALL_TREE_AND_INSTRUCTION_VM_CACHE \
   --inputs-file experiment-state.file

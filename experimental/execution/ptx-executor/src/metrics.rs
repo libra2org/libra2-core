@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 #![forbid(unsafe_code)]
@@ -9,7 +9,7 @@ use once_cell::sync::Lazy;
 pub static TIMER: Lazy<HistogramVec> = Lazy::new(|| {
     register_histogram_vec!(
         // metric name
-        "aptos_ptx_executor_timer_seconds",
+        "libra2_ptx_executor_timer_seconds",
         // metric description
         "Various timers for performance analysis.",
         // metric labels (dimensions)
@@ -22,7 +22,7 @@ pub static TIMER: Lazy<HistogramVec> = Lazy::new(|| {
 pub static PER_WORKER_TIMER: Lazy<HistogramVec> = Lazy::new(|| {
     register_histogram_vec!(
         // metric name
-        "aptos_ptx_executor_per_worker_timer_seconds",
+        "libra2_ptx_executor_per_worker_timer_seconds",
         // metric description
         "Various timers for performance analysis, on a per worker basis.",
         // metric labels (dimensions)

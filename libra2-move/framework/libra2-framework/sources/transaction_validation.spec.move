@@ -508,8 +508,8 @@ spec libra2_framework::transaction_validation {
         aborts_if amount_to_mint > 0 && total_supply + amount_to_mint > MAX_U128;
         ensures amount_to_mint > 0 ==> post_total_supply == total_supply + amount_to_mint;
 
-        let aptos_addr = type_info::type_of<Libra2Coin>().account_address;
-        aborts_if (amount_to_mint != 0) && !exists<coin::CoinInfo<Libra2Coin>>(aptos_addr);
+        let libra2_addr = type_info::type_of<Libra2Coin>().account_address;
+        aborts_if (amount_to_mint != 0) && !exists<coin::CoinInfo<Libra2Coin>>(libra2_addr);
         include coin::CoinAddAbortsIf<Libra2Coin> { amount: amount_to_mint };
     }
 }

@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use super::server_args::ServerConfig;
@@ -709,7 +709,7 @@ mod test {
             AuthenticationKey::ed25519(&private_key.public_key()).account_address();
         unwrap_reqwest_result(
             reqwest::Client::new()
-                .post("https://faucet.devnet.aptoslabs.com/fund")
+                .post("https://faucet.devnet.libra2.org/fund")
                 .body(
                     FundRequest {
                         amount: Some(10_000_000),

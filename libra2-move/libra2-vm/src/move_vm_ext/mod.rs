@@ -1,7 +1,7 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-//! MoveVM and Session wrapped, to make sure Aptos natives and extensions are always installed and
+//! MoveVM and Session wrapped, to make sure Libra2 natives and extensions are always installed and
 //! taken care of after session finish.
 mod resolver;
 pub mod session;

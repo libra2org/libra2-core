@@ -1,4 +1,4 @@
-// Copyright (c) Aptos Foundation
+// Copyright (c) A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use derive_builder::Builder;
@@ -10,7 +10,7 @@ use prometheus_client::{
 };
 use std::sync::atomic::AtomicU64;
 
-pub const METRICS_PREFIX: &str = "aptos_procsdk_channel_";
+pub const METRICS_PREFIX: &str = "libra2_procsdk_channel_";
 
 pub fn init_channel_metrics_registry(registry: &mut Registry) {
     registry.register(

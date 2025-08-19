@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -16,7 +16,7 @@ use libra2_types::{
     account_config::AccountResource,
     state_store::{state_key::StateKey, MoveResourceExt, StateView},
     transaction::{SignedTransaction, VMValidatorResult},
-    vm::modules::AptosModuleExtension,
+    vm::modules::Libra2ModuleExtension,
 };
 use libra2_vm::Libra2VM;
 use libra2_vm_environment::environment::Libra2Environment;
@@ -63,7 +63,7 @@ struct ValidationState<S> {
     /// Versioned cache for deserialized and verified Move modules. The versioning allows to detect
     /// when the version of the code is no longer up-to-date (a newer version has been committed to
     /// the state view) and update the cache accordingly.
-    module_cache: UnsyncModuleCache<ModuleId, CompiledModule, Module, AptosModuleExtension, usize>,
+    module_cache: UnsyncModuleCache<ModuleId, CompiledModule, Module, Libra2ModuleExtension, usize>,
 }
 
 impl<S: StateView> ValidationState<S> {
@@ -105,7 +105,7 @@ impl<S> WithRuntimeEnvironment for ValidationState<S> {
 
 impl<S: StateView> ModuleCache for ValidationState<S> {
     type Deserialized = CompiledModule;
-    type Extension = AptosModuleExtension;
+    type Extension = Libra2ModuleExtension;
     type Key = ModuleId;
     type Verified = Module;
     type Version = usize;
@@ -184,7 +184,7 @@ impl<S: StateView> ModuleCache for ValidationState<S> {
                 .environment
                 .runtime_environment()
                 .deserialize_into_compiled_module(state_value.bytes())?;
-            let extension = Arc::new(AptosModuleExtension::new(state_value));
+            let extension = Arc::new(Libra2ModuleExtension::new(state_value));
 
             let new_version = version + 1;
             let new_module_code = self.module_cache.insert_deserialized_module(
@@ -204,7 +204,7 @@ impl<S: StateView> ModuleCache for ValidationState<S> {
 
 impl<S: StateView> ModuleCodeBuilder for ValidationState<S> {
     type Deserialized = CompiledModule;
-    type Extension = AptosModuleExtension;
+    type Extension = Libra2ModuleExtension;
     type Key = ModuleId;
     type Verified = Module;
 
@@ -223,7 +223,7 @@ impl<S: StateView> ModuleCodeBuilder for ValidationState<S> {
         let compiled_module = self
             .runtime_environment()
             .deserialize_into_compiled_module(state_value.bytes())?;
-        let extension = Arc::new(AptosModuleExtension::new(state_value));
+        let extension = Arc::new(Libra2ModuleExtension::new(state_value));
         let module = ModuleCode::from_deserialized(compiled_module, extension);
         Ok(Some(module))
     }

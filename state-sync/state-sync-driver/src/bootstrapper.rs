@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -312,7 +312,7 @@ pub struct Bootstrapper<MetadataStorage, StorageSyncer, StreamingClient> {
     // The component used to sync state values (if downloading states)
     state_value_syncer: StateValueSyncer,
 
-    // The client through which to stream data from the Aptos network
+    // The client through which to stream data from the Libra2 network
     streaming_client: StreamingClient,
 
     // The interface to read from storage

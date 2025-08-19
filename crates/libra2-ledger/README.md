@@ -11,7 +11,7 @@ The methods supported by the libra2-ledger are:
 - get_public_key()
 - sign_txn()
 
-NOTE: All methods and commands requires the user to have Aptos ledger app unlocked and open
+NOTE: All methods and commands requires the user to have Libra2 ledger app unlocked and open
 
 ## Examples
 

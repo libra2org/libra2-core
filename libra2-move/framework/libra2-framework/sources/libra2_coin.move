@@ -47,7 +47,7 @@ module libra2_framework::libra2_coin {
             true, // monitor_supply
         );
 
-        // Aptos framework needs mint cap to mint coins to initial validators. This will be revoked once the validators
+        // Libra2 framework needs mint cap to mint coins to initial validators. This will be revoked once the validators
         // have been initialized.
         move_to(libra2_framework, MintCapStore { mint_cap });
 

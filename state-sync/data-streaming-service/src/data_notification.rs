@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -51,7 +51,7 @@ pub enum DataPayload {
     TransactionsWithProof(TransactionListWithProofV2),
 }
 
-/// A request that has been sent to the Aptos data client.
+/// A request that has been sent to the Libra2 data client.
 #[derive(Clone, Debug, Eq, PartialEq)]
 pub enum DataClientRequest {
     EpochEndingLedgerInfos(EpochEndingLedgerInfosRequest),

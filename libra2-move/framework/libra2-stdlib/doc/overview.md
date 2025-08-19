@@ -1,10 +1,10 @@
 
-<a id="@Aptos_Standard_Library_0"></a>
+<a id="@Libra2_Standard_Library_0"></a>
 
-# Aptos Standard Library
+# Libra2 Standard Library
 
 
-This is the reference documentation of the Aptos standard library.
+This is the reference documentation of the Libra2 standard library.
 
 
 <a id="@Index_1"></a>
@@ -13,7 +13,6 @@ This is the reference documentation of the Aptos standard library.
 
 
 -  [`0x1::any`](any.md#0x1_any)
--  [`0x1::aptos_hash`](hash.md#0x1_aptos_hash)
 -  [`0x1::bcs_stream`](bcs_stream.md#0x1_bcs_stream)
 -  [`0x1::big_vector`](big_vector.md#0x1_big_vector)
 -  [`0x1::bls12381`](bls12381.md#0x1_bls12381)
@@ -29,6 +28,7 @@ This is the reference documentation of the Aptos standard library.
 -  [`0x1::fixed_point64`](fixed_point64.md#0x1_fixed_point64)
 -  [`0x1::from_bcs`](from_bcs.md#0x1_from_bcs)
 -  [`0x1::keyless`](keyless.md#0x1_keyless)
+-  [`0x1::libra2_hash`](hash.md#0x1_libra2_hash)
 -  [`0x1::math128`](math128.md#0x1_math128)
 -  [`0x1::math64`](math64.md#0x1_math64)
 -  [`0x1::math_fixed`](math_fixed.md#0x1_math_fixed)
@@ -54,4 +54,4 @@ This is the reference documentation of the Aptos standard library.
 -  [`0x1::type_info`](type_info.md#0x1_type_info)
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

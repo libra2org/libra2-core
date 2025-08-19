@@ -6,7 +6,7 @@
 
 
 -  [Resource `Libra2CoinCapabilities`](#0x1_transaction_fee_Libra2CoinCapabilities)
--  [Resource `AptosFABurnCapabilities`](#0x1_transaction_fee_AptosFABurnCapabilities)
+-  [Resource `Libra2FABurnCapabilities`](#0x1_transaction_fee_Libra2FABurnCapabilities)
 -  [Resource `Libra2CoinMintCapability`](#0x1_transaction_fee_Libra2CoinMintCapability)
 -  [Struct `FeeStatement`](#0x1_transaction_fee_FeeStatement)
 -  [Resource `CollectedFeesPerBlock`](#0x1_transaction_fee_CollectedFeesPerBlock)
@@ -14,7 +14,7 @@
 -  [Function `burn_fee`](#0x1_transaction_fee_burn_fee)
 -  [Function `mint_and_refund`](#0x1_transaction_fee_mint_and_refund)
 -  [Function `store_libra2_coin_burn_cap`](#0x1_transaction_fee_store_libra2_coin_burn_cap)
--  [Function `convert_to_aptos_fa_burn_ref`](#0x1_transaction_fee_convert_to_aptos_fa_burn_ref)
+-  [Function `convert_to_libra2_fa_burn_ref`](#0x1_transaction_fee_convert_to_libra2_fa_burn_ref)
 -  [Function `store_libra2_coin_mint_cap`](#0x1_transaction_fee_store_libra2_coin_mint_cap)
 -  [Function `emit_fee_statement`](#0x1_transaction_fee_emit_fee_statement)
 -  [Function `initialize_fee_collection_and_distribution`](#0x1_transaction_fee_initialize_fee_collection_and_distribution)
@@ -75,14 +75,14 @@ Stores burn capability to burn the gas fees.
 
 </details>
 
-<a id="0x1_transaction_fee_AptosFABurnCapabilities"></a>
+<a id="0x1_transaction_fee_Libra2FABurnCapabilities"></a>
 
-## Resource `AptosFABurnCapabilities`
+## Resource `Libra2FABurnCapabilities`
 
 Stores burn capability to burn the gas fees.
 
 
-<pre><code><b>struct</b> <a href="transaction_fee.md#0x1_transaction_fee_AptosFABurnCapabilities">AptosFABurnCapabilities</a> <b>has</b> key
+<pre><code><b>struct</b> <a href="transaction_fee.md#0x1_transaction_fee_Libra2FABurnCapabilities">Libra2FABurnCapabilities</a> <b>has</b> key
 </code></pre>
 
 
@@ -305,9 +305,9 @@ Burn transaction fees in epilogue.
 <summary>Implementation</summary>
 
 
-<pre><code><b>public</b>(<b>friend</b>) <b>fun</b> <a href="transaction_fee.md#0x1_transaction_fee_burn_fee">burn_fee</a>(<a href="account.md#0x1_account">account</a>: <b>address</b>, fee: u64) <b>acquires</b> <a href="transaction_fee.md#0x1_transaction_fee_AptosFABurnCapabilities">AptosFABurnCapabilities</a>, <a href="transaction_fee.md#0x1_transaction_fee_Libra2CoinCapabilities">Libra2CoinCapabilities</a> {
-    <b>if</b> (<b>exists</b>&lt;<a href="transaction_fee.md#0x1_transaction_fee_AptosFABurnCapabilities">AptosFABurnCapabilities</a>&gt;(@libra2_framework)) {
-        <b>let</b> burn_ref = &<b>borrow_global</b>&lt;<a href="transaction_fee.md#0x1_transaction_fee_AptosFABurnCapabilities">AptosFABurnCapabilities</a>&gt;(@libra2_framework).burn_ref;
+<pre><code><b>public</b>(<b>friend</b>) <b>fun</b> <a href="transaction_fee.md#0x1_transaction_fee_burn_fee">burn_fee</a>(<a href="account.md#0x1_account">account</a>: <b>address</b>, fee: u64) <b>acquires</b> <a href="transaction_fee.md#0x1_transaction_fee_Libra2FABurnCapabilities">Libra2FABurnCapabilities</a>, <a href="transaction_fee.md#0x1_transaction_fee_Libra2CoinCapabilities">Libra2CoinCapabilities</a> {
+    <b>if</b> (<b>exists</b>&lt;<a href="transaction_fee.md#0x1_transaction_fee_Libra2FABurnCapabilities">Libra2FABurnCapabilities</a>&gt;(@libra2_framework)) {
+        <b>let</b> burn_ref = &<b>borrow_global</b>&lt;<a href="transaction_fee.md#0x1_transaction_fee_Libra2FABurnCapabilities">Libra2FABurnCapabilities</a>&gt;(@libra2_framework).burn_ref;
         <a href="libra2_account.md#0x1_libra2_account_burn_from_fungible_store_for_gas">libra2_account::burn_from_fungible_store_for_gas</a>(burn_ref, <a href="account.md#0x1_account">account</a>, fee);
     } <b>else</b> {
         <b>let</b> burn_cap = &<b>borrow_global</b>&lt;<a href="transaction_fee.md#0x1_transaction_fee_Libra2CoinCapabilities">Libra2CoinCapabilities</a>&gt;(@libra2_framework).burn_cap;
@@ -378,7 +378,7 @@ Only called during genesis.
 
     <b>if</b> (<a href="../../libra2-stdlib/../move-stdlib/doc/features.md#0x1_features_operations_default_to_fa_apt_store_enabled">features::operations_default_to_fa_apt_store_enabled</a>()) {
         <b>let</b> burn_ref = <a href="coin.md#0x1_coin_convert_and_take_paired_burn_ref">coin::convert_and_take_paired_burn_ref</a>(burn_cap);
-        <b>move_to</b>(libra2_framework, <a href="transaction_fee.md#0x1_transaction_fee_AptosFABurnCapabilities">AptosFABurnCapabilities</a> { burn_ref });
+        <b>move_to</b>(libra2_framework, <a href="transaction_fee.md#0x1_transaction_fee_Libra2FABurnCapabilities">Libra2FABurnCapabilities</a> { burn_ref });
     } <b>else</b> {
         <b>move_to</b>(libra2_framework, <a href="transaction_fee.md#0x1_transaction_fee_Libra2CoinCapabilities">Libra2CoinCapabilities</a> { burn_cap })
     }
@@ -389,13 +389,13 @@ Only called during genesis.
 
 </details>
 
-<a id="0x1_transaction_fee_convert_to_aptos_fa_burn_ref"></a>
+<a id="0x1_transaction_fee_convert_to_libra2_fa_burn_ref"></a>
 
-## Function `convert_to_aptos_fa_burn_ref`
+## Function `convert_to_libra2_fa_burn_ref`
 
 
 
-<pre><code><b>public</b> entry <b>fun</b> <a href="transaction_fee.md#0x1_transaction_fee_convert_to_aptos_fa_burn_ref">convert_to_aptos_fa_burn_ref</a>(libra2_framework: &<a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>)
+<pre><code><b>public</b> entry <b>fun</b> <a href="transaction_fee.md#0x1_transaction_fee_convert_to_libra2_fa_burn_ref">convert_to_libra2_fa_burn_ref</a>(libra2_framework: &<a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>)
 </code></pre>
 
 
@@ -404,14 +404,14 @@ Only called during genesis.
 <summary>Implementation</summary>
 
 
-<pre><code><b>public</b> entry <b>fun</b> <a href="transaction_fee.md#0x1_transaction_fee_convert_to_aptos_fa_burn_ref">convert_to_aptos_fa_burn_ref</a>(libra2_framework: &<a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>) <b>acquires</b> <a href="transaction_fee.md#0x1_transaction_fee_Libra2CoinCapabilities">Libra2CoinCapabilities</a> {
+<pre><code><b>public</b> entry <b>fun</b> <a href="transaction_fee.md#0x1_transaction_fee_convert_to_libra2_fa_burn_ref">convert_to_libra2_fa_burn_ref</a>(libra2_framework: &<a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>) <b>acquires</b> <a href="transaction_fee.md#0x1_transaction_fee_Libra2CoinCapabilities">Libra2CoinCapabilities</a> {
     <b>assert</b>!(<a href="../../libra2-stdlib/../move-stdlib/doc/features.md#0x1_features_operations_default_to_fa_apt_store_enabled">features::operations_default_to_fa_apt_store_enabled</a>(), <a href="transaction_fee.md#0x1_transaction_fee_EFA_GAS_CHARGING_NOT_ENABLED">EFA_GAS_CHARGING_NOT_ENABLED</a>);
     <a href="system_addresses.md#0x1_system_addresses_assert_libra2_framework">system_addresses::assert_libra2_framework</a>(libra2_framework);
     <b>let</b> <a href="transaction_fee.md#0x1_transaction_fee_Libra2CoinCapabilities">Libra2CoinCapabilities</a> {
         burn_cap,
     } = <b>move_from</b>&lt;<a href="transaction_fee.md#0x1_transaction_fee_Libra2CoinCapabilities">Libra2CoinCapabilities</a>&gt;(<a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer_address_of">signer::address_of</a>(libra2_framework));
     <b>let</b> burn_ref = <a href="coin.md#0x1_coin_convert_and_take_paired_burn_ref">coin::convert_and_take_paired_burn_ref</a>(burn_cap);
-    <b>move_to</b>(libra2_framework, <a href="transaction_fee.md#0x1_transaction_fee_AptosFABurnCapabilities">AptosFABurnCapabilities</a> { burn_ref });
+    <b>move_to</b>(libra2_framework, <a href="transaction_fee.md#0x1_transaction_fee_Libra2FABurnCapabilities">Libra2FABurnCapabilities</a> { burn_ref });
 }
 </code></pre>
 
@@ -567,7 +567,7 @@ DEPRECATED
 
 <tr>
 <td>1</td>
-<td>Given the blockchain is in an operating state, it guarantees that the Aptos framework signer may burn Libra2 coins.</td>
+<td>Given the blockchain is in an operating state, it guarantees that the Libra2 framework signer may burn Libra2 coins.</td>
 <td>Critical</td>
 <td>The Libra2CoinCapabilities structure is defined in this module and it stores burn capability to burn the gas fees.</td>
 <td>Formally Verified via <a href="#high-level-req-1">module</a>.</td>
@@ -585,7 +585,7 @@ DEPRECATED
 <td>3</td>
 <td>Only the admin address is authorized to call the initialization function.</td>
 <td>Critical</td>
-<td>The initialize_fee_collection_and_distribution function ensures only the Aptos framework address calls it.</td>
+<td>The initialize_fee_collection_and_distribution function ensures only the Libra2 framework address calls it.</td>
 <td>Formally verified via <a href="#high-level-req-3">initialize_fee_collection_and_distribution</a>.</td>
 </tr>
 
@@ -607,7 +607,7 @@ DEPRECATED
 
 <tr>
 <td>6</td>
-<td>The presence of the resource, indicating collected fees per block under the Aptos framework account, is a prerequisite for the successful execution of the following functionalities: Upgrading burn percentage. Registering a block proposer. Processing collected fees.</td>
+<td>The presence of the resource, indicating collected fees per block under the Libra2 framework account, is a prerequisite for the successful execution of the following functionalities: Upgrading burn percentage. Registering a block proposer. Processing collected fees.</td>
 <td>Low</td>
 <td>The functions: upgrade_burn_percentage, register_proposer_for_fee_collection, and process_collected_fees all ensure that the CollectedFeesPerBlock resource exists under libra2_framework by calling the is_fees_collection_enabled method, which returns a boolean value confirming if the resource exists or not.</td>
 <td>Formally verified via <a href="#high-level-req-6.1">register_proposer_for_fee_collection</a>, <a href="#high-level-req-6.2">process_collected_fees</a>, and <a href="#high-level-req-6.3">upgrade_burn_percentage</a>.</td>
@@ -626,7 +626,7 @@ DEPRECATED
 <pre><code><b>pragma</b> verify = <b>false</b>;
 <b>pragma</b> aborts_if_is_strict;
 // This enforces <a id="high-level-req-1" href="#high-level-req">high-level requirement 1</a>:
-<b>invariant</b> [suspendable] <a href="chain_status.md#0x1_chain_status_is_operating">chain_status::is_operating</a>() ==&gt; <b>exists</b>&lt;<a href="transaction_fee.md#0x1_transaction_fee_Libra2CoinCapabilities">Libra2CoinCapabilities</a>&gt;(@libra2_framework) || <b>exists</b>&lt;<a href="transaction_fee.md#0x1_transaction_fee_AptosFABurnCapabilities">AptosFABurnCapabilities</a>&gt;(@libra2_framework);
+<b>invariant</b> [suspendable] <a href="chain_status.md#0x1_chain_status_is_operating">chain_status::is_operating</a>() ==&gt; <b>exists</b>&lt;<a href="transaction_fee.md#0x1_transaction_fee_Libra2CoinCapabilities">Libra2CoinCapabilities</a>&gt;(@libra2_framework) || <b>exists</b>&lt;<a href="transaction_fee.md#0x1_transaction_fee_Libra2FABurnCapabilities">Libra2FABurnCapabilities</a>&gt;(@libra2_framework);
 </code></pre>
 
 
@@ -687,16 +687,16 @@ DEPRECATED
 <b>aborts_if</b> !<b>exists</b>&lt;<a href="transaction_fee.md#0x1_transaction_fee_Libra2CoinCapabilities">Libra2CoinCapabilities</a>&gt;(@libra2_framework);
 <b>let</b> account_addr = <a href="account.md#0x1_account">account</a>;
 <b>let</b> amount = fee;
-<b>let</b> aptos_addr = <a href="../../libra2-stdlib/doc/type_info.md#0x1_type_info_type_of">type_info::type_of</a>&lt;Libra2Coin&gt;().account_address;
+<b>let</b> libra2_addr = <a href="../../libra2-stdlib/doc/type_info.md#0x1_type_info_type_of">type_info::type_of</a>&lt;Libra2Coin&gt;().account_address;
 <b>let</b> coin_store = <b>global</b>&lt;CoinStore&lt;Libra2Coin&gt;&gt;(account_addr);
 <b>let</b> <b>post</b> post_coin_store = <b>global</b>&lt;CoinStore&lt;Libra2Coin&gt;&gt;(account_addr);
-<b>aborts_if</b> amount != 0 && !(<b>exists</b>&lt;CoinInfo&lt;Libra2Coin&gt;&gt;(aptos_addr)
+<b>aborts_if</b> amount != 0 && !(<b>exists</b>&lt;CoinInfo&lt;Libra2Coin&gt;&gt;(libra2_addr)
     && <b>exists</b>&lt;CoinStore&lt;Libra2Coin&gt;&gt;(account_addr));
 <b>aborts_if</b> coin_store.<a href="coin.md#0x1_coin">coin</a>.value &lt; amount;
-<b>let</b> maybe_supply = <b>global</b>&lt;CoinInfo&lt;Libra2Coin&gt;&gt;(aptos_addr).supply;
+<b>let</b> maybe_supply = <b>global</b>&lt;CoinInfo&lt;Libra2Coin&gt;&gt;(libra2_addr).supply;
 <b>let</b> supply_aggr = <a href="../../libra2-stdlib/../move-stdlib/doc/option.md#0x1_option_spec_borrow">option::spec_borrow</a>(maybe_supply);
 <b>let</b> value = <a href="optional_aggregator.md#0x1_optional_aggregator_optional_aggregator_value">optional_aggregator::optional_aggregator_value</a>(supply_aggr);
-<b>let</b> <b>post</b> post_maybe_supply = <b>global</b>&lt;CoinInfo&lt;Libra2Coin&gt;&gt;(aptos_addr).supply;
+<b>let</b> <b>post</b> post_maybe_supply = <b>global</b>&lt;CoinInfo&lt;Libra2Coin&gt;&gt;(libra2_addr).supply;
 <b>let</b> <b>post</b> post_supply = <a href="../../libra2-stdlib/../move-stdlib/doc/option.md#0x1_option_spec_borrow">option::spec_borrow</a>(post_maybe_supply);
 <b>let</b> <b>post</b> post_value = <a href="optional_aggregator.md#0x1_optional_aggregator_optional_aggregator_value">optional_aggregator::optional_aggregator_value</a>(post_supply);
 <b>aborts_if</b> <a href="../../libra2-stdlib/../move-stdlib/doc/option.md#0x1_option_spec_is_some">option::spec_is_some</a>(maybe_supply) && value &lt; amount;
@@ -723,8 +723,8 @@ DEPRECATED
 
 
 <pre><code><b>pragma</b> verify = <b>false</b>;
-<b>let</b> aptos_addr = <a href="../../libra2-stdlib/doc/type_info.md#0x1_type_info_type_of">type_info::type_of</a>&lt;Libra2Coin&gt;().account_address;
-<b>aborts_if</b> (refund != 0) && !<b>exists</b>&lt;CoinInfo&lt;Libra2Coin&gt;&gt;(aptos_addr);
+<b>let</b> libra2_addr = <a href="../../libra2-stdlib/doc/type_info.md#0x1_type_info_type_of">type_info::type_of</a>&lt;Libra2Coin&gt;().account_address;
+<b>aborts_if</b> (refund != 0) && !<b>exists</b>&lt;CoinInfo&lt;Libra2Coin&gt;&gt;(libra2_addr);
 <b>include</b> <a href="coin.md#0x1_coin_CoinAddAbortsIf">coin::CoinAddAbortsIf</a>&lt;Libra2Coin&gt; { amount: refund };
 <b>aborts_if</b> !<b>exists</b>&lt;CoinStore&lt;Libra2Coin&gt;&gt;(<a href="account.md#0x1_account">account</a>);
 <b>aborts_if</b> !<b>exists</b>&lt;<a href="transaction_fee.md#0x1_transaction_fee_Libra2CoinMintCapability">Libra2CoinMintCapability</a>&gt;(@libra2_framework);
@@ -752,9 +752,9 @@ Aborts if <code><a href="transaction_fee.md#0x1_transaction_fee_Libra2CoinCapabi
 <pre><code><b>pragma</b> verify = <b>false</b>;
 <b>let</b> addr = <a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer_address_of">signer::address_of</a>(libra2_framework);
 <b>aborts_if</b> !<a href="system_addresses.md#0x1_system_addresses_is_libra2_framework_address">system_addresses::is_libra2_framework_address</a>(addr);
-<b>aborts_if</b> <b>exists</b>&lt;<a href="transaction_fee.md#0x1_transaction_fee_AptosFABurnCapabilities">AptosFABurnCapabilities</a>&gt;(addr);
+<b>aborts_if</b> <b>exists</b>&lt;<a href="transaction_fee.md#0x1_transaction_fee_Libra2FABurnCapabilities">Libra2FABurnCapabilities</a>&gt;(addr);
 <b>aborts_if</b> <b>exists</b>&lt;<a href="transaction_fee.md#0x1_transaction_fee_Libra2CoinCapabilities">Libra2CoinCapabilities</a>&gt;(addr);
-<b>ensures</b> <b>exists</b>&lt;<a href="transaction_fee.md#0x1_transaction_fee_AptosFABurnCapabilities">AptosFABurnCapabilities</a>&gt;(addr) || <b>exists</b>&lt;<a href="transaction_fee.md#0x1_transaction_fee_Libra2CoinCapabilities">Libra2CoinCapabilities</a>&gt;(addr);
+<b>ensures</b> <b>exists</b>&lt;<a href="transaction_fee.md#0x1_transaction_fee_Libra2FABurnCapabilities">Libra2FABurnCapabilities</a>&gt;(addr) || <b>exists</b>&lt;<a href="transaction_fee.md#0x1_transaction_fee_Libra2CoinCapabilities">Libra2CoinCapabilities</a>&gt;(addr);
 </code></pre>
 
 
@@ -821,4 +821,4 @@ Historical. Aborts.
 </code></pre>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use libra2_storage_service_types::{responses::CompleteDataRange, Epoch};
@@ -6,7 +6,7 @@ use libra2_types::{ledger_info::LedgerInfoWithSignatures, transaction::Version};
 use itertools::Itertools;
 use std::{fmt, fmt::Display};
 
-/// A snapshot of the global state of data available in the Aptos network.
+/// A snapshot of the global state of data available in the Libra2 network.
 #[derive(Clone, Debug, Eq, PartialEq)]
 pub struct GlobalDataSummary {
     pub advertised_data: AdvertisedData,

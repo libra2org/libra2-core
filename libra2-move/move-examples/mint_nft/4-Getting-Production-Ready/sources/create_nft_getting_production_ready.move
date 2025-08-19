@@ -20,11 +20,11 @@
 /// Events are emitted during the execution of a transaction. Each Move module can define its own events and choose when
 /// to emit the events upon execution of the module. In this module, we are adding a custom `TokenMintingEvent` to keep track
 /// of the minted token_data_id and the token receiver's address.
-/// For more information about events, see: https://aptos.dev/concepts/events/.
+/// For more information about events, see: https://docs.libra2.org/concepts/events/.
 ///
 /// Move unit tests
 /// We added a few unit tests to make sure that our code is working as expected. For more information on how to write
-/// Move unit tests, see: https://aptos.dev/move/book/unit-testing
+/// Move unit tests, see: https://docs.libra2.org/move/book/unit-testing
 ///
 /// - How to interact with this module
 /// 1. Configure the admin account name address in Move.toml file.
@@ -32,19 +32,19 @@
 ///
 /// 2. Publish the module under a resource account.
 /// - 2.a Make sure you're in the right directory.
-/// Run the following command in directory `aptos-core/libra2-move/move-examples/mint_nft/4-Getting-Production-Ready`.
+/// Run the following command in directory `libra2-core/libra2-move/move-examples/mint_nft/4-Getting-Production-Ready`.
 /// - 2.b Run the following CLI command to publish the module under a resource account.
-/// aptos move create-resource-account-and-publish-package --seed [seed] --address-name mint_nft --profile default --named-addresses source_addr=[default account's address]
+/// libra2 move create-resource-account-and-publish-package --seed [seed] --address-name mint_nft --profile default --named-addresses source_addr=[default account's address]
 ///
 /// 3. Call `mint_event_ticket()` with a valid signature to mint a token.
 /// - 3.a Generate a keypair to validate the signature against.
-/// aptos key generate --key-type ed25519 --output-file output.key
+/// libra2 key generate --key-type ed25519 --output-file output.key
 /// - 3.b Update the public key stored within `ModuleData`.
-/// aptos move run --function-id [resource account's address]::create_nft_getting_production_ready::set_public_key --args hex:[public key we just generated] --profile admin
+/// libra2 move run --function-id [resource account's address]::create_nft_getting_production_ready::set_public_key --args hex:[public key we just generated] --profile admin
 /// (To find the public key we just generated, run `nano output.key.pub`.)
 /// example output:
 /*
-4-Getting-Production-Ready % aptos move run --function-id f634035fea40e23c5ed8817f7e996d96372dd5dbd64e853fb3c108817d92dcb4::create_nft_getting_production_ready::set_public_key --args hex:5C0637A3865FCA80550502BC30C8E7B4CCA7C8AB3B4FFECEFC8C43F7D0D44DEE --profile admin
+4-Getting-Production-Ready % libra2 move run --function-id f634035fea40e23c5ed8817f7e996d96372dd5dbd64e853fb3c108817d92dcb4::create_nft_getting_production_ready::set_public_key --args hex:5C0637A3865FCA80550502BC30C8E7B4CCA7C8AB3B4FFECEFC8C43F7D0D44DEE --profile admin
 Do you want to submit a transaction for a range of [35200 - 52800] Octas at a gas unit price of 100 Octas? [yes/no] >
 yes
 {
@@ -62,17 +62,17 @@ yes
 }
 */
 /// - 3.c Generate a valid signature.
-///  Open up file `aptos-core/libra2-move/e2e-move-tests/src/tests/mint_nft.rs`.
+///  Open up file `libra2-core/libra2-move/e2e-move-tests/src/tests/mint_nft.rs`.
 ///  In function `generate_nft_tutorial_part4_signature`, change the `resource_address`, `nft_receiver`, `admin_private_key`, and `receiver_account_sequence_number` variables to the actual values.
 ///  You can find the `admin_private_key` by running `nano output.key`, and the `receiver_account_sequence_number` by looking up the receiver's address on the Libra2 Explorer under tab `Info`.
 ///  Make sure you're in the right directory.
-///  Run the following command in directory `aptos-core/libra2-move/e2e-move-tests`
+///  Run the following command in directory `libra2-core/libra2-move/e2e-move-tests`
 ///  Run `cargo test generate_nft_tutorial_part4_signature -- --nocapture` to generate a valid signature that we'll use in the next step.
 /// - 3.d Call mint_event_ticket() with the signature we generated in the last step.
-/// aptos move run --function-id [resource account's address]::create_nft_getting_production_ready::mint_event_ticket --args hex:[signature generated in last step] --profile nft-receiver
+/// libra2 move run --function-id [resource account's address]::create_nft_getting_production_ready::mint_event_ticket --args hex:[signature generated in last step] --profile nft-receiver
 /// example output:
 /*
-4-Getting-Production-Ready % aptos move run --function-id f634035fea40e23c5ed8817f7e996d96372dd5dbd64e853fb3c108817d92dcb4::create_nft_getting_production_ready::mint_event_ticket --args hex:fc833512ad1c575850569d14f5e434b929a19eb491c08df9f6b91584a13551bdb95830081a429f148fddcb9ba201cf72a357957849046da0d60675ed034f580f --profile nft-receiver
+4-Getting-Production-Ready % libra2 move run --function-id f634035fea40e23c5ed8817f7e996d96372dd5dbd64e853fb3c108817d92dcb4::create_nft_getting_production_ready::mint_event_ticket --args hex:fc833512ad1c575850569d14f5e434b929a19eb491c08df9f6b91584a13551bdb95830081a429f148fddcb9ba201cf72a357957849046da0d60675ed034f580f --profile nft-receiver
 Do you want to submit a transaction for a range of [600800 - 901200] Octas at a gas unit price of 100 Octas? [yes/no] >
 yes
 {

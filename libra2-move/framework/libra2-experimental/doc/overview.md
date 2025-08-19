@@ -4,7 +4,7 @@
 # Libra2 Experimental Framework
 
 
-This is the reference documentation of the Aptos experimental framework.
+This is the reference documentation of the Libra2 experimental framework.
 
 
 <a id="@Index_1"></a>
@@ -32,4 +32,4 @@ This is the reference documentation of the Aptos experimental framework.
 -  [`0x7::veiled_coin`](veiled_coin.md#0x7_veiled_coin)
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

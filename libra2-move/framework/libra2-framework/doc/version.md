@@ -300,7 +300,7 @@ to update the version.
 
 <tr>
 <td>2</td>
-<td>The version should be updateable after initialization, but only by the Aptos framework account and with an increasing version number.</td>
+<td>The version should be updateable after initialization, but only by the Libra2 framework account and with an increasing version number.</td>
 <td>Medium</td>
 <td>The version number for the blockchain should be updatable whenever necessary. This functionality is provided by the set_version function which ensures that the new version is greater than the previous one.</td>
 <td>Formally verified via <a href="#high-level-req-2">set_version</a>.</td>
@@ -331,7 +331,7 @@ to update the version.
 </code></pre>
 
 
-Abort if resource already exists in <code>@aptos_framwork</code> when initializing.
+Abort if resource already exists in <code>@libra2_framwork</code> when initializing.
 
 
 <pre><code>// This enforces <a id="high-level-req-1" href="#high-level-req">high-level requirement 1</a>:
@@ -425,4 +425,4 @@ This module turns on <code>aborts_if_is_strict</code>, so need to add spec for t
 </code></pre>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

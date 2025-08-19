@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -59,7 +59,7 @@ pub struct DataStreamingService<T> {
     // The configuration for the streaming service
     streaming_service_config: DataStreamingServiceConfig,
 
-    // The data client through which to fetch data from the Aptos network
+    // The data client through which to fetch data from the Libra2 network
     libra2_data_client: T,
 
     // Cached global data summary

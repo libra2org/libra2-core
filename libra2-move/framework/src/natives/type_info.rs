@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 use crate::natives::transaction_context::NativeTransactionContext;
 use libra2_gas_schedule::gas_params::natives::libra2_framework::*;

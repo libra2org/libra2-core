@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use libra2_logger::prelude::*;
@@ -6,7 +6,7 @@ use libra2_metrics_core::{register_int_counter_vec, IntCounterVec};
 use once_cell::sync::Lazy;
 
 pub static NUM_METRICS: Lazy<IntCounterVec> = Lazy::new(|| {
-    register_int_counter_vec!("aptos_metrics", "Number of metrics in certain states", &[
+    register_int_counter_vec!("libra2_metrics", "Number of metrics in certain states", &[
         "type"
     ])
     .unwrap()

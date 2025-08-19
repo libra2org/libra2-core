@@ -1,7 +1,7 @@
 spec libra2_framework::reconfiguration {
     /// <high-level-req>
     /// No.: 1
-    /// Requirement: The Configuration resource is stored under the Aptos framework account with initial values upon
+    /// Requirement: The Configuration resource is stored under the Libra2 framework account with initial values upon
     /// module's initialization.
     /// Criticality: Medium
     /// Implementation: The Configuration resource may only be initialized with specific values and published under the
@@ -75,7 +75,7 @@ spec libra2_framework::reconfiguration {
         aborts_if !(global<Account>(addr).guid_creation_num == 2);
         aborts_if exists<Configuration>(@libra2_framework);
         // property 1: During the module's initialization, it guarantees that the Configuration resource will move under
-        // the Aptos framework account with initial values.
+        // the Libra2 framework account with initial values.
         /// [high-level-req-1]
         ensures exists<Configuration>(@libra2_framework);
         ensures config.epoch == 0 && config.last_reconfiguration_time == 0;

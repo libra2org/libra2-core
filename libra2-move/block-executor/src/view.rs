@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 // Cfg due to delayed_field_mock_serialization use and to avoid warning.
@@ -48,7 +48,7 @@ use libra2_types::{
         StateViewId, TStateView,
     },
     transaction::BlockExecutableTransaction as Transaction,
-    vm::modules::AptosModuleExtension,
+    vm::modules::Libra2ModuleExtension,
     write_set::TransactionWrite,
 };
 use libra2_vm_logging::{log_schema::AdapterLogSchema, prelude::*};
@@ -239,12 +239,12 @@ pub(crate) struct ParallelState<'a, T: Transaction> {
     counter: &'a AtomicU32,
     incarnation: Incarnation,
     pub(crate) captured_reads:
-        RefCell<CapturedReads<T, ModuleId, CompiledModule, Module, AptosModuleExtension>>,
+        RefCell<CapturedReads<T, ModuleId, CompiledModule, Module, Libra2ModuleExtension>>,
 }
 
 fn get_delayed_field_value_impl<T: Transaction>(
     captured_reads: &RefCell<
-        CapturedReads<T, ModuleId, CompiledModule, Module, AptosModuleExtension>,
+        CapturedReads<T, ModuleId, CompiledModule, Module, Libra2ModuleExtension>,
     >,
     versioned_delayed_fields: &dyn TVersionedDelayedFieldView<DelayedFieldID>,
     wait_for: &dyn TWaitForDependency,
@@ -385,7 +385,7 @@ fn compute_delayed_field_try_add_delta_outcome_first_time(
 // and whether anything should be moved there.
 fn delayed_field_try_add_delta_outcome_impl<T: Transaction>(
     captured_reads: &RefCell<
-        CapturedReads<T, ModuleId, CompiledModule, Module, AptosModuleExtension>,
+        CapturedReads<T, ModuleId, CompiledModule, Module, Libra2ModuleExtension>,
     >,
     versioned_delayed_fields: &dyn TVersionedDelayedFieldView<DelayedFieldID>,
     wait_for: &dyn TWaitForDependency,
@@ -1074,7 +1074,7 @@ impl<T: Transaction> ViewState<'_, T> {
 pub(crate) struct LatestView<'a, T: Transaction, S: TStateView<Key = T::Key>> {
     base_view: &'a S,
     pub(crate) global_module_cache:
-        &'a GlobalModuleCache<ModuleId, CompiledModule, Module, AptosModuleExtension>,
+        &'a GlobalModuleCache<ModuleId, CompiledModule, Module, Libra2ModuleExtension>,
     pub(crate) runtime_environment: &'a RuntimeEnvironment,
     pub(crate) latest_view: ViewState<'a, T>,
     pub(crate) txn_idx: TxnIndex,
@@ -1087,7 +1087,7 @@ impl<'a, T: Transaction, S: TStateView<Key = T::Key>> LatestView<'a, T, S> {
             ModuleId,
             CompiledModule,
             Module,
-            AptosModuleExtension,
+            Libra2ModuleExtension,
         >,
         runtime_environment: &'a RuntimeEnvironment,
         latest_view: ViewState<'a, T>,
@@ -1113,7 +1113,7 @@ impl<'a, T: Transaction, S: TStateView<Key = T::Key>> LatestView<'a, T, S> {
     /// Drains the parallel captured reads.
     pub(crate) fn take_parallel_reads(
         &self,
-    ) -> CapturedReads<T, ModuleId, CompiledModule, Module, AptosModuleExtension> {
+    ) -> CapturedReads<T, ModuleId, CompiledModule, Module, Libra2ModuleExtension> {
         match &self.latest_view {
             ViewState::Sync(state) => state.captured_reads.take(),
             ViewState::Unsync(_) => {
@@ -2096,7 +2096,7 @@ mod test {
             ModuleId,
             CompiledModule,
             Module,
-            AptosModuleExtension,
+            Libra2ModuleExtension,
         >::new(None));
         let wait_for = FakeWaitForDependency();
         let id = DelayedFieldID::new_for_test_for_u64(600);
@@ -2241,7 +2241,7 @@ mod test {
             ModuleId,
             CompiledModule,
             Module,
-            AptosModuleExtension,
+            Libra2ModuleExtension,
         >::new(None));
         let wait_for = FakeWaitForDependency();
         let id = DelayedFieldID::new_for_test_for_u64(600);
@@ -2386,7 +2386,7 @@ mod test {
             ModuleId,
             CompiledModule,
             Module,
-            AptosModuleExtension,
+            Libra2ModuleExtension,
         >::new(None));
         let wait_for = FakeWaitForDependency();
         let id = DelayedFieldID::new_for_test_for_u64(600);
@@ -2531,7 +2531,7 @@ mod test {
             ModuleId,
             CompiledModule,
             Module,
-            AptosModuleExtension,
+            Libra2ModuleExtension,
         >::new(None));
         let wait_for = FakeWaitForDependency();
         let id = DelayedFieldID::new_for_test_for_u64(600);
@@ -2921,7 +2921,7 @@ mod test {
         counter: RefCell<u32>,
         base_view: MockStateView<KeyType<u32>>,
         empty_global_module_cache:
-            GlobalModuleCache<ModuleId, CompiledModule, Module, AptosModuleExtension>,
+            GlobalModuleCache<ModuleId, CompiledModule, Module, Libra2ModuleExtension>,
         runtime_environment: RuntimeEnvironment,
         skip_module_validation: AtomicBool,
     }

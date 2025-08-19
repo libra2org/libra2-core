@@ -46,38 +46,38 @@ module libra2_experimental::veiled_coin_tests {
     /// Can be called with `sender` set to be equal to `recipient`.
     fun set_up_for_veiled_coin_test(
         veiled_coin: &signer,
-        aptos_fx: signer,
+        libra2_fx: signer,
         sender: &signer,
         recipient: &signer,
         sender_amount: u32,
         recipient_amount: u32
     ) {
         // Assumption is that framework address is different than recipient and sender addresses
-        assert!(signer::address_of(&aptos_fx) != signer::address_of(sender), 1);
-        assert!(signer::address_of(&aptos_fx) != signer::address_of(recipient), 2);
+        assert!(signer::address_of(&libra2_fx) != signer::address_of(sender), 1);
+        assert!(signer::address_of(&libra2_fx) != signer::address_of(recipient), 2);
 
         // Initialize the `veiled_coin` module & enable the feature
         veiled_coin::init_module_for_testing(veiled_coin);
         println(b"Initialized module.");
         features::change_feature_flags_for_testing(
-            &aptos_fx,
+            &libra2_fx,
             vector[features::get_bulletproofs_feature()],
             vector[]
         );
         println(b"Enabled feature flags.");
 
         // Set up an account for the framework address
-        account::create_account_for_test(signer::address_of(&aptos_fx)); // needed in `coin::create_fake_money`
+        account::create_account_for_test(signer::address_of(&libra2_fx)); // needed in `coin::create_fake_money`
         account::create_account_for_test(signer::address_of(sender)); // needed in `coin::transfer`
         if (signer::address_of(recipient) != signer::address_of(sender)) {
             account::create_account_for_test(signer::address_of(recipient)); // needed in `coin::transfer`
         };
         println(b"Created accounts for test.");
 
-        // Create `amount` of `FakeCoin` coins at the Aptos 0x1 address (must do) and register a `FakeCoin` coin
+        // Create `amount` of `FakeCoin` coins at the Libra2 0x1 address (must do) and register a `FakeCoin` coin
         // store for the `sender`.
         coin::create_fake_money(
-            &aptos_fx,
+            &libra2_fx,
             sender,
             veiled_coin::cast_u32_to_u64_amount(sender_amount + recipient_amount)
         );
@@ -85,7 +85,7 @@ module libra2_experimental::veiled_coin_tests {
 
         // Transfer some coins from the framework to the sender
         coin::transfer<coin::FakeMoney>(
-            &aptos_fx,
+            &libra2_fx,
             signer::address_of(sender),
             veiled_coin::cast_u32_to_u64_amount(sender_amount)
         );
@@ -94,7 +94,7 @@ module libra2_experimental::veiled_coin_tests {
         // Transfer some coins from the sender to the recipient
         coin::register<coin::FakeMoney>(recipient);
         coin::transfer<coin::FakeMoney>(
-            &aptos_fx,
+            &libra2_fx,
             signer::address_of(recipient),
             veiled_coin::cast_u32_to_u64_amount(recipient_amount)
         );
@@ -139,14 +139,14 @@ module libra2_experimental::veiled_coin_tests {
     #[
         test(
             veiled_coin = @libra2_experimental,
-            aptos_fx = @libra2_framework,
+            libra2_fx = @libra2_framework,
             sender = @0xc0ffee,
             recipient = @0x1337
         )
     ]
     fun veil_test(
         veiled_coin: signer,
-        aptos_fx: signer,
+        libra2_fx: signer,
         sender: signer,
         recipient: signer
     ) {
@@ -159,7 +159,7 @@ module libra2_experimental::veiled_coin_tests {
         // Split 500 and 500 between `sender` and `recipient`
         set_up_for_veiled_coin_test(
             &veiled_coin,
-            aptos_fx,
+            libra2_fx,
             &sender,
             &recipient,
             500u32,
@@ -268,10 +268,10 @@ module libra2_experimental::veiled_coin_tests {
     }
 
     #[test(
-        veiled_coin = @libra2_experimental, aptos_fx = @libra2_framework, sender = @0x1337
+        veiled_coin = @libra2_experimental, libra2_fx = @libra2_framework, sender = @0x1337
     )]
     fun unveil_test(
-        veiled_coin: signer, aptos_fx: signer, sender: signer
+        veiled_coin: signer, libra2_fx: signer, sender: signer
     ) {
         println(b"Starting unveil_test()...");
         println(b"@veiled_coin:");
@@ -280,7 +280,7 @@ module libra2_experimental::veiled_coin_tests {
         print(&@libra2_framework);
 
         // Create a `sender` account with 500 `FakeCoin`'s
-        set_up_for_veiled_coin_test(&veiled_coin, aptos_fx, &sender, &sender, 500, 0);
+        set_up_for_veiled_coin_test(&veiled_coin, libra2_fx, &sender, &sender, 500, 0);
 
         // Register a veiled balance for the `sender`
         let (sender_sk, sender_pk) = generate_elgamal_keypair();
@@ -378,20 +378,20 @@ module libra2_experimental::veiled_coin_tests {
     #[
         test(
             veiled_coin = @libra2_experimental,
-            aptos_fx = @libra2_framework,
+            libra2_fx = @libra2_framework,
             sender = @0xc0ffee,
             recipient = @0x1337
         )
     ]
     fun basic_viability_test(
         veiled_coin: signer,
-        aptos_fx: signer,
+        libra2_fx: signer,
         sender: signer,
         recipient: signer
     ) {
         set_up_for_veiled_coin_test(
             &veiled_coin,
-            aptos_fx,
+            libra2_fx,
             &sender,
             &recipient,
             500,

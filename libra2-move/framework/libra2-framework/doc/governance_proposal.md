@@ -3,9 +3,9 @@
 
 # Module `0x1::governance_proposal`
 
-Define the GovernanceProposal that will be used as part of on-chain governance by AptosGovernance.
+Define the GovernanceProposal that will be used as part of on-chain governance by Libra2Governance.
 
-This is separate from the AptosGovernance module to avoid circular dependency between AptosGovernance and Stake.
+This is separate from the Libra2Governance module to avoid circular dependency between Libra2Governance and Stake.
 
 
 -  [Struct `GovernanceProposal`](#0x1_governance_proposal_GovernanceProposal)
@@ -53,7 +53,7 @@ This is separate from the AptosGovernance module to avoid circular dependency be
 
 ## Function `create_proposal`
 
-Create and return a GovernanceProposal resource. Can only be called by AptosGovernance
+Create and return a GovernanceProposal resource. Can only be called by Libra2Governance
 
 
 <pre><code><b>public</b>(<b>friend</b>) <b>fun</b> <a href="governance_proposal.md#0x1_governance_proposal_create_proposal">create_proposal</a>(): <a href="governance_proposal.md#0x1_governance_proposal_GovernanceProposal">governance_proposal::GovernanceProposal</a>
@@ -78,7 +78,7 @@ Create and return a GovernanceProposal resource. Can only be called by AptosGove
 
 ## Function `create_empty_proposal`
 
-Useful for AptosGovernance to create an empty proposal as proof.
+Useful for Libra2Governance to create an empty proposal as proof.
 
 
 <pre><code><b>public</b>(<b>friend</b>) <b>fun</b> <a href="governance_proposal.md#0x1_governance_proposal_create_empty_proposal">create_empty_proposal</a>(): <a href="governance_proposal.md#0x1_governance_proposal_GovernanceProposal">governance_proposal::GovernanceProposal</a>
@@ -175,4 +175,4 @@ Useful for AptosGovernance to create an empty proposal as proof.
 </code></pre>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

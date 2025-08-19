@@ -2,26 +2,26 @@ spec libra2_framework::aggregator_factory {
     use libra2_framework::aggregator;
     /// <high-level-req>
     /// No.: 1
-    /// Requirement: During the module's initialization, it guarantees that the Aptos framework is the caller and that the
-    /// AggregatorFactory resource will move under the Aptos framework account.
+    /// Requirement: During the module's initialization, it guarantees that the Libra2 framework is the caller and that the
+    /// AggregatorFactory resource will move under the Libra2 framework account.
     /// Criticality: High
     /// Implementation: The initialize function is responsible for establishing the initial state of the module by
     /// creating the AggregatorFactory resource, indicating its presence within the module's context. Subsequently, the
-    /// resource transfers to the Aptos framework account.
+    /// resource transfers to the Libra2 framework account.
     /// Enforcement: Formally verified via [high-level-req-1](initialize_aggregator_factory).
     ///
     /// No.: 2
     /// Requirement: To create a new aggregator instance, the aggregator factory must already be initialized and exist
     /// under the Libra2 account.
     /// Criticality: High
-    /// Implementation: The create_aggregator_internal function asserts that AggregatorFactory exists for the Aptos
+    /// Implementation: The create_aggregator_internal function asserts that AggregatorFactory exists for the Libra2
     /// account.
     /// Enforcement: Formally verified via [high-level-req-2](CreateAggregatorInternalAbortsIf).
     ///
     /// No.: 3
-    /// Requirement: Only the Aptos framework address may create an aggregator instance currently.
+    /// Requirement: Only the Libra2 framework address may create an aggregator instance currently.
     /// Criticality: Low
-    /// Implementation: The create_aggregator function ensures that the address calling it is the Aptos framework
+    /// Implementation: The create_aggregator function ensures that the address calling it is the Libra2 framework
     /// address.
     /// Enforcement: Formally verified via [high-level-req-3](create_aggregator).
     ///

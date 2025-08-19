@@ -10,7 +10,7 @@
 module libra2_std::smart_table {
     use std::error;
     use std::vector;
-    use libra2_std::aptos_hash::sip_hash_from_value;
+    use libra2_std::libra2_hash::sip_hash_from_value;
     use libra2_std::table_with_length::{Self, TableWithLength};
     use libra2_std::type_info::size_of_val;
     use libra2_std::math64::max;

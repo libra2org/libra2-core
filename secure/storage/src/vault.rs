@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -313,7 +313,7 @@ pub mod policy {
     use crate::{Capability, Identity, Policy};
     use libra2_vault_client as vault;
 
-    const APTOS_DEFAULT: &str = "aptos_default";
+    const LIBRA2_DEFAULT: &str = "libra2_default";
 
     /// VaultStorage utilizes Vault for maintaining encrypted, authenticated data. This
     /// version currently matches the behavior of OnDiskStorage and InMemoryStorage. In the future,
@@ -357,7 +357,7 @@ pub mod policy {
 
         /// Creates a token but uses the namespace for policies
         pub fn create_token(&self, mut policies: Vec<&str>) -> Result<String, Error> {
-            policies.push(APTOS_DEFAULT);
+            policies.push(LIBRA2_DEFAULT);
             let result = if let Some(ns) = &self.namespace {
                 let policies: Vec<_> = policies.iter().map(|p| format!("{}/{}", ns, p)).collect();
                 self.client()
@@ -420,7 +420,7 @@ pub mod policy {
                 match &perm.id {
                     Identity::User(id) => self.set_policy(id, engine, name, &perm.capabilities)?,
                     Identity::Anyone => {
-                        self.set_policy(APTOS_DEFAULT, engine, name, &perm.capabilities)?
+                        self.set_policy(LIBRA2_DEFAULT, engine, name, &perm.capabilities)?
                     },
                     Identity::NoOne => (),
                 };

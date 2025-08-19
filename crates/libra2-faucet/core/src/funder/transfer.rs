@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use super::{
@@ -87,7 +87,7 @@ pub struct TransferFunder {
 
     transaction_factory: TransactionFactory,
 
-    /// URL of an Aptos node API.
+    /// URL of an Libra2 node API.
     node_url: Url,
     node_api_key: Option<String>,
     node_additional_headers: Option<HashMap<String, String>>,

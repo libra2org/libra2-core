@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use super::{CheckResult, Checker, CheckerError, CommonCheckerConfig};
@@ -7,7 +7,7 @@ use crate::{
     provider::{api_index::ApiIndexProvider, Provider, ProviderCollection},
 };
 use anyhow::Result;
-use libra2_rest_client::{libra2_api_types::TransactionData, Client as AptosRestClient};
+use libra2_rest_client::{libra2_api_types::TransactionData, Client as Libra2RestClient};
 use serde::{Deserialize, Serialize};
 use std::cmp::{max, min};
 
@@ -32,7 +32,7 @@ impl TransactionCorrectnessChecker {
 
     /// Fetch a transaction by version and return it.
     async fn get_transaction_by_version(
-        client: &AptosRestClient,
+        client: &Libra2RestClient,
         version: u64,
         node_name: &str,
     ) -> Result<TransactionData, CheckerError> {

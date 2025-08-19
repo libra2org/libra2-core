@@ -1,4 +1,4 @@
-// Copyright (c) Aptos Foundation
+// Copyright (c) A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use anyhow::Result;
@@ -25,7 +25,7 @@ async fn main() -> Result<()> {
 
     cache
         .fetch_on_chain_package(
-            Url::from_str("https://fullnode.mainnet.aptoslabs.com").unwrap(),
+            Url::from_str("https://fullnode.mainnet.libra2.org").unwrap(),
             3022354983,
             AccountAddress::ONE,
             "MoveStdlib",

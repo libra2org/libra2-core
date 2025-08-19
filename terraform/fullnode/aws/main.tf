@@ -42,19 +42,19 @@ data "aws_eks_cluster" "aptos" {
 }
 
 data "aws_eks_cluster_auth" "aptos" {
-  name = data.aws_eks_cluster.aptos.name
+  name = data.aws_eks_cluster.libra2.name
 }
 
 provider "helm" {
   kubernetes {
     host                   = module.eks.kubernetes.kubernetes_host
     cluster_ca_certificate = module.eks.kubernetes.kubernetes_ca_cert
-    token                  = data.aws_eks_cluster_auth.aptos.token
+    token                  = data.aws_eks_cluster_auth.libra2.token
   }
 }
 
 provider "kubernetes" {
   host                   = module.eks.kubernetes.kubernetes_host
   cluster_ca_certificate = module.eks.kubernetes.kubernetes_ca_cert
-  token                  = data.aws_eks_cluster_auth.aptos.token
+  token                  = data.aws_eks_cluster_auth.libra2.token
 }

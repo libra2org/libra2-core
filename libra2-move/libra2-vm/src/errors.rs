@@ -1,8 +1,8 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
-use crate::transaction_validation::APTOS_TRANSACTION_VALIDATION;
+use crate::transaction_validation::LIBRA2_TRANSACTION_VALIDATION;
 use libra2_logger::{enabled, Level};
 use libra2_types::transaction::TransactionStatus;
 use libra2_vm_logging::{log_schema::AdapterLogSchema, prelude::*};
@@ -78,7 +78,7 @@ pub fn convert_prologue_error(
     Err(match status {
         VMStatus::Executed => VMStatus::Executed,
         VMStatus::MoveAbort(location, code)
-            if !APTOS_TRANSACTION_VALIDATION.is_account_module_abort(&location) =>
+            if !LIBRA2_TRANSACTION_VALIDATION.is_account_module_abort(&location) =>
         {
             let new_major_status = match error_split(code) {
                 // TODO: Update these after adding the appropriate error codes into StatusCode
@@ -187,7 +187,7 @@ pub fn convert_epilogue_error(
     Err(match status {
         VMStatus::Executed => VMStatus::Executed,
         VMStatus::MoveAbort(location, code)
-            if !APTOS_TRANSACTION_VALIDATION.is_account_module_abort(&location) =>
+            if !LIBRA2_TRANSACTION_VALIDATION.is_account_module_abort(&location) =>
         {
             let (category, reason) = error_split(code);
             let err_msg = format!("[libra2_vm] Unexpected success epilogue Move abort: {:?}::{:?} (Category: {:?} Reason: {:?})",

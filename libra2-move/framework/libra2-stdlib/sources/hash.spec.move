@@ -1,4 +1,4 @@
-spec libra2_std::aptos_hash {
+spec libra2_std::libra2_hash {
     spec module {
         /// `spec_sip_hash` is not assumed to be injective.
         fun spec_sip_hash(bytes: vector<u8>): u64;

@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright © Aptos Foundation
+# Copyright © A-p-t-o-s Foundation
 # SPDX-License-Identifier: Apache-2.0
 
 ###########################################
@@ -12,12 +12,12 @@
 # build_cli_release.sh macOS 1.0.0 true
 #
 
-# Note: This must be run from the root of the aptos-core repository
+# Note: This must be run from the root of the libra2-core repository
 
 set -e
 
-NAME='aptos-cli'
-CRATE_NAME='aptos'
+NAME='libra2-cli'
+CRATE_NAME='libra2'
 CARGO_PATH="crates/$CRATE_NAME/Cargo.toml"
 PLATFORM_NAME="$1"
 EXPECTED_VERSION="$2"
@@ -43,7 +43,7 @@ if [[ "$SKIP_CHECKS" != "true" ]]; then
   fi
 
   # Check that the release doesn't already exist
-  if curl -s --stderr /dev/null --output /dev/null --head -f "https://github.com/libra2org/libra2-core/releases/download/aptos-cli-v$EXPECTED_VERSION/aptos-cli-$EXPECTED_VERSION-Ubuntu-22.04-x86_64.zip"; then
+  if curl -s --stderr /dev/null --output /dev/null --head -f "https://github.com/libra2org/libra2-core/releases/download/libra2-cli-v$EXPECTED_VERSION/libra2-cli-$EXPECTED_VERSION-Ubuntu-22.04-x86_64.zip"; then
     echo "$EXPECTED_VERSION already released"
     exit 3
   fi

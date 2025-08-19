@@ -11,7 +11,7 @@ resource "google_project_iam_member" "k8s-gcp-integrations-dns" {
 resource "google_service_account_iam_binding" "k8s-gcp-integrations" {
   service_account_id = google_service_account.k8s-gcp-integrations.name
   role               = "roles/iam.workloadIdentityUser"
-  members            = ["serviceAccount:${google_container_cluster.aptos.workload_identity_config[0].workload_pool}[kube-system/k8s-gcp-integrations]"]
+  members            = ["serviceAccount:${google_container_cluster.libra2.workload_identity_config[0].workload_pool}[kube-system/k8s-gcp-integrations]"]
 }
 
 resource "kubernetes_service_account" "k8s-gcp-integrations" {

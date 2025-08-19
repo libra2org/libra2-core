@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::common::{
@@ -217,7 +217,7 @@ impl CliCommand<serde_json::Value> for VerifyProposal {
                 "Transaction mismatch: The transaction you provided has a payload hash of \
                 {expected_payload_hash}, but the on-chain transaction proposal you specified has \
                 a payload hash of {actual_payload_hash}. For more info, see \
-                https://aptos.dev/move/move-on-aptos/cli#multisig-governance"
+                https://docs.libra2.org/move/move-on-aptos/cli#multisig-governance"
             )))
         }
     }

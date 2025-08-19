@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -8,7 +8,7 @@ use crate::{
     observer::junit::JunitTestObserver,
     result::{TestResult, TestSummary},
     success_criteria::SuccessCriteriaErrors,
-    AdminContext, AdminTest, AptosContext, AptosTest, CoreContext, Factory, NetworkContext,
+    AdminContext, AdminTest, Libra2Context, Libra2Test, CoreContext, Factory, NetworkContext,
     NetworkContextSynchronizer, NetworkTest, ShouldFail, Test, TestReport, Version,
     NAMESPACE_CLEANUP_DURATION_BUFFER_SECS,
 };
@@ -139,7 +139,7 @@ pub struct NodeResourceOverride {
 // Workaround way to implement all_tests, for:
 // error[E0658]: cannot cast `dyn interface::admin::AdminTest` to `dyn interface::test::Test`, trait upcasting coercion is experimental
 pub enum AnyTestRef<'a> {
-    Aptos(&'a dyn AptosTest),
+    Libra2(&'a dyn Libra2Test),
     Admin(&'a dyn AdminTest),
     Network(&'a dyn NetworkTest),
 }
@@ -147,7 +147,7 @@ pub enum AnyTestRef<'a> {
 impl Test for AnyTestRef<'_> {
     fn name(&self) -> &'static str {
         match self {
-            AnyTestRef::Aptos(t) => t.name(),
+            AnyTestRef::Libra2(t) => t.name(),
             AnyTestRef::Admin(t) => t.name(),
             AnyTestRef::Network(t) => t.name(),
         }
@@ -155,7 +155,7 @@ impl Test for AnyTestRef<'_> {
 
     fn ignored(&self) -> bool {
         match self {
-            AnyTestRef::Aptos(t) => t.ignored(),
+            AnyTestRef::Libra2(t) => t.ignored(),
             AnyTestRef::Admin(t) => t.ignored(),
             AnyTestRef::Network(t) => t.ignored(),
         }
@@ -163,7 +163,7 @@ impl Test for AnyTestRef<'_> {
 
     fn should_fail(&self) -> ShouldFail {
         match self {
-            AnyTestRef::Aptos(t) => t.should_fail(),
+            AnyTestRef::Libra2(t) => t.should_fail(),
             AnyTestRef::Admin(t) => t.should_fail(),
             AnyTestRef::Network(t) => t.should_fail(),
         }
@@ -292,9 +292,9 @@ impl<'cfg, F: Factory> Forge<'cfg, F> {
                 self.tests.existing_db_tag.clone(),
             ))?;
 
-            // Run AptosTests
+            // Run Libra2Tests
             for test in self.filter_tests(&self.tests.libra2_tests) {
-                let mut libra2_ctx = AptosContext::new(
+                let mut libra2_ctx = Libra2Context::new(
                     CoreContext::from_rng(&mut rng),
                     swarm.chain_info().into_libra2_public_info(),
                     &mut report,

@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -29,7 +29,7 @@ use std::{
     time::{Duration, Instant},
 };
 
-const APTOS_DATA_DIR: &str = "/opt/aptos/data";
+const LIBRA2_DATA_DIR: &str = "/opt/aptos/data";
 
 pub struct K8sNode {
     pub(crate) name: String,
@@ -210,9 +210,9 @@ impl Node for K8sNode {
 
     async fn clear_storage(&self) -> Result<()> {
         // Remove all storage files
-        let ledger_db_path = format!("{}/db/{}", APTOS_DATA_DIR, LEDGER_DB_NAME);
-        let state_db_path = format!("{}/db/{}", APTOS_DATA_DIR, STATE_MERKLE_DB_NAME);
-        let state_sync_db_path = format!("{}/db/{}", APTOS_DATA_DIR, STATE_SYNC_DB_NAME);
+        let ledger_db_path = format!("{}/db/{}", LIBRA2_DATA_DIR, LEDGER_DB_NAME);
+        let state_db_path = format!("{}/db/{}", LIBRA2_DATA_DIR, STATE_MERKLE_DB_NAME);
+        let state_sync_db_path = format!("{}/db/{}", LIBRA2_DATA_DIR, STATE_SYNC_DB_NAME);
 
         let delete_storage_paths = [
             "-n",

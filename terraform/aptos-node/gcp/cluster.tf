@@ -7,7 +7,7 @@ resource "google_container_cluster" "aptos" {
   name           = "aptos-${local.workspace_name}"
   location       = local.location
   node_locations = var.node_locations
-  network        = google_compute_network.aptos.id
+  network        = google_compute_network.libra2.id
 
   remove_default_node_pool = true
   initial_node_count       = 1
@@ -161,7 +161,7 @@ resource "google_container_node_pool" "core" {
   provider   = google-beta
   name       = "core"
   location   = local.location
-  cluster    = google_container_cluster.aptos.name
+  cluster    = google_container_cluster.libra2.name
   node_count = lookup(var.node_pool_sizes, "core", null)
 
   node_config {
@@ -206,7 +206,7 @@ resource "google_container_node_pool" "utilities" {
   provider   = google-beta
   name       = "utilities"
   location   = local.location
-  cluster    = google_container_cluster.aptos.name
+  cluster    = google_container_cluster.libra2.name
   node_count = lookup(var.node_pool_sizes, "utilities", null)
 
   node_config {
@@ -259,7 +259,7 @@ resource "google_container_node_pool" "validators" {
   provider   = google-beta
   name       = "validators"
   location   = local.location
-  cluster    = google_container_cluster.aptos.name
+  cluster    = google_container_cluster.libra2.name
   node_count = lookup(var.node_pool_sizes, "validators", null)
 
   node_config {

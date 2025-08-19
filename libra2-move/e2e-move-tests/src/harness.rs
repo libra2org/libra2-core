@@ -1,7 +1,7 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-use crate::{assert_success, AptosPackageHooks};
+use crate::{assert_success, Libra2PackageHooks};
 use libra2_cached_packages::libra2_stdlib;
 use libra2_framework::{natives::code::PackageMetadata, BuildOptions, BuiltPackage};
 use libra2_gas_profiling::TransactionGasLog;
@@ -98,7 +98,7 @@ impl MoveHarness {
 
     /// Creates a new harness.
     pub fn new() -> Self {
-        register_package_hooks(Box::new(AptosPackageHooks {}));
+        register_package_hooks(Box::new(Libra2PackageHooks {}));
         Self {
             executor: FakeExecutor::from_head_genesis(),
             txn_seq_no: BTreeMap::default(),
@@ -108,7 +108,7 @@ impl MoveHarness {
     }
 
     pub fn new_with_executor(executor: FakeExecutor) -> Self {
-        register_package_hooks(Box::new(AptosPackageHooks {}));
+        register_package_hooks(Box::new(Libra2PackageHooks {}));
         Self {
             executor,
             txn_seq_no: BTreeMap::default(),
@@ -118,7 +118,7 @@ impl MoveHarness {
     }
 
     pub fn new_with_validators(count: u64) -> Self {
-        register_package_hooks(Box::new(AptosPackageHooks {}));
+        register_package_hooks(Box::new(Libra2PackageHooks {}));
         Self {
             executor: FakeExecutor::from_head_genesis_with_count(count),
             txn_seq_no: BTreeMap::default(),
@@ -128,7 +128,7 @@ impl MoveHarness {
     }
 
     pub fn new_testnet() -> Self {
-        register_package_hooks(Box::new(AptosPackageHooks {}));
+        register_package_hooks(Box::new(Libra2PackageHooks {}));
         Self {
             executor: FakeExecutor::from_testnet_genesis(),
             txn_seq_no: BTreeMap::default(),
@@ -145,13 +145,13 @@ impl MoveHarness {
     /// Providing an API key raises these limits significantly.
     ///
     /// If you hit rate limits, you can create a free Libra2 Build account and generate an API key:
-    /// - https://build.aptoslabs.com/docs/start#api-quick-start
+    /// - https://build.libra2.org/docs/start#api-quick-start
     fn new_with_remote_state_impl(
         network_url: Libra2BaseUrl,
         txn_id: u64,
         api_key: Option<&str>,
     ) -> Self {
-        register_package_hooks(Box::new(AptosPackageHooks {}));
+        register_package_hooks(Box::new(Libra2PackageHooks {}));
 
         let executor = match api_key {
             Some(api_key) => {
@@ -200,7 +200,7 @@ impl MoveHarness {
     }
 
     pub fn new_mainnet() -> Self {
-        register_package_hooks(Box::new(AptosPackageHooks {}));
+        register_package_hooks(Box::new(Libra2PackageHooks {}));
         Self {
             executor: FakeExecutor::from_mainnet_genesis(),
             txn_seq_no: BTreeMap::default(),
@@ -244,7 +244,7 @@ impl MoveHarness {
         self.store_and_fund_account(&Account::new(), balance, sequence_number)
     }
 
-    /// Gets the account where the Aptos framework is installed (0x1).
+    /// Gets the account where the Libra2 framework is installed (0x1).
     pub fn libra2_framework_account(&mut self) -> Account {
         self.new_account_at(AccountAddress::ONE)
     }
@@ -851,7 +851,7 @@ impl MoveHarness {
         self.read_resource_raw(addr, struct_tag).is_some()
     }
 
-    pub fn read_aptos_balance(&self, addr: &AccountAddress) -> u64 {
+    pub fn read_libra2_balance(&self, addr: &AccountAddress) -> u64 {
         self.read_resource::<CoinStoreResource<Libra2CoinType>>(
             addr,
             CoinStoreResource::<Libra2CoinType>::struct_tag(),

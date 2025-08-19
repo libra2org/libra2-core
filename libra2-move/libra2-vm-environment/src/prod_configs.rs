@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 pub use libra2_gas_schedule::LATEST_GAS_FEATURE_VERSION;
@@ -45,8 +45,8 @@ pub fn get_timed_feature_override() -> Option<TimedFeatureOverride> {
     TIMED_FEATURE_OVERRIDE.get().cloned()
 }
 
-/// Returns [TypeBuilder] used by the Aptos blockchain in production.
-pub fn aptos_prod_ty_builder(
+/// Returns [TypeBuilder] used by the Libra2 blockchain in production.
+pub fn libra2_prod_ty_builder(
     gas_feature_version: u64,
     gas_params: &Libra2GasParameters,
 ) -> TypeBuilder {
@@ -55,27 +55,27 @@ pub fn aptos_prod_ty_builder(
         let max_ty_depth = gas_params.vm.txn.max_ty_depth;
         TypeBuilder::with_limits(max_ty_size.into(), max_ty_depth.into())
     } else {
-        aptos_default_ty_builder()
+        libra2_default_ty_builder()
     }
 }
 
 /// Returns default [TypeBuilder], used only when:
 ///  1. Type size gas parameters are not yet in gas schedule (before 1.15).
 ///   2. No gas parameters are found on-chain.
-pub fn aptos_default_ty_builder() -> TypeBuilder {
+pub fn libra2_default_ty_builder() -> TypeBuilder {
     TypeBuilder::with_limits(128, 20)
 }
 
-/// Returns [DeserializerConfig] used by the Aptos blockchain in production.
-pub fn aptos_prod_deserializer_config(features: &Features) -> DeserializerConfig {
+/// Returns [DeserializerConfig] used by the Libra2 blockchain in production.
+pub fn libra2_prod_deserializer_config(features: &Features) -> DeserializerConfig {
     DeserializerConfig::new(
         features.get_max_binary_format_version(),
         features.get_max_identifier_size(),
     )
 }
 
-/// Returns [VerifierConfig] used by the Aptos blockchain in production.
-pub fn aptos_prod_verifier_config(gas_feature_version: u64, features: &Features) -> VerifierConfig {
+/// Returns [VerifierConfig] used by the Libra2 blockchain in production.
+pub fn libra2_prod_verifier_config(gas_feature_version: u64, features: &Features) -> VerifierConfig {
     let use_signature_checker_v2 = features.is_enabled(FeatureFlag::SIGNATURE_CHECKER_V2);
     let sig_checker_v2_fix_script_ty_param_count =
         features.is_enabled(FeatureFlag::SIGNATURE_CHECKER_V2_SCRIPT_FIX);
@@ -127,9 +127,9 @@ pub fn aptos_prod_verifier_config(gas_feature_version: u64, features: &Features)
     }
 }
 
-/// Returns [VMConfig] used by the Aptos blockchain in production, based on the set of feature
+/// Returns [VMConfig] used by the Libra2 blockchain in production, based on the set of feature
 /// flags.
-pub fn aptos_prod_vm_config(
+pub fn libra2_prod_vm_config(
     gas_feature_version: u64,
     features: &Features,
     timed_features: &TimedFeatures,
@@ -139,8 +139,8 @@ pub fn aptos_prod_vm_config(
         !timed_features.is_enabled(TimedFeatureFlag::DisableInvariantViolationCheckInSwapLoc);
     let paranoid_type_checks = get_paranoid_type_checks();
 
-    let deserializer_config = aptos_prod_deserializer_config(features);
-    let verifier_config = aptos_prod_verifier_config(gas_feature_version, features);
+    let deserializer_config = libra2_prod_deserializer_config(features);
+    let verifier_config = libra2_prod_verifier_config(gas_feature_version, features);
 
     let layout_max_size = if gas_feature_version >= RELEASE_V1_30 {
         512

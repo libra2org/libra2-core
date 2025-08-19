@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -14,7 +14,7 @@ use crate::{
         network::{NetworkClientConfig, NetworkServiceConfig, ReceivedMessage},
         wire::handshake::v1::ProtocolIdSet,
     },
-    transport::{self, Libra2NetTransport, Connection, APTOS_TCP_TRANSPORT},
+    transport::{self, Libra2NetTransport, Connection, LIBRA2_TCP_TRANSPORT},
     ProtocolId,
 };
 use libra2_channels::{self, libra2_channel, message_queues::QueueStyle};
@@ -262,7 +262,7 @@ impl PeerManagerBuilder {
             ),
         };
 
-        let mut libra2_tcp_transport = APTOS_TCP_TRANSPORT.clone();
+        let mut libra2_tcp_transport = LIBRA2_TCP_TRANSPORT.clone();
         let tcp_cfg = self.get_tcp_buffers_cfg();
         libra2_tcp_transport.set_tcp_buffers(&tcp_cfg);
 

@@ -1,7 +1,7 @@
 provider "kubernetes" {
-  host                   = digitalocean_kubernetes_cluster.aptos.endpoint
-  cluster_ca_certificate = base64decode(digitalocean_kubernetes_cluster.aptos.kube_config[0].cluster_ca_certificate)
-  token                  = digitalocean_kubernetes_cluster.aptos.kube_config[0].token
+  host                   = digitalocean_kubernetes_cluster.libra2.endpoint
+  cluster_ca_certificate = base64decode(digitalocean_kubernetes_cluster.libra2.kube_config[0].cluster_ca_certificate)
+  token                  = digitalocean_kubernetes_cluster.libra2.kube_config[0].token
 }
 
 resource "kubernetes_namespace" "aptos" {
@@ -12,9 +12,9 @@ resource "kubernetes_namespace" "aptos" {
 
 provider "helm" {
   kubernetes {
-    host                   = digitalocean_kubernetes_cluster.aptos.endpoint
-    cluster_ca_certificate = base64decode(digitalocean_kubernetes_cluster.aptos.kube_config[0].cluster_ca_certificate)
-    token                  = digitalocean_kubernetes_cluster.aptos.kube_config[0].token
+    host                   = digitalocean_kubernetes_cluster.libra2.endpoint
+    cluster_ca_certificate = base64decode(digitalocean_kubernetes_cluster.libra2.kube_config[0].cluster_ca_certificate)
+    token                  = digitalocean_kubernetes_cluster.libra2.kube_config[0].token
   }
 }
 
@@ -41,7 +41,7 @@ resource "helm_release" "fullnode" {
         tag = var.image_tag
       }
       nodeSelector = {
-        "doks.digitalocean.com/node-pool" = digitalocean_kubernetes_cluster.aptos.node_pool[0].name
+        "doks.digitalocean.com/node-pool" = digitalocean_kubernetes_cluster.libra2.node_pool[0].name
       }
       storageClass = {
         class = "do-block-storage"

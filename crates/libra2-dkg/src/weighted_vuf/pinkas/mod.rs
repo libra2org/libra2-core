@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
@@ -26,7 +26,7 @@ use rayon::{
 use serde::{Deserialize, Serialize};
 use std::ops::{Mul, Neg, Range};
 
-pub const PINKAS_WVUF_DST: &[u8; 21] = b"APTOS_PINKAS_WVUF_DST";
+pub const PINKAS_WVUF_DST: &[u8; 21] = b"LIBRA2_PINKAS_WVUF_DST";
 
 // For the worst-case (higher number of players, with fewer shares each), setting to 1 or 4 is not good, so using 2.
 pub const MIN_MULTIEXP_NUM_JOBS: usize = 2;

@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{Libra2ValidatorInterface, FilterCondition};
@@ -6,7 +6,7 @@ use anyhow::{anyhow, Result};
 use libra2_api_types::{Libra2Error, Libra2ErrorCode};
 use libra2_framework::{
     natives::code::{PackageMetadata, PackageRegistry},
-    APTOS_PACKAGES,
+    LIBRA2_PACKAGES,
 };
 use libra2_rest_client::{
     error::{Libra2ErrorResponse, RestError},
@@ -155,7 +155,7 @@ async fn check_and_obtain_source_code(
     let target_package_opt = locate_package_with_src(m, &package_registry.packages);
     if let Some(target_package) = target_package_opt {
         let mut map = HashMap::new();
-        if APTOS_PACKAGES.contains(&target_package.name.as_str()) {
+        if LIBRA2_PACKAGES.contains(&target_package.name.as_str()) {
             package_cache.insert(
                 m.clone(),
                 (

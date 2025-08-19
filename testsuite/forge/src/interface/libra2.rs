@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use super::Test;
@@ -27,18 +27,18 @@ use serde::{Deserialize, Serialize};
 use std::sync::Arc;
 
 #[async_trait::async_trait]
-pub trait AptosTest: Test {
+pub trait Libra2Test: Test {
     /// Executes the test against the given context.
-    async fn run<'t>(&self, ctx: &mut AptosContext<'t>) -> Result<()>;
+    async fn run<'t>(&self, ctx: &mut Libra2Context<'t>) -> Result<()>;
 }
 
-pub struct AptosContext<'t> {
+pub struct Libra2Context<'t> {
     core: CoreContext,
     public_info: Libra2PublicInfo,
     pub report: &'t mut TestReport,
 }
 
-impl<'t> AptosContext<'t> {
+impl<'t> Libra2Context<'t> {
     pub fn new(
         core: CoreContext,
         public_info: Libra2PublicInfo,

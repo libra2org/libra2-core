@@ -9,7 +9,7 @@ spec libra2_framework::version {
     /// Enforcement: Formally verified via [high-level-req-1](initialize).
     ///
     /// No.: 2
-    /// Requirement: The version should be updateable after initialization, but only by the Aptos framework account and
+    /// Requirement: The version should be updateable after initialization, but only by the Libra2 framework account and
     /// with an increasing version number.
     /// Criticality: Medium
     /// Implementation: The version number for the blockchain should be updatable whenever necessary. This functionality
@@ -48,7 +48,7 @@ spec libra2_framework::version {
         ensures global<Version>(@libra2_framework).major == major;
     }
 
-    /// Abort if resource already exists in `@aptos_framwork` when initializing.
+    /// Abort if resource already exists in `@libra2_framwork` when initializing.
     spec initialize(libra2_framework: &signer, initial_version: u64) {
         use std::signer;
 

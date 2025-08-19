@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -48,11 +48,11 @@ pub const SUPPORTED_MESSAGING_PROTOCOL: MessagingProtocolVersion = MessagingProt
 /// Global connection-id generator.
 static CONNECTION_ID_GENERATOR: ConnectionIdGenerator = ConnectionIdGenerator::new();
 
-/// tcp::Transport with Aptos-specific configuration applied.
-pub const APTOS_TCP_TRANSPORT: tcp::TcpTransport = tcp::TcpTransport {
+/// tcp::Transport with Libra2-specific configuration applied.
+pub const LIBRA2_TCP_TRANSPORT: tcp::TcpTransport = tcp::TcpTransport {
     // Use default options.
     ttl: None,
-    // Use TCP_NODELAY for Aptos tcp connections.
+    // Use TCP_NODELAY for Libra2 tcp connections.
     nodelay: Some(true),
     // Use default TCP setting, overridden by Network config
     tcp_buff_cfg: tcp::TCPBufferCfg::new(),

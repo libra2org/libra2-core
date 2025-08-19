@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use libra2_gas_algebra::{Fee, FeePerGasUnit, Gas, GasExpression, GasScalingFactor, Octa};
@@ -90,7 +90,7 @@ pub trait GasAlgebra {
 
 /// Trait representing a gas meter used inside the Libra2 VM.
 ///
-/// It extends Move VM's `GasMeter` trait with a few Aptos-specific callbacks, along with
+/// It extends Move VM's `GasMeter` trait with a few Libra2-specific callbacks, along with
 /// some primitives that would allow gas meters to be composable.
 pub trait Libra2GasMeter: MoveGasMeter {
     type Algebra: GasAlgebra;

@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{genesis::GENESIS_CHANGE_SET_HEAD, Account, AccountData};
@@ -475,7 +475,7 @@ impl InMemoryStateStore {
         Self::new_with_base_and_state_values(EmptyStateView, state_vals)
     }
 
-    /// Creates a new [`InMemoryStateStore`] from a given Aptos network genesis.
+    /// Creates a new [`InMemoryStateStore`] from a given Libra2 network genesis.
     pub fn from_genesis(write_set: &WriteSet, chain_id: ChainId) -> Self {
         let state_store = Self::new();
 

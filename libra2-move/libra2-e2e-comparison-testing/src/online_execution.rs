@@ -1,9 +1,9 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
-    compile_aptos_packages, dump_and_compile_from_package_metadata, is_libra2_package,
-    CompilationCache, ExecutionMode, IndexWriter, PackageInfo, TxnIndex, APTOS_COMMONS,
+    compile_libra2_packages, dump_and_compile_from_package_metadata, is_libra2_package,
+    CompilationCache, ExecutionMode, IndexWriter, PackageInfo, TxnIndex, LIBRA2_COMMONS,
 };
 use anyhow::Result;
 use libra2_framework::natives::code::PackageMetadata;
@@ -122,16 +122,16 @@ impl OnlineExecutor {
         let compilation_cache = Arc::new(Mutex::new(CompilationCache::default()));
         let index_writer = Arc::new(Mutex::new(IndexWriter::new(&self.current_dir)));
 
-        let libra2_commons_path = self.current_dir.join(APTOS_COMMONS);
+        let libra2_commons_path = self.current_dir.join(LIBRA2_COMMONS);
         if self.execution_mode.is_v1_or_compare() {
-            compile_aptos_packages(
+            compile_libra2_packages(
                 &libra2_commons_path,
                 &mut compilation_cache.lock().unwrap().compiled_package_cache_v1,
                 false,
             )?;
         }
         if self.execution_mode.is_v2_or_compare() {
-            compile_aptos_packages(
+            compile_libra2_packages(
                 &libra2_commons_path,
                 &mut compilation_cache.lock().unwrap().compiled_package_cache_v2,
                 true,

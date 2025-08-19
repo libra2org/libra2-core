@@ -45,4 +45,4 @@ and so actual costs of entry functions can be more precisely measured.
 </details>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

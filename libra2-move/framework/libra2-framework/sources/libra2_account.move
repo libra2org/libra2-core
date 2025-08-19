@@ -277,13 +277,13 @@ module libra2_framework::libra2_account {
         if (fungible_asset::store_exists(store_addr)) {
             store_addr
         } else {
-            object::object_address(&primary_fungible_store::create_primary_store(owner, object::address_to_object<Metadata>(@aptos_fungible_asset)))
+            object::object_address(&primary_fungible_store::create_primary_store(owner, object::address_to_object<Metadata>(@libra2_fungible_asset)))
         }
     }
 
     /// Address of APT Primary Fungible Store
     inline fun primary_fungible_store_address(account: address): address {
-        object::create_user_derived_object_address(account, @aptos_fungible_asset)
+        object::create_user_derived_object_address(account, @libra2_fungible_asset)
     }
 
     // tests
@@ -499,7 +499,7 @@ module libra2_framework::libra2_account {
 
         libra2_coin::ensure_initialized_with_apt_fa_metadata_for_test();
 
-        let apt_metadata = object::address_to_object<Metadata>(@aptos_fungible_asset);
+        let apt_metadata = object::address_to_object<Metadata>(@libra2_fungible_asset);
         let user_addr = signer::address_of(user);
         assert!(primary_fungible_store_address(user_addr) == primary_fungible_store::primary_store_address(user_addr, apt_metadata), 1);
 

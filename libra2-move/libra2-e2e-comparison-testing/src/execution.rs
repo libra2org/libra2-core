@@ -1,13 +1,13 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
-    check_libra2_packages_availability, compile_aptos_packages, compile_package,
+    check_libra2_packages_availability, compile_libra2_packages, compile_package,
     data_state_view::DataStateView, generate_compiled_blob, is_libra2_package, CompilationCache,
-    DataManager, IndexReader, PackageInfo, TxnIndex, APTOS_COMMONS,
+    DataManager, IndexReader, PackageInfo, TxnIndex, LIBRA2_COMMONS,
 };
 use anyhow::Result;
-use libra2_framework::APTOS_PACKAGES;
+use libra2_framework::LIBRA2_PACKAGES;
 use libra2_language_e2e_tests::executor::FakeExecutor;
 use libra2_transaction_simulation::{InMemoryStateStore, SimulationStateStore};
 use libra2_types::{
@@ -45,7 +45,7 @@ fn add_libra2_packages_to_state_store(
     state_store: &impl SimulationStateStore,
     compiled_package_map: &HashMap<PackageInfo, HashMap<ModuleId, Vec<u8>>>,
 ) {
-    for package in APTOS_PACKAGES {
+    for package in LIBRA2_PACKAGES {
         let package_info = PackageInfo {
             address: AccountAddress::ONE,
             package_name: package.to_string(),
@@ -110,21 +110,21 @@ impl Execution {
     }
 
     pub async fn execute_txns(&self, begin: Version, num_txns_to_execute: u64) -> Result<()> {
-        let libra2_commons_path = self.input_path.join(APTOS_COMMONS);
+        let libra2_commons_path = self.input_path.join(LIBRA2_COMMONS);
         if !check_libra2_packages_availability(libra2_commons_path.clone()) {
             return Err(anyhow::Error::msg("aptos packages are missing"));
         }
 
         let mut compiled_cache = CompilationCache::default();
         if self.execution_mode.is_v1_or_compare() {
-            compile_aptos_packages(
+            compile_libra2_packages(
                 &libra2_commons_path,
                 &mut compiled_cache.compiled_package_cache_v1,
                 false,
             )?;
         }
         if self.execution_mode.is_v2_or_compare() {
-            compile_aptos_packages(
+            compile_libra2_packages(
                 &libra2_commons_path,
                 &mut compiled_cache.compiled_package_cache_v2,
                 true,
@@ -354,7 +354,7 @@ impl Execution {
         debugger_opt: Option<Arc<dyn Libra2ValidatorInterface + Send>>,
         v2_flag: bool,
     ) -> Result<(WriteSet, Vec<ContractEvent>), VMStatus> {
-        // Always add Aptos (0x1) packages.
+        // Always add Libra2 (0x1) packages.
         add_libra2_packages_to_state_store(&state, compiled_package_cache);
 
         // Add other modules.

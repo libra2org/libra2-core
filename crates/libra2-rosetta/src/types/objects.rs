@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 //! Objects of the Rosetta spec
@@ -149,7 +149,7 @@ pub struct Block {
     pub transactions: Vec<Transaction>,
 }
 
-/// A combination of a transaction and the block associated.  In Aptos, this is just the same
+/// A combination of a transaction and the block associated.  In Libra2, this is just the same
 /// as the version associated with the transaction
 ///
 /// [API Spec](https://www.rosetta-api.org/docs/models/BlockTransaction.html)
@@ -196,7 +196,7 @@ pub enum CurveType {
 
 /// A representation of a single account change in a transaction
 ///
-/// This is known as a write set change within Aptos
+/// This is known as a write set change within Libra2
 /// [API Spec](https://www.rosetta-api.org/docs/models/Operation.html)
 #[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 pub struct Operation {
@@ -840,7 +840,7 @@ pub struct Signature {
     pub hex_bytes: String,
 }
 
-/// Cryptographic signature type used for signing transactions.  Aptos only uses
+/// Cryptographic signature type used for signing transactions.  Libra2 only uses
 /// [`SignatureType::Ed25519`]
 ///
 /// [API Spec](https://www.rosetta-api.org/docs/models/SignatureType.html)
@@ -1054,7 +1054,7 @@ fn parse_failed_operations_from_txn_payload(
             inner.function().as_str(),
         ) {
             (AccountAddress::ONE, COIN_MODULE, TRANSFER_FUNCTION)
-            | (AccountAddress::ONE, APTOS_ACCOUNT_MODULE, TRANSFER_COINS_FUNCTION) => {
+            | (AccountAddress::ONE, LIBRA2_ACCOUNT_MODULE, TRANSFER_COINS_FUNCTION) => {
                 // We could add a create here as well on transfer_coins, but we don't know if it will actually happen
                 if let Some(type_tag) = inner.ty_args().first() {
                     // Find currency from type tag
@@ -1070,7 +1070,7 @@ fn parse_failed_operations_from_txn_payload(
                     }
                 }
             },
-            (AccountAddress::ONE, APTOS_ACCOUNT_MODULE, TRANSFER_FUNCTION) => {
+            (AccountAddress::ONE, LIBRA2_ACCOUNT_MODULE, TRANSFER_FUNCTION) => {
                 // We could add a create here as well, but we don't know if it will actually happen
                 operations = parse_coin_transfer_from_txn_payload(
                     inner,
@@ -1080,7 +1080,7 @@ fn parse_failed_operations_from_txn_payload(
                 )
             },
             (AccountAddress::ONE, PRIMARY_FUNGIBLE_STORE_MODULE, TRANSFER_FUNCTION)
-            | (AccountAddress::ONE, APTOS_ACCOUNT_MODULE, TRANSFER_FUNGIBLE_ASSETS_FUNCTION) => {
+            | (AccountAddress::ONE, LIBRA2_ACCOUNT_MODULE, TRANSFER_FUNGIBLE_ASSETS_FUNCTION) => {
                 // Primary transfer has the same interface as coin transfer, but it's a metadata address instead of a coin type generic
                 let maybe_metadata_address = inner
                     .args()

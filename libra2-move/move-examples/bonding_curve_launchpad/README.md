@@ -15,7 +15,7 @@ Once the APT threshold is met within the liquidity pair, the reserves are moved 
 
 ## This resource contains:
 * (Dispatchable) Fungible Assets.
-* Reusing stored signer vars (w/ [objects](https://aptos.dev/move/move-on-aptos/objects/)).
+* Reusing stored signer vars (w/ [objects](https://docs.libra2.org/move/move-on-aptos/objects/)).
 * External third party dependencies.
 * E2E testing (w/ object deployments, APT creation).
 * Using `rev` to specify feature branches ([Dispatchable FA](https://github.com/libra2org/libra2-core/commit/bbf569abd260d94bc30fe96da297d2aecb193644)).
@@ -104,19 +104,19 @@ aptos move test --dev
 ```
 
 ## Example testnet deployments
-[Bonding Curve Launchpad](https://explorer.aptoslabs.com/account/0x0bb954c7dda5fa777cb34d2e35f593ddc4749f1ab260017ee75d1d216a551841/transactions?network=testnet)
+[Bonding Curve Launchpad](https://explorer.libra2.org/account/0x0bb954c7dda5fa777cb34d2e35f593ddc4749f1ab260017ee75d1d216a551841/transactions?network=testnet)
 
-[Swap DEX](https://explorer.aptoslabs.com/account/0xe26bbe169db47aaa32349d253891af42134e1f6b64fef63f60105ec9ab6b240f/transactions?network=testnet?)
+[Swap DEX](https://explorer.libra2.org/account/0xe26bbe169db47aaa32349d253891af42134e1f6b64fef63f60105ec9ab6b240f/transactions?network=testnet?)
 
-[Swap Deployer](https://explorer.aptoslabs.com/account/0x4d51c99abff19bfb5ca3065f1e71dfc066c38e334def24dbac2b2a38bee8b946?network=testnet)
+[Swap Deployer](https://explorer.libra2.org/account/0x4d51c99abff19bfb5ca3065f1e71dfc066c38e334def24dbac2b2a38bee8b946?network=testnet)
 
 
 ## How to deploy:
 0. **Note:** Since the `swap` module we're relying on as a third party DEX isn't on-chain, you'll need to first:
-    * Deploy the `swap` module on-chain. Or, if you're on the testnet, you can use the [already-deployed `swap` smart contract](https://explorer.aptoslabs.com/account/0xe26bbe169db47aaa32349d253891af42134e1f6b64fef63f60105ec9ab6b240f/transactions?network=testnet?).
+    * Deploy the `swap` module on-chain. Or, if you're on the testnet, you can use the [already-deployed `swap` smart contract](https://explorer.libra2.org/account/0xe26bbe169db47aaa32349d253891af42134e1f6b64fef63f60105ec9ab6b240f/transactions?network=testnet?).
     * Rely on a different DEX for the token graduation.
 
-From there, you can follow the [object code deployment](https://preview.aptos.dev/en/build/smart-contracts/learn-move/advanced-guides/object-code-deployment) steps to deploy and set up the smart contract.
+From there, you can follow the [object code deployment](https://preview.libra2.dev/en/build/smart-contracts/learn-move/advanced-guides/object-code-deployment) steps to deploy and set up the smart contract.
 
 ### Testnet deployment
 Deploy the `bonding_curve_launchpad` to the testnet referencing the already-deployed `swap` smart contract:

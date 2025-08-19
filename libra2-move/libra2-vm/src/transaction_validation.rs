@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
@@ -37,7 +37,7 @@ use move_vm_runtime::{
 use move_vm_types::gas::UnmeteredGasMeter;
 use once_cell::sync::Lazy;
 
-pub static APTOS_TRANSACTION_VALIDATION: Lazy<TransactionValidation> =
+pub static LIBRA2_TRANSACTION_VALIDATION: Lazy<TransactionValidation> =
     Lazy::new(|| TransactionValidation {
         module_addr: CORE_CODE_ADDRESS,
         module_name: Identifier::new("transaction_validation").unwrap(),
@@ -189,9 +189,9 @@ pub(crate) fn run_script_prologue(
                 ];
                 (
                     if features.is_transaction_payload_v2_enabled() {
-                        &APTOS_TRANSACTION_VALIDATION.unified_prologue_fee_payer_v2_name
+                        &LIBRA2_TRANSACTION_VALIDATION.unified_prologue_fee_payer_v2_name
                     } else {
-                        &APTOS_TRANSACTION_VALIDATION.unified_prologue_fee_payer_name
+                        &LIBRA2_TRANSACTION_VALIDATION.unified_prologue_fee_payer_name
                     },
                     serialized_args,
                 )
@@ -223,16 +223,16 @@ pub(crate) fn run_script_prologue(
                 ];
                 (
                     if features.is_transaction_payload_v2_enabled() {
-                        &APTOS_TRANSACTION_VALIDATION.unified_prologue_v2_name
+                        &LIBRA2_TRANSACTION_VALIDATION.unified_prologue_v2_name
                     } else {
-                        &APTOS_TRANSACTION_VALIDATION.unified_prologue_name
+                        &LIBRA2_TRANSACTION_VALIDATION.unified_prologue_name
                     },
                     serialized_args,
                 )
             };
         session
             .execute_function_bypass_visibility(
-                &APTOS_TRANSACTION_VALIDATION.module_id(),
+                &LIBRA2_TRANSACTION_VALIDATION.module_id(),
                 prologue_function_name,
                 vec![],
                 serialized_args,
@@ -287,7 +287,7 @@ pub(crate) fn run_script_prologue(
                     MoveValue::Bool(is_simulation),
                 ];
                 (
-                    &APTOS_TRANSACTION_VALIDATION.fee_payer_prologue_extended_name,
+                    &LIBRA2_TRANSACTION_VALIDATION.fee_payer_prologue_extended_name,
                     args,
                 )
             } else {
@@ -304,7 +304,7 @@ pub(crate) fn run_script_prologue(
                     MoveValue::U64(txn_expiration_timestamp_secs),
                     MoveValue::U8(chain_id.id()),
                 ];
-                (&APTOS_TRANSACTION_VALIDATION.fee_payer_prologue_name, args)
+                (&LIBRA2_TRANSACTION_VALIDATION.fee_payer_prologue_name, args)
             }
         } else if txn_data.is_multi_agent() {
             if features.is_transaction_simulation_enhancement_enabled() {
@@ -321,7 +321,7 @@ pub(crate) fn run_script_prologue(
                     MoveValue::Bool(is_simulation),
                 ];
                 (
-                    &APTOS_TRANSACTION_VALIDATION.multi_agent_prologue_extended_name,
+                    &LIBRA2_TRANSACTION_VALIDATION.multi_agent_prologue_extended_name,
                     args,
                 )
             } else {
@@ -337,7 +337,7 @@ pub(crate) fn run_script_prologue(
                     MoveValue::U8(chain_id.id()),
                 ];
                 (
-                    &APTOS_TRANSACTION_VALIDATION.multi_agent_prologue_name,
+                    &LIBRA2_TRANSACTION_VALIDATION.multi_agent_prologue_name,
                     args,
                 )
             }
@@ -356,7 +356,7 @@ pub(crate) fn run_script_prologue(
                     MoveValue::Bool(is_simulation),
                 ];
                 (
-                    &APTOS_TRANSACTION_VALIDATION.script_prologue_extended_name,
+                    &LIBRA2_TRANSACTION_VALIDATION.script_prologue_extended_name,
                     args,
                 )
             } else {
@@ -370,13 +370,13 @@ pub(crate) fn run_script_prologue(
                     MoveValue::U8(chain_id.id()),
                     MoveValue::vector_u8(txn_data.script_hash.clone()),
                 ];
-                (&APTOS_TRANSACTION_VALIDATION.script_prologue_name, args)
+                (&LIBRA2_TRANSACTION_VALIDATION.script_prologue_name, args)
             }
         };
 
         session
             .execute_function_bypass_visibility(
-                &APTOS_TRANSACTION_VALIDATION.module_id(),
+                &LIBRA2_TRANSACTION_VALIDATION.module_id(),
                 prologue_function_name,
                 vec![],
                 serialize_values(&args),
@@ -492,11 +492,11 @@ fn run_epilogue(
             );
         }
         session.execute_function_bypass_visibility(
-            &APTOS_TRANSACTION_VALIDATION.module_id(),
+            &LIBRA2_TRANSACTION_VALIDATION.module_id(),
             if features.is_transaction_payload_v2_enabled() {
-                &APTOS_TRANSACTION_VALIDATION.unified_epilogue_v2_name
+                &LIBRA2_TRANSACTION_VALIDATION.unified_epilogue_v2_name
             } else {
-                &APTOS_TRANSACTION_VALIDATION.unified_epilogue_name
+                &LIBRA2_TRANSACTION_VALIDATION.unified_epilogue_name
             },
             vec![],
             serialize_args,
@@ -520,7 +520,7 @@ fn run_epilogue(
                         MoveValue::Bool(is_simulation),
                     ];
                     (
-                        &APTOS_TRANSACTION_VALIDATION.user_epilogue_gas_payer_extended_name,
+                        &LIBRA2_TRANSACTION_VALIDATION.user_epilogue_gas_payer_extended_name,
                         args,
                     )
                 } else {
@@ -533,13 +533,13 @@ fn run_epilogue(
                         MoveValue::U64(gas_remaining.into()),
                     ];
                     (
-                        &APTOS_TRANSACTION_VALIDATION.user_epilogue_gas_payer_name,
+                        &LIBRA2_TRANSACTION_VALIDATION.user_epilogue_gas_payer_name,
                         args,
                     )
                 }
             };
             session.execute_function_bypass_visibility(
-                &APTOS_TRANSACTION_VALIDATION.module_id(),
+                &LIBRA2_TRANSACTION_VALIDATION.module_id(),
                 func_name,
                 vec![],
                 serialize_values(&args),
@@ -560,7 +560,7 @@ fn run_epilogue(
                         MoveValue::Bool(is_simulation),
                     ];
                     (
-                        &APTOS_TRANSACTION_VALIDATION.user_epilogue_extended_name,
+                        &LIBRA2_TRANSACTION_VALIDATION.user_epilogue_extended_name,
                         args,
                     )
                 } else {
@@ -571,11 +571,11 @@ fn run_epilogue(
                         MoveValue::U64(txn_max_gas_units.into()),
                         MoveValue::U64(gas_remaining.into()),
                     ];
-                    (&APTOS_TRANSACTION_VALIDATION.user_epilogue_name, args)
+                    (&LIBRA2_TRANSACTION_VALIDATION.user_epilogue_name, args)
                 }
             };
             session.execute_function_bypass_visibility(
-                &APTOS_TRANSACTION_VALIDATION.module_id(),
+                &LIBRA2_TRANSACTION_VALIDATION.module_id(),
                 func_name,
                 vec![],
                 serialize_values(&args),
@@ -678,7 +678,7 @@ pub(crate) fn run_failure_epilogue(
     .or_else(|err| {
         expect_only_successful_execution(
             err,
-            APTOS_TRANSACTION_VALIDATION.user_epilogue_name.as_str(),
+            LIBRA2_TRANSACTION_VALIDATION.user_epilogue_name.as_str(),
             log_context,
         )
     })

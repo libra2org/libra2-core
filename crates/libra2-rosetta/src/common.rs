@@ -1,11 +1,11 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
     error::{ApiError, ApiResult},
     types::{
         Currency, CurrencyMetadata, MetadataRequest, NetworkIdentifier, PartialBlockIdentifier,
-        APTOS_COIN_MODULE, APTOS_COIN_RESOURCE,
+        LIBRA2_COIN_MODULE, LIBRA2_COIN_RESOURCE,
     },
     RosettaContext,
 };
@@ -166,8 +166,8 @@ pub fn native_coin() -> Currency {
 pub fn native_coin_tag() -> TypeTag {
     TypeTag::Struct(Box::new(StructTag {
         address: AccountAddress::ONE,
-        module: ident_str!(APTOS_COIN_MODULE).into(),
-        name: ident_str!(APTOS_COIN_RESOURCE).into(),
+        module: ident_str!(LIBRA2_COIN_MODULE).into(),
+        name: ident_str!(LIBRA2_COIN_RESOURCE).into(),
         type_args: vec![],
     }))
 }

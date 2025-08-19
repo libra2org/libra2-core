@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{assert_success, tests::common, MoveHarness};
@@ -252,5 +252,5 @@ fn test_two_to_two_transfer() {
 }
 
 fn read_coin(h: &MoveHarness, account: &AccountAddress) -> u64 {
-    h.read_aptos_balance(account)
+    h.read_libra2_balance(account)
 }

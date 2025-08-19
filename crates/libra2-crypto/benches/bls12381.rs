@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 #[macro_use]
@@ -20,10 +20,10 @@ use rand::{distributions, rngs::ThreadRng, thread_rng, Rng};
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, CryptoHasher, BCSCryptoHash, Serialize, Deserialize)]
-struct TestAptosCrypto(String);
+struct TestLibra2Crypto(String);
 
-fn random_message(rng: &mut ThreadRng) -> TestAptosCrypto {
-    TestAptosCrypto(
+fn random_message(rng: &mut ThreadRng) -> TestLibra2Crypto {
+    TestLibra2Crypto(
         rng.sample_iter(&distributions::Alphanumeric)
             .take(256)
             .collect::<String>(),
@@ -122,7 +122,7 @@ fn sig_deserialize<M: Measurement>(g: &mut BenchmarkGroup<M>) {
         b.iter_with_setup(
             || {
                 let sk = bls12381::PrivateKey::generate(&mut rng);
-                sk.sign(&TestAptosCrypto("Hello Aptos!".to_owned()))
+                sk.sign(&TestLibra2Crypto("Hello Libra2!".to_owned()))
                     .unwrap()
                     .to_bytes()
             },
@@ -143,10 +143,10 @@ fn aggregate_one_sigshare<M: Measurement>(g: &mut BenchmarkGroup<M>) {
             || {
                 (
                     bls12381::PrivateKey::generate(&mut rng)
-                        .sign(&TestAptosCrypto("Hello Aptos!".to_owned()))
+                        .sign(&TestLibra2Crypto("Hello Libra2!".to_owned()))
                         .unwrap(),
                     bls12381::PrivateKey::generate(&mut rng)
-                        .sign(&TestAptosCrypto("Hello Aptos!".to_owned()))
+                        .sign(&TestLibra2Crypto("Hello Libra2!".to_owned()))
                         .unwrap(),
                 )
             },
@@ -183,7 +183,7 @@ fn sig_subgroup_membership<M: Measurement>(g: &mut BenchmarkGroup<M>) {
 
                 // Currently, there's no better way of sampling a group element here
                 kp.private_key
-                    .sign(&TestAptosCrypto("Hello Aptos!".to_owned()))
+                    .sign(&TestLibra2Crypto("Hello Libra2!".to_owned()))
                     .unwrap()
             },
             |sig| sig.subgroup_check(),
@@ -403,7 +403,7 @@ fn verify_aggsig<M: Measurement>(g: &mut BenchmarkGroup<M>, n: usize) {
                 (msgs, pks, aggsig)
             },
             |(msgs, pks, aggsig)| {
-                let msgs_refs = msgs.iter().collect::<Vec<&TestAptosCrypto>>();
+                let msgs_refs = msgs.iter().collect::<Vec<&TestLibra2Crypto>>();
 
                 let result = aggsig.verify_aggregate(&msgs_refs, &pks);
 

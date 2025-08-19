@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -65,15 +65,15 @@ static ROCKSDB_PROPERTY_MAP: Lazy<HashMap<&str, String>> = Lazy::new(|| {
         "rocksdb.block-cache-pinned-usage",
     ]
     .iter()
-    .map(|x| (*x, format!("aptos_{}", x.replace('.', "_"))))
+    .map(|x| (*x, format!("libra2_{}", x.replace('.', "_"))))
     .collect()
 });
 
 fn set_property(cf_name: &str, db: &DB) -> Result<()> {
     if !skip_reporting_cf(cf_name) {
-        for (rockdb_property_name, aptos_rocksdb_property_name) in &*ROCKSDB_PROPERTY_MAP {
+        for (rockdb_property_name, libra2_rocksdb_property_name) in &*ROCKSDB_PROPERTY_MAP {
             ROCKSDB_PROPERTIES
-                .with_label_values(&[cf_name, aptos_rocksdb_property_name])
+                .with_label_values(&[cf_name, libra2_rocksdb_property_name])
                 .set(db.get_property(cf_name, rockdb_property_name)? as i64);
         }
     }
@@ -86,12 +86,12 @@ const SHARD_NAME_BY_ID: [&str; NUM_STATE_SHARDS] = [
 
 fn set_shard_property(cf_name: ColumnFamilyName, db: &DB, shard: usize) -> Result<()> {
     if !skip_reporting_cf(cf_name) {
-        for (rockdb_property_name, aptos_rocksdb_property_name) in &*ROCKSDB_PROPERTY_MAP {
+        for (rockdb_property_name, libra2_rocksdb_property_name) in &*ROCKSDB_PROPERTY_MAP {
             ROCKSDB_SHARD_PROPERTIES
                 .with_label_values(&[
                     SHARD_NAME_BY_ID[shard],
                     cf_name,
-                    aptos_rocksdb_property_name,
+                    libra2_rocksdb_property_name,
                 ])
                 .set(db.get_property(cf_name, rockdb_property_name)? as i64);
         }

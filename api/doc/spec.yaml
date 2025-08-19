@@ -1,10 +1,10 @@
 openapi: 3.0.0
 info:
   title: Libra2 Node API
-  description: The Libra2 Node API is a RESTful API for client applications to interact with the Aptos blockchain.
+  description: The Libra2 Node API is a RESTful API for client applications to interact with the Libra2 blockchain.
   version: 1.2.0
   contact:
-    name: Aptos Labs
+    name: Libra2 Labs
     url: https://github.com/libra2org/libra2-core
   license:
     name: Apache 2.0
@@ -475,7 +475,7 @@ paths:
         Retrieves all account resources for a given account and a specific ledger version.  If the
         ledger version is not specified in the request, the latest ledger version is used.
 
-        The Aptos nodes prune account state history, via a configurable time window.
+        The Libra2 nodes prune account state history, via a configurable time window.
         If the requested ledger version has been pruned, the server responds with a 410.
       parameters:
       - name: address
@@ -506,7 +506,7 @@ paths:
 
           This cursor cannot be derived manually client-side. Instead, you must
           call this endpoint once without this query parameter specified, and
-          then use the cursor returned in the X-Aptos-Cursor header in the
+          then use the cursor returned in the X-Libra2-Cursor header in the
           response.
         required: false
         deprecated: false
@@ -943,7 +943,7 @@ paths:
         for a given account, asset type and a specific ledger version.  If the
         ledger version is not specified in the request, the latest ledger version is used.
 
-        The Aptos nodes prune account state history, via a configurable time window.
+        The Libra2 nodes prune account state history, via a configurable time window.
         If the requested ledger version has been pruned, the server responds with a 410.
       parameters:
       - name: address
@@ -1390,7 +1390,7 @@ paths:
         Retrieves all account modules' bytecode for a given account at a specific ledger version.
         If the ledger version is not specified in the request, the latest ledger version is used.
 
-        The Aptos nodes prune account state history, via a configurable time window.
+        The Libra2 nodes prune account state history, via a configurable time window.
         If the requested ledger version has been pruned, the server responds with a 410.
       parameters:
       - name: address
@@ -1421,7 +1421,7 @@ paths:
 
           This cursor cannot be derived manually client-side. Instead, you must
           call this endpoint once without this query parameter specified, and
-          then use the cursor returned in the X-Aptos-Cursor header in the
+          then use the cursor returned in the X-Libra2-Cursor header in the
           response.
         required: false
         deprecated: false
@@ -4230,7 +4230,7 @@ paths:
         Retrieves an individual resource from a given account and at a specific ledger version. If the
         ledger version is not specified in the request, the latest ledger version is used.
 
-        The Aptos nodes prune account state history, via a configurable time window.
+        The Libra2 nodes prune account state history, via a configurable time window.
         If the requested ledger version has been pruned, the server responds with a 410.
       parameters:
       - name: address
@@ -4677,7 +4677,7 @@ paths:
         Retrieves an individual module from a given account and at a specific ledger version. If the
         ledger version is not specified in the request, the latest ledger version is used.
 
-        The Aptos nodes prune account state history, via a configurable time window.
+        The Libra2 nodes prune account state history, via a configurable time window.
         If the requested ledger version has been pruned, the server responds with a 410.
       parameters:
       - name: address
@@ -5129,7 +5129,7 @@ paths:
         fields could themselves be composed of other structs. This makes it
         impractical to express using query params, meaning GET isn't an option.
 
-        The Aptos nodes prune account state history, via a configurable time window.
+        The Libra2 nodes prune account state history, via a configurable time window.
         If the requested ledger version has been pruned, the server responds with a 410.
       parameters:
       - name: table_handle
@@ -5577,7 +5577,7 @@ paths:
         The `get_raw_table_item` requires only a serialized key comparing to the full move type information
         comparing to the `get_table_item` api, and can only return the query in the bcs format.
 
-        The Aptos nodes prune account state history, via a configurable time window.
+        The Libra2 nodes prune account state history, via a configurable time window.
         If the requested ledger version has been pruned, the server responds with a 410.
       parameters:
       - name: table_handle
@@ -6479,13 +6479,13 @@ paths:
 
         To submit a transaction as BCS, you must submit a SignedTransaction
         encoded as BCS. See SignedTransaction in types/src/transaction/mod.rs.
-        Make sure to use the `application/x.aptos.signed_transaction+bcs` Content-Type.
+        Make sure to use the `application/x.libra2.signed_transaction+bcs` Content-Type.
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/SubmitTransactionRequest'
-          application/x.aptos.signed_transaction+bcs:
+          application/x.libra2.signed_transaction+bcs:
             schema:
               type: array
               items:
@@ -6969,7 +6969,7 @@ paths:
         looks the transaction up by hash in the mempool (pending, not yet committed).
 
         To create a transaction hash by yourself, do the following:
-        1. Hash message bytes: "RawTransaction" bytes + BCS bytes of [Transaction](https://aptos-labs.github.io/aptos-core/libra2_types/transaction/enum.Transaction.html).
+        1. Hash message bytes: "RawTransaction" bytes + BCS bytes of [Transaction](https://github.com/libra2org/libra2-core/libra2_types/transaction/enum.Transaction.html).
         2. Apply hash algorithm `SHA3-256` to the hash message bytes.
         3. Hex-encode the hash bytes with `0x` prefix.
       parameters:
@@ -9195,7 +9195,7 @@ paths:
 
         To submit a transaction as BCS, you must submit a SignedTransaction
         encoded as BCS. See SignedTransaction in types/src/transaction/mod.rs.
-        Make sure to use the `application/x.aptos.signed_transaction+bcs` Content-Type.
+        Make sure to use the `application/x.libra2.signed_transaction+bcs` Content-Type.
       requestBody:
         content:
           application/json:
@@ -9203,7 +9203,7 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/SubmitTransactionRequest'
-          application/x.aptos.signed_transaction+bcs:
+          application/x.libra2.signed_transaction+bcs:
             schema:
               type: array
               items:
@@ -9802,7 +9802,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SubmitTransactionRequest'
-          application/x.aptos.signed_transaction+bcs:
+          application/x.libra2.signed_transaction+bcs:
             schema:
               type: array
               items:
@@ -10923,7 +10923,7 @@ paths:
       description: |-
         Execute the Move function with the given parameters and return its execution result.
 
-        The Aptos nodes prune account state history, via a configurable time window.
+        The Libra2 nodes prune account state history, via a configurable time window.
         If the requested ledger version has been pruned, the server responds with a 410.
       parameters:
       - name: ledger_version
@@ -10942,7 +10942,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ViewRequest'
-          application/x.aptos.view_function+bcs:
+          application/x.libra2.view_function+bcs:
             schema:
               type: array
               items:
@@ -12535,7 +12535,7 @@ components:
           1. Empty chars should be ignored when comparing 2 struct tag ids.
           2. When used in an URL path, should be encoded by url-encoding (AKA percent-encoding).
 
-        See [doc](https://aptos.dev/concepts/accounts) for more details.
+        See [doc](https://docs.libra2.org/concepts/accounts) for more details.
       example: 0x1::coin::CoinStore<0x1::libra2_coin::Libra2Coin>
       pattern: ^0x[0-9a-zA-Z:_<>]+$
     MoveStructValue:
@@ -13119,7 +13119,7 @@ components:
           description: The value of the table item's key
     Transaction:
       type: object
-      description: Enum of the different types of transactions in Aptos
+      description: Enum of the different types of transactions in Libra2
       oneOf:
       - $ref: '#/components/schemas/Transaction_PendingTransaction'
       - $ref: '#/components/schemas/Transaction_UserTransaction'

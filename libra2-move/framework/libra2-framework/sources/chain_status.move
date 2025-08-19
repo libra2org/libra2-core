@@ -23,13 +23,13 @@ module libra2_framework::chain_status {
     }
 
     #[view]
-    /// Helper function to determine if Aptos is in genesis state.
+    /// Helper function to determine if Libra2 is in genesis state.
     public fun is_genesis(): bool {
         !exists<GenesisEndMarker>(@libra2_framework)
     }
 
     #[view]
-    /// Helper function to determine if Aptos is operating. This is
+    /// Helper function to determine if Libra2 is operating. This is
     /// the same as `!is_genesis()` and is provided for convenience.
     /// Testing `is_operating()` is more frequent than `is_genesis()`.
     public fun is_operating(): bool {

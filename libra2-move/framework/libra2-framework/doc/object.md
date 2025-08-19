@@ -3586,4 +3586,4 @@ Grant a transfer permission to the permissioned signer using TransferRef.
 </code></pre>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 pub mod components;
@@ -24,7 +24,7 @@ pub fn current_release_config() -> &'static ReleaseConfig {
     &CURRENT_RELEASE_CONFIG
 }
 
-static APTOS_CORE_PATH: OnceCell<PathBuf> = OnceCell::new();
+static LIBRA2_CORE_PATH: OnceCell<PathBuf> = OnceCell::new();
 
 fn libra2_core_path_at_compile_time() -> PathBuf {
     let mut path = Path::new(env!("CARGO_MANIFEST_DIR")).to_path_buf();
@@ -36,16 +36,16 @@ fn libra2_core_path_at_compile_time() -> PathBuf {
 
 pub fn initialize_libra2_core_path(overriden_path: Option<PathBuf>) {
     if let Some(path) = overriden_path {
-        APTOS_CORE_PATH.set(path).unwrap();
+        LIBRA2_CORE_PATH.set(path).unwrap();
     } else {
-        APTOS_CORE_PATH
+        LIBRA2_CORE_PATH
             .set(libra2_core_path_at_compile_time())
             .unwrap();
     };
 }
 
 pub(crate) fn libra2_core_path() -> PathBuf {
-    APTOS_CORE_PATH
+    LIBRA2_CORE_PATH
         .get_or_init(libra2_core_path_at_compile_time)
         .clone()
 }

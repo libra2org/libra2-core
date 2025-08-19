@@ -1,7 +1,7 @@
 ---
-id: Aptos-framework
+id: Libra2-framework
 title: Libra2 Framework
-custom_edit_url: https://github.com/libra2org/libra2-core/edit/main/Aptos-move/Aptos-framework/README.md
+custom_edit_url: https://github.com/libra2org/libra2-core/edit/main/Libra2-move/Libra2-framework/README.md
 ---
 
 ## The Libra2 Framework
@@ -18,16 +18,16 @@ files. See the [Layout](#layout) section for a more detailed overview of the str
 
 Each of the main components of the Libra2 Framework and contributing guidelines are documented separately. See them by version below:
 
-* *Aptos tokens* - [main](https://github.com/libra2org/libra2-core/blob/main/libra2-move/framework/libra2-token/doc/overview.md), [testnet](https://github.com/libra2org/libra2-core/blob/testnet/libra2-move/framework/libra2-token/doc/overview.md), [devnet](https://github.com/libra2org/libra2-core/blob/devnet/libra2-move/framework/libra2-token/doc/overview.md)
-* *Aptos framework* - [main](https://github.com/libra2org/libra2-core/blob/main/libra2-move/framework/libra2-framework/doc/overview.md), [testnet](https://github.com/libra2org/libra2-core/blob/testnet/libra2-move/framework/libra2-framework/doc/overview.md), [devnet](https://github.com/libra2org/libra2-core/blob/devnet/libra2-move/framework/libra2-framework/doc/overview.md)
-* *Aptos stdlib* - [main](https://github.com/libra2org/libra2-core/blob/main/libra2-move/framework/libra2-stdlib/doc/overview.md), [testnet](https://github.com/libra2org/libra2-core/blob/testnet/libra2-move/framework/libra2-stdlib/doc/overview.md), [devnet](https://github.com/libra2org/libra2-core/blob/devnet/libra2-move/framework/libra2-stdlib/doc/overview.md)
+* *Libra2 tokens* - [main](https://github.com/libra2org/libra2-core/blob/main/libra2-move/framework/libra2-token/doc/overview.md), [testnet](https://github.com/libra2org/libra2-core/blob/testnet/libra2-move/framework/libra2-token/doc/overview.md), [devnet](https://github.com/libra2org/libra2-core/blob/devnet/libra2-move/framework/libra2-token/doc/overview.md)
+* *Libra2 framework* - [main](https://github.com/libra2org/libra2-core/blob/main/libra2-move/framework/libra2-framework/doc/overview.md), [testnet](https://github.com/libra2org/libra2-core/blob/testnet/libra2-move/framework/libra2-framework/doc/overview.md), [devnet](https://github.com/libra2org/libra2-core/blob/devnet/libra2-move/framework/libra2-framework/doc/overview.md)
+* *Libra2 stdlib* - [main](https://github.com/libra2org/libra2-core/blob/main/libra2-move/framework/libra2-stdlib/doc/overview.md), [testnet](https://github.com/libra2org/libra2-core/blob/testnet/libra2-move/framework/libra2-stdlib/doc/overview.md), [devnet](https://github.com/libra2org/libra2-core/blob/devnet/libra2-move/framework/libra2-stdlib/doc/overview.md)
 * *Move stdlib* - [main](https://github.com/libra2org/libra2-core/blob/main/libra2-move/framework/move-stdlib/doc/overview.md), [testnet](https://github.com/libra2org/libra2-core/blob/testnet/libra2-move/framework/move-stdlib/doc/overview.md), [devnet](https://github.com/libra2org/libra2-core/blob/devnet/libra2-move/framework/move-stdlib/doc/overview.md)
 
 Follow our [contributing guidelines](CONTRIBUTING.md) and basic coding standards for the Libra2 Framework.
 
 ## Compilation and Generation
 
-The documents above were created by the Move documentation generator for Aptos. It is available as part of the Libra2 CLI. To see its options, run:
+The documents above were created by the Move documentation generator for Libra2. It is available as part of the Libra2 CLI. To see its options, run:
 ```shell
 aptos move document --help
 ```
@@ -92,9 +92,9 @@ cargo test --release -- --skip prover
 The overall structure of the Libra2 Framework is as follows:
 
 ```
-├── libra2-framework                                 # Sources, testing and generated documentation for Aptos framework component
-├── libra2-token                                 # Sources, testing and generated documentation for Aptos token component
-├── libra2-stdlib                                 # Sources, testing and generated documentation for Aptos stdlib component
+├── libra2-framework                                 # Sources, testing and generated documentation for Libra2 framework component
+├── libra2-token                                 # Sources, testing and generated documentation for Libra2 token component
+├── libra2-stdlib                                 # Sources, testing and generated documentation for Libra2 stdlib component
 ├── move-stdlib                                 # Sources, testing and generated documentation for Move stdlib component
 ├── cached-packages                                 # Tooling to generate SDK from move sources.
 ├── src                                     # Compilation and generation of information from Move source files in the Libra2 Framework. Not designed to be used as a Rust library

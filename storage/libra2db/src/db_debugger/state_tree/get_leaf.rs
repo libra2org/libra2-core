@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{db_debugger::common::DbDir, schema::jellyfish_merkle_node::JellyfishMerkleNodeSchema};

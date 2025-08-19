@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
@@ -48,16 +48,16 @@ const FULLNODE_CONFIG_MAP_KEY: &str = "fullnode.yaml";
 
 // the path where the genesis is mounted in the validator
 const GENESIS_CONFIG_VOLUME_NAME: &str = "genesis-config";
-const GENESIS_CONFIG_VOLUME_PATH: &str = "/opt/aptos/genesis";
+const GENESIS_CONFIG_VOLUME_PATH: &str = "/opt/libra2/genesis";
 const GENESIS_CONFIG_WRITABLE_VOLUME_NAME: &str = "writable-genesis";
 
 // the path where the config file is mounted in the fullnode
 const libra2_config_VOLUME_NAME: &str = "libra2-config";
-const libra2_config_VOLUME_PATH: &str = "/opt/aptos/etc";
+const libra2_config_VOLUME_PATH: &str = "/opt/libra2/etc";
 
 // the path where the data volume is mounted in the fullnode
-const APTOS_DATA_VOLUME_NAME: &str = "aptos-data";
-const APTOS_DATA_VOLUME_PATH: &str = "/opt/aptos/data";
+const LIBRA2_DATA_VOLUME_NAME: &str = "libra2-data";
+const LIBRA2_DATA_VOLUME_PATH: &str = "/opt/libra2/data";
 
 /// Derive the fullnode image from the validator image. They will share the same image repo (validator), but not necessarily the version (image tag)
 fn get_fullnode_image_from_validator_image(
@@ -109,7 +109,7 @@ fn create_fullnode_persistent_volume_claim(
 
     Ok(PersistentVolumeClaim {
         metadata: ObjectMeta {
-            name: Some(APTOS_DATA_VOLUME_NAME.to_string()),
+            name: Some(LIBRA2_DATA_VOLUME_NAME.to_string()),
             ..ObjectMeta::default()
         },
         spec: Some(PersistentVolumeClaimSpec {
@@ -172,7 +172,7 @@ fn create_fullnode_container(
         args: Some(vec![
             "/usr/local/bin/libra2-node".to_string(),
             "-f".to_string(),
-            format!("/opt/aptos/etc/{}", FULLNODE_CONFIG_MAP_KEY),
+            format!("/opt/libra2/etc/{}", FULLNODE_CONFIG_MAP_KEY),
         ]),
         volume_mounts: Some(vec![
             VolumeMount {
@@ -181,8 +181,8 @@ fn create_fullnode_container(
                 ..VolumeMount::default()
             },
             VolumeMount {
-                mount_path: APTOS_DATA_VOLUME_PATH.to_string(),
-                name: APTOS_DATA_VOLUME_NAME.to_string(),
+                mount_path: LIBRA2_DATA_VOLUME_PATH.to_string(),
+                name: LIBRA2_DATA_VOLUME_NAME.to_string(),
                 ..VolumeMount::default()
             },
             VolumeMount {
@@ -307,7 +307,7 @@ pub fn get_default_pfn_node_config() -> NodeConfig {
     NodeConfig {
         base: BaseConfig {
             role: RoleType::FullNode,
-            data_dir: PathBuf::from(APTOS_DATA_VOLUME_PATH),
+            data_dir: PathBuf::from(LIBRA2_DATA_VOLUME_PATH),
             waypoint: WaypointConfig::FromFile(waypoint_path),
             ..BaseConfig::default()
         },
@@ -581,12 +581,12 @@ mod tests {
                         containers: vec![Container {
                             name: "validator".to_string(),
                             image: Some(
-                                "banana.fruit.aptos/potato/validator:banana_image_tag".to_string(),
+                                "banana.fruit.libra2/potato/validator:banana_image_tag".to_string(),
                             ),
                             command: Some(vec![
                                 "/usr/local/bin/libra2-node".to_string(),
                                 "-f".to_string(),
-                                "/opt/aptos/etc/validator.yaml".to_string(),
+                                "/opt/libra2/etc/validator.yaml".to_string(),
                             ]),
                             volume_mounts: Some(vec![
                                 VolumeMount {
@@ -595,8 +595,8 @@ mod tests {
                                     ..VolumeMount::default()
                                 },
                                 VolumeMount {
-                                    mount_path: APTOS_DATA_VOLUME_PATH.to_string(),
-                                    name: APTOS_DATA_VOLUME_NAME.to_string(),
+                                    mount_path: LIBRA2_DATA_VOLUME_PATH.to_string(),
+                                    name: LIBRA2_DATA_VOLUME_NAME.to_string(),
                                     ..VolumeMount::default()
                                 },
                                 VolumeMount {
@@ -654,7 +654,7 @@ mod tests {
         );
         let pvc = PersistentVolumeClaim {
             metadata: ObjectMeta {
-                name: Some(APTOS_DATA_VOLUME_NAME.to_string()),
+                name: Some(LIBRA2_DATA_VOLUME_NAME.to_string()),
                 ..ObjectMeta::default()
             },
             spec: Some(PersistentVolumeClaimSpec {

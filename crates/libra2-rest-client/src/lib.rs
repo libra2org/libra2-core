@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -128,8 +128,8 @@ struct ProverResponse {
 }
 
 impl Client {
-    pub fn builder(aptos_base_url: Libra2BaseUrl) -> ClientBuilder {
-        ClientBuilder::new(aptos_base_url)
+    pub fn builder(libra2_base_url: Libra2BaseUrl) -> ClientBuilder {
+        ClientBuilder::new(libra2_base_url)
     }
 
     pub fn new(base_url: Url) -> Self {
@@ -165,7 +165,7 @@ impl Client {
         self.base_url.join("keyless/pepper/v0/fetch").unwrap()
     }
 
-    pub async fn get_aptos_version(&self) -> Libra2Result<Response<Libra2Version>> {
+    pub async fn get_libra2_version(&self) -> Libra2Result<Response<Libra2Version>> {
         self.get_resource::<Libra2Version>(CORE_CODE_ADDRESS, "0x1::version::Version")
             .await
     }

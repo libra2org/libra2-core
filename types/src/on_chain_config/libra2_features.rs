@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::on_chain_config::OnChainConfig;
@@ -20,7 +20,7 @@ pub enum FeatureFlag {
     CODE_DEPENDENCY_CHECK = 1,
     TREAT_FRIEND_AS_PRIVATE = 2,
     SHA_512_AND_RIPEMD_160_NATIVES = 3,
-    APTOS_STD_CHAIN_ID_NATIVES = 4,
+    LIBRA2_STD_CHAIN_ID_NATIVES = 4,
     VM_BINARY_FORMAT_V6 = 5,
     _DEPRECATED_COLLECT_AND_DISTRIBUTE_GAS_FEES = 6,
     MULTI_ED25519_PK_VALIDATE_V2_NATIVES = 7,
@@ -39,7 +39,7 @@ pub enum FeatureFlag {
     CHARGE_INVARIANT_VIOLATION = 20,
     DELEGATION_POOL_PARTIAL_GOVERNANCE_VOTING = 21,
     GAS_PAYER_ENABLED = 22,
-    APTOS_UNIQUE_IDENTIFIERS = 23,
+    LIBRA2_UNIQUE_IDENTIFIERS = 23,
     BULLETPROOFS_NATIVES = 24,
     SIGNER_NATIVE_FORMAT_FIX = 25,
     MODULE_EVENT = 26,
@@ -151,7 +151,7 @@ impl FeatureFlag {
             FeatureFlag::CODE_DEPENDENCY_CHECK,
             FeatureFlag::TREAT_FRIEND_AS_PRIVATE,
             FeatureFlag::SHA_512_AND_RIPEMD_160_NATIVES,
-            FeatureFlag::APTOS_STD_CHAIN_ID_NATIVES,
+            FeatureFlag::LIBRA2_STD_CHAIN_ID_NATIVES,
             // Feature flag V6 is used to enable metadata v1 format and needs to stay on, even
             // if we enable a higher version.
             FeatureFlag::VM_BINARY_FORMAT_V6,
@@ -171,7 +171,7 @@ impl FeatureFlag {
             FeatureFlag::STORAGE_SLOT_METADATA,
             FeatureFlag::CHARGE_INVARIANT_VIOLATION,
             FeatureFlag::DELEGATION_POOL_PARTIAL_GOVERNANCE_VOTING,
-            FeatureFlag::APTOS_UNIQUE_IDENTIFIERS,
+            FeatureFlag::LIBRA2_UNIQUE_IDENTIFIERS,
             FeatureFlag::GAS_PAYER_ENABLED,
             FeatureFlag::BULLETPROOFS_NATIVES,
             FeatureFlag::SIGNER_NATIVE_FORMAT_FIX,

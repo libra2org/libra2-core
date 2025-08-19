@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -125,31 +125,31 @@ fn get_demo_accounts() -> (
 }
 
 fn get_libra2_coin_mint_transaction(
-    aptos_root_key: &Ed25519PrivateKey,
-    aptos_root_seq_num: u64,
+    libra2_root_key: &Ed25519PrivateKey,
+    libra2_root_seq_num: u64,
     account: &AccountAddress,
     amount: u64,
 ) -> Transaction {
     get_test_signed_transaction(
         libra2_test_root_address(),
-        /* sequence_number = */ aptos_root_seq_num,
-        aptos_root_key.clone(),
-        aptos_root_key.public_key(),
+        /* sequence_number = */ libra2_root_seq_num,
+        libra2_root_key.clone(),
+        libra2_root_key.public_key(),
         Some(libra2_stdlib::libra2_coin_mint(*account, amount)),
     )
 }
 
 fn get_account_transaction(
-    aptos_root_key: &Ed25519PrivateKey,
-    aptos_root_seq_num: u64,
+    libra2_root_key: &Ed25519PrivateKey,
+    libra2_root_seq_num: u64,
     account: &AccountAddress,
     _account_key: &Ed25519PrivateKey,
 ) -> Transaction {
     get_test_signed_transaction(
         libra2_test_root_address(),
-        /* sequence_number = */ aptos_root_seq_num,
-        aptos_root_key.clone(),
-        aptos_root_key.public_key(),
+        /* sequence_number = */ libra2_root_seq_num,
+        libra2_root_key.clone(),
+        libra2_root_key.public_key(),
         Some(libra2_stdlib::libra2_account_create_account(*account)),
     )
 }

@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -79,7 +79,7 @@ pub enum HandshakeAuthMode {
     /// In `Mutual` mode, both sides will authenticate each other with their
     /// `trusted_peers` set. We also include replay attack mitigation in this mode.
     ///
-    /// For example, in the Aptos validator network, validator peers will only
+    /// For example, in the Libra2 validator network, validator peers will only
     /// allow connections from other validator peers. They will use this mode to
     /// check that inbound connections authenticate to a network public key
     /// actually contained in the current validator set.

@@ -4,12 +4,12 @@
 # Module `0x7::large_packages`
 
 
-<a id="@Aptos_Large_Packages_Framework_0"></a>
+<a id="@Libra2_Large_Packages_Framework_0"></a>
 
-## Aptos Large Packages Framework
+## Libra2 Large Packages Framework
 
 
-This module provides a framework for uploading large packages to the Aptos network, under standard
+This module provides a framework for uploading large packages to the Libra2 network, under standard
 accounts or objects.
 To publish using this API, you must divide your metadata and modules across multiple calls
 into <code><a href="large_packages.md#0x7_large_packages_stage_code_chunk">large_packages::stage_code_chunk</a></code>.
@@ -61,7 +61,7 @@ from <code>code_indices</code>, and <code>assemble_module_code</code> will looku
 0 to <code><a href="large_packages.md#0x7_large_packages_StagingArea">StagingArea</a>.last_module_idx</code> in turn.
 
 
--  [Aptos Large Packages Framework](#@Aptos_Large_Packages_Framework_0)
+-  [Libra2 Large Packages Framework](#@Libra2_Large_Packages_Framework_0)
 -  [Usage](#@Usage_1)
 -  [Notes](#@Notes_2)
 -  [Resource `StagingArea`](#0x7_large_packages_StagingArea)
@@ -521,4 +521,4 @@ Object reference should be provided when upgrading object code.
 </details>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

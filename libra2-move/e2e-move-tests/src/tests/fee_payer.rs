@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{assert_abort, assert_success, tests::common, MoveHarness};
@@ -44,8 +44,8 @@ fn test_existing_account_with_fee_payer() {
     let alice = h.new_account_with_balance_and_sequence_number(0, 0);
     let bob = h.new_account_at(AccountAddress::from_hex_literal("0xb0b").unwrap());
 
-    let alice_start = h.read_aptos_balance(alice.address());
-    let bob_start = h.read_aptos_balance(bob.address());
+    let alice_start = h.read_libra2_balance(alice.address());
+    let bob_start = h.read_libra2_balance(bob.address());
 
     let payload = libra2_stdlib::libra2_coin_transfer(*alice.address(), 0);
     let transaction = TransactionBuilder::new(alice.clone())
@@ -59,8 +59,8 @@ fn test_existing_account_with_fee_payer() {
     let output = h.run_raw(transaction);
     assert_success!(*output.status());
 
-    let alice_after = h.read_aptos_balance(alice.address());
-    let bob_after = h.read_aptos_balance(bob.address());
+    let alice_after = h.read_libra2_balance(alice.address());
+    let bob_after = h.read_libra2_balance(bob.address());
 
     assert_eq!(alice_start, alice_after);
     assert!(bob_start > bob_after);
@@ -79,8 +79,8 @@ fn test_existing_account_with_fee_payer_aborts() {
     let alice = h.new_account_with_balance_and_sequence_number(0, 0);
     let bob = h.new_account_at(AccountAddress::from_hex_literal("0xb0b").unwrap());
 
-    let alice_start = h.read_aptos_balance(alice.address());
-    let bob_start = h.read_aptos_balance(bob.address());
+    let alice_start = h.read_libra2_balance(alice.address());
+    let bob_start = h.read_libra2_balance(bob.address());
 
     let payload = libra2_stdlib::libra2_coin_transfer(*alice.address(), 1);
     let transaction = TransactionBuilder::new(alice.clone())
@@ -95,8 +95,8 @@ fn test_existing_account_with_fee_payer_aborts() {
     // Alice has an insufficient balance, trying to 1 when she has 0.
     assert_abort!(output.status(), 65540);
 
-    let alice_after = h.read_aptos_balance(alice.address());
-    let bob_after = h.read_aptos_balance(bob.address());
+    let alice_after = h.read_libra2_balance(alice.address());
+    let bob_after = h.read_libra2_balance(bob.address());
 
     assert_eq!(alice_start, alice_after);
     assert!(bob_start > bob_after);
@@ -120,7 +120,7 @@ fn test_account_not_exist_with_fee_payer() {
         CoinStoreResource::<Libra2CoinType>::struct_tag(),
     );
     assert!(alice_start.is_none());
-    let bob_start = h.read_aptos_balance(bob.address());
+    let bob_start = h.read_libra2_balance(bob.address());
 
     let payload = libra2_stdlib::libra2_account_set_allow_direct_coin_transfers(true);
     let transaction = TransactionBuilder::new(alice.clone())
@@ -139,7 +139,7 @@ fn test_account_not_exist_with_fee_payer() {
         CoinStoreResource::<Libra2CoinType>::struct_tag(),
     );
     assert!(alice_after.is_none());
-    let bob_after = h.read_aptos_balance(bob.address());
+    let bob_after = h.read_libra2_balance(bob.address());
 
     assert!(bob_start > bob_after);
 }
@@ -162,7 +162,7 @@ fn test_account_not_exist_with_fee_payer_insufficient_gas() {
         CoinStoreResource::<Libra2CoinType>::struct_tag(),
     );
     assert!(alice_start.is_none());
-    let bob_start = h.read_aptos_balance(bob.address());
+    let bob_start = h.read_libra2_balance(bob.address());
 
     let payload = libra2_stdlib::libra2_coin_transfer(*alice.address(), 1);
     let transaction = TransactionBuilder::new(alice.clone())
@@ -184,7 +184,7 @@ fn test_account_not_exist_with_fee_payer_insufficient_gas() {
         CoinStoreResource::<Libra2CoinType>::struct_tag(),
     );
     assert!(alice_after.is_none());
-    let bob_after = h.read_aptos_balance(bob.address());
+    let bob_after = h.read_libra2_balance(bob.address());
     assert_eq!(bob_start, bob_after);
 }
 
@@ -206,7 +206,7 @@ fn test_account_not_exist_and_move_abort_with_fee_payer_create_account() {
         CoinStoreResource::<Libra2CoinType>::struct_tag(),
     );
     assert!(alice_start.is_none());
-    let bob_start = h.read_aptos_balance(bob.address());
+    let bob_start = h.read_libra2_balance(bob.address());
 
     // script {
     //     fun main() {
@@ -243,7 +243,7 @@ fn test_account_not_exist_and_move_abort_with_fee_payer_create_account() {
         CoinStoreResource::<Libra2CoinType>::struct_tag(),
     );
     assert!(alice_after.is_none());
-    let bob_after = h.read_aptos_balance(bob.address());
+    let bob_after = h.read_libra2_balance(bob.address());
 
     assert_eq!(h.sequence_number(alice.address()), 1);
     assert!(bob_start > bob_after);

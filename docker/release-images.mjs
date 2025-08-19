@@ -56,7 +56,7 @@ const IMAGES_TO_RELEASE_BY_RELEASE_GROUP = {
     "faucet",
     "tools",
   ],
-  "aptos-indexer-grpc": [
+  "libra2-indexer-grpc": [
     "indexer-grpc",
   ],
 }
@@ -180,7 +180,7 @@ async function main() {
 
 // The image tag prefix is used to determine the release group. Examples:
 // * tag a release as "libra2-node-vX.Y.Z"
-// * tag a release as "aptos-indexer-grpc-vX.Y.Z"
+// * tag a release as "libra2-indexer-grpc-vX.Y.Z"
 export function getImageReleaseGroupByImageTagPrefix(prefix) {
   // iterate over the keys in IMAGES_TO_RELEASE_BY_RELEASE_GROUP
   // if the prefix includes the release group, then return the release group

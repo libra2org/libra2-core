@@ -1,6 +1,6 @@
 [package]
 name = "libra2-fn-check-client"
-description = "Tool to check the health of all VFNs registered in the validator set of an Aptos network or PFNs from a config file"
+description = "Tool to check the health of all VFNs registered in the validator set of an Libra2 network or PFNs from a config file"
 version = "0.1.1"
 
 # Workspace inherited keys

@@ -12,7 +12,7 @@ resource "random_string" "validator-dns" {
 locals {
   dns_prefix  = var.workspace_dns ? "${local.workspace_name}." : ""
   record_name = replace(var.record_name, "<workspace>", local.workspace_name)
-  domain      = var.zone_name != "" ? "${local.dns_prefix}${data.google_dns_managed_zone.aptos[0].dns_name}" : null
+  domain      = var.zone_name != "" ? "${local.dns_prefix}${data.google_dns_managed_zone.libra2[0].dns_name}" : null
 }
 
 data "kubernetes_service" "validator-lb" {
@@ -39,9 +39,9 @@ data "google_dns_managed_zone" "aptos" {
 
 resource "google_dns_record_set" "validator" {
   count        = var.zone_name != "" && var.create_dns_records ? 1 : 0
-  managed_zone = data.google_dns_managed_zone.aptos[0].name
-  project      = data.google_dns_managed_zone.aptos[0].project
-  name         = "${random_string.validator-dns.result}.${local.record_name}.${data.google_dns_managed_zone.aptos[0].dns_name}"
+  managed_zone = data.google_dns_managed_zone.libra2[0].name
+  project      = data.google_dns_managed_zone.libra2[0].project
+  name         = "${random_string.validator-dns.result}.${local.record_name}.${data.google_dns_managed_zone.libra2[0].dns_name}"
   type         = "A"
   ttl          = var.dns_ttl
   rrdatas      = [data.kubernetes_service.validator-lb[0].status[0].load_balancer[0].ingress[0].ip]
@@ -49,9 +49,9 @@ resource "google_dns_record_set" "validator" {
 
 resource "google_dns_record_set" "fullnode" {
   count        = var.zone_name != "" && var.create_dns_records ? 1 : 0
-  managed_zone = data.google_dns_managed_zone.aptos[0].name
-  project      = data.google_dns_managed_zone.aptos[0].project
-  name         = "${local.record_name}.${data.google_dns_managed_zone.aptos[0].dns_name}"
+  managed_zone = data.google_dns_managed_zone.libra2[0].name
+  project      = data.google_dns_managed_zone.libra2[0].project
+  name         = "${local.record_name}.${data.google_dns_managed_zone.libra2[0].dns_name}"
   type         = "A"
   ttl          = var.dns_ttl
   rrdatas      = [data.kubernetes_service.fullnode-lb[0].status[0].load_balancer[0].ingress[0].ip]

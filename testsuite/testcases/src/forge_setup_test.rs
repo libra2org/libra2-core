@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::generate_traffic;
@@ -14,7 +14,7 @@ use rand::{
 };
 use std::{ops::DerefMut, thread, time::Duration};
 
-const STATE_SYNC_VERSION_COUNTER_NAME: &str = "aptos_state_sync_version";
+const STATE_SYNC_VERSION_COUNTER_NAME: &str = "libra2_state_sync_version";
 
 pub struct ForgeSetupTest;
 

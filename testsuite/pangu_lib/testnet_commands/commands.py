@@ -40,7 +40,7 @@ import pangu_lib.util as util
     help="Pass the path to the folder you would like the genesis files to be generated (default is a temp folder).",
 )
 @click.option(
-    "--aptos-cli-path",
+    "--libra2-cli-path",
     default="aptos",
     help="Pass the path to the aptos CLI if it is not in your $PATH var.",
 )

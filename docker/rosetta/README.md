@@ -1,6 +1,6 @@
 # Rosetta API Dockerfile
 
-This directory contains a Dockerfile meant to build a [Rosetta compliant Docker image](https://www.rosetta-api.org/docs/node_deployment.html) of Aptos.
+This directory contains a Dockerfile meant to build a [Rosetta compliant Docker image](https://www.rosetta-api.org/docs/node_deployment.html) of Libra2.
 
 ## One-shot devnet deployment
 
@@ -11,8 +11,8 @@ This will build an image from the main branch of libra2-core at the time you run
 ./docker/rosetta/docker-build-rosetta.sh && \
 mkdir -p data && \
 cp config/src/config/test_data/public_full_node.yaml data/fullnode.yaml && \
-curl -o data/genesis.blob https://devnet.aptoslabs.com/genesis.blob && \
-curl -o data/waypoint.txt https://devnet.aptoslabs.com/waypoint.txt && \
+curl -o data/genesis.blob https://devnet.libra2.org/genesis.blob && \
+curl -o data/waypoint.txt https://devnet.libra2.org/waypoint.txt && \
 docker run -p 8082:8082 --rm -v $(pwd)/data:/opt/libra2/data libra2-core:rosetta-latest online --config /opt/libra2/data/fullnode.yaml
 ```
 
@@ -37,7 +37,7 @@ docker buildx build --file docker/rosetta/rosetta.Dockerfile --build-arg=GIT_REF
 The rosetta docker image contains a single binary `libra2-rosetta` which is meant to run a fullnode and rosetta API:
 
 In order to run it, create a `data` directory and put a `fullnode.yaml`, `genesis.blob` and `waypoint.txt` into it.
-Since libra2-rosetta is essentially just a special fullnode with a rosetta API, you can follow these instructions to fetch or create these config files: https://aptos.dev/nodes/full-node/fullnode-source-code-or-docker.
+Since libra2-rosetta is essentially just a special fullnode with a rosetta API, you can follow these instructions to fetch or create these config files: https://docs.libra2.org/nodes/full-node/fullnode-source-code-or-docker.
 
 Once you've built the image and put all the config data in the `data` directory you can run libra2-rosetta via:
 

@@ -163,7 +163,7 @@ impl Options {
                 Arg::new("aptos")
                     .long("aptos")
                     .action(SetTrue)
-                    .help("configures the prover to use Aptos natives")
+                    .help("configures the prover to use Libra2 natives")
             )
             .arg(
                 Arg::new("compiler-v2")

@@ -1,6 +1,6 @@
-# Aptos Protos
+# Libra2 Protos
 
-This repository contains the protobuf definitions for the Aptos tech stack.
+This repository contains the protobuf definitions for the Libra2 tech stack.
 
 ## Usage
 Import the generated code like this:

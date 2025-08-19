@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use super::{CheckResult, Checker, CheckerError, CommonCheckerConfig};
@@ -19,7 +19,7 @@ const CPU_COUNT_KEY: &str = "cpu_count";
 const MEMORY_TOTAL_KEY: &str = "memory_total";
 
 const NODE_REQUIREMENTS_DOC_LINK: &str =
-    "https://aptos.dev/nodes/validator-node/operator/node-requirements";
+    "https://docs.libra2.org/nodes/validator-node/operator/node-requirements";
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(deny_unknown_fields)]

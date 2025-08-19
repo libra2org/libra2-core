@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -9,7 +9,7 @@ use libra2_types::transaction::{ExecutionStatus, TransactionStatus};
 #[test]
 fn mint_to_new_account() {
     let mut executor = FakeExecutor::from_head_genesis();
-    let mut root = Account::new_aptos_root();
+    let mut root = Account::new_libra2_root();
     let (private_key, public_key) = libra2_vm_genesis::GENESIS_KEYPAIR.clone();
     root.rotate_key(private_key, public_key);
 

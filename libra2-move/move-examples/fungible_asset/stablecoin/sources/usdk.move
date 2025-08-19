@@ -158,7 +158,7 @@ module stablecoin::usdk {
     }
 
     /// Allow a spender to transfer tokens from the owner's account given their signed approval.
-    /// Caller needs to provide the from account's scheme and public key which can be gotten via the Aptos SDK.
+    /// Caller needs to provide the from account's scheme and public key which can be gotten via the Libra2 SDK.
     public fun transfer_from(
         spender: &signer,
         proof: vector<u8>,

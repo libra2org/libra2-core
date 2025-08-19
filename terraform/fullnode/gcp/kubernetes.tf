@@ -1,6 +1,6 @@
 provider "kubernetes" {
-  host                   = "https://${google_container_cluster.aptos.endpoint}"
-  cluster_ca_certificate = base64decode(google_container_cluster.aptos.master_auth[0].cluster_ca_certificate)
+  host                   = "https://${google_container_cluster.libra2.endpoint}"
+  cluster_ca_certificate = base64decode(google_container_cluster.libra2.master_auth[0].cluster_ca_certificate)
   token                  = data.google_client_config.provider.access_token
 }
 
@@ -23,8 +23,8 @@ resource "kubernetes_storage_class" "ssd" {
 
 provider "helm" {
   kubernetes {
-    host                   = "https://${google_container_cluster.aptos.endpoint}"
-    cluster_ca_certificate = base64decode(google_container_cluster.aptos.master_auth[0].cluster_ca_certificate)
+    host                   = "https://${google_container_cluster.libra2.endpoint}"
+    cluster_ca_certificate = base64decode(google_container_cluster.libra2.master_auth[0].cluster_ca_certificate)
     token                  = data.google_client_config.provider.access_token
   }
 }

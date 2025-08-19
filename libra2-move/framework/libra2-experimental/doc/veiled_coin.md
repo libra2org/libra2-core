@@ -29,7 +29,7 @@ Suppose Bob also registers and veils <code>b</code> of his own coins of type <co
 
 Now Alice can use <code>fully_veiled_transfer</code> to send to Bob a secret amount <code>v</code> of coins from her veiled balance.
 This will, for the first time, properly hide both Alice's and Bob's veiled balance.
-The only information that an attacker (e.g., an Aptos validator) learns, is that Alice transferred an unknown amount
+The only information that an attacker (e.g., an Libra2 validator) learns, is that Alice transferred an unknown amount
 <code>v</code> to Bob (including $v=0$), and as a result Alice's veiled balance is in a range [a-v, a] and Bob's veiled balance
 is in [b, b+v]<code>.
 
@@ -80,7 +80,7 @@ encryption keypair.
 
 
 Veiled <a href="../../libra2-framework/doc/coin.md#0x1_coin">coin</a> amounts must be specified <b>as</b> </code>u32<code>'s rather than </code>u64<code>'s <b>as</b> would be typical for normal coins in the
-Aptos framework. This is because <a href="../../libra2-framework/doc/coin.md#0x1_coin">coin</a> amounts must be encrypted <b>with</b> an *efficient*, additively-homomorphic encryption
+Libra2 framework. This is because <a href="../../libra2-framework/doc/coin.md#0x1_coin">coin</a> amounts must be encrypted <b>with</b> an *efficient*, additively-homomorphic encryption
 scheme. Currently, our best candidate is ElGamal encryption in the exponent, which can only decrypt values around
 32 bits or slightly larger.
 
@@ -1558,4 +1558,4 @@ Mints a veiled coin from a normal coin, shelving the normal coin into the resour
 </details>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

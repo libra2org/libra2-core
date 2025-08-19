@@ -2,7 +2,7 @@ apiVersion: v2
 name: libra2-genesis
 version: 0.1.0
 appVersion: 0.1.0
-description: Aptos blockchain automated genesis ceremony for testnets
+description: Libra2 blockchain automated genesis ceremony for testnets
 home: https://aptoslabs.com/
 sources:
 - https://github.com/libra2org/libra2-core

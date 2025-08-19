@@ -682,4 +682,4 @@ The <code>elem_deserializer</code> lambda expression is used to deserialize the 
 </code></pre>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

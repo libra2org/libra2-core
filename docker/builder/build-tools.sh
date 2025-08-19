@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright (c) Aptos
+# Copyright (c) Libra2
 # SPDX-License-Identifier: Apache-2.0
 set -e
 
@@ -44,6 +44,6 @@ for BIN in "${BINS[@]}"; do
     cp $CARGO_TARGET_DIR/$PROFILE/$BIN dist/$BIN
 done
 
-# Build the Aptos Move framework and place it in dist. It can be found afterwards in the current directory.
-echo "Building the Aptos Move framework..."
+# Build the Libra2 Move framework and place it in dist. It can be found afterwards in the current directory.
+echo "Building the Libra2 Move framework..."
 (cd dist && cargo run --locked --profile=$PROFILE --package libra2-framework -- release)

@@ -1,4 +1,4 @@
-// Copyright (c) Aptos Foundation
+// Copyright (c) A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use anyhow::{anyhow, Context, Result};
@@ -7,7 +7,7 @@ use tracing::info;
 
 pub const HASURA_IMAGE: &str = "hasura/graphql-engine:v2.44.0-ce";
 
-/// This Hasura metadata originates from the aptos-indexer-processors repo.
+/// This Hasura metadata originates from the libra2-indexer-processors repo.
 ///
 /// This metadata here should come from the same revision as the `processor` dep.
 ///
@@ -15,7 +15,7 @@ pub const HASURA_IMAGE: &str = "hasura/graphql-engine:v2.44.0-ce";
 /// any references to tables that aren't created by the Rust processor migrations.
 ///
 /// To arrive at the final edited file I normally start with the new metadata file,
-/// try to start the localnet, and check .aptos/testnet/main/tracing.log to
+/// try to start the localnet, and check .libra2/testnet/main/tracing.log to
 /// see what error Hasura returned. Remove the culprit from the metadata, which is
 /// generally a few tables and relations to those tables, and try again. Repeat until
 /// it accepts the metadata.

@@ -1,6 +1,6 @@
 [package]
-name = "aptos-indexer"
-description = "Aptos Indexer"
+name = "libra2-indexer"
+description = "Libra2 Indexer"
 version = "0.0.2"
 
 # Workspace inherited keys

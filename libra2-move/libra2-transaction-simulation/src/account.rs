@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -102,7 +102,7 @@ impl Account {
     /// Creates a new account in memory.
     ///
     /// The account returned by this constructor is a purely logical entity, meaning that it does
-    /// not automatically get added to the Aptos store. To add an account to the store, use
+    /// not automatically get added to the Libra2 store. To add an account to the store, use
     /// [`AccountData`] instances with
     /// [`FakeExecutor::add_account_data`][crate::executor::FakeExecutor::add_account_data].
     /// This function returns distinct values upon every call.
@@ -185,7 +185,7 @@ impl Account {
     ///
     /// The address will be [`libra2_test_root_address`][account_config::libra2_test_root_address], and
     /// the account will use [`GENESIS_KEYPAIR`][static@GENESIS_KEYPAIR] as its keypair.
-    pub fn new_aptos_root() -> Self {
+    pub fn new_libra2_root() -> Self {
         Self::new_genesis_account(account_config::libra2_test_root_address())
     }
 

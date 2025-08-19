@@ -120,7 +120,7 @@ module libra2_experimental::sigma_protos {
     //
 
     /// The domain separation tag (DST) used in the Fiat-Shamir transform of our $\Sigma$-protocol.
-    const FIAT_SHAMIR_SIGMA_DST: vector<u8> = b"AptosVeiledCoin/WithdrawalSubproofFiatShamir";
+    const FIAT_SHAMIR_SIGMA_DST: vector<u8> = b"Libra2VeiledCoin/WithdrawalSubproofFiatShamir";
 
     //
     // Structs

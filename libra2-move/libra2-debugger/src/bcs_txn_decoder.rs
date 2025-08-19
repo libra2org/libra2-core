@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::libra2_debugger::Libra2Debugger;
@@ -47,7 +47,7 @@ impl Command {
         println!("Chain ID: {}", chain_id.id());
         println!("Network: {}", network);
 
-        let endpoint = format!("https://{}.aptoslabs.com/v1", network);
+        let endpoint = format!("https://{}.libra2.org/v1", network);
         let debugger = Libra2Debugger::rest_client(Client::new(Url::parse(&endpoint)?))?;
         let version = debugger
             .get_version_by_account_sequence(txn.sender(), txn.sequence_number())
@@ -55,11 +55,11 @@ impl Command {
             .unwrap();
         println!("Version: {:?}", version);
         println!(
-            "Overview: https://explorer.aptoslabs.com/txn/{:?}/userTxnOverview?network={}",
+            "Overview: https://explorer.libra2.org/txn/{:?}/userTxnOverview?network={}",
             version, network
         );
         println!(
-            "Payload: https://explorer.aptoslabs.com/txn/{:?}/payload?network={}",
+            "Payload: https://explorer.libra2.org/txn/{:?}/payload?network={}",
             version, network
         );
 

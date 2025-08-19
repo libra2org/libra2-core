@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 //! In order to use a type with poem-openapi, it must implement a certain set
@@ -8,7 +8,7 @@
 //! traits such as Object, Enum, Union, etc. However, in some cases, it is
 //! not feasible to use these derives.
 //!
-//!   - The type is outside of reach, e.g. in a crate in aptos-core that is
+//!   - The type is outside of reach, e.g. in a crate in libra2-core that is
 //!     too unrelated, or even worse, in a totally different crate (the move
 //!     types are a great example of this).
 //!   - The type is not expressible via OpenAPI. For example, an enum that

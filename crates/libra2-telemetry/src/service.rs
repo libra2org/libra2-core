@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 #![forbid(unsafe_code)]
@@ -54,45 +54,45 @@ static TELEMETRY_TOKEN: Lazy<String> = Lazy::new(|| {
 /// Returns true iff telemetry is disabled
 #[inline]
 pub fn telemetry_is_disabled() -> bool {
-    env::var(ENV_APTOS_DISABLE_TELEMETRY).is_ok()
+    env::var(ENV_LIBRA2_DISABLE_TELEMETRY).is_ok()
 }
 
 /// Flag to force enabling/disabling of telemetry
 #[inline]
 fn force_enable_telemetry() -> bool {
-    env::var(ENV_APTOS_FORCE_ENABLE_TELEMETRY).is_ok()
+    env::var(ENV_LIBRA2_FORCE_ENABLE_TELEMETRY).is_ok()
 }
 
 /// Flag to control enabling/disabling prometheus push metrics
 #[inline]
 fn enable_prometheus_push_metrics() -> bool {
     force_enable_telemetry()
-        || !(telemetry_is_disabled() || env::var(ENV_APTOS_DISABLE_TELEMETRY_PUSH_METRICS).is_ok())
+        || !(telemetry_is_disabled() || env::var(ENV_LIBRA2_DISABLE_TELEMETRY_PUSH_METRICS).is_ok())
 }
 
 #[inline]
 fn enable_prometheus_node_metrics() -> bool {
-    env::var(ENV_APTOS_DISABLE_PROMETHEUS_NODE_METRICS).is_err()
+    env::var(ENV_LIBRA2_DISABLE_PROMETHEUS_NODE_METRICS).is_err()
 }
 
 /// Flag to control enabling/disabling push logs
 #[inline]
 fn enable_push_logs() -> bool {
     force_enable_telemetry()
-        || !(telemetry_is_disabled() || env::var(ENV_APTOS_DISABLE_TELEMETRY_PUSH_LOGS).is_ok())
+        || !(telemetry_is_disabled() || env::var(ENV_LIBRA2_DISABLE_TELEMETRY_PUSH_LOGS).is_ok())
 }
 
 /// Flag to control enabling/disabling telemetry push events
 #[inline]
 fn enable_push_custom_events() -> bool {
     force_enable_telemetry()
-        || !(telemetry_is_disabled() || env::var(ENV_APTOS_DISABLE_TELEMETRY_PUSH_EVENTS).is_ok())
+        || !(telemetry_is_disabled() || env::var(ENV_LIBRA2_DISABLE_TELEMETRY_PUSH_EVENTS).is_ok())
 }
 
 #[inline]
 fn enable_log_env_polling() -> bool {
     force_enable_telemetry()
-        || !(telemetry_is_disabled() || env::var(ENV_APTOS_DISABLE_LOG_ENV_POLLING).is_ok())
+        || !(telemetry_is_disabled() || env::var(ENV_LIBRA2_DISABLE_LOG_ENV_POLLING).is_ok())
 }
 
 /// Starts the telemetry service and returns the execution runtime.
@@ -110,7 +110,7 @@ pub fn start_telemetry_service(
 
     // Don't start the service if telemetry has been disabled
     if telemetry_is_disabled() {
-        warn!("Aptos telemetry is disabled!");
+        warn!("Libra2 telemetry is disabled!");
         return None;
     }
 
@@ -156,7 +156,7 @@ async fn spawn_telemetry_service(
 
     if !force_enable_telemetry() && !telemetry_sender.check_chain_access(chain_id).await {
         warn!(
-                "Aptos telemetry is not sent to the telemetry service because the service is not configured for chain ID {}",
+                "Libra2 telemetry is not sent to the telemetry service because the service is not configured for chain ID {}",
                 chain_id
             );
         // Spawn the custom event sender to send to GA4 only.
@@ -177,7 +177,7 @@ async fn spawn_telemetry_service(
             interval.tick().await;
             if telemetry_sender.check_chain_access(chain_id).await {
                 handle.abort();
-                info!("Aptos telemetry service is now configured for Chain ID {}. Starting telemetry service...", chain_id);
+                info!("Libra2 telemetry service is now configured for Chain ID {}. Starting telemetry service...", chain_id);
                 break;
             }
         }
@@ -451,9 +451,9 @@ async fn send_telemetry_event(
 ) -> JoinHandle<()> {
     // Parse the Google analytics env variables
     let api_secret =
-        env::var(ENV_GA_API_SECRET).unwrap_or_else(|_| APTOS_GA_API_SECRET.to_string());
+        env::var(ENV_GA_API_SECRET).unwrap_or_else(|_| LIBRA2_GA_API_SECRET.to_string());
     let measurement_id =
-        env::var(ENV_GA_MEASUREMENT_ID).unwrap_or_else(|_| APTOS_GA_MEASUREMENT_ID.to_string());
+        env::var(ENV_GA_MEASUREMENT_ID).unwrap_or_else(|_| LIBRA2_GA_MEASUREMENT_ID.to_string());
 
     // Create and send the telemetry dump
     let event_name = telemetry_event.name.clone();
@@ -476,7 +476,7 @@ async fn send_telemetry_event(
             telemetry_dump,
         )
     } else {
-        // Aptos nodes send their metrics to libra2-telemetry-service crate.
+        // Libra2 nodes send their metrics to libra2-telemetry-service crate.
         spawn_event_sender_to_telemetry_service(event_name, telemetry_sender, telemetry_dump)
     }
 }

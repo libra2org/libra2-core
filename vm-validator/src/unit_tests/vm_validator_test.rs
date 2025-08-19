@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -63,7 +63,7 @@ impl std::ops::Deref for TestValidator {
 // errors are not exercised:
 // * SEQUENCE_NUMBER_TOO_OLD -- We can't test sequence number too old here without running execution
 //   first in order to bump the account's sequence number. This needs to (and is) tested in the
-//   language e2e tests in: aptos-core/language/e2e-testsuite/src/tests/verify_txn.rs ->
+//   language e2e tests in: libra2-core/language/e2e-testsuite/src/tests/verify_txn.rs ->
 //   verify_simple_payment.
 // * SEQUENCE_NUMBER_TOO_NEW -- This error is filtered out when running validation; it is only
 //   testable when running the executor.

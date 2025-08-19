@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
@@ -14,7 +14,7 @@ use libra2_types::{
     executable::ModulePath,
     state_store::{state_value::StateValueMetadata, TStateView},
     transaction::BlockExecutableTransaction as Transaction,
-    vm::modules::AptosModuleExtension,
+    vm::modules::Libra2ModuleExtension,
 };
 use libra2_vm_types::module_and_script_storage::module_storage::Libra2ModuleStorage;
 #[cfg(test)]
@@ -42,7 +42,7 @@ impl<T: Transaction, S: TStateView<Key = T::Key>> WithRuntimeEnvironment for Lat
 
 impl<T: Transaction, S: TStateView<Key = T::Key>> ModuleCodeBuilder for LatestView<'_, T, S> {
     type Deserialized = CompiledModule;
-    type Extension = AptosModuleExtension;
+    type Extension = Libra2ModuleExtension;
     type Key = ModuleId;
     type Verified = Module;
 
@@ -54,7 +54,7 @@ impl<T: Transaction, S: TStateView<Key = T::Key>> ModuleCodeBuilder for LatestVi
         self.get_raw_base_value(&key)
             .map_err(|err| err.finish(Location::Undefined))?
             .map(|state_value| {
-                let extension = Arc::new(AptosModuleExtension::new(state_value));
+                let extension = Arc::new(Libra2ModuleExtension::new(state_value));
                 let compiled_module = self
                     .runtime_environment()
                     .deserialize_into_compiled_module(extension.bytes())?;
@@ -66,7 +66,7 @@ impl<T: Transaction, S: TStateView<Key = T::Key>> ModuleCodeBuilder for LatestVi
 
 impl<T: Transaction, S: TStateView<Key = T::Key>> ModuleCache for LatestView<'_, T, S> {
     type Deserialized = CompiledModule;
-    type Extension = AptosModuleExtension;
+    type Extension = Libra2ModuleExtension;
     type Key = ModuleId;
     type Verified = Module;
     type Version = Option<TxnIndex>;
@@ -231,7 +231,7 @@ impl<T: Transaction, S: TStateView<Key = T::Key>> LatestView<'_, T, S> {
         Key = ModuleId,
         Deserialized = CompiledModule,
         Verified = Module,
-        Extension = AptosModuleExtension,
+        Extension = Libra2ModuleExtension,
         Version = Option<TxnIndex>,
     > {
         match &self.latest_view {

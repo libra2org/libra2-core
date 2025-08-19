@@ -41,7 +41,7 @@ spec:
         - mountPath: /opt/aptos/identites
           name: aptos-secret
         - mountPath: /opt/aptos/data
-          name: aptos-data
+          name: libra2-data
       volumes:
       - configMap:
           name: test_username-vfn-configmap
@@ -52,6 +52,6 @@ spec:
       - name: aptos-secret
         secret:
           secretName: identity-secrets-test_username
-      - name: aptos-data
+      - name: libra2-data
         persistentVolumeClaim:
           claimName: test_username-vfn-pvc

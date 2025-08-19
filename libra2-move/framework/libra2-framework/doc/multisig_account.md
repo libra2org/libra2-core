@@ -3,7 +3,7 @@
 
 # Module `0x1::multisig_account`
 
-Enhanced multisig account standard on Aptos. This is different from the native multisig scheme support enforced via
+Enhanced multisig account standard on Libra2. This is different from the native multisig scheme support enforced via
 the account's auth key.
 
 This module allows creating a flexible and powerful multisig account with seamless support for updating owners
@@ -4234,4 +4234,4 @@ Add new owners, remove owners to remove, update signatures required.
 </code></pre>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

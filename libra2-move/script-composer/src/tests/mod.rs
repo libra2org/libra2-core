@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{CallArgument, TransactionComposer};
@@ -57,7 +57,7 @@ fn simple_builder() {
         TransactionStatus::Keep(ExecutionStatus::Success)
     );
 
-    assert_eq!(h.read_aptos_balance(bob.address()), 1_000_000_000_000_010);
+    assert_eq!(h.read_libra2_balance(bob.address()), 1_000_000_000_000_010);
 
     builder.assert_decompilation_eq(
         &crate::decompiler::generate_batched_call_payload_serialized(&script).unwrap(),
@@ -122,7 +122,7 @@ fn chained_deposit() {
         TransactionStatus::Keep(ExecutionStatus::Success)
     );
 
-    assert_eq!(h.read_aptos_balance(bob.address()), 1_000_000_000_000_010);
+    assert_eq!(h.read_libra2_balance(bob.address()), 1_000_000_000_000_010);
     builder.assert_decompilation_eq(
         &crate::decompiler::generate_batched_call_payload_serialized(&script).unwrap(),
     );

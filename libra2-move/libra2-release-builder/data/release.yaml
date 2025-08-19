@@ -1,5 +1,5 @@
 ---
-remote_endpoint: https://fullnode.mainnet.aptoslabs.com
+remote_endpoint: https://fullnode.mainnet.libra2.org
 # replace with below for actual release, compat test needs concrete URL above:
 # remote_endpoint: ~
 name: "vX.YY.Z"
@@ -13,8 +13,8 @@ proposals:
       - Gas:
           new: current
           # replace with below for actual release, above "current" is needed for compat tests:
-          # old: https://raw.githubusercontent.com/aptos-labs/libra2-networks/main/gas/vX.WW.Z.json
-          # new: https://raw.githubusercontent.com/aptos-labs/libra2-networks/main/gas/vX.YY.Z.json
+          # old: https://github.com/libra2org/libra2-networks/main/gas/vX.WW.Z.json
+          # new: https://github.com/libra2org/libra2-networks/main/gas/vX.YY.Z.json
       - Framework:
           bytecode_version: 7
           git_hash: ~

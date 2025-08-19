@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright (c) Aptos
+# Copyright (c) Libra2
 # SPDX-License-Identifier: Apache-2.0
 set -e
 

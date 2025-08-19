@@ -868,4 +868,4 @@ Returns the number of bits in a single chunk.
 </details>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

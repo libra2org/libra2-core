@@ -66,7 +66,7 @@
             "name": "Token"
           },
           "typeStr": "0x4::token::Token",
-          "data": "{\"collection\":{\"inner\":\"0xa2485c3b392d211770ed161e73a1097d21016c7dd41f53592434380b2aa14cba\"},\"description\":\"The Loonies is a collection of 5000 human PFPs. It's the official NFT collection by Wapal, the leading community-based NFT marketplace and launchpad on Aptos.\\n\\nDITCH LIMITS ⚡️\",\"index\":\"0\",\"mutation_events\":{\"counter\":\"0\",\"guid\":{\"id\":{\"addr\":\"0xa8b76ee68f7574dafb6f19988880c16571ccd10ac159a8684067a9fc0df293\",\"creation_num\":\"1125899906842625\"}}},\"name\":\"\",\"uri\":\"https://arweave.net/p_hpKSyXV3YXXhdDPOXQGsAYuI5YKcKitOm9DO9xAuI/3210.json\"}"
+          "data": "{\"collection\":{\"inner\":\"0xa2485c3b392d211770ed161e73a1097d21016c7dd41f53592434380b2aa14cba\"},\"description\":\"The Loonies is a collection of 5000 human PFPs. It's the official NFT collection by Wapal, the leading community-based NFT marketplace and launchpad on Libra2.\\n\\nDITCH LIMITS ⚡️\",\"index\":\"0\",\"mutation_events\":{\"counter\":\"0\",\"guid\":{\"id\":{\"addr\":\"0xa8b76ee68f7574dafb6f19988880c16571ccd10ac159a8684067a9fc0df293\",\"creation_num\":\"1125899906842625\"}}},\"name\":\"\",\"uri\":\"https://arweave.net/p_hpKSyXV3YXXhdDPOXQGsAYuI5YKcKitOm9DO9xAuI/3210.json\"}"
         }
       },
       {

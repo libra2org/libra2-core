@@ -5,7 +5,7 @@ All notable changes to the Libra2 CLI will be captured in this file. This projec
 # Unreleased
 
 ## [7.7.1]
-- change Aptos to Libra2, start using Libra2 name for CLI
+- change Libra2 to Libra2, start using Libra2 name for CLI
 - 
 ## [7.7.0]
 - Turn off sharding in the local testnet
@@ -85,7 +85,7 @@ stdin, which triggers a graceful shutdown when received.
 - Downgrade bytecode version to v6 before calling the Revela decompiler, if possible, i.e. no enum types are used. This allows to continue to use Revela until the new decompiler is ready.
 
 ## [5.0.0] - 2024/12/11
-- [**Breaking Change**] `aptos init` and `aptos account fund-with-faucet` no longer work directly with testnet, you must now use the minting page at the [Aptos dev docs](https://aptos.dev/network/faucet).
+- [**Breaking Change**] `aptos init` and `aptos account fund-with-faucet` no longer work directly with testnet, you must now use the minting page at the [Libra2 dev docs](https://aptos.dev/network/faucet).
 ## [4.7.0] - 2024/12/10
 - [`Fix`] CLI config should not always require a private key field to be present.
 
@@ -179,7 +179,7 @@ stdin, which triggers a graceful shutdown when received.
 
 ## [3.3.0] - 2024/05/03
 - **Breaking Change** Update View functions to use BCS for submission.  Allows for all arguments to be supported in view functions.  Note some input arguments that were previously inputted as strings may be handled differently.
-- [Early beta release of the Move compiler v2](https://aptos.dev/move/compiler_v2/) is now accessible through the CLI. We now allow specifying the Move compiler version and the Move language version via the CLI.
+- [Early beta release of the Move compiler v2](https://docs.libra2.org/move/compiler_v2/) is now accessible through the CLI. We now allow specifying the Move compiler version and the Move language version via the CLI.
 
 ## [3.2.0] - 2024/03/29
 - Renamed `run-local-testnet` to `run-localnet`. `run-local-testnet` is still supported for backwards compatibility.
@@ -213,7 +213,7 @@ stdin, which triggers a graceful shutdown when received.
 - Updated CLI source compilation to use rust toolchain version 1.74.1 (from 1.72.1).
 - Added `for` loop.
   - Syntax: `for (iter in lower_bound..upper_bound) { loop_body }` with integer bounds.
-  - Documentation: https://aptos.dev/move/book/loops
+  - Documentation: https://docs.libra2.org/move/book/loops
 - Upgraded indexer processors for localnet from 2d5cb211a89a8705674e9e1e741c841dd899c558 to 4801acae7aea30d7e96bbfbe5ec5b04056dfa4cf. Upgraded Hasura metadata accordingly.
 - Upgraded Hasura GraphQL engine image from 2.35.0 to 2.36.1.
 
@@ -222,7 +222,7 @@ stdin, which triggers a graceful shutdown when received.
 
 ## [2.3.1] - 2023/11/07
 ### Updated
-- Updated processor code from https://github.com/aptos-labs/aptos-indexer-processors for the localnet to 2d5cb211a89a8705674e9e1e741c841dd899c558.
+- Updated processor code from https://github.com/libra2org/libra2-indexer-processors for the localnet to 2d5cb211a89a8705674e9e1e741c841dd899c558.
 - Improved reliability of inter-container networking with localnet.
 
 ## [2.3.0] - 2023/10/25
@@ -231,7 +231,7 @@ stdin, which triggers a graceful shutdown when received.
 
 ### Updated
 - Made the localnet exit more quickly if a service fails to start.
-- Updated processor code from https://github.com/aptos-labs/aptos-indexer-processors for the localnet to bcba94c26c8a6372056d2b69ce411c5719f98965.
+- Updated processor code from https://github.com/libra2org/libra2-indexer-processors for the localnet to bcba94c26c8a6372056d2b69ce411c5719f98965.
 
 ### Fixed
 - Fixed an infrequent bug that caused startup failures for the localnet with `--force-restart` + `--with-indexer-api` by using a Docker volume rather than a bind mount for the postgres storage.
@@ -239,7 +239,7 @@ stdin, which triggers a graceful shutdown when received.
 
 ## [2.2.2] - 2023/10/16
 ### Updated
-- Updated processor code from https://github.com/aptos-labs/aptos-indexer-processors for the localnet to d6f55d4baba32960ea7be60878552e73ffbe8b7e.
+- Updated processor code from https://github.com/libra2org/libra2-indexer-processors for the localnet to d6f55d4baba32960ea7be60878552e73ffbe8b7e.
 
 ## [2.2.1] - 2023/10/13
 ### Fixed
@@ -247,14 +247,14 @@ stdin, which triggers a graceful shutdown when received.
 
 ## [2.2.0] - 2023/10/11
 ### Added
-- Added `--with-indexer-api` to `aptos node run-local-testnet`. With this flag you can run a full processor + indexer API stack as part of your localnet. You must have Docker installed to use this feature. For more information, see https://aptos.dev/nodes/local-testnet/local-testnet-index.
+- Added `--with-indexer-api` to `aptos node run-local-testnet`. With this flag you can run a full processor + indexer API stack as part of your localnet. You must have Docker installed to use this feature. For more information, see https://docs.libra2.org/nodes/local-testnet/local-testnet-index.
 ### Updated
 - Updated CLI source compilation to use rust toolchain version 1.72.1 (from 1.71.1).
 
 ## [2.1.1] - 2023/09/27
 ### Added
 - Added an option `--print-metadata` to the command `aptos move download` to print out the metadata of the package to be downloaded.
-  - Example: `aptos move download  --account 0x1 --package Libra2Framework --url https://mainnet.aptoslabs.com/v1 --print-metadata`
+  - Example: `aptos move download  --account 0x1 --package Libra2Framework --url https://mainnet.libra2.org/v1 --print-metadata`
 ### Updated
 - The `--with-faucet` flag has been removed from `aptos node run-local-testnet`, we now run a faucet by default. To disable the faucet use the `--no-faucet` flag.
 - **Breaking change**: When using `aptos node run-local-testnet` we now expose a transaction stream. Learn more about the transaction stream service here: https://aptos.dev/indexer/txn-stream/. Opt out of this with `--no-txn-stream`. This is marked as a breaking change since the CLI now uses a port (50051 by default) that it didn't used to. If you need this port, you can tell the CLI to use a different port with `--txn-stream-port`.
@@ -301,7 +301,7 @@ stdin, which triggers a graceful shutdown when received.
 - JSON input file support
 - Builder Pattern support for RestClient
   - NOTE: Methods **new_with_timeout** and **new_with_timeout_and_user_agent** are no longer available.
-- Added custom header *x-aptos-client* for analytic purpose
+- Added custom header *x-libra2-client* for analytic purpose
 
 ## [1.0.14] - 2023/05/26
 - Updated DB bootstrap command with new DB restore features
@@ -353,4 +353,4 @@ stdin, which triggers a graceful shutdown when received.
 * Move compiler will no longer use an environment variable to communicate between compiler and CLI for the bytecode version
 
 ## [1.0.7]
-* For logs earlier than 1.0.7, please check out the [releases on GitHub](https://github.com/libra2org/libra2-core/releases?q="Aptos+CLI+Release")
+* For logs earlier than 1.0.7, please check out the [releases on GitHub](https://github.com/libra2org/libra2-core/releases?q="Libra2+CLI+Release")

@@ -1,11 +1,11 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
     common::{
         types::{
             CliCommand, CliConfig, CliError, CliResult, CliTypedResult, ConfigSearchMode,
-            ProfileSummary, APTOS_FOLDER_GIT_IGNORE, CONFIG_FOLDER, GIT_IGNORE,
+            ProfileSummary, LIBRA2_FOLDER_GIT_IGNORE, CONFIG_FOLDER, GIT_IGNORE,
         },
         utils::{create_dir_if_not_exist, current_dir, read_from_file, write_to_user_only_file},
     },
@@ -375,7 +375,7 @@ impl GlobalConfig {
         write_to_user_only_file(
             global_folder.join(GIT_IGNORE).as_path(),
             ".gitignore",
-            APTOS_FOLDER_GIT_IGNORE.as_bytes(),
+            LIBRA2_FOLDER_GIT_IGNORE.as_bytes(),
         )
     }
 }

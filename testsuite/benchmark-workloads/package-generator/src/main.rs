@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use anyhow::bail;
@@ -24,7 +24,7 @@ struct Args {
     /// Root directory where the Rust file to access prebuilt packages will be saved.
     #[clap(long)]
     prebuilt_packages_rust_dir: PathBuf,
-    /// If true, uses local libra2-framework from aptos-core.
+    /// If true, uses local libra2-framework from libra2-core.
     #[clap(long)]
     use_local_std: bool,
 }

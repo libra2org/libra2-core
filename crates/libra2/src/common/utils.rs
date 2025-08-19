@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
@@ -574,11 +574,11 @@ pub fn explorer_account_link(hash: AccountAddress, network: Option<Network>) -> 
     // For now, default to what the browser is already on, though the link could be wrong
     if let Some(network) = network {
         format!(
-            "https://explorer.aptoslabs.com/account/{}?network={}",
+            "https://explorer.libra2.org/account/{}?network={}",
             hash, network
         )
     } else {
-        format!("https://explorer.aptoslabs.com/account/{}", hash)
+        format!("https://explorer.libra2.org/account/{}", hash)
     }
 }
 
@@ -589,13 +589,13 @@ pub fn explorer_transaction_link(
     // For now, default to what the browser is already on, though the link could be wrong
     if let Some(network) = network {
         format!(
-            "https://explorer.aptoslabs.com/txn/{}?network={}",
+            "https://explorer.libra2.org/txn/{}?network={}",
             hash.to_hex_literal(),
             network
         )
     } else {
         format!(
-            "https://explorer.aptoslabs.com/txn/{}",
+            "https://explorer.libra2.org/txn/{}",
             hash.to_hex_literal()
         )
     }

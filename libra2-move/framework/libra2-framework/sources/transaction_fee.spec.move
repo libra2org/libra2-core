@@ -1,7 +1,7 @@
 spec libra2_framework::transaction_fee {
     /// <high-level-req>
     /// No.: 1
-    /// Requirement: Given the blockchain is in an operating state, it guarantees that the Aptos framework signer may burn
+    /// Requirement: Given the blockchain is in an operating state, it guarantees that the Libra2 framework signer may burn
     /// Libra2 coins.
     /// Criticality: Critical
     /// Implementation: The Libra2CoinCapabilities structure is defined in this module and it stores burn capability to
@@ -18,7 +18,7 @@ spec libra2_framework::transaction_fee {
     /// No.: 3
     /// Requirement: Only the admin address is authorized to call the initialization function.
     /// Criticality: Critical
-    /// Implementation: The initialize_fee_collection_and_distribution function ensures only the Aptos framework address
+    /// Implementation: The initialize_fee_collection_and_distribution function ensures only the Libra2 framework address
     /// calls it.
     /// Enforcement: Formally verified via [high-level-req-3](initialize_fee_collection_and_distribution).
     ///
@@ -38,7 +38,7 @@ spec libra2_framework::transaction_fee {
     /// Enforcement: Formally verified in [high-level-req-5](ProcessCollectedFeesRequiresAndEnsures).
     ///
     /// No.: 6
-    /// Requirement: The presence of the resource, indicating collected fees per block under the Aptos framework account,
+    /// Requirement: The presence of the resource, indicating collected fees per block under the Libra2 framework account,
     /// is a prerequisite for the successful execution of the following functionalities: Upgrading burn percentage.
     /// Registering a block proposer. Processing collected fees.
     /// Criticality: Low
@@ -56,9 +56,9 @@ spec libra2_framework::transaction_fee {
         pragma verify = false;
 
         pragma aborts_if_is_strict;
-        // property 1: Given the blockchain is in an operating state, it guarantees that the Aptos framework signer may burn Libra2 coins.
+        // property 1: Given the blockchain is in an operating state, it guarantees that the Libra2 framework signer may burn Libra2 coins.
         /// [high-level-req-1]
-        invariant [suspendable] chain_status::is_operating() ==> exists<Libra2CoinCapabilities>(@libra2_framework) || exists<AptosFABurnCapabilities>(@libra2_framework);
+        invariant [suspendable] chain_status::is_operating() ==> exists<Libra2CoinCapabilities>(@libra2_framework) || exists<Libra2FABurnCapabilities>(@libra2_framework);
     }
 
     spec CollectedFeesPerBlock {
@@ -85,21 +85,21 @@ spec libra2_framework::transaction_fee {
         let account_addr = account;
         let amount = fee;
 
-        let aptos_addr = type_info::type_of<Libra2Coin>().account_address;
+        let libra2_addr = type_info::type_of<Libra2Coin>().account_address;
         let coin_store = global<CoinStore<Libra2Coin>>(account_addr);
         let post post_coin_store = global<CoinStore<Libra2Coin>>(account_addr);
 
         // modifies global<CoinStore<Libra2Coin>>(account_addr);
 
-        aborts_if amount != 0 && !(exists<CoinInfo<Libra2Coin>>(aptos_addr)
+        aborts_if amount != 0 && !(exists<CoinInfo<Libra2Coin>>(libra2_addr)
             && exists<CoinStore<Libra2Coin>>(account_addr));
         aborts_if coin_store.coin.value < amount;
 
-        let maybe_supply = global<CoinInfo<Libra2Coin>>(aptos_addr).supply;
+        let maybe_supply = global<CoinInfo<Libra2Coin>>(libra2_addr).supply;
         let supply_aggr = option::spec_borrow(maybe_supply);
         let value = optional_aggregator::optional_aggregator_value(supply_aggr);
 
-        let post post_maybe_supply = global<CoinInfo<Libra2Coin>>(aptos_addr).supply;
+        let post post_maybe_supply = global<CoinInfo<Libra2Coin>>(libra2_addr).supply;
         let post post_supply = option::spec_borrow(post_maybe_supply);
         let post post_value = optional_aggregator::optional_aggregator_value(post_supply);
 
@@ -123,9 +123,9 @@ spec libra2_framework::transaction_fee {
         pragma verify = false;
         // pragma opaque;
 
-        let aptos_addr = type_info::type_of<Libra2Coin>().account_address;
+        let libra2_addr = type_info::type_of<Libra2Coin>().account_address;
 
-        aborts_if (refund != 0) && !exists<CoinInfo<Libra2Coin>>(aptos_addr);
+        aborts_if (refund != 0) && !exists<CoinInfo<Libra2Coin>>(libra2_addr);
         include coin::CoinAddAbortsIf<Libra2Coin> { amount: refund };
 
         aborts_if !exists<CoinStore<Libra2Coin>>(account);
@@ -150,10 +150,10 @@ spec libra2_framework::transaction_fee {
         let addr = signer::address_of(libra2_framework);
         aborts_if !system_addresses::is_libra2_framework_address(addr);
 
-        aborts_if exists<AptosFABurnCapabilities>(addr);
+        aborts_if exists<Libra2FABurnCapabilities>(addr);
         aborts_if exists<Libra2CoinCapabilities>(addr);
 
-        ensures exists<AptosFABurnCapabilities>(addr) || exists<Libra2CoinCapabilities>(addr);
+        ensures exists<Libra2FABurnCapabilities>(addr) || exists<Libra2CoinCapabilities>(addr);
     }
 
     /// Ensure caller is admin.

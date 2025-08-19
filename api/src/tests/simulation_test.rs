@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::tests::new_test_context_with_orderless_flags;
@@ -77,7 +77,7 @@ async fn simulate_libra2_transfer(
         if assert_gas_used {
             assert!(
                 resp.headers()
-                    .get("X-Aptos-Gas-Used")
+                    .get("X-Libra2-Gas-Used")
                     .unwrap()
                     .to_str()
                     .unwrap()

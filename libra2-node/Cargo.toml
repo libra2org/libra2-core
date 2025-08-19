@@ -34,7 +34,7 @@ libra2-event-notifications = { workspace = true }
 libra2-executor = { workspace = true }
 libra2-framework = { workspace = true }
 libra2-genesis = { workspace = true }
-aptos-indexer = { workspace = true, optional = true }
+libra2-indexer = { workspace = true, optional = true }
 libra2-indexer-grpc-fullnode = { workspace = true }
 libra2-indexer-grpc-table-info = { workspace = true }
 libra2-infallible = { workspace = true }
@@ -97,7 +97,7 @@ check-vm-features = []
 consensus-only-perf-test = ["libra2-executor/consensus-only-perf-test", "libra2-mempool/consensus-only-perf-test", "libra2-db/consensus-only-perf-test"]
 default = []
 failpoints = ["fail/failpoints", "libra2-consensus/failpoints", "libra2-executor/failpoints", "libra2-mempool/failpoints", "libra2-api/failpoints", "libra2-config/failpoints"]
-indexer = ["aptos-indexer"]
+indexer = ["libra2-indexer"]
 tokio-console = ["libra2-logger/tokio-console", "libra2-config/tokio-console"]
 smoke-test = ["libra2-jwk-consensus/smoke-test", "libra2-dkg-runtime/smoke-test"]
 

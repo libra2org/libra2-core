@@ -7,17 +7,17 @@
 ///
 /// How to interact with this module:
 /// 1. Create an nft-receiver account (in addition to the source account we created in the last part). We'll use this account to receive an NFT in this tutorial.
-/// aptos init --profile nft-receiver
+/// libra2 init --profile nft-receiver
 ///
 /// 2. Publish the module under a resource account.
 /// - 2.a Make sure you're in the right directory.
-/// Run the following command in directory `aptos-core/libra2-move/move-examples/mint_nft/2-Using-Resource-Account`
+/// Run the following command in directory `libra2-core/libra2-move/move-examples/mint_nft/2-Using-Resource-Account`
 /// - 2.b Run the following CLI command to publish the module under a resource account.
-/// aptos move create-resource-account-and-publish-package --seed [seed] --address-name mint_nft --profile default --named-addresses source_addr=[default account's address]
+/// libra2 move create-resource-account-and-publish-package --seed [seed] --address-name mint_nft --profile default --named-addresses source_addr=[default account's address]
 ///
 /// example output:
     /*
-    2-Using-Resource-Account % aptos move create-resource-account-and-publish-package --seed 1235 --address-name mint_nft --profile default --named-addresses source_addr=a911e7374107ad434bbc5369289cf5855c3b1a2938a6bfce0776c1d296271cde
+    2-Using-Resource-Account % libra2 move create-resource-account-and-publish-package --seed 1235 --address-name mint_nft --profile default --named-addresses source_addr=a911e7374107ad434bbc5369289cf5855c3b1a2938a6bfce0776c1d296271cde
     Compiling, may take a little while to download git dependencies...
     INCLUDING DEPENDENCY Libra2Framework
     INCLUDING DEPENDENCY Libra2Stdlib
@@ -46,11 +46,11 @@
 ///
 /// 4. Mint an NFT to the nft-receiver account
 /// - 4.a Run the following command
-/// aptos move run --function-id [resource account's address]::create_nft_with_resource_account::mint_event_ticket --profile nft-receiver
+/// libra2 move run --function-id [resource account's address]::create_nft_with_resource_account::mint_event_ticket --profile nft-receiver
 ///
 /// example output:
     /*
-    2-Using-Resource-Account % aptos move run --function-id 55328567ff8aa7d242951af7fc1872746fbeeb89dfed0e1ee2ff71b9bf4469d6::create_nft_with_resource_account::mint_event_ticket --profile nft-receiver
+    2-Using-Resource-Account % libra2 move run --function-id 55328567ff8aa7d242951af7fc1872746fbeeb89dfed0e1ee2ff71b9bf4469d6::create_nft_with_resource_account::mint_event_ticket --profile nft-receiver
     Do you want to submit a transaction for a range of [502900 - 754300] Octas at a gas unit price of 100 Octas? [yes/no] >
     yes
     {
@@ -67,7 +67,7 @@
       }
     }
     */
-/// - 4.b Check out the transaction on https://explorer.aptoslabs.com/ by searching for the transaction hash.
+/// - 4.b Check out the transaction on https://explorer.libra2.org/ by searching for the transaction hash.
 module mint_nft::create_nft_with_resource_account {
     use std::string;
     use std::vector;
@@ -146,7 +146,7 @@ module mint_nft::create_nft_with_resource_account {
     /// Mint an NFT to the receiver. Note that different from the tutorial in part 1, here we only ask for the receiver's
     /// signer. This is because we used resource account to publish this module and stored the resource account's signer
     /// within the `ModuleData`, so we can programmatically sign for transactions instead of manually signing transactions.
-    /// See https://aptos.dev/concepts/accounts/#resource-accounts for more information about resource account.
+    /// See https://docs.libra2.org/concepts/accounts/#resource-accounts for more information about resource account.
     public entry fun mint_event_ticket(receiver: &signer) acquires ModuleData {
         let module_data = borrow_global_mut<ModuleData>(@mint_nft);
 

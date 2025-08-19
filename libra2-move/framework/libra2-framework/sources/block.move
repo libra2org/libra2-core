@@ -120,7 +120,7 @@ module libra2_framework::block {
     }
 
     /// Update the epoch interval.
-    /// Can only be called as part of the Aptos governance proposal process established by the AptosGovernance module.
+    /// Can only be called as part of the Libra2 governance proposal process established by the Libra2Governance module.
     public fun update_epoch_interval_microsecs(
         libra2_framework: &signer,
         new_epoch_interval: u64,

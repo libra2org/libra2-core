@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 extern crate core;
@@ -20,7 +20,7 @@ use libra2_logger::info;
 use clap::Parser;
 
 #[derive(Parser)]
-#[clap(name = "Aptos db tool", author, disable_version_flag = true)]
+#[clap(name = "Libra2 db tool", author, disable_version_flag = true)]
 pub enum DBTool {
     #[clap(subcommand)]
     Backup(backup::Command),

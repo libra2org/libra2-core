@@ -691,7 +691,7 @@ def read_skip_ranges(network: str) -> tuple[int, int, list[tuple[int, int]]]:
 
     end = int(
         json.loads(
-            urllib.request.urlopen(f"https://fullnode.{network}.aptoslabs.com/v1")
+            urllib.request.urlopen(f"https://fullnode.{network}.libra2.org/v1")
             .read()
             .decode()
         )["ledger_version"]

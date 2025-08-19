@@ -12,18 +12,18 @@
 ///
 /// How to interact with this module:
 /// 1. Create and configure an admin account (in addition to the source account and nft-receiver account that we created in the earlier parts).
-/// - 1.a run `aptos init --profile admin` to create an admin account
+/// - 1.a run `libra2 init --profile admin` to create an admin account
 /// - 1.b go to `Move.toml` and replace `admin_addr = "0xcafe"` with the actual admin address we just created
 ///
 /// 2. Publish the module under a resource account.
 /// - 2.a Make sure you're in the right directory.
-/// Run the following command in directory `aptos-core/libra2-move/move-examples/mint_nft/3-Adding-Admin`.
+/// Run the following command in directory `libra2-core/libra2-move/move-examples/mint_nft/3-Adding-Admin`.
 /// - 2.b Run the following CLI command to publish the module under a resource account.
-/// aptos move create-resource-account-and-publish-package --seed [seed] --address-name mint_nft --profile default --named-addresses source_addr=[default account's address]
+/// libra2 move create-resource-account-and-publish-package --seed [seed] --address-name mint_nft --profile default --named-addresses source_addr=[default account's address]
 ///
 /// example output:
     /*
-    3-Adding-Admin % aptos move create-resource-account-and-publish-package --seed 1239 --address-name mint_nft --profile default --named-addresses source_addr=a911e7374107ad434bbc5369289cf5855c3b1a2938a6bfce0776c1d296271cde
+    3-Adding-Admin % libra2 move create-resource-account-and-publish-package --seed 1239 --address-name mint_nft --profile default --named-addresses source_addr=a911e7374107ad434bbc5369289cf5855c3b1a2938a6bfce0776c1d296271cde
 
     Compiling, may take a little while to download git dependencies...
     INCLUDING DEPENDENCY Libra2Framework
@@ -51,20 +51,20 @@
 ///
 /// 4. Mint an NFT to the nft-receiver account.
 /// - 4.a Run the following command to mint an NFT (failure expected).
-/// aptos move run --function-id [resource account's address]::create_nft_with_resource_and_admin_accounts::mint_event_ticket --profile nft-receiver
+/// libra2 move run --function-id [resource account's address]::create_nft_with_resource_and_admin_accounts::mint_event_ticket --profile nft-receiver
 /// example output:
     /*
-    3-Adding-Admin % aptos move run --function-id 34f5acaaef16988aa31bb56ad7b35e30d14ff9fc849d370be799617b61d3df04::create_nft_with_resource_and_admin_accounts::mint_event_ticket --profile nft-receiver
+    3-Adding-Admin % libra2 move run --function-id 34f5acaaef16988aa31bb56ad7b35e30d14ff9fc849d370be799617b61d3df04::create_nft_with_resource_and_admin_accounts::mint_event_ticket --profile nft-receiver
     {
       "Error": "Simulation failed with status: Move abort in 0x34f5acaaef16988aa31bb56ad7b35e30d14ff9fc849d370be799617b61d3df04::create_nft_with_resource_and_admin_accounts: EMINTING_DISABLED(0x50003): The collection minting is disabled"
     }
     */
 /// Running this command fails because minting is disabled in `init_module()`. We will use the admin account to update the flag `minting_enabled` to true and try again.
 /// - 4.b Running the following command from the admin account to update field `minting_enabled` to true.
-/// aptos move run --function-id [resource account's address]::create_nft_with_resource_and_admin_accounts::set_minting_enabled --args bool:true --profile admin
+/// libra2 move run --function-id [resource account's address]::create_nft_with_resource_and_admin_accounts::set_minting_enabled --args bool:true --profile admin
 /// example output:
     /*
-    3-Adding-Admin % aptos move run --function-id 34f5acaaef16988aa31bb56ad7b35e30d14ff9fc849d370be799617b61d3df04::create_nft_with_resource_and_admin_accounts::set_minting_enabled --args bool:true --profile admin
+    3-Adding-Admin % libra2 move run --function-id 34f5acaaef16988aa31bb56ad7b35e30d14ff9fc849d370be799617b61d3df04::create_nft_with_resource_and_admin_accounts::set_minting_enabled --args bool:true --profile admin
     Do you want to submit a transaction for a range of [23100 - 34600] Octas at a gas unit price of 100 Octas? [yes/no] >
     yes
     {
@@ -82,10 +82,10 @@
     }
     */
 /// - 4.c Mint the NFT again (should be successful this time).
-/// aptos move run --function-id [resource account's address]::create_nft_with_resource_and_admin_accounts::mint_event_ticket --profile nft-receiver
+/// libra2 move run --function-id [resource account's address]::create_nft_with_resource_and_admin_accounts::mint_event_ticket --profile nft-receiver
 /// example output:
     /*
-    3-Adding-Admin % aptos move run --function-id 34f5acaaef16988aa31bb56ad7b35e30d14ff9fc849d370be799617b61d3df04::create_nft_with_resource_and_admin_accounts::mint_event_ticket --profile nft-receiver
+    3-Adding-Admin % libra2 move run --function-id 34f5acaaef16988aa31bb56ad7b35e30d14ff9fc849d370be799617b61d3df04::create_nft_with_resource_and_admin_accounts::mint_event_ticket --profile nft-receiver
     Do you want to submit a transaction for a range of [504500 - 756700] Octas at a gas unit price of 100 Octas? [yes/no] >
     yes
     {
@@ -102,7 +102,7 @@
       }
     }
     */
-/// - 4.d Check out the transactions on https://explorer.aptoslabs.com/ by searching for the transaction hash.
+/// - 4.d Check out the transactions on https://explorer.libra2.org/ by searching for the transaction hash.
 module mint_nft::create_nft_with_resource_and_admin_accounts {
     use std::error;
     use std::string;
@@ -189,7 +189,7 @@ module mint_nft::create_nft_with_resource_and_admin_accounts {
     /// Mint an NFT to the receiver. Note that different from the tutorial in 1-Create-NFT, here we only ask for the receiver's
     /// signer. This is because we used resource account to publish this module and stored the resource account's signer
     /// within the `ModuleData`, so we can programmatically sign for transactions instead of manually signing transactions.
-    /// See https://aptos.dev/concepts/accounts/#resource-accounts for more details.
+    /// See https://docs.libra2.org/concepts/accounts/#resource-accounts for more details.
     public entry fun mint_event_ticket(receiver: &signer) acquires ModuleData {
         // Mint token to the receiver.
         let module_data = borrow_global_mut<ModuleData>(@mint_nft);

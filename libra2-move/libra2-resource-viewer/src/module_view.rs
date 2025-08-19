@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use anyhow::anyhow;
@@ -6,7 +6,7 @@ use libra2_types::{
     on_chain_config::{Features, OnChainConfig},
     state_store::{state_key::StateKey, StateView},
 };
-use libra2_vm_environment::prod_configs::aptos_prod_deserializer_config;
+use libra2_vm_environment::prod_configs::libra2_prod_deserializer_config;
 use move_binary_format::{deserializer::DeserializerConfig, CompiledModule};
 use move_bytecode_utils::compiled_module_viewer::CompiledModuleView;
 use move_core_types::language_storage::ModuleId;
@@ -21,7 +21,7 @@ pub struct ModuleView<'a, S> {
 impl<'a, S: StateView> ModuleView<'a, S> {
     pub fn new(state_view: &'a S) -> Self {
         let features = Features::fetch_config(state_view).unwrap_or_default();
-        let deserializer_config = aptos_prod_deserializer_config(&features);
+        let deserializer_config = libra2_prod_deserializer_config(&features);
 
         Self {
             module_cache: RefCell::new(HashMap::new()),

@@ -1,4 +1,4 @@
-// Copyright (c) Aptos Foundation
+// Copyright (c) A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 #![forbid(unsafe_code)]
@@ -8,7 +8,7 @@ use once_cell::sync::Lazy;
 
 pub static TIMER: Lazy<HistogramVec> = Lazy::new(|| {
     register_histogram_vec!(
-        "aptos_hexy_timer_seconds",
+        "libra2_hexy_timer_seconds",
         "Various timers for performance analysis.",
         &["name"],
         exponential_buckets(/*start=*/ 1e-6, /*factor=*/ 2.0, /*count=*/ 22).unwrap(),

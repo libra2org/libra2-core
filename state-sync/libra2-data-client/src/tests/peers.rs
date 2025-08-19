@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
@@ -11,7 +11,7 @@ use crate::{
     tests::{mock::MockNetwork, utils},
 };
 use libra2_config::{
-    config::{Libra2DataClientConfig, AptosDataMultiFetchConfig},
+    config::{Libra2DataClientConfig, Libra2DataMultiFetchConfig},
     network_id::{NetworkId, PeerNetworkId},
 };
 use libra2_storage_service_server::network::NetworkRequest;
@@ -36,7 +36,7 @@ async fn all_bad_peers_with_invalid_responses() {
         // Create a data client with multi-fetch enabled (10 peers per request)
         let peers_for_multi_fetch = 10;
         let data_client_config = Libra2DataClientConfig {
-            data_multi_fetch_config: AptosDataMultiFetchConfig {
+            data_multi_fetch_config: Libra2DataMultiFetchConfig {
                 enable_multi_fetch: true,
                 min_peers_for_multi_fetch: peers_for_multi_fetch,
                 max_peers_for_multi_fetch: peers_for_multi_fetch,
@@ -531,7 +531,7 @@ async fn single_good_peer() {
         // Create a data client with multi-fetch enabled (10 peers per request)
         let peers_for_multi_fetch = 10;
         let data_client_config = Libra2DataClientConfig {
-            data_multi_fetch_config: AptosDataMultiFetchConfig {
+            data_multi_fetch_config: Libra2DataMultiFetchConfig {
                 enable_multi_fetch: true,
                 min_peers_for_multi_fetch: peers_for_multi_fetch,
                 max_peers_for_multi_fetch: peers_for_multi_fetch,
@@ -608,7 +608,7 @@ async fn single_good_peer_across_priorities() {
     // Create a data client with multi-fetch enabled (5 peers per request)
     let peers_for_multi_fetch = 5;
     let data_client_config = Libra2DataClientConfig {
-        data_multi_fetch_config: AptosDataMultiFetchConfig {
+        data_multi_fetch_config: Libra2DataMultiFetchConfig {
             enable_multi_fetch: true,
             min_peers_for_multi_fetch: peers_for_multi_fetch,
             max_peers_for_multi_fetch: peers_for_multi_fetch,

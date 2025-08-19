@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use anyhow::{Context, Result};
@@ -24,7 +24,7 @@ static NODE_URL: Lazy<Url> = Lazy::new(|| {
 
 static FAUCET_URL: Lazy<Url> = Lazy::new(|| {
     Url::from_str(
-        std::env::var("APTOS_FAUCET_URL")
+        std::env::var("LIBRA2_FAUCET_URL")
             .as_ref()
             .map(|s| s.as_str())
             .unwrap_or("https://faucet.devnet.libra2.org"),

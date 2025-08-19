@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -29,14 +29,14 @@ use std::{
 pub fn output(
     out: &mut dyn Write,
     serde_module_path: Option<String>,
-    aptos_module_path: Option<String>,
+    libra2_module_path: Option<String>,
     package_name: String,
     abis: &[EntryABI],
 ) -> Result<()> {
     let mut emitter = GoEmitter {
         out: IndentedWriter::new(out, IndentConfig::Tab),
         serde_module_path,
-        aptos_module_path,
+        libra2_module_path,
         package_name,
     };
 
@@ -103,9 +103,9 @@ struct GoEmitter<T> {
     /// Go module path for Serde runtime packages
     /// `None` to use the default path.
     serde_module_path: Option<String>,
-    /// Go module path for Aptos types.
+    /// Go module path for Libra2 types.
     /// `None` to use an empty path.
-    aptos_module_path: Option<String>,
+    libra2_module_path: Option<String>,
     /// Name of the package owning the generated definitions (e.g. "my_package")
     package_name: String,
 }
@@ -115,7 +115,7 @@ where
     T: Write,
 {
     fn output_script_call_enum_with_imports(&mut self, abis: &[EntryABI]) -> Result<()> {
-        let libra2_types_package = match &self.aptos_module_path {
+        let libra2_types_package = match &self.libra2_module_path {
             Some(path) => format!("{}/aptostypes", path),
             None => "aptostypes".into(),
         };
@@ -208,7 +208,7 @@ where
             writeln!(
                 self.out,
                 r#"
-// Build an Aptos `Script` from a structured object `ScriptCall`.
+// Build an Libra2 `Script` from a structured object `ScriptCall`.
 func EncodeScript(call ScriptCall) aptostypes.Script {{"#
             )?;
             self.out.indent();
@@ -240,7 +240,7 @@ func EncodeScript(call ScriptCall) aptostypes.Script {{"#
             writeln!(
                 self.out,
                 r#"
-// Build an Aptos `TransactionPayload` from a structured object `EntryFunctionCall`.
+// Build an Libra2 `TransactionPayload` from a structured object `EntryFunctionCall`.
 func EncodeEntryFunction(call EntryFunctionCall) aptostypes.TransactionPayload {{"#
             )?;
             self.out.indent();
@@ -275,7 +275,7 @@ func EncodeEntryFunction(call EntryFunctionCall) aptostypes.TransactionPayload {
         writeln!(
             self.out,
             r#"
-// Try to recognize an Aptos `Script` and convert it into a structured object `ScriptCall`.
+// Try to recognize an Libra2 `Script` and convert it into a structured object `ScriptCall`.
 func DecodeScript(script *aptostypes.Script) (ScriptCall, error) {{
 	if helper := script_decoder_map[string(script.Code)]; helper != nil {{
 		val, err := helper(script)
@@ -291,7 +291,7 @@ func DecodeScript(script *aptostypes.Script) (ScriptCall, error) {{
         writeln!(
             self.out,
             r#"
-// Try to recognize an Aptos `TransactionPayload` and convert it into a structured object `EntryFunctionCall`.
+// Try to recognize an Libra2 `TransactionPayload` and convert it into a structured object `EntryFunctionCall`.
 func DecodeEntryFunctionPayload(script aptostypes.TransactionPayload) (EntryFunctionCall, error) {{
     switch script := script.(type) {{
         case *aptostypes.TransactionPayload__EntryFunction:
@@ -872,19 +872,19 @@ func decode_{0}_argument(arg aptostypes.TransactionArgument) (value {1}, err err
 pub struct Installer {
     install_dir: PathBuf,
     serde_module_path: Option<String>,
-    aptos_module_path: Option<String>,
+    libra2_module_path: Option<String>,
 }
 
 impl Installer {
     pub fn new(
         install_dir: PathBuf,
         serde_module_path: Option<String>,
-        aptos_module_path: Option<String>,
+        libra2_module_path: Option<String>,
     ) -> Self {
         Installer {
             install_dir,
             serde_module_path,
-            aptos_module_path,
+            libra2_module_path,
         }
     }
 }
@@ -903,7 +903,7 @@ impl crate::SourceInstaller for Installer {
         output(
             &mut file,
             self.serde_module_path.clone(),
-            self.aptos_module_path.clone(),
+            self.libra2_module_path.clone(),
             name.to_string(),
             abis,
         )?;

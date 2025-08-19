@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -112,7 +112,7 @@ macro_rules! delegate_read {
 }
 
 /// Trait that is implemented by a DB that supports certain public (to client) read APIs
-/// expected of an Aptos DB
+/// expected of an Libra2 DB
 #[allow(unused_variables)]
 pub trait DbReader: Send + Sync {
     fn get_read_delegatee(&self) -> &dyn DbReader {
@@ -536,7 +536,7 @@ pub trait DbReader: Send + Sync {
 }
 
 /// Trait that is implemented by a DB that supports certain public (to client) write APIs
-/// expected of an Aptos DB. This adds write APIs to DbReader.
+/// expected of an Libra2 DB. This adds write APIs to DbReader.
 #[allow(unused_variables)]
 pub trait DbWriter: Send + Sync {
     /// Get a (stateful) state snapshot receiver.

@@ -646,7 +646,7 @@ proof of private key ownership when rotating authentication keys.
 
 ## Function `unvalidated_public_key_to_authentication_key`
 
-Derives the Aptos-specific authentication key of the given Ed25519 public key.
+Derives the Libra2-specific authentication key of the given Ed25519 public key.
 
 
 <pre><code><b>public</b> <b>fun</b> <a href="multi_ed25519.md#0x1_multi_ed25519_unvalidated_public_key_to_authentication_key">unvalidated_public_key_to_authentication_key</a>(pk: &<a href="multi_ed25519.md#0x1_multi_ed25519_UnvalidatedPublicKey">multi_ed25519::UnvalidatedPublicKey</a>): <a href="../../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt;
@@ -729,7 +729,7 @@ if <code>bytes</code> does not correctly encode such a PK.
 
 ## Function `validated_public_key_to_authentication_key`
 
-Derives the Aptos-specific authentication key of the given Ed25519 public key.
+Derives the Libra2-specific authentication key of the given Ed25519 public key.
 
 
 <pre><code><b>public</b> <b>fun</b> <a href="multi_ed25519.md#0x1_multi_ed25519_validated_public_key_to_authentication_key">validated_public_key_to_authentication_key</a>(pk: &<a href="multi_ed25519.md#0x1_multi_ed25519_ValidatedPublicKey">multi_ed25519::ValidatedPublicKey</a>): <a href="../../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt;
@@ -852,7 +852,7 @@ Returns the threshold t <= n of the PK.
 
 ## Function `public_key_bytes_to_authentication_key`
 
-Derives the Aptos-specific authentication key of the given Ed25519 public key.
+Derives the Libra2-specific authentication key of the given Ed25519 public key.
 
 
 <pre><code><b>fun</b> <a href="multi_ed25519.md#0x1_multi_ed25519_public_key_bytes_to_authentication_key">public_key_bytes_to_authentication_key</a>(pk_bytes: <a href="../../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt;): <a href="../../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt;
@@ -1322,4 +1322,4 @@ Returns <code><b>false</b></code> if either:
 </code></pre>
 
 
-[move-book]: https://aptos.dev/move/book/SUMMARY
+[move-book]: https://docs.libra2.org/move/book/SUMMARY

@@ -1,4 +1,4 @@
-# This script installs the necessary dependencies to build in Aptos.
+# This script installs the necessary dependencies to build in Libra2.
 
 param (
     [switch]$t,
@@ -24,9 +24,9 @@ $global:boogie_version = "BOOGIE_VERSION="
 
 
 function welcome_message {
-    $message = "`nWelcome to Aptos!
+    $message = "`nWelcome to Libra2!
     `nThis script will download and install the necessary dependencies for Libra2 Core based on your selection:
-      * Install Aptos build tools: t
+      * Install Libra2 build tools: t
       * Install Move Prover tools: y`n
       Selection"
 

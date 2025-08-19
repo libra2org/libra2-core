@@ -159,13 +159,13 @@ spec libra2_framework::stake {
     // `Validator` is initialized once.
     spec initialize(libra2_framework: &signer) {
         pragma disable_invariants_in_body;
-        let aptos_addr = signer::address_of(libra2_framework);
-        aborts_if !system_addresses::is_libra2_framework_address(aptos_addr);
-        aborts_if exists<ValidatorSet>(aptos_addr);
-        aborts_if exists<ValidatorPerformance>(aptos_addr);
-        ensures exists<ValidatorSet>(aptos_addr);
-        ensures global<ValidatorSet>(aptos_addr).consensus_scheme == 0;
-        ensures exists<ValidatorPerformance>(aptos_addr);
+        let libra2_addr = signer::address_of(libra2_framework);
+        aborts_if !system_addresses::is_libra2_framework_address(libra2_addr);
+        aborts_if exists<ValidatorSet>(libra2_addr);
+        aborts_if exists<ValidatorPerformance>(libra2_addr);
+        ensures exists<ValidatorSet>(libra2_addr);
+        ensures global<ValidatorSet>(libra2_addr).consensus_scheme == 0;
+        ensures exists<ValidatorPerformance>(libra2_addr);
     }
 
     spec join_validator_set(
@@ -546,7 +546,7 @@ spec libra2_framework::stake {
         aborts_if !exists<ValidatorConfig>(pool_address);
         aborts_if global<ValidatorConfig>(pool_address).validator_index >= len(validator_perf.validators);
 
-        let aptos_addr = type_info::type_of<Libra2Coin>().account_address;
+        let libra2_addr = type_info::type_of<Libra2Coin>().account_address;
 
         let stake_pool = global<StakePool>(pool_address);
 

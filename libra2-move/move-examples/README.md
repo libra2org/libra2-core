@@ -4,15 +4,15 @@ To play with these examples:
 1. Clone this repo by running `git clone https://github.com/libra2org/libra2-core.git`
 2. Open a new terminal and navigate to this folder by running `cd libra2-move/move-examples`
 3. Navigate into the specific tutorial you are interested (ex. `cd hello_blockchain`)
-4. You can use the Libra2 CLI to compile, test, publish, and run these contracts by using the commands outlined here: https://aptos.dev/move/move-on-aptos/cli/
-     - If you need to install the Libra2 CLI, you can follow these instructions: https://aptos.dev/tools/aptos-cli/install-cli/
+4. You can use the Libra2 CLI to compile, test, publish, and run these contracts by using the commands outlined here: https://docs.libra2.org/move/move-on-aptos/cli/
+     - If you need to install the Libra2 CLI, you can follow these instructions: https://docs.libra2.org/tools/libra2-cli/install-cli/
 
 **WARNING:** These Move examples have NOT been audited. If you are using them in a production system, proceed at your own risk.
 Particular care should be taken with Move examples that contain complex cryptographic code (e.g., `drand`).
 
 # Additional Resources
 
--  [Aptos Learn](https://learn.aptoslabs.com/code-examples/) provides more step-by-step guides on some high-quality examples. 
+-  [Libra2 Learn](https://learn.libra2.org/code-examples/) provides more step-by-step guides on some high-quality examples. 
 - We also have another repo [move-by-examples](https://github.com/aptos-labs/move-by-examples). It has more newer examples and is actively maintained.
 
 # Contributing

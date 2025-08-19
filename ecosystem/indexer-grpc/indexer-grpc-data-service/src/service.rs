@@ -1,4 +1,4 @@
-// Copyright © Aptos Foundation
+// Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::metrics::{
@@ -15,8 +15,8 @@ use libra2_indexer_grpc_utils::{
     config::IndexerGrpcFileStoreConfig,
     constants::{
         IndexerGrpcRequestMetadata, GRPC_AUTH_TOKEN_HEADER, GRPC_REQUEST_NAME_HEADER,
-        MESSAGE_SIZE_LIMIT, REQUEST_HEADER_APTOS_APPLICATION_NAME, REQUEST_HEADER_APTOS_EMAIL,
-        REQUEST_HEADER_APTOS_IDENTIFIER, REQUEST_HEADER_APTOS_IDENTIFIER_TYPE,
+        MESSAGE_SIZE_LIMIT, REQUEST_HEADER_LIBRA2_APPLICATION_NAME, REQUEST_HEADER_LIBRA2_EMAIL,
+        REQUEST_HEADER_LIBRA2_IDENTIFIER, REQUEST_HEADER_LIBRA2_IDENTIFIER_TYPE,
     },
     counters::{log_grpc_step, IndexerGrpcStep, NUM_MULTI_FETCH_OVERLAPPED_VERSIONS},
     file_store_operator::FileStoreOperator,
@@ -64,7 +64,7 @@ const RESPONSE_CHANNEL_SEND_TIMEOUT: Duration = Duration::from_secs(120);
 
 const SHORT_CONNECTION_DURATION_IN_SECS: u64 = 10;
 
-const RESPONSE_HEADER_APTOS_CONNECTION_ID_HEADER: &str = "x-aptos-connection-id";
+const RESPONSE_HEADER_LIBRA2_CONNECTION_ID_HEADER: &str = "x-aptos-connection-id";
 const SERVICE_TYPE: &str = "data_service";
 
 // Number of times to retry fetching a given txn block from the stores
@@ -217,7 +217,7 @@ impl RawData for RawDataServerWrapper {
         let mut response = Response::new(Box::pin(output_stream) as Self::GetTransactionsStream);
 
         response.metadata_mut().insert(
-            RESPONSE_HEADER_APTOS_CONNECTION_ID_HEADER,
+            RESPONSE_HEADER_LIBRA2_CONNECTION_ID_HEADER,
             tonic::metadata::MetadataValue::from_str(&request_metadata.request_connection_id)
                 .unwrap(),
         );
@@ -856,13 +856,13 @@ fn get_request_metadata(
     let request_metadata_pairs = vec![
         (
             "request_identifier_type",
-            REQUEST_HEADER_APTOS_IDENTIFIER_TYPE,
+            REQUEST_HEADER_LIBRA2_IDENTIFIER_TYPE,
         ),
-        ("request_identifier", REQUEST_HEADER_APTOS_IDENTIFIER),
-        ("request_email", REQUEST_HEADER_APTOS_EMAIL),
+        ("request_identifier", REQUEST_HEADER_LIBRA2_IDENTIFIER),
+        ("request_email", REQUEST_HEADER_LIBRA2_EMAIL),
         (
             "request_application_name",
-            REQUEST_HEADER_APTOS_APPLICATION_NAME,
+            REQUEST_HEADER_LIBRA2_APPLICATION_NAME,
         ),
         ("request_token", GRPC_AUTH_TOKEN_HEADER),
         ("processor_name", GRPC_REQUEST_NAME_HEADER),
