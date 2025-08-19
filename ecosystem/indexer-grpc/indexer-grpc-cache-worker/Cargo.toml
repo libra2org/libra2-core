@@ -17,7 +17,7 @@ anyhow = { workspace = true }
 libra2-indexer-grpc-server-framework = { workspace = true }
 libra2-indexer-grpc-utils = { workspace = true }
 libra2-metrics-core = { workspace = true }
-aptos-moving-average = { workspace = true }
+libra2-moving-average = { workspace = true }
 libra2-protos = { workspace = true }
 async-trait = { workspace = true }
 clap = { workspace = true }

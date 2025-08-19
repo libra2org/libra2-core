@@ -11,7 +11,7 @@ use libra2_indexer_grpc_utils::{
     timestamp_now_proto,
 };
 use libra2_logger::{error, info};
-use aptos_moving_average::MovingAverage;
+use libra2_moving_average::MovingAverage;
 use libra2_protos::{
     indexer::v1::FullnodeInfo,
     internal::fullnode::v1::{

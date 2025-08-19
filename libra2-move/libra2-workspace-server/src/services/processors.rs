@@ -7,8 +7,8 @@ use crate::{
     no_panic_println,
 };
 use anyhow::{anyhow, Context, Result};
-use aptos_indexer_processor_sdk::{
-    aptos_indexer_transaction_stream::TransactionStreamConfig,
+use libra2_indexer_processor_sdk::{
+    libra2_indexer_transaction_stream::config::TransactionStreamConfig,
     postgres::utils::database::run_pending_migrations, server_framework::RunnableConfig,
 };
 use libra2_localnet::{health_checker::HealthChecker, processors::get_processor_config};

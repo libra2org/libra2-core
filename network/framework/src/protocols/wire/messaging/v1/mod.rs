@@ -6,7 +6,7 @@
 //! serialized/deserialized, and provides a `Sink` and `Stream` implementation
 //! for sending `NetworkMessage`s over an abstract IO object (presumably a socket).
 //!
-//! The [Libra2Net Specification](https://github.com/aptos-labs/aptos-core/blob/main/documentation/specifications/network/messaging-v1.md)
+//! The [Libra2Net Specification](https://github.com/libra2org/libra2-core/blob/main/documentation/specifications/network/messaging-v1.md)
 //! describes in greater detail how these messages are sent and received
 //! over-the-wire.
 

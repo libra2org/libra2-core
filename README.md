@@ -19,6 +19,6 @@ Libra2 inherits Libra, Diem, and Aptos technologies.
 
 ## Contributing
 
-You can learn more about contributing to the Libra2 project by reading our [Contribution Guide](https://github.com/libra2org/libra2-core/blob/main/CONTRIBUTING.md) and by viewing our [Code of Conduct](https://github.com/aptos-labs/aptos-core/blob/main/CODE_OF_CONDUCT.md).
+You can learn more about contributing to the Libra2 project by reading our [Contribution Guide](https://github.com/libra2org/libra2-core/blob/main/CONTRIBUTING.md) and by viewing our [Code of Conduct](https://github.com/libra2org/libra2-core/blob/main/CODE_OF_CONDUCT.md).
 
 Libra2 Core is licensed under [Apache 2.0](https://github.com/libra2org/libra2-core/blob/main/LICENSE).

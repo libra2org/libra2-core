@@ -77,7 +77,7 @@ impl ConsensusProposalsChecker {
     }
 }
 
-// See https://github.com/aptos-labs/aptos-core/pull/1450 for a discussion on
+// See https://github.com/libra2org/libra2-core/pull/1450 for a discussion on
 // how this Checker can be improved.
 #[async_trait::async_trait]
 impl Checker for ConsensusProposalsChecker {

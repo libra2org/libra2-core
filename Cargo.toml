@@ -503,10 +503,13 @@ ark-groth16 = "0.4.0"
 ark-relations = "0.4.0"
 ark-serialize = "0.4.0"
 ark-std = { version = "0.4.0", features = ["getrandom"] }
-aptos-indexer-processor-sdk = { git = "https://github.com/aptos-labs/aptos-indexer-processor-sdk.git", tag = "aptos-indexer-processor-sdk-v2.1.2", features = [
+libra2-indexer-processor-sdk = { path = "ecosystem/indexer-processor-sdk", features = [
     "postgres_partial",
 ] }
-aptos-moving-average = { git = "https://github.com/aptos-labs/aptos-indexer-processors.git", rev = "62beedc881d1b76632318ceb186ee9065236468e" }
+libra2-moving-average = { path = "ecosystem/moving-average" }
+libra2-indexer-transaction-stream = { path = "ecosystem/transaction-stream" }
+instrumented-channel = { path = "ecosystem/instrumented-channel" }
+idxsample = { path = "ecosystem/indexer-processor-sdk/idxsample" }
 assert_approx_eq = "1.1.0"
 async-channel = "1.7.1"
 async-mutex = "1.4.0"
@@ -526,7 +529,7 @@ blake2-rfc = "0.2.18"
 blst = "0.3.15"
 # The __private_bench feature exposes the Fp12 type which we need to implement a multi-threaded multi-pairing.
 blstrs = { version = "0.7.1", features = ["serde", "__private_bench"] }
-bollard = "0.15"
+bollard = "0.16"
 build_html = "2.5.0"
 bulletproofs = { version = "4.0.0" }
 byteorder = "1.4.3"
@@ -637,7 +640,7 @@ httpmock = "0.6.8"
 hyper = { version = "0.14.18", features = ["full"] }
 im = "15.0.0"
 image = "0.24.5"
-indexmap = "2.7.0"
+indexmap = { version = "2", features = ["serde"] }
 indicatif = "0.15.0"
 indoc = "1.0.6"
 inferno = "0.11.14"
@@ -703,7 +706,7 @@ pprof = { version = "0.11", features = ["flamegraph", "protobuf-codec"] }
 pretty = "0.10.0"
 pretty_assertions = "1.2.1"
 # We set default-features to false so we don't onboard the libpq dep. See more here:
-# https://github.com/aptos-labs/aptos-core/pull/12568
+# https://github.com/libra2org/libra2-core/pull/12568
 processor = { git = "https://github.com/aptos-labs/aptos-indexer-processors-v2.git", tag = "aptos-indexer-processors-v2.1.5", default-features = false }
 procfs = "0.14.1"
 proc-macro2 = "1.0.38"
@@ -837,6 +840,21 @@ whoami = "1.5.0"
 # This allows for zeroize 1.6 to be used. Version 1.2.0 of x25519-dalek locks zeroize to 1.3.
 x25519-dalek = { git = "https://github.com/aptos-labs/x25519-dalek", rev = "b9cdbaf36bf2a83438d9f660e5a708c82ed60d8e" }
 z3tracer = "0.8.0"
+
+# indexer-processor-sdk
+autometrics = { version = "1.0.1", features = ["prometheus-exporter"] }
+delegate = "0.12.0"
+
+# Locking this because newer versions of kanal are using the unstable feature error_in_core, which
+# will break the Libra2 CLI. 
+kanal = "=0.1.0-pre8"
+prometheus-client = "0.22.2"
+testcontainers = "0.20.1"
+
+# Postgres SSL support
+postgres-native-tls = "0.5.0"
+tokio-postgres = "0.7.10"
+
 
 # MOVE DEPENDENCIES
 move-abigen = { path = "third_party/move/move-prover/move-abigen" }

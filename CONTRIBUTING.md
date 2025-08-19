@@ -10,7 +10,7 @@ Our goal is to make contributing to Libra2 Core easy and transparent. See [Libra
 ## Libra2 Core
 
 To contribute to the Libra2 Core implementation, first start with the proper development copy.
-You may want to use the GitHub interface to fork [aptos-core](https://github.com/aptos-labs/aptos-core) and check out your fork.
+You may want to use the GitHub interface to fork [aptos-core](https://github.com/libra2org/libra2-core) and check out your fork.
 For development environment setup and first build, see [Building Libra2 From Source](https://aptos.dev/guides/building-from-source)
 
 ## Our Development Process
@@ -106,4 +106,4 @@ It is important that the project history is bisect-able so that when regressions
 
 ## Issues
 
-Libra2 Core uses [GitHub issues](https://github.com/aptos-labs/aptos-core/issues) to track bugs. Please include necessary information and instructions to reproduce your issue.
+Libra2 Core uses [GitHub issues](https://github.com/libra2org/libra2-core/issues) to track bugs. Please include necessary information and instructions to reproduce your issue.

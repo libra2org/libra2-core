@@ -1,7 +1,7 @@
 ---
 id: Aptos-framework
 title: Libra2 Framework
-custom_edit_url: https://github.com/aptos-labs/aptos-core/edit/main/Aptos-move/Aptos-framework/README.md
+custom_edit_url: https://github.com/libra2org/libra2-core/edit/main/Aptos-move/Aptos-framework/README.md
 ---
 
 ## The Libra2 Framework
@@ -18,10 +18,10 @@ files. See the [Layout](#layout) section for a more detailed overview of the str
 
 Each of the main components of the Libra2 Framework and contributing guidelines are documented separately. See them by version below:
 
-* *Aptos tokens* - [main](https://github.com/aptos-labs/aptos-core/blob/main/libra2-move/framework/libra2-token/doc/overview.md), [testnet](https://github.com/aptos-labs/aptos-core/blob/testnet/libra2-move/framework/libra2-token/doc/overview.md), [devnet](https://github.com/aptos-labs/aptos-core/blob/devnet/libra2-move/framework/libra2-token/doc/overview.md)
-* *Aptos framework* - [main](https://github.com/aptos-labs/aptos-core/blob/main/libra2-move/framework/libra2-framework/doc/overview.md), [testnet](https://github.com/aptos-labs/aptos-core/blob/testnet/libra2-move/framework/libra2-framework/doc/overview.md), [devnet](https://github.com/aptos-labs/aptos-core/blob/devnet/libra2-move/framework/libra2-framework/doc/overview.md)
-* *Aptos stdlib* - [main](https://github.com/aptos-labs/aptos-core/blob/main/libra2-move/framework/libra2-stdlib/doc/overview.md), [testnet](https://github.com/aptos-labs/aptos-core/blob/testnet/libra2-move/framework/libra2-stdlib/doc/overview.md), [devnet](https://github.com/aptos-labs/aptos-core/blob/devnet/libra2-move/framework/libra2-stdlib/doc/overview.md)
-* *Move stdlib* - [main](https://github.com/aptos-labs/aptos-core/blob/main/libra2-move/framework/move-stdlib/doc/overview.md), [testnet](https://github.com/aptos-labs/aptos-core/blob/testnet/libra2-move/framework/move-stdlib/doc/overview.md), [devnet](https://github.com/aptos-labs/aptos-core/blob/devnet/libra2-move/framework/move-stdlib/doc/overview.md)
+* *Aptos tokens* - [main](https://github.com/libra2org/libra2-core/blob/main/libra2-move/framework/libra2-token/doc/overview.md), [testnet](https://github.com/libra2org/libra2-core/blob/testnet/libra2-move/framework/libra2-token/doc/overview.md), [devnet](https://github.com/libra2org/libra2-core/blob/devnet/libra2-move/framework/libra2-token/doc/overview.md)
+* *Aptos framework* - [main](https://github.com/libra2org/libra2-core/blob/main/libra2-move/framework/libra2-framework/doc/overview.md), [testnet](https://github.com/libra2org/libra2-core/blob/testnet/libra2-move/framework/libra2-framework/doc/overview.md), [devnet](https://github.com/libra2org/libra2-core/blob/devnet/libra2-move/framework/libra2-framework/doc/overview.md)
+* *Aptos stdlib* - [main](https://github.com/libra2org/libra2-core/blob/main/libra2-move/framework/libra2-stdlib/doc/overview.md), [testnet](https://github.com/libra2org/libra2-core/blob/testnet/libra2-move/framework/libra2-stdlib/doc/overview.md), [devnet](https://github.com/libra2org/libra2-core/blob/devnet/libra2-move/framework/libra2-stdlib/doc/overview.md)
+* *Move stdlib* - [main](https://github.com/libra2org/libra2-core/blob/main/libra2-move/framework/move-stdlib/doc/overview.md), [testnet](https://github.com/libra2org/libra2-core/blob/testnet/libra2-move/framework/move-stdlib/doc/overview.md), [devnet](https://github.com/libra2org/libra2-core/blob/devnet/libra2-move/framework/move-stdlib/doc/overview.md)
 
 Follow our [contributing guidelines](CONTRIBUTING.md) and basic coding standards for the Libra2 Framework.
 

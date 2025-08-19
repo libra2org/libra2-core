@@ -12,7 +12,7 @@ use libra2_indexer_grpc_utils::{
     file_store_operator::FileStoreOperator,
     types::RedisUrl,
 };
-use aptos_moving_average::MovingAverage;
+use libra2_moving_average::MovingAverage;
 use libra2_protos::internal::fullnode::v1::{
     stream_status::StatusType, transactions_from_node_response::Response,
     GetTransactionsFromNodeRequest, TransactionsFromNodeResponse,

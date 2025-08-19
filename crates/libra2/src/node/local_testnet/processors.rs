@@ -3,8 +3,8 @@
 
 use super::{health_checker::HealthChecker, traits::ServiceManager, RunLocalnet};
 use anyhow::{bail, Context, Result};
-use aptos_indexer_processor_sdk::{
-    aptos_indexer_transaction_stream::TransactionStreamConfig,
+use libra2_indexer_processor_sdk::{
+    libra2_indexer_transaction_stream::TransactionStreamConfig,
     postgres::utils::database::run_pending_migrations, server_framework::RunnableConfig,
 };
 pub use libra2_localnet::processors::get_processor_config;

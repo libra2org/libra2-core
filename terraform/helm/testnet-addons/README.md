@@ -8,7 +8,7 @@ Additional components for libra2-nodes testnet
 
 ## Source Code
 
-* <https://github.com/aptos-labs/aptos-core>
+* <https://github.com/libra2org/libra2-core>
 
 ## Values
 
