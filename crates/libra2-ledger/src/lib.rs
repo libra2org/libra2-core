@@ -28,9 +28,12 @@ use thiserror::Error;
 /// Derivation path template
 /// A piece of data which tells a wallet how to derive a specific key within a tree of keys
 /// 637 is the key for Libra2
+/// To allow Libra2 app (with CLA 0x5C) to coexist with the Aptos app (with CLA 0x5B) on
+/// the same Ledger device, you must update both the Ledger firmware and your Rust code
+/// if Both Libra2 and A-p-t-o-s app in same ledger, need differ CLA value like ox5C.
 pub const DERIVATION_PATH: &str = "m/44'/637'/{index}'/0'/0'";
 
-const CLA_APTOS: u8 = 0x5B; // Libra2 CLA Instruction class
+const CLA_LIBRA2: u8 = 0x5B; // Libra2 CLA Instruction class - same as A-PTOS for now
 const INS_GET_VERSION: u8 = 0x03; // Get version instruction code
 const INS_GET_APP_NAME: u8 = 0x04; // Get app name instruction code
 const INS_GET_PUB_KEY: u8 = 0x05; // Get public key instruction code

@@ -17,7 +17,7 @@ use blstrs::Scalar;
 use ff::PrimeField;
 use serde::Serialize;
 
-pub const PVSS_DOM_SEP: &[u8; 22] = b"LIBRA2_SCRAPE_PVSS_DST";
+pub const PVSS_DOM_SEP: &[u8; 21] = b"LIBRA_SCRAPE_PVSS_DST";
 
 #[allow(non_snake_case)]
 pub trait FiatShamirProtocol<T: Transcript> {

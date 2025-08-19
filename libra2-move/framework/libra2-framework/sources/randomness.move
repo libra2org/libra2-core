@@ -20,7 +20,7 @@ module libra2_framework::randomness {
 
     friend libra2_framework::block;
 
-    const DST: vector<u8> = b"LIBRA2_RANDOMNESS";
+    const DST: vector<u8> = b"LIBRA_RANDOMNESS";
 
     /// Randomness APIs calls must originate from a private entry function with
     /// `#[randomness]` annotation. Otherwise, malicious users can bias randomness result.
