@@ -11,7 +11,7 @@ use group::Group;
 use serde::{Deserialize, Serialize};
 use std::ops::{Mul, Neg};
 
-const SCHNORR_POK_DST: &[u8; 21] = b"LIBRA2_SCHNORR_POK_DST";
+const SCHNORR_POK_DST: &[u8; 22] = b"LIBRA2_SCHNORR_POK_DST";
 
 /// A Schnorr PoK for (g, g^a) is a tuple:
 ///

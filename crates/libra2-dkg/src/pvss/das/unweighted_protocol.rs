@@ -29,7 +29,7 @@ use std::ops::{Add, Mul, Neg, Sub};
 pub const DAS_SK_IN_G1: &'static str = "das_sk_in_g1";
 
 /// Domain-separator tag (DST) for the Fiat-Shamir hashing used to derive randomness from the transcript.
-const DAS_PVSS_FIAT_SHAMIR_DST: &[u8; 30] = b"LIBRA2_DAS_PVSS_FIAT_SHAMIR_DST";
+const DAS_PVSS_FIAT_SHAMIR_DST: &[u8; 31] = b"LIBRA2_DAS_PVSS_FIAT_SHAMIR_DST";
 
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, Eq, BCSCryptoHash, CryptoHasher)]
 #[allow(non_snake_case)]

@@ -81,7 +81,7 @@ Storage state for managing the no-code Collection.
 
 
 <pre><code>#[resource_group_member(#[group = <a href="../../libra2-framework/doc/object.md#0x1_object_ObjectGroup">0x1::object::ObjectGroup</a>])]
-<b>struct</b> <a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> <b>has</b> key
+<b>struct</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> <b>has</b> key
 </code></pre>
 
 
@@ -164,7 +164,7 @@ Storage state for managing the no-code Token.
 
 
 <pre><code>#[resource_group_member(#[group = <a href="../../libra2-framework/doc/object.md#0x1_object_ObjectGroup">0x1::object::ObjectGroup</a>])]
-<b>struct</b> <a href="libra2_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a> <b>has</b> key
+<b>struct</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a> <b>has</b> key
 </code></pre>
 
 
@@ -213,7 +213,7 @@ Storage state for managing the no-code Token.
 The collection does not exist
 
 
-<pre><code><b>const</b> <a href="libra2_token.md#0x4_libra2_token_ECOLLECTION_DOES_NOT_EXIST">ECOLLECTION_DOES_NOT_EXIST</a>: u64 = 1;
+<pre><code><b>const</b> <a href="aptos_token.md#0x4_libra2_token_ECOLLECTION_DOES_NOT_EXIST">ECOLLECTION_DOES_NOT_EXIST</a>: u64 = 1;
 </code></pre>
 
 
@@ -223,7 +223,7 @@ The collection does not exist
 The field being changed is not mutable
 
 
-<pre><code><b>const</b> <a href="libra2_token.md#0x4_libra2_token_EFIELD_NOT_MUTABLE">EFIELD_NOT_MUTABLE</a>: u64 = 4;
+<pre><code><b>const</b> <a href="aptos_token.md#0x4_libra2_token_EFIELD_NOT_MUTABLE">EFIELD_NOT_MUTABLE</a>: u64 = 4;
 </code></pre>
 
 
@@ -233,7 +233,7 @@ The field being changed is not mutable
 The provided signer is not the creator
 
 
-<pre><code><b>const</b> <a href="libra2_token.md#0x4_libra2_token_ENOT_CREATOR">ENOT_CREATOR</a>: u64 = 3;
+<pre><code><b>const</b> <a href="aptos_token.md#0x4_libra2_token_ENOT_CREATOR">ENOT_CREATOR</a>: u64 = 3;
 </code></pre>
 
 
@@ -243,7 +243,7 @@ The provided signer is not the creator
 The token does not exist
 
 
-<pre><code><b>const</b> <a href="libra2_token.md#0x4_libra2_token_ETOKEN_DOES_NOT_EXIST">ETOKEN_DOES_NOT_EXIST</a>: u64 = 2;
+<pre><code><b>const</b> <a href="aptos_token.md#0x4_libra2_token_ETOKEN_DOES_NOT_EXIST">ETOKEN_DOES_NOT_EXIST</a>: u64 = 2;
 </code></pre>
 
 
@@ -253,7 +253,7 @@ The token does not exist
 The property map being mutated is not mutable
 
 
-<pre><code><b>const</b> <a href="libra2_token.md#0x4_libra2_token_EPROPERTIES_NOT_MUTABLE">EPROPERTIES_NOT_MUTABLE</a>: u64 = 6;
+<pre><code><b>const</b> <a href="aptos_token.md#0x4_libra2_token_EPROPERTIES_NOT_MUTABLE">EPROPERTIES_NOT_MUTABLE</a>: u64 = 6;
 </code></pre>
 
 
@@ -263,7 +263,7 @@ The property map being mutated is not mutable
 The token being burned is not burnable
 
 
-<pre><code><b>const</b> <a href="libra2_token.md#0x4_libra2_token_ETOKEN_NOT_BURNABLE">ETOKEN_NOT_BURNABLE</a>: u64 = 5;
+<pre><code><b>const</b> <a href="aptos_token.md#0x4_libra2_token_ETOKEN_NOT_BURNABLE">ETOKEN_NOT_BURNABLE</a>: u64 = 5;
 </code></pre>
 
 
@@ -275,7 +275,7 @@ The token being burned is not burnable
 Create a new collection
 
 
-<pre><code><b>public</b> entry <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_create_collection">create_collection</a>(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, description: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, max_supply: u64, name: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, uri: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, mutable_description: bool, mutable_royalty: bool, mutable_uri: bool, mutable_token_description: bool, mutable_token_name: bool, mutable_token_properties: bool, mutable_token_uri: bool, tokens_burnable_by_creator: bool, tokens_freezable_by_creator: bool, royalty_numerator: u64, royalty_denominator: u64)
+<pre><code><b>public</b> entry <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_create_collection">create_collection</a>(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, description: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, max_supply: u64, name: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, uri: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, mutable_description: bool, mutable_royalty: bool, mutable_uri: bool, mutable_token_description: bool, mutable_token_name: bool, mutable_token_properties: bool, mutable_token_uri: bool, tokens_burnable_by_creator: bool, tokens_freezable_by_creator: bool, royalty_numerator: u64, royalty_denominator: u64)
 </code></pre>
 
 
@@ -284,7 +284,7 @@ Create a new collection
 <summary>Implementation</summary>
 
 
-<pre><code><b>public</b> entry <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_create_collection">create_collection</a>(
+<pre><code><b>public</b> entry <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_create_collection">create_collection</a>(
     creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>,
     description: String,
     max_supply: u64,
@@ -302,7 +302,7 @@ Create a new collection
     royalty_numerator: u64,
     royalty_denominator: u64,
 ) {
-    <a href="libra2_token.md#0x4_libra2_token_create_collection_object">create_collection_object</a>(
+    <a href="aptos_token.md#0x4_libra2_token_create_collection_object">create_collection_object</a>(
         creator,
         description,
         max_supply,
@@ -333,7 +333,7 @@ Create a new collection
 
 
 
-<pre><code><b>public</b> <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_create_collection_object">create_collection_object</a>(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, description: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, max_supply: u64, name: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, uri: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, mutable_description: bool, mutable_royalty: bool, mutable_uri: bool, mutable_token_description: bool, mutable_token_name: bool, mutable_token_properties: bool, mutable_token_uri: bool, tokens_burnable_by_creator: bool, tokens_freezable_by_creator: bool, royalty_numerator: u64, royalty_denominator: u64): <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;<a href="libra2_token.md#0x4_libra2_token_Libra2Collection">libra2_token::Libra2Collection</a>&gt;
+<pre><code><b>public</b> <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_create_collection_object">create_collection_object</a>(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, description: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, max_supply: u64, name: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, uri: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, mutable_description: bool, mutable_royalty: bool, mutable_uri: bool, mutable_token_description: bool, mutable_token_name: bool, mutable_token_properties: bool, mutable_token_uri: bool, tokens_burnable_by_creator: bool, tokens_freezable_by_creator: bool, royalty_numerator: u64, royalty_denominator: u64): <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;<a href="aptos_token.md#0x4_libra2_token_Libra2Collection">libra2_token::Libra2Collection</a>&gt;
 </code></pre>
 
 
@@ -342,7 +342,7 @@ Create a new collection
 <summary>Implementation</summary>
 
 
-<pre><code><b>public</b> <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_create_collection_object">create_collection_object</a>(
+<pre><code><b>public</b> <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_create_collection_object">create_collection_object</a>(
     creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>,
     description: String,
     max_supply: u64,
@@ -359,7 +359,7 @@ Create a new collection
     tokens_freezable_by_creator: bool,
     royalty_numerator: u64,
     royalty_denominator: u64,
-): Object&lt;<a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a>&gt; {
+): Object&lt;<a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a>&gt; {
     <b>let</b> creator_addr = <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer_address_of">signer::address_of</a>(creator);
     <b>let</b> <a href="royalty.md#0x4_royalty">royalty</a> = <a href="royalty.md#0x4_royalty_create">royalty::create</a>(royalty_numerator, royalty_denominator, creator_addr);
     <b>let</b> constructor_ref = <a href="collection.md#0x4_collection_create_fixed_collection">collection::create_fixed_collection</a>(
@@ -384,7 +384,7 @@ Create a new collection
         <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/option.md#0x1_option_none">option::none</a>()
     };
 
-    <b>let</b> libra2_collection = <a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
+    <b>let</b> libra2_collection = <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
         mutator_ref,
         royalty_mutator_ref,
         mutable_description,
@@ -412,7 +412,7 @@ Create a new collection
 With an existing collection, directly mint a viable token into the creators account.
 
 
-<pre><code><b>public</b> entry <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_mint">mint</a>(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="collection.md#0x4_collection">collection</a>: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, description: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, name: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, uri: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, property_keys: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>&gt;, property_types: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>&gt;, property_values: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt;&gt;)
+<pre><code><b>public</b> entry <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_mint">mint</a>(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="collection.md#0x4_collection">collection</a>: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, description: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, name: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, uri: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, property_keys: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>&gt;, property_types: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>&gt;, property_values: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt;&gt;)
 </code></pre>
 
 
@@ -421,7 +421,7 @@ With an existing collection, directly mint a viable token into the creators acco
 <summary>Implementation</summary>
 
 
-<pre><code><b>public</b> entry <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_mint">mint</a>(
+<pre><code><b>public</b> entry <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_mint">mint</a>(
     creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>,
     <a href="collection.md#0x4_collection">collection</a>: String,
     description: String,
@@ -430,8 +430,8 @@ With an existing collection, directly mint a viable token into the creators acco
     property_keys: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;String&gt;,
     property_types: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;String&gt;,
     property_values: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt;&gt;,
-) <b>acquires</b> <a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a>, <a href="libra2_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a> {
-    <a href="libra2_token.md#0x4_libra2_token_mint_token_object">mint_token_object</a>(creator, <a href="collection.md#0x4_collection">collection</a>, description, name, uri, property_keys, property_types, property_values);
+) <b>acquires</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a>, <a href="aptos_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a> {
+    <a href="aptos_token.md#0x4_libra2_token_mint_token_object">mint_token_object</a>(creator, <a href="collection.md#0x4_collection">collection</a>, description, name, uri, property_keys, property_types, property_values);
 }
 </code></pre>
 
@@ -446,7 +446,7 @@ With an existing collection, directly mint a viable token into the creators acco
 Mint a token into an existing collection, and retrieve the object / address of the token.
 
 
-<pre><code><b>public</b> <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_mint_token_object">mint_token_object</a>(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="collection.md#0x4_collection">collection</a>: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, description: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, name: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, uri: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, property_keys: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>&gt;, property_types: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>&gt;, property_values: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt;&gt;): <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;<a href="libra2_token.md#0x4_libra2_token_Libra2Token">libra2_token::Libra2Token</a>&gt;
+<pre><code><b>public</b> <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_mint_token_object">mint_token_object</a>(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="collection.md#0x4_collection">collection</a>: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, description: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, name: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, uri: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, property_keys: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>&gt;, property_types: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>&gt;, property_values: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt;&gt;): <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;<a href="aptos_token.md#0x4_libra2_token_Libra2Token">libra2_token::Libra2Token</a>&gt;
 </code></pre>
 
 
@@ -455,7 +455,7 @@ Mint a token into an existing collection, and retrieve the object / address of t
 <summary>Implementation</summary>
 
 
-<pre><code><b>public</b> <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_mint_token_object">mint_token_object</a>(
+<pre><code><b>public</b> <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_mint_token_object">mint_token_object</a>(
     creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>,
     <a href="collection.md#0x4_collection">collection</a>: String,
     description: String,
@@ -464,8 +464,8 @@ Mint a token into an existing collection, and retrieve the object / address of t
     property_keys: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;String&gt;,
     property_types: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;String&gt;,
     property_values: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt;&gt;,
-): Object&lt;<a href="libra2_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a>&gt; <b>acquires</b> <a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a>, <a href="libra2_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a> {
-    <b>let</b> constructor_ref = <a href="libra2_token.md#0x4_libra2_token_mint_internal">mint_internal</a>(
+): Object&lt;<a href="aptos_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a>&gt; <b>acquires</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a>, <a href="aptos_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a> {
+    <b>let</b> constructor_ref = <a href="aptos_token.md#0x4_libra2_token_mint_internal">mint_internal</a>(
         creator,
         <a href="collection.md#0x4_collection">collection</a>,
         description,
@@ -476,15 +476,15 @@ Mint a token into an existing collection, and retrieve the object / address of t
         property_values,
     );
 
-    <b>let</b> <a href="collection.md#0x4_collection">collection</a> = <a href="libra2_token.md#0x4_libra2_token_collection_object">collection_object</a>(creator, &<a href="collection.md#0x4_collection">collection</a>);
+    <b>let</b> <a href="collection.md#0x4_collection">collection</a> = <a href="aptos_token.md#0x4_libra2_token_collection_object">collection_object</a>(creator, &<a href="collection.md#0x4_collection">collection</a>);
 
     // If tokens are freezable, add a transfer ref <b>to</b> be able <b>to</b> <b>freeze</b> transfers
-    <b>let</b> freezable_by_creator = <a href="libra2_token.md#0x4_libra2_token_are_collection_tokens_freezable">are_collection_tokens_freezable</a>(<a href="collection.md#0x4_collection">collection</a>);
+    <b>let</b> freezable_by_creator = <a href="aptos_token.md#0x4_libra2_token_are_collection_tokens_freezable">are_collection_tokens_freezable</a>(<a href="collection.md#0x4_collection">collection</a>);
     <b>if</b> (freezable_by_creator) {
         <b>let</b> libra2_token_addr = <a href="../../libra2-framework/doc/object.md#0x1_object_address_from_constructor_ref">object::address_from_constructor_ref</a>(&constructor_ref);
-        <b>let</b> <a href="libra2_token.md#0x4_libra2_token">libra2_token</a> = &<b>mut</b> <a href="libra2_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a>[libra2_token_addr];
+        <b>let</b> <a href="aptos_token.md#0x4_libra2_token">libra2_token</a> = &<b>mut</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a>[libra2_token_addr];
         <b>let</b> transfer_ref = <a href="../../libra2-framework/doc/object.md#0x1_object_generate_transfer_ref">object::generate_transfer_ref</a>(&constructor_ref);
-        <a href="libra2_token.md#0x4_libra2_token">libra2_token</a>.transfer_ref.fill(transfer_ref);
+        <a href="aptos_token.md#0x4_libra2_token">libra2_token</a>.transfer_ref.fill(transfer_ref);
     };
 
     <a href="../../libra2-framework/doc/object.md#0x1_object_object_from_constructor_ref">object::object_from_constructor_ref</a>(&constructor_ref)
@@ -502,7 +502,7 @@ Mint a token into an existing collection, and retrieve the object / address of t
 With an existing collection, directly mint a soul bound token into the recipient's account.
 
 
-<pre><code><b>public</b> entry <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_mint_soul_bound">mint_soul_bound</a>(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="collection.md#0x4_collection">collection</a>: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, description: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, name: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, uri: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, property_keys: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>&gt;, property_types: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>&gt;, property_values: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt;&gt;, soul_bound_to: <b>address</b>)
+<pre><code><b>public</b> entry <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_mint_soul_bound">mint_soul_bound</a>(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="collection.md#0x4_collection">collection</a>: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, description: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, name: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, uri: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, property_keys: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>&gt;, property_types: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>&gt;, property_values: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt;&gt;, soul_bound_to: <b>address</b>)
 </code></pre>
 
 
@@ -511,7 +511,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 <summary>Implementation</summary>
 
 
-<pre><code><b>public</b> entry <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_mint_soul_bound">mint_soul_bound</a>(
+<pre><code><b>public</b> entry <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_mint_soul_bound">mint_soul_bound</a>(
     creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>,
     <a href="collection.md#0x4_collection">collection</a>: String,
     description: String,
@@ -521,8 +521,8 @@ With an existing collection, directly mint a soul bound token into the recipient
     property_types: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;String&gt;,
     property_values: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt;&gt;,
     soul_bound_to: <b>address</b>,
-) <b>acquires</b> <a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
-    <a href="libra2_token.md#0x4_libra2_token_mint_soul_bound_token_object">mint_soul_bound_token_object</a>(
+) <b>acquires</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
+    <a href="aptos_token.md#0x4_libra2_token_mint_soul_bound_token_object">mint_soul_bound_token_object</a>(
         creator,
         <a href="collection.md#0x4_collection">collection</a>,
         description,
@@ -547,7 +547,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 With an existing collection, directly mint a soul bound token into the recipient's account.
 
 
-<pre><code><b>public</b> <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_mint_soul_bound_token_object">mint_soul_bound_token_object</a>(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="collection.md#0x4_collection">collection</a>: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, description: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, name: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, uri: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, property_keys: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>&gt;, property_types: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>&gt;, property_values: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt;&gt;, soul_bound_to: <b>address</b>): <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;<a href="libra2_token.md#0x4_libra2_token_Libra2Token">libra2_token::Libra2Token</a>&gt;
+<pre><code><b>public</b> <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_mint_soul_bound_token_object">mint_soul_bound_token_object</a>(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="collection.md#0x4_collection">collection</a>: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, description: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, name: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, uri: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, property_keys: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>&gt;, property_types: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>&gt;, property_values: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt;&gt;, soul_bound_to: <b>address</b>): <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;<a href="aptos_token.md#0x4_libra2_token_Libra2Token">libra2_token::Libra2Token</a>&gt;
 </code></pre>
 
 
@@ -556,7 +556,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 <summary>Implementation</summary>
 
 
-<pre><code><b>public</b> <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_mint_soul_bound_token_object">mint_soul_bound_token_object</a>(
+<pre><code><b>public</b> <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_mint_soul_bound_token_object">mint_soul_bound_token_object</a>(
     creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>,
     <a href="collection.md#0x4_collection">collection</a>: String,
     description: String,
@@ -566,8 +566,8 @@ With an existing collection, directly mint a soul bound token into the recipient
     property_types: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;String&gt;,
     property_values: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt;&gt;,
     soul_bound_to: <b>address</b>,
-): Object&lt;<a href="libra2_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a>&gt; <b>acquires</b> <a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
-    <b>let</b> constructor_ref = <a href="libra2_token.md#0x4_libra2_token_mint_internal">mint_internal</a>(
+): Object&lt;<a href="aptos_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a>&gt; <b>acquires</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
+    <b>let</b> constructor_ref = <a href="aptos_token.md#0x4_libra2_token_mint_internal">mint_internal</a>(
         creator,
         <a href="collection.md#0x4_collection">collection</a>,
         description,
@@ -597,7 +597,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 
 
 
-<pre><code><b>fun</b> <a href="libra2_token.md#0x4_libra2_token_mint_internal">mint_internal</a>(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="collection.md#0x4_collection">collection</a>: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, description: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, name: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, uri: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, property_keys: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>&gt;, property_types: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>&gt;, property_values: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt;&gt;): <a href="../../libra2-framework/doc/object.md#0x1_object_ConstructorRef">object::ConstructorRef</a>
+<pre><code><b>fun</b> <a href="aptos_token.md#0x4_libra2_token_mint_internal">mint_internal</a>(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="collection.md#0x4_collection">collection</a>: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, description: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, name: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, uri: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, property_keys: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>&gt;, property_types: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>&gt;, property_values: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt;&gt;): <a href="../../libra2-framework/doc/object.md#0x1_object_ConstructorRef">object::ConstructorRef</a>
 </code></pre>
 
 
@@ -606,7 +606,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 <summary>Implementation</summary>
 
 
-<pre><code><b>fun</b> <a href="libra2_token.md#0x4_libra2_token_mint_internal">mint_internal</a>(
+<pre><code><b>fun</b> <a href="aptos_token.md#0x4_libra2_token_mint_internal">mint_internal</a>(
     creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>,
     <a href="collection.md#0x4_collection">collection</a>: String,
     description: String,
@@ -615,13 +615,13 @@ With an existing collection, directly mint a soul bound token into the recipient
     property_keys: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;String&gt;,
     property_types: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;String&gt;,
     property_values: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt;&gt;,
-): ConstructorRef <b>acquires</b> <a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
+): ConstructorRef <b>acquires</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
     <b>let</b> constructor_ref = <a href="token.md#0x4_token_create">token::create</a>(creator, <a href="collection.md#0x4_collection">collection</a>, description, name, <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/option.md#0x1_option_none">option::none</a>(), uri);
 
     <b>let</b> object_signer = <a href="../../libra2-framework/doc/object.md#0x1_object_generate_signer">object::generate_signer</a>(&constructor_ref);
 
-    <b>let</b> collection_obj = <a href="libra2_token.md#0x4_libra2_token_collection_object">collection_object</a>(creator, &<a href="collection.md#0x4_collection">collection</a>);
-    <b>let</b> <a href="collection.md#0x4_collection">collection</a> = <a href="libra2_token.md#0x4_libra2_token_borrow_collection">borrow_collection</a>(&collection_obj);
+    <b>let</b> collection_obj = <a href="aptos_token.md#0x4_libra2_token_collection_object">collection_object</a>(creator, &<a href="collection.md#0x4_collection">collection</a>);
+    <b>let</b> <a href="collection.md#0x4_collection">collection</a> = <a href="aptos_token.md#0x4_libra2_token_borrow_collection">borrow_collection</a>(&collection_obj);
 
     <b>let</b> mutator_ref = <b>if</b> (
         <a href="collection.md#0x4_collection">collection</a>.mutable_token_description
@@ -639,13 +639,13 @@ With an existing collection, directly mint a soul bound token into the recipient
         <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/option.md#0x1_option_none">option::none</a>()
     };
 
-    <b>let</b> <a href="libra2_token.md#0x4_libra2_token">libra2_token</a> = <a href="libra2_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a> {
+    <b>let</b> <a href="aptos_token.md#0x4_libra2_token">libra2_token</a> = <a href="aptos_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a> {
         burn_ref,
         transfer_ref: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/option.md#0x1_option_none">option::none</a>(),
         mutator_ref,
         property_mutator_ref: <a href="property_map.md#0x4_property_map_generate_mutator_ref">property_map::generate_mutator_ref</a>(&constructor_ref),
     };
-    <b>move_to</b>(&object_signer, <a href="libra2_token.md#0x4_libra2_token">libra2_token</a>);
+    <b>move_to</b>(&object_signer, <a href="aptos_token.md#0x4_libra2_token">libra2_token</a>);
 
     <b>let</b> properties = <a href="property_map.md#0x4_property_map_prepare_input">property_map::prepare_input</a>(property_keys, property_types, property_values);
     <a href="property_map.md#0x4_property_map_init">property_map::init</a>(&constructor_ref, properties);
@@ -664,7 +664,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 
 
 
-<pre><code><b>fun</b> <a href="libra2_token.md#0x4_libra2_token_borrow">borrow</a>&lt;T: key&gt;(<a href="token.md#0x4_token">token</a>: &<a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;): &<a href="libra2_token.md#0x4_libra2_token_Libra2Token">libra2_token::Libra2Token</a>
+<pre><code><b>fun</b> <a href="aptos_token.md#0x4_libra2_token_borrow">borrow</a>&lt;T: key&gt;(<a href="token.md#0x4_token">token</a>: &<a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;): &<a href="aptos_token.md#0x4_libra2_token_Libra2Token">libra2_token::Libra2Token</a>
 </code></pre>
 
 
@@ -673,13 +673,13 @@ With an existing collection, directly mint a soul bound token into the recipient
 <summary>Implementation</summary>
 
 
-<pre><code>inline <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_borrow">borrow</a>&lt;T: key&gt;(<a href="token.md#0x4_token">token</a>: &Object&lt;T&gt;): &<a href="libra2_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a> {
+<pre><code>inline <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_borrow">borrow</a>&lt;T: key&gt;(<a href="token.md#0x4_token">token</a>: &Object&lt;T&gt;): &<a href="aptos_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a> {
     <b>let</b> token_address = <a href="../../libra2-framework/doc/object.md#0x1_object_object_address">object::object_address</a>(<a href="token.md#0x4_token">token</a>);
     <b>assert</b>!(
-        <b>exists</b>&lt;<a href="libra2_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a>&gt;(token_address),
-        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_not_found">error::not_found</a>(<a href="libra2_token.md#0x4_libra2_token_ETOKEN_DOES_NOT_EXIST">ETOKEN_DOES_NOT_EXIST</a>),
+        <b>exists</b>&lt;<a href="aptos_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a>&gt;(token_address),
+        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_not_found">error::not_found</a>(<a href="aptos_token.md#0x4_libra2_token_ETOKEN_DOES_NOT_EXIST">ETOKEN_DOES_NOT_EXIST</a>),
     );
-    &<a href="libra2_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a>[token_address]
+    &<a href="aptos_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a>[token_address]
 }
 </code></pre>
 
@@ -694,7 +694,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 
 
 <pre><code>#[view]
-<b>public</b> <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_are_properties_mutable">are_properties_mutable</a>&lt;T: key&gt;(<a href="token.md#0x4_token">token</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;): bool
+<b>public</b> <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_are_properties_mutable">are_properties_mutable</a>&lt;T: key&gt;(<a href="token.md#0x4_token">token</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;): bool
 </code></pre>
 
 
@@ -703,9 +703,9 @@ With an existing collection, directly mint a soul bound token into the recipient
 <summary>Implementation</summary>
 
 
-<pre><code><b>public</b> <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_are_properties_mutable">are_properties_mutable</a>&lt;T: key&gt;(<a href="token.md#0x4_token">token</a>: Object&lt;T&gt;): bool <b>acquires</b> <a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
+<pre><code><b>public</b> <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_are_properties_mutable">are_properties_mutable</a>&lt;T: key&gt;(<a href="token.md#0x4_token">token</a>: Object&lt;T&gt;): bool <b>acquires</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
     <b>let</b> <a href="collection.md#0x4_collection">collection</a> = <a href="token.md#0x4_token_collection_object">token::collection_object</a>(<a href="token.md#0x4_token">token</a>);
-    <a href="libra2_token.md#0x4_libra2_token_borrow_collection">borrow_collection</a>(&<a href="collection.md#0x4_collection">collection</a>).mutable_token_properties
+    <a href="aptos_token.md#0x4_libra2_token_borrow_collection">borrow_collection</a>(&<a href="collection.md#0x4_collection">collection</a>).mutable_token_properties
 }
 </code></pre>
 
@@ -720,7 +720,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 
 
 <pre><code>#[view]
-<b>public</b> <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_is_burnable">is_burnable</a>&lt;T: key&gt;(<a href="token.md#0x4_token">token</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;): bool
+<b>public</b> <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_is_burnable">is_burnable</a>&lt;T: key&gt;(<a href="token.md#0x4_token">token</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;): bool
 </code></pre>
 
 
@@ -729,8 +729,8 @@ With an existing collection, directly mint a soul bound token into the recipient
 <summary>Implementation</summary>
 
 
-<pre><code><b>public</b> <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_is_burnable">is_burnable</a>&lt;T: key&gt;(<a href="token.md#0x4_token">token</a>: Object&lt;T&gt;): bool <b>acquires</b> <a href="libra2_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a> {
-    <a href="libra2_token.md#0x4_libra2_token_borrow">borrow</a>(&<a href="token.md#0x4_token">token</a>).burn_ref.is_some()
+<pre><code><b>public</b> <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_is_burnable">is_burnable</a>&lt;T: key&gt;(<a href="token.md#0x4_token">token</a>: Object&lt;T&gt;): bool <b>acquires</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a> {
+    <a href="aptos_token.md#0x4_libra2_token_borrow">borrow</a>(&<a href="token.md#0x4_token">token</a>).burn_ref.is_some()
 }
 </code></pre>
 
@@ -745,7 +745,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 
 
 <pre><code>#[view]
-<b>public</b> <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_is_freezable_by_creator">is_freezable_by_creator</a>&lt;T: key&gt;(<a href="token.md#0x4_token">token</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;): bool
+<b>public</b> <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_is_freezable_by_creator">is_freezable_by_creator</a>&lt;T: key&gt;(<a href="token.md#0x4_token">token</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;): bool
 </code></pre>
 
 
@@ -754,8 +754,8 @@ With an existing collection, directly mint a soul bound token into the recipient
 <summary>Implementation</summary>
 
 
-<pre><code><b>public</b> <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_is_freezable_by_creator">is_freezable_by_creator</a>&lt;T: key&gt;(<a href="token.md#0x4_token">token</a>: Object&lt;T&gt;): bool <b>acquires</b> <a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
-    <a href="libra2_token.md#0x4_libra2_token_are_collection_tokens_freezable">are_collection_tokens_freezable</a>(<a href="token.md#0x4_token_collection_object">token::collection_object</a>(<a href="token.md#0x4_token">token</a>))
+<pre><code><b>public</b> <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_is_freezable_by_creator">is_freezable_by_creator</a>&lt;T: key&gt;(<a href="token.md#0x4_token">token</a>: Object&lt;T&gt;): bool <b>acquires</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
+    <a href="aptos_token.md#0x4_libra2_token_are_collection_tokens_freezable">are_collection_tokens_freezable</a>(<a href="token.md#0x4_token_collection_object">token::collection_object</a>(<a href="token.md#0x4_token">token</a>))
 }
 </code></pre>
 
@@ -770,7 +770,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 
 
 <pre><code>#[view]
-<b>public</b> <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_is_mutable_description">is_mutable_description</a>&lt;T: key&gt;(<a href="token.md#0x4_token">token</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;): bool
+<b>public</b> <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_is_mutable_description">is_mutable_description</a>&lt;T: key&gt;(<a href="token.md#0x4_token">token</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;): bool
 </code></pre>
 
 
@@ -779,8 +779,8 @@ With an existing collection, directly mint a soul bound token into the recipient
 <summary>Implementation</summary>
 
 
-<pre><code><b>public</b> <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_is_mutable_description">is_mutable_description</a>&lt;T: key&gt;(<a href="token.md#0x4_token">token</a>: Object&lt;T&gt;): bool <b>acquires</b> <a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
-    <a href="libra2_token.md#0x4_libra2_token_is_mutable_collection_token_description">is_mutable_collection_token_description</a>(<a href="token.md#0x4_token_collection_object">token::collection_object</a>(<a href="token.md#0x4_token">token</a>))
+<pre><code><b>public</b> <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_is_mutable_description">is_mutable_description</a>&lt;T: key&gt;(<a href="token.md#0x4_token">token</a>: Object&lt;T&gt;): bool <b>acquires</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
+    <a href="aptos_token.md#0x4_libra2_token_is_mutable_collection_token_description">is_mutable_collection_token_description</a>(<a href="token.md#0x4_token_collection_object">token::collection_object</a>(<a href="token.md#0x4_token">token</a>))
 }
 </code></pre>
 
@@ -795,7 +795,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 
 
 <pre><code>#[view]
-<b>public</b> <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_is_mutable_name">is_mutable_name</a>&lt;T: key&gt;(<a href="token.md#0x4_token">token</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;): bool
+<b>public</b> <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_is_mutable_name">is_mutable_name</a>&lt;T: key&gt;(<a href="token.md#0x4_token">token</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;): bool
 </code></pre>
 
 
@@ -804,8 +804,8 @@ With an existing collection, directly mint a soul bound token into the recipient
 <summary>Implementation</summary>
 
 
-<pre><code><b>public</b> <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_is_mutable_name">is_mutable_name</a>&lt;T: key&gt;(<a href="token.md#0x4_token">token</a>: Object&lt;T&gt;): bool <b>acquires</b> <a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
-    <a href="libra2_token.md#0x4_libra2_token_is_mutable_collection_token_name">is_mutable_collection_token_name</a>(<a href="token.md#0x4_token_collection_object">token::collection_object</a>(<a href="token.md#0x4_token">token</a>))
+<pre><code><b>public</b> <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_is_mutable_name">is_mutable_name</a>&lt;T: key&gt;(<a href="token.md#0x4_token">token</a>: Object&lt;T&gt;): bool <b>acquires</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
+    <a href="aptos_token.md#0x4_libra2_token_is_mutable_collection_token_name">is_mutable_collection_token_name</a>(<a href="token.md#0x4_token_collection_object">token::collection_object</a>(<a href="token.md#0x4_token">token</a>))
 }
 </code></pre>
 
@@ -820,7 +820,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 
 
 <pre><code>#[view]
-<b>public</b> <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_is_mutable_uri">is_mutable_uri</a>&lt;T: key&gt;(<a href="token.md#0x4_token">token</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;): bool
+<b>public</b> <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_is_mutable_uri">is_mutable_uri</a>&lt;T: key&gt;(<a href="token.md#0x4_token">token</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;): bool
 </code></pre>
 
 
@@ -829,8 +829,8 @@ With an existing collection, directly mint a soul bound token into the recipient
 <summary>Implementation</summary>
 
 
-<pre><code><b>public</b> <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_is_mutable_uri">is_mutable_uri</a>&lt;T: key&gt;(<a href="token.md#0x4_token">token</a>: Object&lt;T&gt;): bool <b>acquires</b> <a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
-    <a href="libra2_token.md#0x4_libra2_token_is_mutable_collection_token_uri">is_mutable_collection_token_uri</a>(<a href="token.md#0x4_token_collection_object">token::collection_object</a>(<a href="token.md#0x4_token">token</a>))
+<pre><code><b>public</b> <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_is_mutable_uri">is_mutable_uri</a>&lt;T: key&gt;(<a href="token.md#0x4_token">token</a>: Object&lt;T&gt;): bool <b>acquires</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
+    <a href="aptos_token.md#0x4_libra2_token_is_mutable_collection_token_uri">is_mutable_collection_token_uri</a>(<a href="token.md#0x4_token_collection_object">token::collection_object</a>(<a href="token.md#0x4_token">token</a>))
 }
 </code></pre>
 
@@ -844,7 +844,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 
 
 
-<pre><code><b>fun</b> <a href="libra2_token.md#0x4_libra2_token_authorized_borrow">authorized_borrow</a>&lt;T: key&gt;(<a href="token.md#0x4_token">token</a>: &<a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;, creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>): &<a href="libra2_token.md#0x4_libra2_token_Libra2Token">libra2_token::Libra2Token</a>
+<pre><code><b>fun</b> <a href="aptos_token.md#0x4_libra2_token_authorized_borrow">authorized_borrow</a>&lt;T: key&gt;(<a href="token.md#0x4_token">token</a>: &<a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;, creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>): &<a href="aptos_token.md#0x4_libra2_token_Libra2Token">libra2_token::Libra2Token</a>
 </code></pre>
 
 
@@ -853,18 +853,18 @@ With an existing collection, directly mint a soul bound token into the recipient
 <summary>Implementation</summary>
 
 
-<pre><code>inline <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_authorized_borrow">authorized_borrow</a>&lt;T: key&gt;(<a href="token.md#0x4_token">token</a>: &Object&lt;T&gt;, creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>): &<a href="libra2_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a> {
+<pre><code>inline <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_authorized_borrow">authorized_borrow</a>&lt;T: key&gt;(<a href="token.md#0x4_token">token</a>: &Object&lt;T&gt;, creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>): &<a href="aptos_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a> {
     <b>let</b> token_address = <a href="../../libra2-framework/doc/object.md#0x1_object_object_address">object::object_address</a>(<a href="token.md#0x4_token">token</a>);
     <b>assert</b>!(
-        <b>exists</b>&lt;<a href="libra2_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a>&gt;(token_address),
-        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_not_found">error::not_found</a>(<a href="libra2_token.md#0x4_libra2_token_ETOKEN_DOES_NOT_EXIST">ETOKEN_DOES_NOT_EXIST</a>),
+        <b>exists</b>&lt;<a href="aptos_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a>&gt;(token_address),
+        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_not_found">error::not_found</a>(<a href="aptos_token.md#0x4_libra2_token_ETOKEN_DOES_NOT_EXIST">ETOKEN_DOES_NOT_EXIST</a>),
     );
 
     <b>assert</b>!(
         <a href="token.md#0x4_token_creator">token::creator</a>(*<a href="token.md#0x4_token">token</a>) == <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer_address_of">signer::address_of</a>(creator),
-        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_permission_denied">error::permission_denied</a>(<a href="libra2_token.md#0x4_libra2_token_ENOT_CREATOR">ENOT_CREATOR</a>),
+        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_permission_denied">error::permission_denied</a>(<a href="aptos_token.md#0x4_libra2_token_ENOT_CREATOR">ENOT_CREATOR</a>),
     );
-    &<a href="libra2_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a>[token_address]
+    &<a href="aptos_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a>[token_address]
 }
 </code></pre>
 
@@ -878,7 +878,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 
 
 
-<pre><code><b>public</b> entry <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_burn">burn</a>&lt;T: key&gt;(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="token.md#0x4_token">token</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;)
+<pre><code><b>public</b> entry <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_burn">burn</a>&lt;T: key&gt;(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="token.md#0x4_token">token</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;)
 </code></pre>
 
 
@@ -887,20 +887,20 @@ With an existing collection, directly mint a soul bound token into the recipient
 <summary>Implementation</summary>
 
 
-<pre><code><b>public</b> entry <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_burn">burn</a>&lt;T: key&gt;(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="token.md#0x4_token">token</a>: Object&lt;T&gt;) <b>acquires</b> <a href="libra2_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a> {
-    <b>let</b> <a href="libra2_token.md#0x4_libra2_token">libra2_token</a> = <a href="libra2_token.md#0x4_libra2_token_authorized_borrow">authorized_borrow</a>(&<a href="token.md#0x4_token">token</a>, creator);
+<pre><code><b>public</b> entry <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_burn">burn</a>&lt;T: key&gt;(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="token.md#0x4_token">token</a>: Object&lt;T&gt;) <b>acquires</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a> {
+    <b>let</b> <a href="aptos_token.md#0x4_libra2_token">libra2_token</a> = <a href="aptos_token.md#0x4_libra2_token_authorized_borrow">authorized_borrow</a>(&<a href="token.md#0x4_token">token</a>, creator);
     <b>assert</b>!(
-        <a href="libra2_token.md#0x4_libra2_token">libra2_token</a>.burn_ref.is_some(),
-        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_permission_denied">error::permission_denied</a>(<a href="libra2_token.md#0x4_libra2_token_ETOKEN_NOT_BURNABLE">ETOKEN_NOT_BURNABLE</a>),
+        <a href="aptos_token.md#0x4_libra2_token">libra2_token</a>.burn_ref.is_some(),
+        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_permission_denied">error::permission_denied</a>(<a href="aptos_token.md#0x4_libra2_token_ETOKEN_NOT_BURNABLE">ETOKEN_NOT_BURNABLE</a>),
     );
-    <b>move</b> <a href="libra2_token.md#0x4_libra2_token">libra2_token</a>;
-    <b>let</b> <a href="libra2_token.md#0x4_libra2_token">libra2_token</a> = <b>move_from</b>&lt;<a href="libra2_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a>&gt;(<a href="../../libra2-framework/doc/object.md#0x1_object_object_address">object::object_address</a>(&<a href="token.md#0x4_token">token</a>));
-    <b>let</b> <a href="libra2_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a> {
+    <b>move</b> <a href="aptos_token.md#0x4_libra2_token">libra2_token</a>;
+    <b>let</b> <a href="aptos_token.md#0x4_libra2_token">libra2_token</a> = <b>move_from</b>&lt;<a href="aptos_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a>&gt;(<a href="../../libra2-framework/doc/object.md#0x1_object_object_address">object::object_address</a>(&<a href="token.md#0x4_token">token</a>));
+    <b>let</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a> {
         burn_ref,
         transfer_ref: _,
         mutator_ref: _,
         property_mutator_ref,
-    } = <a href="libra2_token.md#0x4_libra2_token">libra2_token</a>;
+    } = <a href="aptos_token.md#0x4_libra2_token">libra2_token</a>;
     <a href="property_map.md#0x4_property_map_burn">property_map::burn</a>(property_mutator_ref);
     <a href="token.md#0x4_token_burn">token::burn</a>(burn_ref.extract());
 }
@@ -916,7 +916,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 
 
 
-<pre><code><b>public</b> entry <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_freeze_transfer">freeze_transfer</a>&lt;T: key&gt;(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="token.md#0x4_token">token</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;)
+<pre><code><b>public</b> entry <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_freeze_transfer">freeze_transfer</a>&lt;T: key&gt;(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="token.md#0x4_token">token</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;)
 </code></pre>
 
 
@@ -925,14 +925,14 @@ With an existing collection, directly mint a soul bound token into the recipient
 <summary>Implementation</summary>
 
 
-<pre><code><b>public</b> entry <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_freeze_transfer">freeze_transfer</a>&lt;T: key&gt;(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="token.md#0x4_token">token</a>: Object&lt;T&gt;) <b>acquires</b> <a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a>, <a href="libra2_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a> {
-    <b>let</b> <a href="libra2_token.md#0x4_libra2_token">libra2_token</a> = <a href="libra2_token.md#0x4_libra2_token_authorized_borrow">authorized_borrow</a>(&<a href="token.md#0x4_token">token</a>, creator);
+<pre><code><b>public</b> entry <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_freeze_transfer">freeze_transfer</a>&lt;T: key&gt;(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="token.md#0x4_token">token</a>: Object&lt;T&gt;) <b>acquires</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a>, <a href="aptos_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a> {
+    <b>let</b> <a href="aptos_token.md#0x4_libra2_token">libra2_token</a> = <a href="aptos_token.md#0x4_libra2_token_authorized_borrow">authorized_borrow</a>(&<a href="token.md#0x4_token">token</a>, creator);
     <b>assert</b>!(
-        <a href="libra2_token.md#0x4_libra2_token_are_collection_tokens_freezable">are_collection_tokens_freezable</a>(<a href="token.md#0x4_token_collection_object">token::collection_object</a>(<a href="token.md#0x4_token">token</a>))
-            && <a href="libra2_token.md#0x4_libra2_token">libra2_token</a>.transfer_ref.is_some(),
-        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_permission_denied">error::permission_denied</a>(<a href="libra2_token.md#0x4_libra2_token_EFIELD_NOT_MUTABLE">EFIELD_NOT_MUTABLE</a>),
+        <a href="aptos_token.md#0x4_libra2_token_are_collection_tokens_freezable">are_collection_tokens_freezable</a>(<a href="token.md#0x4_token_collection_object">token::collection_object</a>(<a href="token.md#0x4_token">token</a>))
+            && <a href="aptos_token.md#0x4_libra2_token">libra2_token</a>.transfer_ref.is_some(),
+        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_permission_denied">error::permission_denied</a>(<a href="aptos_token.md#0x4_libra2_token_EFIELD_NOT_MUTABLE">EFIELD_NOT_MUTABLE</a>),
     );
-    <a href="../../libra2-framework/doc/object.md#0x1_object_disable_ungated_transfer">object::disable_ungated_transfer</a>(<a href="libra2_token.md#0x4_libra2_token">libra2_token</a>.transfer_ref.<a href="libra2_token.md#0x4_libra2_token_borrow">borrow</a>());
+    <a href="../../libra2-framework/doc/object.md#0x1_object_disable_ungated_transfer">object::disable_ungated_transfer</a>(<a href="aptos_token.md#0x4_libra2_token">libra2_token</a>.transfer_ref.<a href="aptos_token.md#0x4_libra2_token_borrow">borrow</a>());
 }
 </code></pre>
 
@@ -946,7 +946,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 
 
 
-<pre><code><b>public</b> entry <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_unfreeze_transfer">unfreeze_transfer</a>&lt;T: key&gt;(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="token.md#0x4_token">token</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;)
+<pre><code><b>public</b> entry <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_unfreeze_transfer">unfreeze_transfer</a>&lt;T: key&gt;(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="token.md#0x4_token">token</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;)
 </code></pre>
 
 
@@ -955,17 +955,17 @@ With an existing collection, directly mint a soul bound token into the recipient
 <summary>Implementation</summary>
 
 
-<pre><code><b>public</b> entry <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_unfreeze_transfer">unfreeze_transfer</a>&lt;T: key&gt;(
+<pre><code><b>public</b> entry <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_unfreeze_transfer">unfreeze_transfer</a>&lt;T: key&gt;(
     creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>,
     <a href="token.md#0x4_token">token</a>: Object&lt;T&gt;
-) <b>acquires</b> <a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a>, <a href="libra2_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a> {
-    <b>let</b> <a href="libra2_token.md#0x4_libra2_token">libra2_token</a> = <a href="libra2_token.md#0x4_libra2_token_authorized_borrow">authorized_borrow</a>(&<a href="token.md#0x4_token">token</a>, creator);
+) <b>acquires</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a>, <a href="aptos_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a> {
+    <b>let</b> <a href="aptos_token.md#0x4_libra2_token">libra2_token</a> = <a href="aptos_token.md#0x4_libra2_token_authorized_borrow">authorized_borrow</a>(&<a href="token.md#0x4_token">token</a>, creator);
     <b>assert</b>!(
-        <a href="libra2_token.md#0x4_libra2_token_are_collection_tokens_freezable">are_collection_tokens_freezable</a>(<a href="token.md#0x4_token_collection_object">token::collection_object</a>(<a href="token.md#0x4_token">token</a>))
-            && <a href="libra2_token.md#0x4_libra2_token">libra2_token</a>.transfer_ref.is_some(),
-        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_permission_denied">error::permission_denied</a>(<a href="libra2_token.md#0x4_libra2_token_EFIELD_NOT_MUTABLE">EFIELD_NOT_MUTABLE</a>),
+        <a href="aptos_token.md#0x4_libra2_token_are_collection_tokens_freezable">are_collection_tokens_freezable</a>(<a href="token.md#0x4_token_collection_object">token::collection_object</a>(<a href="token.md#0x4_token">token</a>))
+            && <a href="aptos_token.md#0x4_libra2_token">libra2_token</a>.transfer_ref.is_some(),
+        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_permission_denied">error::permission_denied</a>(<a href="aptos_token.md#0x4_libra2_token_EFIELD_NOT_MUTABLE">EFIELD_NOT_MUTABLE</a>),
     );
-    <a href="../../libra2-framework/doc/object.md#0x1_object_enable_ungated_transfer">object::enable_ungated_transfer</a>(<a href="libra2_token.md#0x4_libra2_token">libra2_token</a>.transfer_ref.<a href="libra2_token.md#0x4_libra2_token_borrow">borrow</a>());
+    <a href="../../libra2-framework/doc/object.md#0x1_object_enable_ungated_transfer">object::enable_ungated_transfer</a>(<a href="aptos_token.md#0x4_libra2_token">libra2_token</a>.transfer_ref.<a href="aptos_token.md#0x4_libra2_token_borrow">borrow</a>());
 }
 </code></pre>
 
@@ -979,7 +979,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 
 
 
-<pre><code><b>public</b> entry <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_set_description">set_description</a>&lt;T: key&gt;(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="token.md#0x4_token">token</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;, description: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>)
+<pre><code><b>public</b> entry <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_set_description">set_description</a>&lt;T: key&gt;(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="token.md#0x4_token">token</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;, description: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>)
 </code></pre>
 
 
@@ -988,17 +988,17 @@ With an existing collection, directly mint a soul bound token into the recipient
 <summary>Implementation</summary>
 
 
-<pre><code><b>public</b> entry <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_set_description">set_description</a>&lt;T: key&gt;(
+<pre><code><b>public</b> entry <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_set_description">set_description</a>&lt;T: key&gt;(
     creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>,
     <a href="token.md#0x4_token">token</a>: Object&lt;T&gt;,
     description: String,
-) <b>acquires</b> <a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a>, <a href="libra2_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a> {
+) <b>acquires</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a>, <a href="aptos_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a> {
     <b>assert</b>!(
-        <a href="libra2_token.md#0x4_libra2_token_is_mutable_description">is_mutable_description</a>(<a href="token.md#0x4_token">token</a>),
-        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_permission_denied">error::permission_denied</a>(<a href="libra2_token.md#0x4_libra2_token_EFIELD_NOT_MUTABLE">EFIELD_NOT_MUTABLE</a>),
+        <a href="aptos_token.md#0x4_libra2_token_is_mutable_description">is_mutable_description</a>(<a href="token.md#0x4_token">token</a>),
+        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_permission_denied">error::permission_denied</a>(<a href="aptos_token.md#0x4_libra2_token_EFIELD_NOT_MUTABLE">EFIELD_NOT_MUTABLE</a>),
     );
-    <b>let</b> <a href="libra2_token.md#0x4_libra2_token">libra2_token</a> = <a href="libra2_token.md#0x4_libra2_token_authorized_borrow">authorized_borrow</a>(&<a href="token.md#0x4_token">token</a>, creator);
-    <a href="token.md#0x4_token_set_description">token::set_description</a>(<a href="libra2_token.md#0x4_libra2_token">libra2_token</a>.mutator_ref.<a href="libra2_token.md#0x4_libra2_token_borrow">borrow</a>(), description);
+    <b>let</b> <a href="aptos_token.md#0x4_libra2_token">libra2_token</a> = <a href="aptos_token.md#0x4_libra2_token_authorized_borrow">authorized_borrow</a>(&<a href="token.md#0x4_token">token</a>, creator);
+    <a href="token.md#0x4_token_set_description">token::set_description</a>(<a href="aptos_token.md#0x4_libra2_token">libra2_token</a>.mutator_ref.<a href="aptos_token.md#0x4_libra2_token_borrow">borrow</a>(), description);
 }
 </code></pre>
 
@@ -1012,7 +1012,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 
 
 
-<pre><code><b>public</b> entry <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_set_name">set_name</a>&lt;T: key&gt;(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="token.md#0x4_token">token</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;, name: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>)
+<pre><code><b>public</b> entry <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_set_name">set_name</a>&lt;T: key&gt;(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="token.md#0x4_token">token</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;, name: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>)
 </code></pre>
 
 
@@ -1021,17 +1021,17 @@ With an existing collection, directly mint a soul bound token into the recipient
 <summary>Implementation</summary>
 
 
-<pre><code><b>public</b> entry <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_set_name">set_name</a>&lt;T: key&gt;(
+<pre><code><b>public</b> entry <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_set_name">set_name</a>&lt;T: key&gt;(
     creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>,
     <a href="token.md#0x4_token">token</a>: Object&lt;T&gt;,
     name: String,
-) <b>acquires</b> <a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a>, <a href="libra2_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a> {
+) <b>acquires</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a>, <a href="aptos_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a> {
     <b>assert</b>!(
-        <a href="libra2_token.md#0x4_libra2_token_is_mutable_name">is_mutable_name</a>(<a href="token.md#0x4_token">token</a>),
-        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_permission_denied">error::permission_denied</a>(<a href="libra2_token.md#0x4_libra2_token_EFIELD_NOT_MUTABLE">EFIELD_NOT_MUTABLE</a>),
+        <a href="aptos_token.md#0x4_libra2_token_is_mutable_name">is_mutable_name</a>(<a href="token.md#0x4_token">token</a>),
+        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_permission_denied">error::permission_denied</a>(<a href="aptos_token.md#0x4_libra2_token_EFIELD_NOT_MUTABLE">EFIELD_NOT_MUTABLE</a>),
     );
-    <b>let</b> <a href="libra2_token.md#0x4_libra2_token">libra2_token</a> = <a href="libra2_token.md#0x4_libra2_token_authorized_borrow">authorized_borrow</a>(&<a href="token.md#0x4_token">token</a>, creator);
-    <a href="token.md#0x4_token_set_name">token::set_name</a>(<a href="libra2_token.md#0x4_libra2_token">libra2_token</a>.mutator_ref.<a href="libra2_token.md#0x4_libra2_token_borrow">borrow</a>(), name);
+    <b>let</b> <a href="aptos_token.md#0x4_libra2_token">libra2_token</a> = <a href="aptos_token.md#0x4_libra2_token_authorized_borrow">authorized_borrow</a>(&<a href="token.md#0x4_token">token</a>, creator);
+    <a href="token.md#0x4_token_set_name">token::set_name</a>(<a href="aptos_token.md#0x4_libra2_token">libra2_token</a>.mutator_ref.<a href="aptos_token.md#0x4_libra2_token_borrow">borrow</a>(), name);
 }
 </code></pre>
 
@@ -1045,7 +1045,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 
 
 
-<pre><code><b>public</b> entry <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_set_uri">set_uri</a>&lt;T: key&gt;(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="token.md#0x4_token">token</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;, uri: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>)
+<pre><code><b>public</b> entry <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_set_uri">set_uri</a>&lt;T: key&gt;(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="token.md#0x4_token">token</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;, uri: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>)
 </code></pre>
 
 
@@ -1054,17 +1054,17 @@ With an existing collection, directly mint a soul bound token into the recipient
 <summary>Implementation</summary>
 
 
-<pre><code><b>public</b> entry <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_set_uri">set_uri</a>&lt;T: key&gt;(
+<pre><code><b>public</b> entry <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_set_uri">set_uri</a>&lt;T: key&gt;(
     creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>,
     <a href="token.md#0x4_token">token</a>: Object&lt;T&gt;,
     uri: String,
-) <b>acquires</b> <a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a>, <a href="libra2_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a> {
+) <b>acquires</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a>, <a href="aptos_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a> {
     <b>assert</b>!(
-        <a href="libra2_token.md#0x4_libra2_token_is_mutable_uri">is_mutable_uri</a>(<a href="token.md#0x4_token">token</a>),
-        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_permission_denied">error::permission_denied</a>(<a href="libra2_token.md#0x4_libra2_token_EFIELD_NOT_MUTABLE">EFIELD_NOT_MUTABLE</a>),
+        <a href="aptos_token.md#0x4_libra2_token_is_mutable_uri">is_mutable_uri</a>(<a href="token.md#0x4_token">token</a>),
+        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_permission_denied">error::permission_denied</a>(<a href="aptos_token.md#0x4_libra2_token_EFIELD_NOT_MUTABLE">EFIELD_NOT_MUTABLE</a>),
     );
-    <b>let</b> <a href="libra2_token.md#0x4_libra2_token">libra2_token</a> = <a href="libra2_token.md#0x4_libra2_token_authorized_borrow">authorized_borrow</a>(&<a href="token.md#0x4_token">token</a>, creator);
-    <a href="token.md#0x4_token_set_uri">token::set_uri</a>(<a href="libra2_token.md#0x4_libra2_token">libra2_token</a>.mutator_ref.<a href="libra2_token.md#0x4_libra2_token_borrow">borrow</a>(), uri);
+    <b>let</b> <a href="aptos_token.md#0x4_libra2_token">libra2_token</a> = <a href="aptos_token.md#0x4_libra2_token_authorized_borrow">authorized_borrow</a>(&<a href="token.md#0x4_token">token</a>, creator);
+    <a href="token.md#0x4_token_set_uri">token::set_uri</a>(<a href="aptos_token.md#0x4_libra2_token">libra2_token</a>.mutator_ref.<a href="aptos_token.md#0x4_libra2_token_borrow">borrow</a>(), uri);
 }
 </code></pre>
 
@@ -1078,7 +1078,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 
 
 
-<pre><code><b>public</b> entry <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_add_property">add_property</a>&lt;T: key&gt;(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="token.md#0x4_token">token</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;, key: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, type: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, value: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt;)
+<pre><code><b>public</b> entry <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_add_property">add_property</a>&lt;T: key&gt;(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="token.md#0x4_token">token</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;, key: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, type: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, value: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt;)
 </code></pre>
 
 
@@ -1087,20 +1087,20 @@ With an existing collection, directly mint a soul bound token into the recipient
 <summary>Implementation</summary>
 
 
-<pre><code><b>public</b> entry <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_add_property">add_property</a>&lt;T: key&gt;(
+<pre><code><b>public</b> entry <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_add_property">add_property</a>&lt;T: key&gt;(
     creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>,
     <a href="token.md#0x4_token">token</a>: Object&lt;T&gt;,
     key: String,
     type: String,
     value: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt;,
-) <b>acquires</b> <a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a>, <a href="libra2_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a> {
-    <b>let</b> <a href="libra2_token.md#0x4_libra2_token">libra2_token</a> = <a href="libra2_token.md#0x4_libra2_token_authorized_borrow">authorized_borrow</a>(&<a href="token.md#0x4_token">token</a>, creator);
+) <b>acquires</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a>, <a href="aptos_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a> {
+    <b>let</b> <a href="aptos_token.md#0x4_libra2_token">libra2_token</a> = <a href="aptos_token.md#0x4_libra2_token_authorized_borrow">authorized_borrow</a>(&<a href="token.md#0x4_token">token</a>, creator);
     <b>assert</b>!(
-        <a href="libra2_token.md#0x4_libra2_token_are_properties_mutable">are_properties_mutable</a>(<a href="token.md#0x4_token">token</a>),
-        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_permission_denied">error::permission_denied</a>(<a href="libra2_token.md#0x4_libra2_token_EPROPERTIES_NOT_MUTABLE">EPROPERTIES_NOT_MUTABLE</a>),
+        <a href="aptos_token.md#0x4_libra2_token_are_properties_mutable">are_properties_mutable</a>(<a href="token.md#0x4_token">token</a>),
+        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_permission_denied">error::permission_denied</a>(<a href="aptos_token.md#0x4_libra2_token_EPROPERTIES_NOT_MUTABLE">EPROPERTIES_NOT_MUTABLE</a>),
     );
 
-    <a href="property_map.md#0x4_property_map_add">property_map::add</a>(&<a href="libra2_token.md#0x4_libra2_token">libra2_token</a>.property_mutator_ref, key, type, value);
+    <a href="property_map.md#0x4_property_map_add">property_map::add</a>(&<a href="aptos_token.md#0x4_libra2_token">libra2_token</a>.property_mutator_ref, key, type, value);
 }
 </code></pre>
 
@@ -1114,7 +1114,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 
 
 
-<pre><code><b>public</b> entry <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_add_typed_property">add_typed_property</a>&lt;T: key, V: drop&gt;(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="token.md#0x4_token">token</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;, key: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, value: V)
+<pre><code><b>public</b> entry <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_add_typed_property">add_typed_property</a>&lt;T: key, V: drop&gt;(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="token.md#0x4_token">token</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;, key: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, value: V)
 </code></pre>
 
 
@@ -1123,19 +1123,19 @@ With an existing collection, directly mint a soul bound token into the recipient
 <summary>Implementation</summary>
 
 
-<pre><code><b>public</b> entry <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_add_typed_property">add_typed_property</a>&lt;T: key, V: drop&gt;(
+<pre><code><b>public</b> entry <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_add_typed_property">add_typed_property</a>&lt;T: key, V: drop&gt;(
     creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>,
     <a href="token.md#0x4_token">token</a>: Object&lt;T&gt;,
     key: String,
     value: V,
-) <b>acquires</b> <a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a>, <a href="libra2_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a> {
-    <b>let</b> <a href="libra2_token.md#0x4_libra2_token">libra2_token</a> = <a href="libra2_token.md#0x4_libra2_token_authorized_borrow">authorized_borrow</a>(&<a href="token.md#0x4_token">token</a>, creator);
+) <b>acquires</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a>, <a href="aptos_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a> {
+    <b>let</b> <a href="aptos_token.md#0x4_libra2_token">libra2_token</a> = <a href="aptos_token.md#0x4_libra2_token_authorized_borrow">authorized_borrow</a>(&<a href="token.md#0x4_token">token</a>, creator);
     <b>assert</b>!(
-        <a href="libra2_token.md#0x4_libra2_token_are_properties_mutable">are_properties_mutable</a>(<a href="token.md#0x4_token">token</a>),
-        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_permission_denied">error::permission_denied</a>(<a href="libra2_token.md#0x4_libra2_token_EPROPERTIES_NOT_MUTABLE">EPROPERTIES_NOT_MUTABLE</a>),
+        <a href="aptos_token.md#0x4_libra2_token_are_properties_mutable">are_properties_mutable</a>(<a href="token.md#0x4_token">token</a>),
+        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_permission_denied">error::permission_denied</a>(<a href="aptos_token.md#0x4_libra2_token_EPROPERTIES_NOT_MUTABLE">EPROPERTIES_NOT_MUTABLE</a>),
     );
 
-    <a href="property_map.md#0x4_property_map_add_typed">property_map::add_typed</a>(&<a href="libra2_token.md#0x4_libra2_token">libra2_token</a>.property_mutator_ref, key, value);
+    <a href="property_map.md#0x4_property_map_add_typed">property_map::add_typed</a>(&<a href="aptos_token.md#0x4_libra2_token">libra2_token</a>.property_mutator_ref, key, value);
 }
 </code></pre>
 
@@ -1149,7 +1149,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 
 
 
-<pre><code><b>public</b> entry <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_remove_property">remove_property</a>&lt;T: key&gt;(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="token.md#0x4_token">token</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;, key: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>)
+<pre><code><b>public</b> entry <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_remove_property">remove_property</a>&lt;T: key&gt;(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="token.md#0x4_token">token</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;, key: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>)
 </code></pre>
 
 
@@ -1158,18 +1158,18 @@ With an existing collection, directly mint a soul bound token into the recipient
 <summary>Implementation</summary>
 
 
-<pre><code><b>public</b> entry <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_remove_property">remove_property</a>&lt;T: key&gt;(
+<pre><code><b>public</b> entry <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_remove_property">remove_property</a>&lt;T: key&gt;(
     creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>,
     <a href="token.md#0x4_token">token</a>: Object&lt;T&gt;,
     key: String,
-) <b>acquires</b> <a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a>, <a href="libra2_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a> {
-    <b>let</b> <a href="libra2_token.md#0x4_libra2_token">libra2_token</a> = <a href="libra2_token.md#0x4_libra2_token_authorized_borrow">authorized_borrow</a>(&<a href="token.md#0x4_token">token</a>, creator);
+) <b>acquires</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a>, <a href="aptos_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a> {
+    <b>let</b> <a href="aptos_token.md#0x4_libra2_token">libra2_token</a> = <a href="aptos_token.md#0x4_libra2_token_authorized_borrow">authorized_borrow</a>(&<a href="token.md#0x4_token">token</a>, creator);
     <b>assert</b>!(
-        <a href="libra2_token.md#0x4_libra2_token_are_properties_mutable">are_properties_mutable</a>(<a href="token.md#0x4_token">token</a>),
-        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_permission_denied">error::permission_denied</a>(<a href="libra2_token.md#0x4_libra2_token_EPROPERTIES_NOT_MUTABLE">EPROPERTIES_NOT_MUTABLE</a>),
+        <a href="aptos_token.md#0x4_libra2_token_are_properties_mutable">are_properties_mutable</a>(<a href="token.md#0x4_token">token</a>),
+        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_permission_denied">error::permission_denied</a>(<a href="aptos_token.md#0x4_libra2_token_EPROPERTIES_NOT_MUTABLE">EPROPERTIES_NOT_MUTABLE</a>),
     );
 
-    <a href="property_map.md#0x4_property_map_remove">property_map::remove</a>(&<a href="libra2_token.md#0x4_libra2_token">libra2_token</a>.property_mutator_ref, &key);
+    <a href="property_map.md#0x4_property_map_remove">property_map::remove</a>(&<a href="aptos_token.md#0x4_libra2_token">libra2_token</a>.property_mutator_ref, &key);
 }
 </code></pre>
 
@@ -1183,7 +1183,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 
 
 
-<pre><code><b>public</b> entry <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_update_property">update_property</a>&lt;T: key&gt;(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="token.md#0x4_token">token</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;, key: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, type: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, value: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt;)
+<pre><code><b>public</b> entry <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_update_property">update_property</a>&lt;T: key&gt;(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="token.md#0x4_token">token</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;, key: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, type: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, value: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt;)
 </code></pre>
 
 
@@ -1192,20 +1192,20 @@ With an existing collection, directly mint a soul bound token into the recipient
 <summary>Implementation</summary>
 
 
-<pre><code><b>public</b> entry <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_update_property">update_property</a>&lt;T: key&gt;(
+<pre><code><b>public</b> entry <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_update_property">update_property</a>&lt;T: key&gt;(
     creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>,
     <a href="token.md#0x4_token">token</a>: Object&lt;T&gt;,
     key: String,
     type: String,
     value: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt;,
-) <b>acquires</b> <a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a>, <a href="libra2_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a> {
-    <b>let</b> <a href="libra2_token.md#0x4_libra2_token">libra2_token</a> = <a href="libra2_token.md#0x4_libra2_token_authorized_borrow">authorized_borrow</a>(&<a href="token.md#0x4_token">token</a>, creator);
+) <b>acquires</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a>, <a href="aptos_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a> {
+    <b>let</b> <a href="aptos_token.md#0x4_libra2_token">libra2_token</a> = <a href="aptos_token.md#0x4_libra2_token_authorized_borrow">authorized_borrow</a>(&<a href="token.md#0x4_token">token</a>, creator);
     <b>assert</b>!(
-        <a href="libra2_token.md#0x4_libra2_token_are_properties_mutable">are_properties_mutable</a>(<a href="token.md#0x4_token">token</a>),
-        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_permission_denied">error::permission_denied</a>(<a href="libra2_token.md#0x4_libra2_token_EPROPERTIES_NOT_MUTABLE">EPROPERTIES_NOT_MUTABLE</a>),
+        <a href="aptos_token.md#0x4_libra2_token_are_properties_mutable">are_properties_mutable</a>(<a href="token.md#0x4_token">token</a>),
+        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_permission_denied">error::permission_denied</a>(<a href="aptos_token.md#0x4_libra2_token_EPROPERTIES_NOT_MUTABLE">EPROPERTIES_NOT_MUTABLE</a>),
     );
 
-    <a href="property_map.md#0x4_property_map_update">property_map::update</a>(&<a href="libra2_token.md#0x4_libra2_token">libra2_token</a>.property_mutator_ref, &key, type, value);
+    <a href="property_map.md#0x4_property_map_update">property_map::update</a>(&<a href="aptos_token.md#0x4_libra2_token">libra2_token</a>.property_mutator_ref, &key, type, value);
 }
 </code></pre>
 
@@ -1219,7 +1219,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 
 
 
-<pre><code><b>public</b> entry <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_update_typed_property">update_typed_property</a>&lt;T: key, V: drop&gt;(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="token.md#0x4_token">token</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;, key: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, value: V)
+<pre><code><b>public</b> entry <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_update_typed_property">update_typed_property</a>&lt;T: key, V: drop&gt;(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="token.md#0x4_token">token</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;, key: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>, value: V)
 </code></pre>
 
 
@@ -1228,19 +1228,19 @@ With an existing collection, directly mint a soul bound token into the recipient
 <summary>Implementation</summary>
 
 
-<pre><code><b>public</b> entry <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_update_typed_property">update_typed_property</a>&lt;T: key, V: drop&gt;(
+<pre><code><b>public</b> entry <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_update_typed_property">update_typed_property</a>&lt;T: key, V: drop&gt;(
     creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>,
     <a href="token.md#0x4_token">token</a>: Object&lt;T&gt;,
     key: String,
     value: V,
-) <b>acquires</b> <a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a>, <a href="libra2_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a> {
-    <b>let</b> <a href="libra2_token.md#0x4_libra2_token">libra2_token</a> = <a href="libra2_token.md#0x4_libra2_token_authorized_borrow">authorized_borrow</a>(&<a href="token.md#0x4_token">token</a>, creator);
+) <b>acquires</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a>, <a href="aptos_token.md#0x4_libra2_token_Libra2Token">Libra2Token</a> {
+    <b>let</b> <a href="aptos_token.md#0x4_libra2_token">libra2_token</a> = <a href="aptos_token.md#0x4_libra2_token_authorized_borrow">authorized_borrow</a>(&<a href="token.md#0x4_token">token</a>, creator);
     <b>assert</b>!(
-        <a href="libra2_token.md#0x4_libra2_token_are_properties_mutable">are_properties_mutable</a>(<a href="token.md#0x4_token">token</a>),
-        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_permission_denied">error::permission_denied</a>(<a href="libra2_token.md#0x4_libra2_token_EPROPERTIES_NOT_MUTABLE">EPROPERTIES_NOT_MUTABLE</a>),
+        <a href="aptos_token.md#0x4_libra2_token_are_properties_mutable">are_properties_mutable</a>(<a href="token.md#0x4_token">token</a>),
+        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_permission_denied">error::permission_denied</a>(<a href="aptos_token.md#0x4_libra2_token_EPROPERTIES_NOT_MUTABLE">EPROPERTIES_NOT_MUTABLE</a>),
     );
 
-    <a href="property_map.md#0x4_property_map_update_typed">property_map::update_typed</a>(&<a href="libra2_token.md#0x4_libra2_token">libra2_token</a>.property_mutator_ref, &key, value);
+    <a href="property_map.md#0x4_property_map_update_typed">property_map::update_typed</a>(&<a href="aptos_token.md#0x4_libra2_token">libra2_token</a>.property_mutator_ref, &key, value);
 }
 </code></pre>
 
@@ -1254,7 +1254,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 
 
 
-<pre><code><b>fun</b> <a href="libra2_token.md#0x4_libra2_token_collection_object">collection_object</a>(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, name: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>): <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;<a href="libra2_token.md#0x4_libra2_token_Libra2Collection">libra2_token::Libra2Collection</a>&gt;
+<pre><code><b>fun</b> <a href="aptos_token.md#0x4_libra2_token_collection_object">collection_object</a>(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, name: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>): <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;<a href="aptos_token.md#0x4_libra2_token_Libra2Collection">libra2_token::Libra2Collection</a>&gt;
 </code></pre>
 
 
@@ -1263,9 +1263,9 @@ With an existing collection, directly mint a soul bound token into the recipient
 <summary>Implementation</summary>
 
 
-<pre><code>inline <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_collection_object">collection_object</a>(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, name: &String): Object&lt;<a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a>&gt; {
+<pre><code>inline <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_collection_object">collection_object</a>(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, name: &String): Object&lt;<a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a>&gt; {
     <b>let</b> collection_addr = <a href="collection.md#0x4_collection_create_collection_address">collection::create_collection_address</a>(&<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer_address_of">signer::address_of</a>(creator), name);
-    <a href="../../libra2-framework/doc/object.md#0x1_object_address_to_object">object::address_to_object</a>&lt;<a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a>&gt;(collection_addr)
+    <a href="../../libra2-framework/doc/object.md#0x1_object_address_to_object">object::address_to_object</a>&lt;<a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a>&gt;(collection_addr)
 }
 </code></pre>
 
@@ -1279,7 +1279,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 
 
 
-<pre><code><b>fun</b> <a href="libra2_token.md#0x4_libra2_token_borrow_collection">borrow_collection</a>&lt;T: key&gt;(<a href="token.md#0x4_token">token</a>: &<a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;): &<a href="libra2_token.md#0x4_libra2_token_Libra2Collection">libra2_token::Libra2Collection</a>
+<pre><code><b>fun</b> <a href="aptos_token.md#0x4_libra2_token_borrow_collection">borrow_collection</a>&lt;T: key&gt;(<a href="token.md#0x4_token">token</a>: &<a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;): &<a href="aptos_token.md#0x4_libra2_token_Libra2Collection">libra2_token::Libra2Collection</a>
 </code></pre>
 
 
@@ -1288,13 +1288,13 @@ With an existing collection, directly mint a soul bound token into the recipient
 <summary>Implementation</summary>
 
 
-<pre><code>inline <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_borrow_collection">borrow_collection</a>&lt;T: key&gt;(<a href="token.md#0x4_token">token</a>: &Object&lt;T&gt;): &<a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
+<pre><code>inline <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_borrow_collection">borrow_collection</a>&lt;T: key&gt;(<a href="token.md#0x4_token">token</a>: &Object&lt;T&gt;): &<a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
     <b>let</b> collection_address = <a href="../../libra2-framework/doc/object.md#0x1_object_object_address">object::object_address</a>(<a href="token.md#0x4_token">token</a>);
     <b>assert</b>!(
-        <b>exists</b>&lt;<a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a>&gt;(collection_address),
-        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_not_found">error::not_found</a>(<a href="libra2_token.md#0x4_libra2_token_ECOLLECTION_DOES_NOT_EXIST">ECOLLECTION_DOES_NOT_EXIST</a>),
+        <b>exists</b>&lt;<a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a>&gt;(collection_address),
+        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_not_found">error::not_found</a>(<a href="aptos_token.md#0x4_libra2_token_ECOLLECTION_DOES_NOT_EXIST">ECOLLECTION_DOES_NOT_EXIST</a>),
     );
-    &<a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a>[collection_address]
+    &<a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a>[collection_address]
 }
 </code></pre>
 
@@ -1308,7 +1308,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 
 
 
-<pre><code><b>public</b> <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_is_mutable_collection_description">is_mutable_collection_description</a>&lt;T: key&gt;(<a href="collection.md#0x4_collection">collection</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;): bool
+<pre><code><b>public</b> <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_is_mutable_collection_description">is_mutable_collection_description</a>&lt;T: key&gt;(<a href="collection.md#0x4_collection">collection</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;): bool
 </code></pre>
 
 
@@ -1317,10 +1317,10 @@ With an existing collection, directly mint a soul bound token into the recipient
 <summary>Implementation</summary>
 
 
-<pre><code><b>public</b> <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_is_mutable_collection_description">is_mutable_collection_description</a>&lt;T: key&gt;(
+<pre><code><b>public</b> <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_is_mutable_collection_description">is_mutable_collection_description</a>&lt;T: key&gt;(
     <a href="collection.md#0x4_collection">collection</a>: Object&lt;T&gt;,
-): bool <b>acquires</b> <a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
-    <a href="libra2_token.md#0x4_libra2_token_borrow_collection">borrow_collection</a>(&<a href="collection.md#0x4_collection">collection</a>).mutable_description
+): bool <b>acquires</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
+    <a href="aptos_token.md#0x4_libra2_token_borrow_collection">borrow_collection</a>(&<a href="collection.md#0x4_collection">collection</a>).mutable_description
 }
 </code></pre>
 
@@ -1334,7 +1334,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 
 
 
-<pre><code><b>public</b> <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_is_mutable_collection_royalty">is_mutable_collection_royalty</a>&lt;T: key&gt;(<a href="collection.md#0x4_collection">collection</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;): bool
+<pre><code><b>public</b> <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_is_mutable_collection_royalty">is_mutable_collection_royalty</a>&lt;T: key&gt;(<a href="collection.md#0x4_collection">collection</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;): bool
 </code></pre>
 
 
@@ -1343,10 +1343,10 @@ With an existing collection, directly mint a soul bound token into the recipient
 <summary>Implementation</summary>
 
 
-<pre><code><b>public</b> <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_is_mutable_collection_royalty">is_mutable_collection_royalty</a>&lt;T: key&gt;(
+<pre><code><b>public</b> <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_is_mutable_collection_royalty">is_mutable_collection_royalty</a>&lt;T: key&gt;(
     <a href="collection.md#0x4_collection">collection</a>: Object&lt;T&gt;,
-): bool <b>acquires</b> <a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
-    <a href="libra2_token.md#0x4_libra2_token_borrow_collection">borrow_collection</a>(&<a href="collection.md#0x4_collection">collection</a>).royalty_mutator_ref.is_some()
+): bool <b>acquires</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
+    <a href="aptos_token.md#0x4_libra2_token_borrow_collection">borrow_collection</a>(&<a href="collection.md#0x4_collection">collection</a>).royalty_mutator_ref.is_some()
 }
 </code></pre>
 
@@ -1360,7 +1360,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 
 
 
-<pre><code><b>public</b> <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_is_mutable_collection_uri">is_mutable_collection_uri</a>&lt;T: key&gt;(<a href="collection.md#0x4_collection">collection</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;): bool
+<pre><code><b>public</b> <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_is_mutable_collection_uri">is_mutable_collection_uri</a>&lt;T: key&gt;(<a href="collection.md#0x4_collection">collection</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;): bool
 </code></pre>
 
 
@@ -1369,10 +1369,10 @@ With an existing collection, directly mint a soul bound token into the recipient
 <summary>Implementation</summary>
 
 
-<pre><code><b>public</b> <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_is_mutable_collection_uri">is_mutable_collection_uri</a>&lt;T: key&gt;(
+<pre><code><b>public</b> <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_is_mutable_collection_uri">is_mutable_collection_uri</a>&lt;T: key&gt;(
     <a href="collection.md#0x4_collection">collection</a>: Object&lt;T&gt;,
-): bool <b>acquires</b> <a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
-    <a href="libra2_token.md#0x4_libra2_token_borrow_collection">borrow_collection</a>(&<a href="collection.md#0x4_collection">collection</a>).mutable_uri
+): bool <b>acquires</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
+    <a href="aptos_token.md#0x4_libra2_token_borrow_collection">borrow_collection</a>(&<a href="collection.md#0x4_collection">collection</a>).mutable_uri
 }
 </code></pre>
 
@@ -1386,7 +1386,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 
 
 
-<pre><code><b>public</b> <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_is_mutable_collection_token_description">is_mutable_collection_token_description</a>&lt;T: key&gt;(<a href="collection.md#0x4_collection">collection</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;): bool
+<pre><code><b>public</b> <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_is_mutable_collection_token_description">is_mutable_collection_token_description</a>&lt;T: key&gt;(<a href="collection.md#0x4_collection">collection</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;): bool
 </code></pre>
 
 
@@ -1395,10 +1395,10 @@ With an existing collection, directly mint a soul bound token into the recipient
 <summary>Implementation</summary>
 
 
-<pre><code><b>public</b> <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_is_mutable_collection_token_description">is_mutable_collection_token_description</a>&lt;T: key&gt;(
+<pre><code><b>public</b> <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_is_mutable_collection_token_description">is_mutable_collection_token_description</a>&lt;T: key&gt;(
     <a href="collection.md#0x4_collection">collection</a>: Object&lt;T&gt;,
-): bool <b>acquires</b> <a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
-    <a href="libra2_token.md#0x4_libra2_token_borrow_collection">borrow_collection</a>(&<a href="collection.md#0x4_collection">collection</a>).mutable_token_description
+): bool <b>acquires</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
+    <a href="aptos_token.md#0x4_libra2_token_borrow_collection">borrow_collection</a>(&<a href="collection.md#0x4_collection">collection</a>).mutable_token_description
 }
 </code></pre>
 
@@ -1412,7 +1412,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 
 
 
-<pre><code><b>public</b> <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_is_mutable_collection_token_name">is_mutable_collection_token_name</a>&lt;T: key&gt;(<a href="collection.md#0x4_collection">collection</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;): bool
+<pre><code><b>public</b> <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_is_mutable_collection_token_name">is_mutable_collection_token_name</a>&lt;T: key&gt;(<a href="collection.md#0x4_collection">collection</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;): bool
 </code></pre>
 
 
@@ -1421,10 +1421,10 @@ With an existing collection, directly mint a soul bound token into the recipient
 <summary>Implementation</summary>
 
 
-<pre><code><b>public</b> <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_is_mutable_collection_token_name">is_mutable_collection_token_name</a>&lt;T: key&gt;(
+<pre><code><b>public</b> <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_is_mutable_collection_token_name">is_mutable_collection_token_name</a>&lt;T: key&gt;(
     <a href="collection.md#0x4_collection">collection</a>: Object&lt;T&gt;,
-): bool <b>acquires</b> <a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
-    <a href="libra2_token.md#0x4_libra2_token_borrow_collection">borrow_collection</a>(&<a href="collection.md#0x4_collection">collection</a>).mutable_token_name
+): bool <b>acquires</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
+    <a href="aptos_token.md#0x4_libra2_token_borrow_collection">borrow_collection</a>(&<a href="collection.md#0x4_collection">collection</a>).mutable_token_name
 }
 </code></pre>
 
@@ -1438,7 +1438,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 
 
 
-<pre><code><b>public</b> <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_is_mutable_collection_token_uri">is_mutable_collection_token_uri</a>&lt;T: key&gt;(<a href="collection.md#0x4_collection">collection</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;): bool
+<pre><code><b>public</b> <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_is_mutable_collection_token_uri">is_mutable_collection_token_uri</a>&lt;T: key&gt;(<a href="collection.md#0x4_collection">collection</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;): bool
 </code></pre>
 
 
@@ -1447,10 +1447,10 @@ With an existing collection, directly mint a soul bound token into the recipient
 <summary>Implementation</summary>
 
 
-<pre><code><b>public</b> <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_is_mutable_collection_token_uri">is_mutable_collection_token_uri</a>&lt;T: key&gt;(
+<pre><code><b>public</b> <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_is_mutable_collection_token_uri">is_mutable_collection_token_uri</a>&lt;T: key&gt;(
     <a href="collection.md#0x4_collection">collection</a>: Object&lt;T&gt;,
-): bool <b>acquires</b> <a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
-    <a href="libra2_token.md#0x4_libra2_token_borrow_collection">borrow_collection</a>(&<a href="collection.md#0x4_collection">collection</a>).mutable_token_uri
+): bool <b>acquires</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
+    <a href="aptos_token.md#0x4_libra2_token_borrow_collection">borrow_collection</a>(&<a href="collection.md#0x4_collection">collection</a>).mutable_token_uri
 }
 </code></pre>
 
@@ -1464,7 +1464,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 
 
 
-<pre><code><b>public</b> <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_is_mutable_collection_token_properties">is_mutable_collection_token_properties</a>&lt;T: key&gt;(<a href="collection.md#0x4_collection">collection</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;): bool
+<pre><code><b>public</b> <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_is_mutable_collection_token_properties">is_mutable_collection_token_properties</a>&lt;T: key&gt;(<a href="collection.md#0x4_collection">collection</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;): bool
 </code></pre>
 
 
@@ -1473,10 +1473,10 @@ With an existing collection, directly mint a soul bound token into the recipient
 <summary>Implementation</summary>
 
 
-<pre><code><b>public</b> <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_is_mutable_collection_token_properties">is_mutable_collection_token_properties</a>&lt;T: key&gt;(
+<pre><code><b>public</b> <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_is_mutable_collection_token_properties">is_mutable_collection_token_properties</a>&lt;T: key&gt;(
     <a href="collection.md#0x4_collection">collection</a>: Object&lt;T&gt;,
-): bool <b>acquires</b> <a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
-    <a href="libra2_token.md#0x4_libra2_token_borrow_collection">borrow_collection</a>(&<a href="collection.md#0x4_collection">collection</a>).mutable_token_properties
+): bool <b>acquires</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
+    <a href="aptos_token.md#0x4_libra2_token_borrow_collection">borrow_collection</a>(&<a href="collection.md#0x4_collection">collection</a>).mutable_token_properties
 }
 </code></pre>
 
@@ -1490,7 +1490,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 
 
 
-<pre><code><b>public</b> <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_are_collection_tokens_burnable">are_collection_tokens_burnable</a>&lt;T: key&gt;(<a href="collection.md#0x4_collection">collection</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;): bool
+<pre><code><b>public</b> <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_are_collection_tokens_burnable">are_collection_tokens_burnable</a>&lt;T: key&gt;(<a href="collection.md#0x4_collection">collection</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;): bool
 </code></pre>
 
 
@@ -1499,10 +1499,10 @@ With an existing collection, directly mint a soul bound token into the recipient
 <summary>Implementation</summary>
 
 
-<pre><code><b>public</b> <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_are_collection_tokens_burnable">are_collection_tokens_burnable</a>&lt;T: key&gt;(
+<pre><code><b>public</b> <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_are_collection_tokens_burnable">are_collection_tokens_burnable</a>&lt;T: key&gt;(
     <a href="collection.md#0x4_collection">collection</a>: Object&lt;T&gt;,
-): bool <b>acquires</b> <a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
-    <a href="libra2_token.md#0x4_libra2_token_borrow_collection">borrow_collection</a>(&<a href="collection.md#0x4_collection">collection</a>).tokens_burnable_by_creator
+): bool <b>acquires</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
+    <a href="aptos_token.md#0x4_libra2_token_borrow_collection">borrow_collection</a>(&<a href="collection.md#0x4_collection">collection</a>).tokens_burnable_by_creator
 }
 </code></pre>
 
@@ -1516,7 +1516,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 
 
 
-<pre><code><b>public</b> <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_are_collection_tokens_freezable">are_collection_tokens_freezable</a>&lt;T: key&gt;(<a href="collection.md#0x4_collection">collection</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;): bool
+<pre><code><b>public</b> <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_are_collection_tokens_freezable">are_collection_tokens_freezable</a>&lt;T: key&gt;(<a href="collection.md#0x4_collection">collection</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;): bool
 </code></pre>
 
 
@@ -1525,10 +1525,10 @@ With an existing collection, directly mint a soul bound token into the recipient
 <summary>Implementation</summary>
 
 
-<pre><code><b>public</b> <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_are_collection_tokens_freezable">are_collection_tokens_freezable</a>&lt;T: key&gt;(
+<pre><code><b>public</b> <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_are_collection_tokens_freezable">are_collection_tokens_freezable</a>&lt;T: key&gt;(
     <a href="collection.md#0x4_collection">collection</a>: Object&lt;T&gt;,
-): bool <b>acquires</b> <a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
-    <a href="libra2_token.md#0x4_libra2_token_borrow_collection">borrow_collection</a>(&<a href="collection.md#0x4_collection">collection</a>).tokens_freezable_by_creator
+): bool <b>acquires</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
+    <a href="aptos_token.md#0x4_libra2_token_borrow_collection">borrow_collection</a>(&<a href="collection.md#0x4_collection">collection</a>).tokens_freezable_by_creator
 }
 </code></pre>
 
@@ -1542,7 +1542,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 
 
 
-<pre><code><b>fun</b> <a href="libra2_token.md#0x4_libra2_token_authorized_borrow_collection">authorized_borrow_collection</a>&lt;T: key&gt;(<a href="collection.md#0x4_collection">collection</a>: &<a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;, creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>): &<a href="libra2_token.md#0x4_libra2_token_Libra2Collection">libra2_token::Libra2Collection</a>
+<pre><code><b>fun</b> <a href="aptos_token.md#0x4_libra2_token_authorized_borrow_collection">authorized_borrow_collection</a>&lt;T: key&gt;(<a href="collection.md#0x4_collection">collection</a>: &<a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;, creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>): &<a href="aptos_token.md#0x4_libra2_token_Libra2Collection">libra2_token::Libra2Collection</a>
 </code></pre>
 
 
@@ -1551,17 +1551,17 @@ With an existing collection, directly mint a soul bound token into the recipient
 <summary>Implementation</summary>
 
 
-<pre><code>inline <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_authorized_borrow_collection">authorized_borrow_collection</a>&lt;T: key&gt;(<a href="collection.md#0x4_collection">collection</a>: &Object&lt;T&gt;, creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>): &<a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
+<pre><code>inline <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_authorized_borrow_collection">authorized_borrow_collection</a>&lt;T: key&gt;(<a href="collection.md#0x4_collection">collection</a>: &Object&lt;T&gt;, creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>): &<a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
     <b>let</b> collection_address = <a href="../../libra2-framework/doc/object.md#0x1_object_object_address">object::object_address</a>(<a href="collection.md#0x4_collection">collection</a>);
     <b>assert</b>!(
-        <b>exists</b>&lt;<a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a>&gt;(collection_address),
-        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_not_found">error::not_found</a>(<a href="libra2_token.md#0x4_libra2_token_ECOLLECTION_DOES_NOT_EXIST">ECOLLECTION_DOES_NOT_EXIST</a>),
+        <b>exists</b>&lt;<a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a>&gt;(collection_address),
+        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_not_found">error::not_found</a>(<a href="aptos_token.md#0x4_libra2_token_ECOLLECTION_DOES_NOT_EXIST">ECOLLECTION_DOES_NOT_EXIST</a>),
     );
     <b>assert</b>!(
         <a href="collection.md#0x4_collection_creator">collection::creator</a>(*<a href="collection.md#0x4_collection">collection</a>) == <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer_address_of">signer::address_of</a>(creator),
-        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_permission_denied">error::permission_denied</a>(<a href="libra2_token.md#0x4_libra2_token_ENOT_CREATOR">ENOT_CREATOR</a>),
+        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_permission_denied">error::permission_denied</a>(<a href="aptos_token.md#0x4_libra2_token_ENOT_CREATOR">ENOT_CREATOR</a>),
     );
-    &<a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a>[collection_address]
+    &<a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a>[collection_address]
 }
 </code></pre>
 
@@ -1575,7 +1575,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 
 
 
-<pre><code><b>public</b> entry <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_set_collection_description">set_collection_description</a>&lt;T: key&gt;(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="collection.md#0x4_collection">collection</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;, description: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>)
+<pre><code><b>public</b> entry <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_set_collection_description">set_collection_description</a>&lt;T: key&gt;(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="collection.md#0x4_collection">collection</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;, description: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>)
 </code></pre>
 
 
@@ -1584,17 +1584,17 @@ With an existing collection, directly mint a soul bound token into the recipient
 <summary>Implementation</summary>
 
 
-<pre><code><b>public</b> entry <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_set_collection_description">set_collection_description</a>&lt;T: key&gt;(
+<pre><code><b>public</b> entry <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_set_collection_description">set_collection_description</a>&lt;T: key&gt;(
     creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>,
     <a href="collection.md#0x4_collection">collection</a>: Object&lt;T&gt;,
     description: String,
-) <b>acquires</b> <a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
-    <b>let</b> libra2_collection = <a href="libra2_token.md#0x4_libra2_token_authorized_borrow_collection">authorized_borrow_collection</a>(&<a href="collection.md#0x4_collection">collection</a>, creator);
+) <b>acquires</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
+    <b>let</b> libra2_collection = <a href="aptos_token.md#0x4_libra2_token_authorized_borrow_collection">authorized_borrow_collection</a>(&<a href="collection.md#0x4_collection">collection</a>, creator);
     <b>assert</b>!(
         libra2_collection.mutable_description,
-        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_permission_denied">error::permission_denied</a>(<a href="libra2_token.md#0x4_libra2_token_EFIELD_NOT_MUTABLE">EFIELD_NOT_MUTABLE</a>),
+        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_permission_denied">error::permission_denied</a>(<a href="aptos_token.md#0x4_libra2_token_EFIELD_NOT_MUTABLE">EFIELD_NOT_MUTABLE</a>),
     );
-    <a href="collection.md#0x4_collection_set_description">collection::set_description</a>(libra2_collection.mutator_ref.<a href="libra2_token.md#0x4_libra2_token_borrow">borrow</a>(), description);
+    <a href="collection.md#0x4_collection_set_description">collection::set_description</a>(libra2_collection.mutator_ref.<a href="aptos_token.md#0x4_libra2_token_borrow">borrow</a>(), description);
 }
 </code></pre>
 
@@ -1608,7 +1608,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 
 
 
-<pre><code><b>public</b> <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_set_collection_royalties">set_collection_royalties</a>&lt;T: key&gt;(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="collection.md#0x4_collection">collection</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;, <a href="royalty.md#0x4_royalty">royalty</a>: <a href="royalty.md#0x4_royalty_Royalty">royalty::Royalty</a>)
+<pre><code><b>public</b> <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_set_collection_royalties">set_collection_royalties</a>&lt;T: key&gt;(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="collection.md#0x4_collection">collection</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;, <a href="royalty.md#0x4_royalty">royalty</a>: <a href="royalty.md#0x4_royalty_Royalty">royalty::Royalty</a>)
 </code></pre>
 
 
@@ -1617,17 +1617,17 @@ With an existing collection, directly mint a soul bound token into the recipient
 <summary>Implementation</summary>
 
 
-<pre><code><b>public</b> <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_set_collection_royalties">set_collection_royalties</a>&lt;T: key&gt;(
+<pre><code><b>public</b> <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_set_collection_royalties">set_collection_royalties</a>&lt;T: key&gt;(
     creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>,
     <a href="collection.md#0x4_collection">collection</a>: Object&lt;T&gt;,
     <a href="royalty.md#0x4_royalty">royalty</a>: <a href="royalty.md#0x4_royalty_Royalty">royalty::Royalty</a>,
-) <b>acquires</b> <a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
-    <b>let</b> libra2_collection = <a href="libra2_token.md#0x4_libra2_token_authorized_borrow_collection">authorized_borrow_collection</a>(&<a href="collection.md#0x4_collection">collection</a>, creator);
+) <b>acquires</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
+    <b>let</b> libra2_collection = <a href="aptos_token.md#0x4_libra2_token_authorized_borrow_collection">authorized_borrow_collection</a>(&<a href="collection.md#0x4_collection">collection</a>, creator);
     <b>assert</b>!(
         libra2_collection.royalty_mutator_ref.is_some(),
-        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_permission_denied">error::permission_denied</a>(<a href="libra2_token.md#0x4_libra2_token_EFIELD_NOT_MUTABLE">EFIELD_NOT_MUTABLE</a>),
+        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_permission_denied">error::permission_denied</a>(<a href="aptos_token.md#0x4_libra2_token_EFIELD_NOT_MUTABLE">EFIELD_NOT_MUTABLE</a>),
     );
-    <a href="royalty.md#0x4_royalty_update">royalty::update</a>(libra2_collection.royalty_mutator_ref.<a href="libra2_token.md#0x4_libra2_token_borrow">borrow</a>(), <a href="royalty.md#0x4_royalty">royalty</a>);
+    <a href="royalty.md#0x4_royalty_update">royalty::update</a>(libra2_collection.royalty_mutator_ref.<a href="aptos_token.md#0x4_libra2_token_borrow">borrow</a>(), <a href="royalty.md#0x4_royalty">royalty</a>);
 }
 </code></pre>
 
@@ -1641,7 +1641,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 
 
 
-<pre><code>entry <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_set_collection_royalties_call">set_collection_royalties_call</a>&lt;T: key&gt;(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="collection.md#0x4_collection">collection</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;, royalty_numerator: u64, royalty_denominator: u64, payee_address: <b>address</b>)
+<pre><code>entry <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_set_collection_royalties_call">set_collection_royalties_call</a>&lt;T: key&gt;(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="collection.md#0x4_collection">collection</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;, royalty_numerator: u64, royalty_denominator: u64, payee_address: <b>address</b>)
 </code></pre>
 
 
@@ -1650,15 +1650,15 @@ With an existing collection, directly mint a soul bound token into the recipient
 <summary>Implementation</summary>
 
 
-<pre><code>entry <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_set_collection_royalties_call">set_collection_royalties_call</a>&lt;T: key&gt;(
+<pre><code>entry <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_set_collection_royalties_call">set_collection_royalties_call</a>&lt;T: key&gt;(
     creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>,
     <a href="collection.md#0x4_collection">collection</a>: Object&lt;T&gt;,
     royalty_numerator: u64,
     royalty_denominator: u64,
     payee_address: <b>address</b>,
-) <b>acquires</b> <a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
+) <b>acquires</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
     <b>let</b> <a href="royalty.md#0x4_royalty">royalty</a> = <a href="royalty.md#0x4_royalty_create">royalty::create</a>(royalty_numerator, royalty_denominator, payee_address);
-    <a href="libra2_token.md#0x4_libra2_token_set_collection_royalties">set_collection_royalties</a>(creator, <a href="collection.md#0x4_collection">collection</a>, <a href="royalty.md#0x4_royalty">royalty</a>);
+    <a href="aptos_token.md#0x4_libra2_token_set_collection_royalties">set_collection_royalties</a>(creator, <a href="collection.md#0x4_collection">collection</a>, <a href="royalty.md#0x4_royalty">royalty</a>);
 }
 </code></pre>
 
@@ -1672,7 +1672,7 @@ With an existing collection, directly mint a soul bound token into the recipient
 
 
 
-<pre><code><b>public</b> entry <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_set_collection_uri">set_collection_uri</a>&lt;T: key&gt;(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="collection.md#0x4_collection">collection</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;, uri: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>)
+<pre><code><b>public</b> entry <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_set_collection_uri">set_collection_uri</a>&lt;T: key&gt;(creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <a href="collection.md#0x4_collection">collection</a>: <a href="../../libra2-framework/doc/object.md#0x1_object_Object">object::Object</a>&lt;T&gt;, uri: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_String">string::String</a>)
 </code></pre>
 
 
@@ -1681,17 +1681,17 @@ With an existing collection, directly mint a soul bound token into the recipient
 <summary>Implementation</summary>
 
 
-<pre><code><b>public</b> entry <b>fun</b> <a href="libra2_token.md#0x4_libra2_token_set_collection_uri">set_collection_uri</a>&lt;T: key&gt;(
+<pre><code><b>public</b> entry <b>fun</b> <a href="aptos_token.md#0x4_libra2_token_set_collection_uri">set_collection_uri</a>&lt;T: key&gt;(
     creator: &<a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>,
     <a href="collection.md#0x4_collection">collection</a>: Object&lt;T&gt;,
     uri: String,
-) <b>acquires</b> <a href="libra2_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
-    <b>let</b> libra2_collection = <a href="libra2_token.md#0x4_libra2_token_authorized_borrow_collection">authorized_borrow_collection</a>(&<a href="collection.md#0x4_collection">collection</a>, creator);
+) <b>acquires</b> <a href="aptos_token.md#0x4_libra2_token_Libra2Collection">Libra2Collection</a> {
+    <b>let</b> libra2_collection = <a href="aptos_token.md#0x4_libra2_token_authorized_borrow_collection">authorized_borrow_collection</a>(&<a href="collection.md#0x4_collection">collection</a>, creator);
     <b>assert</b>!(
         libra2_collection.mutable_uri,
-        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_permission_denied">error::permission_denied</a>(<a href="libra2_token.md#0x4_libra2_token_EFIELD_NOT_MUTABLE">EFIELD_NOT_MUTABLE</a>),
+        <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_permission_denied">error::permission_denied</a>(<a href="aptos_token.md#0x4_libra2_token_EFIELD_NOT_MUTABLE">EFIELD_NOT_MUTABLE</a>),
     );
-    <a href="collection.md#0x4_collection_set_uri">collection::set_uri</a>(libra2_collection.mutator_ref.<a href="libra2_token.md#0x4_libra2_token_borrow">borrow</a>(), uri);
+    <a href="collection.md#0x4_collection_set_uri">collection::set_uri</a>(libra2_collection.mutator_ref.<a href="aptos_token.md#0x4_libra2_token_borrow">borrow</a>(), uri);
 }
 </code></pre>
 

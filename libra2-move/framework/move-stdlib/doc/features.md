@@ -284,29 +284,6 @@ Lifetime: transient
 
 
 
-<a id="0x1_features_LIBRA2_STD_CHAIN_ID_NATIVES"></a>
-
-Whether the new <code>libra2_stdlib::type_info::chain_id()</code> native for fetching the chain ID is enabled.
-This is needed because of the introduction of a new native function.
-Lifetime: transient
-
-
-<pre><code><b>const</b> <a href="features.md#0x1_features_LIBRA2_STD_CHAIN_ID_NATIVES">LIBRA2_STD_CHAIN_ID_NATIVES</a>: u64 = 4;
-</code></pre>
-
-
-
-<a id="0x1_features_LIBRA2_UNIQUE_IDENTIFIERS"></a>
-
-Whether enable MOVE functions to call create_auid method to create AUIDs.
-Lifetime: transient
-
-
-<pre><code><b>const</b> <a href="features.md#0x1_features_LIBRA2_UNIQUE_IDENTIFIERS">LIBRA2_UNIQUE_IDENTIFIERS</a>: u64 = 23;
-</code></pre>
-
-
-
 <a id="0x1_features_BLAKE2B_256_NATIVE"></a>
 
 Whether the new BLAKE2B-256 hash function native is enabled.
@@ -706,6 +683,29 @@ Lifetime: transient
 
 
 <pre><code><b>const</b> <a href="features.md#0x1_features_KEYLESS_BUT_ZKLESS_ACCOUNTS">KEYLESS_BUT_ZKLESS_ACCOUNTS</a>: u64 = 47;
+</code></pre>
+
+
+
+<a id="0x1_features_LIBRA2_STD_CHAIN_ID_NATIVES"></a>
+
+Whether the new <code>libra2_stdlib::type_info::chain_id()</code> native for fetching the chain ID is enabled.
+This is needed because of the introduction of a new native function.
+Lifetime: transient
+
+
+<pre><code><b>const</b> <a href="features.md#0x1_features_LIBRA2_STD_CHAIN_ID_NATIVES">LIBRA2_STD_CHAIN_ID_NATIVES</a>: u64 = 4;
+</code></pre>
+
+
+
+<a id="0x1_features_LIBRA2_UNIQUE_IDENTIFIERS"></a>
+
+Whether enable MOVE functions to call create_auid method to create AUIDs.
+Lifetime: transient
+
+
+<pre><code><b>const</b> <a href="features.md#0x1_features_LIBRA2_UNIQUE_IDENTIFIERS">LIBRA2_UNIQUE_IDENTIFIERS</a>: u64 = 23;
 </code></pre>
 
 

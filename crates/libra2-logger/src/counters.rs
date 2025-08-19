@@ -46,7 +46,7 @@ pub static STRUCT_LOG_PARSE_ERROR_COUNT: Lazy<IntCounter> = Lazy::new(|| {
 });
 
 /// Counter for failed log ingest writes (see also: libra2-telemetry for sender metrics)
-pub static libra2_log_ingest_writer_full: Lazy<IntCounter> = Lazy::new(|| {
+pub static LIBRA2_LOG_INGEST_WRITER_FULL: Lazy<IntCounter> = Lazy::new(|| {
     register_int_counter!(
         "libra2_log_ingest_writer_full",
         "Number of log ingest writes that failed due to channel full"
@@ -55,7 +55,7 @@ pub static libra2_log_ingest_writer_full: Lazy<IntCounter> = Lazy::new(|| {
 });
 
 /// Counter for failed log ingest writes (see also: libra2-telemetry for sender metrics)
-pub static libra2_log_ingest_writer_disconnected: Lazy<IntCounter> = Lazy::new(|| {
+pub static LIBRA2_LOG_INGEST_WRITER_DISCONNECTED: Lazy<IntCounter> = Lazy::new(|| {
     register_int_counter!(
         "libra2_log_ingest_writer_disconnected",
         "Number of log ingest writes that failed due to channel disconnected"

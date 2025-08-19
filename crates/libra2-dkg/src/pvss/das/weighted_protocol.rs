@@ -31,7 +31,7 @@ use std::ops::{Add, Mul, Neg, Sub};
 pub const WEIGHTED_DAS_SK_IN_G1: &'static str = "provable_weighted_das_sk_in_g1";
 
 /// Domain-separator tag (DST) for the Fiat-Shamir hashing used to derive randomness from the transcript.
-const DAS_WEIGHTED_PVSS_FIAT_SHAMIR_DST: &[u8; 48] =
+const DAS_WEIGHTED_PVSS_FIAT_SHAMIR_DST: &[u8; 49] =
     b"LIBRA2_DAS_WEIGHTED_PROVABLY_PVSS_FIAT_SHAMIR_DST";
 
 /// A weighted transcript where the max player weight is $M$.

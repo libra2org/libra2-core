@@ -41,16 +41,6 @@
 ## Constants
 
 
-<a id="0x1_system_addresses_ENOT_LIBRA2_FRAMEWORK_ADDRESS"></a>
-
-The address/account did not correspond to the core framework address
-
-
-<pre><code><b>const</b> <a href="system_addresses.md#0x1_system_addresses_ENOT_LIBRA2_FRAMEWORK_ADDRESS">ENOT_LIBRA2_FRAMEWORK_ADDRESS</a>: u64 = 3;
-</code></pre>
-
-
-
 <a id="0x1_system_addresses_ENOT_CORE_RESOURCE_ADDRESS"></a>
 
 The address/account did not correspond to the core resource address
@@ -67,6 +57,16 @@ The address is not framework reserved address
 
 
 <pre><code><b>const</b> <a href="system_addresses.md#0x1_system_addresses_ENOT_FRAMEWORK_RESERVED_ADDRESS">ENOT_FRAMEWORK_RESERVED_ADDRESS</a>: u64 = 4;
+</code></pre>
+
+
+
+<a id="0x1_system_addresses_ENOT_LIBRA2_FRAMEWORK_ADDRESS"></a>
+
+The address/account did not correspond to the core framework address
+
+
+<pre><code><b>const</b> <a href="system_addresses.md#0x1_system_addresses_ENOT_LIBRA2_FRAMEWORK_ADDRESS">ENOT_LIBRA2_FRAMEWORK_ADDRESS</a>: u64 = 3;
 </code></pre>
 
 

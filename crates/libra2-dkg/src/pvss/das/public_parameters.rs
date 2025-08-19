@@ -17,9 +17,9 @@ const NUM_BYTES: usize = encryption_elgamal::g1::PUBLIC_PARAMS_NUM_BYTES + G2_PR
 
 /// "Nothing up my sleeve" domain-separator tag (DST) for the hash-to-curve operation used
 /// to pick our PVSS public parameters (group elements) as `hash_to_curve(seed, dst, group_element_name)`.
-pub const DST_PVSS_PUBLIC_PARAMS: &[u8; 32] = b"LIBRA2_DISTRIBUTED_RANDOMNESS_DST";
+pub const DST_PVSS_PUBLIC_PARAMS: &[u8; 33] = b"LIBRA2_DISTRIBUTED_RANDOMNESS_DST";
 /// "Nothing up my sleeve" seed to deterministically-derive the public parameters.
-pub const SEED_PVSS_PUBLIC_PARAMS: &[u8; 33] = b"LIBRA2_DISTRIBUTED_RANDOMNESS_SEED";
+pub const SEED_PVSS_PUBLIC_PARAMS: &[u8; 34] = b"LIBRA2_DISTRIBUTED_RANDOMNESS_SEED";
 
 /// The cryptographic *public parameters* needed to run the PVSS protocol.
 #[derive(DeserializeKey, Clone, SerializeKey, Debug, PartialEq, Eq)]

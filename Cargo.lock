@@ -304,38 +304,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "libra2-indexer"
-version = "0.0.2"
-dependencies = [
- "anyhow",
- "async-trait",
- "bcs 0.1.4",
- "bigdecimal",
- "chrono",
- "diesel",
- "diesel_migrations",
- "field_count",
- "futures",
- "hex",
- "libra2-api",
- "libra2-api-test-context",
- "libra2-api-types",
- "libra2-bitvec",
- "libra2-config",
- "libra2-logger",
- "libra2-mempool",
- "libra2-metrics-core",
- "libra2-runtimes",
- "libra2-storage-interface",
- "libra2-types",
- "once_cell",
- "serde",
- "serde_json",
- "sha2 0.9.9",
- "tokio",
-]
-
-[[package]]
 name = "arbitrary"
 version = "1.4.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -624,7 +592,7 @@ checksum = "81953c529336010edd6d8e358f886d9581267795c61b19475b71314bffa46d35"
 dependencies = [
  "concurrent-queue",
  "event-listener 2.5.3",
- "futures-core 0.3.30",
+ "futures-core",
 ]
 
 [[package]]
@@ -635,7 +603,7 @@ checksum = "924ed96dd52d1b75e9c1a3e6275715fd320f5f9439fb5a4a11fa51f4221158d2"
 dependencies = [
  "concurrent-queue",
  "event-listener-strategy",
- "futures-core 0.3.30",
+ "futures-core",
  "pin-project-lite",
 ]
 
@@ -647,7 +615,7 @@ checksum = "ddb939d66e4ae03cee6091612804ba446b12878410cfa17f785f4dd67d4014e8"
 dependencies = [
  "brotli",
  "flate2",
- "futures-core 0.3.30",
+ "futures-core",
  "memchr",
  "pin-project-lite",
  "tokio",
@@ -770,7 +738,7 @@ dependencies = [
  "async-lock",
  "atomic-waker",
  "cfg-if",
- "futures-core 0.3.30",
+ "futures-core",
  "futures-io",
  "rustix 1.0.8",
  "signal-hook-registry",
@@ -791,7 +759,7 @@ dependencies = [
  "async-process",
  "crossbeam-utils",
  "futures-channel",
- "futures-core 0.3.30",
+ "futures-core",
  "futures-io",
  "futures-lite 2.6.1",
  "gloo-timers 0.3.0",
@@ -812,7 +780,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0b5a71a6f37880a80d1d7f19efd781e4b5de42c88f0722cc13bcb6cc2cfe8476"
 dependencies = [
  "async-stream-impl",
- "futures-core 0.3.30",
+ "futures-core",
  "pin-project-lite",
 ]
 
@@ -1066,7 +1034,7 @@ version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b62ddb9cb1ec0a098ad4bbf9344d0713fa193ae1a80af55febcff2627b6a00c1"
 dependencies = [
- "futures-core 0.3.30",
+ "futures-core",
  "getrandom 0.2.16",
  "instant",
  "pin-project-lite",
@@ -1478,7 +1446,7 @@ dependencies = [
  "base64 0.22.1",
  "bollard-stubs",
  "bytes",
- "futures-core 0.3.30",
+ "futures-core",
  "futures-util",
  "hex",
  "home",
@@ -2253,7 +2221,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ba5a308b75df32fe02788e748662718f03fde005016435c444eea572398219fd"
 dependencies = [
  "bytes",
- "futures-core 0.3.30",
+ "futures-core",
  "memchr",
  "pin-project-lite",
  "tokio",
@@ -2314,7 +2282,7 @@ version = "0.7.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a257c22cd7e487dd4a13d413beabc512c5052f0bc048db0da6a84c3d8a6142fd"
 dependencies = [
- "futures-core 0.3.30",
+ "futures-core",
  "prost 0.12.6",
  "prost-types 0.12.6",
  "tonic 0.11.0",
@@ -4076,7 +4044,7 @@ dependencies = [
  "const-hex",
  "enr",
  "ethers-core",
- "futures-core 0.3.30",
+ "futures-core",
  "futures-timer",
  "futures-util",
  "hashers",
@@ -4577,11 +4545,12 @@ checksum = "e6d5a32815ae3f33302d95fdcb2ce17862f8c65363dcfd29360480ba1001fc9c"
 
 [[package]]
 name = "futures"
-version = "0.3.30"
-source = "git+https://github.com/aptos-labs/futures-rs?branch=backport#1845d7d36bc4bccbc0b57be68fbc05abd0b8bc68"
+version = "0.3.31"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "65bc07b1a8bc7c85c5f2e110c476c7389b4554ba72af57d8445ea63a576b0876"
 dependencies = [
  "futures-channel",
- "futures-core 0.3.30",
+ "futures-core",
  "futures-executor",
  "futures-io",
  "futures-sink",
@@ -4591,17 +4560,13 @@ dependencies = [
 
 [[package]]
 name = "futures-channel"
-version = "0.3.30"
-source = "git+https://github.com/aptos-labs/futures-rs?branch=backport#1845d7d36bc4bccbc0b57be68fbc05abd0b8bc68"
+version = "0.3.31"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2dff15bf788c671c1934e366d07e30c1814a8ef514e1af724a602e8a2fbe1b10"
 dependencies = [
- "futures-core 0.3.30",
+ "futures-core",
  "futures-sink",
 ]
-
-[[package]]
-name = "futures-core"
-version = "0.3.30"
-source = "git+https://github.com/aptos-labs/futures-rs?branch=backport#1845d7d36bc4bccbc0b57be68fbc05abd0b8bc68"
 
 [[package]]
 name = "futures-core"
@@ -4611,18 +4576,20 @@ checksum = "05f29059c0c2090612e8d742178b0580d2dc940c837851ad723096f87af6663e"
 
 [[package]]
 name = "futures-executor"
-version = "0.3.30"
-source = "git+https://github.com/aptos-labs/futures-rs?branch=backport#1845d7d36bc4bccbc0b57be68fbc05abd0b8bc68"
+version = "0.3.31"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1e28d1d997f585e54aebc3f97d39e72338912123a67330d723fdbb564d646c9f"
 dependencies = [
- "futures-core 0.3.30",
+ "futures-core",
  "futures-task",
  "futures-util",
 ]
 
 [[package]]
 name = "futures-io"
-version = "0.3.30"
-source = "git+https://github.com/aptos-labs/futures-rs?branch=backport#1845d7d36bc4bccbc0b57be68fbc05abd0b8bc68"
+version = "0.3.31"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9e5c1b78ca4aae1ac06c48a526a655760685149f0d465d21f37abfe57ce075c6"
 
 [[package]]
 name = "futures-lite"
@@ -4631,7 +4598,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "49a9d51ce47660b1e808d3c990b4709f2f415d928835a17dfd16991515c46bce"
 dependencies = [
  "fastrand 1.9.0",
- "futures-core 0.3.30",
+ "futures-core",
  "futures-io",
  "memchr",
  "parking",
@@ -4646,7 +4613,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f78e10609fe0e0b3f4157ffab1876319b5b0db102a2c60dc4626306dc46b44ad"
 dependencies = [
  "fastrand 2.3.0",
- "futures-core 0.3.30",
+ "futures-core",
  "futures-io",
  "parking",
  "pin-project-lite",
@@ -4664,8 +4631,9 @@ dependencies = [
 
 [[package]]
 name = "futures-macro"
-version = "0.3.30"
-source = "git+https://github.com/aptos-labs/futures-rs?branch=backport#1845d7d36bc4bccbc0b57be68fbc05abd0b8bc68"
+version = "0.3.31"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "162ee34ebcb7c64a8abebc059ce0fee27c2262618d7b60ed8faf72fef13c3650"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -4674,13 +4642,15 @@ dependencies = [
 
 [[package]]
 name = "futures-sink"
-version = "0.3.30"
-source = "git+https://github.com/aptos-labs/futures-rs?branch=backport#1845d7d36bc4bccbc0b57be68fbc05abd0b8bc68"
+version = "0.3.31"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e575fab7d1e0dcb8d0c7bcf9a63ee213816ab51902e6d244a95819acacf1d4f7"
 
 [[package]]
 name = "futures-task"
-version = "0.3.30"
-source = "git+https://github.com/aptos-labs/futures-rs?branch=backport#1845d7d36bc4bccbc0b57be68fbc05abd0b8bc68"
+version = "0.3.31"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f90f7dce0722e95104fcb095585910c0977252f286e354b5e3bd38902cd99988"
 
 [[package]]
 name = "futures-timer"
@@ -4694,11 +4664,12 @@ dependencies = [
 
 [[package]]
 name = "futures-util"
-version = "0.3.30"
-source = "git+https://github.com/aptos-labs/futures-rs?branch=backport#1845d7d36bc4bccbc0b57be68fbc05abd0b8bc68"
+version = "0.3.31"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9fa08315bb612088cc391249efdc3bc77536f16c91f6cf495e6fbe85b20a4a81"
 dependencies = [
  "futures-channel",
- "futures-core 0.3.30",
+ "futures-core",
  "futures-io",
  "futures-macro",
  "futures-sink",
@@ -5027,7 +4998,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9b995a66bb87bebce9a0f4a95aed01daca4872c050bfcb21653361c03bc35e5c"
 dependencies = [
  "futures-channel",
- "futures-core 0.3.30",
+ "futures-core",
  "js-sys",
  "wasm-bindgen",
 ]
@@ -5039,7 +5010,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "bbb143cf96099802033e0d4f4963b19fd2e0b728bcf076cd9cf7f6634f092994"
 dependencies = [
  "futures-channel",
- "futures-core 0.3.30",
+ "futures-core",
  "js-sys",
  "wasm-bindgen",
 ]
@@ -5246,7 +5217,7 @@ checksum = "0beca50380b1fc32983fc1cb4587bfa4bb9e78fc259aad4a0032d2080309222d"
 dependencies = [
  "bytes",
  "fnv",
- "futures-core 0.3.30",
+ "futures-core",
  "futures-sink",
  "futures-util",
  "http 0.2.12",
@@ -5266,7 +5237,7 @@ dependencies = [
  "atomic-waker",
  "bytes",
  "fnv",
- "futures-core 0.3.30",
+ "futures-core",
  "futures-sink",
  "http 1.3.1",
  "indexmap 2.10.0",
@@ -5657,7 +5628,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b021d93e26becf5dc7e1b75b1bed1fd93124b374ceb73f43d4d4eafec896a64a"
 dependencies = [
  "bytes",
- "futures-core 0.3.30",
+ "futures-core",
  "http 1.3.1",
  "http-body 1.0.1",
  "pin-project-lite",
@@ -5732,7 +5703,7 @@ checksum = "41dfc780fdec9373c01bae43289ea34c972e40ee3c9f6b3c8801a35f35586ce7"
 dependencies = [
  "bytes",
  "futures-channel",
- "futures-core 0.3.30",
+ "futures-core",
  "futures-util",
  "h2 0.3.27",
  "http 0.2.12",
@@ -5757,7 +5728,7 @@ dependencies = [
  "atomic-waker",
  "bytes",
  "futures-channel",
- "futures-core 0.3.31",
+ "futures-core",
  "h2 0.4.12",
  "http 1.3.1",
  "http-body 1.0.1",
@@ -5901,7 +5872,7 @@ dependencies = [
  "base64 0.22.1",
  "bytes",
  "futures-channel",
- "futures-core 0.3.30",
+ "futures-core",
  "futures-util",
  "http 1.3.1",
  "http-body 1.0.1",
@@ -6091,14 +6062,6 @@ dependencies = [
 [[package]]
 name = "idxsample"
 version = "0.1.0"
-dependencies = [
- "tracing",
-]
-
-[[package]]
-name = "idxsample"
-version = "0.1.0"
-source = "git+https://github.com/libra2org/libra2-core.git#769af6c0068d122ec87dfb3945f6e34fabd79f78"
 dependencies = [
  "tracing",
 ]
@@ -6351,19 +6314,6 @@ dependencies = [
  "prometheus",
  "prometheus-client",
  "tokio",
-]
-
-[[package]]
-name = "instrumented-channel"
-version = "0.1.0"
-source = "git+https://github.com/libra2org/libra2-core.git#769af6c0068d122ec87dfb3945f6e34fabd79f78"
-dependencies = [
- "delegate",
- "derive_builder",
- "kanal",
- "once_cell",
- "prometheus",
- "prometheus-client",
 ]
 
 [[package]]
@@ -6727,7 +6677,7 @@ version = "0.1.0-pre8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b05d55519627edaf7fd0f29981f6dc03fb52df3f5b257130eb8d0bf2801ea1d7"
 dependencies = [
- "futures-core 0.3.30",
+ "futures-core",
  "lock_api",
 ]
 
@@ -7062,7 +7012,7 @@ dependencies = [
  "libra2-github-client",
  "libra2-global-constants",
  "libra2-indexer-grpc-server-framework",
- "libra2-indexer-processor-sdk 0.1.0",
+ "libra2-indexer-processor-sdk",
  "libra2-keygen",
  "libra2-ledger",
  "libra2-localnet",
@@ -7161,7 +7111,7 @@ dependencies = [
  "libra2-mempool",
  "libra2-runtimes",
  "libra2-storage-interface",
- "libra2-system-utils 0.1.1",
+ "libra2-system-utils",
  "libra2-types",
  "sha256",
  "tokio",
@@ -8264,7 +8214,7 @@ dependencies = [
  "libra2-metrics-core",
  "libra2-mvhashmap",
  "libra2-node-resource-metrics",
- "libra2-profiler 0.1.1",
+ "libra2-profiler",
  "libra2-push-metrics",
  "libra2-sdk",
  "libra2-storage-interface",
@@ -8849,6 +8799,38 @@ name = "libra2-id-generator"
 version = "0.1.1"
 
 [[package]]
+name = "libra2-indexer"
+version = "0.0.2"
+dependencies = [
+ "anyhow",
+ "async-trait",
+ "bcs 0.1.4",
+ "bigdecimal",
+ "chrono",
+ "diesel",
+ "diesel_migrations",
+ "field_count",
+ "futures",
+ "hex",
+ "libra2-api",
+ "libra2-api-test-context",
+ "libra2-api-types",
+ "libra2-bitvec",
+ "libra2-config",
+ "libra2-logger",
+ "libra2-mempool",
+ "libra2-metrics-core",
+ "libra2-runtimes",
+ "libra2-storage-interface",
+ "libra2-types",
+ "once_cell",
+ "serde",
+ "serde_json",
+ "sha2 0.9.9",
+ "tokio",
+]
+
+[[package]]
 name = "libra2-indexer-grpc-cache-worker"
 version = "1.0.1"
 dependencies = [
@@ -8856,14 +8838,14 @@ dependencies = [
  "async-trait",
  "clap 4.5.45",
  "futures",
- "futures-core 0.3.30",
+ "futures-core",
  "jemallocator",
  "libra2-config",
  "libra2-indexer-grpc-server-framework",
  "libra2-indexer-grpc-utils",
  "libra2-metrics-core",
- "libra2-moving-average 0.1.0",
- "libra2-protos 1.3.2",
+ "libra2-moving-average",
+ "libra2-protos",
  "once_cell",
  "prost 0.13.5",
  "redis",
@@ -8888,9 +8870,9 @@ dependencies = [
  "libra2-indexer-grpc-server-framework",
  "libra2-indexer-grpc-utils",
  "libra2-metrics-core",
- "libra2-moving-average 0.1.0",
- "libra2-protos 1.3.2",
- "libra2-transaction-filter 0.1.1",
+ "libra2-moving-average",
+ "libra2-protos",
+ "libra2-transaction-filter",
  "once_cell",
  "prost 0.13.5",
  "redis",
@@ -8919,8 +8901,8 @@ dependencies = [
  "libra2-indexer-grpc-server-framework",
  "libra2-indexer-grpc-utils",
  "libra2-metrics-core",
- "libra2-protos 1.3.2",
- "libra2-transaction-filter 0.1.1",
+ "libra2-protos",
+ "libra2-transaction-filter",
  "once_cell",
  "prost 0.13.5",
  "rand 0.7.3",
@@ -8966,7 +8948,7 @@ dependencies = [
  "libra2-indexer-grpc-server-framework",
  "libra2-indexer-grpc-utils",
  "libra2-metrics-core",
- "libra2-moving-average 0.1.0",
+ "libra2-moving-average",
  "once_cell",
  "redis",
  "serde",
@@ -8985,7 +8967,7 @@ dependencies = [
  "jemallocator",
  "libra2-indexer-grpc-server-framework",
  "libra2-indexer-grpc-utils",
- "libra2-protos 1.3.2",
+ "libra2-protos",
  "serde",
  "serde_json",
  "tokio",
@@ -9024,9 +9006,9 @@ dependencies = [
  "libra2-mempool",
  "libra2-mempool-notifications",
  "libra2-metrics-core",
- "libra2-moving-average 0.1.0",
+ "libra2-moving-average",
  "libra2-proptest-helpers",
- "libra2-protos 1.3.2",
+ "libra2-protos",
  "libra2-runtimes",
  "libra2-sdk",
  "libra2-secure-storage",
@@ -9056,7 +9038,7 @@ dependencies = [
  "jemallocator",
  "lazy_static",
  "libra2-indexer-grpc-utils",
- "libra2-protos 1.3.2",
+ "libra2-protos",
  "once_cell",
  "redis",
  "redis-test",
@@ -9078,7 +9060,7 @@ dependencies = [
  "libra2-indexer-grpc-server-framework",
  "libra2-indexer-grpc-utils",
  "libra2-metrics-core",
- "libra2-protos 1.3.2",
+ "libra2-protos",
  "once_cell",
  "prost 0.13.5",
  "rand 0.7.3",
@@ -9101,7 +9083,7 @@ dependencies = [
  "clap 4.5.45",
  "figment",
  "libra2-metrics-core",
- "libra2-system-utils 0.1.1",
+ "libra2-system-utils",
  "prometheus",
  "serde",
  "tempfile",
@@ -9161,8 +9143,8 @@ dependencies = [
  "futures",
  "itertools 0.13.0",
  "libra2-metrics-core",
- "libra2-protos 1.3.2",
- "libra2-transaction-filter 0.1.1",
+ "libra2-protos",
+ "libra2-transaction-filter",
  "lz4",
  "once_cell",
  "prometheus",
@@ -9191,7 +9173,7 @@ dependencies = [
  "jemallocator",
  "libra2-indexer-grpc-server-framework",
  "libra2-indexer-grpc-utils",
- "libra2-protos 1.3.2",
+ "libra2-protos",
  "serde",
  "serde_json",
  "tokio",
@@ -9224,11 +9206,11 @@ dependencies = [
  "futures-util",
  "hex",
  "indexmap 2.10.0",
- "instrumented-channel 0.1.0",
+ "instrumented-channel",
  "kanal",
- "libra2-indexer-transaction-stream 0.1.1",
- "libra2-protos 1.3.2",
- "libra2-system-utils 0.1.1",
+ "libra2-indexer-transaction-stream",
+ "libra2-protos",
+ "libra2-system-utils",
  "mockall",
  "native-tls",
  "num_cpus",
@@ -9257,62 +9239,10 @@ dependencies = [
 ]
 
 [[package]]
-name = "libra2-indexer-processor-sdk"
-version = "0.1.0"
-source = "git+https://github.com/libra2org/libra2-core.git#769af6c0068d122ec87dfb3945f6e34fabd79f78"
-dependencies = [
- "ahash 0.8.12",
- "anyhow",
- "async-trait",
- "autometrics",
- "axum 0.7.9",
- "backtrace",
- "bcs 0.1.4",
- "bigdecimal",
- "chrono",
- "clap 4.5.45",
- "derive_builder",
- "diesel",
- "diesel-async",
- "diesel_migrations",
- "field_count",
- "futures",
- "futures-util",
- "hex",
- "indexmap 2.10.0",
- "instrumented-channel 0.1.0 (git+https://github.com/libra2org/libra2-core.git)",
- "kanal",
- "libra2-indexer-transaction-stream 0.1.1 (git+https://github.com/libra2org/libra2-core.git)",
- "libra2-protos 1.3.2 (git+https://github.com/libra2org/libra2-core.git)",
- "libra2-system-utils 0.1.1 (git+https://github.com/libra2org/libra2-core.git)",
- "mockall",
- "native-tls",
- "num_cpus",
- "once_cell",
- "petgraph 0.6.5",
- "postgres-native-tls",
- "prometheus",
- "prometheus-client",
- "serde",
- "serde_json",
- "serde_yaml 0.8.26",
- "sha2 0.9.9",
- "tempfile",
- "thiserror 1.0.69",
- "tiny-keccak",
- "tokio",
- "tokio-postgres",
- "toml 0.7.8",
- "tracing",
- "tracing-subscriber 0.3.19",
- "url",
-]
-
-[[package]]
 name = "libra2-indexer-test-transactions"
 version = "1.0.1"
 dependencies = [
- "libra2-protos 1.3.2",
+ "libra2-protos",
  "serde_json",
 ]
 
@@ -9328,7 +9258,7 @@ dependencies = [
  "libra2-config",
  "libra2-faucet-core",
  "libra2-indexer-grpc-utils",
- "libra2-protos 1.3.2",
+ "libra2-protos",
  "rand 0.7.3",
  "serde",
  "serde_json",
@@ -9348,32 +9278,10 @@ dependencies = [
  "anyhow",
  "chrono",
  "futures-util",
- "idxsample 0.1.0",
- "libra2-moving-average 0.1.0",
- "libra2-protos 1.3.2",
- "libra2-transaction-filter 0.1.1",
- "once_cell",
- "prometheus",
- "prost 0.13.5",
- "serde",
- "tokio",
- "tonic 0.12.3",
- "tracing",
- "url",
-]
-
-[[package]]
-name = "libra2-indexer-transaction-stream"
-version = "0.1.1"
-source = "git+https://github.com/libra2org/libra2-core.git#769af6c0068d122ec87dfb3945f6e34fabd79f78"
-dependencies = [
- "anyhow",
- "chrono",
- "futures-util",
- "idxsample 0.1.0 (git+https://github.com/libra2org/libra2-core.git)",
- "libra2-moving-average 0.1.0 (git+https://github.com/libra2org/libra2-core.git)",
- "libra2-protos 1.3.2 (git+https://github.com/libra2org/libra2-core.git)",
- "libra2-transaction-filter 0.1.1 (git+https://github.com/libra2org/libra2-core.git)",
+ "idxsample",
+ "libra2-moving-average",
+ "libra2-protos",
+ "libra2-transaction-filter",
  "once_cell",
  "prometheus",
  "prost 0.13.5",
@@ -9657,7 +9565,7 @@ dependencies = [
  "dirs 5.0.1",
  "futures",
  "libra2-indexer-grpc-utils",
- "libra2-protos 1.3.2",
+ "libra2-protos",
  "libra2-rest-client",
  "processor",
  "reqwest 0.11.27",
@@ -9875,14 +9783,6 @@ dependencies = [
 [[package]]
 name = "libra2-moving-average"
 version = "0.1.0"
-dependencies = [
- "chrono",
-]
-
-[[package]]
-name = "libra2-moving-average"
-version = "0.1.0"
-source = "git+https://github.com/libra2org/libra2-core.git#769af6c0068d122ec87dfb3945f6e34fabd79f78"
 dependencies = [
  "chrono",
 ]
@@ -10116,7 +10016,6 @@ name = "libra2-node"
 version = "0.0.0-main"
 dependencies = [
  "anyhow",
- "libra2-indexer",
  "bcs 0.1.4",
  "clap 4.5.45",
  "either",
@@ -10144,6 +10043,7 @@ dependencies = [
  "libra2-executor",
  "libra2-framework",
  "libra2-genesis",
+ "libra2-indexer",
  "libra2-indexer-grpc-fullnode",
  "libra2-indexer-grpc-table-info",
  "libra2-infallible",
@@ -10371,19 +10271,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "libra2-profiler"
-version = "0.1.1"
-source = "git+https://github.com/libra2org/libra2-core.git#769af6c0068d122ec87dfb3945f6e34fabd79f78"
-dependencies = [
- "anyhow",
- "backtrace",
- "jemalloc-sys",
- "jemallocator",
- "pprof",
- "regex",
-]
-
-[[package]]
 name = "libra2-proptest-helpers"
 version = "0.1.1"
 dependencies = [
@@ -10395,17 +10282,6 @@ dependencies = [
 [[package]]
 name = "libra2-protos"
 version = "1.3.2"
-dependencies = [
- "pbjson",
- "prost 0.13.5",
- "serde",
- "tonic 0.12.3",
-]
-
-[[package]]
-name = "libra2-protos"
-version = "1.3.2"
-source = "git+https://github.com/libra2org/libra2-core.git#769af6c0068d122ec87dfb3945f6e34fabd79f78"
 dependencies = [
  "pbjson",
  "prost 0.13.5",
@@ -10778,7 +10654,7 @@ dependencies = [
  "libra2-config",
  "libra2-logger",
  "libra2-metrics-core",
- "libra2-protos 1.3.2",
+ "libra2-protos",
  "once_cell",
  "serde",
  "thiserror 1.0.69",
@@ -10996,27 +10872,7 @@ dependencies = [
  "http 0.2.12",
  "hyper 0.14.32",
  "lazy_static",
- "libra2-profiler 0.1.1",
- "mime",
- "pprof",
- "regex",
- "rstack-self",
- "tokio",
- "tracing",
- "url",
-]
-
-[[package]]
-name = "libra2-system-utils"
-version = "0.1.1"
-source = "git+https://github.com/libra2org/libra2-core.git#769af6c0068d122ec87dfb3945f6e34fabd79f78"
-dependencies = [
- "anyhow",
- "async-mutex",
- "http 0.2.12",
- "hyper 0.14.32",
- "lazy_static",
- "libra2-profiler 0.1.1 (git+https://github.com/libra2org/libra2-core.git)",
+ "libra2-profiler",
  "mime",
  "pprof",
  "regex",
@@ -11253,26 +11109,8 @@ dependencies = [
  "anyhow",
  "derivative",
  "derive_builder",
- "libra2-protos 1.3.2",
+ "libra2-protos",
  "lz4",
- "memchr",
- "once_cell",
- "prost 0.13.5",
- "serde",
- "serde_json",
- "serde_yaml 0.8.26",
- "thiserror 1.0.69",
-]
-
-[[package]]
-name = "libra2-transaction-filter"
-version = "0.1.1"
-source = "git+https://github.com/libra2org/libra2-core.git#769af6c0068d122ec87dfb3945f6e34fabd79f78"
-dependencies = [
- "anyhow",
- "derivative",
- "derive_builder",
- "libra2-protos 1.3.2 (git+https://github.com/libra2org/libra2-core.git)",
  "memchr",
  "once_cell",
  "prost 0.13.5",
@@ -11755,7 +11593,7 @@ dependencies = [
  "libra2-cached-packages",
  "libra2-config",
  "libra2-faucet-core",
- "libra2-indexer-processor-sdk 0.1.0",
+ "libra2-indexer-processor-sdk",
  "libra2-localnet",
  "libra2-node",
  "libra2-types",
@@ -13871,7 +13709,7 @@ version = "0.21.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1e32339a5dc40459130b3bd269e9892439f55b33e772d2a9d402a789baaf4e8a"
 dependencies = [
- "futures-core 0.3.30",
+ "futures-core",
  "futures-sink",
  "indexmap 2.10.0",
  "js-sys",
@@ -15253,7 +15091,7 @@ dependencies = [
  "itertools 0.12.1",
  "jemallocator",
  "lazy_static",
- "libra2-indexer-processor-sdk 0.1.0 (git+https://github.com/libra2org/libra2-core.git)",
+ "libra2-indexer-processor-sdk",
  "log",
  "native-tls",
  "num_cpus",
@@ -16095,7 +15933,7 @@ dependencies = [
  "cookie",
  "cookie_store",
  "encoding_rs",
- "futures-core 0.3.30",
+ "futures-core",
  "futures-util",
  "h2 0.3.27",
  "http 0.2.12",
@@ -16143,7 +15981,7 @@ dependencies = [
  "base64 0.22.1",
  "bytes",
  "encoding_rs",
- "futures-core 0.3.30",
+ "futures-core",
  "futures-util",
  "h2 0.4.12",
  "hickory-resolver",
@@ -17568,7 +17406,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6d7400c0eff44aa2fcb5e31a5f24ba9716ed90138769e4977a2ba6014ae63eb5"
 dependencies = [
  "async-channel 1.9.0",
- "futures-core 0.3.30",
+ "futures-core",
  "futures-io",
 ]
 
@@ -17595,7 +17433,6 @@ name = "smoke-test"
 version = "0.1.1"
 dependencies = [
  "anyhow",
- "libra2-indexer",
  "base64 0.13.1",
  "bcs 0.1.4",
  "diesel",
@@ -17624,6 +17461,7 @@ dependencies = [
  "libra2-gas-schedule",
  "libra2-genesis",
  "libra2-global-constants",
+ "libra2-indexer",
  "libra2-indexer-grpc-table-info",
  "libra2-infallible",
  "libra2-inspection-service",
@@ -18083,7 +17921,7 @@ version = "1.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0bf256ce5efdfa370213c1dabab5935a12e49f2c58d15e9eac2870d3b4f27263"
 dependencies = [
- "futures-core 0.3.30",
+ "futures-core",
 ]
 
 [[package]]
@@ -18681,7 +18519,7 @@ version = "0.1.17"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "eca58d7bba4a75707817a2c44174253f9236b2d5fbd055602e9d5c07c139a047"
 dependencies = [
- "futures-core 0.3.30",
+ "futures-core",
  "pin-project-lite",
  "tokio",
 ]
@@ -18694,7 +18532,7 @@ checksum = "2468baabc3311435b55dd935f702f42cd1b8abb7e754fb7dfb16bd36aa88f9f7"
 dependencies = [
  "async-stream",
  "bytes",
- "futures-core 0.3.30",
+ "futures-core",
  "tokio",
  "tokio-stream",
 ]
@@ -18733,7 +18571,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "36943ee01a6d67977dd3f84a5a1d2efeb4ada3a1ae771cadfaa535d9d9fc6507"
 dependencies = [
  "bytes",
- "futures-core 0.3.30",
+ "futures-core",
  "futures-sink",
  "log",
  "pin-project-lite",
@@ -18747,7 +18585,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "14307c986784f72ef81c89db7d9e28d6ac26d16213b109ea501696195e6e3ce5"
 dependencies = [
  "bytes",
- "futures-core 0.3.30",
+ "futures-core",
  "futures-io",
  "futures-sink",
  "pin-project-lite",
@@ -18881,7 +18719,7 @@ dependencies = [
  "base64 0.21.7",
  "bytes",
  "flate2",
- "futures-core 0.3.30",
+ "futures-core",
  "futures-util",
  "h2 0.3.27",
  "http 0.2.12",
@@ -18989,7 +18827,7 @@ version = "0.4.13"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b8fa9be0de6cf49e536ce1851f987bd21a43b771b09473c3549a6c853db37c1c"
 dependencies = [
- "futures-core 0.3.30",
+ "futures-core",
  "futures-util",
  "indexmap 1.9.3",
  "pin-project 1.1.10",
@@ -19009,7 +18847,7 @@ version = "0.5.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d039ad9159c98b70ecfd540b2573b97f7f52c3e8d9f8ad57a24b916a536975f9"
 dependencies = [
- "futures-core 0.3.30",
+ "futures-core",
  "futures-util",
  "pin-project-lite",
  "sync_wrapper 1.0.2",
@@ -19028,7 +18866,7 @@ dependencies = [
  "base64 0.13.1",
  "bitflags 1.3.2",
  "bytes",
- "futures-core 0.3.30",
+ "futures-core",
  "futures-util",
  "http 0.2.12",
  "http-body 0.4.6",
@@ -19075,7 +18913,7 @@ version = "0.3.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d1093c19826d33807c72511e68f73b4a0469a3f22c2bd5f7d5212178b4b89674"
 dependencies = [
- "futures-core 0.3.30",
+ "futures-core",
  "futures-util",
  "pin-project 0.4.30",
  "tower-service",
@@ -20830,3 +20668,48 @@ checksum = "73ab332fe2f6680068f3582b16a24f90ad7096d5d39b974d1c0aff0125116f02"
 dependencies = [
  "simd-adler32",
 ]
+
+[[patch.unused]]
+name = "futures"
+version = "0.3.30"
+source = "git+https://github.com/aptos-labs/futures-rs?branch=backport#1845d7d36bc4bccbc0b57be68fbc05abd0b8bc68"
+
+[[patch.unused]]
+name = "futures-channel"
+version = "0.3.30"
+source = "git+https://github.com/aptos-labs/futures-rs?branch=backport#1845d7d36bc4bccbc0b57be68fbc05abd0b8bc68"
+
+[[patch.unused]]
+name = "futures-core"
+version = "0.3.30"
+source = "git+https://github.com/aptos-labs/futures-rs?branch=backport#1845d7d36bc4bccbc0b57be68fbc05abd0b8bc68"
+
+[[patch.unused]]
+name = "futures-executor"
+version = "0.3.30"
+source = "git+https://github.com/aptos-labs/futures-rs?branch=backport#1845d7d36bc4bccbc0b57be68fbc05abd0b8bc68"
+
+[[patch.unused]]
+name = "futures-io"
+version = "0.3.30"
+source = "git+https://github.com/aptos-labs/futures-rs?branch=backport#1845d7d36bc4bccbc0b57be68fbc05abd0b8bc68"
+
+[[patch.unused]]
+name = "futures-macro"
+version = "0.3.30"
+source = "git+https://github.com/aptos-labs/futures-rs?branch=backport#1845d7d36bc4bccbc0b57be68fbc05abd0b8bc68"
+
+[[patch.unused]]
+name = "futures-sink"
+version = "0.3.30"
+source = "git+https://github.com/aptos-labs/futures-rs?branch=backport#1845d7d36bc4bccbc0b57be68fbc05abd0b8bc68"
+
+[[patch.unused]]
+name = "futures-task"
+version = "0.3.30"
+source = "git+https://github.com/aptos-labs/futures-rs?branch=backport#1845d7d36bc4bccbc0b57be68fbc05abd0b8bc68"
+
+[[patch.unused]]
+name = "futures-util"
+version = "0.3.30"
+source = "git+https://github.com/aptos-labs/futures-rs?branch=backport#1845d7d36bc4bccbc0b57be68fbc05abd0b8bc68"

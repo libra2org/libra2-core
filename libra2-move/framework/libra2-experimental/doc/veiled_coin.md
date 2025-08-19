@@ -550,7 +550,7 @@ See <code><a href="veiled_coin.md#0x7_veiled_coin_NUM_LEAST_SIGNIFICANT_BITS_REM
 The domain separation tag (DST) used for the Bulletproofs prover.
 
 
-<pre><code><b>const</b> <a href="veiled_coin.md#0x7_veiled_coin_VEILED_COIN_BULLETPROOFS_DST">VEILED_COIN_BULLETPROOFS_DST</a>: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt; = [65, 112, 116, 111, 115, 86, 101, 105, 108, 101, 100, 67, 111, 105, 110, 47, 66, 117, 108, 108, 101, 116, 112, 114, 111, 111, 102, 82, 97, 110, 103, 101, 80, 114, 111, 111, 102];
+<pre><code><b>const</b> <a href="veiled_coin.md#0x7_veiled_coin_VEILED_COIN_BULLETPROOFS_DST">VEILED_COIN_BULLETPROOFS_DST</a>: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt; = [76, 105, 98, 114, 97, 50, 86, 101, 105, 108, 101, 100, 67, 111, 105, 110, 47, 66, 117, 108, 108, 101, 116, 112, 114, 111, 111, 102, 82, 97, 110, 103, 101, 80, 114, 111, 111, 102];
 </code></pre>
 
 

@@ -183,7 +183,7 @@ Event emitted every time a public randomness API in this module is called.
 
 
 
-<pre><code><b>const</b> <a href="randomness.md#0x1_randomness_DST">DST</a>: <a href="../../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt; = [65, 80, 84, 79, 83, 95, 82, 65, 78, 68, 79, 77, 78, 69, 83, 83];
+<pre><code><b>const</b> <a href="randomness.md#0x1_randomness_DST">DST</a>: <a href="../../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt; = [76, 73, 66, 82, 65, 50, 95, 82, 65, 78, 68, 79, 77, 78, 69, 83, 83];
 </code></pre>
 
 

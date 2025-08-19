@@ -1,7 +1,7 @@
 // Copyright © A-p-t-o-s Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-use crate::counters::{libra2_log_ingest_writer_disconnected, libra2_log_ingest_writer_full};
+use crate::counters::{LIBRA2_LOG_INGEST_WRITER_DISCONNECTED, LIBRA2_LOG_INGEST_WRITER_FULL};
 use futures::channel;
 use std::{
     io::{Error, ErrorKind},
@@ -32,10 +32,10 @@ impl TelemetryLogWriter {
             Ok(_) => Ok(len),
             Err(err) => {
                 if err.is_full() {
-                    libra2_log_ingest_writer_full.inc_by(len as u64);
+                    LIBRA2_LOG_INGEST_WRITER_FULL.inc_by(len as u64);
                     Err(Error::new(ErrorKind::WouldBlock, "Channel full"))
                 } else {
-                    libra2_log_ingest_writer_disconnected.inc_by(len as u64);
+                    LIBRA2_LOG_INGEST_WRITER_DISCONNECTED.inc_by(len as u64);
                     Err(Error::new(ErrorKind::ConnectionRefused, "Disconnected"))
                 }
             },

@@ -980,7 +980,7 @@ Represents the proof structure for validating a key rotation operation.
 
 
 
-<pre><code><b>const</b> <a href="confidential_proof.md#0x7_confidential_proof_BULLETPROOFS_DST">BULLETPROOFS_DST</a>: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt; = [65, 112, 116, 111, 115, 67, 111, 110, 102, 105, 100, 101, 110, 116, 105, 97, 108, 65, 115, 115, 101, 116, 47, 66, 117, 108, 108, 101, 116, 112, 114, 111, 111, 102, 82, 97, 110, 103, 101, 80, 114, 111, 111, 102];
+<pre><code><b>const</b> <a href="confidential_proof.md#0x7_confidential_proof_BULLETPROOFS_DST">BULLETPROOFS_DST</a>: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt; = [76, 105, 98, 114, 97, 50, 67, 111, 110, 102, 105, 100, 101, 110, 116, 105, 97, 108, 65, 115, 115, 101, 116, 47, 66, 117, 108, 108, 101, 116, 112, 114, 111, 111, 102, 82, 97, 110, 103, 101, 80, 114, 111, 111, 102];
 </code></pre>
 
 
@@ -1016,7 +1016,7 @@ Represents the proof structure for validating a key rotation operation.
 
 
 
-<pre><code><b>const</b> <a href="confidential_proof.md#0x7_confidential_proof_FIAT_SHAMIR_NORMALIZATION_SIGMA_DST">FIAT_SHAMIR_NORMALIZATION_SIGMA_DST</a>: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt; = [65, 112, 116, 111, 115, 67, 111, 110, 102, 105, 100, 101, 110, 116, 105, 97, 108, 65, 115, 115, 101, 116, 47, 78, 111, 114, 109, 97, 108, 105, 122, 97, 116, 105, 111, 110, 80, 114, 111, 111, 102, 70, 105, 97, 116, 83, 104, 97, 109, 105, 114];
+<pre><code><b>const</b> <a href="confidential_proof.md#0x7_confidential_proof_FIAT_SHAMIR_NORMALIZATION_SIGMA_DST">FIAT_SHAMIR_NORMALIZATION_SIGMA_DST</a>: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt; = [76, 105, 98, 114, 97, 50, 67, 111, 110, 102, 105, 100, 101, 110, 116, 105, 97, 108, 65, 115, 115, 101, 116, 47, 78, 111, 114, 109, 97, 108, 105, 122, 97, 116, 105, 111, 110, 80, 114, 111, 111, 102, 70, 105, 97, 116, 83, 104, 97, 109, 105, 114];
 </code></pre>
 
 
@@ -1025,7 +1025,7 @@ Represents the proof structure for validating a key rotation operation.
 
 
 
-<pre><code><b>const</b> <a href="confidential_proof.md#0x7_confidential_proof_FIAT_SHAMIR_ROTATION_SIGMA_DST">FIAT_SHAMIR_ROTATION_SIGMA_DST</a>: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt; = [65, 112, 116, 111, 115, 67, 111, 110, 102, 105, 100, 101, 110, 116, 105, 97, 108, 65, 115, 115, 101, 116, 47, 82, 111, 116, 97, 116, 105, 111, 110, 80, 114, 111, 111, 102, 70, 105, 97, 116, 83, 104, 97, 109, 105, 114];
+<pre><code><b>const</b> <a href="confidential_proof.md#0x7_confidential_proof_FIAT_SHAMIR_ROTATION_SIGMA_DST">FIAT_SHAMIR_ROTATION_SIGMA_DST</a>: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt; = [76, 105, 98, 114, 97, 50, 67, 111, 110, 102, 105, 100, 101, 110, 116, 105, 97, 108, 65, 115, 115, 101, 116, 47, 82, 111, 116, 97, 116, 105, 111, 110, 80, 114, 111, 111, 102, 70, 105, 97, 116, 83, 104, 97, 109, 105, 114];
 </code></pre>
 
 
@@ -1034,7 +1034,7 @@ Represents the proof structure for validating a key rotation operation.
 
 
 
-<pre><code><b>const</b> <a href="confidential_proof.md#0x7_confidential_proof_FIAT_SHAMIR_TRANSFER_SIGMA_DST">FIAT_SHAMIR_TRANSFER_SIGMA_DST</a>: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt; = [65, 112, 116, 111, 115, 67, 111, 110, 102, 105, 100, 101, 110, 116, 105, 97, 108, 65, 115, 115, 101, 116, 47, 84, 114, 97, 110, 115, 102, 101, 114, 80, 114, 111, 111, 102, 70, 105, 97, 116, 83, 104, 97, 109, 105, 114];
+<pre><code><b>const</b> <a href="confidential_proof.md#0x7_confidential_proof_FIAT_SHAMIR_TRANSFER_SIGMA_DST">FIAT_SHAMIR_TRANSFER_SIGMA_DST</a>: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt; = [76, 105, 98, 114, 97, 50, 67, 111, 110, 102, 105, 100, 101, 110, 116, 105, 97, 108, 65, 115, 115, 101, 116, 47, 84, 114, 97, 110, 115, 102, 101, 114, 80, 114, 111, 111, 102, 70, 105, 97, 116, 83, 104, 97, 109, 105, 114];
 </code></pre>
 
 
@@ -1043,7 +1043,7 @@ Represents the proof structure for validating a key rotation operation.
 
 
 
-<pre><code><b>const</b> <a href="confidential_proof.md#0x7_confidential_proof_FIAT_SHAMIR_WITHDRAWAL_SIGMA_DST">FIAT_SHAMIR_WITHDRAWAL_SIGMA_DST</a>: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt; = [65, 112, 116, 111, 115, 67, 111, 110, 102, 105, 100, 101, 110, 116, 105, 97, 108, 65, 115, 115, 101, 116, 47, 87, 105, 116, 104, 100, 114, 97, 119, 97, 108, 80, 114, 111, 111, 102, 70, 105, 97, 116, 83, 104, 97, 109, 105, 114];
+<pre><code><b>const</b> <a href="confidential_proof.md#0x7_confidential_proof_FIAT_SHAMIR_WITHDRAWAL_SIGMA_DST">FIAT_SHAMIR_WITHDRAWAL_SIGMA_DST</a>: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt; = [76, 105, 98, 114, 97, 50, 67, 111, 110, 102, 105, 100, 101, 110, 116, 105, 97, 108, 65, 115, 115, 101, 116, 47, 87, 105, 116, 104, 100, 114, 97, 119, 97, 108, 80, 114, 111, 111, 102, 70, 105, 97, 116, 83, 104, 97, 109, 105, 114];
 </code></pre>
 
 

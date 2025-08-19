@@ -15,7 +15,7 @@ MOVE_PR_NEXTEST_PROFILE="${MOVE_PR_NEXTEST_PROFILE:-smoke-test}"
 
 BASE=$(git rev-parse --show-toplevel)
 
-# This is currently setup for the aptos-core environment. If move is at a different
+# This is currently setup for the libra2-core environment. If move is at a different
 # location, this need to be changed.
 MOVE_BASE=$BASE/third_party/move
 

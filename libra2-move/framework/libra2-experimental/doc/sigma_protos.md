@@ -312,7 +312,7 @@ The $\Sigma$-protocol proof for withdrawals did not verify.
 The domain separation tag (DST) used in the Fiat-Shamir transform of our $\Sigma$-protocol.
 
 
-<pre><code><b>const</b> <a href="sigma_protos.md#0x7_sigma_protos_FIAT_SHAMIR_SIGMA_DST">FIAT_SHAMIR_SIGMA_DST</a>: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt; = [65, 112, 116, 111, 115, 86, 101, 105, 108, 101, 100, 67, 111, 105, 110, 47, 87, 105, 116, 104, 100, 114, 97, 119, 97, 108, 83, 117, 98, 112, 114, 111, 111, 102, 70, 105, 97, 116, 83, 104, 97, 109, 105, 114];
+<pre><code><b>const</b> <a href="sigma_protos.md#0x7_sigma_protos_FIAT_SHAMIR_SIGMA_DST">FIAT_SHAMIR_SIGMA_DST</a>: <a href="../../libra2-framework/../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u8&gt; = [76, 105, 98, 114, 97, 50, 86, 101, 105, 108, 101, 100, 67, 111, 105, 110, 47, 87, 105, 116, 104, 100, 114, 97, 119, 97, 108, 83, 117, 98, 112, 114, 111, 111, 102, 70, 105, 97, 116, 83, 104, 97, 109, 105, 114];
 </code></pre>
 
 

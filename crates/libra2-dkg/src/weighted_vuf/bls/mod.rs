@@ -17,7 +17,7 @@ use rayon::ThreadPool;
 use serde::{Deserialize, Serialize};
 use std::ops::{Mul, Neg};
 
-pub const BLS_WVUF_DST: &[u8; 18] = b"LIBRA2_BLS_WVUF_DST";
+pub const BLS_WVUF_DST: &[u8; 19] = b"LIBRA2_BLS_WVUF_DST";
 
 pub struct BlsWUF;
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]

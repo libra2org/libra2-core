@@ -609,10 +609,10 @@ firestore = "0.43.0"
 fixed = "1.25.1"
 flate2 = "1.0.24"
 flexi_logger = "0.27.4"
-futures = "0.3.29"
-futures-channel = "0.3.29"
-futures-core = "0.3.29"
-futures-util = "0.3.29"
+futures = "0.3.31"
+futures-channel = "0.3.31"
+futures-core = "0.3.31"
+futures-util = "0.3.31"
 fxhash = "0.2.1"
 fs2 = "0.4.3"
 getrandom = "0.2.2"
@@ -948,3 +948,7 @@ futures-sink = { git = "https://github.com/aptos-labs/futures-rs", branch = "bac
 futures-io = { git = "https://github.com/aptos-labs/futures-rs", branch = "backport" }
 futures-task = { git = "https://github.com/aptos-labs/futures-rs", branch = "backport" }
 futures-macro = { git = "https://github.com/aptos-labs/futures-rs", branch = "backport" }
+
+[patch."https://github.com/libra2org/libra2-core.git"]
+libra2-indexer-transaction-stream = { path = "ecosystem/transaction-stream" }
+libra2-indexer-processor-sdk = { path = "ecosystem/indexer-processor-sdk" }

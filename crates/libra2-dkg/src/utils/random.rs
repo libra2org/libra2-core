@@ -23,7 +23,7 @@ use num_traits::Zero;
 use std::ops::Mul;
 
 /// Domain-separator for hash-based randomness generation that works around `rand_core_hell`.
-pub const DST_RAND_CORE_HELL: &[u8; 24] = b"LIBRA2_RAND_CORE_HELL_DST";
+pub const DST_RAND_CORE_HELL: &[u8; 25] = b"LIBRA2_RAND_CORE_HELL_DST";
 
 /// Returns a random `blstrs::Scalar` given an older RNG as input.
 ///

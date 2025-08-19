@@ -8,7 +8,7 @@ use merlin::Transcript;
 use rand::{thread_rng, Rng};
 use std::convert::TryFrom;
 
-const TEST_DOMAIN_SEPARATION_TAG: &[u8; 21] = b"Libra2TestBulletproofs";
+const TEST_DOMAIN_SEPARATION_TAG: &[u8; 22] = b"Libra2TestBulletproofs";
 
 #[test]
 #[ignore]
