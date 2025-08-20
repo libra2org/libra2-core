@@ -36,5 +36,5 @@ url = { workspace = true }
 uuid = { workspace = true }
 
 # indexer deps
-# libra2-indexer-processor-sdk = { workspace = true, features = ["postgres_partial"] }
+libra2-indexer-processor-sdk = { workspace = true, features = ["postgres_partial"] }
 processor = { workspace = true }

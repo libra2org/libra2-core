@@ -11593,6 +11593,7 @@ dependencies = [
  "libra2-cached-packages",
  "libra2-config",
  "libra2-faucet-core",
+ "libra2-indexer-processor-sdk",
  "libra2-localnet",
  "libra2-node",
  "libra2-types",
