@@ -243,7 +243,7 @@ pub fn get_app_version() -> Result<Version, Libra2LedgerError> {
     let transport = open_ledger_transport()?;
 
     match transport.exchange(&APDUCommand {
-        cla: CLA_APTOS,
+        cla: CLA_LIBRA2,
         ins: INS_GET_VERSION,
         p1: P1_NON_CONFIRM,
         p2: P2_LAST,
@@ -275,7 +275,7 @@ pub fn get_app_name() -> Result<String, Libra2LedgerError> {
     let transport = open_ledger_transport()?;
 
     match transport.exchange(&APDUCommand {
-        cla: CLA_APTOS,
+        cla: CLA_LIBRA2,
         ins: INS_GET_APP_NAME,
         p1: P1_NON_CONFIRM,
         p2: P2_LAST,
@@ -329,7 +329,7 @@ pub fn fetch_batch_accounts(
         let cdata = serialize_bip32(&path);
 
         match transport.exchange(&APDUCommand {
-            cla: CLA_APTOS,
+            cla: CLA_LIBRA2,
             ins: INS_GET_PUB_KEY,
             p1: P1_NON_CONFIRM,
             p2: P2_LAST,
@@ -389,7 +389,7 @@ pub fn get_public_key(path: &str, display: bool) -> Result<Ed25519PublicKey, Lib
     };
 
     match transport.exchange(&APDUCommand {
-        cla: CLA_APTOS,
+        cla: CLA_LIBRA2,
         ins: INS_GET_PUB_KEY,
         p1,
         p2: 0,
@@ -437,7 +437,7 @@ pub fn sign_message(path: &str, raw_message: &[u8]) -> Result<Ed25519Signature, 
 
     // Send the derivation path over as first message
     let sign_start = transport.exchange(&APDUCommand {
-        cla: CLA_APTOS,
+        cla: CLA_LIBRA2,
         ins: INS_SIGN_TXN,
         p1: P1_START,
         p2: P2_MORE,
@@ -454,7 +454,7 @@ pub fn sign_message(path: &str, raw_message: &[u8]) -> Result<Ed25519Signature, 
     for (i, chunk) in chunks.enumerate() {
         let is_last_chunk = chunks_count == i + 1;
         match transport.exchange(&APDUCommand {
-            cla: CLA_APTOS,
+            cla: CLA_LIBRA2,
             ins: INS_SIGN_TXN,
             p1: (i + 1) as u8,
             p2: if is_last_chunk { P2_LAST } else { P2_MORE },
