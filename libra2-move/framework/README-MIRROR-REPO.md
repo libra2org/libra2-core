@@ -1,6 +1,6 @@
 # The Libra2 Framework Repo
 
-This repository serves as a mirror for the Libra2 Framework packages, including the Move standard library. The contents are synced from [libra2-core](https://github.com/libra2org/libra2-core) on an hourly basis.
+This repository serves as a mirror for the Libra2 Framework packages, including the Move standard library. The contents are synced from [libra2-core](https://github.com/libra2org/libra2-core) frequently.
 
 By pulling dependencies from this mirror repository, developers can avoid downloading unnecessary data, reducing build time significantly.
 

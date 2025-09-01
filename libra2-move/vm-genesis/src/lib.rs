@@ -1413,7 +1413,7 @@ pub fn generate_test_genesis(
             is_test: true,
             min_stake: 0,
             min_voting_threshold: 0,
-            // 1M APTOS coins (with 8 decimals).
+            // 1M LIBRA2 coins (with 8 decimals).
             max_stake: 100_000_000_000_000,
             recurring_lockup_duration_secs: 7200,
             required_proposer_stake: 0,

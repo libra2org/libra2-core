@@ -452,7 +452,7 @@ fn set_sender_address(
     })
 }
 
-// This is a hack to recognize APTOS StdLib, Framework, and Token libs to avoid warnings on some old errors.
+// This is a hack to recognize LIBRA2 StdLib, Framework, and Token libs to avoid warnings on some old errors.
 // This will be removed after library attributes are cleaned up.
 // (See https://github.com/libra2org/libra2-core/issues/9410)
 fn module_is_in_libra2_libs(module_address: Option<Spanned<Address>>) -> bool {

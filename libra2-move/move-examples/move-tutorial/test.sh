@@ -1,6 +1,6 @@
 #!/bin/sh
 
-APTOS=aptos
+LIBRA2=aptos
 
 COMPILED="\
   step_1/basic_coin\
@@ -32,7 +32,7 @@ for compiled in $COMPILED
 do
   (
     cd $compiled
-    $APTOS move compile
+    $LIBRA2 move compile
   )
 done
 
@@ -40,6 +40,6 @@ for tested in $TESTED
 do
   (
     cd $tested
-    $APTOS move test
+    $LIBRA2 move test
   )
 done
