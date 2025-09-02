@@ -259,17 +259,16 @@ impl MintFunder {
             return Ok(vec![]);
         }
 
-        let txn =
-            {
-                let faucet_account = self.faucet_account.write().await;
-                let transaction_factory = self.get_transaction_factory().await?;
-                faucet_account.sign_with_transaction_builder(transaction_factory.script(
-                    Script::new(MINTER_SCRIPT.to_vec(), vec![], vec![
-                        TransactionArgument::Address(receiver_address),
-                        TransactionArgument::U64(amount),
-                    ]),
-                ))
-            };
+        let txn = {
+            let faucet_account = self.faucet_account.write().await;
+            let transaction_factory = self.get_transaction_factory().await?;
+            // Use Libra2 entry function to mint Libra2Coin directly to the receiver.
+            // This avoids legacy scripts and LINKER_ERRORs due to missing modules.
+            let payload = libra2_stdlib::libra2_coin_mint(receiver_address, amount);
+            faucet_account.sign_with_transaction_builder(
+                transaction_factory.payload(payload),
+            )
+        };
 
         Ok(vec![
             submit_transaction(
