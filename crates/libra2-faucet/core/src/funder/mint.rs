@@ -14,7 +14,8 @@ use libra2_sdk::{
         account_address::AccountAddress,
         chain_id::ChainId,
         transaction::{
-            authenticator::AuthenticationKey, Script, SignedTransaction, TransactionArgument,
+            //authenticator::AuthenticationKey, Script, SignedTransaction, TransactionArgument,
+            authenticator::AuthenticationKey, SignedTransaction,
         },
         LocalAccount,
     },
@@ -25,9 +26,9 @@ use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use tokio::sync::RwLock;
 
-static MINTER_SCRIPT: &[u8] = include_bytes!(
-    "../../../../../libra2-move/move-examples/scripts/minter/build/Minter/bytecode_scripts/main.mv"
-);
+// static MINTER_SCRIPT: &[u8] = include_bytes!(
+//     "../../../../../libra2-move/move-examples/scripts/minter/build/Minter/bytecode_scripts/main.mv"
+// );
 
 use super::common::{
     submit_transaction, update_sequence_numbers, ApiConnectionConfig, GasUnitPriceManager,
