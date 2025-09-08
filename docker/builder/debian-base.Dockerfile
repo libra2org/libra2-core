@@ -4,11 +4,11 @@ FROM debian AS debian-base
 
 ARG TARGETARCH
 
-RUN rm -f /etc/apt/apt.conf.d/docker-clean; echo 'Binary::apt::APT::Keep-Downloaded-Packages "true";' > /etc/apt/apt.conf.d/keep-cache
+RUN rm -f /etc/lbt/lbt.conf.d/docker-clean; echo 'Binary::lbt::LBT::Keep-Downloaded-Packages "true";' > /etc/lbt/lbt.conf.d/keep-cache
 
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     --mount=type=cache,target=/var/lib/apt,sharing=locked \
-    sed -i 's|http://deb.debian.org/debian|http://cloudfront.debian.net/debian|g' /etc/apt/sources.list &&  \
+    sed -i 's|http://deb.debian.org/debian|http://cloudfront.debian.net/debian|g' /etc/lbt/sources.list &&  \
     apt-get update && apt-get --no-install-recommends --allow-downgrades -y install \
         ca-certificates \
         curl \

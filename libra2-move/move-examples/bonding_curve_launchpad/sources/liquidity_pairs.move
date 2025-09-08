@@ -17,12 +17,12 @@ module bonding_curve_launchpad::liquidity_pairs {
     friend bonding_curve_launchpad::bonding_curve_launchpad;
 
     const FA_DECIMALS: u8 = 8;
-    const INITIAL_VIRTUAL_APT_LIQUIDITY: u128 = 50_000_000_000;
-    const APT_LIQUIDITY_THRESHOLD: u128 = 600_000_000_000;
+    const INITIAL_VIRTUAL_LBT_LIQUIDITY: u128 = 50_000_000_000;
+    const LBT_LIQUIDITY_THRESHOLD: u128 = 600_000_000_000;
 
     /// Swapper does not own the FA being swapped.
     const EFA_PRIMARY_STORE_DOES_NOT_EXIST: u64 = 12;
-    /// Liquidity pair (APT/FA) being created already exists.
+    /// Liquidity pair (LBT/FA) being created already exists.
     const ELIQUIDITY_PAIR_EXISTS_ALREADY: u64 = 100;
     /// Liquidity pair does not exist.
     const ELIQUIDITY_PAIR_DOES_NOT_EXIST: u64 = 101;
@@ -147,7 +147,7 @@ module bonding_curve_launchpad::liquidity_pairs {
     }
 
     //---------------------------Liquidity Pair---------------------------
-    /// Creates a unique liquidity pair between a given FA and APT.
+    /// Creates a unique liquidity pair between a given FA and LBT.
     /// Only callable from `bonding_curve_launchpad`.
     public(friend) fun register_liquidity_pair(
         name: String,
@@ -159,11 +159,11 @@ module bonding_curve_launchpad::liquidity_pairs {
         fa_minted: FungibleAsset,
         fa_initial_liquidity: u128
     ) acquires Pairs, LiquidityPair {
-        // Only allow for creation of new APT-FA pairs.
+        // Only allow for creation of new LBT-FA pairs.
         let does_already_exist = object::is_object(get_pair_obj_address(name, symbol));
         assert!(!does_already_exist, ELIQUIDITY_PAIR_EXISTS_ALREADY);
         // Every new liquidity pair will have it's information stored within an Object. This object will also be used to
-        // generator signers from, for when APT or the FA needs to be transferred to and from the liquidity pair.
+        // generator signers from, for when LBT or the FA needs to be transferred to and from the liquidity pair.
         // Reserves are kept on the liquidity pair object.
         // The object is identified by the unique combination of the FA's name and symbol.
         let pairs = borrow_global<Pairs>(@bonding_curve_launchpad);
@@ -182,7 +182,7 @@ module bonding_curve_launchpad::liquidity_pairs {
 
         // Define and store the state of the liquidity pair as:
         // Reserves, FA store, global frozen status (`is_frozen`), and enabled trading (`is_enabled`).
-        // Initial APT reserves are virtual liquidity, for less extreme initial swaps (avoiding early adopter's
+        // Initial LBT reserves are virtual liquidity, for less extreme initial swaps (avoiding early adopter's
         // advantage, for fairness). README covers this topic in more depth.
         move_to(
             &liquidity_pair_signer,
@@ -191,7 +191,7 @@ module bonding_curve_launchpad::liquidity_pairs {
                 is_enabled: true,
                 is_frozen: true,
                 fa_reserves: fa_initial_liquidity,
-                apt_reserves: INITIAL_VIRTUAL_APT_LIQUIDITY,
+                apt_reserves: INITIAL_VIRTUAL_LBT_LIQUIDITY,
                 fa_store
             }
         );
@@ -199,7 +199,7 @@ module bonding_curve_launchpad::liquidity_pairs {
             LiquidityPairCreated {
                 fa_object_metadata,
                 initial_fa_reserves: fa_initial_liquidity,
-                initial_apt_reserves: INITIAL_VIRTUAL_APT_LIQUIDITY
+                initial_apt_reserves: INITIAL_VIRTUAL_LBT_LIQUIDITY
             }
         );
         // Optional initial swap given to the creator of the FA.
@@ -208,7 +208,7 @@ module bonding_curve_launchpad::liquidity_pairs {
         };
     }
 
-    /// Facilitate swapping between a given FA to APT.
+    /// Facilitate swapping between a given FA to LBT.
     public(friend) fun swap_fa_to_apt(
         name: String,
         symbol: String,
@@ -221,7 +221,7 @@ module bonding_curve_launchpad::liquidity_pairs {
         assert_liquidity_pair_exists(name, symbol);
         let liquidity_pair = borrow_global_mut<LiquidityPair>(get_pair_obj_address(name, symbol));
         assert!(liquidity_pair.is_enabled, ELIQUIDITY_PAIR_DISABLED);
-        // Determine the amount received of APT, when given swapper-supplied amount_in of FA.
+        // Determine the amount received of LBT, when given swapper-supplied amount_in of FA.
         let (fa_given, apt_gained, fa_updated_reserves, apt_updated_reserves) = get_amount_out(
             liquidity_pair.fa_reserves,
             liquidity_pair.apt_reserves,
@@ -236,7 +236,7 @@ module bonding_curve_launchpad::liquidity_pairs {
         );
         assert!(does_primary_store_exist_for_swapper, EFA_PRIMARY_STORE_DOES_NOT_EXIST);
         // Perform the swap.
-        // Swapper sends FA to the liquidity pair object. The liquidity pair object sends APT to the swapper, in return.
+        // Swapper sends FA to the liquidity pair object. The liquidity pair object sends LBT to the swapper, in return.
         let liquidity_pair_signer = object::generate_signer_for_extending(&liquidity_pair.extend_ref);
         let from_swapper_store = primary_fungible_store::ensure_primary_store_exists(
             swapper_address,
@@ -266,7 +266,7 @@ module bonding_curve_launchpad::liquidity_pairs {
         );
     }
 
-    /// Facilitate swapping between APT to a given FA.
+    /// Facilitate swapping between LBT to a given FA.
     public(friend) fun swap_apt_to_fa(
         name: String,
         symbol: String,
@@ -279,7 +279,7 @@ module bonding_curve_launchpad::liquidity_pairs {
         assert_liquidity_pair_exists(name, symbol);
         let liquidity_pair = borrow_global_mut<LiquidityPair>(get_pair_obj_address(name, symbol));
         assert!(liquidity_pair.is_enabled, ELIQUIDITY_PAIR_DISABLED);
-        // Determine the amount received of FA, when given swapper-supplied amount_in of APT.
+        // Determine the amount received of FA, when given swapper-supplied amount_in of LBT.
         let (fa_gained, apt_given, fa_updated_reserves, apt_updated_reserves) = get_amount_out(
             liquidity_pair.fa_reserves,
             liquidity_pair.apt_reserves,
@@ -287,7 +287,7 @@ module bonding_curve_launchpad::liquidity_pairs {
             amount_in
         );
         // Perform the swap.
-        // Swapper sends APT to the liquidity pair object. The liquidity pair object sends FA to the swapper, in return.
+        // Swapper sends LBT to the liquidity pair object. The liquidity pair object sends FA to the swapper, in return.
         // Requires the liquidity pair object's address, which is retrieved using the stored extend_ref.
         let swapper_address = signer::address_of(swapper_account);
         let liquidity_pair_address = object::address_from_extend_ref(&liquidity_pair.extend_ref);
@@ -317,9 +317,9 @@ module bonding_curve_launchpad::liquidity_pairs {
                 swapper_address
             }
         );
-        // Check for graduation requirements. The APT reserves must be above the pre-defined
+        // Check for graduation requirements. The LBT reserves must be above the pre-defined
         // threshold to allow for graduation.
-        if (liquidity_pair.is_enabled && apt_updated_reserves > APT_LIQUIDITY_THRESHOLD) {
+        if (liquidity_pair.is_enabled && apt_updated_reserves > LBT_LIQUIDITY_THRESHOLD) {
             graduate(liquidity_pair, fa_object_metadata, transfer_ref, apt_updated_reserves, fa_updated_reserves);
         }
     }
@@ -386,7 +386,7 @@ module bonding_curve_launchpad::liquidity_pairs {
         amount_1_min: u64,
         amount_2_min: u64,
     ) {
-        // Wrap APT into a FA. Then, determine the optimal amounts for providing liquidity to the given FA - APT pair.
+        // Wrap LBT into a FA. Then, determine the optimal amounts for providing liquidity to the given FA - LBT pair.
         let token_1 = coin_wrapper::get_wrapper<CoinType>();
         let (optimal_amount_1, optimal_amount_2, _) = router::optimal_liquidity_amounts(
             token_1,
@@ -397,7 +397,7 @@ module bonding_curve_launchpad::liquidity_pairs {
             amount_1_min,
             amount_2_min,
         );
-        // Retrieve the APT and FA from the liquidity provider.
+        // Retrieve the LBT and FA from the liquidity provider.
         // `transfer_ref` is used to avoid circular dependency during graduation. A normal transfer would require
         // visiting `bonding_curve_launchpad` to execute the custom withdraw logic. `transfer_ref` bypasses the need to
         // return to `bonding_curve_launchpad` by not executing the custom withdraw logic.
@@ -407,7 +407,7 @@ module bonding_curve_launchpad::liquidity_pairs {
             fa_store,
             optimal_amount_2
         );
-        // Place the APT and FA into the liquidity pair.
+        // Place the LBT and FA into the liquidity pair.
         router::add_liquidity_coin<CoinType>(lp, optimal_1, optimal_2, is_stable);
     }
 

@@ -69,10 +69,10 @@ storage:
   # For example, if in the top level config we have
   # ``` yaml
   # base:
-  #   data_dir: /opt/aptos/data
+  #   data_dir: /opt/libra2/data
   # ```
   # and this config has the default value (`db`), the DBs will be at
-  # `/opt/aptos/data/db/ledger_db` and  `/opt/aptos/data/db/state_merkle_db`
+  # `/opt/libra2/data/db/ledger_db` and  `/opt/libra2/data/db/state_merkle_db`
   dir: db
   # Libra2DB persists the state authentication structure off the critical path
   # of transaction execution and batch up recent changes for performance. Once

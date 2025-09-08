@@ -25,7 +25,7 @@ spec:
       - command:
         - /usr/local/bin/libra2-node
         - -f
-        - /opt/aptos/etc/pfn.yaml
+        - /opt/libra2/etc/pfn.yaml
         image: pfn-image
         name: pfn-name-pfn
         ports:
@@ -38,11 +38,11 @@ spec:
             cpu: pfn-cpu
             memory: pfn-memory
         volumeMounts:
-        - mountPath: /opt/aptos/etc
+        - mountPath: /opt/libra2/etc
           name: libra2-config
-        - mountPath: /opt/aptos/genesis
+        - mountPath: /opt/libra2/genesis
           name: genesis-config
-        - mountPath: /opt/aptos/data
+        - mountPath: /opt/libra2/data
           name: libra2-data
       volumes:
       - configMap:

@@ -18,7 +18,7 @@ create_account(1){
 
         // Find the "faucet" loaded account
         currency = {
-          "symbol": "APT",
+          "symbol": "LBT",
           "decimals": 8,
           "metadata": {
             "move_type": "0x1::libra2_coin::Libra2Coin"
@@ -52,7 +52,7 @@ create_account(1){
 request_funds(1){
   find_account{
     currency = {
-      "symbol": "APT",
+      "symbol": "LBT",
       "decimals": 8,
       "metadata": {
         "move_type": "0x1::libra2_coin::Libra2Coin"
@@ -84,7 +84,7 @@ transfer(50){
     transfer{
         transfer.network = {"network":"TESTING", "blockchain":"libra2"};
         currency = {
-          "symbol": "APT",
+          "symbol": "LBT",
           "decimals": 8,
           "metadata": {
             "move_type": "0x1::libra2_coin::Libra2Coin"

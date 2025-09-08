@@ -1074,16 +1074,6 @@ The value of aggregatable coin used for transaction fees redistribution does not
 
 
 
-<a id="0x1_coin_EAPT_PAIRING_IS_NOT_ENABLED"></a>
-
-APT pairing is not eanbled yet.
-
-
-<pre><code><b>const</b> <a href="coin.md#0x1_coin_EAPT_PAIRING_IS_NOT_ENABLED">EAPT_PAIRING_IS_NOT_ENABLED</a>: u64 = 28;
-</code></pre>
-
-
-
 <a id="0x1_coin_EBURN_REF_NOT_FOUND"></a>
 
 The BurnRef does not exist.
@@ -1240,6 +1230,16 @@ CoinStore is frozen. Coins cannot be deposited or withdrawn
 
 
 <pre><code><b>const</b> <a href="coin.md#0x1_coin_EFROZEN">EFROZEN</a>: u64 = 10;
+</code></pre>
+
+
+
+<a id="0x1_coin_ELBT_PAIRING_IS_NOT_ENABLED"></a>
+
+LBT pairing is not eanbled yet.
+
+
+<pre><code><b>const</b> <a href="coin.md#0x1_coin_ELBT_PAIRING_IS_NOT_ENABLED">ELBT_PAIRING_IS_NOT_ENABLED</a>: u64 = 28;
 </code></pre>
 
 
@@ -1409,7 +1409,7 @@ Get the paired fungible asset metadata object of a coin type. If not exist, retu
 
 ## Function `create_pairing`
 
-Create APT pairing by passing <code>Libra2Coin</code>.
+Create LBT pairing by passing <code>Libra2Coin</code>.
 
 
 <pre><code><b>public</b> entry <b>fun</b> <a href="coin.md#0x1_coin_create_pairing">create_pairing</a>&lt;CoinType&gt;(libra2_framework: &<a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>)
@@ -1482,7 +1482,7 @@ Create APT pairing by passing <code>Libra2Coin</code>.
     <b>let</b> type = <a href="../../libra2-stdlib/doc/type_info.md#0x1_type_info_type_of">type_info::type_of</a>&lt;CoinType&gt;();
     <b>if</b> (!<a href="../../libra2-stdlib/doc/table.md#0x1_table_contains">table::contains</a>(&map.coin_to_fungible_asset_map, type)) {
         <b>let</b> is_apt = <a href="coin.md#0x1_coin_is_apt">is_apt</a>&lt;CoinType&gt;();
-        <b>assert</b>!(!is_apt || allow_apt_creation, <a href="../../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_invalid_state">error::invalid_state</a>(<a href="coin.md#0x1_coin_EAPT_PAIRING_IS_NOT_ENABLED">EAPT_PAIRING_IS_NOT_ENABLED</a>));
+        <b>assert</b>!(!is_apt || allow_apt_creation, <a href="../../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_invalid_state">error::invalid_state</a>(<a href="coin.md#0x1_coin_ELBT_PAIRING_IS_NOT_ENABLED">ELBT_PAIRING_IS_NOT_ENABLED</a>));
         <b>let</b> metadata_object_cref =
             <b>if</b> (is_apt) {
                 <a href="object.md#0x1_object_create_sticky_object_at_address">object::create_sticky_object_at_address</a>(@libra2_framework, @libra2_fungible_asset)

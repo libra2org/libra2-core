@@ -351,7 +351,7 @@ impl Default for StorageConfig {
             // conservatively safe minimal prune window. It'll take a few Gigabytes of disk space
             // depending on the size of an average account blob.
             storage_pruner_config: PrunerConfig::default(),
-            data_dir: PathBuf::from("/opt/aptos/data"),
+            data_dir: PathBuf::from("/opt/libra2/data"),
             rocksdb_configs: RocksdbConfigs::default(),
             enable_indexer: false,
             db_path_overrides: None,

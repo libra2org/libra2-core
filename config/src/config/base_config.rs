@@ -24,7 +24,7 @@ pub struct BaseConfig {
 impl Default for BaseConfig {
     fn default() -> BaseConfig {
         BaseConfig {
-            data_dir: PathBuf::from("/opt/aptos/data"),
+            data_dir: PathBuf::from("/opt/libra2/data"),
             working_dir: None,
             role: RoleType::Validator,
             waypoint: WaypointConfig::None,

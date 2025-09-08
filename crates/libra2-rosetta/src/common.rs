@@ -145,16 +145,16 @@ pub fn decode_key<T: DeserializeOwned + ValidCryptoMaterial>(
     T::from_encoded_string(str).map_err(|_| ApiError::deserialization_failed(type_name))
 }
 
-const APT_SYMBOL: &str = "APT";
-const APT_DECIMALS: u8 = 8;
+const LBT_SYMBOL: &str = "LBT";
+const LBT_DECIMALS: u8 = 8;
 
-/// Provides the [Currency] for 0x1::libra2_coin::Libra2Coin aka APT
+/// Provides the [Currency] for 0x1::libra2_coin::Libra2Coin aka LBT
 ///
 /// Note that 0xA is the address for FA, but it has to be skipped in order to have backwards compatibility
 pub fn native_coin() -> Currency {
     Currency {
-        symbol: APT_SYMBOL.to_string(),
-        decimals: APT_DECIMALS,
+        symbol: LBT_SYMBOL.to_string(),
+        decimals: LBT_DECIMALS,
         metadata: Some(CurrencyMetadata {
             move_type: Some(native_coin_tag().to_canonical_string()),
             fa_address: None,
@@ -162,7 +162,7 @@ pub fn native_coin() -> Currency {
     }
 }
 
-/// Provides the [TypeTag] for 0x1::libra2_coin::Libra2Coin aka APT
+/// Provides the [TypeTag] for 0x1::libra2_coin::Libra2Coin aka LBT
 pub fn native_coin_tag() -> TypeTag {
     TypeTag::Struct(Box::new(StructTag {
         address: AccountAddress::ONE,

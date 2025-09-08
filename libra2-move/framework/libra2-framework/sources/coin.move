@@ -105,8 +105,8 @@ module libra2_framework::coin {
     /// The coin converison map is not created yet.
     const ECOIN_CONVERSION_MAP_NOT_FOUND: u64 = 27;
 
-    /// APT pairing is not eanbled yet.
-    const EAPT_PAIRING_IS_NOT_ENABLED: u64 = 28;
+    /// LBT pairing is not eanbled yet.
+    const ELBT_PAIRING_IS_NOT_ENABLED: u64 = 28;
 
     /// The decimals of the coin is too large.
     const ECOIN_DECIMALS_TOO_LARGE: u64 = 29;
@@ -304,7 +304,7 @@ module libra2_framework::coin {
         };
     }
 
-    /// Create APT pairing by passing `Libra2Coin`.
+    /// Create LBT pairing by passing `Libra2Coin`.
     public entry fun create_pairing<CoinType>(
         libra2_framework: &signer
     ) acquires CoinConversionMap, CoinInfo {
@@ -326,7 +326,7 @@ module libra2_framework::coin {
         let type = type_info::type_of<CoinType>();
         if (!table::contains(&map.coin_to_fungible_asset_map, type)) {
             let is_apt = is_apt<CoinType>();
-            assert!(!is_apt || allow_apt_creation, error::invalid_state(EAPT_PAIRING_IS_NOT_ENABLED));
+            assert!(!is_apt || allow_apt_creation, error::invalid_state(ELBT_PAIRING_IS_NOT_ENABLED));
             let metadata_object_cref =
                 if (is_apt) {
                     object::create_sticky_object_at_address(@libra2_framework, @libra2_fungible_asset)

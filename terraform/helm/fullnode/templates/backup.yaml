@@ -67,7 +67,7 @@ spec:
         - "{{ int .config.concurrent_data_requests }}"
         {{- end }}
         - "--command-adapter-config"
-        - "/opt/aptos/etc/{{ .config.location }}.yaml"
+        - "/opt/libra2/etc/{{ .config.location }}.yaml"
         env:
         - name: RUST_LOG
           value: "info"
@@ -84,7 +84,7 @@ spec:
         {{- include "backup.backupEnvironment" (dict "config" .config "era" $.Values.chain.era) | nindent 8 }}
         volumeMounts:
         - name: backup-config
-          mountPath: /opt/aptos/etc
+          mountPath: /opt/libra2/etc
         - name: tmp
           mountPath: /tmp
         securityContext:

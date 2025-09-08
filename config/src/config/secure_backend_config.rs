@@ -132,7 +132,7 @@ impl Default for OnDiskStorageConfig {
         Self {
             namespace: None,
             path: PathBuf::from(SECURE_STORAGE_FILENAME),
-            data_dir: PathBuf::from("/opt/aptos/data"),
+            data_dir: PathBuf::from("/opt/libra2/data"),
         }
     }
 }

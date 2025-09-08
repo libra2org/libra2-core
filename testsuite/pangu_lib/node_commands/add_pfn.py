@@ -232,7 +232,7 @@ def _create_pfn_statefulset_object(
         command=[
             "/usr/local/bin/libra2-node",
             "-f",
-            f"/opt/aptos/etc/{util.NodeType.PFN.value}.yaml",
+            f"/opt/libra2/etc/{util.NodeType.PFN.value}.yaml",
         ],
         volume_mounts=[volume_mount1, volume_mount2, volume_mount3],
         ports=[

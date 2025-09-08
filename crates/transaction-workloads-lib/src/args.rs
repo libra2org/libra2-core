@@ -78,8 +78,8 @@ pub enum TransactionTypeArg {
     SmartTablePicture1MWith1KChangeExceedsLimit,
     DeserializeU256,
     SimpleScript,
-    APTTransferWithPermissionedSigner,
-    APTTransferWithMasterSigner,
+    LBTTransferWithPermissionedSigner,
+    LBTTransferWithMasterSigner,
     /// Basic market where sell and buy prices are in distinct ranges,
     /// and there are no matches.
     OrderBookNoMatches1Market,

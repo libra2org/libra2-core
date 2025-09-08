@@ -947,7 +947,7 @@ async def create_node_stateful_sets(
         command=[
             "/usr/local/bin/libra2-node",
             "-f",
-            f"/opt/aptos/etc/{type.value}.yaml",
+            f"/opt/libra2/etc/{type.value}.yaml",
         ],
         volume_mounts=[
             volume_mount1,

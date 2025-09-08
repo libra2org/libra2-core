@@ -24,7 +24,7 @@ RUN --mount=type=cache,target=/aptos/target --mount=type=cache,target=$CARGO_HOM
 ### Create image with libra2-node and libra2-rosetta ###
 FROM ubuntu-base AS rosetta
 
-RUN apt-get update && apt-get install -y libssl-dev ca-certificates && apt-get clean && rm -r /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y libssl-dev ca-certificates && apt-get clean && rm -r /var/lib/lbt/lists/*
 
 COPY --from=builder /aptos/dist/libra2-rosetta /usr/local/bin/libra2-rosetta
 
@@ -34,7 +34,7 @@ EXPOSE 8082
 # Capture backtrace on error
 ENV RUST_BACKTRACE 1
 
-WORKDIR /opt/aptos/data
+WORKDIR /opt/libra2/data
 
 ENTRYPOINT ["/usr/local/bin/libra2-rosetta"]
-CMD ["online", "--config /opt/aptos/fullnode.yaml"]
+CMD ["online", "--config /opt/libra2/fullnode.yaml"]

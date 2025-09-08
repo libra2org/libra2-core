@@ -29,7 +29,7 @@ use std::{
     time::{Duration, Instant},
 };
 
-const LIBRA2_DATA_DIR: &str = "/opt/aptos/data";
+const LIBRA2_DATA_DIR: &str = "/opt/libra2/data";
 
 pub struct K8sNode {
     pub(crate) name: String,

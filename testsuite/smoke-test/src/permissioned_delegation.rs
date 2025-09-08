@@ -49,7 +49,7 @@ async fn test_permissioned_delegation() {
     );
     account1.increment_sequence_number();
 
-    // Setup permissions: 10 APT allowance, and 0.1 APT gas.
+    // Setup permissions: 10 LBT allowance, and 0.1 LBT gas.
     let script = format!(
         r#"
     script {{
@@ -99,7 +99,7 @@ async fn test_permissioned_delegation() {
         }),
     );
 
-    // Transfer 1 APT and 2 APT.
+    // Transfer 1 LBT and 2 LBT.
     let transfer_txn = account1.sign_aa_transaction_with_transaction_builder(
         vec![],
         None,

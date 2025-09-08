@@ -25,6 +25,6 @@ To build your own complete testnet:
     2. JSON-RPC will be available at http://127.0.0.1:8080
 
 If you would like to clear the validator/blockchain data and start from scratch, either remove the docker volume `aptos-shared`,
-or run `docker-compose run validator rm -rf '/opt/aptos/var/*'` from the **validator-testnet** directory.
+or run `docker-compose run validator rm -rf '/opt/libra2/var/*'` from the **validator-testnet** directory.
 
-To clear just the validator logs, run  `docker-compose run validator rm -rf '/opt/aptos/var/validator.log'`
+To clear just the validator logs, run  `docker-compose run validator rm -rf '/opt/libra2/var/validator.log'`

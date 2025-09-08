@@ -101,7 +101,7 @@ groups:
         2. Pass this issue on to the storage team. If you are the storage team, read on.
         3. Go to the dashboard and look for the stacked up column family sizes. \
           If the total size on that chart can't justify low free disk space, we need to log in to a node to see if something other than the Libra2DB is eating up disk. \
-          Start from things under /opt/aptos/data.
+          Start from things under /opt/libra2/data.
         3 Otherwise, if the total size on that chart is the majority of the disk consumption, zoom out and look for anomalies -- sudden increases overall or on a few \
           specific Column Families, etc. Also check average size of each type of data. Reason about the anomaly with changes in recent releases in mind.
         4 If everything made sense, it's a bigger issue, somehow our gas schedule didn't stop state explosion before an alert is triggered. Our recommended disk \

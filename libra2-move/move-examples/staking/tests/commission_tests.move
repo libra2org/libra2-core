@@ -13,13 +13,13 @@ module staking::commission_tests {
 
     const ONE_YEAR_IN_SECONDS: u64 = 31536000;
     const OPERATOR: address = @0x124;
-    // 1 APT = 5.34378710 USD with 8 decimals of precision
-    const APT_PRICE: u128 = 534378710;
+    // 1 LBT = 5.34378710 USD with 8 decimals of precision
+    const LBT_PRICE: u128 = 534378710;
 
     fun set_up() {
         timestamp::set_time_has_started_for_testing(&account::create_signer_for_test(@libra2_framework));
         commission::init_for_test(&account::create_signer_for_test(@0xcafe));
-        oracle::set_test_price(APT_PRICE);
+        oracle::set_test_price(LBT_PRICE);
     }
 
     #[test(manager = @0x123)]
@@ -66,7 +66,7 @@ module staking::commission_tests {
         commission::set_yearly_commission_amount(manager, 100000);
         assert!(commission::commission_owed() == 0);
 
-        // Mint 0.1 APT. Not enough to cover the min balance for distribution.
+        // Mint 0.1 LBT. Not enough to cover the min balance for distribution.
         mint_apt(10000000);
         timestamp::fast_forward_seconds(ONE_YEAR_IN_SECONDS);
         commission::distribute_commission(manager);
@@ -79,12 +79,12 @@ module staking::commission_tests {
         commission::set_yearly_commission_amount(manager, 100000);
         assert!(commission::commission_owed() == 0);
 
-        // Send APT to the commission contract.
+        // Send LBT to the commission contract.
         let expected_commission_usd = 50000;
         let expected_apt_amount = usd_to_apt(expected_commission_usd);
         mint_apt(expected_apt_amount * 2);
 
-        // Half a year has passed, so the commission owed should be 50,000 USD or ~9356 APT.
+        // Half a year has passed, so the commission owed should be 50,000 USD or ~9356 LBT.
         timestamp::fast_forward_seconds(ONE_YEAR_IN_SECONDS / 2);
         assert!(commission::commission_owed() == expected_commission_usd);
         assert!(commission::commission_owed_in_apt() == expected_apt_amount);
@@ -102,7 +102,7 @@ module staking::commission_tests {
         commission::set_yearly_commission_amount(manager, 100000);
         assert!(commission::commission_owed() == 0);
 
-        // Send APT to the commission contract. But not enough to cover the commission owed
+        // Send LBT to the commission contract. But not enough to cover the commission owed
         let expected_commission_usd = 50000;
         let expected_apt_amount = usd_to_apt(expected_commission_usd);
         mint_apt(expected_apt_amount / 2);
@@ -149,6 +149,6 @@ module staking::commission_tests {
 
 
     inline fun usd_to_apt(amount_usd: u64): u64 {
-        (math128::mul_div((amount_usd as u128) * math128::pow(10, 8), math128::pow(10, 8), APT_PRICE) as u64)
+        (math128::mul_div((amount_usd as u128) * math128::pow(10, 8), math128::pow(10, 8), LBT_PRICE) as u64)
     }
 }

@@ -248,10 +248,10 @@ pub enum EntryPoints {
     /// there to slow down deserialization & verification, effectively making it more expensive to
     /// load it into code cache.
     SimpleScript,
-    /// Set up an APT transfer permission and transfering APT by using that permissioned signer.
-    APTTransferWithPermissionedSigner,
-    /// Transfer APT using vanilla master signer to compare the performance.
-    APTTransferWithMasterSigner,
+    /// Set up an LBT transfer permission and transfering LBT by using that permissioned signer.
+    LBTTransferWithPermissionedSigner,
+    /// Transfer LBT using vanilla master signer to compare the performance.
+    LBTTransferWithMasterSigner,
 
     OrderBook {
         state: Arc<OrderBookState>,

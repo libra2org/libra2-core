@@ -27,10 +27,10 @@ pub(crate) fn large_db_test(
         .add_network_test(PerformanceBenchmark)
         .with_existing_db(existing_db_tag.clone())
         .with_validator_override_node_config_fn(Arc::new(move |config, _| {
-            config.base.working_dir = Some(PathBuf::from("/opt/aptos/data/checkpoint"));
+            config.base.working_dir = Some(PathBuf::from("/opt/libra2/data/checkpoint"));
         }))
         .with_fullnode_override_node_config_fn(Arc::new(move |config, _| {
-            config.base.working_dir = Some(PathBuf::from("/opt/aptos/data/checkpoint"));
+            config.base.working_dir = Some(PathBuf::from("/opt/libra2/data/checkpoint"));
         }))
         .with_emit_job(
             EmitJobRequest::default()

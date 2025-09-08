@@ -42,7 +42,7 @@ module libra2_framework::libra2_coin {
         let (burn_cap, freeze_cap, mint_cap) = coin::initialize_with_parallelizable_supply<Libra2Coin>(
             libra2_framework,
             string::utf8(b"Libra2 Coin"),
-            string::utf8(b"APT"),
+            string::utf8(b"LBT"),
             8, // decimals
             true, // monitor_supply
         );
@@ -69,7 +69,7 @@ module libra2_framework::libra2_coin {
 
     /// Can only be called during genesis for tests to grant mint capability to aptos framework and core resources
     /// accounts.
-    /// Expects account and APT store to be registered before calling.
+    /// Expects account and LBT store to be registered before calling.
     public(friend) fun configure_accounts_for_test(
         libra2_framework: &signer,
         core_resources: &signer,

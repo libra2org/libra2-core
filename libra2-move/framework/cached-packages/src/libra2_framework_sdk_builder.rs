@@ -264,7 +264,7 @@ pub enum EntryFunctionCall {
 
     CoinCreateCoinConversionMap {},
 
-    /// Create APT pairing by passing `Libra2Coin`.
+    /// Create LBT pairing by passing `Libra2Coin`.
     CoinCreatePairing {
         coin_type: TypeTag,
     },
@@ -474,7 +474,7 @@ pub enum EntryFunctionCall {
         n_vec: Vec<Vec<u8>>,
     },
 
-    /// Batch version of APT transfer.
+    /// Batch version of LBT transfer.
     Libra2AccountBatchTransfer {
         recipients: Vec<AccountAddress>,
         amounts: Vec<u64>,
@@ -492,12 +492,12 @@ pub enum EntryFunctionCall {
         auth_key: AccountAddress,
     },
 
-    /// APT Primary Fungible Store specific specialized functions,
-    /// Utilized internally once migration of APT to FungibleAsset is complete.
-    /// Convenient function to transfer APT to a recipient account that might not exist.
-    /// This would create the recipient APT PFS first, which also registers it to receive APT, before transferring.
+    /// LBT Primary Fungible Store specific specialized functions,
+    /// Utilized internally once migration of LBT to FungibleAsset is complete.
+    /// Convenient function to transfer LBT to a recipient account that might not exist.
+    /// This would create the recipient LBT PFS first, which also registers it to receive LBT, before transferring.
     /// TODO: once migration is complete, rename to just "transfer_only" and make it an entry function (for cheapest way
-    /// to transfer APT) - if we want to allow APT PFS without account itself
+    /// to transfer LBT) - if we want to allow LBT PFS without account itself
     Libra2AccountFungibleTransferOnly {
         to: AccountAddress,
         amount: u64,
@@ -508,8 +508,8 @@ pub enum EntryFunctionCall {
         allow: bool,
     },
 
-    /// Convenient function to transfer APT to a recipient account that might not exist.
-    /// This would create the recipient account first, which also registers it to receive APT, before transferring.
+    /// Convenient function to transfer LBT to a recipient account that might not exist.
+    /// This would create the recipient account first, which also registers it to receive LBT, before transferring.
     Libra2AccountTransfer {
         to: AccountAddress,
         amount: u64,
@@ -2554,7 +2554,7 @@ pub fn coin_create_coin_conversion_map() -> TransactionPayload {
     ))
 }
 
-/// Create APT pairing by passing `Libra2Coin`.
+/// Create LBT pairing by passing `Libra2Coin`.
 pub fn coin_create_pairing(coin_type: TypeTag) -> TransactionPayload {
     TransactionPayload::EntryFunction(EntryFunction::new(
         ModuleId::new(
@@ -3099,7 +3099,7 @@ pub fn jwks_update_federated_jwk_set(
     ))
 }
 
-/// Batch version of APT transfer.
+/// Batch version of LBT transfer.
 pub fn libra2_account_batch_transfer(
     recipients: Vec<AccountAddress>,
     amounts: Vec<u64>,
@@ -3160,12 +3160,12 @@ pub fn libra2_account_create_account(auth_key: AccountAddress) -> TransactionPay
     ))
 }
 
-/// APT Primary Fungible Store specific specialized functions,
-/// Utilized internally once migration of APT to FungibleAsset is complete.
-/// Convenient function to transfer APT to a recipient account that might not exist.
-/// This would create the recipient APT PFS first, which also registers it to receive APT, before transferring.
+/// LBT Primary Fungible Store specific specialized functions,
+/// Utilized internally once migration of LBT to FungibleAsset is complete.
+/// Convenient function to transfer LBT to a recipient account that might not exist.
+/// This would create the recipient LBT PFS first, which also registers it to receive LBT, before transferring.
 /// TODO: once migration is complete, rename to just "transfer_only" and make it an entry function (for cheapest way
-/// to transfer APT) - if we want to allow APT PFS without account itself
+/// to transfer LBT) - if we want to allow LBT PFS without account itself
 pub fn libra2_account_fungible_transfer_only(
     to: AccountAddress,
     amount: u64,
@@ -3200,8 +3200,8 @@ pub fn libra2_account_set_allow_direct_coin_transfers(allow: bool) -> Transactio
     ))
 }
 
-/// Convenient function to transfer APT to a recipient account that might not exist.
-/// This would create the recipient account first, which also registers it to receive APT, before transferring.
+/// Convenient function to transfer LBT to a recipient account that might not exist.
+/// This would create the recipient account first, which also registers it to receive LBT, before transferring.
 pub fn libra2_account_transfer(to: AccountAddress, amount: u64) -> TransactionPayload {
     TransactionPayload::EntryFunction(EntryFunction::new(
         ModuleId::new(

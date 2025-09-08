@@ -148,7 +148,7 @@ pub(crate) struct TransactionDiffBuilder {
     /// If true, differences related to the gas usage are ignored. These include:
     ///   - total gas used is not compared,
     ///   - `EmitFeeStatement` event is not compared,
-    ///   - total APT supply is not compared,
+    ///   - total LBT supply is not compared,
     ///   - account balances are no compared.
     allow_different_gas_usage: bool,
 }
@@ -266,7 +266,7 @@ impl TransactionDiffBuilder {
             }
 
             if self.allow_different_gas_usage {
-                // Skip total APT supply comparisons. Those should always be part of the write set.
+                // Skip total LBT supply comparisons. Those should always be part of the write set.
                 if state_key == *TOTAL_SUPPLY_STATE_KEY {
                     assert_some!(maybe_right_write_op);
                     continue;

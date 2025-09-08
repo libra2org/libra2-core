@@ -3,7 +3,7 @@ FROM debian-base AS faucet
 
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     --mount=type=cache,target=/var/lib/apt,sharing=locked \
-    sed -i 's|http://security.debian.org/debian-security|https://cloudfront.debian.net/debian-security|g' /etc/apt/sources.list &&  \
+    sed -i 's|http://security.debian.org/debian-security|https://cloudfront.debian.net/debian-security|g' /etc/lbt/sources.list &&  \
     apt-get update && apt-get --no-install-recommends install -y \
         procps
 

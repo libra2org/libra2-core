@@ -51,7 +51,7 @@ spec:
             {{- end }}
             - --command-adapter-config
             # use the same config with the backup sts
-            - /opt/aptos/etc/{{ .Values.backup.config.location }}.yaml
+            - /opt/libra2/etc/{{ .Values.backup.config.location }}.yaml
             env:
             - name: RUST_LOG
               value: "info"
@@ -71,7 +71,7 @@ spec:
             {{- toYaml .resources | nindent 14 }}
             volumeMounts:
             - name: backup-config
-              mountPath: /opt/aptos/etc
+              mountPath: /opt/libra2/etc
             - name: tmp
               mountPath: /tmp
             securityContext:
