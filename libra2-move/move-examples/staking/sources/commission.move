@@ -2,14 +2,14 @@
 /// 1. Manager: The account that can set the commission rate and change the operator account.
 /// 2. Operator: The account that receives the commission in dollars in exchange for running the node.
 ///
-/// The commission rate is set in dollars and will be used to determine how much LBT_the operator receives.
+/// The commission rate is set in dollars and will be used to determine how much APT the operator receives.
 /// The commission is distributed to the operator and remaining amount to the manager. If there's not enough balance
-/// to pay the commission, either commission rate is set too high or LBT_price is low. In this case, the commission
+/// to pay the commission, either commission rate is set too high or APT price is low. In this case, the commission
 /// debt will be updated and the operator will receive the remaining balance in the next distribution.
 ///
 /// Important notes:
 ///
-/// 1. There are rounding errors that can lead to 1 octa (1e-8 LBT) and $1 rounding errors on conversions during
+/// 1. There are rounding errors that can lead to 1 octa (1e-8 APT) and $1 rounding errors on conversions during
 /// distribution. Although the commission amount can be adjusted to make up for these rounding errors for operators,
 /// developers using this contract can also add decimals to the dollar amount (e.g. 2 decimals) to reduce the rounding
 /// errors.
@@ -34,8 +34,8 @@ module staking::commission {
 
     const INITIAL_COMMISSION_AMOUNT: u64 = 100000;
     const ONE_YEAR_IN_SECONDS: u64 = 31536000;
-    const OCTAS_IN_ONE_LBT: u128 = 100000000; // 1e8
-    const MIN_BALANCE_FOR_DISTRIBUTION: u64 = 100000000; // 1 LBT
+    const OCTAS_IN_ONE_APT: u128 = 100000000; // 1e8
+    const MIN_BALANCE_FOR_DISTRIBUTION: u64 = 100000000; // 1 APT
 
     /// Account is not authorized to call this function.
     const EUNAUTHORIZED: u64 = 1;
@@ -49,14 +49,14 @@ module staking::commission {
         manager: address,
         /// The operator who receives the specified commission in dollars in exchange for running the node.
         operator: address,
-        /// The yearly commission rate in dollars. Will be used to determine how much LBT_the operator receives.
+        /// The yearly commission rate in dollars. Will be used to determine how much APT the operator receives.
         yearly_commission_amount: u64,
         /// Used to withdraw commission.
         signer_cap: SignerCapability,
         /// Timestamp for tracking yearly commission.
         last_update_secs: u64,
         /// Amount of debt in dollars owed to the operator due to insufficient amount received from node commission.
-        /// This can happen if the commission rate is set too high or LBT_price is too low.
+        /// This can happen if the commission rate is set too high or APT price is too low.
         commission_debt: u64
     }
 
@@ -171,7 +171,7 @@ module staking::commission {
         assert!(balance >= MIN_BALANCE_FOR_DISTRIBUTION, EINSUFFICIENT_BALANCE_FOR_DISTRIBUTION);
 
         // Commission owed so far plus any debt.
-        // There can be a rounding error of 1 octa here when converting from USD to LBT. This is negligible.
+        // There can be a rounding error of 1 octa here when converting from USD to APT. This is negligible.
         let commission_in_apt = commission_owed_in_apt();
 
         // Only manager or operator can call this function.
@@ -181,12 +181,12 @@ module staking::commission {
         config.commission_debt = 0;
 
         let commission_signer = &account::create_signer_with_capability(&config.signer_cap);
-        // If there's not enough balance to pay the commission, either commission rate is set too high or LBT_price is low.
-        // Otherwise, pay the operator the commission in LBT_and send remaining balance to the manager.
+        // If there's not enough balance to pay the commission, either commission rate is set too high or APT price is low.
+        // Otherwise, pay the operator the commission in APT and send remaining balance to the manager.
         if (balance <= commission_in_apt) {
-            // If balance is exactly equal to commission in LBT, this will set commission_debt to 0.
+            // If balance is exactly equal to commission in APT, this will set commission_debt to 0.
             let debt_apt = commission_in_apt - balance;
-            // There can be rounding error here when converting from LBT_to USD. If this is of concern, the amount of
+            // There can be rounding error here when converting from APT to USD. If this is of concern, the amount of
             // commission can be set higher to cover the rounding error.
             config.commission_debt = apt_to_usd(debt_apt);
         } else {
@@ -219,14 +219,14 @@ module staking::commission {
 
     inline fun usd_to_apt(usd_amount: u64): u64 {
         let apt_price = oracle::get_apt_price();
-        // Amount in LBT_octas = amount * number of octas in one LBT_/ LBT_price.
-        math128::mul_div((usd_amount as u128) * OCTAS_IN_ONE_LBT, oracle::precision(), apt_price) as u64
+        // Amount in APT octas = amount * number of octas in one APT / APT price.
+        math128::mul_div((usd_amount as u128) * OCTAS_IN_ONE_APT, oracle::precision(), apt_price) as u64
     }
 
     inline fun apt_to_usd(apt_amount: u64): u64 {
         let apt_price = oracle::get_apt_price();
-        // Amount in USD = amount * LBT_price / precision / number of octas in one LBT.
-        math128::mul_div((apt_amount as u128), apt_price, oracle::precision() * OCTAS_IN_ONE_LBT) as u64
+        // Amount in USD = amount * APT price / precision / number of octas in one APT.
+        math128::mul_div((apt_amount as u128), apt_price, oracle::precision() * OCTAS_IN_ONE_APT) as u64
     }
 
     #[test_only]

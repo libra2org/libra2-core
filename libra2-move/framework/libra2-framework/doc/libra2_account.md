@@ -198,12 +198,12 @@ Account does not exist.
 
 
 
-<a id="0x1_libra2_account_EACCOUNT_NOT_REGISTERED_FOR_LBT"></a>
+<a id="0x1_libra2_account_EACCOUNT_NOT_REGISTERED_FOR_APT"></a>
 
-Account is not registered to receive LBT.
+Account is not registered to receive APT.
 
 
-<pre><code><b>const</b> <a href="libra2_account.md#0x1_libra2_account_EACCOUNT_NOT_REGISTERED_FOR_LBT">EACCOUNT_NOT_REGISTERED_FOR_LBT</a>: u64 = 2;
+<pre><code><b>const</b> <a href="libra2_account.md#0x1_libra2_account_EACCOUNT_NOT_REGISTERED_FOR_APT">EACCOUNT_NOT_REGISTERED_FOR_APT</a>: u64 = 2;
 </code></pre>
 
 
@@ -248,7 +248,7 @@ Basic account creation methods.
 
 ## Function `batch_transfer`
 
-Batch version of LBT_transfer.
+Batch version of APT transfer.
 
 
 <pre><code><b>public</b> entry <b>fun</b> <a href="libra2_account.md#0x1_libra2_account_batch_transfer">batch_transfer</a>(source: &<a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, recipients: <a href="../../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;<b>address</b>&gt;, amounts: <a href="../../libra2-stdlib/../move-stdlib/doc/vector.md#0x1_vector">vector</a>&lt;u64&gt;)
@@ -282,8 +282,8 @@ Batch version of LBT_transfer.
 
 ## Function `transfer`
 
-Convenient function to transfer LBT_to a recipient account that might not exist.
-This would create the recipient account first, which also registers it to receive LBT, before transferring.
+Convenient function to transfer APT to a recipient account that might not exist.
+This would create the recipient account first, which also registers it to receive APT, before transferring.
 
 
 <pre><code><b>public</b> entry <b>fun</b> <a href="libra2_account.md#0x1_libra2_account_transfer">transfer</a>(source: &<a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <b>to</b>: <b>address</b>, amount: u64)
@@ -303,7 +303,7 @@ This would create the recipient account first, which also registers it to receiv
     <b>if</b> (<a href="../../libra2-stdlib/../move-stdlib/doc/features.md#0x1_features_operations_default_to_fa_apt_store_enabled">features::operations_default_to_fa_apt_store_enabled</a>()) {
         <a href="libra2_account.md#0x1_libra2_account_fungible_transfer_only">fungible_transfer_only</a>(source, <b>to</b>, amount)
     } <b>else</b> {
-        // Resource accounts can be created without registering them <b>to</b> receive LBT.
+        // Resource accounts can be created without registering them <b>to</b> receive APT.
         // This conveniently does the registration <b>if</b> necessary.
         <b>if</b> (!<a href="coin.md#0x1_coin_is_account_registered">coin::is_account_registered</a>&lt;Libra2Coin&gt;(<b>to</b>)) {
             <a href="coin.md#0x1_coin_register">coin::register</a>&lt;Libra2Coin&gt;(&<a href="create_signer.md#0x1_create_signer">create_signer</a>(<b>to</b>));
@@ -555,7 +555,7 @@ This would create the recipient account first to receive the fungible assets.
 
 <pre><code><b>public</b> <b>fun</b> <a href="libra2_account.md#0x1_libra2_account_assert_account_is_registered_for_apt">assert_account_is_registered_for_apt</a>(addr: <b>address</b>) {
     <a href="libra2_account.md#0x1_libra2_account_assert_account_exists">assert_account_exists</a>(addr);
-    <b>assert</b>!(<a href="coin.md#0x1_coin_is_account_registered">coin::is_account_registered</a>&lt;Libra2Coin&gt;(addr), <a href="../../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_not_found">error::not_found</a>(<a href="libra2_account.md#0x1_libra2_account_EACCOUNT_NOT_REGISTERED_FOR_LBT">EACCOUNT_NOT_REGISTERED_FOR_LBT</a>));
+    <b>assert</b>!(<a href="coin.md#0x1_coin_is_account_registered">coin::is_account_registered</a>&lt;Libra2Coin&gt;(addr), <a href="../../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_not_found">error::not_found</a>(<a href="libra2_account.md#0x1_libra2_account_EACCOUNT_NOT_REGISTERED_FOR_APT">EACCOUNT_NOT_REGISTERED_FOR_APT</a>));
 }
 </code></pre>
 
@@ -680,12 +680,12 @@ By default, this returns true if an account has not explicitly set whether the c
 
 ## Function `fungible_transfer_only`
 
-LBT_Primary Fungible Store specific specialized functions,
-Utilized internally once migration of LBT_to FungibleAsset is complete.
-Convenient function to transfer LBT_to a recipient account that might not exist.
-This would create the recipient LBT_PFS first, which also registers it to receive LBT, before transferring.
+APT Primary Fungible Store specific specialized functions,
+Utilized internally once migration of APT to FungibleAsset is complete.
+Convenient function to transfer APT to a recipient account that might not exist.
+This would create the recipient APT PFS first, which also registers it to receive APT, before transferring.
 TODO: once migration is complete, rename to just "transfer_only" and make it an entry function (for cheapest way
-to transfer LBT) - if we want to allow LBT_PFS without account itself
+to transfer APT) - if we want to allow APT PFS without account itself
 
 
 <pre><code><b>public</b>(<b>friend</b>) entry <b>fun</b> <a href="libra2_account.md#0x1_libra2_account_fungible_transfer_only">fungible_transfer_only</a>(source: &<a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>, <b>to</b>: <b>address</b>, amount: u64)
@@ -705,7 +705,7 @@ to transfer LBT) - if we want to allow LBT_PFS without account itself
 
     // <b>use</b> <b>internal</b> APIs, <b>as</b> they skip:
     // - owner, frozen and dispatchable checks
-    // <b>as</b> LBT_cannot be frozen or have dispatch, and PFS cannot be transfered
+    // <b>as</b> APT cannot be frozen or have dispatch, and PFS cannot be transfered
     // (PFS could potentially be burned. regular transfer would permanently unburn the store.
     // Ignoring the check here <b>has</b> the equivalent of unburning, transfers, and then burning again)
     <a href="fungible_asset.md#0x1_fungible_asset_withdraw_permission_check_by_address">fungible_asset::withdraw_permission_check_by_address</a>(source, sender_store, amount);
@@ -721,7 +721,7 @@ to transfer LBT) - if we want to allow LBT_PFS without account itself
 
 ## Function `is_fungible_balance_at_least`
 
-Is balance from LBT_Primary FungibleStore at least the given amount
+Is balance from APT Primary FungibleStore at least the given amount
 
 
 <pre><code><b>public</b>(<b>friend</b>) <b>fun</b> <a href="libra2_account.md#0x1_libra2_account_is_fungible_balance_at_least">is_fungible_balance_at_least</a>(<a href="account.md#0x1_account">account</a>: <b>address</b>, amount: u64): bool
@@ -747,7 +747,7 @@ Is balance from LBT_Primary FungibleStore at least the given amount
 
 ## Function `burn_from_fungible_store_for_gas`
 
-Burn from LBT_Primary FungibleStore for gas charge
+Burn from APT Primary FungibleStore for gas charge
 
 
 <pre><code><b>public</b>(<b>friend</b>) <b>fun</b> <a href="libra2_account.md#0x1_libra2_account_burn_from_fungible_store_for_gas">burn_from_fungible_store_for_gas</a>(ref: &<a href="fungible_asset.md#0x1_fungible_asset_BurnRef">fungible_asset::BurnRef</a>, <a href="account.md#0x1_account">account</a>: <b>address</b>, amount: u64)
@@ -780,7 +780,7 @@ Burn from LBT_Primary FungibleStore for gas charge
 
 ## Function `ensure_primary_fungible_store_exists`
 
-Ensure that LBT_Primary FungibleStore exists (and create if it doesn't)
+Ensure that APT Primary FungibleStore exists (and create if it doesn't)
 
 
 <pre><code><b>fun</b> <a href="libra2_account.md#0x1_libra2_account_ensure_primary_fungible_store_exists">ensure_primary_fungible_store_exists</a>(owner: <b>address</b>): <b>address</b>
@@ -810,7 +810,7 @@ Ensure that LBT_Primary FungibleStore exists (and create if it doesn't)
 
 ## Function `primary_fungible_store_address`
 
-Address of LBT_Primary Fungible Store
+Address of APT Primary Fungible Store
 
 
 <pre><code><b>fun</b> <a href="libra2_account.md#0x1_libra2_account_primary_fungible_store_address">primary_fungible_store_address</a>(<a href="account.md#0x1_account">account</a>: <b>address</b>): <b>address</b>

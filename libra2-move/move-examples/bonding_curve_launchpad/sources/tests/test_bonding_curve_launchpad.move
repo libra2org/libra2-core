@@ -12,7 +12,7 @@ module bonding_curve_launchpad::test_bonding_curve_launchpad {
     use swap::test_helpers;
 
     const ELIQUIDITY_PAIR_SWAP_AMOUNTOUT_INCORRECT: u64 = 1001;
-    const EUSER_LBT_BALANCE_INCORRECT: u64 = 10001;
+    const EUSER_APT_BALANCE_INCORRECT: u64 = 10001;
     const EINCORRECT_FROZEN_STATUS: u64 = 10002;
     const EUSER_FA_BALANCE_INCORRECT: u64 = 10003;
 
@@ -100,7 +100,7 @@ module bonding_curve_launchpad::test_bonding_curve_launchpad {
                 b"https://t4.ftcdn.net/jpg/03/12/95/13/360_F_312951336_8LxW7gBLHslTnpbOAwxFo5FpD2R5vGxu.jpg"
             )
         );
-        assert!(coin::balance<Libra2Coin>(user_address) == starting_apt_balance, EUSER_LBT_BALANCE_INCORRECT);
+        assert!(coin::balance<Libra2Coin>(user_address) == starting_apt_balance, EUSER_APT_BALANCE_INCORRECT);
         assert!(bonding_curve_launchpad::get_balance(name, symbol, user_address) == 0, EUSER_FA_BALANCE_INCORRECT);
     }
 
@@ -137,7 +137,7 @@ module bonding_curve_launchpad::test_bonding_curve_launchpad {
                 b"https://t4.ftcdn.net/jpg/03/12/95/13/360_F_312951336_8LxW7gBLHslTnpbOAwxFo5FpD2R5vGxu.jpg"
             )
         );
-        assert!(coin::balance<Libra2Coin>(user_address) == starting_apt_balance - 1000, EUSER_LBT_BALANCE_INCORRECT);
+        assert!(coin::balance<Libra2Coin>(user_address) == starting_apt_balance - 1000, EUSER_APT_BALANCE_INCORRECT);
         assert!(bonding_curve_launchpad::get_balance(name, symbol, user_address) == 16, EUSER_FA_BALANCE_INCORRECT);
     }
 
@@ -207,21 +207,21 @@ module bonding_curve_launchpad::test_bonding_curve_launchpad {
         let name = string::utf8(b"SheepyCoin");
         let symbol = string::utf8(b"SHEEP");
         let starting_apt_balance = coin::balance<Libra2Coin>(user_address);
-        // LBT_-> FA
+        // APT -> FA
         bonding_curve_launchpad::swap(bonding_curve_creator, name, symbol, false, 100_000_000);
         assert!(
             coin::balance<Libra2Coin>(user_address) == starting_apt_balance - 100_000_000,
-            EUSER_LBT_BALANCE_INCORRECT
+            EUSER_APT_BALANCE_INCORRECT
         );
         assert!(
             bonding_curve_launchpad::get_balance(name, symbol, user_address) == 1_602_794,
             ELIQUIDITY_PAIR_SWAP_AMOUNTOUT_INCORRECT
         );
-        // FA -> LBT
+        // FA -> APT
         bonding_curve_launchpad::swap(bonding_curve_creator, name, symbol, true, 1_602_794);
         assert!(
             coin::balance<Libra2Coin>(user_address) == starting_apt_balance - 26,
-            EUSER_LBT_BALANCE_INCORRECT
+            EUSER_APT_BALANCE_INCORRECT
         ); // u256/u64 precision loss.
         assert!(
             bonding_curve_launchpad::get_balance(name, symbol, user_address) == 0,
@@ -252,7 +252,7 @@ module bonding_curve_launchpad::test_bonding_curve_launchpad {
             symbol,
             false,
             grad_apt
-        ); // Over-threshold Swap. LBT_-> FA
+        ); // Over-threshold Swap. APT -> FA
         assert!(bonding_curve_launchpad::get_is_frozen(name, symbol) == false, EINCORRECT_FROZEN_STATUS);
     }
 
@@ -329,7 +329,7 @@ module bonding_curve_launchpad::test_bonding_curve_launchpad {
             string::utf8(b"SHEEP"),
             false,
             1_000_000
-        ); // LBT_-> FA
+        ); // APT -> FA
     }
 
     #[test(
@@ -352,7 +352,7 @@ module bonding_curve_launchpad::test_bonding_curve_launchpad {
             string::utf8(b"SHEEP"),
             false,
             10
-        ); // FA -> LBT
+        ); // FA -> APT
     }
 
     #[test(
@@ -425,7 +425,7 @@ module bonding_curve_launchpad::test_bonding_curve_launchpad {
             string::utf8(b"SHEEP"),
             false,
             0
-        ); // LBT_-> FA
+        ); // APT -> FA
     }
 
     #[test(
@@ -448,7 +448,7 @@ module bonding_curve_launchpad::test_bonding_curve_launchpad {
             string::utf8(b"SHEEP"),
             false,
             0
-        ); // Swap afer graduation, guaranteed to fail. FA -> LBT
+        ); // Swap afer graduation, guaranteed to fail. FA -> APT
     }
 
     #[test(
@@ -471,6 +471,6 @@ module bonding_curve_launchpad::test_bonding_curve_launchpad {
             string::utf8(b"SHEEP"),
             true,
             10000
-        ); // Swap afer graduation, guaranteed to fail. FA -> LBT
+        ); // Swap afer graduation, guaranteed to fail. FA -> APT
     }
 }

@@ -82,7 +82,7 @@ impl Balance {
                 CliError::CommandArgumentError(format!("Invalid coin type '{}': {:#?}", coin, err))
             })?
         } else {
-            // If nothing is given, use the default LBT
+            // If nothing is given, use the default APT
             Libra2CoinType::type_tag()
         };
 

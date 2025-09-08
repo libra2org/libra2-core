@@ -23,7 +23,7 @@ spec libra2_framework::genesis {
     ///
     /// No.: 3
     /// Requirement: The Libra2 coin should be initialized during genesis and only the Libra2 framework account should own
-    /// the mint and burn capabilities for the LBT_token.
+    /// the mint and burn capabilities for the APT token.
     /// Criticality: Critical
     /// Implementation: Both mint and burn capabilities are wrapped inside the stake::Libra2CoinCapabilities and
     /// transaction_fee::Libra2CoinCapabilities resources which are stored under the aptos framework account.
@@ -100,7 +100,7 @@ spec libra2_framework::genesis {
 
     spec initialize_libra2_coin {
         // property 3: The Libra2 coin should be initialized during genesis and only the Libra2 framework account should
-        // own the mint and burn capabilities for the LBT_token.
+        // own the mint and burn capabilities for the APT token.
         /// [high-level-req-3]
         requires !exists<stake::Libra2CoinCapabilities>(@libra2_framework);
         ensures exists<stake::Libra2CoinCapabilities>(@libra2_framework);

@@ -29,7 +29,7 @@ OS="$(uname)"
 case "$OS" in
   Linux)
     if has_command apt-get; then
-      # Ubuntu / Debian based LBT-GET
+      # Ubuntu / Debian based APT-GET
       sudo apt-get update
       sh install_pkg.sh build-essential pkgconf libssl-dev git libudev-dev lld libdw-dev clang llvm cmake
     elif has_command dnf; then

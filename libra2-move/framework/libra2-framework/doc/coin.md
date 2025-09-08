@@ -36,7 +36,7 @@ This module provides the foundation for typesafe Coins.
 -  [Function `paired_metadata`](#0x1_coin_paired_metadata)
 -  [Function `create_coin_conversion_map`](#0x1_coin_create_coin_conversion_map)
 -  [Function `create_pairing`](#0x1_coin_create_pairing)
--  [Function `is_lbt`](#0x1_coin_is_apt)
+-  [Function `is_apt`](#0x1_coin_is_apt)
 -  [Function `create_and_return_paired_metadata_if_not_exist`](#0x1_coin_create_and_return_paired_metadata_if_not_exist)
 -  [Function `ensure_paired_metadata`](#0x1_coin_ensure_paired_metadata)
 -  [Function `paired_coin`](#0x1_coin_paired_coin)
@@ -1074,12 +1074,12 @@ The value of aggregatable coin used for transaction fees redistribution does not
 
 
 
-<a id="0x1_coin_ELBT_PAIRING_IS_NOT_ENABLED"></a>
+<a id="0x1_coin_EAPT_PAIRING_IS_NOT_ENABLED"></a>
 
-LBT_pairing is not eanbled yet.
+APT pairing is not eanbled yet.
 
 
-<pre><code><b>const</b> <a href="coin.md#0x1_coin_ELBT_PAIRING_IS_NOT_ENABLED">ELBT_PAIRING_IS_NOT_ENABLED</a>: u64 = 28;
+<pre><code><b>const</b> <a href="coin.md#0x1_coin_EAPT_PAIRING_IS_NOT_ENABLED">EAPT_PAIRING_IS_NOT_ENABLED</a>: u64 = 28;
 </code></pre>
 
 
@@ -1409,7 +1409,7 @@ Get the paired fungible asset metadata object of a coin type. If not exist, retu
 
 ## Function `create_pairing`
 
-Create LBT_pairing by passing <code>Libra2Coin</code>.
+Create APT pairing by passing <code>Libra2Coin</code>.
 
 
 <pre><code><b>public</b> entry <b>fun</b> <a href="coin.md#0x1_coin_create_pairing">create_pairing</a>&lt;CoinType&gt;(libra2_framework: &<a href="../../libra2-stdlib/../move-stdlib/doc/signer.md#0x1_signer">signer</a>)
@@ -1435,11 +1435,11 @@ Create LBT_pairing by passing <code>Libra2Coin</code>.
 
 <a id="0x1_coin_is_apt"></a>
 
-## Function `is_lbt`
+## Function `is_apt`
 
 
 
-<pre><code><b>fun</b> <a href="coin.md#0x1_coin_is_apt">is_lbt</a>&lt;CoinType&gt;(): bool
+<pre><code><b>fun</b> <a href="coin.md#0x1_coin_is_apt">is_apt</a>&lt;CoinType&gt;(): bool
 </code></pre>
 
 
@@ -1448,7 +1448,7 @@ Create LBT_pairing by passing <code>Libra2Coin</code>.
 <summary>Implementation</summary>
 
 
-<pre><code>inline <b>fun</b> <a href="coin.md#0x1_coin_is_apt">is_lbt</a>&lt;CoinType&gt;(): bool {
+<pre><code>inline <b>fun</b> <a href="coin.md#0x1_coin_is_apt">is_apt</a>&lt;CoinType&gt;(): bool {
     <a href="../../libra2-stdlib/doc/type_info.md#0x1_type_info_type_name">type_info::type_name</a>&lt;CoinType&gt;() == <a href="../../libra2-stdlib/../move-stdlib/doc/string.md#0x1_string_utf8">string::utf8</a>(b"<a href="libra2_coin.md#0x1_libra2_coin_Libra2Coin">0x1::libra2_coin::Libra2Coin</a>")
 }
 </code></pre>
@@ -1481,10 +1481,10 @@ Create LBT_pairing by passing <code>Libra2Coin</code>.
     <b>let</b> map = <b>borrow_global_mut</b>&lt;<a href="coin.md#0x1_coin_CoinConversionMap">CoinConversionMap</a>&gt;(@libra2_framework);
     <b>let</b> type = <a href="../../libra2-stdlib/doc/type_info.md#0x1_type_info_type_of">type_info::type_of</a>&lt;CoinType&gt;();
     <b>if</b> (!<a href="../../libra2-stdlib/doc/table.md#0x1_table_contains">table::contains</a>(&map.coin_to_fungible_asset_map, type)) {
-        <b>let</b> is_lbt = <a href="coin.md#0x1_coin_is_apt">is_lbt</a>&lt;CoinType&gt;();
-        <b>assert</b>!(!is_lbt || allow_apt_creation, <a href="../../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_invalid_state">error::invalid_state</a>(<a href="coin.md#0x1_coin_ELBT_PAIRING_IS_NOT_ENABLED">ELBT_PAIRING_IS_NOT_ENABLED</a>));
+        <b>let</b> is_apt = <a href="coin.md#0x1_coin_is_apt">is_apt</a>&lt;CoinType&gt;();
+        <b>assert</b>!(!is_apt || allow_apt_creation, <a href="../../libra2-stdlib/../move-stdlib/doc/error.md#0x1_error_invalid_state">error::invalid_state</a>(<a href="coin.md#0x1_coin_EAPT_PAIRING_IS_NOT_ENABLED">EAPT_PAIRING_IS_NOT_ENABLED</a>));
         <b>let</b> metadata_object_cref =
-            <b>if</b> (is_lbt) {
+            <b>if</b> (is_apt) {
                 <a href="object.md#0x1_object_create_sticky_object_at_address">object::create_sticky_object_at_address</a>(@libra2_framework, @libra2_fungible_asset)
             } <b>else</b> {
                 <a href="object.md#0x1_object_create_named_object">object::create_named_object</a>(

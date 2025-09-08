@@ -326,17 +326,17 @@ impl From<FeatureFlag> for Libra2FeatureFlag {
                 Libra2FeatureFlag::COIN_TO_FUNGIBLE_ASSET_MIGRATION
             },
             FeatureFlag::PrimaryAPTFungibleStoreAtUserAddress => {
-                Libra2FeatureFlag::PRIMARY_LBT_FUNGIBLE_STORE_AT_USER_ADDRESS
+                Libra2FeatureFlag::PRIMARY_APT_FUNGIBLE_STORE_AT_USER_ADDRESS
             },
             FeatureFlag::ObjectNativeDerivedAddress => {
                 Libra2FeatureFlag::OBJECT_NATIVE_DERIVED_ADDRESS
             },
             FeatureFlag::DispatchableFungibleAsset => Libra2FeatureFlag::DISPATCHABLE_FUNGIBLE_ASSET,
             FeatureFlag::NewAccountsDefaultToFaAptStore => {
-                Libra2FeatureFlag::NEW_ACCOUNTS_DEFAULT_TO_FA_LBT_STORE
+                Libra2FeatureFlag::NEW_ACCOUNTS_DEFAULT_TO_FA_APT_STORE
             },
             FeatureFlag::OperationsDefaultToFaAptStore => {
-                Libra2FeatureFlag::OPERATIONS_DEFAULT_TO_FA_LBT_STORE
+                Libra2FeatureFlag::OPERATIONS_DEFAULT_TO_FA_APT_STORE
             },
             FeatureFlag::AggregatorV2IsAtLeastApi => {
                 Libra2FeatureFlag::AGGREGATOR_V2_IS_AT_LEAST_API
@@ -498,17 +498,17 @@ impl From<Libra2FeatureFlag> for FeatureFlag {
             Libra2FeatureFlag::COIN_TO_FUNGIBLE_ASSET_MIGRATION => {
                 FeatureFlag::CoinToFungibleAssetMigration
             },
-            Libra2FeatureFlag::PRIMARY_LBT_FUNGIBLE_STORE_AT_USER_ADDRESS => {
+            Libra2FeatureFlag::PRIMARY_APT_FUNGIBLE_STORE_AT_USER_ADDRESS => {
                 FeatureFlag::PrimaryAPTFungibleStoreAtUserAddress
             },
             Libra2FeatureFlag::OBJECT_NATIVE_DERIVED_ADDRESS => {
                 FeatureFlag::ObjectNativeDerivedAddress
             },
             Libra2FeatureFlag::DISPATCHABLE_FUNGIBLE_ASSET => FeatureFlag::DispatchableFungibleAsset,
-            Libra2FeatureFlag::NEW_ACCOUNTS_DEFAULT_TO_FA_LBT_STORE => {
+            Libra2FeatureFlag::NEW_ACCOUNTS_DEFAULT_TO_FA_APT_STORE => {
                 FeatureFlag::NewAccountsDefaultToFaAptStore
             },
-            Libra2FeatureFlag::OPERATIONS_DEFAULT_TO_FA_LBT_STORE => {
+            Libra2FeatureFlag::OPERATIONS_DEFAULT_TO_FA_APT_STORE => {
                 FeatureFlag::OperationsDefaultToFaAptStore
             },
             Libra2FeatureFlag::AGGREGATOR_V2_IS_AT_LEAST_API => {

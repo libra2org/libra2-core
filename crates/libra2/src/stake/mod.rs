@@ -56,12 +56,12 @@ impl StakeTool {
     }
 }
 
-/// Add LBT_to a stake pool
+/// Add APT to a stake pool
 ///
-/// This command allows stake pool owners to add LBT_to their stake.
+/// This command allows stake pool owners to add APT to their stake.
 #[derive(Parser)]
 pub struct AddStake {
-    /// Amount of Octas (10^-8 LBT) to add to stake
+    /// Amount of Octas (10^-8 APT) to add to stake
     #[clap(long)]
     pub amount: u64,
 
@@ -117,12 +117,12 @@ impl CliCommand<Vec<TransactionSummary>> for AddStake {
     }
 }
 
-/// Unlock staked LBT_in a stake pool
+/// Unlock staked APT in a stake pool
 ///
-/// LBT_coins can only be unlocked if they no longer have an applied lockup period
+/// APT coins can only be unlocked if they no longer have an applied lockup period
 #[derive(Parser)]
 pub struct UnlockStake {
-    /// Amount of Octas (10^-8 LBT) to unlock
+    /// Amount of Octas (10^-8 APT) to unlock
     #[clap(long)]
     pub amount: u64,
 
@@ -178,13 +178,13 @@ impl CliCommand<Vec<TransactionSummary>> for UnlockStake {
     }
 }
 
-/// Withdraw unlocked staked LBT_from a stake pool
+/// Withdraw unlocked staked APT from a stake pool
 ///
 /// This allows users to withdraw stake back into their CoinStore.
 /// Before calling `WithdrawStake`, `UnlockStake` must be called first.
 #[derive(Parser)]
 pub struct WithdrawStake {
-    /// Amount of Octas (10^-8 LBT) to withdraw.
+    /// Amount of Octas (10^-8 APT) to withdraw.
     /// This only applies to stake pools owned directly by the owner account, instead of via
     /// a staking contract. In the latter case, when withdrawal is issued, all coins are distributed
     #[clap(long)]
@@ -243,7 +243,7 @@ impl CliCommand<Vec<TransactionSummary>> for WithdrawStake {
     }
 }
 
-/// Increase lockup of all staked LBT_in a stake pool
+/// Increase lockup of all staked APT in a stake pool
 ///
 /// Lockup may need to be increased in order to vote on a proposal.
 #[derive(Parser)]
@@ -309,7 +309,7 @@ impl CliCommand<Vec<TransactionSummary>> for IncreaseLockup {
 /// stake pool to an operator, or delegate voting to a different account.
 #[derive(Parser)]
 pub struct InitializeStakeOwner {
-    /// Initial amount of Octas (10^-8 LBT) to be staked
+    /// Initial amount of Octas (10^-8 APT) to be staked
     #[clap(long)]
     pub initial_stake_amount: u64,
 

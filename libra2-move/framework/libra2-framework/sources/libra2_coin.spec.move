@@ -1,13 +1,13 @@
 spec libra2_framework::libra2_coin {
     /// <high-level-req>
     /// No.: 1
-    /// Requirement: The native token, LBT, must be initialized during genesis.
+    /// Requirement: The native token, APT, must be initialized during genesis.
     /// Criticality: Medium
     /// Implementation: The initialize function is only called once, during genesis.
     /// Enforcement: Formally verified via [high-level-req-1](initialize).
     ///
     /// No.: 2
-    /// Requirement: The LBT_coin may only be created exactly once.
+    /// Requirement: The APT coin may only be created exactly once.
     /// Criticality: Medium
     /// Implementation: The initialization function may only be called once.
     /// Enforcement: Enforced through the [https://github.com/libra2org/libra2-core/blob/main/libra2-move/framework/libra2-framework/sources/coin.move](coin)
@@ -22,7 +22,7 @@ spec libra2_framework::libra2_coin {
     /// Enforcement: Verified via [high-level-req-3](initialize).
 
     /// No.: 4
-    /// Requirement: Any type of operation on the LBT_coin should fail if the user has not registered for the coin.
+    /// Requirement: Any type of operation on the APT coin should fail if the user has not registered for the coin.
     /// Criticality: Medium
     /// Implementation: Coin operations may succeed only on valid user coin registration.
     /// Enforcement: Enforced through the [https://github.com/libra2org/libra2-core/blob/main/libra2-move/framework/libra2-framework/sources/coin.move](coin)
@@ -44,7 +44,7 @@ spec libra2_framework::libra2_coin {
         let addr = signer::address_of(libra2_framework);
         aborts_if addr != @libra2_framework;
         aborts_if !string::spec_internal_check_utf8(b"Libra2 Coin");
-        aborts_if !string::spec_internal_check_utf8(b"LBT");
+        aborts_if !string::spec_internal_check_utf8(b"APT");
         aborts_if exists<MintCapStore>(addr);
         aborts_if exists<coin::CoinInfo<Libra2Coin>>(addr);
         aborts_if !exists<aggregator_factory::AggregatorFactory>(addr);

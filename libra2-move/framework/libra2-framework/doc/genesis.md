@@ -440,7 +440,7 @@ Only called for testnets and e2e tests.
 
     <b>let</b> core_resources = <a href="account.md#0x1_account_create_account">account::create_account</a>(@core_resources);
     <a href="account.md#0x1_account_rotate_authentication_key_internal">account::rotate_authentication_key_internal</a>(&core_resources, core_resources_auth_key);
-    <a href="libra2_account.md#0x1_libra2_account_register_apt">libra2_account::register_apt</a>(&core_resources); // registers LBT_store
+    <a href="libra2_account.md#0x1_libra2_account_register_apt">libra2_account::register_apt</a>(&core_resources); // registers APT store
     <a href="libra2_coin.md#0x1_libra2_coin_configure_accounts_for_test">libra2_coin::configure_accounts_for_test</a>(libra2_framework, &core_resources, mint_cap);
 }
 </code></pre>
@@ -866,7 +866,7 @@ The last step of genesis.
 
 <tr>
 <td>3</td>
-<td>The Libra2 coin should be initialized during genesis and only the Libra2 framework account should own the mint and burn capabilities for the LBT_token.</td>
+<td>The Libra2 coin should be initialized during genesis and only the Libra2 framework account should own the mint and burn capabilities for the APT token.</td>
 <td>Critical</td>
 <td>Both mint and burn capabilities are wrapped inside the stake::Libra2CoinCapabilities and transaction_fee::Libra2CoinCapabilities resources which are stored under the aptos framework account.</td>
 <td>Formally verified via <a href="#high-level-req-3">initialize_libra2_coin</a>.</td>

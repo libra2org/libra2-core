@@ -21,8 +21,8 @@ module libra2_framework::libra2_account {
 
     /// Account does not exist.
     const EACCOUNT_NOT_FOUND: u64 = 1;
-    /// Account is not registered to receive LBT.
-    const EACCOUNT_NOT_REGISTERED_FOR_LBT: u64 = 2;
+    /// Account is not registered to receive APT.
+    const EACCOUNT_NOT_REGISTERED_FOR_APT: u64 = 2;
     /// Account opted out of receiving coins that they did not register to receive.
     const EACCOUNT_DOES_NOT_ACCEPT_DIRECT_COIN_TRANSFERS: u64 = 3;
     /// Account opted out of directly receiving NFT tokens.
@@ -58,7 +58,7 @@ module libra2_framework::libra2_account {
         register_apt(&account_signer);
     }
 
-    /// Batch version of LBT_transfer.
+    /// Batch version of APT transfer.
     public entry fun batch_transfer(source: &signer, recipients: vector<address>, amounts: vector<u64>) {
         let recipients_len = vector::length(&recipients);
         assert!(
@@ -72,8 +72,8 @@ module libra2_framework::libra2_account {
         });
     }
 
-    /// Convenient function to transfer LBT_to a recipient account that might not exist.
-    /// This would create the recipient account first, which also registers it to receive LBT, before transferring.
+    /// Convenient function to transfer APT to a recipient account that might not exist.
+    /// This would create the recipient account first, which also registers it to receive APT, before transferring.
     public entry fun transfer(source: &signer, to: address, amount: u64) {
         if (!account::exists_at(to)) {
             create_account(to)
@@ -82,7 +82,7 @@ module libra2_framework::libra2_account {
         if (features::operations_default_to_fa_apt_store_enabled()) {
             fungible_transfer_only(source, to, amount)
         } else {
-            // Resource accounts can be created without registering them to receive LBT.
+            // Resource accounts can be created without registering them to receive APT.
             // This conveniently does the registration if necessary.
             if (!coin::is_account_registered<Libra2Coin>(to)) {
                 coin::register<Libra2Coin>(&create_signer(to));
@@ -174,7 +174,7 @@ module libra2_framework::libra2_account {
 
     public fun assert_account_is_registered_for_apt(addr: address) {
         assert_account_exists(addr);
-        assert!(coin::is_account_registered<Libra2Coin>(addr), error::not_found(EACCOUNT_NOT_REGISTERED_FOR_LBT));
+        assert!(coin::is_account_registered<Libra2Coin>(addr), error::not_found(EACCOUNT_NOT_REGISTERED_FOR_APT));
     }
 
     /// Set whether `account` can receive direct transfers of coins that they have not explicitly registered to receive.
@@ -230,13 +230,13 @@ module libra2_framework::libra2_account {
         }
     }
 
-    /// LBT_Primary Fungible Store specific specialized functions,
-    /// Utilized internally once migration of LBT_to FungibleAsset is complete.
+    /// APT Primary Fungible Store specific specialized functions,
+    /// Utilized internally once migration of APT to FungibleAsset is complete.
 
-    /// Convenient function to transfer LBT_to a recipient account that might not exist.
-    /// This would create the recipient LBT_PFS first, which also registers it to receive LBT, before transferring.
+    /// Convenient function to transfer APT to a recipient account that might not exist.
+    /// This would create the recipient APT PFS first, which also registers it to receive APT, before transferring.
     /// TODO: once migration is complete, rename to just "transfer_only" and make it an entry function (for cheapest way
-    /// to transfer LBT) - if we want to allow LBT_PFS without account itself
+    /// to transfer APT) - if we want to allow APT PFS without account itself
     public(friend) entry fun fungible_transfer_only(
         source: &signer, to: address, amount: u64
     ) {
@@ -245,20 +245,20 @@ module libra2_framework::libra2_account {
 
         // use internal APIs, as they skip:
         // - owner, frozen and dispatchable checks
-        // as LBT_cannot be frozen or have dispatch, and PFS cannot be transfered
+        // as APT cannot be frozen or have dispatch, and PFS cannot be transfered
         // (PFS could potentially be burned. regular transfer would permanently unburn the store.
         // Ignoring the check here has the equivalent of unburning, transfers, and then burning again)
         fungible_asset::withdraw_permission_check_by_address(source, sender_store, amount);
         fungible_asset::unchecked_deposit(recipient_store, fungible_asset::unchecked_withdraw(sender_store, amount));
     }
 
-    /// Is balance from LBT_Primary FungibleStore at least the given amount
+    /// Is balance from APT Primary FungibleStore at least the given amount
     public(friend) fun is_fungible_balance_at_least(account: address, amount: u64): bool {
         let store_addr = primary_fungible_store_address(account);
         fungible_asset::is_address_balance_at_least(store_addr, amount)
     }
 
-    /// Burn from LBT_Primary FungibleStore for gas charge
+    /// Burn from APT Primary FungibleStore for gas charge
     public(friend) fun burn_from_fungible_store_for_gas(
         ref: &BurnRef,
         account: address,
@@ -271,7 +271,7 @@ module libra2_framework::libra2_account {
         };
     }
 
-    /// Ensure that LBT_Primary FungibleStore exists (and create if it doesn't)
+    /// Ensure that APT Primary FungibleStore exists (and create if it doesn't)
     inline fun ensure_primary_fungible_store_exists(owner: address): address {
         let store_addr = primary_fungible_store_address(owner);
         if (fungible_asset::store_exists(store_addr)) {
@@ -281,7 +281,7 @@ module libra2_framework::libra2_account {
         }
     }
 
-    /// Address of LBT_Primary Fungible Store
+    /// Address of APT Primary Fungible Store
     inline fun primary_fungible_store_address(account: address): address {
         object::create_user_derived_object_address(account, @libra2_fungible_asset)
     }

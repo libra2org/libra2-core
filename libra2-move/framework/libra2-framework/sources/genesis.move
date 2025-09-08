@@ -168,7 +168,7 @@ module libra2_framework::genesis {
 
         let core_resources = account::create_account(@core_resources);
         account::rotate_authentication_key_internal(&core_resources, core_resources_auth_key);
-        libra2_account::register_apt(&core_resources); // registers LBT_store
+        libra2_account::register_apt(&core_resources); // registers APT store
         libra2_coin::configure_accounts_for_test(libra2_framework, &core_resources, mint_cap);
     }
 
@@ -543,7 +543,7 @@ module libra2_framework::genesis {
         libra2_coin::ensure_initialized_with_apt_fa_metadata_for_test();
 
         let core_resources = account::create_account(@core_resources);
-        libra2_account::register_apt(&core_resources); // registers LBT_store
+        libra2_account::register_apt(&core_resources); // registers APT store
 
         let apt_metadata = object::address_to_object<Metadata>(@libra2_fungible_asset);
         assert!(primary_fungible_store::primary_store_exists(@core_resources, apt_metadata), 2);
