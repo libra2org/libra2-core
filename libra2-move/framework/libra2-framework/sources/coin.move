@@ -312,7 +312,7 @@ module libra2_framework::coin {
         create_and_return_paired_metadata_if_not_exist<CoinType>(true);
     }
 
-    inline fun is_apt<CoinType>(): bool {
+    inline fun is_lbt<CoinType>(): bool {
         type_info::type_name<CoinType>() == string::utf8(b"0x1::libra2_coin::Libra2Coin")
     }
 
@@ -325,10 +325,10 @@ module libra2_framework::coin {
         let map = borrow_global_mut<CoinConversionMap>(@libra2_framework);
         let type = type_info::type_of<CoinType>();
         if (!table::contains(&map.coin_to_fungible_asset_map, type)) {
-            let is_apt = is_apt<CoinType>();
-            assert!(!is_apt || allow_apt_creation, error::invalid_state(ELBT_PAIRING_IS_NOT_ENABLED));
+            let is_lbt = is_lbt<CoinType>();
+            assert!(!is_lbt || allow_apt_creation, error::invalid_state(ELBT_PAIRING_IS_NOT_ENABLED));
             let metadata_object_cref =
-                if (is_apt) {
+                if (is_lbt) {
                     object::create_sticky_object_at_address(@libra2_framework, @libra2_fungible_asset)
                 } else {
                     object::create_named_object(
