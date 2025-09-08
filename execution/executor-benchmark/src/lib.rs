@@ -577,8 +577,8 @@ pub fn run_single_with_default_params(
     println!("db_generator::create_db_with_accounts");
 
     let mut features = default_benchmark_features();
-    features.enable(FeatureFlag::NEW_ACCOUNTS_DEFAULT_TO_FA_APT_STORE);
-    features.enable(FeatureFlag::OPERATIONS_DEFAULT_TO_FA_APT_STORE);
+    features.enable(FeatureFlag::NEW_ACCOUNTS_DEFAULT_TO_FA_LBT_STORE);
+    features.enable(FeatureFlag::OPERATIONS_DEFAULT_TO_FA_LBT_STORE);
 
     let init_pipeline_config = PipelineConfig {
         num_sig_verify_threads: std::cmp::max(1, num_cpus::get() / 3),
@@ -691,8 +691,8 @@ mod tests {
 
     fn test_compare_prod_and_another_all_types<E: VMBlockExecutor>(values_match: bool) {
         let mut non_fa_features = default_benchmark_features();
-        non_fa_features.disable(FeatureFlag::NEW_ACCOUNTS_DEFAULT_TO_FA_APT_STORE);
-        non_fa_features.disable(FeatureFlag::OPERATIONS_DEFAULT_TO_FA_APT_STORE);
+        non_fa_features.disable(FeatureFlag::NEW_ACCOUNTS_DEFAULT_TO_FA_LBT_STORE);
+        non_fa_features.disable(FeatureFlag::OPERATIONS_DEFAULT_TO_FA_LBT_STORE);
         non_fa_features.disable(FeatureFlag::NEW_ACCOUNTS_DEFAULT_TO_FA_STORE);
         // non_fa_features.disable(FeatureFlag::MODULE_EVENT_MIGRATION);
         // non_fa_features.disable(FeatureFlag::COIN_TO_FUNGIBLE_ASSET_MIGRATION);
@@ -708,8 +708,8 @@ mod tests {
         );
 
         let mut fa_features = default_benchmark_features();
-        fa_features.enable(FeatureFlag::NEW_ACCOUNTS_DEFAULT_TO_FA_APT_STORE);
-        fa_features.enable(FeatureFlag::OPERATIONS_DEFAULT_TO_FA_APT_STORE);
+        fa_features.enable(FeatureFlag::NEW_ACCOUNTS_DEFAULT_TO_FA_LBT_STORE);
+        fa_features.enable(FeatureFlag::OPERATIONS_DEFAULT_TO_FA_LBT_STORE);
         fa_features.enable(FeatureFlag::NEW_ACCOUNTS_DEFAULT_TO_FA_STORE);
         fa_features.disable(FeatureFlag::CONCURRENT_FUNGIBLE_BALANCE);
 
@@ -905,8 +905,8 @@ mod tests {
         println!("db_generator::create_db_with_accounts");
 
         let mut features = default_benchmark_features();
-        features.enable(FeatureFlag::NEW_ACCOUNTS_DEFAULT_TO_FA_APT_STORE);
-        features.enable(FeatureFlag::OPERATIONS_DEFAULT_TO_FA_APT_STORE);
+        features.enable(FeatureFlag::NEW_ACCOUNTS_DEFAULT_TO_FA_LBT_STORE);
+        features.enable(FeatureFlag::OPERATIONS_DEFAULT_TO_FA_LBT_STORE);
 
         crate::db_generator::create_db_with_accounts::<Libra2VMBlockExecutor>(
             100, /* num_accounts */

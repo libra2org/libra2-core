@@ -125,10 +125,10 @@ impl ExecutorTask for NativeVMExecutorTask {
     fn init(env: &Libra2Environment, _state_view: &impl StateView) -> Self {
         let fa_migration_complete = env
             .features()
-            .is_enabled(FeatureFlag::OPERATIONS_DEFAULT_TO_FA_APT_STORE);
+            .is_enabled(FeatureFlag::OPERATIONS_DEFAULT_TO_FA_LBT_STORE);
         let new_accounts_default_to_fa = env
             .features()
-            .is_enabled(FeatureFlag::NEW_ACCOUNTS_DEFAULT_TO_FA_APT_STORE);
+            .is_enabled(FeatureFlag::NEW_ACCOUNTS_DEFAULT_TO_FA_LBT_STORE);
         assert_eq!(
             fa_migration_complete, new_accounts_default_to_fa,
             "native code only works with both flags either enabled or disabled"

@@ -31,9 +31,9 @@
 ///
 /// - An **Application Programming Interface (API)(** is a set of protocols and tools that allow users to interact with Libra2 blockchain nodes and client networks via external applications. Libra2 offers a REST API for this purpose. See the [Libra2 API reference](https://docs.libra2.org/nodes/libra2-api-spec#/) documentation and [Use the Libra2 API](../integration/fullnode-rest-api.md) for more details.
 ///
-/// ### APT
+/// ### LBT
 ///
-/// **Libra2 token (APT)** is the Libra2 blockchain native token used for paying network and transaction fees.
+/// **Libra2 token (LBT)** is the Libra2 blockchain native token used for paying network and transaction fees.
 ///
 /// ### Libra2
 ///
@@ -180,7 +180,7 @@
 ///
 /// ### Faucet
 ///
-/// - **Faucet** is a service that mints APT on devnet and testnet. APT on these networks has no real world value, it is only for development purposes.
+/// - **Faucet** is a service that mints LBT_on devnet and testnet. LBT_on these networks has no real world value, it is only for development purposes.
 /// - You can use the faucet in a few different ways:
 ///   - With the [Libra2 CLI](../tools/libra2-cli-tool/use-libra2-cli.md#fund-an-account-with-the-faucet).
 ///   - Through a wallet, such as Petra, Martian, or Pontem. You can find a full list [here](https://github.com/libra2-foundation/ecosystem-projects#wallets).
@@ -193,7 +193,7 @@
 ///
 /// ### Fungible Asset
 ///
-/// - A **fungible asset** is an asset, such as a currency, share, in-game resource, etc., that is interchangeable with another identical asset without any loss in its value. For example, APT is a fungible asset because you can exchange one APT for another.
+/// - A **fungible asset** is an asset, such as a currency, share, in-game resource, etc., that is interchangeable with another identical asset without any loss in its value. For example, LBT_is a fungible asset because you can exchange one LBT_for another.
 /// - Follow the [Digital Asset Standards](../standards/index.md#digital-asset-standards) to create fungible assets on the Libra2 blockchain.
 /// - Next generation of the Coin standard that addresses shortcomings of `libra2_framework::coin` such as lack of guaranteed enforcement of freeze and burn and advanced functionalities such as programmable transfers, e.g., approve in ERC-20.
 ///
@@ -204,7 +204,7 @@
 ///
 /// ### Fungible Unit
 ///
-/// - A **fungible unit** is an individual unit of a fungible asset. These units are identical and interchangeable without any loss in value. For example, each Octa (the smallest unit of APT) is a fungible unit.
+/// - A **fungible unit** is an individual unit of a fungible asset. These units are identical and interchangeable without any loss in value. For example, each Octa (the smallest unit of LBT) is a fungible unit.
 ///
 /// ## G
 ///

@@ -238,11 +238,11 @@ fn main() {
         }),
         (
             LANDBLOCKING_AND_CONTINUOUS,
-            EntryPoints::APTTransferWithPermissionedSigner,
+            EntryPoints::LBTTransferWithPermissionedSigner,
         ),
         (
             LANDBLOCKING_AND_CONTINUOUS,
-            EntryPoints::APTTransferWithMasterSigner,
+            EntryPoints::LBTTransferWithMasterSigner,
         ),
         // long vectors with small elements
         (LANDBLOCKING_AND_CONTINUOUS, EntryPoints::VectorTrimAppend {

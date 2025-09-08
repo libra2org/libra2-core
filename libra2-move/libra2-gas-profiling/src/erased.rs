@@ -290,7 +290,7 @@ impl StorageFees {
 
         TypeErasedStorageFees {
             total: self.total,
-            tree: Node::new_with_children("storage fees (APT)", (Fee::zero(), Fee::zero()), nodes),
+            tree: Node::new_with_children("storage fees (LBT)", (Fee::zero(), Fee::zero()), nodes),
         }
     }
 }

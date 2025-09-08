@@ -439,7 +439,7 @@ async fn test_account_balance() {
     )
     .await;
 
-    // Since unlock_stake was initiated, 1000 APT should be in pending inactive state until lockup ends
+    // Since unlock_stake was initiated, 1000 LBT_should be in pending inactive state until lockup ends
     account_has_balance(
         &rosetta_client,
         chain_id,
@@ -872,14 +872,14 @@ async fn test_block() {
     .unwrap_err();
 
     // Test native stake pool and reset lockup support
-    const MIL_APT: u64 = 100000000000000;
-    cli.fund_account(2, Some(10 * MIL_APT)).await.unwrap();
+    const MIL_LBT: u64 = 100000000000000;
+    cli.fund_account(2, Some(10 * MIL_LBT)).await.unwrap();
     create_stake_pool_and_wait(
         &node_clients,
         private_key_2,
         Some(account_id_3),
         Some(account_id_2),
-        Some(MIL_APT),
+        Some(MIL_LBT),
         Some(5),
     )
     .await
@@ -2504,7 +2504,7 @@ async fn test_delegation_pool_operations() {
     )
     .await;
 
-    // 20 APT
+    // 20 LBT
     let delegate_initial_balance = 20 * u64::pow(10, 8);
     cli.fund_account(0, Some(delegate_initial_balance))
         .await
@@ -2562,7 +2562,7 @@ async fn test_delegation_pool_operations() {
     }
     let pool_address = AccountAddress::from_hex_literal(pool_address_str).unwrap();
 
-    // Must stake at least 11 APT
+    // Must stake at least 11 LBT
     let staked_amount = 11 * u64::pow(10, 8);
 
     add_delegated_stake_and_wait(

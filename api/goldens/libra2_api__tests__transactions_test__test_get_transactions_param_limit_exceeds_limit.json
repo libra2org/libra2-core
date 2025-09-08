@@ -12506,7 +12506,7 @@
                 }
               ]
             },
-            "symbol": "APT"
+            "symbol": "LBT"
           }
         },
         "type": "write_resource"
@@ -29967,7 +29967,7 @@
                     }
                   ]
                 },
-                "symbol": "APT"
+                "symbol": "LBT"
               }
             },
             "type": "write_resource"
