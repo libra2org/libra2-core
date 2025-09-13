@@ -372,11 +372,11 @@ impl TransactionTypeArg {
             },
             TransactionTypeArg::DeserializeU256 => call_custom_module(EntryPoints::DeserializeU256),
             TransactionTypeArg::SimpleScript => call_custom_module(EntryPoints::SimpleScript),
-            TransactionTypeArg::APTTransferWithPermissionedSigner => {
-                call_custom_module(EntryPoints::APTTransferWithPermissionedSigner)
+            TransactionTypeArg::LBTTransferWithPermissionedSigner => {
+                call_custom_module(EntryPoints::LBTTransferWithPermissionedSigner)
             },
-            TransactionTypeArg::APTTransferWithMasterSigner => {
-                call_custom_module(EntryPoints::APTTransferWithMasterSigner)
+            TransactionTypeArg::LBTTransferWithMasterSigner => {
+                call_custom_module(EntryPoints::LBTTransferWithMasterSigner)
             },
             TransactionTypeArg::OrderBookNoMatches1Market
             | TransactionTypeArg::OrderBookNoMatches50Markets => {
