@@ -136,6 +136,7 @@ members = [
     "ecosystem/indexer-grpc/indexer-test-transactions",
     "ecosystem/indexer-grpc/indexer-transaction-generator",
     "ecosystem/indexer-grpc/transaction-filter",
+    "ecosystem/indexer-processor-sdk",
     "ecosystem/nft-metadata-crawler",
     "ecosystem/node-checker",
     "ecosystem/node-checker/fn-check-client",
@@ -503,6 +504,7 @@ ark-std = { version = "0.4.0", features = ["getrandom"] }
 libra2-indexer-processor-sdk = { path = "ecosystem/indexer-processor-sdk", features = [
     "postgres_partial",
 ] }
+libra2-indexer-processors-v2 = { path = "ecosystem/indexer-processors-v2" }
 libra2-moving-average = { path = "ecosystem/moving-average" }
 libra2-indexer-transaction-stream = { path = "ecosystem/transaction-stream" }
 instrumented-channel = { path = "ecosystem/instrumented-channel" }
@@ -573,7 +575,7 @@ derivation-path = "0.2.0"
 derive_builder = "0.20.0"
 determinator = "0.12.0"
 derive_more = "0.99.11"
-diesel = { version = "2.2.0", features = ["uuid"] }
+
 # Use the crate version once this feature gets released on crates.io:
 # https://github.com/weiznich/diesel_async/commit/e165e8c96a6c540ebde2d6d7c52df5c5620a4bf1
 diesel-async = { git = "https://github.com/weiznich/diesel_async.git", rev = "e3beac66cd41ab53d78a10328bb72f272103e5d1", features = [
@@ -777,7 +779,7 @@ smallbitvec = "2.5.1"
 smallvec = "1.8.0"
 static_assertions = "1.1.0"
 status-line = "0.2.0"
-strum = "0.27.1"
+strum = { version = "0.27.1", features = ["derive"] }
 strum_macros = "0.27.1"
 sugars = "3.0.1"
 syn = { version = "1.0.92", features = ["derive", "extra-traits"] }
@@ -806,6 +808,7 @@ tokio-test = "0.4.1"
 tokio-util = { version = "0.7.2", features = ["compat", "codec"] }
 toml = "0.7.4"
 tonic = { version = "0.12.3", features = [
+    "tls",
     "tls-roots",
     "transport",
     "prost",
@@ -852,6 +855,35 @@ testcontainers = "0.20.1"
 postgres-native-tls = "0.5.0"
 tokio-postgres = "0.7.10"
 
+# from libra2-indexer-processor-v2 ======
+
+allocative = "0.3.3"
+allocative_derive = "0.3.3"
+assert-json-diff = "2.0.2"
+bb8 = "0.8.1"
+bitflags = "2.5.0"
+canonical_json = "0.5.0"
+const_format = "0.2.33"
+# Do NOT enable the postgres feature here, it is conditionally enabled in a feature
+# block in the Cargo.toml file for the processor crate.
+# https://github.com/aptos-labs/aptos-indexer-processors/pull/325
+diesel = { version = "=2.2.0", features = [
+    "uuid",
+    "chrono",
+    "postgres_backend",
+    "numeric",
+    "serde_json",
+] }
+
+diesel_async_migrations = { git = "https://github.com/weiznich/diesel_async.git", rev = "e3beac66cd41ab53d78a10328bb72f272103e5d1" }
+downcast-rs = "1.2.1"
+gcloud-sdk = { version = "0.20.4", features = [
+    "google-cloud-bigquery-storage-v1",
+] }
+google-cloud-googleapis = "0.10.0"
+google-cloud-pubsub = "0.18.0"
+serde_canonical_json = "1.0.0"
+unescape = "0.1.0"
 
 # MOVE DEPENDENCIES
 move-abigen = { path = "third_party/move/move-prover/move-abigen" }
@@ -949,6 +981,10 @@ merlin = { git = "https://github.com/aptos-labs/merlin" }
 #futures-task = { git = "https://github.com/aptos-labs/futures-rs", branch = "backport" }
 #futures-macro = { git = "https://github.com/aptos-labs/futures-rs", branch = "backport" }
 
+# Redirect any git-sourced SDK to local path
 [patch."https://github.com/libra2org/libra2-core.git"]
 libra2-indexer-transaction-stream = { path = "ecosystem/transaction-stream" }
+libra2-indexer-processor-sdk = { path = "ecosystem/indexer-processor-sdk" }
+
+[patch."https://github.com/libra2org/libra2-indexer-processor-sdk.git"]
 libra2-indexer-processor-sdk = { path = "ecosystem/indexer-processor-sdk" }

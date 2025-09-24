@@ -2498,9 +2498,9 @@ dependencies = [
 
 [[package]]
 name = "cpp_demangle"
-version = "0.4.4"
+version = "0.4.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "96e58d342ad113c2b878f16d5d034c03be492ae460cdbc02b7f0f2284d310c7d"
+checksum = "f2bb79cb74d735044c972aae58ed0aaa9a837e85b01106a54c39e42e97f62253"
 dependencies = [
  "cfg-if",
 ]
@@ -3124,12 +3124,12 @@ dependencies = [
 
 [[package]]
 name = "deranged"
-version = "0.5.3"
+version = "0.5.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d630bccd429a5bb5a64b5e94f693bfc48c9f8566418fda4c494cc94f911f87cc"
+checksum = "a41953f86f8a05768a6cda24def994fd2f424b04ec5c719cf89989779f199071"
 dependencies = [
  "powerfmt",
- "serde",
+ "serde_core",
 ]
 
 [[package]]
@@ -6368,19 +6368,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "instrumented-channel"
-version = "0.1.0"
-source = "git+https://github.com/libra2org/libra2-indexer-processor-sdk.git#19d385273416a4db084ac90535292b4e991b2b52"
-dependencies = [
- "delegate",
- "derive_builder",
- "kanal",
- "once_cell",
- "prometheus",
- "prometheus-client",
-]
-
-[[package]]
 name = "integer-encoding"
 version = "3.0.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -7076,7 +7063,7 @@ dependencies = [
  "libra2-github-client",
  "libra2-global-constants",
  "libra2-indexer-grpc-server-framework",
- "libra2-indexer-processor-sdk 0.1.0",
+ "libra2-indexer-processor-sdk",
  "libra2-keygen",
  "libra2-ledger",
  "libra2-localnet",
@@ -7175,7 +7162,7 @@ dependencies = [
  "libra2-mempool",
  "libra2-runtimes",
  "libra2-storage-interface",
- "libra2-system-utils 0.1.1",
+ "libra2-system-utils",
  "libra2-types",
  "sha256",
  "tokio",
@@ -7716,7 +7703,7 @@ dependencies = [
  "maplit",
  "mini-moka",
  "mirai-annotations",
- "mockall 0.11.4",
+ "mockall",
  "move-core-types",
  "num-derive",
  "num-traits",
@@ -7897,7 +7884,7 @@ dependencies = [
  "libra2-time-service",
  "libra2-types",
  "maplit",
- "mockall 0.11.4",
+ "mockall",
  "ordered-float 3.9.2",
  "rand 0.8.5",
  "serde",
@@ -8278,7 +8265,7 @@ dependencies = [
  "libra2-metrics-core",
  "libra2-mvhashmap",
  "libra2-node-resource-metrics",
- "libra2-profiler 0.1.1",
+ "libra2-profiler",
  "libra2-push-metrics",
  "libra2-sdk",
  "libra2-storage-interface",
@@ -8908,8 +8895,8 @@ dependencies = [
  "libra2-indexer-grpc-server-framework",
  "libra2-indexer-grpc-utils",
  "libra2-metrics-core",
- "libra2-moving-average 0.1.0",
- "libra2-protos 1.3.2",
+ "libra2-moving-average",
+ "libra2-protos",
  "once_cell",
  "prost 0.13.5",
  "redis",
@@ -8934,9 +8921,9 @@ dependencies = [
  "libra2-indexer-grpc-server-framework",
  "libra2-indexer-grpc-utils",
  "libra2-metrics-core",
- "libra2-moving-average 0.1.0",
- "libra2-protos 1.3.2",
- "libra2-transaction-filter 0.1.1",
+ "libra2-moving-average",
+ "libra2-protos",
+ "libra2-transaction-filter",
  "once_cell",
  "prost 0.13.5",
  "redis",
@@ -8965,8 +8952,8 @@ dependencies = [
  "libra2-indexer-grpc-server-framework",
  "libra2-indexer-grpc-utils",
  "libra2-metrics-core",
- "libra2-protos 1.3.2",
- "libra2-transaction-filter 0.1.1",
+ "libra2-protos",
+ "libra2-transaction-filter",
  "once_cell",
  "prost 0.13.5",
  "rand 0.7.3",
@@ -9012,7 +8999,7 @@ dependencies = [
  "libra2-indexer-grpc-server-framework",
  "libra2-indexer-grpc-utils",
  "libra2-metrics-core",
- "libra2-moving-average 0.1.0",
+ "libra2-moving-average",
  "once_cell",
  "redis",
  "serde",
@@ -9031,7 +9018,7 @@ dependencies = [
  "jemallocator",
  "libra2-indexer-grpc-server-framework",
  "libra2-indexer-grpc-utils",
- "libra2-protos 1.3.2",
+ "libra2-protos",
  "serde",
  "serde_json",
  "tokio",
@@ -9070,9 +9057,9 @@ dependencies = [
  "libra2-mempool",
  "libra2-mempool-notifications",
  "libra2-metrics-core",
- "libra2-moving-average 0.1.0",
+ "libra2-moving-average",
  "libra2-proptest-helpers",
- "libra2-protos 1.3.2",
+ "libra2-protos",
  "libra2-runtimes",
  "libra2-sdk",
  "libra2-secure-storage",
@@ -9102,7 +9089,7 @@ dependencies = [
  "jemallocator",
  "lazy_static",
  "libra2-indexer-grpc-utils",
- "libra2-protos 1.3.2",
+ "libra2-protos",
  "once_cell",
  "redis",
  "redis-test",
@@ -9124,7 +9111,7 @@ dependencies = [
  "libra2-indexer-grpc-server-framework",
  "libra2-indexer-grpc-utils",
  "libra2-metrics-core",
- "libra2-protos 1.3.2",
+ "libra2-protos",
  "once_cell",
  "prost 0.13.5",
  "rand 0.7.3",
@@ -9147,7 +9134,7 @@ dependencies = [
  "clap 4.5.48",
  "figment",
  "libra2-metrics-core",
- "libra2-system-utils 0.1.1",
+ "libra2-system-utils",
  "prometheus",
  "serde",
  "tempfile",
@@ -9207,8 +9194,8 @@ dependencies = [
  "futures",
  "itertools 0.13.0",
  "libra2-metrics-core",
- "libra2-protos 1.3.2",
- "libra2-transaction-filter 0.1.1",
+ "libra2-protos",
+ "libra2-transaction-filter",
  "lz4",
  "once_cell",
  "prometheus",
@@ -9237,7 +9224,7 @@ dependencies = [
  "jemallocator",
  "libra2-indexer-grpc-server-framework",
  "libra2-indexer-grpc-utils",
- "libra2-protos 1.3.2",
+ "libra2-protos",
  "serde",
  "serde_json",
  "tokio",
@@ -9270,12 +9257,12 @@ dependencies = [
  "futures-util",
  "hex",
  "indexmap 2.11.4",
- "instrumented-channel 0.1.0",
+ "instrumented-channel",
  "kanal",
- "libra2-indexer-transaction-stream 0.1.1",
- "libra2-protos 1.3.2",
- "libra2-system-utils 0.1.1",
- "mockall 0.11.4",
+ "libra2-indexer-transaction-stream",
+ "libra2-protos",
+ "libra2-system-utils",
+ "mockall",
  "native-tls",
  "num_cpus",
  "once_cell",
@@ -9303,55 +9290,10 @@ dependencies = [
 ]
 
 [[package]]
-name = "libra2-indexer-processor-sdk"
-version = "0.1.0"
-source = "git+https://github.com/libra2org/libra2-indexer-processor-sdk.git#19d385273416a4db084ac90535292b4e991b2b52"
-dependencies = [
- "ahash 0.8.12",
- "anyhow",
- "async-trait",
- "autometrics",
- "axum 0.7.9",
- "backtrace",
- "bcs 0.1.4",
- "bigdecimal",
- "chrono",
- "clap 4.5.48",
- "derive_builder",
- "futures",
- "futures-util",
- "hex",
- "indexmap 2.11.4",
- "instrumented-channel 0.1.0 (git+https://github.com/libra2org/libra2-indexer-processor-sdk.git)",
- "kanal",
- "libra2-indexer-transaction-stream 0.1.0",
- "libra2-protos 1.3.2 (git+https://github.com/libra2org/libra2-core.git)",
- "libra2-system-utils 0.1.1 (git+https://github.com/libra2org/libra2-core.git)",
- "mockall 0.12.1",
- "num_cpus",
- "once_cell",
- "petgraph 0.6.5",
- "prometheus",
- "prometheus-client",
- "serde",
- "serde_json",
- "serde_yaml 0.8.26",
- "sha2 0.9.9",
- "tempfile",
- "thiserror 1.0.69",
- "tiny-keccak",
- "tokio",
- "toml 0.7.8",
- "tracing",
- "tracing-subscriber 0.3.20",
- "url",
-]
-
-[[package]]
 name = "libra2-indexer-test-transactions"
 version = "1.0.1"
 dependencies = [
- "libra2-protos 1.3.2",
+ "libra2-protos",
  "serde_json",
 ]
 
@@ -9367,7 +9309,7 @@ dependencies = [
  "libra2-config",
  "libra2-faucet-core",
  "libra2-indexer-grpc-utils",
- "libra2-protos 1.3.2",
+ "libra2-protos",
  "rand 0.7.3",
  "serde",
  "serde_json",
@@ -9382,37 +9324,15 @@ dependencies = [
 
 [[package]]
 name = "libra2-indexer-transaction-stream"
-version = "0.1.0"
-source = "git+https://github.com/libra2org/libra2-indexer-processor-sdk.git#19d385273416a4db084ac90535292b4e991b2b52"
-dependencies = [
- "anyhow",
- "chrono",
- "futures-util",
- "libra2-moving-average 0.1.0 (git+https://github.com/libra2org/libra2-indexer-processor-sdk.git)",
- "libra2-protos 1.3.2 (git+https://github.com/libra2org/libra2-core.git)",
- "libra2-transaction-filter 0.1.1 (git+https://github.com/libra2org/libra2-core.git)",
- "once_cell",
- "prometheus",
- "prost 0.13.5",
- "sample",
- "serde",
- "tokio",
- "tonic 0.12.3",
- "tracing",
- "url",
-]
-
-[[package]]
-name = "libra2-indexer-transaction-stream"
 version = "0.1.1"
 dependencies = [
  "anyhow",
  "chrono",
  "futures-util",
  "idxsample",
- "libra2-moving-average 0.1.0",
- "libra2-protos 1.3.2",
- "libra2-transaction-filter 0.1.1",
+ "libra2-moving-average",
+ "libra2-protos",
+ "libra2-transaction-filter",
  "once_cell",
  "prometheus",
  "prost 0.13.5",
@@ -9696,7 +9616,7 @@ dependencies = [
  "dirs 5.0.1",
  "futures",
  "libra2-indexer-grpc-utils",
- "libra2-protos 1.3.2",
+ "libra2-protos",
  "libra2-rest-client",
  "processor",
  "reqwest 0.11.27",
@@ -9914,14 +9834,6 @@ dependencies = [
 [[package]]
 name = "libra2-moving-average"
 version = "0.1.0"
-dependencies = [
- "chrono",
-]
-
-[[package]]
-name = "libra2-moving-average"
-version = "0.1.0"
-source = "git+https://github.com/libra2org/libra2-indexer-processor-sdk.git#19d385273416a4db084ac90535292b4e991b2b52"
 dependencies = [
  "chrono",
 ]
@@ -10378,7 +10290,7 @@ dependencies = [
  "libra2-time-service",
  "libra2-types",
  "maplit",
- "mockall 0.11.4",
+ "mockall",
  "once_cell",
  "rand 0.7.3",
  "serde",
@@ -10410,19 +10322,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "libra2-profiler"
-version = "0.1.1"
-source = "git+https://github.com/libra2org/libra2-core.git#f68d718028cbed95faa74458e60fd532aac9e0f8"
-dependencies = [
- "anyhow",
- "backtrace",
- "jemalloc-sys",
- "jemallocator",
- "pprof",
- "regex",
-]
-
-[[package]]
 name = "libra2-proptest-helpers"
 version = "0.1.1"
 dependencies = [
@@ -10434,17 +10333,6 @@ dependencies = [
 [[package]]
 name = "libra2-protos"
 version = "1.3.2"
-dependencies = [
- "pbjson",
- "prost 0.13.5",
- "serde",
- "tonic 0.12.3",
-]
-
-[[package]]
-name = "libra2-protos"
-version = "1.3.2"
-source = "git+https://github.com/libra2org/libra2-core.git#f68d718028cbed95faa74458e60fd532aac9e0f8"
 dependencies = [
  "pbjson",
  "prost 0.13.5",
@@ -10817,7 +10705,7 @@ dependencies = [
  "libra2-config",
  "libra2-logger",
  "libra2-metrics-core",
- "libra2-protos 1.3.2",
+ "libra2-protos",
  "once_cell",
  "serde",
  "thiserror 1.0.69",
@@ -10910,7 +10798,7 @@ dependencies = [
  "libra2-types",
  "libra2-vm",
  "libra2-vm-genesis",
- "mockall 0.11.4",
+ "mockall",
  "move-core-types",
  "ntest",
  "once_cell",
@@ -11000,7 +10888,7 @@ dependencies = [
  "libra2-types",
  "maplit",
  "mini-moka",
- "mockall 0.11.4",
+ "mockall",
  "once_cell",
  "rand 0.7.3",
  "serde",
@@ -11035,27 +10923,7 @@ dependencies = [
  "http 0.2.12",
  "hyper 0.14.32",
  "lazy_static",
- "libra2-profiler 0.1.1",
- "mime",
- "pprof",
- "regex",
- "rstack-self",
- "tokio",
- "tracing",
- "url",
-]
-
-[[package]]
-name = "libra2-system-utils"
-version = "0.1.1"
-source = "git+https://github.com/libra2org/libra2-core.git#f68d718028cbed95faa74458e60fd532aac9e0f8"
-dependencies = [
- "anyhow",
- "async-mutex",
- "http 0.2.12",
- "hyper 0.14.32",
- "lazy_static",
- "libra2-profiler 0.1.1 (git+https://github.com/libra2org/libra2-core.git)",
+ "libra2-profiler",
  "mime",
  "pprof",
  "regex",
@@ -11292,26 +11160,8 @@ dependencies = [
  "anyhow",
  "derivative",
  "derive_builder",
- "libra2-protos 1.3.2",
+ "libra2-protos",
  "lz4",
- "memchr",
- "once_cell",
- "prost 0.13.5",
- "serde",
- "serde_json",
- "serde_yaml 0.8.26",
- "thiserror 1.0.69",
-]
-
-[[package]]
-name = "libra2-transaction-filter"
-version = "0.1.1"
-source = "git+https://github.com/libra2org/libra2-core.git#f68d718028cbed95faa74458e60fd532aac9e0f8"
-dependencies = [
- "anyhow",
- "derivative",
- "derive_builder",
- "libra2-protos 1.3.2 (git+https://github.com/libra2org/libra2-core.git)",
  "memchr",
  "once_cell",
  "prost 0.13.5",
@@ -11794,7 +11644,7 @@ dependencies = [
  "libra2-cached-packages",
  "libra2-config",
  "libra2-faucet-core",
- "libra2-indexer-processor-sdk 0.1.0",
+ "libra2-indexer-processor-sdk",
  "libra2-localnet",
  "libra2-node",
  "libra2-types",
@@ -12304,23 +12154,8 @@ dependencies = [
  "downcast",
  "fragile",
  "lazy_static",
- "mockall_derive 0.11.4",
- "predicates 2.1.5",
- "predicates-tree",
-]
-
-[[package]]
-name = "mockall"
-version = "0.12.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "43766c2b5203b10de348ffe19f7e54564b64f3d6018ff7648d1e2d6d3a0f0a48"
-dependencies = [
- "cfg-if",
- "downcast",
- "fragile",
- "lazy_static",
- "mockall_derive 0.12.1",
- "predicates 3.1.3",
+ "mockall_derive",
+ "predicates",
  "predicates-tree",
 ]
 
@@ -12334,18 +12169,6 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn 1.0.109",
-]
-
-[[package]]
-name = "mockall_derive"
-version = "0.12.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "af7cbce79ec385a1d4f54baa90a76401eb15d9cab93685f62e7e9f942aa00ae2"
-dependencies = [
- "cfg-if",
- "proc-macro2",
- "quote",
- "syn 2.0.106",
 ]
 
 [[package]]
@@ -13312,7 +13135,7 @@ dependencies = [
  "derivative",
  "hashbrown 0.14.5",
  "itertools 0.13.0",
- "mockall 0.11.4",
+ "mockall",
  "move-binary-format",
  "move-core-types",
  "parking_lot 0.12.4",
@@ -14254,7 +14077,7 @@ dependencies = [
  "async-trait",
  "coset",
  "log",
- "mockall 0.11.4",
+ "mockall",
  "p256",
  "passkey-types",
  "rand 0.8.5",
@@ -15083,16 +14906,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "predicates"
-version = "3.1.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a5d19ee57562043d37e82899fade9a22ebab7be9cef5026b07fda9cdd4293573"
-dependencies = [
- "anstyle",
- "predicates-core",
-]
-
-[[package]]
 name = "predicates-core"
 version = "1.0.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -15308,7 +15121,7 @@ dependencies = [
  "itertools 0.12.1",
  "jemallocator",
  "lazy_static",
- "libra2-indexer-processor-sdk 0.1.0 (git+https://github.com/libra2org/libra2-indexer-processor-sdk.git)",
+ "libra2-indexer-processor-sdk",
  "log",
  "native-tls",
  "num_cpus",
@@ -16810,14 +16623,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "sample"
-version = "0.1.0"
-source = "git+https://github.com/libra2org/libra2-indexer-processor-sdk.git#19d385273416a4db084ac90535292b4e991b2b52"
-dependencies = [
- "tracing",
-]
-
-[[package]]
 name = "scale-info"
 version = "2.11.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -17999,6 +17804,9 @@ name = "strum"
 version = "0.27.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "af23d6f6c1a224baef9d3f61e287d2761385a5b88fdab4eb4c6f11aeb54c4bcf"
+dependencies = [
+ "strum_macros 0.27.2",
+]
 
 [[package]]
 name = "strum_macros"
