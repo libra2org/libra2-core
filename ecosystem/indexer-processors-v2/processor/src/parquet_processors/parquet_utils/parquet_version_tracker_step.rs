@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Libra2 Contributors
+// SPDX-License-Identifier: Apache-2.0
+
 use crate::parquet_processors::ParquetTypeEnum;
 use anyhow::Result;
 use libra2_indexer_processor_sdk::{

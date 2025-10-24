@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Libra2 Contributors
+// SPDX-License-Identifier: Apache-2.0
+
 use crate::processors::events::{events_model::PostgresEvent, parse_events};
 use libra2_indexer_processor_sdk::{
    libra2_protos::transaction::v1::Transaction,

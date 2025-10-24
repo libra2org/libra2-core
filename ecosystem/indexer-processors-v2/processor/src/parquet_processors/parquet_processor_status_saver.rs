@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Libra2 Contributors
+// SPDX-License-Identifier: Apache-2.0
+
 use super::parquet_utils::{
     parquet_version_tracker_step::ParquetProcessorStatusSaverTrait, util::format_table_name,
 };

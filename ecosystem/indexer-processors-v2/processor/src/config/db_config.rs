@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Libra2 Contributors
+// SPDX-License-Identifier: Apache-2.0
+
 use serde::{Deserialize, Serialize};
 
 /// This enum captures the configs for all the different db storages that are defined.

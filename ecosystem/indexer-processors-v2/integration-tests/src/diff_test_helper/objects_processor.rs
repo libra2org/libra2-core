@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Libra2 Contributors
+// SPDX-License-Identifier: Apache-2.0
+
 use crate::models::objects_models::{CurrentObject, Object};
 use anyhow::Result;
 use diesel::{pg::PgConnection, ExpressionMethods, QueryDsl, RunQueryDsl};

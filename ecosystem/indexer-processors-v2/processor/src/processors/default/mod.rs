@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Libra2 Contributors
+// SPDX-License-Identifier: Apache-2.0
+
 pub mod default_extractor;
 pub mod default_processor;
 pub mod default_storer;

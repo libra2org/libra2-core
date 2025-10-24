@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Libra2 Contributors
+// SPDX-License-Identifier: Apache-2.0
+
 use crate::{
     parquet_processors::{
         parquet_transaction_metadata::transaction_metadata_processor_helpers::process_transactions,

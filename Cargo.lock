@@ -2428,7 +2428,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7efb37c3e1ccb1ff97164ad95ac1606e8ccd35b3fa0a7d99a304c7f4a428cc24"
 dependencies = [
  "percent-encoding",
- "time",
+ "time 0.3.44",
  "version_check",
 ]
 
@@ -2445,7 +2445,7 @@ dependencies = [
  "serde",
  "serde_derive",
  "serde_json",
- "time",
+ "time 0.3.44",
  "url",
 ]
 
@@ -4850,7 +4850,7 @@ dependencies = [
  "serde",
  "serde_json",
  "thiserror 1.0.69",
- "time",
+ "time 0.3.44",
  "tokio",
  "tokio-stream",
  "url",
@@ -5087,7 +5087,7 @@ dependencies = [
  "serde",
  "serde_json",
  "thiserror 1.0.69",
- "time",
+ "time 0.3.44",
  "tokio",
  "tracing",
  "urlencoding",
@@ -5174,7 +5174,7 @@ dependencies = [
  "serde_json",
  "sha2 0.10.9",
  "thiserror 1.0.69",
- "time",
+ "time 0.3.44",
  "tokio",
  "tracing",
  "url",
@@ -5964,7 +5964,7 @@ dependencies = [
  "js-sys",
  "log",
  "wasm-bindgen",
- "windows-core",
+ "windows-core 0.62.0",
 ]
 
 [[package]]
@@ -7705,9 +7705,11 @@ dependencies = [
  "mirai-annotations",
  "mockall",
  "move-core-types",
+ "ndarray",
  "num-derive",
  "num-traits",
  "once_cell",
+ "onnxruntime",
  "ordered-float 3.9.2",
  "proptest",
  "proptest-derive",
@@ -7720,6 +7722,7 @@ dependencies = [
  "sha3 0.9.1",
  "strum 0.27.2",
  "strum_macros 0.27.2",
+ "sysinfo 0.30.13",
  "tempfile",
  "thiserror 1.0.69",
  "tokio",
@@ -8838,7 +8841,7 @@ dependencies = [
  "serde",
  "serde_json",
  "thiserror 1.0.69",
- "ureq",
+ "ureq 1.5.5",
 ]
 
 [[package]]
@@ -10133,7 +10136,7 @@ dependencies = [
  "serde_json",
  "serde_yaml 0.8.26",
  "tokio",
- "ureq",
+ "ureq 1.5.5",
  "url",
 ]
 
@@ -10189,7 +10192,7 @@ dependencies = [
  "procfs",
  "prometheus",
  "rlimit",
- "sysinfo",
+ "sysinfo 0.28.4",
 ]
 
 [[package]]
@@ -10354,7 +10357,7 @@ dependencies = [
  "libra2-logger",
  "libra2-metrics-core",
  "rand 0.7.3",
- "ureq",
+ "ureq 1.5.5",
  "url",
 ]
 
@@ -10982,7 +10985,7 @@ dependencies = [
  "reqwest-retry",
  "serde",
  "serde_json",
- "sysinfo",
+ "sysinfo 0.28.4",
  "tokio",
  "tokio-stream",
  "url",
@@ -11401,7 +11404,7 @@ dependencies = [
  "serde",
  "serde_json",
  "thiserror 1.0.69",
- "ureq",
+ "ureq 1.5.5",
 ]
 
 [[package]]
@@ -13243,6 +13246,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "ndarray"
+version = "0.15.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "cc1372704f14bb132a49a6701c2238970a359ee0829fed481b522a63bf25456a"
+dependencies = [
+ "matrixmultiply",
+ "num-complex 0.4.6",
+ "num-integer",
+ "num-traits",
+ "rawpointer",
+]
+
+[[package]]
 name = "neptune"
 version = "13.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -13646,6 +13662,31 @@ name = "once_cell_polyfill"
 version = "1.70.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a4895175b425cb1f87721b59f0f286c2092bd4af812243672510e1ac53e2e0ad"
+
+[[package]]
+name = "onnxruntime"
+version = "0.0.14"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3f420aa8537acfc1d1849ba3c52f5e7dcb7e4a42ef3c3909fea39b2166c0a08d"
+dependencies = [
+ "lazy_static",
+ "ndarray",
+ "onnxruntime-sys",
+ "thiserror 1.0.69",
+ "tracing",
+]
+
+[[package]]
+name = "onnxruntime-sys"
+version = "0.0.14"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d260f550734525e3673282be19c33f2e8cd4c75c28e6118b5ba46ba76d909899"
+dependencies = [
+ "flate2",
+ "tar",
+ "ureq 2.12.1",
+ "zip 0.5.13",
+]
 
 [[package]]
 name = "oorandom"
@@ -15215,7 +15256,7 @@ dependencies = [
  "reqwest 0.11.27",
  "serde",
  "serde_json",
- "time",
+ "time 0.3.44",
  "url",
 ]
 
@@ -16828,7 +16869,7 @@ dependencies = [
  "serde_json",
  "tempfile",
  "urlencoding",
- "zip",
+ "zip 0.6.6",
  "zipsign-api",
 ]
 
@@ -17083,7 +17124,7 @@ dependencies = [
  "serde_derive",
  "serde_json",
  "serde_with_macros",
- "time",
+ "time 0.3.44",
 ]
 
 [[package]]
@@ -17237,7 +17278,7 @@ dependencies = [
  "const_format",
  "git2 0.15.0",
  "is_debug",
- "time",
+ "time 0.3.44",
  "tzdb",
 ]
 
@@ -17367,7 +17408,7 @@ dependencies = [
  "num-bigint 0.4.6",
  "num-traits",
  "thiserror 2.0.16",
- "time",
+ "time 0.3.44",
 ]
 
 [[package]]
@@ -17894,7 +17935,7 @@ dependencies = [
  "sha2 0.10.9",
  "thiserror 1.0.69",
  "url",
- "zip",
+ "zip 0.6.6",
 ]
 
 [[package]]
@@ -17981,6 +18022,21 @@ dependencies = [
  "once_cell",
  "rayon",
  "winapi 0.3.9",
+]
+
+[[package]]
+name = "sysinfo"
+version = "0.30.13"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0a5b4ddaee55fb2bea2bf0e5000747e5f5c0de765e5a5ff87f4cd106439f4bb3"
+dependencies = [
+ "cfg-if",
+ "core-foundation-sys",
+ "libc",
+ "ntapi",
+ "once_cell",
+ "rayon",
+ "windows",
 ]
 
 [[package]]
@@ -18307,6 +18363,17 @@ dependencies = [
  "flate2",
  "jpeg-decoder",
  "weezl",
+]
+
+[[package]]
+name = "time"
+version = "0.1.45"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1b797afad3f312d1c66a56d11d0316f916356d11bd158fbc6ca6389ff6bf805a"
+dependencies = [
+ "libc",
+ "wasi 0.10.0+wasi-snapshot-preview1",
+ "winapi 0.3.9",
 ]
 
 [[package]]
@@ -19465,6 +19532,22 @@ dependencies = [
 ]
 
 [[package]]
+name = "ureq"
+version = "2.12.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "02d1a66277ed75f640d608235660df48c8e3c19f3b4edb6a263315626cc3c01d"
+dependencies = [
+ "base64 0.22.1",
+ "flate2",
+ "log",
+ "once_cell",
+ "rustls 0.23.32",
+ "rustls-pki-types",
+ "url",
+ "webpki-roots 0.26.11",
+]
+
+[[package]]
 name = "url"
 version = "2.5.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -19682,6 +19765,12 @@ checksum = "cccddf32554fecc6acb585f82a32a72e28b48f8c4c1883ddfeeeaa96f7d8e519"
 
 [[package]]
 name = "wasi"
+version = "0.10.0+wasi-snapshot-preview1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1a143597ca7c7793eff794def352d41792a93c481eb1042423ff7ff72ba2c31f"
+
+[[package]]
+name = "wasi"
 version = "0.11.1+wasi-snapshot-preview1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ccf3ec651a847eb01de73ccad15eb7d99f80485de043efb2f370cd654f4ea44b"
@@ -19857,6 +19946,15 @@ checksum = "5f20c57d8d7db6d3b86154206ae5d8fba62dd39573114de97c2cb0578251f8e1"
 
 [[package]]
 name = "webpki-roots"
+version = "0.26.11"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "521bc38abb08001b01866da9f51eb7c5d647a19260e00054a8c7fd5f9e57f7a9"
+dependencies = [
+ "webpki-roots 1.0.2",
+]
+
+[[package]]
+name = "webpki-roots"
 version = "1.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7e8983c3ab33d6fb807cfcdad2491c4ea8cbc8ed839181c7dfd9c67c83e261b2"
@@ -19957,6 +20055,25 @@ name = "winapi-x86_64-pc-windows-gnu"
 version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "712e227841d057c1ee1cd2fb22fa7e5a5461ae8e48fa2ca79ec42cfc1931183f"
+
+[[package]]
+name = "windows"
+version = "0.52.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e48a53791691ab099e5e2ad123536d0fff50652600abaf43bbf952894110d0be"
+dependencies = [
+ "windows-core 0.52.0",
+ "windows-targets 0.52.6",
+]
+
+[[package]]
+name = "windows-core"
+version = "0.52.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "33ab640c8d7e35bf8ba19b884ba838ceb4fba93a4e8c65a9059d08afcfc683d9"
+dependencies = [
+ "windows-targets 0.52.6",
+]
 
 [[package]]
 name = "windows-core"
@@ -20480,7 +20597,7 @@ dependencies = [
  "seahash",
  "serde",
  "serde_json",
- "time",
+ "time 0.3.44",
  "tokio",
  "tower-service",
  "url",
@@ -20593,6 +20710,20 @@ dependencies = [
 
 [[package]]
 name = "zip"
+version = "0.5.13"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "93ab48844d61251bb3835145c521d88aa4031d7139e8485990f60ca911fa0815"
+dependencies = [
+ "byteorder",
+ "bzip2",
+ "crc32fast",
+ "flate2",
+ "thiserror 1.0.69",
+ "time 0.1.45",
+]
+
+[[package]]
+name = "zip"
 version = "0.6.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "760394e246e4c28189f19d488c058bf16f564016aefac5d32bb1f3b51d5e9261"
@@ -20607,7 +20738,7 @@ dependencies = [
  "hmac 0.12.1",
  "pbkdf2 0.11.0",
  "sha1",
- "time",
+ "time 0.3.44",
  "zstd 0.11.2+zstd.1.5.2",
 ]
 

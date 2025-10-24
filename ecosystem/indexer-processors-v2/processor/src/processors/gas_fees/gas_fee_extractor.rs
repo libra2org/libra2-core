@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Libra2 Contributors
+// SPDX-License-Identifier: Apache-2.0
+
 use crate::processors::gas_fees::models::GasFee;
 use anyhow::Result;
 use libra2_indexer_processor_sdk::{

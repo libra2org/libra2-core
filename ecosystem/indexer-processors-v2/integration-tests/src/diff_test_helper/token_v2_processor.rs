@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Libra2 Contributors
+// SPDX-License-Identifier: Apache-2.0
+
 use crate::models::token_v2_models::*;
 use anyhow::Result;
 use diesel::{pg::PgConnection, query_dsl::methods::ThenOrderDsl, ExpressionMethods, RunQueryDsl};

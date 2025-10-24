@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Libra2 Contributors
+// SPDX-License-Identifier: Apache-2.0
+
 pub mod account_restoration_models;
 pub mod account_transaction_models;
 pub mod ans_models;

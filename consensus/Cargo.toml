@@ -13,6 +13,9 @@ repository = { workspace = true }
 rust-version = { workspace = true }
 
 [dependencies]
+onnxruntime = { version = "0.0.14", optional = true }
+ndarray      = { version = "0.15", optional = true }
+sysinfo      = { version = "0.30", optional = true }
 anyhow = { workspace = true }
 libra2-bitvec = { workspace = true }
 libra2-bounded-executor = { workspace = true }
@@ -119,6 +122,7 @@ fuzzing = [
 ]
 failpoints = ["fail/failpoints"]
 
+ai = ["dep:onnxruntime", "dep:ndarray", "dep:sysinfo"]
 [package.metadata.cargo-machete]
 ignored = ["serde_bytes"]
 

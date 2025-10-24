@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Libra2 Contributors
+// SPDX-License-Identifier: Apache-2.0
+
 use ahash::AHashMap;
 use libra2_indexer_processor_sdk::testing_framework::sdk_test_context::SdkTestContext;
 use processor::config::{

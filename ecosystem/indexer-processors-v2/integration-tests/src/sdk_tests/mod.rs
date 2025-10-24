@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Libra2 Contributors
+// SPDX-License-Identifier: Apache-2.0
+
 #[cfg(test)]
 pub mod account_restoration_processor_tests;
 #[cfg(test)]

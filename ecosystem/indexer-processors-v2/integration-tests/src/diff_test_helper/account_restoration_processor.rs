@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Libra2 Contributors
+// SPDX-License-Identifier: Apache-2.0
+
 use crate::models::account_restoration_models::{AuthKeyAccountAddress, PublicKeyAuthKey};
 use anyhow::Result;
 use diesel::{query_dsl::methods::ThenOrderDsl, ExpressionMethods, PgConnection, RunQueryDsl};

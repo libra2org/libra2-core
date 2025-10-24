@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Libra2 Contributors
+// SPDX-License-Identifier: Apache-2.0
+
 mod diff_test_helper;
 mod models;
 // mod sanity_test; // TODO: uncomment this once we have processors migrated to enable sanity tests

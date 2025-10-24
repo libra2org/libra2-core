@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Libra2 Contributors
+// SPDX-License-Identifier: Apache-2.0
+
 use crate::processors::account_transactions::{
     account_transactions_model::PostgresAccountTransaction, parse_account_transactions,
 };

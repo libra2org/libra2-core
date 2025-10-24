@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Libra2 Contributors
+// SPDX-License-Identifier: Apache-2.0
+
 use super::models::move_modules::PostgresMoveModule;
 use crate::processors::default::{
     models::{

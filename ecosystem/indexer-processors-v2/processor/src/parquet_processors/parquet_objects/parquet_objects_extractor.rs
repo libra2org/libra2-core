@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Libra2 Contributors
+// SPDX-License-Identifier: Apache-2.0
+
 use crate::{
     parquet_processors::{
         parquet_utils::util::add_to_map_if_opted_in_for_backfill, ParquetTypeEnum,

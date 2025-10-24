@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Libra2 Contributors
+// SPDX-License-Identifier: Apache-2.0
+
 use crate::processors::fungible_asset::{
     coin_models::coin_supply::CoinSupply,
     fungible_asset_models::{

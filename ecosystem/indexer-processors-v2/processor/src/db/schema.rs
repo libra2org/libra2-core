@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Libra2 Contributors
+// SPDX-License-Identifier: Apache-2.0
+
 // @generated automatically by Diesel CLI.
 
 diesel::table! {

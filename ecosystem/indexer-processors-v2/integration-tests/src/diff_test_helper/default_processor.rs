@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Libra2 Contributors
+// SPDX-License-Identifier: Apache-2.0
+
 use crate::models::default_models::{BlockMetadataTransaction, CurrentTableItem, TableItem};
 use anyhow::Result;
 use diesel::{pg::PgConnection, query_dsl::methods::ThenOrderDsl, ExpressionMethods, RunQueryDsl};

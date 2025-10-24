@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Libra2 Contributors
+// SPDX-License-Identifier: Apache-2.0
+
 use crate::{
     config::processor_config::DefaultProcessorConfig,
     processors::events::events_model::PostgresEvent,

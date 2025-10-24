@@ -1,5 +1,8 @@
 #![allow(clippy::extra_unused_lifetimes)]
 
+// Copyright (c) 2025 Libra2 Contributors
+// SPDX-License-Identifier: Apache-2.0
+
 use crate::{
     parquet_processors::parquet_utils::util::{HasVersion, NamedTable},
     schema::events,

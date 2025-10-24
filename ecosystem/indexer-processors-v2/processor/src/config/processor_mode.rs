@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Libra2 Contributors
+// SPDX-License-Identifier: Apache-2.0
+
 use serde::{Deserialize, Serialize};
 /// The ProcessorMode subconfig is used to determine how the processor should run in.
 ///
