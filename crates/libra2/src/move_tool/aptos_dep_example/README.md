@@ -16,9 +16,9 @@ aptos node run-local-testnet &
 aptos account create --account default --use-faucet 
 # Compile and publish pack2
 cd pack2
-aptos move compile --named-addresses project=default     
-aptos move publish --named-addresses project=default
+libra2 move compile --named-addresses project=default     
+libra2 move publish --named-addresses project=default
 # Compile pack1 agains the published pack2
 cd ../pack1
-aptos move compile --named-addresses project=default     
+libra2 move compile --named-addresses project=default     
 ```

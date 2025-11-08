@@ -23,6 +23,7 @@ def export_onnx(state_dict_path: str, onnx_out: str):
         input_names=["feat"], output_names=["p_choke"],
         dynamic_axes={"feat": {0: "batch"}, "p_choke": {0: "batch"}},
         opset_version=17,
+        # dynamo=True,        # <- new exporter
     )
 
 if __name__ == "__main__":

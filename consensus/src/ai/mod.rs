@@ -119,3 +119,16 @@ pub fn normalize_features(
 
 /// Safe default: if AI is temporarily unavailable, return r=1.0
 pub fn safe_default_r() -> f32 { 1.0 }
+
+
+#[cfg(test)]
+mod ai_smoke {
+    use super::*;
+    #[test]
+    fn predictor_runs_and_bounds_r() {
+        let pred = AIPredictor::load("ai/predictor.onnx", 0.5, 0.6).expect("load model");
+        let x = normalize_features(0.4, 120.0, 0.5, 0.10, 5.0);
+        let r = pred.responsiveness(x).expect("infer");
+        assert!((0.6..=1.0).contains(&r), "r out of bounds: {}", r);
+    }
+}
