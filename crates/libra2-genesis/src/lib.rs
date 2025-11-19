@@ -33,7 +33,7 @@ use libra2_types::{
     waypoint::Waypoint,
 };
 use libra2_vm::libra2_vm::Libra2VMBlockExecutor;
-use libra2_vm_genesis::Validator;
+use libra2_vm_genesis::{AccountBalance, Validator};
 use std::convert::TryInto;
 
 /// Holder object for all pieces needed to generate a genesis transaction
@@ -80,6 +80,7 @@ pub struct GenesisInfo {
     pub jwk_consensus_config_override: Option<OnChainJWKConsensusConfig>,
     pub initial_jwks: Vec<IssuerJWK>,
     pub keyless_groth16_vk: Option<Groth16VerificationKey>,
+    pub accounts: Vec<AccountBalance>,
 }
 
 impl GenesisInfo {
@@ -121,6 +122,7 @@ impl GenesisInfo {
             jwk_consensus_config_override: genesis_config.jwk_consensus_config_override.clone(),
             initial_jwks: genesis_config.initial_jwks.clone(),
             keyless_groth16_vk: genesis_config.keyless_groth16_vk.clone(),
+            accounts: genesis_config.accounts.clone(),
         })
     }
 
@@ -158,6 +160,7 @@ impl GenesisInfo {
                 jwk_consensus_config_override: self.jwk_consensus_config_override.clone(),
                 initial_jwks: self.initial_jwks.clone(),
                 keyless_groth16_vk: self.keyless_groth16_vk.clone(),
+                accounts: self.accounts.clone(),
             },
             &self.consensus_config,
             &self.execution_config,

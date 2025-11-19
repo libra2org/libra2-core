@@ -152,6 +152,21 @@ pub fn fetch_mainnet_genesis_info(git_options: GitOptions) -> CliTypedResult<Mai
     let account_balance_map: AccountBalanceMap = client.get(Path::new(BALANCES_FILE))?;
     let accounts: Vec<AccountBalance> = account_balance_map.try_into()?;
 
+    // Keep track of accounts for later lookup of balances and merge prefund values.
+    let mut initialized_accounts: BTreeMap<AccountAddress, u64> = accounts
+        .iter()
+        .map(|inner| (inner.account_address, inner.balance))
+        .collect();
+    apply_prefund(&client, &layout, &mut initialized_accounts)?;
+
+    let accounts: Vec<AccountBalance> = initialized_accounts
+        .iter()
+        .map(|(account_address, balance)| AccountBalance {
+            account_address: *account_address,
+            balance: *balance,
+        })
+        .collect();
+
     // Check that the supply matches the total
     let total_balance_supply: u64 = accounts.iter().map(|inner| inner.balance).sum();
     if total_supply != total_balance_supply {
@@ -178,12 +193,6 @@ pub fn fetch_mainnet_genesis_info(git_options: GitOptions) -> CliTypedResult<Mai
             )));
         }
     }
-
-    // Keep track of accounts for later lookup of balances
-    let initialized_accounts: BTreeMap<AccountAddress, u64> = accounts
-        .iter()
-        .map(|inner| (inner.account_address, inner.balance))
-        .collect();
 
     let employee_vesting_accounts: EmployeePoolMap =
         client.get(Path::new(EMPLOYEE_VESTING_ACCOUNTS_FILE))?;
@@ -262,6 +271,7 @@ pub fn fetch_mainnet_genesis_info(git_options: GitOptions) -> CliTypedResult<Mai
             jwk_consensus_config_override: None,
             initial_jwks: vec![],
             keyless_groth16_vk: None,
+            accounts: vec![],
         },
     )?)
 }
@@ -279,6 +289,17 @@ pub fn fetch_genesis_info(git_options: GitOptions) -> CliTypedResult<GenesisInfo
     }
 
     let validators = get_validator_configs(&client, &layout, false).map_err(parse_error)?;
+
+    let mut prefunded_accounts_map = BTreeMap::new();
+    apply_prefund(&client, &layout, &mut prefunded_accounts_map)?;
+    let prefunded_accounts: Vec<AccountBalance> = prefunded_accounts_map
+        .into_iter()
+        .map(|(account_address, balance)| AccountBalance {
+            account_address,
+            balance,
+        })
+        .collect();
+
     let framework = client.get_framework()?;
     Ok(GenesisInfo::new(
         layout.chain_id,
@@ -307,8 +328,62 @@ pub fn fetch_genesis_info(git_options: GitOptions) -> CliTypedResult<GenesisInfo
             jwk_consensus_config_override: layout.jwk_consensus_config_override.clone(),
             initial_jwks: layout.initial_jwks.clone(),
             keyless_groth16_vk: layout.keyless_groth16_vk_override.clone(),
+            accounts: prefunded_accounts,
         },
     )?)
+}
+
+fn apply_prefund(
+    client: &Client,
+    layout: &Layout,
+    balances: &mut BTreeMap<AccountAddress, u64>,
+) -> CliTypedResult<()> {
+    if layout.prefund.is_empty() {
+        return Ok(());
+    }
+
+    for (key, amount) in &layout.prefund {
+        let account_address = if key.starts_with("0x") {
+            AccountAddressWithChecks::from_str(key).map_err(|err| {
+                CliError::UnexpectedError(format!(
+                    "Invalid address `{}` in `layout.prefund`: {}",
+                    key, err
+                ))
+            })?
+        } else {
+            let dir = PathBuf::from(key);
+            let owner_file = dir.join(OWNER_FILE);
+            let owner_config: StringOwnerConfiguration = client.get(owner_file.as_path())?;
+            let addr_str = owner_config.owner_account_address.ok_or_else(|| {
+                CliError::UnexpectedError(format!(
+                    "Prefund entry `{}` refers to user `{}`, but `owner_account_address` is missing in {}",
+                    key,
+                    key,
+                    owner_file.display()
+                ))
+            })?;
+            AccountAddressWithChecks::from_str(&addr_str).map_err(|err| {
+                CliError::UnexpectedError(format!(
+                    "Invalid `owner_account_address` `{}` for prefund key `{}` in {}: {}",
+                    addr_str,
+                    key,
+                    owner_file.display(),
+                    err
+                ))
+            })?
+        }
+        .into();
+
+        let entry = balances.entry(account_address).or_insert(0);
+        *entry = entry.checked_add(*amount).ok_or_else(|| {
+            CliError::UnexpectedError(format!(
+                "Overflow while applying prefund `{}` with amount {}",
+                key, amount
+            ))
+        })?;
+    }
+
+    Ok(())
 }
 
 fn parse_error(errors: Vec<String>) -> CliError {

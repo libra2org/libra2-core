@@ -87,6 +87,13 @@ pub struct Layout {
     /// Keyless Groth16 verification key to install in genesis.
     #[serde(default)]
     pub keyless_groth16_vk_override: Option<Groth16VerificationKey>,
+
+    /// Named / address-based prefunds that should receive LBT at genesis.
+    /// Key can be either:
+    ///   * "0x..." — a literal on-chain address, or
+    ///   * a layout "user" name, resolved via `<user>/owner.yaml`.
+    #[serde(default)]
+    pub prefund: BTreeMap<String, u64>,
 }
 
 impl Layout {
@@ -129,6 +136,7 @@ impl Default for Layout {
             jwk_consensus_config_override: None,
             initial_jwks: vec![],
             keyless_groth16_vk_override: None,
+            prefund: BTreeMap::new(),
         }
     }
 }
