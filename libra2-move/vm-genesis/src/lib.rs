@@ -116,6 +116,7 @@ pub struct GenesisConfiguration {
     pub jwk_consensus_config_override: Option<OnChainJWKConsensusConfig>,
     pub initial_jwks: Vec<IssuerJWK>,
     pub keyless_groth16_vk: Option<Groth16VerificationKey>,
+    pub accounts: Vec<AccountBalance>,
 }
 
 pub static GENESIS_KEYPAIR: Lazy<(Ed25519PrivateKey, Ed25519PublicKey)> = Lazy::new(|| {
@@ -341,6 +342,12 @@ pub fn encode_genesis_change_set(
         &module_storage,
         &mut traversal_context,
         genesis_config,
+    );
+    create_accounts(
+        &mut session,
+        &module_storage,
+        &mut traversal_context,
+        &genesis_config.accounts,
     );
     initialize_account_abstraction(&mut session, &module_storage, &mut traversal_context);
     create_and_initialize_validators(
@@ -1427,6 +1434,7 @@ pub fn generate_test_genesis(
             jwk_consensus_config_override: None,
             initial_jwks: vec![],
             keyless_groth16_vk: None,
+            accounts: vec![],
         },
         &OnChainConsensusConfig::default_for_genesis(),
         &OnChainExecutionConfig::default_for_genesis(),
@@ -1479,6 +1487,7 @@ fn mainnet_genesis_config() -> GenesisConfiguration {
         jwk_consensus_config_override: None,
         initial_jwks: vec![],
         keyless_groth16_vk: None,
+        accounts: vec![],
     }
 }
 

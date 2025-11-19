@@ -36,7 +36,7 @@ use libra2_types::{
     transaction::Transaction,
     waypoint::Waypoint,
 };
-use libra2_vm_genesis::default_gas_schedule;
+use libra2_vm_genesis::{default_gas_schedule, AccountBalance};
 use rand::Rng;
 use serde::{de::DeserializeOwned, Serialize};
 use std::{
@@ -445,6 +445,7 @@ pub struct GenesisConfiguration {
     pub jwk_consensus_config_override: Option<OnChainJWKConsensusConfig>,
     pub initial_jwks: Vec<IssuerJWK>,
     pub keyless_groth16_vk: Option<Groth16VerificationKey>,
+    pub accounts: Vec<AccountBalance>,
 }
 
 pub type InitConfigFn = Arc<dyn Fn(usize, &mut NodeConfig, &mut NodeConfig) + Send + Sync>;
@@ -668,6 +669,7 @@ impl Builder {
             jwk_consensus_config_override: None,
             initial_jwks: vec![],
             keyless_groth16_vk: None,
+            accounts: vec![],
         };
         if let Some(init_genesis_config) = &self.init_genesis_config {
             (init_genesis_config)(&mut genesis_config);

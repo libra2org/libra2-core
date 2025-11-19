@@ -1,15 +1,36 @@
 root_key: "D04470F43AB6AEAA4EB616B72128881EEF77346F2075FFE68E14BA7DEBD8095E"
-users: []
-chain_id: 4
-allow_new_validators: false
+users: [founder, foundation, nuwa12-v0, nuwa12-v1, nuwa12-v2]
+chain_id: 1
+
+allow_new_validators: true
 epoch_duration_secs: 7200
 is_test: true
 min_price_per_gas_unit: 1
-min_stake: 100000000000000
+
+# 1,000 LBT * 10^8 Octas per LBT
+min_stake: 100000000000
+
+# Keep governance thresholds at 1,000,000 LBT
 min_voting_threshold: 100000000000000
-max_stake: 100000000000000000
+
+# 200,000,000 LBT * 10^8 Octas
+max_stake: 20000000000000000
+
 recurring_lockup_duration_secs: 86400
-required_proposer_stake: 1000000
+
+# Still require 1,000,000 LBT to be a proposer
+required_proposer_stake: 100000000000000
+
 rewards_apy_percentage: 10
 voting_duration_secs: 43200
 voting_power_increase_limit: 20
+
+# No hard cap; managed via Move/gov
+total_supply: null
+
+prefund:
+  founder: 600000000000000000       # 6B LBT
+  foundation: 6000000000000000000   # 60B LBT
+  nuwa12-v0: 100000000000000        # 1M LBT
+  nuwa12-v1: 100000000000000        # 1M LBT
+  nuwa12-v2: 100000000000000        # 1M LBT
